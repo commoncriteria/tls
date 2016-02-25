@@ -7,7 +7,7 @@
   <!-- <inline-comment color='blue' linebreak='yes'> Hello World TLS </inline-comment> -->
   <PPReference title="PP Reference">
     <ReferenceTable>
-      <PPTitle>Protection Profile for TLS</PPTitle>
+      <PPTitle>Extended Package for TLS</PPTitle>
       <PPVersion>4.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2015-08-14</PPPubDate>
@@ -263,7 +263,7 @@
     <section title="Security Functional Requirements" id="SFRs">The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional
-      components. 
+      components.
       <subsection title="TLS" id="TLS">
         <f-component id="TLS_TLS.1" name="TLS" status="threshold">
           <f-element id="TLS_TLS.1.1">
