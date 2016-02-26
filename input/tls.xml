@@ -48,7 +48,7 @@
       This Extended Package (EP) provides a baseline set of Securtiy Fuctional Requirments (SFRs) for products that implement TLS, regardless of the composition of the underlying platform. The requirments are intended to improve the secuirty of products by encoruaging the use of correctly configured TLS parameters. 
 
       To a product to claim conformence against the following PPs and cPPs it must also be conforment against this EP:
-      <<LIST OF PP/CPP that must be conforment>>
+      QQQLIST OF PP/CPP that must be conformentQQQ
 
     </section>
     <section title="Terms" id="glossary"> The following sections provide both Common Criteria and
