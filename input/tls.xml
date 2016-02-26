@@ -41,16 +41,17 @@
   <chapter title="Introduction" id="int">
     <section title="Overview" id="ppoverview"> 
       Transport Layer Security (TLS) is a cryptographic protocola designed to provide communications security over a computer network. Several versions of the protocol are in widespread use in applications such as web browsers, email, Internet faxing, instant messaging, and voice-over-IP (VoIP). Major web sites use TLS to secure all communications between their servers and web browsers. Major Operating Systems and hardware vendors also make use of TLS to provide secure communications between hosts and devices.
-
+      <h:br/> 
       The primary goal of the TLS protocol is to provide privacy and data integrity between two communicating products. 
-
+      <h:br/> 
       TLS supports many different methods for exchanging keys, encrypting data, and authenticating message integrity. As a result, secure configuration of TLS involves many configurable parameters, and not all choices provide all of the privacy-related properties described in the list above.
-
+      <h:br/> 
       This Extended Package (EP) provides a baseline set of Securtiy Fuctional Requirments (SFRs) for products that implement TLS, regardless of the composition of the underlying platform. The requirments are intended to improve the secuirty of products by encoruaging the use of correctly configured TLS parameters. 
-
+      <h:br/> 
       To a product to claim conformence against the following PPs and cPPs it must also be conforment against this EP:
+      <h:br/> 
       QQQLIST OF PP/CPP that must be conformentQQQ
-
+      <h:br/> 
     </section>
     <section title="Terms" id="glossary"> The following sections provide both Common Criteria and
       technology terms used in this Protection Profile. <subsection title="Common Criteria Terms"
@@ -202,15 +203,12 @@
           <component-refer ref="fcs_tlsc_ext.2"/>
           <component-refer ref="fcs_tlsc_ext.3"/>
           <component-refer ref="fcs_tlsc_ext.4"/>
-          <component-refer ref="fcs_dtls_ext.1"/>
           <component-refer ref="fcs_rbg_ext.1"/>
           <component-refer ref="fcs_ckm.1"/>
           <component-refer ref="fcs_ckm.2"/>
           <component-refer ref="fcs_cop.1.1(1)"/>
           <component-refer ref="fdp_ifc_ext.1"/>
-          <component-refer ref="fia_x509_ext.1"/>
-          <component-refer ref="fia_x509_ext.2"/>
-        <component-refer ref="ftp_itc_ext.1"/>
+          <component-refer ref="ftp_itc_ext.1"/>
         <!-- CHECK TO MAKE SURE THESE ARE ALL IN THE DOCUMET -->
         </SO>
       </SOs>
@@ -242,7 +240,7 @@
       <subsection title="TLS" id="TLS">
         <f-component id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="threshold">
           <f-element id="fcs_tlsc_ext.1.1">
-            <title> The OS shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
+            <title> The product shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
               (RFC 5246)  supporting the following cipher suites:
               <h:p/>Mandatory cipher suites: TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246
               <h:p/>Optional cipher suites: 
@@ -289,7 +287,7 @@
                 <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> to ensure that the
               cipher suites specified include those listed for this component. The evaluator will
               also check the operational guidance to ensure that it contains instructions on
-              configuring the OS so that
+              configuring The product so that
               TLS conforms to the description in the <abbr title="TOE Summary Specification"
                 linkend="TSS">TSS</abbr>. The evaluator will also perform the following tests: 
               <testlist>
@@ -316,7 +314,7 @@
                   The evaluator will send a server certificate in the <abbr title="Transport Layer Security">TLS</abbr> connection 
                   that does not match the server-selected cipher suite (for example, send a ECDSA certificate while using the
                   TLS_RSA_WITH_AES_128_CBC_SHA cipher suite or send a RSA certificate while using one
-                  of the ECDSA cipher suites.) The evaluator will verify that the OS disconnects after
+                  of the ECDSA cipher suites.) The evaluator will verify that The product disconnects after
                   receiving the server’s Certificate handshake message. 
                 </test>
                 <test> 
@@ -366,13 +364,13 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_tlsc_ext.1.2">
-            <title> The OS shall verify that the presented identifier matches the reference
+            <title> The product shall verify that the presented identifier matches the reference
               identifier according to RFC 6125. </title>
             <note role="application"> The rules for verification of identity are described in
               Section 6 of RFC 6125. The reference identifier is established by the user (e.g.
               entering a URL into a web browser or clicking a link), by configuration (e.g.
               configuring the name of a mail server or authentication server), or by an application
-              (e.g. a parameter of an API) depending on the OS service. Based on a singular
+              (e.g. a parameter of an API) depending on The product service. Based on a singular
               reference identifier’s source domain and application service type (e.g. HTTP, SIP,
               LDAP), the client establishes all reference identifiers which are acceptable, such as
               a Common Name for the Subject Name field of the certificate and a (case-insensitive)
@@ -396,7 +394,7 @@
               Service Name, or other application-specific Subject Alternative Names) and whether IP
               addresses and wildcards are supported. The evaluator will ensure that this
               description identifies whether and the manner in which certificate pinning is
-              supported or used by the OS.
+              supported or used by the product.
               <h:br/> The evaluator will verify that the AGD guidance includes instructions for
               setting the reference identifier to be used for the purposes of certificate validation
               in <abbr title="Transport Layer Security">TLS</abbr>. <h:br/> The evaluator will
@@ -473,7 +471,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_tlsc_ext.1.3">
-            <title>The OS shall only establish a trusted channel if the peer certificate is valid. </title>
+            <title>The product shall only establish a trusted channel if the peer certificate is valid. </title>
             <note role="application"> Validity is determined by the identifier verification,
               certificate path, the expiration date, and the revocation status in accordance with
               RFC 5280. Certificate validity shall be tested in accordance with testing performed
@@ -503,7 +501,7 @@
         <f-component id="fcs_tlsc_ext.2" name="TLS Client Protocol" status="sel-based">
     <selection-depends req="fcs_tlsc_ext.1.1"/>
           <f-element id="fcs_tlsc_ext.2.1">
-            <title> The OS shall present the Supported Elliptic Curves Extension in the Client Hello
+            <title> The product shall present the Supported Elliptic Curves Extension in the Client Hello
               with the following NIST curves: <selectables>
                 <selectable>secp256r1</selectable>
                 <selectable>secp384r1</selectable>
@@ -524,14 +522,14 @@
               <h:br/>
               The evaluator will configure the server to perform an ECDHE key exchange
               message in the <abbr title="Transport Layer Security">TLS</abbr> connection using
-              a non-supported ECDHE curve (for example, P-192) and shall verify that the OS disconnects after
+              a non-supported ECDHE curve (for example, P-192) and shall verify that The product disconnects after
               receiving the server's Key Exchange handshake message. 
             </aactivity>
           </f-element>
         </f-component>
         <f-component id="fcs_tlsc_ext.3" name="TLS Client Protocol" status="objective">
           <f-element id="fcs_tlsc_ext.3.1">
-            <title> The OS shall present the signature_algorithms extension in the Client Hello with
+            <title> The product shall present the signature_algorithms extension in the Client Hello with
               the supported_signature_algorithms value containing the following hash algorithms: <selectables>
                 <selectable>SHA256</selectable>
                 <selectable>SHA384</selectable>
@@ -555,14 +553,14 @@
                 title="Transport Layer Security">TLS</abbr> connection that is not supported
                 according to the Client’s HashAlgorithm enumeration within the
                 signature_algorithms extension (for example, send a certificate with a SHA-1
-                signature). The evaluator will verify that the OS disconnects after receiving the server’s Certificate
+                signature). The evaluator will verify that The product disconnects after receiving the server’s Certificate
                 handshake message.
             </aactivity>
           </f-element>
         </f-component>
         <f-component id="fcs_tlsc_ext.4" name="TLS Client Protocol" status="optional">
           <f-element id="fcs_tlsc_ext.4.1">
-            <title> The OS shall support mutual authentication using X.509v3 certificates. </title>
+            <title> The product shall support mutual authentication using X.509v3 certificates. </title>
             <note role="application"> The use of X.509v3 certificates for <abbr
                 title="Transport Layer Security">TLS</abbr> is addressed in <linkref
                 linkend="FIA_X509_EXT.2.1"/>. This requirement adds that a client must be capable of
@@ -603,7 +601,7 @@
     but are not listed (e.g., FMT-type requirements) are also included in the ST. </appendix>
 
   <appendix title="Selection-Based Requirements" id="sel-based"> As indicated in the introduction to
-    this PP, the baseline requirements (those that must be performed by the OS or its underlying
+    this PP, the baseline requirements (those that must be performed by The product or its underlying
     platform) are contained in the body of this PP. There are additional requirements based on
     selections in the body of the PP: if certain selections are made, then additional requirements
     below will need to be included. </appendix>
@@ -618,7 +616,7 @@
   
 
   <appendix title="Entropy Documentation and Assessment" id="entropyappendix"> This appendix
-    describes the required supplementary information for the entropy source used by the OS. <h:br/>
+    describes the required supplementary information for the entropy source used by the product. <h:br/>
     The documentation of the entropy source should be detailed enough that, after reading, the
     evaluator will thoroughly understand the entropy source and why it can be relied upon to provide
     sufficient entropy. This documentation should include multiple detailed sections: design
@@ -644,7 +642,7 @@
       in the entropy source delivering sufficient entropy for the uses made of the RBG output (by
       this particular OS). This argument will include a description of the expected min-entropy
       rate (i.e. the minimum entropy (in bits) per bit or byte of source data) and explain that
-      sufficient entropy is going into the OS randomizer seeding process. This discussion will be
+      sufficient entropy is going into The product randomizer seeding process. This discussion will be
       part of a justification for why the entropy source can be relied upon to produce bits with
       entropy. <h:br/> The amount of information necessary to justify the expected min-entropy rate
       depends on the type of entropy source included in the product. <h:br/> For developer provided
