@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
+<?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> 
 
 <PP xmlns="http://common-criteria.rhcloud.com/ns/cc" name="TLS"
     xmlns:h="http://www.w3.org/1999/xhtml">
@@ -43,7 +44,7 @@
 
       The primary goal of the TLS protocol is to provide privacy and data integrity between two communicating products. 
 
-      TLS supports many different methods for exchanging keys, encrypting data, and authenticating message integrity (see <component-refer ref="fcs_tls_ext.1.1"/>). As a result, secure configuration of TLS involves many configurable parameters, and not all choices provide all of the privacy-related properties described in the list above.
+      TLS supports many different methods for exchanging keys, encrypting data, and authenticating message integrity. As a result, secure configuration of TLS involves many configurable parameters, and not all choices provide all of the privacy-related properties described in the list above.
 
       This Extended Package (EP) provides a baseline set of Securtiy Fuctional Requirments (SFRs) for products that implement TLS, regardless of the composition of the underlying platform. The requirments are intended to improve the secuirty of products by encoruaging the use of correctly configured TLS parameters. 
 
@@ -118,7 +119,7 @@
     <section title="Use Cases" id="usecases">
       Requirements in this extended package are designed to address the security problems in the use cases below. These use cases are intentionally very broad, as TLS can be used to perform many tasks.  
       <usecases>
-                <usecase title="Client-Server secure communciation">
+                <usecase title="Client-Server secure communciation" id="clientserver">
                     <description> 
                         TLS enables client-server products to communicate across a network in a way designed to prevent eavesdropping and tampering by providing an encrypted commincations channel that provides guranteed data integrity and privicy between the hosts.
                       </description>
