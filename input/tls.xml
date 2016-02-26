@@ -580,28 +580,22 @@
               The evaluator will verify the connection is unsuccessful.
             </aactivity>
           </f-element>
-        </f-component>
-
-        <f-component id="fcs_tlsc_ext.4.2" name="TLS Secure Renegotiation" status="optional">
           <f-element id="fcs_tlsc_ext.4.2">
             <title> The TSF shall support secure renegotiation through use of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
-
+            
             <aactivity> SOMETHING HERE
             </aactivity>
-          </f-element>
-        </f-component>
-
-        <f-component id="fcs_tlsc_ext.4.3" name="TLS Renegotiation" status="optional">
+          </f-element> 
           <f-element id="fcs_tlsc_ext.4.3">
             <title> The TSF shall include (choose only one of) 
               <selectables>
                 <selectable>renegotiation_info extension</selectable>
                 <selectable>TLS_EMPTY_RENEGOTIATION_INFO_SCSV ciphersuite</selectable>
               </selectables> in the ClientHello message. </title>
-
+            
             Application Note: RFC 5746 defines an extension to TLS that binds renegotiation handshakes to the cryptography in the original handshake.  
             The ciphersuite included in the selection is a means for clients to be compatible with servers that don’t support the extension.  It is recommended that client implementations support both the ciphersuite and the extension.
-
+            
             <aactivity> 
               The evaluator shall perform the following tests:
               <testlist>
@@ -610,8 +604,8 @@
                 <test>The evaluator shall verify that ServerHello messages received during secure renegotiation contain the “renegotiation_info” extension.  The evaluator shall modify either the “client_verify_data” or “server_verify_data” value and verify that the client terminates the connection.</test>
               </testlist>
             </aactivity>
-          </f-element>
-        </f-component>        
+          </f-element>          
+        </f-component>       
       </subsection>
     </section>
   </chapter>
