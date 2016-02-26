@@ -682,52 +682,6 @@
       the entropy source. </section>
   </appendix>
 
-  <appendix title="References" id="biblio">
-    <bibliography>
-      <entry id="bibCC">
-        <tag>CC</tag>
-        <description>Common Criteria for Information Technology Security Evaluation - <h:ul>
-            <h:li><h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf">Part
-                1: Introduction and General Model</h:a>, CCMB-2012-09-001, Version 3.1 Revision 4,
-              September 2012.</h:li>
-            <h:li><h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R4.pdf">Part
-                2: Security Functional Components</h:a>, CCMB-2012-09-002, Version 3.1 Revision 4,
-              September 2012.</h:li>
-            <h:li><h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R4.pdf">Part
-                3: Security Assurance Components</h:a>, CCMB-2012-09-003, Version 3.1 Revision 4,
-              September 2012.</h:li>
-          </h:ul></description>
-      </entry>
-      <entry id="bibCEM">
-        <tag>CEM</tag>
-        <description>
-          <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CEMV3.1R4.pdf">Common
-            Evaluation Methodology for Information Technology Security - Evaluation Methodology</h:a>,
-          CCMB-2012-09-004, Version 3.1, Revision 4, September 2012. </description>
-      </entry>
-      <entry id="bibCESG">
-        <tag>CESG</tag>
-        <description>CESG - <h:a
-            href="https://www.gov.uk/government/collections/end-user-devices-security-guidance"> End
-            User Devices Security and Configuration Guidance</h:a></description>
-      </entry>
-      <entry id="bibCSA">
-        <tag>CSA</tag>
-        <description>
-          <h:a href="http://csrc.nist.gov/groups/SMA/ispab/documents/csa_87.txt">Computer Security Act
-            of 1987</h:a>, H.R. 145, June 11, 1987. </description>
-      </entry>
-      <entry id="bibOMB">
-        <tag>OMB</tag>
-        <description>
-          <h:a href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2006/m06-19.pdf"
-            >Reporting Incidents Involving Personally Identifiable Information and Incorporating the
-            Cost for Security in Agency Information Technology Investments</h:a>, OMB M-06-19, July
-          12, 2006. </description>
-      </entry>
-    </bibliography>
-  </appendix>
-
   <appendix title="Acronyms" id="acronyms">
     <acronyms>
       <entry>
