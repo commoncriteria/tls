@@ -5,9 +5,9 @@ Extended Package for TLS
 
 
 ## Working Draft
-[Essential Security Requirements (ESR)](http://common-criteria.rhcloud.com/project/output/tls-esr.html)
+[Essential Security Requirements (ESR)](http://common-criteria.rhcloud.com/tls/output/tls-esr.html)
 
-[Extended Package for TLS v1.0](http://common-criteria.rhcloud.com/qqq/output/tls-release.html)
+[Extended Package for TLS v1.0](http://common-criteria.rhcloud.com/tls/output/tls-release.html)
 
 ## Release Version
 [Extended Package for TLS v1.0](https://www.niap-ccevs.org/) 8/14/3000
