@@ -164,11 +164,9 @@
           <description>
             To address both passive (eavesdropping) and active (packet modification) network attack threats, conformant products provide mechanisms to create trusted channels for CSP and sensitive data. Both CSP and sensitive data should not be exposed outside of the product. 
           </description>
-          <!-- CHECK TO MAKE SURE THESE ARE ALL IN THE DOCUMET - Client -->
           <component-refer ref="fcs_tlsc_ext.1"/>
           <component-refer ref="fcs_tlsc_ext.3"/>
           <component-refer ref="fcs_tlsc_ext.4"/>
-        <!-- CHECK TO MAKE SURE THESE ARE ALL IN THE DOCUMET -->
         </SO>
       </SOs>
     </section>
