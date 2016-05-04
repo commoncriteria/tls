@@ -960,11 +960,96 @@
 
   
 
+  <appendix id="biblio" title="References">
+    <bibliography>
+      <entry id="bibCC">
+        <tag>CC</tag>
+        <description>Common Criteria for Information Technology Security Evaluation - 
+          <ul>
+            <li>
+              <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf">Part 1:
+                Introduction and General Model</h:a>, CCMB-2012-09-001, Version 3.1 Revision 4, September
+              2012.</li>
+            <li>
+              <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R4.pdf">Part 2:
+                Security Functional Components</h:a>, CCMB-2012-09-002, Version 3.1 Revision 4, September
+              2012.</li>
+            <li>
+              <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R4.pdf">Part 3:
+                Security Assurance Components</h:a>, CCMB-2012-09-003, Version 3.1 Revision 4, September
+              2012.</li>
+          </ul></description>
+      </entry>
+      <entry id="bibGPOS">
+        <tag>GPOSPP</tag>
+        <description>
+          <h:a href="https://www.niap-ccevs.org/pp/PP_OS_v4.0/">Protection Profile for General 
+            Purpose Operating Systems
+          </h:a>
+        </description>
+      </entry>
+      <entry id="bibMDM">
+        <tag>MDMPP</tag>
+        <description>
+          <h:a href="https://www.niap-ccevs.org/pp/PP_MDM_V2.0/">Protection Profile for Mobile 
+            Device Management
+          </h:a>
+        </description>
+      </entry>
+      <entry id="bibAppPP">
+        <tag>AppPP</tag>
+        <description>
+          <h:a href="https://www.niap-ccevs.org/pp/PP_APP_v1.1/">Protection Profile for Application
+            Software</h:a>
+        </description>
+      </entry>
+    </bibliography>
+  </appendix>
   <appendix title="Acronyms" id="acronyms">
     <acronyms>
       <entry>
         <term>AES</term>
         <description>Advanced Encryption Standard</description>
+      </entry>
+      <entry>
+        <term>CBC</term>
+        <description>Cipher Block Chaining</description>
+      </entry>
+      <entry>
+        <term>ECDSA</term>
+        <description>Elliptic Curve Digital Signature Algorithm</description>
+      </entry>
+      <entry>
+        <term>GCM</term>
+        <description>Galois/Counter Mode</description>
+      </entry>
+      <entry>
+        <term>IETF</term>
+        <description>Internet Engineering Task Force</description>
+      </entry>
+      <entry>
+        <term>IV</term>
+        <description>Initialization Vector</description>
+      </entry>
+      <entry>
+        <term>MAC</term>
+        <description>Message Authentication Code</description>
+      </entry>
+      <entry>
+        <term>NIST</term>
+        <description>National Institute of Standards and Technology</description>
+      </entry>
+      <entry>
+        <term>PBKDF</term>
+        <description>Password-Based Key Derivation Function</description>
+      </entry>     
+      <entry>
+        <term>RFC</term>
+        <description>Request for Comment (IETF)</description>
+      </entry>
+      <entry>
+        <term>RSA</term>
+        <description>Rivest Shamir Adelman</description>
       </entry>
     </acronyms>
   </appendix>
