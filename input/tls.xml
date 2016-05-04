@@ -50,7 +50,7 @@
       <h:br/> 
       To a product to claim conformence against the following PPs and cPPs it must also be conforment against this EP:
       <h:br/> 
-      QQQLIST OF PP/CPP that must be conformentQQQ
+      DO WE WANT THIS BIT?  (I assume it'll be NDPP/MDFPP/OSPP - anything else?)
       <h:br/> 
     </section>
     <section title="Terms" id="glossary"> The following sections provide both Common Criteria and
@@ -109,65 +109,53 @@
       <subsection title="Technology Terms" id="techterms">
         <glossary>
           <entry>
-            <term><abbr title="TLS"></abbr></term>
+            <term>
+              <abbr title="Transport Layer Security">TLS</abbr>
+            </term>
             <description>
-              Transport Layer Security
+              Cryptographic network protocol for provide communications security over a computer network
 	          </description>
           </entry>
         </glossary>
       </subsection>
 	  </section>
-    <section title="Use Cases" id="usecases">
-      Requirements in this extended package are designed to address the security problems in the use cases below. These use cases are intentionally very broad, as TLS can be used to perform many tasks.  
-      <usecases>
-                <usecase title="Client-Server secure communciation" id="clientserver">
-                    <description> 
-                        TLS enables client-server products to communicate across a network in a way designed to prevent eavesdropping and tampering by providing an encrypted commincations channel that provides guranteed data integrity and privicy between the hosts.
-                      </description>
-                </usecase>
-      </usecases>
-    </section>
   </chapter>
-  <chapter title="Conformance Claims" id="ccl">
+  <chapter title="Conformance Claims" id="conf">
     <cclaims>
       <cclaim id="Conformance Statement">
-        <description> To be conformant to this PP, a <abbr linkend="ST"/> must demonstrate Exact
-          Conformance, a subset of Strict Conformance as defined in <cite linkend="bibCC"/> Part 1
-          (ASE_CCL). The <abbr linkend="ST"/> must include all components in this PP that are: <h:ul>
-            <h:li>unconditional (which are always required)</h:li>
-            <h:li>selection-based (which are required when certain <h:i>selections</h:i> are chosen in the
-              unconditional requirements)</h:li>
-          </h:ul>and may include components that are <h:ul>
-            <h:li>optional or</h:li>
-            <h:li>objective.</h:li>
-          </h:ul>
-          <InsertAppendixExplainer/> The <abbr linkend="ST"/> may iterate any of these components,
-          but it must not include any additional component (e.g. from CC Part 2 or 3 or a PP not
-          conformant with this one, or extended by the <abbr linkend="ST"/>) not defined in this PP
-          or a PP conformant to this one. 
-          <h:br/>
-		  Some components in this Protection Profile have a dependency on
-		  other components.  In accordance with <cite linkend="bibCC"/> Part 1, <appref linkend="satisfiedreqs"/> 
-          includes justifications for those cases where the PP does not explicitly contain the component
-		  upon which there is a dependency.
-        </description>
+        <description>This 
+          <abbr linkend="EP" /> serves to extend the PP baselines with additional SFRs and associated
+          Assurance Activities specific to TLS clients and servers. Assurance Activities are the
+          actions that the evaluator performs in order to determine a TLS client or server's
+          compliance to the SFRs.
+          <h:br/>This 
+          <abbr linkend="EP" /> conforms to Common Criteria 
+          <cite linkend="bibCC" /> for Information Technology Security Evaluation, Version 3.1,
+          Revision 4. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to
+          this 
+          <abbr linkend="EP" />, the 
+          <abbr linkend="ST" /> must include all components in this 
+          <abbr linkend="EP" /> and the associated base PP that are: 
+          <ul>
+            <li>unconditional (which are always required)</li>
+            <li>selection-based (which are required when certain selections are chosen in the
+              unconditional requirements)</li>
+          </ul>and may include optional and/or objective components that are desirable but not
+          required for conformance. 
+          <h:br/>In accordance with CC Part 1, dependencies are not included when they are addressed
+          by other SFRs. The assurance activities provide adequate proof that any dependencies are
+          also satisfied.</description>
       </cclaim>
     </cclaims>
   </chapter>
-  <chapter title="Security Problem Definition" id="spd">The security problem is described in terms
-    of the threats that the product is expected to address, assumptions about the
-    operational environment, and any organizational security policies that the product
-    is expected to enforce. <section title="Threats" id="threats">
-      <threats>
-        <threat id="T.TLS">
-          <description> </description>
-          <objective-refer ref="O.TLS">
-            <rationale>The threat T.TLS is countered by O.TLS as this
-              provides for .</rationale>
-          </objective-refer>
-        </threat>
-      </threats>
-    </section>
+  <chapter title="Security Problem Description" id="spd">
+    This Extended Package does not repeat the threats, assumptions, and organizational security
+    policies identified in any base PPs, though they all apply given the conformance and hence
+    dependence of this 
+    <abbr linkend="EP" /> on it. Together the threats, assumptions and organizational security
+    policies of the base PP and those defined in this 
+    <abbr linkend="EP" /> describe those addressed by the product as the Target of
+    Evaluation.
   </chapter>
   <chapter title="Security Objectives for the product" id="obj">
     <section title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
@@ -187,23 +175,20 @@
 
   </chapter>
   <chapter title="Security Requirements" id="req">This chapter describes the security requirements
-    which have to be fulfilled by the product. Those requirements comprise functional
-    components from Part 2 and assurance components from Part 3 of <cite linkend="bibCC"/>. The
-    following notations are used: <h:ul>
-      <h:li>
-        <h:b>Refinement</h:b> operation (denoted by <h:b>bold text</h:b>): is used to add details to a
-        requirement, and thus further restricts a requirement.</h:li>
-      <h:li>
-        <h:b>Selection</h:b> (denoted by <h:i>italicized text</h:i>): is used to select one or more options
-        provided by the [CC] in stating a requirement.</h:li>
-      <h:li>
-        <h:b>Assignment</h:b> operation (denoted by <h:span class="assignable-content">italicized text</h:span>): is used to assign a
-        specific value to an unspecified parameter, such as the length of a password. Showing the
-        value in square brackets indicates assignment.</h:li>
-      <h:li>
-        <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g.
-        "(1)")</h:li>
-    </h:ul>
+    to be fulfilled by the product. Those requirements comprise functional components from Part 2 of 
+    <cite linkend="bibCC" />. The following notations are used: 
+    <ul>
+      <li>
+        <b>Selection</b> (denoted by 
+        <h:i>italicized text</h:i>): is used to select one or more options provided by the [CC] in stating
+        a requirement.</li>
+      <li>
+        <b>Assignment</b> operation (denoted by 
+        <h:span class="assignable-content">italicized text</h:span>): is used to assign a specific value to an unspecified parameter, such
+        as the length of a password. Showing the value in square brackets indicates assignment.</li>
+      <li>
+        <b>Iteration</b> operation: are identified with a number inside parentheses (e.g. "(1)").</li>
+    </ul>
     <section title="Security Functional Requirements" id="SFRs">The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional
