@@ -215,7 +215,7 @@
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional
       components.
-      <subsection title="TLS" id="TLS">
+      <subsection title="Cryptographic Support (FCS)" id="fcs">
         <f-component id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="threshold">
           <f-element id="fcs_tlsc_ext.1.1">
             <title> The product shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
