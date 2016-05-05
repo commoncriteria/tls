@@ -45,7 +45,7 @@
 
       TLS supports many different methods for exchanging keys, encrypting data, and authenticating message integrity. As a result, secure configuration of TLS involves many configurable parameters, and not all choices provide all of the privacy-related properties described in the list above.
 
-      This Extended Package (EP) provides a baseline set of Securtiy Fuctional Requirments (SFRs) for products that implement TLS, regardless of the composition of the underlying platform. The requirments are intended to improve the secuirty of products by encoruaging the use of correctly configured TLS parameters. 
+This Extended Package (EP) provides a baseline set of Security Functional Requirements (SFRs) for products that implement TLS, regardless of the composition of the underlying platform. The requirements are intended to improve the security of products by encouraging the use of correctly configured TLS parameters. 
     </section>
     <section title="Terms" id="glossary"> The following sections provide both Common Criteria and
       technology terms used in this Protection Profile. <subsection title="Common Criteria Terms"
@@ -126,17 +126,17 @@
       requirements in accordance with the selections and/or assignments made, and any optional and/or
       objective components.
       <h:br />
-      This EP combind with the <cite linkend="bibAppPP" /> must include selection-based requirements in accordance with the
+      This EP combined with the <cite linkend="bibAppPP" /> must include selection-based requirements in accordance with the
       selections and/or assignments made, and any optional and/or objective components to include:
       FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.2.*, FCS_TLSC_EXT.1.*, FIA_X509_EXT.1.*,
       FIA_X509_EXT.2.*.
       <h:br />
-      This EP combind with the <cite linkend="bibGPOS" /> must include selection-based requirements in accordance with the
+      This EP combined with the <cite linkend="bibGPOS" /> must include selection-based requirements in accordance with the
       selections and/or assignments made, and any optional and/or objective components to include:
       FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FCS_TLSC_EXT.1.*, FIA_X509_EXT.1.*,
       FIA_X509_EXT.2.*.  
       <h:br />
-      This EP combind with the <cite linkend="bibMDM" /> must include selection-based requirements in accordance with the
+      This EP combined with the <cite linkend="bibMDM" /> must include selection-based requirements in accordance with the
       selections and/or assignments made, and any optional and/or objective components to include:
       FCS_CKM.1.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FCS_TLSC_EXT.1.*, FIA_X509_EXT.1.*,
       FIA_X509_EXT.2.*.  
