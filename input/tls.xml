@@ -40,12 +40,27 @@
 
   <chapter title="Introduction" id="int">
     <section title="Overview" id="ppoverview"> 
-      Transport Layer Security (TLS) is a cryptographic protocol designed to provide communications security over a computer network. Several versions of the protocol are in widespread use in applications such as web browsers, email, Internet faxing, instant messaging, and voice-over-IP (VoIP). Major web sites use TLS to secure all communications between their servers and web browsers. Major Operating Systems and hardware vendors also make use of TLS to provide secure communications between hosts and devices.
-      The primary goal of the TLS protocol is to provide privacy and data integrity between two communicating products. 
+	  Transport Layer Security (TLS) is a cryptographic protocol designed to
+	  provide communications security over a computer network. Several versions
+	  of the protocol are in widespread use in applications such as web
+	  browsers, email, Internet faxing, instant messaging, and voice-over-IP
+	  (VoIP). Major web sites use TLS to secure all communications between
+	  their servers and web browsers. Major software and hardware
+	  vendors also make use of TLS to provide secure communications between
+	  hosts and devices.  The primary goal of the TLS protocol is to provide
+	  privacy and data integrity between two communicating products. 
 
-      TLS supports many different methods for exchanging keys, encrypting data, and authenticating message integrity. As a result, secure configuration of TLS involves many configurable parameters, and not all choices provide all of the privacy-related properties described in the list above.
+	  TLS supports many different methods for exchanging keys, encrypting data,
+	  and authenticating message integrity. As a result, secure implementation
+	  and configuration of TLS involves many configurable parameters, and not
+	  all choices provide all of the privacy-related properties described in
+	  the list above.
 
-This Extended Package (EP) provides a baseline set of Security Functional Requirements (SFRs) for products that implement TLS, regardless of the composition of the underlying platform. The requirements are intended to improve the security of products by encouraging the use of correctly configured TLS parameters. 
+	  This Extended Package (EP) provides a baseline set of Security Functional
+	  Requirements (SFRs) for products that implement TLS, regardless of the
+	  composition of the underlying platform. The requirements are intended to
+	  improve the security of products by enabling their evaluation.
+
     </section>
     <section title="Terms" id="glossary"> The following sections provide both Common Criteria and
       technology terms used in this Protection Profile. <subsection title="Common Criteria Terms"
