@@ -303,8 +303,15 @@
           </f-element>
         </f-component> --> 
         <f-component id="fcs_tls_ext.1" name="TLS Protocol" status="threshold">
-          <f-element id="fcs_ssh_ext.1.1">
-            <title>The TLS software shall implement the TLS protocol that complies with RFC 5246
+          <f-element id="fcs_tls_ext.1.1">
+            <title>The product shall implement the TLS protocol that complies with RFC 5246 and
+              <selectables>
+                <selectable>2246</selectable>
+                <selectable>4346</selectable>
+                <selectable>4347</selectable>
+                <selectable>6347</selectable>
+                <selectable>no other RFCs</selectable>
+              </selectables>
               as a 
               <selectables>
                 <selectable>client</selectable>
@@ -313,7 +320,7 @@
             </title>
             <note role="application">The ST author selects which of the additional RFCs to which
               conformance is being claimed. A TLS product can implement additional RFCs, but only those
-              listed in the selection can be claimed as conformant under common criteria. 
+              listed in the selection can be claimed as conformant. 
               The RFC selections for this requirement need to be consistent with selections in
               later elements of this Extended Package (e.g., cryptographic algorithms permitted). 
               <h:br/>
@@ -752,6 +759,12 @@
                 </test>
               </testlist>
             </aactivity>
+          </f-element>
+        </f-component>
+        
+        <f-component name="Visible Name" id="" status="optional">
+          <f-element id="1">
+            <title></title>
           </f-element>
         </f-component>
         
