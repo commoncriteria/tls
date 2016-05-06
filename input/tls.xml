@@ -613,8 +613,8 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_tlsc_ext.4" name="TLS Client Protocol" status="optional">
-          <f-element id="fcs_tlsc_ext.4.1">
+        <f-component id="fcs_tlsc_ext.2" name="TLS Mutual Authentication" status="optional">
+          <f-element id="fcs_tlsc_ext.2.1">
             <title> The product shall support mutual authentication using X.509v3 certificates. </title>
             <note role="application"> The use of X.509v3 certificates for <abbr
                 title="Transport Layer Security">TLS</abbr> is addressed in <linkref
@@ -635,13 +635,15 @@
               The evaluator will verify the connection is unsuccessful.
             </aactivity>
           </f-element>
-          <f-element id="fcs_tlsc_ext.4.2">
+        </f-component>
+        <f-component id="fcs_tlsc_ext.4" name="TLS Renegotiation" status="optional">
+          <f-element id="fcs_tlsc_ext.4.1">
             <title> The TSF shall support secure renegotiation through use of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
             
             <aactivity> SOMETHING HERE
             </aactivity>
           </f-element> 
-          <f-element id="fcs_tlsc_ext.4.3">
+          <f-element id="fcs_tlsc_ext.4.2">
             <title> The TSF shall include (choose only one of) 
               <selectables>
                 <selectable>renegotiation_info extension</selectable>
