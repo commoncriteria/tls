@@ -305,7 +305,7 @@
         <f-component id="fcs_tls_ext.1" name="TLS Protocol" status="threshold">
           <f-element id="fcs_ssh_ext.1.1">
             <title>The TLS software shall implement the TLS protocol that complies with RFC 5246
-              4254 as a 
+              as a 
               <selectables>
                 <selectable>client</selectable>
                 <selectable>server</selectable>
