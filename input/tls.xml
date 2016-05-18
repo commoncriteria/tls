@@ -634,7 +634,7 @@
         <f-component id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1."/>
           <f-element id="fcs_dtlsc_ext.1.1">
-            <title>The application shall implement the DTLS protocol in accordance with
+            <title>the product shall implement the DTLS protocol in accordance with
               DTLS 1.2 (RFC 6347).
             </title>
             <aactivity>
@@ -651,7 +651,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlsc_ext.1.2">
-            <title>The application shall implement the requirements in TLS <linkref linkend="FCS_TLSC_EXT.1"/> for the
+            <title>the product shall implement the requirements in TLS <linkref linkend="FCS_TLSC_EXT.1"/> for the
               DTLS implementation, except where variations are allowed according to DTLS 1.2 
               (RFC 6347).
             </title>
@@ -667,7 +667,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlsc_ext.1.3">
-            <title>The application shall not establish a trusted communication channel if the peer 
+            <title>the product shall not establish a trusted communication channel if the peer 
               certificate is deemed invalid. 
             </title>
             <note role="application">
@@ -694,7 +694,7 @@
         <f-component id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1."/>
           <f-element id="fcs_dtlss_ext.1.1">
-            <title>The application shall implement the DTLS protocol in accordance with
+            <title>the product shall implement the DTLS protocol in accordance with
               DTLS 1.2 (RFC 6347).
             </title>
             <aactivity>
@@ -711,7 +711,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlss_ext.1.2">
-            <title>The application shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.1"/> for the
+            <title>the product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.1"/> for the
               DTLS implementation, except where variations are allowed according to DTLS 1.2 
               (RFC 6347).
             </title>
@@ -727,7 +727,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlss_ext.1.3">
-            <title>The application shall not establish a trusted communication channel if the peer 
+            <title>the product shall not establish a trusted communication channel if the peer 
               certificate is deemed invalid. 
             </title>
             <note role="application">
