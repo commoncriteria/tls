@@ -651,7 +651,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlsc_ext.1.2">
-            <title>The application shall implement the requirements in TLS (<linkref linkend="FCS_TLSC_EXT.1"/>) for the
+            <title>The application shall implement the requirements in TLS <linkref linkend="FCS_TLSC_EXT.1"/> for the
               DTLS implementation, except where variations are allowed according to DTLS 1.2 
               (RFC 6347).
             </title>
@@ -711,7 +711,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlss_ext.1.2">
-            <title>The application shall implement the requirements in TLS (<linkref linkend="FCS_TLSS_EXT.1"/>) for the
+            <title>The application shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.1"/> for the
               DTLS implementation, except where variations are allowed according to DTLS 1.2 
               (RFC 6347).
             </title>
