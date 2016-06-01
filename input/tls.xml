@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
-<?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?> 
+<?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
 <PP xmlns="http://common-criteria.rhcloud.com/ns/cc" name="TLS"
     xmlns:h="http://www.w3.org/1999/xhtml">
@@ -25,7 +25,7 @@
   <RevisionHistory role="draft">
     <entry>
       <version>Round 1</version>
-      <date>2016-05-10</date>
+      <date>2016-06-03</date>
       <subject>First draft for TC review</subject>
     </entry>
   </RevisionHistory>
@@ -39,31 +39,32 @@
   </RevisionHistory>
 
   <chapter title="Introduction" id="int">
-    <section title="Overview" id="ppoverview"> 
+    <section title="Overview" id="ppoverview">
 	  Transport Layer Security (TLS) is a cryptographic protocol designed to
 	  provide communications security over a computer network. Several versions
-	  of the protocol are in widespread use in applications such as web
-	  browsers, email, Internet faxing, instant messaging, and voice-over-IP
+	  of the protocol are in widespread use in client applications such as web
+	  browsers, email, instant messaging, and voice-over-IP
 	  (VoIP). Major web sites use TLS to secure all communications between
-	  their servers and web browsers. Major software and hardware
+	  their servers and clients. Major software and hardware
 	  vendors also make use of TLS to provide secure communications between
-	  hosts and devices.  The primary goal of the TLS protocol is to provide
-	  privacy and data integrity between two communicating products. 
-
+	  hosts and network infrastructure devices.  The underlying platform,
+    such as an operating system, often provides the actual TLS implementation.
+    The primary goal of the TLS protocol is to provide privacy and data
+    integrity between two communicating products.
+    <h:p/>
 	  TLS supports many different methods for exchanging keys, encrypting data,
-	  and authenticating message integrity. As a result, secure implementation
+	  and authenticating message integrity. As a result, implementation
 	  and configuration of TLS involves many configurable parameters, and not
-	  all choices provide all of the privacy-related properties described in
+	  all choices provide all of the security-related properties described in
 	  the list above.
-
+    <h:p/>
 	  This Extended Package (EP) provides a baseline set of Security Functional
-	  Requirements (SFRs) for products that implement TLS, regardless of the
-	  composition of the underlying platform. The requirements are intended to
-	  improve the security of products by enabling their evaluation.
-
+	  Requirements (SFRs) for products that implement TLS. The requirements are
+    intended to improve the security of products by enabling their evaluation.
     </section>
-    <section title="Terms" id="glossary"> The following sections provide both Common Criteria and
-      technology terms used in this Protection Profile. <subsection title="Common Criteria Terms"
+
+    <section title="Terms" id="glossary">
+      <subsection title="Common Criteria Terms"
         id="ccterms">
         <glossary>
           <entry>
@@ -75,6 +76,12 @@
             <term><abbr title="Common Evaluation Methodology">CEM</abbr></term>
             <description>Common Evaluation Methodology for Information Technology Security
               Evaluation.</description>
+          </entry>
+          <entry>
+            <term><abbr title="Extended Package">EP</abbr></term>
+            <description>An implementation-independent set of security requirements which
+              extend the requirements in a <abbr linkend="PP"/>.
+            </description>
           </entry>
           <entry>
             <term><abbr title="Protection Profile">PP</abbr></term>
@@ -89,7 +96,7 @@
           <entry>
             <term><abbr title="Target of Evaluation">TOE</abbr></term>
             <description>
-	      The product under evaluation. In this case, the Operating System as described in section 
+	      The product under evaluation. In this case, the Operating System as described in section
 	      <xref linkend="TOEboundary"/> and its
               supporting documentation.
 	    </description>
@@ -122,65 +129,70 @@
               <abbr title="Transport Layer Security">TLS</abbr>
             </term>
             <description>
-              Cryptographic network protocol for provide communications security over a computer network
+              Cryptographic network protocol for providing communications security over a computer network
 	          </description>
           </entry>
         </glossary>
       </subsection>
 	  </section>
     <section title="Compliant Targets of Evaluation" id="TOEdescription">The Target of Evaluation
-      (TOE) in this 
-      <abbr linkend="EP" /> is a product which acts as a TLS client or server, or both. 
-      <h:br/>This 
-      <abbr linkend="EP" /> describes the extended security functionality of TLS in terms of
-      
-      <cite linkend="bibCC" />. This EP can extend the Protection Profiles for <h:i>Application Software</h:i>,
-      <h:i>General-Purpose Operating Systems</h:i>, or <h:i>Mobile Device Management</h:i>. It is
-      expected that the content of this 
-      <abbr linkend="EP" /> will be appropriately combined with the base PP to include selection-based
-      requirements in accordance with the selections and/or assignments made, and any optional and/or
-      objective components.
+      (TOE) in this
+      <abbr linkend="EP" /> is a product which acts as a TLS client or server, or both.
+      <h:p/>
+      This <abbr linkend="EP" /> describes the security functionality of TLS in terms of
+      <cite linkend="bibCC" />. The contents of this EP must be appropriately
+      combined with the base PP to include selection-based
+      requirements in accordance with the selections and/or assignments made,
+      and any optional and/or objective components.
+      <h:p/>
+      This EP can extend the following <abbr linkend="PP"/>s:
       <h:br />
-      This EP combined with the <cite linkend="bibAppPP" /> must include selection-based requirements in accordance with the
+      <h:ul>
+      <h:li>
+      <cite linkend="bibAppPP" /> must include selection-based requirements in accordance with the
       selections and/or assignments made, and any optional and/or objective components to include:
       FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.2.*, FCS_TLSC_EXT.1.*, FIA_X509_EXT.1.*,
       FIA_X509_EXT.2.*.
-      <h:br />
-      This EP combined with the <cite linkend="bibGPOS" /> must include selection-based requirements in accordance with the
+      </h:li>
+      <h:li>
+      <cite linkend="bibGPOS" /> must include selection-based requirements in accordance with the
       selections and/or assignments made, and any optional and/or objective components to include:
       FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FCS_TLSC_EXT.1.*, FIA_X509_EXT.1.*,
-      FIA_X509_EXT.2.*.  
-      <h:br />
-      This EP combined with the <cite linkend="bibMDM" /> must include selection-based requirements in accordance with the
+      FIA_X509_EXT.2.*.
+      </h:li>
+      <h:li>
+      <cite linkend="bibMDM" /> must include selection-based requirements in accordance with the
       selections and/or assignments made, and any optional and/or objective components to include:
       FCS_CKM.1.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FCS_TLSC_EXT.1.*, FIA_X509_EXT.1.*,
-      FIA_X509_EXT.2.*.  
+      FIA_X509_EXT.2.*.
+      </h:li>
+      </h:ul>
       <h:br />
-      An ST must identify the applicable version of the base PP and this 
-      <abbr linkend="EP" /> in its conformance claims.</section>    
+      An ST must identify the applicable version of the base PP and this
+      <abbr linkend="EP" /> in its conformance claims.
+    </section>
   </chapter>
   <chapter title="Conformance Claims" id="conf">
     <cclaims>
       <cclaim id="Conformance Statement">
-        <description>This 
-          <abbr linkend="EP" /> serves to extend the PP baselines with additional SFRs and associated
-          Assurance Activities specific to TLS clients and servers. Assurance Activities are the
-          actions that the evaluator performs in order to determine a product's
-          compliance to the SFRs.
-          <h:br/>This 
-          <abbr linkend="EP" /> conforms to Common Criteria 
+        <description>This
+          <abbr linkend="EP" /> serves to extend existing Protection Profiles with additional SFRs and associated
+          Assurance Activities specific to TLS clients and servers.
+          <h:p/>
+          This
+          <abbr linkend="EP" /> conforms to Common Criteria
           <cite linkend="bibCC" /> for Information Technology Security Evaluation, Version 3.1,
           Revision 4. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to
-          this 
-          <abbr linkend="EP" />, the 
-          <abbr linkend="ST" /> must include all components in this 
-          <abbr linkend="EP" /> and the associated base PP that are: 
+          this
+          <abbr linkend="EP" />, the
+          <abbr linkend="ST" /> must include all components in this
+          <abbr linkend="EP" /> and the associated base PP that are:
           <ul>
             <li>unconditional (which are always required)</li>
             <li>selection-based (which are required when certain selections are chosen in the
               unconditional requirements)</li>
           </ul>and may include optional and/or objective components that are desirable but not
-          required for conformance. 
+          required for conformance.
           <h:br/>In accordance with CC Part 1, dependencies are not included when they are addressed
           by other SFRs. The assurance activities provide adequate proof that any dependencies are
           also satisfied.</description>
@@ -190,18 +202,18 @@
   <chapter title="Security Problem Description" id="spd">
     This Extended Package does not repeat the threats, assumptions, and organizational security
     policies identified in any base PPs, though they all apply given the conformance and hence
-    dependence of this 
+    dependence of this
     <abbr linkend="EP" /> on it. Together the threats, assumptions and organizational security
-    policies of the base PP and those defined in this 
+    policies of the base PP and those defined in this
     <abbr linkend="EP" /> describe those addressed by the product as the Target of
     Evaluation.
   </chapter>
-  <chapter title="Security Objectives for the product" id="obj">
+  <chapter title="Security Objectives" id="obj">
     <section title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
       <SOs>
         <SO id="O.PROTECTED_COMMS">
           <description>
-            To address both passive (eavesdropping) and active (packet modification) network attack threats, conformant products provide mechanisms to create trusted channels for CSP and sensitive data. Both CSP and sensitive data should not be exposed outside of the product. 
+            To address both passive (eavesdropping) and active (packet modification) network attack threats, conformant products provide mechanisms to create trusted channels for CSP and sensitive data.
           </description>
           <component-refer ref="fcs_tlsc_ext.1"/>
           <component-refer ref="fcs_tlsc_ext.3"/>
@@ -212,15 +224,15 @@
 
   </chapter>
   <chapter title="Security Requirements" id="req">This chapter describes the security requirements
-    to be fulfilled by the product. Those requirements comprise functional components from Part 2 of 
-    <cite linkend="bibCC" />. The following notations are used: 
+    to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
+    <cite linkend="bibCC" />. The following notations are used:
     <ul>
       <li>
-        <b>Selection</b> (denoted by 
+        <b>Selection</b> (denoted by
         <h:i>italicized text</h:i>): is used to select one or more options provided by the [CC] in stating
         a requirement.</li>
       <li>
-        <b>Assignment</b> operation (denoted by 
+        <b>Assignment</b> operation (denoted by
         <h:span class="assignable-content">italicized text</h:span>): is used to assign a specific value to an unspecified parameter, such
         as the length of a password. Showing the value in square brackets indicates assignment.</li>
       <li>
@@ -241,7 +253,7 @@
                 <selectable>6347</selectable>
                 <selectable>no other RFCs</selectable>
               </selectables>
-              as a 
+              as a
               <selectables>
                 <selectable>client</selectable>
                 <selectable>server</selectable>
@@ -249,32 +261,32 @@
             </title>
             <note role="application">The ST author selects which of the additional RFCs to which
               conformance is being claimed. A TLS product can implement additional RFCs, but only those
-              listed in the selection can be claimed as conformant. 
+              listed in the selection can be claimed as conformant.
               The RFC selections for this requirement need to be consistent with selections in
-              later elements of this Extended Package (e.g., cryptographic algorithms permitted). 
+              later elements of this Extended Package (e.g., cryptographic algorithms permitted).
               <h:br/>
-              RFC 5246 indicates that certain cryptographic algorithms are "REQUIRED". This means that from the 
-              IETF's perspective the implementation must include support, not that the algorithms must 
+              RFC 5246 indicates that certain cryptographic algorithms are "REQUIRED". This means that from the
+              IETF's perspective the implementation must include support, not that the algorithms must
               be enabled for use. For the purposes of this assurance activity and this Extended Package
-              overall, it is not necessary to ensure that algorithms listed as "REQUIRED" by the RFC 
+              overall, it is not necessary to ensure that algorithms listed as "REQUIRED" by the RFC
               but not listed in later elements of this Extended Package are actually implemented.
               <h:br/>
-              If client is selected, then the ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" />. 
+              If client is selected, then the ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" />.
               If server is selected, then the ST must include the requirements from <linkref linkend="FCS_TLSS_EXT.1" />.
             </note>
-            <aactivity>The evaluator will ensure that the selections indicated in the ST are 
+            <aactivity>The evaluator will ensure that the selections indicated in the ST are
               consistent with selections in the dependent components.
             </aactivity>
           </f-element>
         </f-component>
-        
+
         <f-component id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_tlsc_ext.1.1">
             <title> The product shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
               (RFC 5246)  supporting the following cipher suites:
               <h:p/>Mandatory cipher suites: TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246
-              <h:p/>Optional cipher suites: 
+              <h:p/>Optional cipher suites:
               <selectables linebreak="yes">
                 <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
                 <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
@@ -293,8 +305,8 @@
             <note role="application">The cipher suites to be tested in the evaluated configuration
               are limited by this requirement. The <abbr title="Security Target" linkend="ST">ST
               </abbr> author should select the optional cipher suites that are supported; if there
-              are no cipher suites supported other than the mandatory suites, 
-        then “No other cipher suite” should be selected. 
+              are no cipher suites supported other than the mandatory suites,
+        then “No other cipher suite” should be selected.
         It is necessary to limit the cipher suites that can be used in an evaluated
               configuration administratively on the server in the test environment. The Suite B
               algorithms listed above (RFC 6460) are the preferred algorithms for implementation.
@@ -302,7 +314,7 @@
               <h:br/> These requirements will be revisited as new <abbr
                 title="Transport Layer Security">TLS</abbr> versions are standardized by the IETF.
               <h:br/> If any cipher suites are selected using ECDHE, then <linkref
-                linkend="FCS_TLSC_EXT.2.1"/> is required. 
+                linkend="FCS_TLSC_EXT.2.1"/> is required.
             </note>
             <aactivity>
               The evaluator will check the description of the implementation of this
@@ -313,54 +325,54 @@
               also check the operational guidance to ensure that it contains instructions on
               configuring The product so that
               TLS conforms to the description in the <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr>. The evaluator will also perform the following tests: 
+                linkend="TSS">TSS</abbr>. The evaluator will also perform the following tests:
               <testlist>
-                <test> 
-                  The evaluator will establish a <abbr title="Transport Layer Security">TLS</abbr> connection 
+                <test>
+                  The evaluator will establish a <abbr title="Transport Layer Security">TLS</abbr> connection
                   using each of the cipher suites specified by the
                   requirement. This connection may be established as part of the establishment of a
                   higher-level protocol, e.g., as part of an EAP session. It is sufficient to
                   observe the successful negotiation of a cipher suite to satisfy the intent of the
                   test; it is not necessary to examine the characteristics of the encrypted traffic
                   in an attempt to discern the cipher suite being used (for example, that the
-                  cryptographic algorithm is 128-bit AES and not 256-bit AES). 
+                  cryptographic algorithm is 128-bit AES and not 256-bit AES).
                 </test>
-                <test> 
+                <test>
                   The evaluator will attempt to establish the connection using a server with a
                   server certificate that contains the Server Authentication purpose in the
                   extendedKeyUsage field and verify that a connection is established. The evaluator
                   will then verify that the client rejects an otherwise valid server certificate
                   that lacks the Server Authentication purpose in the extendedKeyUsage field and a
                   connection is not established. Ideally, the two certificates should be identical
-                  except for the extendedKeyUsage field. 
+                  except for the extendedKeyUsage field.
                 </test>
-                <test> 
-                  The evaluator will send a server certificate in the <abbr title="Transport Layer Security">TLS</abbr> connection 
+                <test>
+                  The evaluator will send a server certificate in the <abbr title="Transport Layer Security">TLS</abbr> connection
                   that does not match the server-selected cipher suite (for example, send a ECDSA certificate while using the
                   TLS_RSA_WITH_AES_128_CBC_SHA cipher suite or send a RSA certificate while using one
                   of the ECDSA cipher suites.) The evaluator will verify that The product disconnects after
-                  receiving the server’s Certificate handshake message. 
+                  receiving the server’s Certificate handshake message.
                 </test>
-                <test> 
+                <test>
                   The evaluator will configure the server to select the
                   TLS_NULL_WITH_NULL_NULL cipher suite and verify that the client denies the
-                  connection. 
+                  connection.
                 </test>
-                <test> 
-                  The evaluator will perform the following modifications to the traffic: 
+                <test>
+                  The evaluator will perform the following modifications to the traffic:
                   <testlist>
-                    <test> 
+                    <test>
                       Change the <abbr title="Transport Layer Security">TLS</abbr> version
-                      selected by the server in the Server Hello to a non-supported <abbr 
+                      selected by the server in the Server Hello to a non-supported <abbr
                       title="Transport Layer Security">TLS</abbr> version (for example 1.3
                       represented by the two bytes 03 04) and verify that the client rejects the
-                      connection. 
+                      connection.
                     </test>
                     <test>
                       Modify at least one byte in the server’s nonce in the Server Hello
                       handshake message, and verify that the client rejects the Server Key Exchange
                       handshake message (if using a DHE or ECDHE cipher suite) or that the server
-                      denies the client’s Finished handshake message. 
+                      denies the client’s Finished handshake message.
                     </test>
                     <test>
                       Modify the server’s selected cipher suite in the Server Hello handshake
@@ -373,10 +385,10 @@
                       message, and verify that the client rejects the connection after receiving the
                       Server Key Exchange message.
                     </test>
-                    <test> 
+                    <test>
                       Modify a byte in the Server Finished handshake message, and verify that
                       the client sends a fatal alert upon receipt and does not send any application
-                      data. 
+                      data.
                     </test>
                     <test>
                       Send a garbled message from the Server after the Server has issued the
@@ -408,9 +420,9 @@
               discouraged, as against best practices, but may be implemented. Finally, the client
               should avoid constructing reference identifiers using wildcards. However, if the
               presented identifiers include wildcards, the client must follow the best practices
-              regarding matching; these best practices are captured in the assurance activity. 
+              regarding matching; these best practices are captured in the assurance activity.
             </note>
-            <aactivity> 
+            <aactivity>
               The evaluator will ensure that the <abbr title="TOE Summary Specification"
                 linkend="TSS">TSS</abbr> describes the client’s method of establishing all reference
               identifiers from the application-configured reference identifier, including which
@@ -423,38 +435,38 @@
               setting the reference identifier to be used for the purposes of certificate validation
               in <abbr title="Transport Layer Security">TLS</abbr>. <h:br/> The evaluator will
               configure the reference identifier according to the AGD guidance and perform the
-              following tests during a <abbr title="Transport Layer Security">TLS</abbr> connection: 
+              following tests during a <abbr title="Transport Layer Security">TLS</abbr> connection:
               <testlist>
                 <test> The evaluator will present a server certificate that does not contain an
                   identifier in either the Subject Alternative Name (SAN) or Common Name (CN) that
                   matches the reference identifier. The evaluator will verify that the connection
-                  fails. 
+                  fails.
                 </test>
-                <test> 
+                <test>
                   The evaluator will present a server certificate that contains a CN that
                   matches the reference identifier, contains the SAN extension, but does not contain
                   an identifier in the SAN that matches the reference identifier. The evaluator
                   shall verify that the connection fails. The evaluator will repeat this test for
-                  each supported SAN type. 
+                  each supported SAN type.
                 </test>
-                <test> 
+                <test>
                   The evaluator will present a server certificate that contains a CN that
                   matches the reference identifier and does not contain the SAN extension. The
-                  evaluator will verify that the connection succeeds. 
+                  evaluator will verify that the connection succeeds.
                 </test>
-                <test> 
+                <test>
                   The evaluator will present a server certificate that contains a CN that does
                   not match the reference identifier but does contain an identifier in the SAN that
-                  matches. The evaluator will verify that the connection succeeds. 
+                  matches. The evaluator will verify that the connection succeeds.
                 </test>
-                <test> 
+                <test>
                   The evaluator will perform the following wildcard tests with each supported
-                  type of reference identifier: 
+                  type of reference identifier:
                   <testlist>
                     <test>
                       The evaluator will present a server certificate containing a wildcard
                       that is not in the left-most label of the presented identifier (e.g.
-                      foo.*.example.com) and verify that the connection fails. 
+                      foo.*.example.com) and verify that the connection fails.
                     </test>
                     <test>
                       The evaluator will present a server certificate containing a wildcard in
@@ -464,19 +476,19 @@
                       evaluator will configure the reference identifier without a left-most label
                       as in the certificate (e.g. example.com) and verify that the connection fails.
                       The evaluator will configure the reference identifier with two left-most
-                      labels (e.g. bar.foo.example.com) and verify that the connection fails. 
+                      labels (e.g. bar.foo.example.com) and verify that the connection fails.
                     </test>
-                    <test> 
+                    <test>
                       The evaluator will present a server certificate containing a wildcard in
                       the left-most label immediately preceding the public suffix (e.g. *.com). The
                       evaluator will configure the reference identifier with a single left-most
                       label (e.g. foo.com) and verify that the connection fails. The evaluator will
                       configure the reference identifier with two left-most labels (e.g.
-                      bar.foo.com) and verify that the connection fails. 
+                      bar.foo.com) and verify that the connection fails.
                     </test>
                   </testlist>
                 </test>
-                <test> 
+                <test>
                   [conditional] If URI or Service name reference identifiers are supported, the
                   evaluator will configure the <abbr title="Domain Name System">DNS</abbr> name and
                   the service identifier. The evaluator will present a server certificate
@@ -484,12 +496,12 @@
                   service identifier in the URIName or SRVName fields of the SAN and verify that the
                   connection succeeds. The evaluator will repeat this test with the wrong service
                   identifier (but correct <abbr title="Domain Name System">DNS</abbr> name) and
-                  verify that the connection fails. 
+                  verify that the connection fails.
                 </test>
-                <test> 
+                <test>
                   [conditional] If pinned certificates are supported the evaluator will
                   present a certificate that does not match the pinned certificate and verify that
-                  the connection fails. 
+                  the connection fails.
                 </test>
               </testlist>
             </aactivity>
@@ -539,16 +551,16 @@
               <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> indicates that the
               supported Elliptic Curves Extension must be configured to meet the requirement, the
               evaluator will verify that AGD guidance includes configuration of the supported
-              Elliptic Curves Extension. <h:br/> The evaluator will also perform the following test: 
+              Elliptic Curves Extension. <h:br/> The evaluator will also perform the following test:
               <h:br/>
               The evaluator will configure the server to perform an ECDHE key exchange
               message in the <abbr title="Transport Layer Security">TLS</abbr> connection using
               a non-supported ECDHE curve (for example, P-192) and shall verify that The product disconnects after
-              receiving the server's Key Exchange handshake message. 
+              receiving the server's Key Exchange handshake message.
             </aactivity>
-          </f-element>          
+          </f-element>
         </f-component>
-        
+
         <f-component id="fcs_tlsc_ext.3" name="TLS Client Protocol" status="objective">
           <f-element id="fcs_tlsc_ext.3.1">
             <title> The product shall present the signature_algorithms extension in the Client Hello with
@@ -594,7 +606,7 @@
               mutual authentication. <h:br/> The evaluator will verify that the AGD guidance required
               per <linkref linkend="FIA_X509_EXT.2.1"/> includes instructions for configuring the
               client-side certificates for <abbr title="Transport Layer Security">TLS</abbr> mutual
-              authentication. <h:br/> The evaluator will also perform the following test: 
+              authentication. <h:br/> The evaluator will also perform the following test:
               <h:br/>
               Configure the server to require mutual authentication and then modify a
               byte in a CA field in the Server’s Certificate Request handshake message. The
@@ -606,31 +618,31 @@
         <f-component id="fcs_tlsc_ext.4" name="TLS Renegotiation" status="optional">
           <f-element id="fcs_tlsc_ext.4.1">
             <title> The TSF shall support secure renegotiation through use of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
-            
+
             <aactivity> SOMETHING HERE
             </aactivity>
-          </f-element> 
+          </f-element>
           <f-element id="fcs_tlsc_ext.4.2">
-            <title> The TSF shall include (choose only one of) 
+            <title> The TSF shall include (choose only one of)
               <selectables>
                 <selectable>renegotiation_info extension</selectable>
                 <selectable>TLS_EMPTY_RENEGOTIATION_INFO_SCSV ciphersuite</selectable>
               </selectables> in the ClientHello message. </title>
-            
-            Application Note: RFC 5746 defines an extension to TLS that binds renegotiation handshakes to the cryptography in the original handshake.  
+
+            Application Note: RFC 5746 defines an extension to TLS that binds renegotiation handshakes to the cryptography in the original handshake.
             The ciphersuite included in the selection is a means for clients to be compatible with servers that don’t support the extension.  It is recommended that client implementations support both the ciphersuite and the extension.
-            
-            <aactivity> 
+
+            <aactivity>
               The evaluator shall perform the following tests:
               <testlist>
-                <test>The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two TLS endpoints.  The evaluator shall verify that either the “renegotiation_info” field or the SCSV ciphersuite is included in the ClientHello packet during the initial handshake.</test> 
+                <test>The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two TLS endpoints.  The evaluator shall verify that either the “renegotiation_info” field or the SCSV ciphersuite is included in the ClientHello packet during the initial handshake.</test>
                 <test>The evaluator shall verify the Client’s handling of ServerHello messages received during the initial handshake that include the “renegotiation_info” extension.  The evaluator shall modify the length portion of this field in the ServerHello message to be non-zero and verify that the client sends a failure and terminates the connection.  The evaluator shall verify that a properly formatted field results in a successful TLS connection.</test>
                 <test>The evaluator shall verify that ServerHello messages received during secure renegotiation contain the “renegotiation_info” extension.  The evaluator shall modify either the “client_verify_data” or “server_verify_data” value and verify that the client terminates the connection.</test>
               </testlist>
             </aactivity>
-          </f-element>          
+          </f-element>
         </f-component>
-        
+
         <f-component id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1."/>
           <f-element id="fcs_dtlsc_ext.1.1">
@@ -640,26 +652,26 @@
             <aactivity>
               <testlist>
                 <test>
-                  The evaluator shall attempt to establish a connection with a DTLS server, observe 
-                  the traffic with a packet analyzer, and verify that the connection succeeds and 
+                  The evaluator shall attempt to establish a connection with a DTLS server, observe
+                  the traffic with a packet analyzer, and verify that the connection succeeds and
                   that the traffic is identified as DTLS.
                 </test>
                 <h:br />
-                Other tests are performed in conjunction with the Assurance Activity listed for 
+                Other tests are performed in conjunction with the Assurance Activity listed for
                 <linkref linkend="FCS_TLSC_EXT.1"/>.
               </testlist>
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlsc_ext.1.2">
             <title>The product shall implement the requirements in TLS <linkref linkend="FCS_TLSC_EXT.1"/> for the
-              DTLS implementation, except where variations are allowed according to DTLS 1.2 
+              DTLS implementation, except where variations are allowed according to DTLS 1.2
               (RFC 6347).
             </title>
             <note role="application">
-              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the 
-              protocols are the same. In particular, for the applicable security characteristics 
-              defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all 
-              application notes and assurance activities that are listed for 
+              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the
+              protocols are the same. In particular, for the applicable security characteristics
+              defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all
+              application notes and assurance activities that are listed for
               <abbr title="Transport Layer Security">TLS</abbr> apply to the DTLS implementation.
             </note>
             <aactivity>
@@ -667,30 +679,30 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlsc_ext.1.3">
-            <title>The product shall not establish a trusted communication channel if the peer 
-              certificate is deemed invalid. 
+            <title>The product shall not establish a trusted communication channel if the peer
+              certificate is deemed invalid.
             </title>
             <note role="application">
-              Validity is determined by the certificate path, the expiration date, and the 
+              Validity is determined by the certificate path, the expiration date, and the
               revocation status in accordance with RFC 5280.
             </note>
             <aactivity>
-              Certificate validity shall be tested in accordance with testing performed for 
+              Certificate validity shall be tested in accordance with testing performed for
               <linkref linkend="FIA_X509_EXT.1"/>, and the evaluator shall perform the following test.
               <testlist>
                 <test>
-                  The evaluator shall demonstrate that using a certificate without a valid 
-                  certification path results in the function failing. Using the administrative 
-                  guidance, the evaluator shall then load a certificate or certificates to the 
-                  Trust Anchor Database needed to validate the certificate to be used in the 
-                  function, and demonstrate that the function succeeds. The evaluator then shall 
+                  The evaluator shall demonstrate that using a certificate without a valid
+                  certification path results in the function failing. Using the administrative
+                  guidance, the evaluator shall then load a certificate or certificates to the
+                  Trust Anchor Database needed to validate the certificate to be used in the
+                  function, and demonstrate that the function succeeds. The evaluator then shall
                   delete one of the certificates, and show that the function fails.
                 </test>
               </testlist>
             </aactivity>
           </f-element>
         </f-component>
-		
+
         <f-component id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
           <selection-depends req="ftp_itc_ext.1.1."/>
           <f-element id="fcs_dtlss_ext.1.1">
@@ -700,26 +712,26 @@
             <aactivity>
               <testlist>
                 <test>
-                  The evaluator shall attempt to establish a connection with a DTLS server, observe 
-                  the traffic with a packet analyzer, and verify that the connection succeeds and 
+                  The evaluator shall attempt to establish a connection with a DTLS server, observe
+                  the traffic with a packet analyzer, and verify that the connection succeeds and
                   that the traffic is identified as DTLS.
                 </test>
                 <h:br />
-                Other tests are performed in conjunction with the Assurance Activity listed for 
+                Other tests are performed in conjunction with the Assurance Activity listed for
                 <linkref linkend="FCS_TLSS_EXT.1"/>.
               </testlist>
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlss_ext.1.2">
             <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.1"/> for the
-              DTLS implementation, except where variations are allowed according to DTLS 1.2 
+              DTLS implementation, except where variations are allowed according to DTLS 1.2
               (RFC 6347).
             </title>
             <note role="application">
-              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the 
-              protocols are the same. In particular, for the applicable security characteristics 
-              defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all 
-              application notes and assurance activities that are listed for 
+              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the
+              protocols are the same. In particular, for the applicable security characteristics
+              defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all
+              application notes and assurance activities that are listed for
               <abbr title="Transport Layer Security">TLS</abbr> apply to the DTLS implementation.
             </note>
             <aactivity>
@@ -727,43 +739,43 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlss_ext.1.3">
-            <title>The product shall not establish a trusted communication channel if the peer 
-              certificate is deemed invalid. 
+            <title>The product shall not establish a trusted communication channel if the peer
+              certificate is deemed invalid.
             </title>
             <note role="application">
-              Validity is determined by the certificate path, the expiration date, and the 
+              Validity is determined by the certificate path, the expiration date, and the
               revocation status in accordance with RFC 5280.
             </note>
             <aactivity>
-              Certificate validity shall be tested in accordance with testing performed for 
+              Certificate validity shall be tested in accordance with testing performed for
               <linkref linkend="FIA_X509_EXT.1"/>, and the evaluator shall perform the following test.
               <testlist>
                 <test>
-                  The evaluator shall demonstrate that using a certificate without a valid 
-                  certification path results in the function failing. Using the administrative 
-                  guidance, the evaluator shall then load a certificate or certificates to the 
-                  Trust Anchor Database needed to validate the certificate to be used in the 
-                  function, and demonstrate that the function succeeds. The evaluator then shall 
+                  The evaluator shall demonstrate that using a certificate without a valid
+                  certification path results in the function failing. Using the administrative
+                  guidance, the evaluator shall then load a certificate or certificates to the
+                  Trust Anchor Database needed to validate the certificate to be used in the
+                  function, and demonstrate that the function succeeds. The evaluator then shall
                   delete one of the certificates, and show that the function fails.
                 </test>
               </testlist>
             </aactivity>
           </f-element>
-        </f-component>		
-        
+        </f-component>
+
         <f-component name="Visible Name" id="" status="optional">
           <f-element id="1">
             <title></title>
           </f-element>
         </f-component>
-        
+
         <f-component id="FCS_TLSS_EXT.1" name="TLS Server Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_tlss_ext.1.1">
             <title> The product shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
               (RFC 5246)  supporting the following cipher suites:
               <h:p/>Mandatory cipher suites: TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246
-              <h:p/>Optional cipher suites: 
+              <h:p/>Optional cipher suites:
               <selectables linebreak="yes">
                 <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
                 <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
@@ -778,13 +790,13 @@
                 <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
                 <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
                 <selectable>no other cipher suite</selectable>
-              </selectables> . 
+              </selectables> .
             </title>
             <note role="application">The cipher suites to be tested in the evaluated configuration
               are limited by this requirement. The <abbr title="Security Target" linkend="ST">ST
               </abbr> author should select the optional cipher suites that are supported; if there
-              are no cipher suites supported other than the mandatory suites, 
-              then “No other cipher suite” should be selected. 
+              are no cipher suites supported other than the mandatory suites,
+              then “No other cipher suite” should be selected.
               It is necessary to limit the cipher suites that can be used in an evaluated
               configuration administratively on the server in the test environment. The Suite B
               algorithms listed above (RFC 6460) are the preferred algorithms for implementation.
@@ -792,7 +804,7 @@
               <h:br/> These requirements will be revisited as new <abbr
                 title="Transport Layer Security">TLS</abbr> versions are standardized by the IETF.
               <h:br/> If any cipher suites are selected using ECDHE, then <linkref
-                linkend="FCS_TLSC_EXT.2.1"/> is required. 
+                linkend="FCS_TLSC_EXT.2.1"/> is required.
             </note>
             <aactivity>
               The evaluator will check the description of the implementation of this
@@ -803,54 +815,54 @@
               also check the operational guidance to ensure that it contains instructions on
               configuring The product so that
               TLS conforms to the description in the <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr>. The evaluator will also perform the following tests: 
+                linkend="TSS">TSS</abbr>. The evaluator will also perform the following tests:
               <testlist>
-                <test> 
-                  The evaluator will establish a <abbr title="Transport Layer Security">TLS</abbr> connection 
+                <test>
+                  The evaluator will establish a <abbr title="Transport Layer Security">TLS</abbr> connection
                   using each of the cipher suites specified by the
                   requirement. This connection may be established as part of the establishment of a
                   higher-level protocol, e.g., as part of an EAP session. It is sufficient to
                   observe the successful negotiation of a cipher suite to satisfy the intent of the
                   test; it is not necessary to examine the characteristics of the encrypted traffic
                   in an attempt to discern the cipher suite being used (for example, that the
-                  cryptographic algorithm is 128-bit AES and not 256-bit AES). 
+                  cryptographic algorithm is 128-bit AES and not 256-bit AES).
                 </test>
-                <test> 
+                <test>
                   The evaluator will attempt to establish the connection using a server with a
                   server certificate that contains the Server Authentication purpose in the
                   extendedKeyUsage field and verify that a connection is established. The evaluator
                   will then verify that the client rejects an otherwise valid server certificate
                   that lacks the Server Authentication purpose in the extendedKeyUsage field and a
                   connection is not established. Ideally, the two certificates should be identical
-                  except for the extendedKeyUsage field. 
+                  except for the extendedKeyUsage field.
                 </test>
-                <test> 
-                  The evaluator will send a server certificate in the <abbr title="Transport Layer Security">TLS</abbr> connection 
+                <test>
+                  The evaluator will send a server certificate in the <abbr title="Transport Layer Security">TLS</abbr> connection
                   that does not match the server-selected cipher suite (for example, send a ECDSA certificate while using the
                   TLS_RSA_WITH_AES_128_CBC_SHA cipher suite or send a RSA certificate while using one
                   of the ECDSA cipher suites.) The evaluator will verify that The product disconnects after
-                  receiving the server’s Certificate handshake message. 
+                  receiving the server’s Certificate handshake message.
                 </test>
-                <test> 
+                <test>
                   The evaluator will configure the server to select the
                   TLS_NULL_WITH_NULL_NULL cipher suite and verify that the client denies the
-                  connection. 
+                  connection.
                 </test>
-                <test> 
-                  The evaluator will perform the following modifications to the traffic: 
+                <test>
+                  The evaluator will perform the following modifications to the traffic:
                   <testlist>
-                    <test> 
+                    <test>
                       Change the <abbr title="Transport Layer Security">TLS</abbr> version
-                      selected by the server in the Server Hello to a non-supported <abbr 
+                      selected by the server in the Server Hello to a non-supported <abbr
                         title="Transport Layer Security">TLS</abbr> version (for example 1.3
                       represented by the two bytes 03 04) and verify that the client rejects the
-                      connection. 
+                      connection.
                     </test>
                     <test>
                       Modify at least one byte in the server’s nonce in the Server Hello
                       handshake message, and verify that the client rejects the Server Key Exchange
                       handshake message (if using a DHE or ECDHE cipher suite) or that the server
-                      denies the client’s Finished handshake message. 
+                      denies the client’s Finished handshake message.
                     </test>
                     <test>
                       Modify the server’s selected cipher suite in the Server Hello handshake
@@ -863,10 +875,10 @@
                       message, and verify that the client rejects the connection after receiving the
                       Server Key Exchange message.
                     </test>
-                    <test> 
+                    <test>
                       Modify a byte in the Server Finished handshake message, and verify that
                       the client sends a fatal alert upon receipt and does not send any application
-                      data. 
+                      data.
                     </test>
                     <test>
                       Send a garbled message from the Server after the Server has issued the
@@ -878,7 +890,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_tlss_ext.1.2">
-            <title>The product shall deny connections from clients requesting 
+            <title>The product shall deny connections from clients requesting
               SSL 2.0, SSL 3.0, TLS 1.0, TLS 1.1, and
               <selectables>
                 <selectable>TLS 1.2</selectable>
@@ -886,23 +898,23 @@
               </selectables>
               .
             </title>
-            <note role="application">All SSL versions and TLS 1.0 and 1.1 are denied. Any TLS version 
+            <note role="application">All SSL versions and TLS 1.0 and 1.1 are denied. Any TLS version
               not selected in <linkref linkend="FCS_TLSS_EXT.1.1"/> should be selected here.
             </note>
             <aactivity>
               The evaluator shall verify that the TSS contains a description of the denial
-              of old SSL and TLS versions, and any configuration necessary to meet the 
-              requirement must be contained in the AGD guidance. 
+              of old SSL and TLS versions, and any configuration necessary to meet the
+              requirement must be contained in the AGD guidance.
               <testlist>
                 <test>
-                  The evaluator shall send a Client Hello requesting a connection with 
-                  version SSL 2.0 and verify that the server denies the connection. The 
+                  The evaluator shall send a Client Hello requesting a connection with
+                  version SSL 2.0 and verify that the server denies the connection. The
                   evaluator shall repeat this test with SSL 3.0, TLS 1.0, TLS 1.1, and
-                  TLS 1.2 if it was selected. 
+                  TLS 1.2 if it was selected.
                 </test>
               </testlist>
             </aactivity>
-          </f-element>          
+          </f-element>
           <f-element id="fcs_tlss_ext.1.3">
             <title>The product shall generate key establishment parameters using RSA
               with size 2048 bits and
@@ -911,9 +923,9 @@
                 <selectable>4096 bits</selectable>
                 <selectable>no other sizes</selectable>
               </selectables>
-              and 
+              and
               <selectables>
-                <selectable>over NIST curves 
+                <selectable>over NIST curves
                   <selectables>
                     <selectable>secp256r</selectable>
                     <selectable>secp384r</selectable>
@@ -933,47 +945,47 @@
             </note>
             <aactivity>
               The evaluator shall verify that the TSS describes the key agreement parameters
-              of the server key exchange message. 
-              <h:br /> 
-              The evaluator shall verify that any configuration guidance necessary to meet 
-              the requirement must be contained in the AGD guidance. 
+              of the server key exchange message.
+              <h:br />
+              The evaluator shall verify that any configuration guidance necessary to meet
+              the requirement must be contained in the AGD guidance.
               <testlist>
                 <test>
                   The evaluator shall attempt a connection using an ECDHE ciphersuite and
-                  a configured curve and, using a packet analyzer, verify that the key 
-                  agreement parameters in the Key Exchange message are the ones configured. 
-                  (Determining that the size matches the expected size for the configured curve 
-                  is sufficient.) The evaluator shall repeat this test for each supported NIST 
+                  a configured curve and, using a packet analyzer, verify that the key
+                  agreement parameters in the Key Exchange message are the ones configured.
+                  (Determining that the size matches the expected size for the configured curve
+                  is sufficient.) The evaluator shall repeat this test for each supported NIST
                   Elliptic Curve and each supported Diffie-Hellman key size.
                 </test>
               </testlist>
             </aactivity>
-          </f-element>          
+          </f-element>
           <f-element id="fcs_tlss_ext.1.4">
-            <title>The product shall support mutual authentication of 
+            <title>The product shall support mutual authentication of
               TLS clients using X.509v3 certificates.
             </title>
           </f-element>
           <f-element id="fcs_tlss_ext.1.5">
-            <title>The product shall not establish a trusted channel 
-              if the peer certificate is invalid. 
+            <title>The product shall not establish a trusted channel
+              if the peer certificate is invalid.
             </title>
             <note role="application">
-              The use of X.509v3 certificates for TLS is addressed in 
+              The use of X.509v3 certificates for TLS is addressed in
               <linkref linkend="FIA_X509_EXT.2.1"/>
-              This requirement adds that this use must include support for client-side 
-              certificates for TLS mutual authentication. Validity is determined by the 
-              certificate path, the expiration date, and the revocation status in 
-              accordance with RFC 5280. Certificate validity shall be tested in accordance 
+              This requirement adds that this use must include support for client-side
+              certificates for TLS mutual authentication. Validity is determined by the
+              certificate path, the expiration date, and the revocation status in
+              accordance with RFC 5280. Certificate validity shall be tested in accordance
               with testing performed for <linkref linkend="FIA_X509_EXT.1"/>.
             </note>
             <aactivity>
-              The evaluator shall ensure that the TSS description required per FIA_X509_EXT.2.1 
-              includes the use of client-side certificates for TLS mutual authentication. 
-              <h:br /> 
+              The evaluator shall ensure that the TSS description required per FIA_X509_EXT.2.1
+              includes the use of client-side certificates for TLS mutual authentication.
+              <h:br />
               The evaluator shall verify that the AGD guidance required per FIA_X509_EXT.2.1
               includes instructions for configuring the client-side certificates for TLS mutual
-              authentication. 
+              authentication.
               <testlist>
                 <test>
                   The evaluator shall configure the server to send a certificate request
@@ -1019,38 +1031,38 @@
                 </test>
               </testlist>
             </aactivity>
-          </f-element>         
+          </f-element>
           <f-element id="fcs_tlss_ext.1.6">
-            <title>The product shall not establish a trusted channel if 
-              the distinguished name (DN) or Subject Alternative Name (SAN) 
-              contained in a certificate does not match the expected identifier 
-              for the peer.  
+            <title>The product shall not establish a trusted channel if
+              the distinguished name (DN) or Subject Alternative Name (SAN)
+              contained in a certificate does not match the expected identifier
+              for the peer.
             </title>
             <note role="application">
-              The peer identifier may be in the Subject field or the Subject 
-              Alternative Name extension of the certificate. The expected 
-              identifier may either be configured, may be compared to the 
-              Domain Name, IP address, username, or email address used by 
-              the peer, or may be passed to a directory server for comparison. 
-              Matching should be performed by a bit-wise comparison. 
+              The peer identifier may be in the Subject field or the Subject
+              Alternative Name extension of the certificate. The expected
+              identifier may either be configured, may be compared to the
+              Domain Name, IP address, username, or email address used by
+              the peer, or may be passed to a directory server for comparison.
+              Matching should be performed by a bit-wise comparison.
             </note>
             <aactivity>
-              If the TOE implements mutual authentication, the evaluator shall 
-              verify that the TSS describes how the DN and SAN in the certificate 
-              is compared to the expected identifier. 
+              If the TOE implements mutual authentication, the evaluator shall
+              verify that the TSS describes how the DN and SAN in the certificate
+              is compared to the expected identifier.
               <h:br />
-              If the DN is not compared automatically to the Domain Name, 
-              IP address, username, or email address, the evaluator shall 
-              ensure that the AGD guidance includes configuration of the 
-              expected identifier or the directory server for the connection. 
+              If the DN is not compared automatically to the Domain Name,
+              IP address, username, or email address, the evaluator shall
+              ensure that the AGD guidance includes configuration of the
+              expected identifier or the directory server for the connection.
               <testlist>
                 <test>
-                  The evaluator shall send a client certificate with an 
-                  identifier that does not match an expected identifier 
-                  and verify that the server denies the connection. 
+                  The evaluator shall send a client certificate with an
+                  identifier that does not match an expected identifier
+                  and verify that the server denies the connection.
                 </test>
               </testlist>
-              
+
             </aactivity>
           </f-element>
         </f-component>
@@ -1086,13 +1098,13 @@
     OS is still conformant to this PP, and it is expected that they be included as soon as
     possible. </appendix>
 
-  
+
 
   <appendix id="biblio" title="References">
     <bibliography>
       <entry id="bibCC">
         <tag>CC</tag>
-        <description>Common Criteria for Information Technology Security Evaluation - 
+        <description>Common Criteria for Information Technology Security Evaluation -
           <ul>
             <li>
               <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf">Part 1:
@@ -1111,7 +1123,7 @@
       <entry id="bibGPOS">
         <tag>GPOSPP</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/pp/PP_OS_v4.0/">Protection Profile for General 
+          <h:a href="https://www.niap-ccevs.org/pp/PP_OS_v4.0/">Protection Profile for General
             Purpose Operating Systems
           </h:a>
         </description>
@@ -1119,7 +1131,7 @@
       <entry id="bibMDM">
         <tag>MDMPP</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/pp/PP_MDM_V2.0/">Protection Profile for Mobile 
+          <h:a href="https://www.niap-ccevs.org/pp/PP_MDM_V2.0/">Protection Profile for Mobile
             Device Management
           </h:a>
         </description>
@@ -1170,7 +1182,7 @@
       <entry>
         <term>PBKDF</term>
         <description>Password-Based Key Derivation Function</description>
-      </entry>     
+      </entry>
       <entry>
         <term>RFC</term>
         <description>Request for Comment (IETF)</description>
