@@ -11,7 +11,7 @@
       <PPTitle>Extended Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2016-07-10</PPPubDate>
+      <PPPubDate>2016-09-10</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>3.1R4</CCVersion>
       <Keywords>TLS</Keywords>
@@ -255,19 +255,19 @@
       <subsection title="Cryptographic Support (FCS)" id="fcs">
         <f-component id="fcs_tls_ext.1" name="TLS Protocol" status="threshold">
           <f-element id="fcs_tls_ext.1.1">
-            <title>The product shall implement the TLS protocol that complies with RFC 5246 and
-              <selectables>
-                <selectable>2246</selectable>
-                <selectable>4346</selectable>
-                <selectable>4347</selectable>
-                <selectable>6347</selectable>
-                <selectable>no other RFCs</selectable>
-              </selectables>
-              as a
-              <selectables>
-                <selectable>client</selectable>
-                <selectable>server</selectable>
-              </selectables>
+			<title>The product shall implement the TLS protocol that complies with TLS 1.2 (RFC 5246) and
+					<selectables linebreak="yes">
+						<selectable>TLS 1.0 (RFC 2246)</selectable>
+						<selectable>TLS 1.1 (RFC 4346)</selectable>
+						<selectable>DTLS 1.0 (RFC4347)</selectable>
+						<selectable>DTLS 1.2 (RFC 6347)</selectable>
+						<selectable>no other RFCs</selectable>
+					</selectables>
+					as a
+					<selectables linebreak="yes">
+						<selectable>client</selectable> 
+						<selectable>server</selectable>
+					</selectables>
             </title>
             <note role="application">The ST author selects which of the additional RFCs to which
               conformance is being claimed. A TLS product can implement additional RFCs, but only those
@@ -281,8 +281,13 @@
               overall, it is not necessary to ensure that algorithms listed as "REQUIRED" by the RFC
               but not listed in later elements of this Extended Package are actually implemented.
               <h:br/>
-              If client is selected, then the ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" />.
-              If server is selected, then the ST must include the requirements from <linkref linkend="FCS_TLSS_EXT.1" />.
+              <h:br/>
+              If <h:i>client</h:i> is selected, then the ST must include the requirements from 
+			  <linkref linkend="FCS_TLSC_EXT.1" /> or <linkref linkend="FCS_DTLSC_EXT.1"/> as appropriate.
+			  <h:br/>
+              <h:br/>
+              If <h:i>server</h:i> is selected, then the ST must include the requirements from 
+			  <linkref linkend="FCS_TLSS_EXT.1" /> or <linkref linkend="FCS_DTLSS_EXT.1"/> as appropriate.
             </note>
             <aactivity>The evaluator will ensure that the selections indicated in the ST are
               consistent with selections in the dependent components.
@@ -654,7 +659,7 @@
         </f-component>
 
         <f-component id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
-          <selection-depends req="ftp_itc_ext.1.1."/>
+          <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_dtlsc_ext.1.1">
             <title>The product shall implement the DTLS protocol in accordance with
               DTLS 1.2 (RFC 6347).
@@ -714,7 +719,7 @@
         </f-component>
 
         <f-component id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
-          <selection-depends req="ftp_itc_ext.1.1."/>
+          <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_dtlss_ext.1.1">
             <title>The product shall implement the DTLS protocol in accordance with
               DTLS 1.2 (RFC 6347).
@@ -770,12 +775,6 @@
                 </test>
               </testlist>
             </aactivity>
-          </f-element>
-        </f-component>
-
-        <f-component name="Visible Name" id="" status="optional">
-          <f-element id="1">
-            <title></title>
           </f-element>
         </f-component>
 
