@@ -607,7 +607,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_tlsc_ext.2" name="TLS Mutual Authentication" status="optional">
+        <f-component id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="optional">
           <f-element id="fcs_tlsc_ext.2.1">
             <title> The product shall support mutual authentication using X.509v3 certificates. </title>
             <note role="application"> The use of X.509v3 certificates for <abbr
@@ -678,7 +678,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlsc_ext.1.2">
-            <title>The product shall implement the requirements in TLS <linkref linkend="FCS_TLSC_EXT.1"/> for the
+            <title>The product shall implement the requirements in <linkref linkend="FCS_TLSC_EXT.1"/> for the
               DTLS implementation, except where variations are allowed according to DTLS 1.2
               (RFC 6347).
             </title>
@@ -970,12 +970,15 @@
               </testlist>
             </aactivity>
           </f-element>
-          <f-element id="fcs_tlss_ext.1.4">
+        </f-component>
+
+       <f-component id="FCS_TLSS_EXT.2" name="TLS Server Support for Mutual Authentication" status="optional">
+          <f-element id="fcs_tlss_ext.2.1">
             <title>The product shall support mutual authentication of
               TLS clients using X.509v3 certificates.
             </title>
           </f-element>
-          <f-element id="fcs_tlss_ext.1.5">
+          <f-element id="fcs_tlss_ext.2.2">
             <title>The product shall not establish a trusted channel
               if the peer certificate is invalid.
             </title>
@@ -1041,7 +1044,7 @@
               </testlist>
             </aactivity>
           </f-element>
-          <f-element id="fcs_tlss_ext.1.6">
+          <f-element id="fcs_tlss_ext.2.3">
             <title>The product shall not establish a trusted channel if
               the distinguished name (DN) or Subject Alternative Name (SAN)
               contained in a certificate does not match the expected identifier
@@ -1071,9 +1074,10 @@
                   and verify that the server denies the connection.
                 </test>
               </testlist>
-
             </aactivity>
           </f-element>
+
+
         </f-component>
       </subsection>
     </section>
@@ -1095,7 +1099,7 @@
     but are not listed (e.g., FMT-type requirements) are also included in the ST. </appendix>
 
   <appendix title="Selection-Based Requirements" id="sel-based"> As indicated in the introduction to
-    this PP, the baseline requirements (those that must be performed by The product or its underlying
+    this PP, the baseline requirements (those that must be performed by the product or its underlying
     platform) are contained in the body of this PP. There are additional requirements based on
     selections in the body of the PP: if certain selections are made, then additional requirements
     below will need to be included. </appendix>
