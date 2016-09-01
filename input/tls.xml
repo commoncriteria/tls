@@ -11,7 +11,7 @@
       <PPTitle>Extended Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2016-09-10</PPPubDate>
+      <PPPubDate>2016-09-30</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>3.1R4</CCVersion>
       <Keywords>TLS</Keywords>
@@ -25,7 +25,7 @@
   <RevisionHistory role="draft">
     <entry>
       <version>Round 1</version>
-      <date>2016-06-03</date>
+      <date>2016-09-01</date>
       <subject>First draft for TC review</subject>
     </entry>
   </RevisionHistory>
@@ -33,7 +33,7 @@
   <RevisionHistory role="final">
     <entry>
       <version>1.0</version>
-      <date>2016-07-10</date>
+      <date>2016-09-30</date>
       <subject>Initial Release</subject>
     </entry>
   </RevisionHistory>
@@ -44,19 +44,20 @@
     cryptographic protocols designed to provide communications security over IP networks.
     Several versions of the protocol are in widespread use in client applications such as web
 	  browsers, email, instant messaging, and voice-over-IP
-	  (VoIP). Major web sites use TLS to secure all communications between
-	  their servers and clients. Major software and hardware
-	  vendors also make use of TLS to provide secure communications between
-	  hosts and network infrastructure devices.  The underlying platform,
-    such as an operating system, often provides the actual TLS implementation.
-    The primary goal of the TLS protocol is to provide confidentiality and
-    integrity of data transmitted between two communicating endpoints.
+	  (VoIP). Major web sites use TLS to protect communications to
+	  and from their servers. TLS is also used to protect communications between
+	  hosts and network infrastructure devices for administration.
+    The underlying platform, such as an operating system, often provides the
+    actual TLS implementation.  The primary goal of the TLS protocol is to
+    provide confidentiality and integrity of data transmitted
+    between two communicating endpoints, as well as authentication of at least
+    the server endpoint.
     <h:p/>
 	  TLS supports many different methods for exchanging keys, encrypting data,
-	  and authenticating message integrity. As a result, implementation
-	  and configuration of TLS involves many configurable parameters, and not
-	  all choices provide all of the security-related properties described in
-	  the list above.
+	  and authenticating message integrity. These are dynamically negotiated
+    between the client and server when the TLS connection is established.
+    As a result, evaluating the implementation of both endpoints is typically
+    necessary to provide assurance for the operating environment.
     <h:p/>
 	  This Extended Package (EP) provides a baseline set of Security Functional
 	  Requirements (SFRs) for products that implement TLS. The requirements are
@@ -155,26 +156,30 @@
       requirements in accordance with the selections and/or assignments made,
       and any optional and/or objective components.
       <h:p/>
-      This EP can extend the following <abbr linkend="PP"/>s:
+      The following <abbr linkend="PP"/>s may be extended by this EP, when they
+      indicate such extension:
       <h:br />
       <h:ul>
       <h:li>
       <cite linkend="bibAppPP" /> must include selection-based requirements in accordance with the
       selections and/or assignments made, and any optional and/or objective components to include:
-      FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.2.*, FCS_TLSC_EXT.1.*, FIA_X509_EXT.1.*,
-      FIA_X509_EXT.2.*.
+      FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.2.*, FIA_X509_EXT.1.*, FIA_X509_EXT.2.*.
       </h:li>
       <h:li>
       <cite linkend="bibGPOS" /> must include selection-based requirements in accordance with the
       selections and/or assignments made, and any optional and/or objective components to include:
-      FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FCS_TLSC_EXT.1.*, FIA_X509_EXT.1.*,
+      FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FIA_X509_EXT.1.*,
       FIA_X509_EXT.2.*.
+      </h:li>
+      <h:li>
+      <cite linkend="bibMDF" /> must include selection-based requirements in accordance with the
+      selections and/or assignments made, and any optional and/or objective components to include:
+      FCS_CKM.1.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FIA_X509_EXT.1.*, FIA_X509_EXT.2.*.
       </h:li>
       <h:li>
       <cite linkend="bibMDM" /> must include selection-based requirements in accordance with the
       selections and/or assignments made, and any optional and/or objective components to include:
-      FCS_CKM.1.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FCS_TLSC_EXT.1.*, FIA_X509_EXT.1.*,
-      FIA_X509_EXT.2.*.
+      FCS_CKM.1.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FIA_X509_EXT.1.*, FIA_X509_EXT.2.*.
       </h:li>
       </h:ul>
       <h:br />
@@ -223,11 +228,11 @@
       <SOs>
         <SO id="O.PROTECTED_COMMS">
           <description>
-            To address both passive (eavesdropping) and active (packet modification) network attack threats, conformant products provide mechanisms to create trusted channels for CSP and sensitive data.
+            To address both passive (eavesdropping) and active (packet
+            modification) network attack threats, conformant products provide
+            mechanisms to create trusted channels to protect sensitive data.
           </description>
-          <component-refer ref="fcs_tlsc_ext.1"/>
-          <component-refer ref="fcs_tlsc_ext.3"/>
-          <component-refer ref="fcs_tlsc_ext.4"/>
+          <component-refer ref="fcs_tls_ext.1"/>
         </SO>
       </SOs>
     </section>
@@ -264,10 +269,10 @@
 						<selectable>no other RFCs</selectable>
 					</selectables>
 					as a
-					<selectables linebreak="yes">
-						<selectable>client</selectable> 
+					<selectables>
+						<selectable>client</selectable>
 						<selectable>server</selectable>
-					</selectables>
+					</selectables>.
             </title>
             <note role="application">The ST author selects which of the additional RFCs to which
               conformance is being claimed. A TLS product can implement additional RFCs, but only those
@@ -282,11 +287,11 @@
               but not listed in later elements of this Extended Package are actually implemented.
               <h:br/>
               <h:br/>
-              If <h:i>client</h:i> is selected, then the ST must include the requirements from 
+              If <h:i>client</h:i> is selected, then the ST must include the requirements from
 			  <linkref linkend="FCS_TLSC_EXT.1" /> or <linkref linkend="FCS_DTLSC_EXT.1"/> as appropriate.
 			  <h:br/>
               <h:br/>
-              If <h:i>server</h:i> is selected, then the ST must include the requirements from 
+              If <h:i>server</h:i> is selected, then the ST must include the requirements from
 			  <linkref linkend="FCS_TLSS_EXT.1" /> or <linkref linkend="FCS_DTLSS_EXT.1"/> as appropriate.
             </note>
             <aactivity>The evaluator will ensure that the selections indicated in the ST are
@@ -632,10 +637,8 @@
         </f-component>
         <f-component id="fcs_tlsc_ext.4" name="TLS Renegotiation" status="optional">
           <f-element id="fcs_tlsc_ext.4.1">
-            <title> The product shall support secure renegotiation through use of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
-
-            <aactivity> SOMETHING HERE
-            </aactivity>
+            <title> The product shall support secure renegotiation through use
+              of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
           </f-element>
           <f-element id="fcs_tlsc_ext.4.2">
             <title> The product shall include (choose only one of)
@@ -644,9 +647,14 @@
                 <selectable>TLS_EMPTY_RENEGOTIATION_INFO_SCSV ciphersuite</selectable>
               </selectables> in the ClientHello message. </title>
 
-            Application Note: RFC 5746 defines an extension to TLS that binds renegotiation handshakes to the cryptography in the original handshake.
-            The ciphersuite included in the selection is a means for clients to be compatible with servers that don’t support the extension.  It is recommended that client implementations support both the ciphersuite and the extension.
-
+            <note role="application">
+            RFC 5746 defines an extension to TLS that binds
+            renegotiation handshakes to the cryptography in the original handshake.
+            The ciphersuite included in the selection is a means for clients to
+            be compatible with servers that don’t support the extension.  It is
+            recommended that client implementations support both the ciphersuite
+            and the extension.
+            </note>
             <aactivity>
               The evaluator shall perform the following tests:
               <testlist>
@@ -974,7 +982,7 @@
 
        <f-component id="FCS_TLSS_EXT.2" name="TLS Server Support for Mutual Authentication" status="optional">
           <f-element id="fcs_tlss_ext.2.1">
-            <title>The product shall support mutual authentication of
+            <title>The product shall support authentication of
               TLS clients using X.509v3 certificates.
             </title>
           </f-element>
@@ -1059,7 +1067,7 @@
               Matching should be performed by a bit-wise comparison.
             </note>
             <aactivity>
-              If the TOE implements mutual authentication, the evaluator shall
+              If the product implements mutual authentication, the evaluator shall
               verify that the TSS describes how the DN and SAN in the certificate
               is compared to the expected identifier.
               <h:br />
@@ -1136,15 +1144,23 @@
       <entry id="bibGPOS">
         <tag>GPOSPP</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/pp/PP_OS_v4.0/">Protection Profile for General
+          <h:a href="https://www.niap-ccevs.org/pp/">Protection Profile for General
             Purpose Operating Systems
+          </h:a>
+        </description>
+      </entry>
+      <entry id="bibMDF">
+        <tag>MDFPP</tag>
+        <description>
+          <h:a href="https://www.niap-ccevs.org/pp/">Protection Profile for Mobile
+            Device Fundamentals
           </h:a>
         </description>
       </entry>
       <entry id="bibMDM">
         <tag>MDMPP</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/pp/PP_MDM_V2.0/">Protection Profile for Mobile
+          <h:a href="https://www.niap-ccevs.org/pp/">Protection Profile for Mobile
             Device Management
           </h:a>
         </description>
@@ -1152,7 +1168,7 @@
       <entry id="bibAppPP">
         <tag>AppPP</tag>
         <description>
-          <h:a href="https://www.niap-ccevs.org/pp/PP_APP_v1.1/">Protection Profile for Application
+          <h:a href="https://www.niap-ccevs.org/pp/">Protection Profile for Application
             Software</h:a>
         </description>
       </entry>
