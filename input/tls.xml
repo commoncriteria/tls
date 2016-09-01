@@ -581,7 +581,7 @@
           </f-element>
         </f-component>
 
-        <f-component id="fcs_tlsc_ext.3" name="TLS Client Protocol" status="objective">
+        <f-component id="fcs_tlsc_ext.3" name="TLS Client Protocol Signature Algorithms" status="objective">
           <f-element id="fcs_tlsc_ext.3.1">
             <title> The product shall present the signature_algorithms extension in the Client Hello with
               the supported_signature_algorithms value containing the following hash algorithms: <selectables>
