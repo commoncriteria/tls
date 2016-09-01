@@ -202,11 +202,11 @@
           <abbr linkend="EP" />, the
           <abbr linkend="ST" /> must include all components in this
           <abbr linkend="EP" /> and the associated base PP that are:
-          <ul>
-            <li>unconditional (which are always required)</li>
-            <li>selection-based (which are required when certain selections are chosen in the
-              unconditional requirements)</li>
-          </ul>and may include optional and/or objective components that are desirable but not
+          <h:ul>
+            <h:li>unconditional (which are always required)</h:li>
+            <h:li>selection-based (which are required when certain selections are chosen in the
+              unconditional requirements)</h:li>
+          </h:ul>and may include optional and/or objective components that are desirable but not
           required for conformance.
           <h:br/>In accordance with CC Part 1, dependencies are not included when they are addressed
           by other SFRs. The assurance activities provide adequate proof that any dependencies are
@@ -241,18 +241,18 @@
   <chapter title="Security Requirements" id="req">This chapter describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
     <cite linkend="bibCC" />. The following notations are used:
-    <ul>
-      <li>
-        <b>Selection</b> (denoted by
+    <h:ul>
+      <h:li>
+        <h:b>Selection</h:b> (denoted by
         <h:i>italicized text</h:i>): is used to select one or more options provided by the [CC] in stating
-        a requirement.</li>
-      <li>
-        <b>Assignment</b> operation (denoted by
+        a requirement.</h:li>
+      <h:li>
+        <h:b>Assignment</h:b> operation (denoted by
         <h:span class="assignable-content">italicized text</h:span>): is used to assign a specific value to an unspecified parameter, such
-        as the length of a password. Showing the value in square brackets indicates assignment.</li>
-      <li>
-        <b>Iteration</b> operation: are identified with a number inside parentheses (e.g. "(1)").</li>
-    </ul>
+        as the length of a password. Showing the value in square brackets indicates assignment.</h:li>
+      <h:li>
+        <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)").</h:li>
+    </h:ul>
     <section title="Security Functional Requirements" id="SFRs">The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional
@@ -1126,20 +1126,20 @@
       <entry id="bibCC">
         <tag>CC</tag>
         <description>Common Criteria for Information Technology Security Evaluation -
-          <ul>
-            <li>
+          <h:ul>
+            <h:li>
               <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf">Part 1:
                 Introduction and General Model</h:a>, CCMB-2012-09-001, Version 3.1 Revision 4, September
-              2012.</li>
-            <li>
+              2012.</h:li>
+            <h:li>
               <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R4.pdf">Part 2:
                 Security Functional Components</h:a>, CCMB-2012-09-002, Version 3.1 Revision 4, September
-              2012.</li>
-            <li>
+              2012.</h:li>
+            <h:li>
               <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R4.pdf">Part 3:
                 Security Assurance Components</h:a>, CCMB-2012-09-003, Version 3.1 Revision 4, September
-              2012.</li>
-          </ul></description>
+              2012.</h:li>
+          </h:ul></description>
       </entry>
       <entry id="bibGPOS">
         <tag>GPOSPP</tag>
