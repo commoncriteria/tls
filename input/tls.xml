@@ -786,7 +786,7 @@
           </f-element>
         </f-component>
 
-        <f-component id="FCS_TLSS_EXT.1" name="TLS Server Protocol" status="sel-based">
+        <f-component id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_tlss_ext.1.1">
             <title> The product shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
@@ -947,7 +947,7 @@
                     <selectable>secp256r</selectable>
                     <selectable>secp384r</selectable>
                   </selectables> and no other curves</selectable>
-                <selectable>Diffe-Hellman parameters of size 2048 and
+                <selectable>Diffie-Hellman parameters of size 2048 and
                   <selectables>
                     <selectable>3072 bits</selectable>
                     <selectable>no other size</selectable>
