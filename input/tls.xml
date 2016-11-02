@@ -824,39 +824,80 @@
                 linkend="FCS_TLSC_EXT.2.1"/> is required.
             </note>
             <aactivity>
-              The evaluator will check the description of the implementation of this
-              protocol in the <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> to
-              ensure that the cipher suites supported are specified. The evaluator will check the
-              <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> to ensure that the
-              cipher suites specified include those listed for this component. The evaluator will
-              also check the operational guidance to ensure that it contains instructions on
-              configuring The product so that
-              TLS conforms to the description in the <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr>. The evaluator will also perform the following tests:
+              The evaluator shall check the description of the implementation of this protocol in 
+              the <h:abbr title="TOE Summary Specification" linkend="TSS">TSS</h:abbr> to ensure that 
+              the cipher suites supported are specified. The evaluator shall check the 
+              <h:abbr title="TOE Summary Specification" linkend="TSS">TSS</h:abbr> to ensure that the 
+              cipher suites specified include those listed for this component. The evaluator shall 
+              also check the operational guidance to ensure that it contains instructions on 
+              configuring the <h:abbr title="Target of Evaluation" linkend="TOE">TOE</h:abbr> so that 
+              TLS conforms to the description in the 
+              <h:abbr title="TOE Summary Specification" linkend="TSS">TSS</h:abbr>. The evaluator shall 
+              also perform the following tests:
               <testlist>
                 <test>
-Under development.
+                  The evaluator shall establish a 
+                  <h:abbr title="Transport Layer Security">TLS</h:abbr> connection using each of the 
+                  cipher suites specified by the requirement. This connection may be established as 
+                  part of the establishment of a higher-level protocol, e.g., as part of an EAP 
+                  session. It is sufficient to observe the successful negotiation of a cipher suite 
+                  to satisfy the intent of the test; it is not necessary to examine the 
+                  characteristics of the encrypted traffic in an attempt to discern the cipher suite 
+                  being used (for example, that the cryptographic algorithm is 128-bit AES and not 
+                  256-bit AES).
                 </test>
                 <test>
+                  The evaluator shall send a Client Hello to the server with a list of
+                  ciphersuites that does not contain any of the ciphersuites in the server’s ST
+                  and verify that the server denies the connection. Additionally, the evaluator
+                  shall send a Client Hello to the server containing only the
+                  TLS_NULL_WITH_NULL_NULL ciphersuite and verify that the server
+                  denies the connection.
                 </test>
                 <test>
+                  The evaluator shall use a client to send a key exchange message in
+                  the TLS connection that does not match the server-selected ciphersuite
+                  (for example, send an ECDHE key exchange while using the
+                  TLS_RSA_WITH_AES_128_CBC_SHA ciphersuite or send a RSA key
+                  exchange while using one of the ECDSA ciphersuites.) The evaluator shall
+                  verify that the application disconnects after receiving the key exchange
+                  message.
                 </test>
                 <test>
-                </test>
-                <test>
-                  The evaluator will perform the following modifications to the traffic:
+                  The evaluator shall perform the following modifications to the traffic: 
                   <testlist>
                     <test>
+                      Change the <h:abbr title="Transport Layer Security">TLS</h:abbr> version selected 
+                      by the server in the Server Hello to a non-supported 
+                      <h:abbr title="Transport Layer Security">TLS</h:abbr> version (for example 1.3 
+                      represented by the two bytes 03 04) and verify that the client rejects the 
+                      connection.
                     </test>
                     <test>
+                      Modify at least one byte in the client’s nonce in the Client Hello handshake 
+                      message, and verify that the server rejects the client's Certificate Verify handshake message
+                      (if using mutual authentication) or that the server denies the client's 
+                      Finished handshake message.
                     </test>
                     <test>
+                      Modify the signature block in the Client’s Key Exchange handshake message, and 
+                      verify that the server rejects the client's Certificate Verify handshake message
+                      (if using mutual authentication) or that the server denies the client's 
+                      Finished handshake message.
                     </test>
                     <test>
+                      Modify a byte in the Client Finished handshake message, and verify that the
+                      server rejects the connection and does not send any application data. 
                     </test>
                     <test>
+                      After generating a fatal alert by sending a Finished message from the client
+                      before the client send a ChangeCipherSpec message, send a Client Hello with 
+                      the session identifier from the previous test, and verify that the server 
+                      denies the connection. 
                     </test>
                     <test>
+                      Send an garbled message from the client after the client has issued the 
+                      ChangeCipherSpec message and verify that the Server denies the connection.
                     </test>
                   </testlist>
                 </test>
