@@ -758,7 +758,7 @@
               <abbr title="Transport Layer Security">TLS</abbr> apply to the DTLS implementation.
             </note>
             <aactivity>
-              The evaluator shall perform the assurance activities listed for <linkref linkend="FCS_TLSC_EXT.1"/>.
+              The evaluator shall perform the assurance activities listed for <linkref linkend="FCS_TLSS_EXT.1"/>.
             </aactivity>
           </f-element>
           <f-element id="fcs_dtlss_ext.1.3">
