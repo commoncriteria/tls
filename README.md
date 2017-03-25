@@ -10,7 +10,7 @@ Extended Package for TLS
 [Extended Package for TLS v1.0](http://common-criteria.rhcloud.com/tls/output/tls-release.html)
 
 ## Release Version
-[Extended Package for TLS v1.0](https://www.niap-ccevs.org/) 8/14/3000
+Extended Package for TLS v1.0 (coming soon)
 
 ## Technical Community
 [How to join the NIAP TLS Technical Community (Mailing list and updates)](
