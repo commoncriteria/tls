@@ -1064,12 +1064,15 @@
               with testing performed for <linkref linkend="FIA_X509_EXT.1"/>.
             </note>
             <aactivity>
-              The evaluator shall ensure that the TSS description required per FIA_X509_EXT.2.1
+              The evaluator shall ensure that the TSS description required per <linkref linkend="FIA_X509_EXT.2.1" />
               includes the use of client-side certificates for TLS mutual authentication.
               <h:br />
-              The evaluator shall verify that the AGD guidance required per FIA_X509_EXT.2.1
+              The evaluator shall verify that the AGD guidance required per <linkref linkend="FIA_X509_EXT.2.1" />
               includes instructions for configuring the client-side certificates for TLS mutual
               authentication.
+	      <h:br/>
+	      The evaluator shall use TLS as a function to verify that the validation rules in
+	      <linkref linkend="FIA_X509_EXT.1.1" /> are adhered to and shall perform the following additional tests:
               <testlist>
                 <test>
                   The evaluator shall configure the server to send a certificate request
@@ -1107,7 +1110,7 @@
                 <test>
                   The evaluator shall perform the following modifications to the traffic:
                   a) Configure the server to require mutual authentication and then
-                  modify a byte in the client’s certificate. The evaluator shall verify
+                  modify a byte in the signature block of the client’s certificate. The evaluator shall verify
                   that the server rejects the connection.
                   b) Configure the server to require mutual authentication and then
                   modify a byte in the client’s Certificate Verify handshake message.
