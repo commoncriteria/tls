@@ -785,29 +785,6 @@
               The evaluator shall perform the assurance activities listed for <linkref linkend="FCS_TLSC_EXT.1"/>.
             </aactivity>
           </f-element>
-          <f-element id="fcs_dtlsc_ext.1.3">
-            <title>The product shall not establish a trusted communication channel if the peer
-              certificate is deemed invalid.
-            </title>
-            <note role="application">
-              Validity is determined by the certificate path, the expiration date, and the
-              revocation status in accordance with RFC 5280.
-            </note>
-            <aactivity>
-              Certificate validity shall be tested in accordance with testing performed for
-              <linkref linkend="FIA_X509_EXT.1"/>, and the evaluator shall perform the following test.
-              <testlist>
-                <test>
-                  The evaluator shall demonstrate that using a certificate without a valid
-                  certification path results in the function failing. Using the administrative
-                  guidance, the evaluator shall then load a certificate or certificates to the
-                  Trust Anchor Database needed to validate the certificate to be used in the
-                  function, and demonstrate that the function succeeds. The evaluator then shall
-                  delete one of the certificates, and show that the function fails.
-                </test>
-              </testlist>
-            </aactivity>
-          </f-element>
         </f-component>
 
         <f-component id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
