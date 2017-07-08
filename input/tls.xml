@@ -1121,7 +1121,7 @@
           </f-element>
           <f-element id="fcs_tlss_ext.2.3">
             <title>The product shall not establish a trusted channel if
-              the distinguished name (DN) or Subject Alternative Name (SAN)
+              the Distinguished Name (DN) or Subject Alternative Name (SAN)
               contained in a certificate does not match the expected identifier
               for the peer.
             </title>
@@ -1129,7 +1129,7 @@
               The peer identifier may be in the Subject field or the Subject
               Alternative Name extension of the certificate. The expected
               identifier may either be configured, may be compared to the
-              Domain Name, IP address, username, or email address used by
+              domain name, IP address, username, or email address used by
               the peer, or may be passed to a directory server for comparison.
               Matching should be performed by a bit-wise comparison.
             </note>
@@ -1138,7 +1138,7 @@
               verify that the TSS describes how the DN and SAN in the certificate
               is compared to the expected identifier.
               <h:br />
-              If the DN is not compared automatically to the Domain Name,
+              If the DN is not compared automatically to the domain name,
               IP address, username, or email address, the evaluator shall
               ensure that the AGD guidance includes configuration of the
               expected identifier or the directory server for the connection.
@@ -1151,9 +1151,9 @@
               </testlist>
             </aactivity>
           </f-element>
-
-
         </f-component>
+
+
       </subsection>
     </section>
   </chapter>
