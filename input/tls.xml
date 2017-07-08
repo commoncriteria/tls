@@ -1153,6 +1153,47 @@
           </f-element>
         </f-component>
 
+	<f-component id="FCS_TLSS_EXT.3" name="TLS Server Protocol Signature Algorithms" status="objective">
+          <f-element id="fcs_tlss_ext.3.1">
+            <title>The product shall present the HashAlgorithm
+            enumeration in supported_signature_algorithms in the
+            Certificate Request with the following hash algorithms:
+	    <selectables>
+	      <selection>SHA256</selection>
+	      <selection>SHA384</selection>
+	      <selection>SHA512</selection>
+	    </selectables> and no other hash algorithms.
+            </title>
+            <note role="application">
+              This requirement limits the hashing algorithms supported
+              for the purpose of digital signature verification by the
+              server and limits the client to the supported hashes for
+              the purpose of digital signature generation by the
+              client. The supported_signature_algorithms is only
+              supported by TLS 1.2.
+	    </note>
+	    <aactivity>
+	      The evaluator shall verify that TSS describes the
+	      supported_signature_algorithms field of the Certificate
+	      Request and whether the required behavior is performed
+	      by default or may be configured. If the TSS indicates
+	      that the supported_signature_algorithms field must be
+	      configured to meet the requirement, the evaluator shall
+	      verify that AGD guidance includes configuration of the
+	      supported_signature_algorithms field.
+	      <h:br/>
+	      The evaluator shall also perform the following test:
+	      <h:br/>
+	      The evaluator shall configure the server to send the
+	      signature_algorithms extension in the Certificate
+	      Request message indicating that the hash algorithm used
+	      by the client’s certificate is not supported.  The
+	      evaluator shall attempt a connection using that client
+	      certificate and verify that the server denies the
+	      client’s connection.
+	    </aactivity>
+	    </f-element>
+	</f-component>
 
       </subsection>
     </section>
