@@ -791,8 +791,13 @@
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_dtlss_ext.1.1">
             <title>The product shall implement the DTLS protocol in accordance with
-              DTLS 1.2 (RFC 6347).
+	    <selectables>
+	      <selectable>DTLS 1.0 (RFC 4347)</selectable>
+	      <selectable>DTLS 1.2 (RFC 6347)</selectable>
+	      </selectables> as a server.
             </title>
+	    <note role="application">Any DTLS version selected in
+	    <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected here.</note>
             <aactivity>
               <testlist>
                 <test>
@@ -800,9 +805,6 @@
                   the traffic with a packet analyzer, and verify that the connection succeeds and
                   that the traffic is identified as DTLS.
                 </test>
-                <h:br />
-                Other tests are performed in conjunction with the Assurance Activity listed for
-                <linkref linkend="FCS_TLSS_EXT.1"/>.
               </testlist>
             </aactivity>
           </f-element>
