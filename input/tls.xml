@@ -97,9 +97,7 @@
           <entry>
             <term><abbr title="Target of Evaluation">TOE</abbr></term>
             <description>
-	      The product under evaluation. In this case, the Operating System as described in section
-	      <xref linkend="TOEboundary"/> and its
-              supporting documentation.
+	      The product under evaluation.
 	    </description>
           </entry>
           <entry>
@@ -121,6 +119,11 @@
             <description>A requirement to assure the security of the <abbr linkend="TOE"/>.
             </description>
           </entry>
+          <entry> 
+            <term><abbr title="Assurance Guidance Documents">AGD</abbr></term>
+            <description>Documentation describing the secure preparation and operation of the <abbr linkend="TOE"/>.
+            </description>
+          </entry>	  
         </glossary>
       </subsection>
       <subsection title="Technology Terms" id="techterms">
