@@ -679,18 +679,42 @@
                 linkend="FIA_X509_EXT.2.1"/>. This requirement adds that a client must be capable of
               presenting a certificate to a <abbr title="Transport Layer Security">TLS</abbr> server
               for <abbr title="Transport Layer Security">TLS</abbr> mutual authentication. </note>
-            <aactivity> The evaluator will ensure that the <abbr title="TOE Summary Specification"
+            <aactivity> The evaluator shall ensure that the <abbr title="TOE Summary Specification"
                 linkend="TSS">TSS</abbr> description required per <linkref
                 linkend="FIA_X509_EXT.2.1"/> includes the use of client-side certificates for TLS
-              mutual authentication. <h:br/> The evaluator will verify that the AGD guidance required
+              mutual authentication. <h:br/> The evaluator shall verify that the AGD guidance required
               per <linkref linkend="FIA_X509_EXT.2.1"/> includes instructions for configuring the
               client-side certificates for <abbr title="Transport Layer Security">TLS</abbr> mutual
-              authentication. <h:br/> The evaluator will also perform the following test:
+              authentication. <h:br/> The evaluator shall also perform the following tests:
               <h:br/>
-              Configure the server to require mutual authentication and then modify a
-              byte in a CA field in the Server’s Certificate Request handshake message. The
-              modified CA field must not be the CA used to sign the client’s certificate.
-              The evaluator will verify the connection is unsuccessful.
+	      <testlist>
+		<test>Configure the server to require mutual
+		authentication and to send a Certificate Request
+		message which includes the information for the CA
+		which signed the client's certificate in the
+		certificate_authorities field. The evaluator shall
+		attempt a connection using the client certificate and
+		verify that the client sends Certificate and
+		Certificate Verify messages.
+		</test>
+		<test>Configure the server to require mutual
+		authentication and to send a Certificate Request
+		message which does not include the information for the
+		CA which signed the client's certificate in the
+		certificate_authorities field. The evaluator shall
+		attempt a connection using the client certificate and
+		verify that the client sends a zero-length Certificate
+		message.
+		</test>
+		<test>Configure the server to require mutual
+		authentication and then modify a byte in the
+		certificate_authorities field in the Server's
+		Certificate Request handshake message. The modified
+		value must not be the CA used to sign the client's
+		certificate.  The evaluator shall verify the
+		connection is unsuccessful.
+		</test>
+	      </testlist>
             </aactivity>
           </f-element>
         </f-component>
