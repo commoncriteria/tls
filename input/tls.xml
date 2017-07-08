@@ -634,25 +634,42 @@
             <note role="application"> This requirement limits the hashing algorithms supported for
               the purpose of digital signature verification by the client and limits the server to
               the supported hashes for the purpose of digital signature generation by the server.
-              The signature_algorithm extension is only supported by <abbr
+              The signature_algorithms extension is only supported by <abbr
                 title="Transport Layer Security">TLS</abbr> 1.2. </note>
-            <aactivity> The evaluator will verify that <abbr title="TOE Summary Specification"
+            <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
                 linkend="TSS">TSS</abbr> describes the signature_algorithm extension and whether the
               required behavior is performed by default or may be configured. If the <abbr
                 title="TOE Summary Specification" linkend="TSS">TSS</abbr> indicates that the
               signature_algorithm extension must be configured to meet the requirement, the
-              evaluator will verify that AGD guidance includes configuration of the
-              signature_algorithm extension. <h:br/> The evaluator will also perform the following
-              test:
-              <h:br/>
-                The evaluator will configure the server to send a certificate in the <abbr
-                title="Transport Layer Security">TLS</abbr> connection that is not supported
-                according to the Client’s HashAlgorithm enumeration within the
-                signature_algorithms extension (for example, send a certificate with a SHA-1
-                signature). The evaluator will verify that The product disconnects after receiving the server’s Certificate
-                handshake message.
-            </aactivity>
-          </f-element>
+              evaluator shall verify that AGD guidance includes configuration of the
+              signature_algorithm extension. <h:br/> The evaluator shall also perform the following
+              tests:
+              <testlist>
+		<test>
+		  The evaluator shall configure the server to send a
+		  certificate in the <abbr title="Transport Layer
+		  Security">TLS</abbr> connection that is not
+		  supported according to the Client's HashAlgorithm
+		  enumeration within the signature_algorithms
+		  extension (for example, send a certificate with a
+		  SHA-1 signature). The evaluator shall verify that
+		  the product disconnects after receiving the server's
+		  Certificate handshake message.
+		</test>
+		<test>
+		  [conditional] If the client supports a DHE or ECDHE
+		  cipher suite, the evaluator shall configure the
+		  server to send a Key Exchange handshake message
+		  including a signature not supported according to the
+		  client's HashAlgorithm enumeration (for example, the
+		  server signed the Key Exchange parameters using a
+		  SHA-1 signature). The evaluator shall verify that
+		  the product disconnects after receiving the server's
+		  Key Exchange handshake message.
+		</test>
+	      </testlist>
+              </aactivity>
+          </f-element>  
         </f-component>
         <f-component id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="optional">
           <f-element id="fcs_tlsc_ext.2.1">
