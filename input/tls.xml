@@ -959,26 +959,30 @@
           </f-element>
           <f-element id="fcs_tlss_ext.1.2">
             <title>The product shall deny connections from clients requesting
-              SSL 2.0, SSL 3.0, TLS 1.0, TLS 1.1, and
+            SSL 2.0, SSL 3.0, and
               <selectables>
-                <selectable>TLS 1.2</selectable>
+                <selectable>TLS 1.0</selectable>
+		<selectable>TLS 1.1</selectable>
                 <selectable>none</selectable>
               </selectables>
               .
             </title>
-            <note role="application">All SSL versions and TLS 1.0 and 1.1 are denied. Any TLS version
-              not selected in <linkref linkend="FCS_TLSS_EXT.1.1"/> should be selected here.
+            <note role="application">All SSL versions are denied. Any TLS version
+              not selected in <linkref linkend="FCS_TLS_EXT.1.1"/> should be selected here.
             </note>
             <aactivity>
-              The evaluator shall verify that the TSS contains a description of the denial
-              of old SSL and TLS versions, and any configuration necessary to meet the
-              requirement must be contained in the AGD guidance.
+              The evaluator shall verify that the TSS contains a
+              description of the denial of old SSL and TLS versions
+              consistent relative to selections in <linkref linkend="FCS_TLS_EXT.1.1" />,
+              and any configuration necessary to meet the requirement
+              must be contained in the AGD guidance.
               <testlist>
                 <test>
-                  The evaluator shall send a Client Hello requesting a connection with
-                  version SSL 2.0 and verify that the server denies the connection. The
-                  evaluator shall repeat this test with SSL 3.0, TLS 1.0, TLS 1.1, and
-                  TLS 1.2 if it was selected.
+                  The evaluator shall send a Client Hello requesting a
+                  connection with version SSL 2.0 and verify that the
+                  server denies the connection. The evaluator shall
+                  repeat this test with SSL 3.0, and also with TLS 1.0
+                  and TLS 1.1 if they was selected.
                 </test>
               </testlist>
             </aactivity>
