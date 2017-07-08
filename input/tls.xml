@@ -1233,6 +1233,19 @@
 	  </f-element>
 	</f-component>
 
+	<f-component id="FCS_DTLSS_EXT.2" name="DTLS Server Support for Mutual Authentication" status="optional">
+          <f-element id="fcs_dtlss_ext.2.1">
+            <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.2" /> for the DTLS implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
+            </title>
+            <note role="application">
+              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the protocols are the same. In particular, for the applicable security characteristics defined for the TSF, the two protocols do not differ. Therefore, all application notes and assurance activities that are listed for TLS apply to the DTLS implementation.  
+	    </note>
+	    <aactivity>
+	      The evaluator shall perform the assurance activities listed for <linkref linkend="FCS_TLSS_EXT.2" />. 
+	    </aactivity>
+	  </f-element>
+	</f-component>	
+
       </subsection>
     </section>
   </chapter>
