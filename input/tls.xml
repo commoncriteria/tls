@@ -1251,7 +1251,7 @@
   </chapter>
 
   <appendix title="Optional Requirements" id="optional">Baseline requirements
-    which be performed by the product are
+    which must be performed by the product are
     contained in the main body of this EP in <secref linkend="req"/>. As described in
     <secref linkend="conf"/> there are three other types of requirements
     specified in <appref linkend="optional"/>, <appref linkend="sel-based"/>, and <appref
