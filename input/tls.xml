@@ -146,6 +146,23 @@
               communications security for datagram protocols
 	          </description>
           </entry>
+          <entry>
+            <term>
+              <abbr title="Certificate Authority">CA</abbr>
+            </term>
+            <description>
+	      Issuer of digital certificates
+	          </description>
+          </entry>
+          <entry>
+            <term>
+              <abbr title="Trust Anchor Database">TAD</abbr>
+            </term>
+            <description>
+	      List of trusted root Certificate Authority certificates
+	          </description>
+          </entry>
+	  
         </glossary>
       </subsection>
 	  </section>
