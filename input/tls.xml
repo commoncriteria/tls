@@ -1335,14 +1335,46 @@
   </appendix>
   <appendix title="Acronyms" id="acronyms">
     <acronyms>
-      <entry>
+<entry>
         <term>AES</term>
         <description>Advanced Encryption Standard</description>
       </entry>
       <entry>
+        <term>CA</term>
+        <description>Certificate Authority</description>
+      </entry>      
+      <entry>
         <term>CBC</term>
         <description>Cipher Block Chaining</description>
       </entry>
+      <entry>
+        <term>CN</term>
+        <description>Common Name</description>
+      </entry> 
+      <entry>
+        <term>DHE</term>
+        <description>Diffie-Hellman Ephemeral</description>
+      </entry>
+      <entry>
+        <term>DN</term>
+        <description>Distinguished Name</description>
+      </entry>
+      <entry>
+        <term>DNS</term>
+        <description>Domain Name Server</description>
+      </entry>
+      <entry>
+        <term>DTLS</term>
+        <description>Datagram Transport Layer Security</description>
+      </entry>
+      <entry>
+        <term>EAP</term>
+        <description>Extensible Authentication Protocol</description>
+      </entry>
+      <entry>
+        <term>ECDHE</term>
+        <description>Elliptic Curve Diffie-Hellman Ephemeral</description>
+      </entry>       
       <entry>
         <term>ECDSA</term>
         <description>Elliptic Curve Digital Signature Algorithm</description>
@@ -1352,24 +1384,24 @@
         <description>Galois/Counter Mode</description>
       </entry>
       <entry>
+        <term>HTTP</term>
+        <description>Hypertext Transfer Protocol</description>
+      </entry>       
+      <entry>
         <term>IETF</term>
         <description>Internet Engineering Task Force</description>
       </entry>
       <entry>
-        <term>IV</term>
-        <description>Initialization Vector</description>
+        <term>IP</term>
+        <description>Internet Protocol</description>
       </entry>
       <entry>
-        <term>MAC</term>
-        <description>Message Authentication Code</description>
-      </entry>
+        <term>LDAP</term>
+        <description>Lightweight Directory Access Protocol</description>
+      </entry>       
       <entry>
         <term>NIST</term>
         <description>National Institute of Standards and Technology</description>
-      </entry>
-      <entry>
-        <term>PBKDF</term>
-        <description>Password-Based Key Derivation Function</description>
       </entry>
       <entry>
         <term>RFC</term>
@@ -1379,6 +1411,42 @@
         <term>RSA</term>
         <description>Rivest Shamir Adelman</description>
       </entry>
+      <entry>
+        <term>SAN</term>
+        <description>Subject Alternative Name</description>
+      </entry> 
+      <entry>
+        <term>SCSV</term>
+        <description>Signaling Cipher Suite Value</description>
+      </entry>
+      <entry>
+        <term>SHA</term>
+        <description>Secure Hash Algorithm</description>
+      </entry>       
+      <entry>
+        <term>SIP</term>
+        <description>Session Initiation Protocol</description>
+      </entry>
+      <entry>
+        <term>TCP</term>
+        <description>Transmission Control Protocol</description>
+      </entry> 
+      <entry>
+        <term>TLS</term>
+        <description>Transport Layer Security</description>
+      </entry> 
+      <entry>
+        <term>UDP</term>
+        <description>User Datagram Protocol</description>
+      </entry>
+      <entry>
+        <term>URI</term>
+        <description>Uniform Resource Identifier</description>
+      </entry>       
+      <entry>
+        <term>URL</term>
+        <description>Uniform Resource Locator</description>
+      </entry>       
     </acronyms>
   </appendix>
 </PP>
