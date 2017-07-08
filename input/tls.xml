@@ -997,10 +997,11 @@
               </selectables>
               and
               <selectables>
-                <selectable>over NIST curves
+                <selectable>ECDHE parameters over NIST curves
                   <selectables>
-                    <selectable>secp256r</selectable>
-                    <selectable>secp384r</selectable>
+                    <selectable>secp256r1</selectable>
+                    <selectable>secp384r1</selectable>
+		    <selectable>secp521r1</selectable>
                   </selectables> and no other curves</selectable>
                 <selectable>Diffie-Hellman parameters of size 2048 and
                   <selectables>
@@ -1012,23 +1013,31 @@
               </selectables>
             </title>
             <note role="application">
-              If the ST lists a DHE ciphersuite in <linkref linkend="FCS_TLSS_EXT.1.1"/>,
-              the ST must include the Diffie-Hellman selection in the requirement
+              If the ST lists a DHE cipher suite in <linkref
+              linkend="FCS_TLSS_EXT.1.1"/>, the ST must include the
+              Diffie-Hellman selection in the requirement.  If the ST
+              lists an ECDHE cipher suite in <linkref
+              linkend="FCS_TLSS_EXT.1.1"/>, the ST must include the
+              NIST curves selection in the requirement.
             </note>
             <aactivity>
               The evaluator shall verify that the TSS describes the key agreement parameters
-              of the server key exchange message.
+              of the server's Key Exchange message.
               <h:br />
               The evaluator shall verify that any configuration guidance necessary to meet
               the requirement must be contained in the AGD guidance.
               <testlist>
                 <test>
-                  The evaluator shall attempt a connection using an ECDHE ciphersuite and
-                  a configured curve and, using a packet analyzer, verify that the key
-                  agreement parameters in the Key Exchange message are the ones configured.
-                  (Determining that the size matches the expected size for the configured curve
-                  is sufficient.) The evaluator shall repeat this test for each supported NIST
-                  Elliptic Curve and each supported Diffie-Hellman key size.
+                  [conditional] The evaluator shall attempt a
+                  connection using an ECDHE ciphersuite and a
+                  configured curve and, using a packet analyzer,
+                  verify that the key agreement parameters in the Key
+                  Exchange message are the ones configured.
+                  (Determining that the size matches the expected size
+                  for the configured curve is sufficient.) The
+                  evaluator shall repeat this test for each supported
+                  NIST elliptic curve and each supported
+                  Diffie-Hellman key size.
                 </test>
               </testlist>
             </aactivity>
