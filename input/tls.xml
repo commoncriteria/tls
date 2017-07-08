@@ -326,51 +326,75 @@
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_tlsc_ext.1.1">
             <title> The product shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
-              (RFC 5246)  supporting the following cipher suites:
-              <h:p/>Mandatory cipher suites: TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246
-              <h:p/>Optional cipher suites:
-              <selectables linebreak="yes">
-                <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-                <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-                <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-                <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-                <selectable>no other cipher suite</selectable>
-              </selectables> . </title>
-            <note role="application">The cipher suites to be tested in the evaluated configuration
-              are limited by this requirement. The <abbr title="Security Target" linkend="ST">ST
+            (RFC 5246) and <selectables>
+	    <selectable>TLS 1.0 (RFC 2246)</selectable>
+	    <selectable>TLS 1.1 (RFC 4346)</selectable>
+	    <selectable>no other RFCs</selectable>
+	  </selectables>
+	  as a client supporting the following cipher suites:
+          <h:p/>Mandatory cipher suites: TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246
+          <h:p/>Optional cipher suites:
+          <selectables linebreak="yes">
+            <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+	    <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>no other cipher suite</selectable>
+            </selectables> . </title>
+            <note role="application">
+	      Any TLS version selected in <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected here.
+	      <h:br/>
+	      The <abbr title="Security Target" linkend="ST">ST
               </abbr> author should select the optional cipher suites that are supported; if there
               are no cipher suites supported other than the mandatory suites,
-        then “No other cipher suite” should be selected.
-        It is necessary to limit the cipher suites that can be used in an evaluated
-              configuration administratively on the server in the test environment. The Suite B
-              algorithms listed above (RFC 6460) are the preferred algorithms for implementation.
-              TLS_RSA_WITH_AES_128_CBC_SHA is required in order to ensure compliance with RFC 5246.
-              <h:br/> These requirements will be revisited as new <abbr
-                title="Transport Layer Security">TLS</abbr> versions are standardized by the IETF.
-              <h:br/> If any cipher suites are selected using ECDHE, then <linkref
-                linkend="FCS_TLSC_EXT.2.1"/> is required.
-            </note>
+              then “No other cipher suite” should be selected.
+	      <h:br/>
+	      The cipher suites to be tested in the evaluated
+	      configuration are limited by this requirement; however,
+	      this requirement does not restrict the TOE's ability to
+	      propose additional cipher suites beyond the ones listed
+	      in this requirement in its Client Hello message.  That
+	      is, the TOE may propose any cipher suite; however, the
+	      evaluation will only test cipher suites in the above
+	      list.
+	      <h:br/>
+	      It is necessary to limit the cipher suites that can be
+	      used in an evaluated configuration administratively on
+	      the server in the test environment.
+	      <h:br/>
+	      GCM cipher suites are preferred over CBC cipher suites,
+	      ECDHE preferred over RSA and DHE, and SHA256 or SHA384
+	      over SHA.  TLS_RSA_WITH_AES_128_CBC_SHA is required in
+	      order to ensure compliance with RFC 5246.
+	      <h:br/>
+	      These requirements will be revisited as new <abbr
+	      title="Transport Layer Security">TLS</abbr> versions are
+	      standardized by the IETF.
+	      <h:br/> If any ECDHE cipher suites are selected, then
+	      <linkref linkend="FCS_TLSC_EXT.1.4"/> is required.
+	    </note>
             <aactivity>
-              The evaluator will check the description of the implementation of this
+              The evaluator shall check the description of the implementation of this
               protocol in the <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> to
-              ensure that the cipher suites supported are specified. The evaluator will check the
+              ensure that the cipher suites supported are specified. The evaluator shall check the
                 <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> to ensure that the
-              cipher suites specified include those listed for this component. The evaluator will
+              cipher suites specified include those listed for this component. The evaluator shall
               also check the operational guidance to ensure that it contains instructions on
-              configuring The product so that
+              configuring the product so that
               TLS conforms to the description in the <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr>. The evaluator will also perform the following tests:
+                linkend="TSS">TSS</abbr>. The evaluator shall also perform the following tests:
               <testlist>
                 <test>
-                  The evaluator will establish a <abbr title="Transport Layer Security">TLS</abbr> connection
+                  The evaluator shall establish a <abbr title="Transport Layer Security">TLS</abbr> connection
                   using each of the cipher suites specified by the
                   requirement. This connection may be established as part of the establishment of a
                   higher-level protocol, e.g., as part of an EAP session. It is sufficient to
@@ -380,28 +404,28 @@
                   cryptographic algorithm is 128-bit AES and not 256-bit AES).
                 </test>
                 <test>
-                  The evaluator will attempt to establish the connection using a server with a
+                  The evaluator shall attempt to establish the connection using a server with a
                   server certificate that contains the Server Authentication purpose in the
                   extendedKeyUsage field and verify that a connection is established. The evaluator
-                  will then verify that the client rejects an otherwise valid server certificate
+                  shall then verify that the client rejects an otherwise valid server certificate
                   that lacks the Server Authentication purpose in the extendedKeyUsage field and a
                   connection is not established. Ideally, the two certificates should be identical
                   except for the extendedKeyUsage field.
                 </test>
                 <test>
-                  The evaluator will send a server certificate in the <abbr title="Transport Layer Security">TLS</abbr> connection
+                  The evaluator shall send a server certificate in the <abbr title="Transport Layer Security">TLS</abbr> connection
                   that does not match the server-selected cipher suite (for example, send a ECDSA certificate while using the
                   TLS_RSA_WITH_AES_128_CBC_SHA cipher suite or send a RSA certificate while using one
-                  of the ECDSA cipher suites.) The evaluator will verify that The product disconnects after
+                  of the ECDSA cipher suites.) The evaluator shall verify that the product disconnects after
                   receiving the server’s Certificate handshake message.
                 </test>
                 <test>
-                  The evaluator will configure the server to select the
+                  The evaluator shall configure the server to select the
                   TLS_NULL_WITH_NULL_NULL cipher suite and verify that the client denies the
                   connection.
                 </test>
                 <test>
-                  The evaluator will perform the following modifications to the traffic:
+                  The evaluator shall perform the following modifications to the traffic:
                   <testlist>
                     <test>
                       Change the <abbr title="Transport Layer Security">TLS</abbr> version
@@ -411,29 +435,28 @@
                       connection.
                     </test>
                     <test>
-                      Modify at least one byte in the server’s nonce in the Server Hello
+                      [conditional] If DHE or ECDHE cipher suites are supported, modify at least one byte in the server’s nonce in the Server Hello
                       handshake message, and verify that the client rejects the Server Key Exchange
-                      handshake message (if using a DHE or ECDHE cipher suite) or that the server
-                      denies the client’s Finished handshake message.
+                      handshake message.
                     </test>
                     <test>
                       Modify the server’s selected cipher suite in the Server Hello handshake
                       message to be a cipher suite not presented in the Client Hello handshake
-                      message. The evaluator will verify that the client rejects the connection
+                      message. The evaluator shall verify that the client rejects the connection
                       after receiving the Server Hello.
                     </test>
                     <test>
-                      Modify the signature block in the Server’s Key Exchange handshake
+                      [conditional] If DHE or ECDHE cipher suites are supported, modify the signature block in the server’s Key Exchange handshake
                       message, and verify that the client rejects the connection after receiving the
                       Server Key Exchange message.
                     </test>
                     <test>
-                      Modify a byte in the Server Finished handshake message, and verify that
-                      the client sends a fatal alert upon receipt and does not send any application
+                      Modify a byte in the data of the server's Finished handshake message, and verify that
+                      the client sends a Fatal Alert upon receipt and does not send any application
                       data.
                     </test>
                     <test>
-                      Send a garbled message from the Server after the Server has issued the
+                      Send a message consisting of random bytes from the server after the server has issued the
                       Change Cipher Spec message and verify that the client denies the connection.
                     </test>
                   </testlist>
