@@ -718,7 +718,7 @@
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_tlsc_ext.4" name="TLS Renegotiation" status="optional">
+        <f-component id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="optional">
           <f-element id="fcs_tlsc_ext.4.1">
             <title> The product shall support secure renegotiation through use
               of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
@@ -727,21 +727,21 @@
             <title> The product shall include (choose only one of)
               <selectables>
                 <selectable>renegotiation_info extension</selectable>
-                <selectable>TLS_EMPTY_RENEGOTIATION_INFO_SCSV ciphersuite</selectable>
+                <selectable>TLS_EMPTY_RENEGOTIATION_INFO_SCSV cipher suite</selectable>
               </selectables> in the ClientHello message. </title>
 
             <note role="application">
             RFC 5746 defines an extension to TLS that binds
             renegotiation handshakes to the cryptography in the original handshake.
-            The ciphersuite included in the selection is a means for clients to
+            The cipher suite included in the selection is a means for clients to
             be compatible with servers that don’t support the extension.  It is
-            recommended that client implementations support both the ciphersuite
+            recommended that client implementations support both the cipher suite
             and the extension.
             </note>
             <aactivity>
               The evaluator shall perform the following tests:
               <testlist>
-                <test>The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two TLS endpoints.  The evaluator shall verify that either the “renegotiation_info” field or the SCSV ciphersuite is included in the ClientHello packet during the initial handshake.</test>
+                <test>The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two TLS endpoints.  The evaluator shall verify that either the “renegotiation_info” field or the SCSV cipher suite is included in the ClientHello message during the initial handshake.</test>
                 <test>The evaluator shall verify the Client’s handling of ServerHello messages received during the initial handshake that include the “renegotiation_info” extension.  The evaluator shall modify the length portion of this field in the ServerHello message to be non-zero and verify that the client sends a failure and terminates the connection.  The evaluator shall verify that a properly formatted field results in a successful TLS connection.</test>
                 <test>The evaluator shall verify that ServerHello messages received during secure renegotiation contain the “renegotiation_info” extension.  The evaluator shall modify either the “client_verify_data” or “server_verify_data” value and verify that the client terminates the connection.</test>
               </testlist>
