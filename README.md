@@ -12,7 +12,7 @@ See the [release](#Release-Version) section if you are looking for the officiall
 ## Draft Version
 
 * [Extended Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.html) (html)
-* [Extended Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.pdf (pdf)
+* [Extended Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.pdf) (pdf)
 
 ## Release Version
 
