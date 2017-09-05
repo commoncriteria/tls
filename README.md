@@ -1,6 +1,6 @@
 Extended Package for TLS
 ===============
-[![Build Status](https://jenkins-criteria.rhcloud.com/buildStatus/icon?job=protection-profiles/tls)](https://jenkins-criteria.rhcloud.com/job/protection-profiles/job/tls/)
+[![Build Status](https://travis-ci.org/commoncriteria/tls.svg?branch=master)](https://travis-ci.org/commoncriteria/tls)
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/tls.svg?maxAge=2592000)](https://github.com/commoncriteria/tls/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
@@ -11,8 +11,8 @@ See the [release](#Release-Version) section if you are looking for the officiall
 
 ## Draft Version
 
-* [Extended Package for TLS](http://common-criteria.rhcloud.com/tls/output/tls-release.html) (html)
-* [Extended Package for TLS](http://common-criteria.rhcloud.com/tls/output/tls-release.pdf) (pdf)
+* [Extended Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.html) (html)
+* [Extended Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.pdf (pdf)
 
 ## Release Version
 
