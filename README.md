@@ -5,7 +5,7 @@ Extended Package for TLS
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
 This repository hosts the draft version of the Extended Package for TLS based on the 
-[Essential Security Requirements (ESR)](http://common-criteria.rhcloud.com/tls/output/tls-esr.html) for this technology class of 
+[Essential Security Requirements (ESR)](https://commoncriteria.github.io/pp/tls/tls-esr.html) for this technology class of 
 products. This repository is used to facilitate collaboration and development on the draft document. 
 See the [release](#Release-Version) section if you are looking for the officially released version for evaluations. 
 
