@@ -8,12 +8,12 @@
   <!-- <inline-comment color='blue' linebreak='yes'> Hello World TLS </inline-comment> -->
   <PPReference title="PP Reference">
     <ReferenceTable>
-      <PPTitle>Extended Package for Transport Layer Security (TLS)</PPTitle>
+      <PPTitle>Protection Profile Module for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2017-07-08</PPPubDate>
+      <PPPubDate>2018-05-01</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
-      <CCVersion>3.1R4</CCVersion>
+      <CCVersion>3.1R5</CCVersion>
       <Keywords>TLS</Keywords>
       <entry>
         <name>Registration</name>
@@ -25,7 +25,7 @@
   <RevisionHistory role="draft">
     <entry>
       <version>Round 1</version>
-      <date>2016-11-15</date>
+      <date>2018-03-01</date>
       <subject>First draft for TC review</subject>
     </entry>
   </RevisionHistory>
@@ -33,7 +33,7 @@
   <RevisionHistory role="final">
     <entry>
       <version>1.0-draft</version>
-      <date>2016-12-01</date>
+      <date>2018-05-01</date>
       <subject>Initial Release (Goal)</subject>
     </entry>
   </RevisionHistory>
@@ -59,7 +59,7 @@
     As a result, evaluating the implementation of both endpoints is typically
     necessary to provide assurance for the operating environment.
     <h:p/>
-	  This Extended Package (EP) provides a baseline set of Security Functional
+	  This Protection Profile Module (PP-Module) provides a baseline set of Security Functional
 	  Requirements (SFRs) for products that implement TLS. The requirements are
     intended to improve the security of products by enabling their evaluation.
     </section>
@@ -68,6 +68,11 @@
       <subsection title="Common Criteria Terms"
         id="ccterms">
         <glossary>
+          <entry> 
+            <term><abbr title="Assurance Guidance Documents">AGD</abbr></term>
+            <description>Documentation describing the secure preparation and 
+              operation of the <abbr linkend="TOE"/>.</description>
+          </entry>
           <entry>
             <term><abbr title="Common Criteria">CC</abbr></term>
             <description>Common Criteria for Information Technology Security
@@ -88,6 +93,16 @@
             <term><abbr title="Protection Profile">PP</abbr></term>
             <description>An implementation-independent set of security requirements for a category
               of products.</description>
+          </entry>
+          <entry>
+            <term><abbr title="Protection Profile Configuration">PP-Configuration</abbr></term>
+            <description>A comprehensive set of security requirements for a product type that consists 
+              of at least one PP and at least one PP-Module.</description>
+          </entry>
+          <entry>
+            <term><abbr title="Protection Profile Module">PP-Module</abbr></term>
+            <description>An implementation-independent set of security requirements for a specific 
+              subset of products described by a PP.</description>
           </entry>
           <entry>
             <term><abbr title="Security Target">ST</abbr></term>
@@ -167,17 +182,16 @@
       </subsection>
 	  </section>
     <section title="Compliant Targets of Evaluation" id="TOEdescription">The Target of Evaluation
-      (TOE) in this
-      <abbr linkend="EP" /> is a product which acts as a TLS client or server, or both.
+      (TOE) in this PP-Module is a product which acts as a TLS client or server, or both.
       <h:p/>
-      This <abbr linkend="EP" /> describes the security functionality of TLS in terms of
-      <cite linkend="bibCC" />. The contents of this EP must be appropriately
-      combined with the base PP to include selection-based
+      This PP-Module describes the security functionality of TLS in terms of
+      <cite linkend="bibCC" />. The contents of this PP-Module must be appropriately
+      combined with the Base-PP to include selection-based
       requirements in accordance with the selections and/or assignments made,
       and any optional and/or objective components.
       <h:p/>
-      The following <abbr linkend="PP"/>s may be extended by this EP, when they
-      indicate such extension:
+      The related PP-Configuration document specifies which <abbr linkend="PP"/>s may be 
+      combined with this PP-Module.
       <h:br />
       <h:ul>
       <h:li>
@@ -203,25 +217,22 @@
       </h:li>
       </h:ul>
       <h:br />
-      An ST must identify the applicable version of the base PP and this
-      <abbr linkend="EP" /> in its conformance claims.
+      An ST must identify the applicable version of the Base-PP and this
+      PP-Module in its conformance claims.
     </section>
   </chapter>
   <chapter title="Conformance Claims" id="conf">
     <cclaims>
       <cclaim id="Conformance Statement">
-        <description>This
-          <abbr linkend="EP" /> serves to extend existing Protection Profiles with additional SFRs and associated
-          Assurance Activities specific to TLS clients and servers.
+        <description>This PP-Module serves to extend existing Protection Profiles with additional 
+          SFRs and associated Assurance Activities specific to TLS clients and servers.  
           <h:p/>
-          This
-          <abbr linkend="EP" /> conforms to Common Criteria
+          This PP-Module conforms to Common Criteria
           <cite linkend="bibCC" /> for Information Technology Security Evaluation, Version 3.1,
-          Revision 4. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to
-          this
-          <abbr linkend="EP" />, the
+          Revision 5. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to
+          this PP-Modules the
           <abbr linkend="ST" /> must include all components in this
-          <abbr linkend="EP" /> and the associated base PP that are:
+          PP-Module and the associated Base-PP that are:
           <h:ul>
             <h:li>unconditional (which are always required)</h:li>
             <h:li>selection-based (which are required when certain selections are chosen in the
@@ -235,12 +246,11 @@
     </cclaims>
   </chapter>
   <chapter title="Security Problem Description" id="spd">
-    This Extended Package does not repeat the threats, assumptions, and organizational security
-    policies identified in any base PPs, though they all apply given the conformance and hence
-    dependence of this
-    <abbr linkend="EP" /> on it. Together the threats, assumptions and organizational security
-    policies of the base PP and those defined in this
-    <abbr linkend="EP" /> describe those addressed by the product as the Target of
+    This PP-Module does not repeat the threats, assumptions, and organizational security
+    policies identified in any Base-PPs, though they all apply given the conformance and hence
+    dependence of this PP-Module on it. Together the threats, assumptions and organizational security
+    policies of the Base-PP and those defined in this
+    PP-Module describe those addressed by the product as the Target of
     Evaluation.
   </chapter>
   <chapter title="Security Objectives" id="obj">
@@ -268,14 +278,15 @@
         a requirement.</h:li>
       <h:li>
         <h:b>Assignment</h:b> operation (denoted by
-        <h:span class="assignable-content">italicized text</h:span>): is used to assign a specific value to an unspecified parameter, such
+        <h:span class="assignable-content">italicized text</h:span>): is used to assign a specific 
+        value to an unspecified parameter, such
         as the length of a password. Showing the value in square brackets indicates assignment.</h:li>
       <h:li>
         <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)").</h:li>
     </h:ul>
     <section title="Security Functional Requirements" id="SFRs">The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
-      Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional
+      Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional
       components.
       <subsection title="Cryptographic Support (FCS)" id="fcs">
         <f-component id="fcs_tls_ext.1" name="TLS Protocol" status="threshold">
@@ -284,7 +295,7 @@
 					<selectables linebreak="yes">
 						<selectable>TLS 1.0 (RFC 2246)</selectable>
 						<selectable>TLS 1.1 (RFC 4346)</selectable>
-						<selectable>DTLS 1.0 (RFC4347)</selectable>
+						<selectable>DTLS 1.0 (RFC 4347)</selectable>
 						<selectable>DTLS 1.2 (RFC 6347)</selectable>
 						<selectable>no other RFCs</selectable>
 					</selectables>
@@ -314,7 +325,7 @@
 			  <h:br/>
               <h:br/>
               If <h:i>server</h:i> is selected, then the ST must include the requirements from
-			  <linkref linkend="FCS_TLSS_EXT.1" /> or <linkref linkend="FCS_DTLSS_EXT.1"/> as appropriate.
+			  <linkref linkend="FCS_TLSS_EXT.1" /> or <linkref="FCS_DTLSS_EXT.1"/> as appropriate.
             </note>
             <aactivity>The evaluator shall ensure that the selections indicated in the ST are
               consistent with selections in the dependent components.
@@ -1288,15 +1299,15 @@
           <h:ul>
             <h:li>
               <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R4.pdf">Part 1:
-                Introduction and General Model</h:a>, CCMB-2012-09-001, Version 3.1 Revision 4, September
+                Introduction and General Model</h:a>, CCMB-2012-09-001, Version 3.1 Revision 5, September
               2012.</h:li>
             <h:li>
               <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R4.pdf">Part 2:
-                Security Functional Components</h:a>, CCMB-2012-09-002, Version 3.1 Revision 4, September
+                Security Functional Components</h:a>, CCMB-2012-09-002, Version 3.1 Revision 5, September
               2012.</h:li>
             <h:li>
               <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R4.pdf">Part 3:
-                Security Assurance Components</h:a>, CCMB-2012-09-003, Version 3.1 Revision 4, September
+                Security Assurance Components</h:a>, CCMB-2012-09-003, Version 3.1 Revision 5, September
               2012.</h:li>
           </h:ul></description>
       </entry>
