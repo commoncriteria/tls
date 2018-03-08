@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
-<?xml-model href="https://github.com/commoncriteria/transforms/raw/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
-<PP xmlns="http://common-criteria.rhcloud.com/ns/cc" name="TLS"
+<PP xmlns="https://niap-ccevs.org/cc/v1" name="TLS"
     xmlns:h="http://www.w3.org/1999/xhtml">
   <!-- <inline-comment color='green'> Hello World TLS </inline-comment> -->
   <!-- <inline-comment color='blue' linebreak='yes'> Hello World TLS </inline-comment> -->
