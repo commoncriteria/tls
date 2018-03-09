@@ -7,7 +7,7 @@
   <!-- <inline-comment color='blue' linebreak='yes'> Hello World TLS </inline-comment> -->
   <PPReference title="PP Reference">
     <ReferenceTable>
-      <PPTitle>Protection Profile Module for Transport Layer Security (TLS)</PPTitle>
+      <PPTitle>Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2018-05-01</PPPubDate>
@@ -58,7 +58,7 @@
     As a result, evaluating the implementation of both endpoints is typically
     necessary to provide assurance for the operating environment.
     <h:p/>
-	  This Protection Profile Module (PP-Module) provides a baseline set of Security Functional
+	  This Package provides a baseline set of Security Functional
 	  Requirements (SFRs) for products that implement TLS. The requirements are
     intended to improve the security of products by enabling their evaluation.
     </section>
