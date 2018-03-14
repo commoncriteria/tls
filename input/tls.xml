@@ -296,12 +296,14 @@
 	    <selectable>no other RFCs</selectable>
 	  </selectables>
 	  as a client supporting the following cipher suites:
-          <h:p/>Mandatory cipher suites: TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246
-          <h:p/>Optional cipher suites:
           <selectables linebreak="yes">
+            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
+            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-	    <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+            <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
@@ -310,8 +312,6 @@
             <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-            <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
             <selectable>no other cipher suite</selectable>
             </selectables> . </title>
             <note role="application">
@@ -801,12 +801,14 @@
 	      <selectable>no other RFCs</selectable>
 	    </selectables>
 	    as a server supporting the following cipher suites:
-              <h:p/>Mandatory cipher suites: TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246
-              <h:p/>Optional cipher suites:
               <selectables linebreak="yes">
+                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
+                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+                <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+                <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
                 <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
                 <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-		<selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+                <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
                 <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
                 <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
                 <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
@@ -815,8 +817,6 @@
                 <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
                 <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
                 <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable> 
-                <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
                 <selectable>no other cipher suite</selectable>
               </selectables> .
             </title>
