@@ -83,9 +83,10 @@
               Evaluation.</description>
           </entry>
           <entry>
-            <term><abbr title="Extended Package">EP</abbr></term>
-            <description>An implementation-independent set of security requirements which
-              extend the requirements in a <abbr linkend="PP"/>.
+            <term><abbr title="Package">Package</abbr></term>
+            <description>A named set of security requirements.  A package is either a functional
+              package containing only SFRs, or an assurance package containing only SARs.  Packages
+              can be used in the construction of larger packages, PPs, and STs.
             </description>
           </entry>
           <entry>
@@ -181,57 +182,32 @@
       </subsection>
 	  </section>
     <section title="Compliant Targets of Evaluation" id="TOEdescription">The Target of Evaluation
-      (TOE) in this PP-Module is a product which acts as a TLS client or server, or both.
+      (TOE) in this Package is a product which acts as a TLS client or server, or both.
+      This Package describes the security functionality of TLS in terms of
+      <cite linkend="bibCC" />. 
       <h:p/>
-      This PP-Module describes the security functionality of TLS in terms of
-      <cite linkend="bibCC" />. The contents of this PP-Module must be appropriately
-      combined with the Base-PP to include selection-based
-      requirements in accordance with the selections and/or assignments made,
-      and any optional and/or objective components.
+      The contents of this Package must be appropriately
+      combined with a <abbr linkend="PP"/>.  
+      The Package must include selection-based requirements in accordance with the
+      selections and/or assignments made, and any optional and/or objective components to include:<h:br/>
+      FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FIA_X509_EXT.1.*, FIA_X509_EXT.2.*.
       <h:p/>
-      The related PP-Configuration document specifies which <abbr linkend="PP"/>s may be 
-      combined with this PP-Module.
-      <h:br />
-      <h:ul>
-      <h:li>
-      <cite linkend="bibAppPP" /> must include selection-based requirements in accordance with the
-      selections and/or assignments made, and any optional and/or objective components to include:
-      FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.2.*, FIA_X509_EXT.1.*, FIA_X509_EXT.2.*.
-      </h:li>
-      <h:li>
-      <cite linkend="bibGPOS" /> must include selection-based requirements in accordance with the
-      selections and/or assignments made, and any optional and/or objective components to include:
-      FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FIA_X509_EXT.1.*,
-      FIA_X509_EXT.2.*.
-      </h:li>
-      <h:li>
-      <cite linkend="bibMDF" /> must include selection-based requirements in accordance with the
-      selections and/or assignments made, and any optional and/or objective components to include:
-      FCS_CKM.1.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FIA_X509_EXT.1.*, FIA_X509_EXT.2.*.
-      </h:li>
-      <h:li>
-      <cite linkend="bibMDM" /> must include selection-based requirements in accordance with the
-      selections and/or assignments made, and any optional and/or objective components to include:
-      FCS_CKM.1.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FIA_X509_EXT.1.*, FIA_X509_EXT.2.*.
-      </h:li>
-      </h:ul>
-      <h:br />
-      An ST must identify the applicable version of the Base-PP and this
-      PP-Module in its conformance claims.
+      An ST must identify the applicable version of the <abbr linkend="PP"/> and this
+      Package in its conformance claims.
     </section>
   </chapter>
   <chapter title="Conformance Claims" id="conf">
     <cclaims>
       <cclaim id="Conformance Statement">
-        <description>This PP-Module serves to extend existing Protection Profiles with additional 
-          SFRs and associated Assurance Activities specific to TLS clients and servers.  
+        <description>This Package serves to provide Protection Profiles with additional 
+          SFRs and associated Evaluation Activities specific to TLS clients and servers.  
           <h:p/>
-          This PP-Module conforms to Common Criteria
+          This Package conforms to Common Criteria
           <cite linkend="bibCC" /> for Information Technology Security Evaluation, Version 3.1,
           Revision 5. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to
-          this PP-Modules the
+          this Package the
           <abbr linkend="ST" /> must include all components in this
-          PP-Module and the associated Base-PP that are:
+          Package and the PP that are:
           <h:ul>
             <h:li>unconditional (which are always required)</h:li>
             <h:li>selection-based (which are required when certain selections are chosen in the
@@ -244,29 +220,7 @@
       </cclaim>
     </cclaims>
   </chapter>
-  <chapter title="Security Problem Description" id="spd">
-    This PP-Module does not repeat the threats, assumptions, and organizational security
-    policies identified in any Base-PPs, though they all apply given the conformance and hence
-    dependence of this PP-Module on it. Together the threats, assumptions and organizational security
-    policies of the Base-PP and those defined in this
-    PP-Module describe those addressed by the product as the Target of
-    Evaluation.
-  </chapter>
-  <chapter title="Security Objectives" id="obj">
-    <section title="Security Objectives for the TOE" id="SecurityObjectivesTOE">
-      <SOs>
-        <SO id="O.PROTECTED_COMMS">
-          <description>
-            To address both passive (eavesdropping) and active (packet
-            modification) network attack threats, conformant products provide
-            mechanisms to create trusted channels to protect sensitive data.
-          </description>
-          <component-refer ref="fcs_tls_ext.1"/>
-        </SO>
-      </SOs>
-    </section>
-
-  </chapter>
+  
   <chapter title="Security Requirements" id="req">This chapter describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
     <cite linkend="bibCC" />. The following notations are used:
