@@ -95,16 +95,6 @@
               of products.</description>
           </entry>
           <entry>
-            <term><abbr title="Protection Profile Configuration">PP-Configuration</abbr></term>
-            <description>A comprehensive set of security requirements for a product type that consists 
-              of at least one PP and at least one PP-Module.</description>
-          </entry>
-          <entry>
-            <term><abbr title="Protection Profile Module">PP-Module</abbr></term>
-            <description>An implementation-independent set of security requirements for a specific 
-              subset of products described by a PP.</description>
-          </entry>
-          <entry>
             <term><abbr title="Security Target">ST</abbr></term>
             <description>A set of implementation-dependent security requirements for a specific
               product.</description>
@@ -133,12 +123,7 @@
             <term><abbr title="Security Assurance Requirement">SAR</abbr></term>
             <description>A requirement to assure the security of the <abbr linkend="TOE"/>.
             </description>
-          </entry>
-          <entry> 
-            <term><abbr title="Assurance Guidance Documents">AGD</abbr></term>
-            <description>Documentation describing the secure preparation and operation of the <abbr linkend="TOE"/>.
-            </description>
-          </entry>	  
+          </entry> 
         </glossary>
       </subsection>
       <subsection title="Technology Terms" id="techterms">
@@ -215,7 +200,7 @@
           </h:ul>and may include optional and/or objective components that are desirable but not
           required for conformance.
           <h:br/>In accordance with CC Part 1, dependencies are not included when they are addressed
-          by other SFRs. The assurance activities provide adequate proof that any dependencies are
+          by other SFRs. The evaluation activities provide adequate proof that any dependencies are
           also satisfied.</description>
       </cclaim>
     </cclaims>
@@ -262,13 +247,13 @@
               conformance is being claimed. A TLS product can implement additional RFCs, but only those
               listed in the selection can be claimed as conformant.
               The RFC selections for this requirement need to be consistent with selections in
-              later elements of this Extended Package (e.g., cryptographic algorithms permitted).
+              later elements of this Package (e.g., cryptographic algorithms permitted).
               <h:br/>
               RFC 5246 indicates that certain cryptographic algorithms are "REQUIRED". This means that from the
               IETF's perspective the implementation must include support, not that the algorithms must
-              be enabled for use. For the purposes of this assurance activity and this Extended Package
+              be enabled for use. For the purposes of this evaluation activity and this Package
               overall, it is not necessary to ensure that algorithms listed as "REQUIRED" by the RFC
-              but not listed in later elements of this Extended Package are actually implemented.
+              but not listed in later elements of this Package are actually implemented.
               <h:br/>
 	      These requirements will be revisited as new TLS and DTLS versions are standardized by the IETF.
             <h:br/>
@@ -449,7 +434,7 @@
               discouraged, as against best practices, but may be implemented. Finally, the client
               should avoid constructing reference identifiers using wildcards. However, if the
               presented identifiers include wildcards, the client must follow the best practices
-              regarding matching; these best practices are captured in the assurance activity.
+              regarding matching; these best practices are captured in the evaluation activity.
             </note>
             <aactivity>
               The evaluator shall ensure that the <abbr title="TOE Summary Specification"
@@ -742,11 +727,11 @@
               Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the
               protocols are the same. In particular, for the applicable security characteristics
               defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all
-              application notes and assurance activities that are listed for
+              application notes and evaluation activities that are listed for
               <abbr title="Transport Layer Security">TLS</abbr> apply to the DTLS implementation.
             </note>
             <aactivity>
-              The evaluator shall perform the assurance activities listed for <linkref linkend="FCS_TLSC_EXT.1"/>.
+              The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.1"/>.
             </aactivity>
           </f-element>
         </f-component>
@@ -781,11 +766,11 @@
               Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the
               protocols are the same. In particular, for the applicable security characteristics
               defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all
-              application notes and assurance activities that are listed for
+              application notes and evaluation activities that are listed for
               <abbr title="Transport Layer Security">TLS</abbr> apply to the DTLS implementation.
             </note>
             <aactivity>
-              The evaluator shall perform the assurance activities listed for <linkref linkend="FCS_TLSS_EXT.1"/>.
+              The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.1"/>.
             </aactivity>
           </f-element>
         </f-component>
@@ -1186,26 +1171,34 @@
 
 	<f-component id="FCS_DTLSC_EXT.2" name="DTLS Client Support for Mutual Authentication" status="optional">
           <f-element id="fcs_dtlsc_ext.2.1">
-            <title>The product shall implement the requirements in <linkref linkend="FCS_TLSC_EXT.2" /> for the DTLS implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
+            <title>The product shall implement the requirements in <linkref linkend="FCS_TLSC_EXT.2" /> for the DTLS
+            implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
             </title>
             <note role="application">
-              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the protocols are the same. In particular, for the applicable security characteristics defined for the TSF, the two protocols do not differ. Therefore, all application notes and assurance activities that are listed for TLS apply to the DTLS implementation.  
+              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the protocols are the same.
+              In particular, for the applicable security characteristics defined for the TSF, the two protocols do not
+              differ. Therefore, all application notes and evaluation activities that are listed for TLS apply to the
+              DTLS implementation.
 	    </note>
 	    <aactivity>
-	      The evaluator shall perform the assurance activities listed for <linkref linkend="FCS_TLSC_EXT.2" />. 
+	      The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.2" />.
 	    </aactivity>
 	  </f-element>
 	</f-component>
 
 	<f-component id="FCS_DTLSS_EXT.2" name="DTLS Server Support for Mutual Authentication" status="optional">
           <f-element id="fcs_dtlss_ext.2.1">
-            <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.2" /> for the DTLS implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
+            <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.2" /> for the DTLS
+            implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
             </title>
             <note role="application">
-              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the protocols are the same. In particular, for the applicable security characteristics defined for the TSF, the two protocols do not differ. Therefore, all application notes and assurance activities that are listed for TLS apply to the DTLS implementation.  
+              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the protocols are the same.
+              In particular, for the applicable security characteristics defined for the TSF, the two protocols do not
+              differ. Therefore, all application notes and evaluation activities that are listed for TLS apply to the
+              DTLS implementation.
 	    </note>
 	    <aactivity>
-	      The evaluator shall perform the assurance activities listed for <linkref linkend="FCS_TLSS_EXT.2" />. 
+	      The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2" />.
 	    </aactivity>
 	  </f-element>
 	</f-component>	
