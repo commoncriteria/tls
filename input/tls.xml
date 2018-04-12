@@ -405,9 +405,8 @@
                       Server Key Exchange message.
                     </test>
                     <test>
-                      Modify a byte in the data of the server's Finished handshake message, and verify that
-                      the client sends a Fatal Alert upon receipt and does not send any application
-                      data.
+                      Modify a byte in the Server Finished handshake message, and verify that the
+                      client sends a Fatal Alert by observing the response received by the server. 
                     </test>
                     <test>
                       Send a message consisting of random bytes from the server after the server has issued the
