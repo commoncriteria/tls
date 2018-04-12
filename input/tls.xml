@@ -174,7 +174,7 @@
       The contents of this Package must be appropriately
       combined with a <abbr linkend="PP"/>.  
       The Package must include selection-based requirements in accordance with the
-      selections and/or assignments made, and any optional and/or objective components to include:<h:br/>
+      selections and/or assignments made, and the following components:<h:br/>
       FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FIA_X509_EXT.1.*, FIA_X509_EXT.2.*.
       <h:p/>
       An ST must identify the applicable version of the <abbr linkend="PP"/> and this
@@ -229,12 +229,17 @@
       <subsection title="Cryptographic Support (FCS)" id="fcs">
         <f-component id="fcs_tls_ext.1" name="TLS Protocol" status="threshold">
           <f-element id="fcs_tls_ext.1.1">
-			<title>The product shall implement the TLS protocol that complies with TLS 1.2 (RFC 5246) and
+			<title>The product shall implement the TLS protocol that complies with 
+        <selectables linebreak="yes">
+          <selectable>TLS 1.2 (RFC 5246) </selectable>
+    			<selectable>DTLS 1.2 (RFC 6347)</selectable>
+        </selectables>
+      and
 					<selectables linebreak="yes">
 						<selectable>TLS 1.0 (RFC 2246)</selectable>
 						<selectable>TLS 1.1 (RFC 4346)</selectable>
 						<selectable>DTLS 1.0 (RFC 4347)</selectable>
-						<selectable>DTLS 1.2 (RFC 6347)</selectable>
+
 						<selectable>no other RFCs</selectable>
 					</selectables>
 					as a
@@ -639,31 +644,18 @@
               authentication. <h:br/> The evaluator shall also perform the following tests:
               <h:br/>
 	      <testlist>
-		<test>Configure the server to require mutual
-		authentication and to send a Certificate Request
-		message which includes the information for the CA
-		which signed the client's certificate in the
-		certificate_authorities field. The evaluator shall
-		attempt a connection using the client certificate and
-		verify that the client sends Certificate and
-		Certificate Verify messages.
+          <test>The evaluator shall establish a connection to a peer server that is not
+configured for mutual authentication (i.e. does not send Server’s Certificate
+Request (type 13) message). The evaluator observes negotiation of a TLS channel
+and confirms that the TOE did not send Client’s Certificate message (type 11)
+during handshake. 
 		</test>
-		<test>Configure the server to require mutual
-		authentication and to send a Certificate Request
-		message which does not include the information for the
-		CA which signed the client's certificate in the
-		certificate_authorities field. The evaluator shall
-		attempt a connection using the client certificate and
-		verify that the client sends a zero-length Certificate
-		message.
-		</test>
-		<test>Configure the server to require mutual
-		authentication and then modify a byte in the
-		certificate_authorities field in the Server's
-		Certificate Request handshake message. The modified
-		value must not be the CA used to sign the client's
-		certificate.  The evaluator shall verify the
-		connection is unsuccessful.
+		<test>The evaluator shall establish a connection to a peer server with a
+		shared trusted root that is configured for mutual authentication (i.e. it
+		sends Server’s Certificate Request (type 13) message). The evaluator
+		observes negotiation of a TLS channel and confirms that the TOE responds
+		with a non-empty Client’s Certificate message (type 11) and Certificate
+		Verify (type 15) message.
 		</test>
 	      </testlist>
             </aactivity>
