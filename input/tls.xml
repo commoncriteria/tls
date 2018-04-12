@@ -406,7 +406,7 @@
                     </test>
                     <test>
                       Modify a byte in the Server Finished handshake message, and verify that the
-                      client sends a Fatal Alert by observing the response received by the server. 
+                      client sends a Fatal Alert by observing the response received by the server.
                     </test>
                     <test>
                       Send a message consisting of random bytes from the server after the server has issued the
@@ -795,8 +795,7 @@ during handshake.
                 <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
                 <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
                 <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-                <selectable>no other cipher suite</selectable>
-              </selectables> .
+              </selectables>.
             </title>
             <note role="application">
 	      Any TLS version selected in <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected here.
@@ -816,8 +815,10 @@ during handshake.
 	      <h:br/>
 	      GCM cipher suites are preferred over CBC cipher suites,
 	      ECDHE preferred over RSA and DHE, and SHA256 or SHA384
-	      over SHA.  TLS_RSA_WITH_AES_128_CBC_SHA is required in
-	      order to ensure compliance with RFC 5246.
+	      over SHA.  
+        <h:br/>
+        TLS_RSA_WITH_AES_128_CBC_SHA is not required 
+	      despite being mandated by RFC 5246.
 	      <h:br/> These requirements will be revisited as new
 	      <abbr title="Transport Layer Security">TLS</abbr>
 	      versions are standardized by the IETF.
