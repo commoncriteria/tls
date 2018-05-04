@@ -1033,15 +1033,19 @@ during handshake.
                   of the certificates, and show that the function fails.
                 </test>
                 <test>
-                  If the TOE supports sending a non-empty Certificate
-                  Authorities list in its Certificate Request message, the
-                  evaluator shall configure the client to send a certificate
-                  that does not chain to one of the Certificate Authorities
-                  (either a Root or Intermediate CA) in the server's Certificate
-                  Request message. The evaluator shall verify that the attempted
-                  connection is denied. If the TOE doesn't support sending a
-                  non-empty Certificate Authorities list in its Certificate
-                  Request message, this test shall be omitted.
+                  The aim of this test is to check the response of the server
+                  when it receives a client identity  certificate that is signed
+                  by an impostor CA (either Root CA or intermediate CA). To
+                  carry out this test the  evaluator shall configure the client
+                  to send a client identity certificate with an issuer field
+                  that identifies a  CA recognised by the TOE as a trusted CA,
+                  but where the key used for the signature on the client
+                  certificate  does not in fact correspond to the CA certificate
+                  trusted by the TOE (meaning that the client certificate is
+                  invalid  because  its  certification  path  does  not  in
+                  fact  terminate  in  the  claimed  CA  certificate).  The
+                  evaluator shall verify that the attempted connection is
+                  denied.
                 </test>
                 <test>
                   The evaluator shall configure the client to send a certificate with the
