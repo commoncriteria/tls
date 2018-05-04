@@ -331,8 +331,8 @@
 	      These requirements will be revisited as new <abbr
 	      title="Transport Layer Security">TLS</abbr> versions are
 	      standardized by the IETF.
-	      <h:br/> If any ECDHE cipher suites are selected, then
-	      <linkref linkend="FCS_TLSC_EXT.1.4"/> is required.
+	      <h:br/> If any ECDHE or DHE cipher suites are selected, then
+	      <linkref linkend="FCS_TLSC_EXT.5.1"/> is required.
 	    </note>
             <aactivity>
               The evaluator shall check the description of the implementation of this
@@ -548,34 +548,35 @@
                   not have a valid identifier results in an authentication failure. </test>
               </testlist>
             </aactivity>
-          </f-element>
-          <f-element id="fcs_tlsc_ext.1.4">
-            <title> The product shall present the Supported Elliptic Curves Extension in the Client Hello
-              with the following NIST curves: <selectables>
-                <selectable>secp256r1</selectable>
-                <selectable>secp384r1</selectable>
-                <selectable>secp521r1</selectable>
-              </selectables> and no other curves. </title>
-            <note role="application"> 
-	    This extension is required for clients supporting ECDHE cipher suites in <linkref linkend="FCS_TLSC_EXT.1.1"/>. </note>
-            <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
-              linkend="TSS">TSS</abbr> describes the Supported Elliptic Curves Extension and
-              whether the required behavior is performed by default or may be configured. If the
-              <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> indicates that the
-              Supported Elliptic Curves Extension must be configured to meet the requirement, the
-              evaluator shall verify that AGD guidance includes configuration of the Supported
-              Elliptic Curves Extension.
-	      <h:br/>
-	      The evaluator shall also perform the following test:
-              <h:br/>
-              The evaluator shall configure the server to perform an ECDHE key exchange
-              message in the <abbr title="Transport Layer Security">TLS</abbr> connection using
-              a non-supported ECDHE curve (for example, secp192r1) and shall verify that the product disconnects after
-              receiving the server's Key Exchange handshake message.
-            </aactivity>
-          </f-element>  
+          </f-element>       
         </f-component>
-
+        <f-component id="fcs_tlsc_ext.5" name="TLS Client Protocol" status="sel-based">
+  <selection-depends req="fcs_tlsc_ext.1.1"/>
+          <f-element id="fcs_tlsc_ext.5.1"><!-- Was 1.4 -->
+     <!-- TODO: IDs for ECC DHE curves -->
+          <title> The product shall present the Supported Groups Extension in the Client Hello
+            with the following NIST curves: <selectables>
+              <selectable>secp256r1</selectable>
+              <selectable>secp384r1</selectable>
+              <selectable>secp521r1</selectable>
+              <selectable>ffdhe2048(256)</selectable> 
+              <selectable>ffdhe3072(257)</selectable> 
+              <selectable>ffdhe4096(258)</selectable>
+              <selectable>ffdhe6144(259)</selectable> 
+              <selectable>ffdhe8192(260)</selectable>
+            </selectables>. </title>
+          <note role="application"> 
+            If an elliptic-curve or diffie-hellman ciphersuite is selected in <linkref linkend="FCS_TLSC_EXT.1.1"/>, then FCS_TLSC_EXT.5.1 shall be included in the ST. This requirement does not limit the elliptic curves the client may propose for authentication and key agreement. 
+          This was formally referred to as Support Elliptic Curves Extension. </note>
+          <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
+            linkend="TSS">TSS</abbr> describes the Supported Elliptic Curves Extension. 
+            <h:br/>
+            The evaluator shall also perform the following test:
+            <h:br/>
+            The evaluator shall configure a server to perform ECDHE key exchange using each of the TOE’s supported curves and/or groups. The evaluator shall verify that the TOE successfully connects to the server.  
+          </aactivity>
+        </f-element>  
+</f-component>
         <f-component id="fcs_tlsc_ext.3" name="TLS Client Protocol Signature Algorithms" status="objective">
           <f-element id="fcs_tlsc_ext.3.1">
             <title> The product shall present the signature_algorithms extension in the Client Hello with
