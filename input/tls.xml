@@ -562,9 +562,11 @@
                 <selectable>secp256r1</selectable>
                 <selectable>secp384r1</selectable>
                 <selectable>secp521r1</selectable>
-              </selectables> and no other curves. </title>
+              </selectables>.</title>
             <note role="application"> 
-	    This extension is required for clients supporting ECDHE cipher suites in <linkref linkend="FCS_TLSC_EXT.1.1"/>. </note>
+	             This extension is required for clients supporting ECDHE cipher suites in
+               <linkref linkend="FCS_TLSC_EXT.1.1"/>.  
+            </note> 
             <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
               linkend="TSS">TSS</abbr> describes the Supported Elliptic Curves Extension and
               whether the required behavior is performed by default or may be configured. If the
