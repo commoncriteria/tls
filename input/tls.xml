@@ -453,10 +453,16 @@
               configure the reference identifier according to the AGD guidance and perform the
               following tests during a <abbr title="Transport Layer Security">TLS</abbr> connection:
               <testlist>
-                <test> The evaluator shall present a server certificate that does not contain an
-                  identifier in either the Subject Alternative Name (SAN) or Common Name (CN) that
-                  matches the reference identifier. The evaluator shall verify that the connection
-                  fails.
+                <test> 
+                  The evaluator shall present a server certificate that contains
+                  a CN that does not match the reference identifier and does not
+                  contain the SAN extension. The evaluator shall verify that the
+                  connection fails. 
+                  <h:p/>Note that some systems might require the presence of the SAN extension.
+                  In this case the connection would still fail but for the
+                  reason of the missing SAN extension instead of the mismatch of
+                  CN and reference identifier. Both reasons are acceptable to
+                  pass Test 1.
                 </test>
                 <test>
                   The evaluator shall present a server certificate that contains a CN that
@@ -466,11 +472,12 @@
                   each supported SAN type.
                 </test>
                 <test>
-                  If the TOE does not mandate the presence of the SAN extension, the evaluator shall
-                  present a server certificate that contains a CN that matches the reference identifier
-                  and does not contain the SAN extension. The evaluator shall verify that the connection
-                  succeeds. If the TOE does mandate the presence of the SAN extension, this Test shall
-                  be omitted.
+                  If the TOE does not mandate the presence of the SAN extension,
+                  the evaluator shall present a server certificate that contains
+                  a CN that matches the reference identifier and does not
+                  contain the SAN extension. The evaluator shall verify that the
+                  connection succeeds. If the TOE does mandate the presence of
+                  the SAN extension, this Test shall be omitted.  
                 </test>
                 <test>
                   The evaluator shall present a server certificate that contains a CN that does
