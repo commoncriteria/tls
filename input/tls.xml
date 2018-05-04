@@ -557,81 +557,8 @@
             </aactivity>
           </f-element>       
         </f-component>
-        <f-component id="fcs_tlsc_ext.5" name="TLS Client Protocol" status="sel-based">
-  <selection-depends req="fcs_tlsc_ext.1.1"/>
-          <f-element id="fcs_tlsc_ext.5.1"><!-- Was 1.4 -->
-     <!-- TODO: IDs for ECC DHE curves -->
-          <title> The product shall present the Supported Groups Extension in the Client Hello
-            with the following NIST curves: <selectables>
-              <selectable>secp256r1</selectable>
-              <selectable>secp384r1</selectable>
-              <selectable>secp521r1</selectable>
-              <selectable>ffdhe2048(256)</selectable> 
-              <selectable>ffdhe3072(257)</selectable> 
-              <selectable>ffdhe4096(258)</selectable>
-              <selectable>ffdhe6144(259)</selectable> 
-              <selectable>ffdhe8192(260)</selectable>
-            </selectables>. </title>
-          <note role="application"> 
-            If an elliptic-curve or diffie-hellman ciphersuite is selected in <linkref linkend="FCS_TLSC_EXT.1.1"/>, then FCS_TLSC_EXT.5.1 shall be included in the ST. This requirement does not limit the elliptic curves the client may propose for authentication and key agreement. 
-          This was formally referred to as Support Elliptic Curves Extension. </note>
-          <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
-            linkend="TSS">TSS</abbr> describes the Supported Elliptic Curves Extension. 
-            <h:br/>
-            The evaluator shall also perform the following test:
-            <h:br/>
-            The evaluator shall configure a server to perform ECDHE key exchange using each of the TOE’s supported curves and/or groups. The evaluator shall verify that the TOE successfully connects to the server.  
-          </aactivity>
-        </f-element>  
-</f-component>
-        <f-component id="fcs_tlsc_ext.3" name="TLS Client Protocol Signature Algorithms" status="objective">
-          <f-element id="fcs_tlsc_ext.3.1">
-            <title> The product shall present the signature_algorithms extension in the Client Hello with
-              the supported_signature_algorithms value containing the following hash algorithms: <selectables>
-                <selectable>SHA256</selectable>
-                <selectable>SHA384</selectable>
-                <selectable>SHA512</selectable>
-              </selectables> and no other hash algorithms. </title>
-            <note role="application"> This requirement limits the hashing algorithms supported for
-              the purpose of digital signature verification by the client and limits the server to
-              the supported hashes for the purpose of digital signature generation by the server.
-              The signature_algorithms extension is only supported by <abbr
-                title="Transport Layer Security">TLS</abbr> 1.2. </note>
-            <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr> describes the signature_algorithm extension and whether the
-              required behavior is performed by default or may be configured. If the <abbr
-                title="TOE Summary Specification" linkend="TSS">TSS</abbr> indicates that the
-              signature_algorithm extension must be configured to meet the requirement, the
-              evaluator shall verify that AGD guidance includes configuration of the
-              signature_algorithm extension. <h:br/> The evaluator shall also perform the following
-              tests:
-              <testlist>
-		<test>
-		  The evaluator shall configure the server to send a
-		  certificate in the <abbr title="Transport Layer
-		  Security">TLS</abbr> connection that is not
-		  supported according to the Client's HashAlgorithm
-		  enumeration within the signature_algorithms
-		  extension (for example, send a certificate with a
-		  SHA-1 signature). The evaluator shall verify that
-		  the product disconnects after receiving the server's
-		  Certificate handshake message.
-		</test>
-		<test>
-		  [conditional] If the client supports a DHE or ECDHE
-		  cipher suite, the evaluator shall configure the
-		  server to send a Key Exchange handshake message
-		  including a signature not supported according to the
-		  client's HashAlgorithm enumeration (for example, the
-		  server signed the Key Exchange parameters using a
-		  SHA-1 signature). The evaluator shall verify that
-		  the product disconnects after receiving the server's
-		  Key Exchange handshake message.
-		</test>
-	      </testlist>
-              </aactivity>
-          </f-element>  
-        </f-component>
+        
+        
         <f-component id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="optional">
           <f-element id="fcs_tlsc_ext.2.1">
             <title> The product shall support mutual authentication using X.509v3 certificates. </title>
@@ -666,6 +593,54 @@ during handshake.
             </aactivity>
           </f-element>
         </f-component>
+        <f-component id="fcs_tlsc_ext.3" name="TLS Client Protocol Signature Algorithms" status="objective">
+          <f-element id="fcs_tlsc_ext.3.1">
+            <title> The product shall present the signature_algorithms extension in the Client Hello with
+              the supported_signature_algorithms value containing the following hash algorithms: <selectables>
+                <selectable>SHA256</selectable>
+                <selectable>SHA384</selectable>
+                <selectable>SHA512</selectable>
+              </selectables> and no other hash algorithms. </title>
+            <note role="application"> This requirement limits the hashing algorithms supported for
+              the purpose of digital signature verification by the client and limits the server to
+              the supported hashes for the purpose of digital signature generation by the server.
+              The signature_algorithms extension is only supported by <abbr
+                title="Transport Layer Security">TLS</abbr> 1.2. </note>
+            <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
+              linkend="TSS">TSS</abbr> describes the signature_algorithm extension and whether the
+              required behavior is performed by default or may be configured. If the <abbr
+                title="TOE Summary Specification" linkend="TSS">TSS</abbr> indicates that the
+              signature_algorithm extension must be configured to meet the requirement, the
+              evaluator shall verify that AGD guidance includes configuration of the
+              signature_algorithm extension. <h:br/> The evaluator shall also perform the following
+              tests:
+              <testlist>
+                <test>
+                  The evaluator shall configure the server to send a
+                  certificate in the <abbr title="Transport Layer
+                    Security">TLS</abbr> connection that is not
+                  supported according to the Client's HashAlgorithm
+                  enumeration within the signature_algorithms
+                  extension (for example, send a certificate with a
+                  SHA-1 signature). The evaluator shall verify that
+                  the product disconnects after receiving the server's
+                  Certificate handshake message.
+                </test>
+                <test>
+                  [conditional] If the client supports a DHE or ECDHE
+                  cipher suite, the evaluator shall configure the
+                  server to send a Key Exchange handshake message
+                  including a signature not supported according to the
+                  client's HashAlgorithm enumeration (for example, the
+                  server signed the Key Exchange parameters using a
+                  SHA-1 signature). The evaluator shall verify that
+                  the product disconnects after receiving the server's
+                  Key Exchange handshake message.
+                </test>
+              </testlist>
+            </aactivity>
+          </f-element>  
+        </f-component>
         <f-component id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="optional">
           <f-element id="fcs_tlsc_ext.4.1">
             <title> The product shall support secure renegotiation through use
@@ -696,7 +671,33 @@ during handshake.
             </aactivity>
           </f-element>
         </f-component>
-
+        <f-component id="fcs_tlsc_ext.5" name="TLS Client Protocol" status="sel-based">
+          <selection-depends req="fcs_tlsc_ext.1.1"/>
+          <f-element id="fcs_tlsc_ext.5.1"><!-- Was 1.4 -->
+            <!-- TODO: IDs for ECC DHE curves -->
+            <title> The product shall present the Supported Groups Extension in the Client Hello
+              with the following NIST curves: <selectables>
+                <selectable>secp256r1</selectable>
+                <selectable>secp384r1</selectable>
+                <selectable>secp521r1</selectable>
+                <selectable>ffdhe2048(256)</selectable> 
+                <selectable>ffdhe3072(257)</selectable> 
+                <selectable>ffdhe4096(258)</selectable>
+                <selectable>ffdhe6144(259)</selectable> 
+                <selectable>ffdhe8192(260)</selectable>
+              </selectables>. </title>
+            <note role="application"> 
+              If an elliptic-curve or diffie-hellman ciphersuite is selected in <linkref linkend="FCS_TLSC_EXT.1.1"/>, then FCS_TLSC_EXT.5.1 shall be included in the ST. This requirement does not limit the elliptic curves the client may propose for authentication and key agreement. 
+              This was formally referred to as Support Elliptic Curves Extension. </note>
+            <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
+              linkend="TSS">TSS</abbr> describes the Supported Elliptic Curves Extension. 
+              <h:br/>
+              The evaluator shall also perform the following test:
+              <h:br/>
+              The evaluator shall configure a server to perform ECDHE key exchange using each of the TOE’s supported curves and/or groups. The evaluator shall verify that the TOE successfully connects to the server.  
+            </aactivity>
+          </f-element>  
+        </f-component>
         <f-component id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_dtlsc_ext.1.1">
