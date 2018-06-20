@@ -302,14 +302,13 @@
             <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-            </selectables>. 
+            </selectables>.
           </title>
             <note role="application">
 	      Any TLS version selected in <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected here.
 	      <h:br/>
 	      The <abbr title="Security Target" linkend="ST">ST
-              </abbr> author should select the optional cipher suites that are supported.
-	      <h:br/>
+              </abbr> author should select the cipher suites that are supported.
 	      The cipher suites to be tested in the evaluated
 	      configuration are limited by this requirement; however,
 	      this requirement does not restrict the TOE's ability to
@@ -325,14 +324,14 @@
 	      <h:br/>
 	      GCM cipher suites are preferred over CBC cipher suites,
 	      ECDHE preferred over RSA and DHE, and SHA256 or SHA384
-	      over SHA.  TLS_RSA_WITH_AES_128_CBC_SHA is required in
-	      order to ensure compliance with RFC 5246.
+	      over SHA.  TLS_RSA_WITH_AES_128_CBC_SHA is not required despite being mandated by RFC 5246.
 	      <h:br/>
 	      These requirements will be revisited as new <abbr
 	      title="Transport Layer Security">TLS</abbr> versions are
 	      standardized by the IETF.
-	      <h:br/> If any ECDHE or DHE cipher suites are selected, then
-	      <linkref linkend="FCS_TLSC_EXT.5.1"/> is required.
+	      <h:br/>
+        If any ECDHE or DHE cipher suites are selected, then
+	      <linkref linkend="FCS_TLSC_EXT.5"/> is required.
 	    </note>
             <aactivity>
               The evaluator shall check the description of the implementation of this
@@ -429,7 +428,9 @@
               DNS name, URI name, and Service Name for the Subject Alternative Name field. The
               client then compares this list of all acceptable reference identifiers to the
               presented identifiers in the <abbr title="Transport Layer Security">TLS</abbr>
-              server’s certificate. <h:br/> The preferred method for verification is the Subject
+              server’s certificate. 
+              <h:br/>
+              The preferred method for verification is the Subject
               Alternative Name using DNS names, URI names, or Service Names. Verification using the
               Common Name is required for the purposes of backwards compatibility. Additionally,
               support for use of IP addresses in the Subject Name or Subject Alternative name is
@@ -593,7 +594,7 @@ during handshake.
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_tlsc_ext.3" name="TLS Client Protocol Signature Algorithms" status="objective">
+        <f-component id="fcs_tlsc_ext.3" name="TLS Client Support for Signature Algorithms Extension" status="objective">
           <f-element id="fcs_tlsc_ext.3.1">
             <title> The product shall present the signature_algorithms extension in the Client Hello with
               the supported_signature_algorithms value containing the following hash algorithms: <selectables>
@@ -671,7 +672,7 @@ during handshake.
             </aactivity>
           </f-element>
         </f-component>
-        <f-component id="fcs_tlsc_ext.5" name="TLS Client Protocol" status="sel-based">
+        <f-component id="fcs_tlsc_ext.5" name="TLS Client Support for Supported Groups Extension" status="sel-based">
           <selection-depends req="fcs_tlsc_ext.1.1"/>
           <f-element id="fcs_tlsc_ext.5.1"><!-- Was 1.4 -->
             <!-- TODO: IDs for ECC DHE curves -->
@@ -680,21 +681,24 @@ during handshake.
                 <selectable>secp256r1</selectable>
                 <selectable>secp384r1</selectable>
                 <selectable>secp521r1</selectable>
-                <selectable>ffdhe2048(256)</selectable> 
-                <selectable>ffdhe3072(257)</selectable> 
+                <selectable>ffdhe2048(256)</selectable>
+                <selectable>ffdhe3072(257)</selectable>
                 <selectable>ffdhe4096(258)</selectable>
-                <selectable>ffdhe6144(259)</selectable> 
+                <selectable>ffdhe6144(259)</selectable>
                 <selectable>ffdhe8192(260)</selectable>
               </selectables>. </title>
-            <note role="application"> 
-              If an elliptic-curve or diffie-hellman ciphersuite is selected in <linkref linkend="FCS_TLSC_EXT.1.1"/>, then FCS_TLSC_EXT.5.1 shall be included in the ST. This requirement does not limit the elliptic curves the client may propose for authentication and key agreement. 
-              This was formally referred to as Support Elliptic Curves Extension. </note>
+            <note role="application">
+              If an elliptic curve or Diffie-Hellman ciphersuite is selected in <linkref linkend="FCS_TLSC_EXT.1.1"/>,
+              then <linkref linkend="FCS_TLSC_EXT.5"/> shall be included in the ST. This requirement does not limit the
+              elliptic curves the client may propose for authentication and key agreement.
+              This was previously referred to as Supported Elliptic Curves Extension. </note>
             <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
               linkend="TSS">TSS</abbr> describes the Supported Elliptic Curves Extension. 
               <h:br/>
               The evaluator shall also perform the following test:
               <h:br/>
-              The evaluator shall configure a server to perform ECDHE key exchange using each of the TOE’s supported curves and/or groups. The evaluator shall verify that the TOE successfully connects to the server.  
+              The evaluator shall configure a server to perform ECDHE key exchange using each of the TOE’s supported
+              curves and/or groups. The evaluator shall verify that the TOE successfully connects to the server.
             </aactivity>
           </f-element>  
         </f-component>
@@ -703,11 +707,12 @@ during handshake.
           <f-element id="fcs_dtlsc_ext.1.1">
             <title>The product shall implement the DTLS protocol in accordance with
             <selectables>
-	    <selectable>DTLS 1.0 (RFC 4347)</selectable>
-	    <selectable>DTLS 1.2 (RFC 6347)</selectable>
-	    </selectables> as a client.
+              <selectable>DTLS 1.0 (RFC 4347)</selectable>
+              <selectable>DTLS 1.2 (RFC 6347)</selectable>
+            </selectables> as a client.
             </title>
-            <note role="application">Any DTLS version selected in <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected here.</note>
+            <note role="application">Any DTLS version selected in <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected
+            here.</note>
             <aactivity>
               <testlist>
                 <test>
@@ -1110,15 +1115,15 @@ during handshake.
           </f-element>
         </f-component>
 
-	<f-component id="FCS_TLSS_EXT.3" name="TLS Server Protocol Signature Algorithms" status="objective">
+	<f-component id="FCS_TLSS_EXT.3" name="TLS Server Support for Signature Algorithms Extension" status="objective">
           <f-element id="fcs_tlss_ext.3.1">
             <title>The product shall present the HashAlgorithm
             enumeration in supported_signature_algorithms in the
             Certificate Request with the following hash algorithms:
 	    <selectables>
-	      <selection>SHA256</selection>
-	      <selection>SHA384</selection>
-	      <selection>SHA512</selection>
+	      <selectable>SHA256</selectable>
+	      <selectable>SHA384</selectable>
+	      <selectable>SHA512</selectable>
 	    </selectables> and no other hash algorithms.
             </title>
             <note role="application">
