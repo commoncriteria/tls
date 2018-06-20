@@ -4,19 +4,18 @@ Extended Package for TLS
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/tls.svg?maxAge=2592000)](https://github.com/commoncriteria/tls/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
-This repository hosts the draft version of the Extended Package for TLS based on the 
-[Essential Security Requirements (ESR)](https://commoncriteria.github.io/pp/tls/tls-esr.html) for this technology class of 
-products. This repository is used to facilitate collaboration and development on the draft document. 
+This repository hosts the draft version of the Package for TLS based on the 
+[Essential Security Requirements (ESR)](https://commoncriteria.github.io/pp/tls/tls-esr.html) for products which implement this technology. This repository is used to facilitate collaboration and development on the draft document. 
 See the [release](#Release-Version) section if you are looking for the officially released version for evaluations. 
 
 ## Draft Version
-
-* [Extended Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.html) (html)
-* [Extended Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.pdf) (pdf)
+* [Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.html) (html)
+* [Package for TLS in heretical reader-friendly format](https://commoncriteria.github.io/pp/tls/tls.html) (html)
+* [Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.pdf) (pdf)
 
 ## Release Version
 
-* Extended Package for TLS v1.0 (coming soon)
+* Package for TLS v1.0 (coming soon)
 
 ## Contributing
 
