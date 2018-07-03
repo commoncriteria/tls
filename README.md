@@ -31,7 +31,7 @@ Questions, comments, and fixes can be submitted to the [repository issue tracker
 To clone this project along with its _transforms_ submodule run:
 
 ````
-  git clone --recursive git@github.com:commoncriteria/tls.git
+  git clone --recursive https://github.com/commoncriteria/tls.git
 ````
 To pull updates from the upstream _transforms_ submodule and commit them run:
 ````
