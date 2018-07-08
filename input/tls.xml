@@ -1101,7 +1101,6 @@ during handshake.
               identifier may either be configured, may be compared to the
               domain name, IP address, username, or email address used by
               the peer, or may be passed to a directory server for comparison.
-              Matching should be performed by a bit-wise comparison.
             </note>
             <aactivity>
               If the product implements mutual authentication, the evaluator shall
