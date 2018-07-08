@@ -1044,7 +1044,8 @@ during handshake.
                   The evaluator shall configure the server to send a certificate request
                   to the client without the supported_signature_algorithm used by the client’s
                   certificate. The evaluator shall attempt a connection using the client
-                  certificate and verify that the connection is denied.
+                  certificate and verify that the handshake is not finished successfully
+                  and no application data flows.
                 </test>
                 <test>
                   The evaluator shall demonstrate that using a certificate without a
@@ -1080,10 +1081,10 @@ during handshake.
                 <test>
                   The evaluator shall perform the following modifications to the traffic:
                   a) Configure the server to require mutual authentication and then
-                  modify a byte in the signature block of the client’s certificate. The evaluator shall verify
+                  modify a byte in the client’s certificate. The evaluator shall verify
                   that the server rejects the connection.
                   b) Configure the server to require mutual authentication and then
-                  modify a byte in the client’s Certificate Verify handshake message.
+                  modify a byte in the signature block of the client’s Certificate Verify handshake message.
                   The evaluator shall verify that the server rejects the connection.
                 </test>
               </testlist>
@@ -1092,7 +1093,7 @@ during handshake.
           <f-element id="fcs_tlss_ext.2.3">
             <title>The product shall not establish a trusted channel if
               the Distinguished Name (DN) or Subject Alternative Name (SAN)
-              contained in a certificate does not match the expected identifier
+              contained in a certificate does not match one of the expected identifiers
               for the peer.
             </title>
             <note role="application">
@@ -1101,6 +1102,7 @@ during handshake.
               identifier may either be configured, may be compared to the
               domain name, IP address, username, or email address used by
               the peer, or may be passed to a directory server for comparison.
+              In the latter case, the matching itself may be performed outside the TOE.
             </note>
             <aactivity>
               If the product implements mutual authentication, the evaluator shall
@@ -1113,9 +1115,10 @@ during handshake.
               expected identifier or the directory server for the connection.
               <testlist>
                 <test>
-                  The evaluator shall send a client certificate with an
-                  identifier that does not match an expected identifier
-                  and verify that the server denies the connection.
+                  The evaluator shall send a client certificate with an identifier that does not match any of the
+                  expected identifiers and verify that the server denies the connection. The matching itself
+                  might be performed outside the TOE (e.g. when passing the certificate on to a directory server
+                  for comparison).
                 </test>
               </testlist>
             </aactivity>
