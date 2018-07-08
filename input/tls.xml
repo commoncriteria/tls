@@ -991,14 +991,16 @@ during handshake.
                 <test>
                   [conditional] The evaluator shall attempt a
                   connection using an ECDHE ciphersuite and a
-                  configured curve and, using a packet analyzer,
+                  configured curve and
                   verify that the key agreement parameters in the Key
                   Exchange message are the ones configured.
                   (Determining that the size matches the expected size
                   for the configured curve is sufficient.) The
                   evaluator shall repeat this test for each supported
                   NIST elliptic curve and each supported
-                  Diffie-Hellman key size.
+                  Diffie-Hellman key size. The testing can be carried out
+                  manually with a packet analyzer or with an automated framework
+                  that similarly captures such empirical evidence.
                 </test>
               </testlist>
             </aactivity>
@@ -1037,8 +1039,12 @@ during handshake.
               <testlist>
                 <test>
                   The evaluator shall configure the server to send a certificate request
-                  to the client and shall attempt a connection without sending a certificate from
-                  the client. The evaluator shall verify that the connection is denied.
+                  to the client.  The evaluator shall separately perform each of the following tests: 
+                  a) The client shall send a certificate_list structure which has a length of zero. The evaluator
+                  shall verify that the handshake is not finished successfully and no application data flows.
+                  b) The client shall send no client certificate message, and instead send a client key exchange
+                  message in an attempt to continue the handshake. The evaluator shall verify that the handshake is
+                  not finished successfully and no application data flows.
                 </test>
                 <test>
                   The evaluator shall configure the server to send a certificate request
