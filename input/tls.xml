@@ -386,20 +386,20 @@
                       connection.
                     </test>
                     <test>
-                      [conditional] If DHE or ECDHE cipher suites are supported, modify at least one byte in the server’s nonce in the Server Hello
-                      handshake message, and verify that the client rejects the Server Key Exchange
-                      handshake message.
+                      [conditional] If DHE or ECDHE cipher suites are supported, modify at least one byte in the
+                      server’s nonce in the Server Hello handshake message, and verify that the client does not complete
+                      the handshake and no application data flows.
                     </test>
                     <test>
                       Modify the server’s selected cipher suite in the Server Hello handshake
                       message to be a cipher suite not presented in the Client Hello handshake
-                      message. The evaluator shall verify that the client rejects the connection
-                      after receiving the Server Hello.
+                      message. The evaluator shall verify that the client does not complete the handshake
+                      and no application data flows.
                     </test>
                     <test>
-                      [conditional] If DHE or ECDHE cipher suites are supported, modify the signature block in the server’s Key Exchange handshake
-                      message, and verify that the client rejects the connection after receiving the
-                      Server Key Exchange message.
+                      [conditional] If DHE or ECDHE cipher suites are supported, modify the signature block in the
+                      server’s Key Exchange handshake message, and verify that the client does not complete the handshake
+                      and no application data flows.
                     </test>
                     <test>
                       Modify a byte in the Server Finished handshake message, and verify that the
@@ -407,7 +407,8 @@
                     </test>
                     <test>
                       Send a message consisting of random bytes from the server after the server has issued the
-                      Change Cipher Spec message and verify that the client denies the connection.
+                      Change Cipher Spec message and verify that the client does not complete the handshake
+                      and no application data flows.
                     </test>
                   </testlist>
                 </test>
@@ -486,8 +487,7 @@
                   matches. The evaluator shall verify that the connection succeeds.
                 </test>
                 <test>
-                  The evaluator shall perform the following wildcard tests with each supported
-                  type of reference identifier:
+                  [conditional] If wildcards are supported by the TOE, the evaluator shall perform the following tests:
                   <testlist>
                     <test>
                       The evaluator shall present a server certificate containing a wildcard
@@ -665,9 +665,17 @@ during handshake.
             <aactivity>
               The evaluator shall perform the following tests:
               <testlist>
-                <test>The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two TLS endpoints.  The evaluator shall verify that either the “renegotiation_info” field or the SCSV cipher suite is included in the ClientHello message during the initial handshake.</test>
-                <test>The evaluator shall verify the Client’s handling of ServerHello messages received during the initial handshake that include the “renegotiation_info” extension.  The evaluator shall modify the length portion of this field in the ServerHello message to be non-zero and verify that the client sends a failure and terminates the connection.  The evaluator shall verify that a properly formatted field results in a successful TLS connection.</test>
-                <test>The evaluator shall verify that ServerHello messages received during secure renegotiation contain the “renegotiation_info” extension.  The evaluator shall modify either the “client_verify_data” or “server_verify_data” value and verify that the client terminates the connection.</test>
+                <test>The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two
+                  TLS endpoints.  The evaluator shall verify that either the “renegotiation_info” field or the SCSV
+                  cipher suite is included in the ClientHello message during the initial handshake.</test>
+                <test>The evaluator shall verify the Client’s handling of ServerHello messages received during
+                  the initial handshake that include the “renegotiation_info” extension.  The evaluator shall modify
+                  the length portion of this field in the ServerHello message to be non-zero and verify that the client
+                  sends a failure and terminates the connection.  The evaluator shall verify that a properly formatted
+                  field results in a successful TLS connection.</test>
+                <test>The evaluator shall verify that ServerHello messages received during secure renegotiation contain
+                  the “renegotiation_info” extension.  The evaluator shall modify either the “client_verify_data” or
+                  “server_verify_data” value and verify that the client terminates the connection.</test>
               </testlist>
             </aactivity>
           </f-element>
@@ -677,7 +685,7 @@ during handshake.
           <f-element id="fcs_tlsc_ext.5.1"><!-- Was 1.4 -->
             <!-- TODO: IDs for ECC DHE curves -->
             <title> The product shall present the Supported Groups Extension in the Client Hello
-              with the following NIST curves: <selectables>
+              with the following supported groups: <selectables>
                 <selectable>secp256r1</selectable>
                 <selectable>secp384r1</selectable>
                 <selectable>secp521r1</selectable>
