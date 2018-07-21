@@ -272,7 +272,6 @@
           <f-element id="fcs_tlsc_ext.1.1">
             <title> The product shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
             (RFC 5246) and <selectables>
-	    <selectable>TLS 1.0 (RFC 2246)</selectable>
 	    <selectable>TLS 1.1 (RFC 4346)</selectable>
 	    <selectable>no other RFCs</selectable>
 	  </selectables>
@@ -785,7 +784,6 @@ during handshake.
             <title> The product shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
             (RFC 5246) and
 	    <selectables>
-	      <selectable>TLS 1.0 (RFC 2246)</selectable>
 	      <selectable>TLS 1.1 (RFC 4346)</selectable>
 	      <selectable>no other RFCs</selectable>
 	    </selectables>
@@ -934,7 +932,7 @@ during handshake.
                   connection with version SSL 2.0 and verify that the
                   server denies the connection. The evaluator shall
                   repeat this test with SSL 3.0, and also with TLS 1.0
-                  and TLS 1.1 if they was selected.
+                  and TLS 1.1 if they were selected.
                 </test>
               </testlist>
             </aactivity>
