@@ -230,13 +230,14 @@
 					<selectables linebreak="yes">
 						<selectable>TLS 1.1 (RFC 4346)</selectable>
 						<selectable>DTLS 1.0 (RFC 4347)</selectable>
-
 						<selectable>no other RFCs</selectable>
 					</selectables>
 					as a
 					<selectables>
 						<selectable>client</selectable>
+					  <selectable>client supporting mutual authentication</selectable>
 						<selectable>server</selectable>
+					  <selectable>server supporting mutual authentication</selectable>
 					</selectables>.
             </title>
             <note role="application">The ST author selects which of the additional RFCs to which
@@ -244,7 +245,7 @@
               listed in the selection can be claimed as conformant.
               The RFC selections for this requirement need to be consistent with selections in
               later elements of this Package (e.g., cryptographic algorithms permitted).
-              <h:br/>
+              <h:br/><h:br/>
               RFC 5246 indicates that certain cryptographic algorithms are "REQUIRED". This means that from the
               IETF's perspective the implementation must include support, not that the algorithms must
               be enabled for use. For the purposes of this evaluation activity and this Package
@@ -254,12 +255,21 @@
 	      These requirements will be revisited as new TLS and DTLS versions are standardized by the IETF.
             <h:br/>
               <h:br/>
-              If <h:i>client</h:i> is selected, then the ST must include the requirements from
-			  <linkref linkend="FCS_TLSC_EXT.1" /> or <linkref linkend="FCS_DTLSC_EXT.1"/> as appropriate.
-			  <h:br/>
-              <h:br/>
-              If <h:i>server</h:i> is selected, then the ST must include the requirements from
-			  <linkref linkend="FCS_TLSS_EXT.1" /> or <linkref linkend="FCS_DTLSS_EXT.1"/> as appropriate.
+              If <h:i>client</h:i> or <h:i>client supporting mutual authentication</h:i> is selected, then the 
+              ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" /> or 
+              <linkref linkend="FCS_DTLSC_EXT.1"/> as appropriate.
+              <h:br/><h:br/>
+              If <h:i>client supporting mutual authentication</h:i> is selected, then the ST must additionally include 
+              the requirements from <linkref linkend="FCS_TLSC_EXT.2"/> or <linkref linkend="FCS_DTLSC_EXT.2"/>
+              as appropriate. 
+              <h:br/><h:br/>
+              If <h:i>server</h:i> or <h:i>server supporting mutual authentication</h:i> is selected, then 
+              the ST must include the requirements from <linkref linkend="FCS_TLSS_EXT.1" /> or 
+              <linkref linkend="FCS_DTLSS_EXT.1"/> as appropriate.
+              <h:br/><h:br/>
+              If <h:i>server supporting mutual authentication</h:i> is selected, then the ST must additionally include 
+              the requirements from <linkref linkend="FCS_TLSS_EXT.2"/> or <linkref linkend="FCS_DTLSS_EXT.2"/> 
+              as appropriate.
             </note>
             <aactivity>The evaluator shall ensure that the selections indicated in the ST are
               consistent with selections in the dependent components.
@@ -550,7 +560,8 @@
         </f-component>
         
         
-        <f-component id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="optional">
+        <f-component id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="sel-based">
+          <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_tlsc_ext.2.1">
             <title> The product shall support mutual authentication using X.509v3 certificates. </title>
             <note role="application"> The use of X.509v3 certificates for <abbr
@@ -996,7 +1007,8 @@ during handshake.
           </f-element>
         </f-component>
 
-       <f-component id="FCS_TLSS_EXT.2" name="TLS Server Support for Mutual Authentication" status="optional">
+       <f-component id="FCS_TLSS_EXT.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
+         <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_tlss_ext.2.1">
             <title>The product shall support authentication of
               TLS clients using X.509v3 certificates.
@@ -1187,7 +1199,8 @@ during handshake.
 	    </f-element>
 	</f-component>
 
-	<f-component id="FCS_DTLSC_EXT.2" name="DTLS Client Support for Mutual Authentication" status="optional">
+	<f-component id="FCS_DTLSC_EXT.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
+	  <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_dtlsc_ext.2.1">
             <title>The product shall implement the requirements in <linkref linkend="FCS_TLSC_EXT.2" /> for the DTLS
             implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
@@ -1204,7 +1217,8 @@ during handshake.
 	  </f-element>
 	</f-component>
 
-	<f-component id="FCS_DTLSS_EXT.2" name="DTLS Server Support for Mutual Authentication" status="optional">
+	<f-component id="FCS_DTLSS_EXT.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
+	  <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_dtlss_ext.2.1">
             <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.2" /> for the DTLS
             implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
