@@ -87,6 +87,13 @@
               of products.</description>
           </entry>
           <entry>
+            <term><abbr title="Protection Profile Module">PP-Module</abbr></term>
+            <description>An extension of the security requirements in a
+              Protection Profile which introduces new elements to the base PP
+              and may also refine or interpret some of the elements in the base PP.
+            </description>
+          </entry>
+          <entry>
             <term><abbr title="Security Target">ST</abbr></term>
             <description>A set of implementation-dependent security requirements for a specific
               product.</description>
@@ -1296,37 +1303,6 @@ during handshake.
                 Security Assurance Components</h:a>, CCMB-2012-09-003, Version 3.1 Revision 5, September
               2012.</h:li>
           </h:ul></description>
-      </entry>
-      <entry id="bibGPOS">
-        <tag>GPOSPP</tag>
-        <description>
-          <h:a href="https://www.niap-ccevs.org/pp/">Protection Profile for General
-            Purpose Operating Systems
-          </h:a>
-        </description>
-      </entry>
-      <entry id="bibMDF">
-        <tag>MDFPP</tag>
-        <description>
-          <h:a href="https://www.niap-ccevs.org/pp/">Protection Profile for Mobile
-            Device Fundamentals
-          </h:a>
-        </description>
-      </entry>
-      <entry id="bibMDM">
-        <tag>MDMPP</tag>
-        <description>
-          <h:a href="https://www.niap-ccevs.org/pp/">Protection Profile for Mobile
-            Device Management
-          </h:a>
-        </description>
-      </entry>
-      <entry id="bibAppPP">
-        <tag>AppPP</tag>
-        <description>
-          <h:a href="https://www.niap-ccevs.org/pp/">Protection Profile for Application
-            Software</h:a>
-        </description>
       </entry>
     </bibliography>
   </appendix>
