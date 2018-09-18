@@ -164,12 +164,18 @@
       <cite linkend="bibCC" />. 
       <h:p/>
       The contents of this Package must be appropriately
-      combined with a <abbr linkend="PP"/>.  
-      The Package must include selection-based requirements in accordance with the
-      selections and/or assignments made, and the following components:<h:br/>
+      combined with a <abbr linkend="PP"/> or <abbr linkend="PP-Module"/>.
+      <h:p/>
+      When this Package is instantiated by a PP or PP-Module, the Package must
+      include selection-based requirements in accordance with the
+      selections and/or assignments indicated in the PP or PP-Module, by either
+      the ST author or by the author of the PP or PP-Module.
+      The PP or PP-Module must also include
+      the following components:<h:br/>
       FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FIA_X509_EXT.1.*, FIA_X509_EXT.2.*.
       <h:p/>
-      An ST must identify the applicable version of the <abbr linkend="PP"/> and this
+      An ST must identify the applicable version of the <abbr linkend="PP"/> or
+      <abbr linkend="PP-Module"/> and this
       Package in its conformance claims.
     </section>
   </chapter>
@@ -184,7 +190,7 @@
           Revision 5. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to
           this Package the
           <abbr linkend="ST" /> must include all components in this
-          Package and the PP that are:
+          Package and the PP or PP-Module that are:
           <h:ul>
             <h:li>unconditional (which are always required)</h:li>
             <h:li>selection-based (which are required when certain selections are chosen in the
@@ -1255,17 +1261,19 @@ during handshake.
       <appref linkend="optional"/>, <appref linkend="sel-based"/>, and <appref linkend="objective"/>
     but are not listed (e.g., FMT-type requirements) are also included in the ST. </appendix>
 
-  <appendix title="Selection-Based Requirements" id="sel-based"> As indicated in the introduction to
-    this EP, the baseline requirements (those that must be performed by the product or its underlying
-    platform) are contained in the body of this EP. There are additional requirements based on
-    selections in the body of the EP: if certain selections are made, then additional requirements
-    below will need to be included. </appendix>
+  <appendix title="Selection-Based Requirements" id="sel-based"> As indicated in
+    the introduction to this Package, the baseline requirements (those that must
+    be performed by the product or its underlying platform) are contained in the
+    body of this Package, and by the PP or PP-Module which makes use of this
+    Package. There are additional requirements based on selections in the body
+    of the Package or by the PP or PP-Module: if certain selections are made,
+    then additional requirements below will need to be included. </appendix>
 
   <appendix title="Objective Requirements" id="objective"> This appendix includes requirements that
     specify security functionality which also addresses threats. The requirements are not currently
-    mandated in the body of this EP as they describe security functionality not yet widely-available
+    mandated in the body of this Package as they describe security functionality not yet widely-available
     in commercial technology. However, these requirements may be included in the ST such that the
-    product is still conformant to this EP, and it is expected that they be included as soon as
+    product is still conformant to this Package, and it is expected that they be included as soon as
     possible. </appendix>
 
 
