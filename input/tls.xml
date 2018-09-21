@@ -59,19 +59,9 @@
       <subsection title="Common Criteria Terms"
         id="ccterms">
         <glossary>
-          <entry> 
-            <term><abbr title="Assurance Guidance Documents">AGD</abbr></term>
-            <description>Documentation describing the secure preparation and 
-              operation of the <abbr linkend="TOE"/>.</description>
-          </entry>
           <entry>
             <term><abbr title="Common Criteria">CC</abbr></term>
             <description>Common Criteria for Information Technology Security
-              Evaluation.</description>
-          </entry>
-          <entry>
-            <term><abbr title="Common Evaluation Methodology">CEM</abbr></term>
-            <description>Common Evaluation Methodology for Information Technology Security
               Evaluation.</description>
           </entry>
           <entry>
@@ -118,11 +108,6 @@
             <description>A requirement for security enforcement by the <abbr linkend="TOE"/>.
             </description>
           </entry>
-          <entry>
-            <term><abbr title="Security Assurance Requirement">SAR</abbr></term>
-            <description>A requirement to assure the security of the <abbr linkend="TOE"/>.
-            </description>
-          </entry> 
         </glossary>
       </subsection>
       <subsection title="Technology Terms" id="techterms">
@@ -153,15 +138,6 @@
 	      Issuer of digital certificates
 	          </description>
           </entry>
-          <entry>
-            <term>
-              <abbr title="Trust Anchor Database">TAD</abbr>
-            </term>
-            <description>
-	      List of trusted root Certificate Authority certificates
-	          </description>
-          </entry>
-	  
         </glossary>
       </subsection>
 	  </section>
