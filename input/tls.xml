@@ -888,11 +888,10 @@ during handshake.
                   denies the connection.
                 </test>
                 <test>
-		  The evaluator shall use a client to send a properly
+		  If RSA key exchange is used in one of the selected ciphersuites, the evaluator shall use a client to send a properly
 		  constructed Key Exchange message with a modified
 		  EncryptedPreMasterSecret field during the TLS
-		  handshake for a supported cipher suite that used RSA
-		  key exchange. The evaluator shall verify that the
+		  handshake. The evaluator shall verify that the
 		  handshake is not completed successfully and no
 		  application data flows.
                 </test>
