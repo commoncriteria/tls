@@ -933,10 +933,9 @@ during handshake.
           </f-element>
           <f-element id="fcs_tlss_ext.1.2">
             <title>The product shall deny connections from clients requesting
-            SSL 2.0, SSL 3.0, and
+            SSL 2.0, SSL 3.0, TLS 1.0 and
               <selectables>
-                <selectable>TLS 1.0</selectable>
-		<selectable>TLS 1.1</selectable>
+                <selectable>TLS 1.1</selectable>
                 <selectable>none</selectable>
               </selectables>
               .
@@ -955,8 +954,8 @@ during handshake.
                   The evaluator shall send a Client Hello requesting a
                   connection with version SSL 2.0 and verify that the
                   server denies the connection. The evaluator shall
-                  repeat this test with SSL 3.0, and also with TLS 1.0
-                  and TLS 1.1 if they were selected.
+                  repeat this test with SSL 3.0 and TLS 1.0,
+                  and TLS 1.1 if it was selected.
                 </test>
               </testlist>
             </aactivity>
