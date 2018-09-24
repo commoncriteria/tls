@@ -299,13 +299,14 @@
 	      The <abbr title="Security Target" linkend="ST">ST
       </abbr> author should select the cipher suites that are supported,
       and must select at least one cipher suite.
+      <h:br/>
 	      The cipher suites to be tested in the evaluated
-	      configuration are limited by this requirement; however,
+	      configuration are limited by this requirement. However,
 	      this requirement does not restrict the TOE's ability to
 	      propose additional cipher suites beyond the ones listed
 	      in this requirement in its Client Hello message.  That
-	      is, the TOE may propose any cipher suite; however, the
-	      evaluation will only test cipher suites in the above
+	      is, the TOE may propose any cipher suite but the
+	      evaluation will only test cipher suites from the above
 	      list.
 	      <h:br/>
 	      It is necessary to limit the cipher suites that can be
