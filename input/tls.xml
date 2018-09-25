@@ -478,30 +478,38 @@
                   matches. The evaluator shall verify that the connection succeeds.
                 </test>
                 <test>
-                  [conditional] If wildcards are supported by the TOE, the evaluator shall perform the following tests:
+                  The evaluator shall perform the following wildcard tests with each supported type of reference
+                  identifier. The support for wildcards is intended to be optional. If wildcards are supported, the
+                  first, second, and third tests below shall be executed. If wildcards are not supported, then the
+                  fourth test below shall be executed.
                   <testlist>
                     <test>
-                      The evaluator shall present a server certificate containing a wildcard
-                      that is not in the left-most label of the presented identifier (e.g.
+                      [conditional]: If wildcards are supported, the evaluator shall present a server certificate
+                      containing a wildcard that is not in the left-most label of the presented identifier (e.g.
                       foo.*.example.com) and verify that the connection fails.
                     </test>
                     <test>
-                      The evaluator shall present a server certificate containing a wildcard in
-                      the left-most label but not preceding the public suffix (e.g. *.example.com).
-                      The evaluator shall configure the reference identifier with a single left-most
-                      label (e.g. foo.example.com) and verify that the connection succeeds. The
-                      evaluator shall configure the reference identifier without a left-most label
-                      as in the certificate (e.g. example.com) and verify that the connection fails.
-                      The evaluator shall configure the reference identifier with two left-most
-                      labels (e.g. bar.foo.example.com) and verify that the connection fails.
+                      [conditional]: If wildcards are supported, the evaluator shall present a server certificate
+                      containing a wildcard in the left-most label but not preceding the public
+                      suffix (e.g. *.example.com). The evaluator shall configure
+                      the reference identifier with a single left-most label (e.g. foo.example.com) and verify that the
+                      connection succeeds. The evaluator shall configure the reference identifier without a left-most
+                      label as in the certificate (e.g. example.com) and verify that the connection fails. The evaluator
+                      shall configure the reference identifier with two left-most labels (e.g. bar.foo.example.come) and
+                      verify that the connection fails.
                     </test>
                     <test>
-                      The evaluator shall present a server certificate containing a wildcard in
-                      the left-most label immediately preceding the public suffix (e.g. *.com). The
-                      evaluator shall configure the reference identifier with a single left-most
-                      label (e.g. foo.com) and verify that the connection fails. The evaluator shall
-                      configure the reference identifier with two left-most labels (e.g.
-                      bar.foo.com) and verify that the connection fails.
+                      [conditional]: If wildcards are supported, the evaluator shall present a server certificate
+                      containing a wildcard in the left-most label immediately preceding the public suffix (e.g. *.com).
+                      The evaluator shall configure the reference identifier with a single left-most label (e.g.
+                      foo.com) and verify that the connection fails. The evaluator shall configure the reference
+                      identifier with two left-most labels (e.g. bar.foo.com) and verify that the connection fails.
+                    </test>
+                    <test>
+                      [conditional]: If wildcards are not supported, the evaluator shall present a server certificate
+                      containing a wildcard in the left-most label (e.g. *.example.com). The evaluator shall configure
+                      the reference identifier with a single left-most label (e.g. foo.example.com) and verify that the
+                      connection fails.
                     </test>
                   </testlist>
                 </test>
