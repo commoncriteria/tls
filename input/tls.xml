@@ -372,8 +372,8 @@
                     <test>
                       Change the <abbr title="Transport Layer Security">TLS</abbr> version
                       selected by the server in the Server Hello to a non-supported <abbr
-                      title="Transport Layer Security">TLS</abbr> version (for example 1.4
-                      represented by the two bytes 03 05) and verify that the client rejects the
+                      title="Transport Layer Security">TLS</abbr> version (for example 1.5
+                      represented by the two bytes 03 06) and verify that the client rejects the
                       connection.
                     </test>
                     <test>
@@ -390,7 +390,8 @@
                     <test>
                       [conditional] If DHE or ECDHE cipher suites are supported, modify the signature block in the
                       server’s Key Exchange handshake message, and verify that the client does not complete the handshake
-                      and no application data flows.
+                      and no application data flows. This test does not apply to cipher suites using RSA key exchange.
+                      If a TOE only supports RSA key exchange in conjunction with TLS, then this test shall be omitted.
                     </test>
                     <test>
                       Modify a byte in the Server Finished handshake message, and verify that the
@@ -465,7 +466,7 @@
                   each supported SAN type.
                 </test>
                 <test>
-                  If the TOE does not mandate the presence of the SAN extension,
+                  [conditional] If the TOE does not mandate the presence of the SAN extension,
                   the evaluator shall present a server certificate that contains
                   a CN that matches the reference identifier and does not
                   contain the SAN extension. The evaluator shall verify that the
@@ -536,12 +537,14 @@
             <note role="application"> Validity is determined by the identifier verification,
               certificate path, the expiration date, and the revocation status in accordance with
               RFC 5280. Certificate validity shall be tested in accordance with testing performed
-              for <linkref linkend="FIA_X509_EXT.1"/>.
+              for <linkref linkend="FIA_X509_EXT.1"/> as defined in any PP or PP-Module which
+              instantiates this Package.
       </note>
-            <aactivity> The evaluator shall use <abbr title="Transport Layer Security">TLS</abbr> as
-              a function to verify that the validation rules in <linkref linkend="FIA_X509_EXT.1.1"
-              /> are adhered to and shall perform the following additional tests: <testlist>
-                <test> The evaluator shall demonstrate that a server using a certificate without a
+            <aactivity> 
+              The evaluator shall demonstrate that using an invalid certificate results in the function failing
+              as follows:
+              <testlist>
+                <test>The evaluator shall demonstrate that a server using a certificate without a
                   valid certification path results in an authentication failure. Using the
                   administrative guidance, the evaluator shall then load the trusted CA
                   certificate(s) needed to validate the server's certificate, and demonstrate that the
@@ -554,6 +557,32 @@
                 <test> The evaluator shall demonstrate that a server using a certificate which does
                   not have a valid identifier results in an authentication failure. </test>
               </testlist>
+              <!-- The text from ND cPP: The evaluator shall demonstrate that using an invalid certificate results in the function failing as
+              follows:
+              <testlist>
+              <test>
+              Using the administrative guidance, the evaluator shall load a CA certificate or
+              certificates needed to validate the presented certificate used to authenticate an external entity and
+              demonstrate that the function succeeds and a trusted channel can be established.
+              </test>
+              <test>
+              The evaluator shall then change the presented certificate(s) so that validation fails and show that the
+              certificate is not automatically accepted. The evaluator shall repeat this test to cover the selected
+              types of failure defined in the SFR (i.e. the selected ones from failed matching of the reference
+              identifier, failed validation of the certificate path, failed validation of the expiration date, failed
+              determination of the revocation status). The evaluator performs the action indicated in the SFR selection
+              observing the TSF resulting in the expected state for the trusted channel (e.g. trusted channel was
+              established) covering the types of failure for which an override mechanism is defined.  
+              </test>
+              <test>
+              [conditional] The purpose of this test to verify that only selected certificate validation failures could
+              be administratively overridden. If any override mechanism is defined for failed certificate validation,
+              the evaluator shall configure a new presented certificate that does not contain a valid entry in one of
+              the mandatory fields or parameters (e.g. inappropriate value in extendedKeyUsage field) but is otherwise
+              valid and signed by a trusted CA. The evaluator shall confirm that the certificate validation fails (i.e.
+              certificate is rejected), and there is no administrative override available to accept such certificate.
+              </test>
+            </testlist> -->
             </aactivity>
           </f-element>       
         </f-component>
