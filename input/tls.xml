@@ -219,10 +219,10 @@
 					<selectables linebreak="yes">
 						<selectable>TLS 1.1 (RFC 4346)</selectable>
 						<selectable>DTLS 1.0 (RFC 4347)</selectable>
-						<selectable>no other RFCs</selectable>
+						<selectable>no earlier TLS versions</selectable>
 					</selectables>
 					as a
-					<selectables>
+					<selectables linebreak="yes">
 						<selectable>client</selectable>
 					  <selectable>client supporting mutual authentication</selectable>
 						<selectable>server</selectable>
