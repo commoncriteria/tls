@@ -1060,10 +1060,15 @@ during handshake.
               <h:br />
               The evaluator shall verify that the AGD guidance required per <linkref linkend="FIA_X509_EXT.2.1" />
               includes instructions for configuring the client-side certificates for TLS mutual
-              authentication.
+              authentication.  The evaluator shall ensure that the AGD guidance
+              includes instructions for configuring the server to require
+              mutual authentication of clients using these certificates.
 	      <h:br/>
 	      The evaluator shall use TLS as a function to verify that the validation rules in
-	      <linkref linkend="FIA_X509_EXT.1.1" /> are adhered to and shall perform the following additional tests:
+	      <linkref linkend="FIA_X509_EXT.1.1" /> are adhered to and shall perform the following tests.
+        The evaluator shall apply the AGD guidance to configure the server
+        to require TLS mutual authentication of clients for the following tests,
+        unless overridden by instructions in the test activity:
               <testlist>
                 <test>
                   The evaluator shall configure the server to send a certificate request
