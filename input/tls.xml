@@ -1067,10 +1067,14 @@ during handshake.
               <testlist>
                 <test>
                   The evaluator shall configure the server to send a certificate request
-                  to the client.  The evaluator shall separately perform each of the following tests: 
-                  a) The client shall send a certificate_list structure which has a length of zero. The evaluator
+                  to the client.  
+                  The client shall send a certificate_list structure which has a length of zero. The evaluator
                   shall verify that the handshake is not finished successfully and no application data flows.
-                  b) The client shall send no client certificate message, and instead send a client key exchange
+                </test>
+                <test>
+                  The evaluator shall configure the server to send a certificate request
+                  to the client.  
+                  The client shall send no client certificate message, and instead send a client key exchange
                   message in an attempt to continue the handshake. The evaluator shall verify that the handshake is
                   not finished successfully and no application data flows.
                 </test>
