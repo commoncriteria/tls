@@ -400,7 +400,8 @@
                     <test>
                       Send a message consisting of random bytes from the server after the server has issued the
                       Change Cipher Spec message and verify that the client does not complete the handshake
-                      and no application data flows.
+                      and no application data flows. The message must still have a valid 5-byte record
+                      header in order to ensure the message will be parsed as TLS.
                     </test>
                   </testlist>
                 </test>
