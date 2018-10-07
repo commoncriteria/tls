@@ -224,9 +224,7 @@
 					as a
 					<selectables linebreak="yes">
 						<selectable>client</selectable>
-					  <selectable>client supporting mutual authentication</selectable>
 						<selectable>server</selectable>
-					  <selectable>server supporting mutual authentication</selectable>
 					</selectables>.
             </title>
             <note role="application">The ST author selects which of the additional RFCs to which
@@ -244,21 +242,14 @@
 	      These requirements will be revisited as new TLS and DTLS versions are standardized by the IETF.
             <h:br/>
               <h:br/>
-              If <h:i>client</h:i> or <h:i>client supporting mutual authentication</h:i> is selected, then the 
+              If <h:i>client</h:i> is selected, then the
               ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" /> or 
               <linkref linkend="FCS_DTLSC_EXT.1"/> as appropriate.
               <h:br/><h:br/>
-              If <h:i>client supporting mutual authentication</h:i> is selected, then the ST must additionally include 
-              the requirements from <linkref linkend="FCS_TLSC_EXT.2"/> or <linkref linkend="FCS_DTLSC_EXT.2"/>
-              as appropriate. 
-              <h:br/><h:br/>
-              If <h:i>server</h:i> or <h:i>server supporting mutual authentication</h:i> is selected, then 
+              If <h:i>server</h:i> is selected, then
               the ST must include the requirements from <linkref linkend="FCS_TLSS_EXT.1" /> or 
               <linkref linkend="FCS_DTLSS_EXT.1"/> as appropriate.
               <h:br/><h:br/>
-              If <h:i>server supporting mutual authentication</h:i> is selected, then the ST must additionally include 
-              the requirements from <linkref linkend="FCS_TLSS_EXT.2"/> or <linkref linkend="FCS_DTLSS_EXT.2"/> 
-              as appropriate.
             </note>
             <aactivity>The evaluator shall ensure that the selections indicated in the ST are
               consistent with selections in the dependent components.
@@ -269,12 +260,7 @@
         <f-component id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_tlsc_ext.1.1">
-            <title> The product shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
-            (RFC 5246) and <selectables>
-	    <selectable>TLS 1.1 (RFC 4346)</selectable>
-	    <selectable>no other RFCs</selectable>
-	  </selectables>
-	  as a client supporting the following cipher suites:
+            <title> The product shall implement TLS	as a client that supports the cipher suites
           <selectables linebreak="yes">
             <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
             <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
@@ -291,12 +277,16 @@
             <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-            </selectables>.
+            </selectables>
+          and also supports functionality for 
+          <selectables linebreak="yes">
+            <selectable>mutual authentication</selectable>
+            <selectable>session renegotiation</selectable>
+            <selectable>none</selectable>
+          </selectables>.
           </title>
             <note role="application">
-	      Any TLS version selected in <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected here.
-	      <h:br/>
-	      The <abbr title="Security Target" linkend="ST">ST
+        The <abbr title="Security Target" linkend="ST">ST
       </abbr> author should select the cipher suites that are supported,
       and must select at least one cipher suite.
       <h:br/>
@@ -323,6 +313,12 @@
 	      <h:br/>
         If any ECDHE or DHE cipher suites are selected, then
 	      <linkref linkend="FCS_TLSC_EXT.5"/> is required.
+        If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include 
+        the requirements from <linkref linkend="FCS_TLSC_EXT.2"/>. 
+        <h:br/><h:br/>
+        If <h:i>session renegotiation</h:i> is selected, then the ST must additionally include 
+        the requirements from <linkref linkend="FCS_TLSC_EXT.4"/>. 
+        <h:br/><h:br/>
 	    </note>
             <aactivity>
               The evaluator shall check the description of the implementation of this
@@ -590,7 +586,7 @@
         
         
         <f-component id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1"/>
+          <selection-depends req="fcs_tlsc_ext.1.1"/>/
           <f-element id="fcs_tlsc_ext.2.1">
             <title> The product shall support mutual authentication using X.509v3 certificates. </title>
             <note role="application"> The use of X.509v3 certificates for <abbr
@@ -672,7 +668,8 @@ during handshake.
             </aactivity>
           </f-element>  
         </f-component>
-        <f-component id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="optional">
+        <f-component id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
+          <selection-depends req="fcs_tlsc_ext.1.1"/>
           <f-element id="fcs_tlsc_ext.4.1">
             <title> The product shall support secure renegotiation through use
               of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
@@ -715,7 +712,7 @@ during handshake.
           <f-element id="fcs_tlsc_ext.5.1"><!-- Was 1.4 -->
             <!-- TODO: IDs for ECC DHE curves -->
             <title> The product shall present the Supported Groups Extension in the Client Hello
-              with the following supported groups: <selectables>
+              with the supported groups <selectables linebreak="yes">
                 <selectable>secp256r1</selectable>
                 <selectable>secp384r1</selectable>
                 <selectable>secp521r1</selectable>
@@ -821,13 +818,7 @@ during handshake.
         <f-component id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_tlss_ext.1.1">
-            <title> The product shall implement <abbr title="Transport Layer Security">TLS</abbr> 1.2
-            (RFC 5246) and
-	    <selectables>
-	      <selectable>TLS 1.1 (RFC 4346)</selectable>
-	      <selectable>no other RFCs</selectable>
-	    </selectables>
-	    as a server supporting the following cipher suites:
+            <title> The product shall implement TLS	as a server that supports the cipher suites
               <selectables linebreak="yes">
                 <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
                 <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
@@ -844,11 +835,16 @@ during handshake.
                 <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
                 <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
                 <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-              </selectables> and no other cipher suites.
+              </selectables> and no other cipher suites,
+              and also supports functionality for 
+              <selectables linebreak="yes">
+                <selectable>mutual authentication</selectable>
+                <selectable>session renegotiation</selectable>
+                <selectable>none</selectable>
+              </selectables>.
             </title>
             <note role="application">
-	      Any TLS version selected in <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected here.
-	      <h:br/>
+
         The <abbr title="Security Target" linkend="ST">ST
        </abbr> author should select the cipher suites that are supported,
        and must select at least one cipher suite.
@@ -866,10 +862,17 @@ during handshake.
 	      over SHA.  
         <h:br/>
         TLS_RSA_WITH_AES_128_CBC_SHA is not required 
-	      despite being mandated by RFC 5246.
-	      <h:br/> These requirements will be revisited as new
+	      despite being mandated by RFC 5246. These requirements will be revisited as new
 	      <abbr title="Transport Layer Security">TLS</abbr>
 	      versions are standardized by the IETF.
+        <h:br/><h:br/> 
+        If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include
+        the requirements from <linkref linkend="FCS_TLSS_EXT.2"/>. 
+        <h:br/><h:br/>
+        If <h:i>session renegotiation</h:i> is selected, then the ST must additionally include
+        the requirements from <linkref linkend="FCS_TLSS_EXT.4"/>. 
+        <h:br/><h:br/>
+        <h:br/>
             </note>
             <aactivity>
               The evaluator shall check the description of the implementation of this protocol in
@@ -1211,7 +1214,8 @@ during handshake.
 	    </f-element>
 	</f-component>
 
-	<f-component id="FCS_TLSS_EXT.4" name="TLS Server Support for Renegotiation" status="optional">
+	<f-component id="FCS_TLSS_EXT.4" name="TLS Server Support for Renegotiation" status="sel-based">
+    <selection-depends req="fcs_tlss_ext.1.1"/>
           <f-element id="fcs_tlss_ext.4.1">
             <title>The product shall support the "renegotiation_info" TLS extension in accordance with RFC 5746.
             </title>
