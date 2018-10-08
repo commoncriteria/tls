@@ -314,10 +314,12 @@
         If any ECDHE or DHE cipher suites are selected, then
 	      <linkref linkend="FCS_TLSC_EXT.5"/> is required.
         If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include 
-        the requirements from <linkref linkend="FCS_TLSC_EXT.2"/>. 
+        the requirements from <linkref linkend="FCS_TLSC_EXT.2"/>. If the TOE implements
+        mutual authentication, this selection must be made.
         <h:br/><h:br/>
         If <h:i>session renegotiation</h:i> is selected, then the ST must additionally include 
-        the requirements from <linkref linkend="FCS_TLSC_EXT.4"/>. 
+        the requirements from <linkref linkend="FCS_TLSC_EXT.4"/>. If the TOE implements
+        session renegotiation, this selection must be made.
         <h:br/><h:br/>
 	    </note>
             <aactivity>
@@ -836,7 +838,7 @@ during handshake.
                 <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
                 <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
               </selectables> and no other cipher suites,
-              and also supports functionality for 
+              and also supports functionality for
               <selectables linebreak="yes">
                 <selectable>mutual authentication</selectable>
                 <selectable>session renegotiation</selectable>
@@ -867,10 +869,12 @@ during handshake.
 	      versions are standardized by the IETF.
         <h:br/><h:br/> 
         If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include
-        the requirements from <linkref linkend="FCS_TLSS_EXT.2"/>. 
+        the requirements from <linkref linkend="FCS_TLSS_EXT.2"/>.  If the TOE implements
+        mutual authentication, this selection must be made.
         <h:br/><h:br/>
         If <h:i>session renegotiation</h:i> is selected, then the ST must additionally include
-        the requirements from <linkref linkend="FCS_TLSS_EXT.4"/>. 
+        the requirements from <linkref linkend="FCS_TLSS_EXT.4"/>. If the TOE implements
+        session renegotiation, this selection must be made.
         <h:br/><h:br/>
         <h:br/>
             </note>
