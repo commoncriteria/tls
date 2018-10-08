@@ -313,6 +313,7 @@
 	      <h:br/>
         If any ECDHE or DHE cipher suites are selected, then
 	      <linkref linkend="FCS_TLSC_EXT.5"/> is required.
+        <h:br/><h:br/>
         If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include 
         the requirements from <linkref linkend="FCS_TLSC_EXT.2"/>. If the TOE implements
         mutual authentication, this selection must be made.
@@ -320,7 +321,6 @@
         If <h:i>session renegotiation</h:i> is selected, then the ST must additionally include 
         the requirements from <linkref linkend="FCS_TLSC_EXT.4"/>. If the TOE implements
         session renegotiation, this selection must be made.
-        <h:br/><h:br/>
 	    </note>
             <aactivity>
               The evaluator shall check the description of the implementation of this
@@ -393,7 +393,7 @@
                     </test>
                     <test>
                       Modify a byte in the Server Finished handshake message, and verify that the
-                      client sends a Fatal Alert by observing the response received by the server.
+                      client does not complete the handshake and no application data flows.
                     </test>
                     <test>
                       Send a message consisting of random bytes from the server after the server has issued the
@@ -867,7 +867,7 @@ during handshake.
 	      despite being mandated by RFC 5246. These requirements will be revisited as new
 	      <abbr title="Transport Layer Security">TLS</abbr>
 	      versions are standardized by the IETF.
-        <h:br/><h:br/> 
+        <h:br/><h:br/>
         If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include
         the requirements from <linkref linkend="FCS_TLSS_EXT.2"/>.  If the TOE implements
         mutual authentication, this selection must be made.
@@ -875,8 +875,6 @@ during handshake.
         If <h:i>session renegotiation</h:i> is selected, then the ST must additionally include
         the requirements from <linkref linkend="FCS_TLSS_EXT.4"/>. If the TOE implements
         session renegotiation, this selection must be made.
-        <h:br/><h:br/>
-        <h:br/>
             </note>
             <aactivity>
               The evaluator shall check the description of the implementation of this protocol in
