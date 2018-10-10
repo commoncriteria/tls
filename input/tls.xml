@@ -786,8 +786,9 @@ during handshake.
               <selectable>none</selectable>
             </selectables>.
             </title>
-            <note role="application">Any DTLS version selected in <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected
-            here.</note>
+            <!--<note role="application">Any DTLS version selected in
+            <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected
+            here.</note>-->
             <aactivity>
               <testlist>
                 <test>
@@ -884,7 +885,12 @@ during handshake.
         <f-component id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_tlss_ext.1.1">
-            <title> The product shall implement TLS	as a server that supports the cipher suites
+            <title> The product shall implement TLS 1.2 (RFC 5246) and
+            <selectables>
+              <selectable>TLS 1.1 (RFC 4346)</selectable>
+              <selectable>no earlier DTLS versions</selectable>
+            </selectables>
+              as a server that supports the cipher suites
               <selectables linebreak="yes">
                 <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
                 <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
