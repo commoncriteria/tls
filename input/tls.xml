@@ -247,13 +247,13 @@
               the ST must include the requirements from <linkref linkend="FCS_TLSS_EXT.1" /> or 
               <linkref linkend="FCS_DTLSS_EXT.1"/> as appropriate.
               <h:br/><h:br/>
-              RFC 5246 indicates that certain cryptographic algorithms are "REQUIRED". This means that from the
-              IETF's perspective the implementation must include support, not that the algorithms must
-              be enabled for use. For the purposes of this evaluation activity and this Package
-              overall, it is not necessary to ensure that algorithms listed as "REQUIRED" by the RFC
-              but not listed in later elements of this Package are actually implemented.
-              <h:br/>
-	      These requirements will be revisited as new TLS and DTLS versions are standardized by the IETF.
+              Some dependent components refer to RFC 5246, which indicates that
+              certain cryptographic algorithms are "REQUIRED". This means that
+              from the IETF's perspective the implementation must include support,
+              not that the algorithms must be enabled for use. For the purposes of
+              this Package, it is not necessary to ensure that algorithms listed
+              as "REQUIRED" by the RFC but not required in elements of this Package
+              are actually implemented.
             <h:br/>
               <h:br/>
 
