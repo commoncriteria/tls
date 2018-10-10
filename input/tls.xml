@@ -33,8 +33,8 @@
     <section title="Overview" id="ppoverview">
 	  Transport Layer Security (TLS), and the closely-related Datagram TLS (DTLS) are
     cryptographic protocols designed to provide communications security over IP networks.
-    Several versions of the protocol are in widespread use in client applications such as web
-	  browsers, email, instant messaging, and voice-over-IP
+    Several versions of the protocol are in widespread use in software that provides functionality
+    such as web browsing, email, instant messaging, and voice-over-IP
 	  (VoIP). Major web sites use TLS to protect communications to
 	  and from their servers. TLS is also used to protect communications between
 	  hosts and network infrastructure devices for administration.
@@ -260,7 +260,11 @@
         <f-component id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_tlsc_ext.1.1">
-            <title> The product shall implement TLS	as a client that supports the cipher suites
+            <title> The product shall implement TLS 1.2 (RFC 5246) and
+              <selectables>
+                <selectable>TLS 1.1 (RFC 4346)</selectable>
+                <selectable>no earlier TLS versions</selectable>
+              </selectables> as a client that supports the cipher suites
           <selectables linebreak="yes">
             <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
             <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
@@ -277,7 +281,7 @@
             <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-            </selectables>
+          </selectables>
           and also supports functionality for 
           <selectables linebreak="yes">
             <selectable>mutual authentication</selectable>
@@ -747,11 +751,33 @@ during handshake.
         <f-component id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_dtlsc_ext.1.1">
-            <title>The product shall implement the DTLS protocol in accordance with
+            <title>The product shall implement DTLS 1.2 (RFC 6347) and
             <selectables>
               <selectable>DTLS 1.0 (RFC 4347)</selectable>
-              <selectable>DTLS 1.2 (RFC 6347)</selectable>
-            </selectables> as a client.
+              <selectable>no earlier DTLS versions</selectable>
+            </selectables> as a client that supports the cipher suites
+          <selectables linebreak="yes">
+            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
+            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+            <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+            </selectables>
+            and also supports functionality for 
+            <selectables linebreak="yes">
+              <selectable>mutual authentication</selectable>
+              <selectable>none</selectable>
+            </selectables>.
             </title>
             <note role="application">Any DTLS version selected in <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected
             here.</note>
@@ -786,11 +812,33 @@ during handshake.
         <f-component id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1"/>
           <f-element id="fcs_dtlss_ext.1.1">
-            <title>The product shall implement the DTLS protocol as a server
-            and also support functionality for
-            <selectables linebreak="yes">
-              <selectable>mutual authentication</selectable>
-              <selectable>none</selectable>
+            <title>The product shall implement DTLS 1.2 (RFC 6347) and
+            <selectables>
+              <selectable>DTLS 1.0 (RFC 4347)</selectable>
+              <selectable>no earlier DTLS versions</selectable>
+            </selectables>
+              as a server that supports the ciphersuites
+              <selectables linebreak="yes">
+                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
+                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+                <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+                <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+                <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+                <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+                <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+                <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+                <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+                <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+                <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+                <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+                <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+                <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+                <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+              </selectables> and no other cipher suites,
+              and also supports functionality for
+              <selectables linebreak="yes">
+                <selectable>mutual authentication</selectable>
+                <selectable>none</selectable>
             </selectables>.
             </title>
 	    <note role="application">
@@ -967,11 +1015,10 @@ during handshake.
               <selectables>
                 <selectable>TLS 1.1</selectable>
                 <selectable>none</selectable>
-              </selectables>
-              .
+              </selectables>.
             </title>
             <note role="application">All SSL versions are denied. Any TLS version
-              not selected in <linkref linkend="FCS_TLS_EXT.1.1"/> should be selected here.
+              not selected in <linkref linkend="FCS_TLSS_EXT.1.1"/> should be selected here.
             </note>
             <aactivity>
               The evaluator shall verify that the TSS contains a
