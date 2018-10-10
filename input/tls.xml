@@ -1288,23 +1288,34 @@ during handshake.
 	<f-component id="FCS_TLSS_EXT.4" name="TLS Server Support for Renegotiation" status="sel-based">
     <selection-depends req="fcs_tlss_ext.1.1"/>
           <f-element id="fcs_tlss_ext.4.1">
-            <title>The product shall support the "renegotiation_info" TLS extension in accordance with RFC 5746.
+            <title>The product shall support the "renegotiation_info" TLS extension
+              in accordance with RFC 5746.
             </title>
           </f-element>
           <f-element id="fcs_tlss_ext.4.2">
-            <title>The product shall include the renegotiation_info extension in ServerHello messages.
+            <title>The product shall include the renegotiation_info extension in
+              ServerHello messages.
             </title>
             <note role="application">
-              RFC 5746 defines an extension to TLS that binds renegotiation handshakes to the cryptography in the original handshake.
+              RFC 5746 defines an extension to TLS that binds renegotiation
+              handshakes to the cryptography in the original handshake.
 	    </note>
 	    <aactivity>
-	      The following tests require connection with a client that supports secure renegotiation and the "renegotiation_info" extension.
+	      The following tests require connection with a client that supports secure
+        renegotiation and the "renegotiation_info" extension.
 	      <testlist>
-		<test>The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two TLS endpoints.  The evaluator shall verify that the “renegotiation_info” field is included in the ServerHello message. 
+		<test>The evaluator shall use a network packet analyzer/sniffer to capture
+      the traffic between the two TLS endpoints.  The evaluator shall verify that
+      the “renegotiation_info” field is included in the ServerHello message. 
 		</test>
-		<test>The evaluator shall modify the length portion of the field in the ClientHello message in the initial handshake to be non-zero and verify that the server sends a failure and terminates the connection.  The evaluator shall verify that a properly formatted field results in a successful TLS connection.
+		<test>The evaluator shall modify the length portion of the field in the
+      ClientHello message in the initial handshake to be non-zero and verify that
+      the server sends a failure and terminates the connection.  The evaluator
+      shall verify that a properly formatted field results in a successful TLS connection.
 		</test>
-		<test>The evaluator shall modify the "client_verify_data" or "server_verify_data" value in the ClientHello message received during secure renegotiation and verify that the server terminates the connection.
+		<test>The evaluator shall modify the "client_verify_data" or "server_verify_data"
+      value in the ClientHello message received during secure renegotiation and
+      verify that the server terminates the connection.
 		</test>
 	      </testlist>
 	    </aactivity>
@@ -1312,7 +1323,7 @@ during handshake.
 	</f-component>
 
 	<f-component id="FCS_DTLSC_EXT.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
-	  <selection-depends req="fcs_tlsc_ext.1.1"/>
+	  <selection-depends req="fcs_dtlsc_ext.1.1"/>
           <f-element id="fcs_dtlsc_ext.2.1">
             <title>The product shall implement the requirements in <linkref linkend="FCS_TLSC_EXT.2" /> for the DTLS
             implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
@@ -1330,7 +1341,7 @@ during handshake.
 	</f-component>
 
 	<f-component id="FCS_DTLSS_EXT.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
-	  <selection-depends req="fcs_tlss_ext.1.1"/>
+	  <selection-depends req="fcs_dtlss_ext.1.1"/>
           <f-element id="fcs_dtlss_ext.2.1">
             <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.2" /> for the DTLS
             implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
