@@ -210,7 +210,12 @@
       <subsection title="Cryptographic Support (FCS)" id="fcs">
         <f-component id="fcs_tls_ext.1" name="TLS Protocol" status="threshold">
           <f-element id="fcs_tls_ext.1.1">
-			<title>The product shall implement the TLS protocol that complies with 
+			<title>The product shall implement
+        <selectables linebreak="yes">
+          <selectable>TLS</selectable>
+          <selectable>DTLS</selectable>
+        </selectables>
+        <!-- that complies with 
         <selectables linebreak="yes">
           <selectable>TLS 1.2 (RFC 5246) </selectable>
     			<selectable>DTLS 1.2 (RFC 6347)</selectable>
@@ -220,18 +225,27 @@
 						<selectable>TLS 1.1 (RFC 4346)</selectable>
 						<selectable>DTLS 1.0 (RFC 4347)</selectable>
 						<selectable>no earlier TLS versions</selectable>
-					</selectables>
+					</selectables> -->
 					as a
 					<selectables linebreak="yes">
 						<selectable>client</selectable>
 						<selectable>server</selectable>
 					</selectables>.
             </title>
-            <note role="application">The ST author selects which of the additional RFCs to which
+            <note role="application">
+              <!--The ST author selects which of the additional RFCs to which
               conformance is being claimed. A TLS product can implement additional RFCs, but only those
               listed in the selection can be claimed as conformant.
               The RFC selections for this requirement need to be consistent with selections in
               later elements of this Package (e.g., cryptographic algorithms permitted).
+              <h:br/><h:br/> -->
+              If <h:i>client</h:i> is selected, then the
+              ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" /> or 
+              <linkref linkend="FCS_DTLSC_EXT.1"/> as appropriate.
+              <h:br/><h:br/>
+              If <h:i>server</h:i> is selected, then
+              the ST must include the requirements from <linkref linkend="FCS_TLSS_EXT.1" /> or 
+              <linkref linkend="FCS_DTLSS_EXT.1"/> as appropriate.
               <h:br/><h:br/>
               RFC 5246 indicates that certain cryptographic algorithms are "REQUIRED". This means that from the
               IETF's perspective the implementation must include support, not that the algorithms must
@@ -242,14 +256,7 @@
 	      These requirements will be revisited as new TLS and DTLS versions are standardized by the IETF.
             <h:br/>
               <h:br/>
-              If <h:i>client</h:i> is selected, then the
-              ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" /> or 
-              <linkref linkend="FCS_DTLSC_EXT.1"/> as appropriate.
-              <h:br/><h:br/>
-              If <h:i>server</h:i> is selected, then
-              the ST must include the requirements from <linkref linkend="FCS_TLSS_EXT.1" /> or 
-              <linkref linkend="FCS_DTLSS_EXT.1"/> as appropriate.
-              <h:br/><h:br/>
+
             </note>
             <aactivity>The evaluator shall ensure that the selections indicated in the ST are
               consistent with selections in the dependent components.
