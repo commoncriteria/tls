@@ -787,9 +787,14 @@ during handshake.
               <selectable>none</selectable>
             </selectables>.
             </title>
-            <!--<note role="application">Any DTLS version selected in
-            <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected
-            here.</note>-->
+            <note role="application">
+            If any ECDHE or DHE cipher suites are selected, then
+            <linkref linkend="FCS_TLSC_EXT.5"/> is required.
+            <h:br/><h:br/>
+            If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include 
+            the requirements from <linkref linkend="FCS_TLSC_EXT.2"/>. If the TOE implements
+            mutual authentication, this selection must be made.
+          </note>
             <aactivity>
               <testlist>
                 <test>
