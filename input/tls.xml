@@ -726,6 +726,7 @@ during handshake.
         </f-component>
         <f-component id="fcs_tlsc_ext.5" name="TLS Client Support for Supported Groups Extension" status="sel-based">
           <selection-depends req="fcs_tlsc_ext.1.1"/>
+          <selection-depends req="fcs_dtlsc_ext.1.1"/>
           <f-element id="fcs_tlsc_ext.5.1"><!-- Was 1.4 -->
             <!-- TODO: IDs for ECC DHE curves -->
             <title> The product shall present the Supported Groups Extension in the Client Hello
