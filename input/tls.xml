@@ -333,15 +333,20 @@
         session renegotiation, this selection must be made.
 	    </note>
             <aactivity>
+              <TSS/>
               The evaluator shall check the description of the implementation of this
               protocol in the <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> to
               ensure that the cipher suites supported are specified. The evaluator shall check the
                 <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> to ensure that the
-              cipher suites specified include those listed for this component. The evaluator shall
+              cipher suites specified include those listed for this component. 
+              <Guidance/>
+              The evaluator shall
               also check the operational guidance to ensure that it contains instructions on
               configuring the product so that
               TLS conforms to the description in the <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr>. The evaluator shall also perform the following tests:
+                linkend="TSS">TSS</abbr>. 
+              <Tests/>
+              The evaluator shall also perform the following tests:
               <testlist>
                 <test>
                   The evaluator shall establish a <abbr title="Transport Layer Security">TLS</abbr> connection
@@ -442,6 +447,7 @@
               regarding matching; these best practices are captured in the evaluation activity.
             </note>
             <aactivity>
+              <TSS/>
               The evaluator shall ensure that the <abbr title="TOE Summary Specification"
                 linkend="TSS">TSS</abbr> describes the client’s method of establishing all reference
               identifiers from the application-configured reference identifier, including which
@@ -450,9 +456,13 @@
               addresses and wildcards are supported. The evaluator shall ensure that this
               description identifies whether and the manner in which certificate pinning is
               supported or used by the product.
-              <h:br/> The evaluator shall verify that the AGD guidance includes instructions for
+              <h:br/> 
+              <Guidance/>
+              The evaluator shall verify that the AGD guidance includes instructions for
               setting the reference identifier to be used for the purposes of certificate validation
-              in <abbr title="Transport Layer Security">TLS</abbr>. <h:br/> The evaluator shall
+              in <abbr title="Transport Layer Security">TLS</abbr>. <h:br/>
+              <Tests/>
+              The evaluator shall
               configure the reference identifier according to the AGD guidance and perform the
               following tests during a <abbr title="Transport Layer Security">TLS</abbr> connection:
               <testlist>
@@ -556,6 +566,7 @@
               instantiates this Package.
             </note>
             <aactivity>
+              <Tests/>
               The evaluator shall demonstrate that using an invalid certificate
               results in the function failing as follows, unless excepted:
               <testlist>
@@ -611,14 +622,20 @@
                 linkend="FIA_X509_EXT.2.1"/>. This requirement adds that a client must be capable of
               presenting a certificate to a <abbr title="Transport Layer Security">TLS</abbr> server
               for <abbr title="Transport Layer Security">TLS</abbr> mutual authentication. </note>
-            <aactivity> The evaluator shall ensure that the <abbr title="TOE Summary Specification"
+            <aactivity>
+              <TSS/>
+                The evaluator shall ensure that the <abbr title="TOE Summary Specification"
                 linkend="TSS">TSS</abbr> description required per <linkref
                 linkend="FIA_X509_EXT.2.1"/> includes the use of client-side certificates for TLS
-              mutual authentication. <h:br/> The evaluator shall verify that the AGD guidance required
+              mutual authentication. <h:br/>
+              <Guidance/>
+              The evaluator shall verify that the AGD guidance required
               per <linkref linkend="FIA_X509_EXT.2.1"/> includes instructions for configuring the
               client-side certificates for <abbr title="Transport Layer Security">TLS</abbr> mutual
-              authentication. <h:br/> The evaluator shall also perform the following tests:
-              <h:br/>
+              authentication. <h:br/> 
+              <Tests/>
+              The evaluator shall also perform the following tests:
+              
 	      <testlist>
           <test>The evaluator shall establish a connection to a server that is not
 configured for mutual authentication (i.e. does not send Server’s Certificate
@@ -650,13 +667,18 @@ during handshake.
               the supported hashes for the purpose of digital signature generation by the server.
               The signature_algorithms extension is only supported by <abbr
                 title="Transport Layer Security">TLS</abbr> 1.2. </note>
-            <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
+            <aactivity>
+              <TSS/>
+              The evaluator shall verify that <abbr title="TOE Summary Specification"
               linkend="TSS">TSS</abbr> describes the signature_algorithm extension and whether the
-              required behavior is performed by default or may be configured. If the <abbr
-                title="TOE Summary Specification" linkend="TSS">TSS</abbr> indicates that the
+              required behavior is performed by default or may be configured. 
+              <Guidance/>
+              If the <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> indicates that the
               signature_algorithm extension must be configured to meet the requirement, the
               evaluator shall verify that AGD guidance includes configuration of the
-              signature_algorithm extension. <h:br/> The evaluator shall also perform the following
+              signature_algorithm extension. <h:br/> 
+              <Tests/>
+              The evaluator shall also perform the following
               tests:
               <testlist>
                 <test>
@@ -707,6 +729,7 @@ during handshake.
             and the extension.
             </note>
             <aactivity>
+              <Tests/>
               The evaluator shall perform the following tests:
               <testlist>
                 <test>The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two
@@ -747,9 +770,11 @@ during handshake.
               then <linkref linkend="FCS_TLSC_EXT.5"/> shall be included in the ST. This requirement does not limit the
               elliptic curves the client may propose for authentication and key agreement.
               This was previously referred to as Supported Elliptic Curves Extension. </note>
-            <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
+            <aactivity>
+              <TSS/>
+              The evaluator shall verify that <abbr title="TOE Summary Specification"
               linkend="TSS">TSS</abbr> describes the Supported Groups Extension.
-              <h:br/>
+              <Tests/>
               The evaluator shall also perform the following test:
               <h:br/>
               The evaluator shall configure a server to perform ECDHE key exchange using each of the TOE’s supported
@@ -797,6 +822,7 @@ during handshake.
             mutual authentication, this selection must be made.
           </note>
             <aactivity>
+              <Tests/>
               <testlist>
                 <test>
                   The evaluator shall attempt to establish a connection with a DTLS server, observe
@@ -862,6 +888,7 @@ during handshake.
       mutual authentication, this selection must be made.
       </note>
             <aactivity>
+              <Tests/>
               <testlist>
                 <test>
                   The evaluator shall attempt to establish a connection with a DTLS server, observe
@@ -953,15 +980,20 @@ during handshake.
         session renegotiation, this selection must be made.
             </note>
             <aactivity>
+              <TSS/>
               The evaluator shall check the description of the implementation of this protocol in
               the <h:abbr title="TOE Summary Specification" linkend="TSS">TSS</h:abbr> to ensure that
               the cipher suites supported are specified. The evaluator shall check the
               <h:abbr title="TOE Summary Specification" linkend="TSS">TSS</h:abbr> to ensure that the
-              cipher suites specified include those listed for this component. The evaluator shall
+              cipher suites specified include those listed for this component. 
+              <Guidance/>
+              The evaluator shall
               also check the operational guidance to ensure that it contains instructions on
               configuring the <h:abbr title="Target of Evaluation" linkend="TOE">TOE</h:abbr> so that
               TLS conforms to the description in the
-              <h:abbr title="TOE Summary Specification" linkend="TSS">TSS</h:abbr>. The evaluator shall
+              <h:abbr title="TOE Summary Specification" linkend="TSS">TSS</h:abbr>.
+              <Tests/>
+              The evaluator shall
               also perform the following tests:
               <testlist>
                 <test>
@@ -1040,11 +1072,14 @@ during handshake.
               not selected in <linkref linkend="FCS_TLSS_EXT.1.1"/> should be selected here.
             </note>
             <aactivity>
+              <TSS/>
               The evaluator shall verify that the TSS contains a
               description of the denial of old SSL and TLS versions
-              consistent relative to selections in <linkref linkend="FCS_TLS_EXT.1.1" />,
-              and any configuration necessary to meet the requirement
-              must be contained in the AGD guidance.
+              consistent relative to selections in <linkref linkend="FCS_TLS_EXT.1.1" />.
+              <Guidance/>
+              The evaluator shall verify that the AGD guidance includes any configuration
+              necessary to meet this requirement.
+              <Tests/>
               <testlist>
                 <test>
                   The evaluator shall send a Client Hello requesting a
@@ -1090,11 +1125,13 @@ during handshake.
               NIST curves selection in the requirement.
             </note>
             <aactivity>
+              <TSS/>
               The evaluator shall verify that the TSS describes the key agreement parameters
               of the server's Key Exchange message.
-              <h:br />
+              <Guidance/>
               The evaluator shall verify that any configuration guidance necessary to meet
               the requirement must be contained in the AGD guidance.
+              <Tests/>
               <testlist>
                 <test>
                   [conditional] The evaluator shall attempt a
@@ -1136,15 +1173,16 @@ during handshake.
               with testing performed for <linkref linkend="FIA_X509_EXT.1"/>.
             </note>
             <aactivity>
+              <TSS/>
               The evaluator shall ensure that the TSS description required per <linkref linkend="FIA_X509_EXT.2.1" />
               includes the use of client-side certificates for TLS mutual authentication.
-              <h:br />
+              <Guidance/>
               The evaluator shall verify that the AGD guidance required per <linkref linkend="FIA_X509_EXT.2.1" />
               includes instructions for configuring the client-side certificates for TLS mutual
               authentication.  The evaluator shall ensure that the AGD guidance
               includes instructions for configuring the server to require
               mutual authentication of clients using these certificates.
-	      <h:br/>
+        <Tests/>
 	      The evaluator shall use TLS as a function to verify that the validation rules in
 	      <linkref linkend="FIA_X509_EXT.1.1" /> are adhered to and shall perform the following tests.
         The evaluator shall apply the AGD guidance to configure the server
@@ -1229,14 +1267,16 @@ during handshake.
               In the latter case, the matching itself may be performed outside the TOE.
             </note>
             <aactivity>
+              <TSS/>
               If the product implements mutual authentication, the evaluator shall
               verify that the TSS describes how the DN and SAN in the certificate
               is compared to the expected identifier.
-              <h:br />
+              <Guidance/>
               If the DN is not compared automatically to the domain name,
               IP address, username, or email address, the evaluator shall
               ensure that the AGD guidance includes configuration of the
               expected identifier or the directory server for the connection.
+              <Tests/>
               <testlist>
                 <test>
                   The evaluator shall send a client certificate with an identifier that does not match any of the
@@ -1269,15 +1309,18 @@ during handshake.
               supported by TLS 1.2.
 	    </note>
 	    <aactivity>
+        <TSS/>
 	      The evaluator shall verify that TSS describes the
 	      supported_signature_algorithms field of the Certificate
 	      Request and whether the required behavior is performed
-	      by default or may be configured. If the TSS indicates
+	      by default or may be configured.
+        <Guidance/>
+        If the TSS indicates
 	      that the supported_signature_algorithms field must be
 	      configured to meet the requirement, the evaluator shall
 	      verify that AGD guidance includes configuration of the
 	      supported_signature_algorithms field.
-	      <h:br/>
+	      <Tests/>
 	      The evaluator shall also perform the following test:
 	      <h:br/>
 	      The evaluator shall configure the server to send the
@@ -1307,6 +1350,7 @@ during handshake.
               handshakes to the cryptography in the original handshake.
 	    </note>
 	    <aactivity>
+        <Tests/>
 	      The following tests require connection with a client that supports secure
         renegotiation and the "renegotiation_info" extension.
 	      <testlist>
