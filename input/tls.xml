@@ -31,7 +31,7 @@
 
   <chapter title="Introduction" id="int">
     <section title="Overview" id="ppoverview">
-	  Transport Layer Security (TLS), and the closely-related Datagram TLS (DTLS) are
+	  Transport Layer Security (TLS) and the closely-related Datagram TLS (DTLS) are
     cryptographic protocols designed to provide communications security over IP networks.
     Several versions of the protocol are in widespread use in software that provides functionality
     such as web browsing, email, instant messaging, and voice-over-IP
@@ -239,13 +239,15 @@
               The RFC selections for this requirement need to be consistent with selections in
               later elements of this Package (e.g., cryptographic algorithms permitted).
               <h:br/><h:br/> -->
-              If <h:i>client</h:i> is selected, then the
-              ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" /> or 
-              <linkref linkend="FCS_DTLSC_EXT.1"/> as appropriate.
+              If <h:i>TLS</h:i> is selected, then the
+              ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" /> when
+              <h:i>client</h:i> is selected, and
+              <linkref linkend="FCS_TLSS_EXT.1"/> when <h:i>server</h:i> is selected.
               <h:br/><h:br/>
-              If <h:i>server</h:i> is selected, then
-              the ST must include the requirements from <linkref linkend="FCS_TLSS_EXT.1" /> or 
-              <linkref linkend="FCS_DTLSS_EXT.1"/> as appropriate.
+              If <h:i>DTLS</h:i> is selected, then the
+              ST must include the requirements from <linkref linkend="FCS_DTLSC_EXT.1" /> when
+              <h:i>client</h:i> is selected, and
+              <linkref linkend="FCS_DTLSS_EXT.1"/> when <h:i>server</h:i> is selected.
               <h:br/><h:br/>
               Some dependent components refer to RFC 5246, which indicates that
               certain cryptographic algorithms are "REQUIRED". This means that
@@ -300,7 +302,6 @@
         The <abbr title="Security Target" linkend="ST">ST
       </abbr> author should select the cipher suites that are supported,
       and must select at least one cipher suite.
-      <h:br/>
 	      The cipher suites to be tested in the evaluated
 	      configuration are limited by this requirement. However,
 	      this requirement does not restrict the TOE's ability to
@@ -309,19 +310,17 @@
 	      is, the TOE may propose any cipher suite but the
 	      evaluation will only test cipher suites from the above
 	      list.
-	      <h:br/>
 	      It is necessary to limit the cipher suites that can be
 	      used in an evaluated configuration administratively on
 	      the server in the test environment.
-	      <h:br/>
 	      GCM cipher suites are preferred over CBC cipher suites,
 	      ECDHE preferred over RSA and DHE, and SHA256 or SHA384
 	      over SHA.  TLS_RSA_WITH_AES_128_CBC_SHA is not required despite being mandated by RFC 5246.
-	      <h:br/>
+	      <h:br/><h:br/>
 	      These requirements will be revisited as new <abbr
 	      title="Transport Layer Security">TLS</abbr> versions are
 	      standardized by the IETF.
-	      <h:br/>
+	      <h:br/><h:br/>
         If any ECDHE or DHE cipher suites are selected, then
 	      <linkref linkend="FCS_TLSC_EXT.5"/> is required.
         <h:br/><h:br/>
@@ -727,6 +726,7 @@ during handshake.
         </f-component>
         <f-component id="fcs_tlsc_ext.5" name="TLS Client Support for Supported Groups Extension" status="sel-based">
           <selection-depends req="fcs_tlsc_ext.1.1"/>
+          <selection-depends req="fcs_dtlsc_ext.1.1"/>
           <f-element id="fcs_tlsc_ext.5.1"><!-- Was 1.4 -->
             <!-- TODO: IDs for ECC DHE curves -->
             <title> The product shall present the Supported Groups Extension in the Client Hello
@@ -739,14 +739,16 @@ during handshake.
                 <selectable>ffdhe4096(258)</selectable>
                 <selectable>ffdhe6144(259)</selectable>
                 <selectable>ffdhe8192(260)</selectable>
-              </selectables>. </title>
+              </selectables>.
+            </title>
             <note role="application">
-              If an elliptic curve or Diffie-Hellman ciphersuite is selected in <linkref linkend="FCS_TLSC_EXT.1.1"/>,
+              If an elliptic curve or Diffie-Hellman ciphersuite is selected in <linkref linkend="FCS_TLSC_EXT.1.1"/>
+              or <linkref linkend="FCS_DTLSC_EXT.1.1"/>,
               then <linkref linkend="FCS_TLSC_EXT.5"/> shall be included in the ST. This requirement does not limit the
               elliptic curves the client may propose for authentication and key agreement.
               This was previously referred to as Supported Elliptic Curves Extension. </note>
             <aactivity> The evaluator shall verify that <abbr title="TOE Summary Specification"
-              linkend="TSS">TSS</abbr> describes the Supported Elliptic Curves Extension. 
+              linkend="TSS">TSS</abbr> describes the Supported Groups Extension.
               <h:br/>
               The evaluator shall also perform the following test:
               <h:br/>
@@ -786,9 +788,14 @@ during handshake.
               <selectable>none</selectable>
             </selectables>.
             </title>
-            <!--<note role="application">Any DTLS version selected in
-            <linkref linkend="FCS_TLS_EXT.1.1" /> must be selected
-            here.</note>-->
+            <note role="application">
+            If any ECDHE or DHE cipher suites are selected, then
+            <linkref linkend="FCS_TLSC_EXT.5"/> is required.
+            <h:br/><h:br/>
+            If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include 
+            the requirements from <linkref linkend="FCS_TLSC_EXT.2"/>. If the TOE implements
+            mutual authentication, this selection must be made.
+          </note>
             <aactivity>
               <testlist>
                 <test>
@@ -920,7 +927,6 @@ during handshake.
         The <abbr title="Security Target" linkend="ST">ST
        </abbr> author should select the cipher suites that are supported,
        and must select at least one cipher suite.
-	      <h:br/>
               It is necessary to limit the cipher suites that can be
               used in an evaluated configuration administratively on
               the server in the test environment.  If administrative
@@ -928,13 +934,13 @@ during handshake.
               negotiated by the implementation are limited to those in
               this requirement, then the appropriate instructions need
               to be contained in the guidance.
-	      <h:br/>
 	      GCM cipher suites are preferred over CBC cipher suites,
 	      ECDHE preferred over RSA and DHE, and SHA256 or SHA384
-	      over SHA.  
-        <h:br/>
+	      over SHA.
         TLS_RSA_WITH_AES_128_CBC_SHA is not required 
-	      despite being mandated by RFC 5246. These requirements will be revisited as new
+	      despite being mandated by RFC 5246. 
+        <h:br/><h:br/>
+        These requirements will be revisited as new
 	      <abbr title="Transport Layer Security">TLS</abbr>
 	      versions are standardized by the IETF.
         <h:br/><h:br/>
