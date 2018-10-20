@@ -359,13 +359,19 @@
                   cryptographic algorithm is 128-bit AES and not 256-bit AES).
                 </test>
                 <test>
+                  The goal of the following test is to verify that the TOE accepts only certificates
+                  with appropriate values in the extendedKeyUsage extension, and implicitly that the
+                  TOE correctly parses the extendedKeyUsage extension as part of X.509v3 server
+                  certificate validation.
+                  <h:br/><h:br/>
                   The evaluator shall attempt to establish the connection using a server with a
                   server certificate that contains the Server Authentication purpose in the
-                  extendedKeyUsage field and verify that a connection is established. The evaluator
-                  shall then verify that the client rejects an otherwise valid server certificate
-                  that lacks the Server Authentication purpose in the extendedKeyUsage field and a
-                  connection is not established. Ideally, the two certificates should be identical
-                  except for the extendedKeyUsage field.
+                  extendedKeyUsage extension and verify that a connection is established. The
+                  evaluator shall repeat this test using a different, but otherwise valid and
+                  trusted, certificate that lacks the Server Authentication purpose in the
+                  extendedKeyUsage extension and ensure that a connection is not established.
+                  Ideally, the two certificates should be similar in structure, the types of
+                  identifiers used, and the chain of trust.
                 </test>
                 <test>
                   The evaluator shall send a server certificate in the <abbr title="Transport Layer Security">TLS</abbr> connection
@@ -1110,7 +1116,7 @@ during handshake.
                   <selectables>
                     <selectable>secp256r1</selectable>
                     <selectable>secp384r1</selectable>
-		    <selectable>secp521r1</selectable>
+                    <selectable>secp521r1</selectable>
                   </selectables> and no other curves</selectable>
                 <selectable>Diffie-Hellman parameters of size 2048 and
                   <selectables>
