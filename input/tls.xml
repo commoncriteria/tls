@@ -769,7 +769,8 @@ during handshake.
               or <linkref linkend="FCS_DTLSC_EXT.1.1"/>,
               then <linkref linkend="FCS_TLSC_EXT.5"/> shall be included in the ST. This requirement does not limit the
               elliptic curves the client may propose for authentication and key agreement.
-              This was previously referred to as Supported Elliptic Curves Extension. </note>
+              The Supported Groups Extension was previously referred to as the
+              Supported Elliptic Curves Extension and is described in RFC 7919.</note>
             <aactivity>
               <TSS/>
               The evaluator shall verify that <abbr title="TOE Summary Specification"
@@ -777,8 +778,12 @@ during handshake.
               <Tests/>
               The evaluator shall also perform the following test:
               <h:br/>
+              <testlist>
+              <test>
               The evaluator shall configure a server to perform ECDHE key exchange using each of the TOE’s supported
               curves and/or groups. The evaluator shall verify that the TOE successfully connects to the server.
+              </test>
+              </testlist>
             </aactivity>
           </f-element>  
         </f-component>
@@ -1110,6 +1115,9 @@ during handshake.
                 <selectable>Diffie-Hellman parameters of size 2048 and
                   <selectables>
                     <selectable>3072 bits</selectable>
+                    <selectable>4096 bits</selectable>
+                    <selectable>6144 bits</selectable>
+                    <selectable>8192 bits</selectable>
                     <selectable>no other size</selectable>
                   </selectables>
                 </selectable>
