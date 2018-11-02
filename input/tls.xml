@@ -937,7 +937,7 @@ during handshake.
             <title> The product shall implement TLS 1.2 (RFC 5246) and
             <selectables>
               <selectable>TLS 1.1 (RFC 4346)</selectable>
-              <selectable exclusive="yes">no earlier DTLS versions</selectable>
+              <selectable exclusive="yes">no earlier TLS versions</selectable>
             </selectables>
               as a server that supports the cipher suites
               <selectables linebreak="yes">
