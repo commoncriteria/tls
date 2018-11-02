@@ -210,14 +210,14 @@
       Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional
       components.
       <subsection title="Cryptographic Support (FCS)" id="fcs">
-        <f-component id="fcs_tls_ext.1" name="TLS Protocol" status="threshold">
+        <f-component id="fcs_tls_ext.1" name="TLS Protocol">
           <f-element id="fcs_tls_ext.1.1">
 			<title>The product shall implement
         <selectables linebreak="yes">
-          <selectable id="tlss-impl">TLS as a server</selectable>
-          <selectable id="tlsc-impl">TLS as a client</selectable>
-          <selectable id="dtlss-impl">DTLS as a server</selectable>
-          <selectable id="dtlsc-impl">DTLS as a client</selectable>
+          <selectable id="tlss_impl">TLS as a server</selectable>
+          <selectable id="tlsc_impl">TLS as a client</selectable>
+          <selectable id="dtlss_impl">DTLS as a server</selectable>
+          <selectable id="dtlsc_impl">DTLS as a client</selectable>
         </selectables>.
         <!-- that complies with 
         <selectables linebreak="yes">
@@ -271,12 +271,12 @@
         </f-component>
 
         <f-component id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1" ids="tlsc-impl"/>
+          <selection-depends req="fcs_tls_ext.1.1" ids="tlsc_impl"/>
           <f-element id="fcs_tlsc_ext.1.1">
             <title> The product shall implement TLS 1.2 (RFC 5246) and
               <selectables>
                 <selectable>TLS 1.1 (RFC 4346)</selectable>
-                <selectable>no earlier TLS versions</selectable>
+                <selectable exclusive='yes'>no earlier TLS versions</selectable>
               </selectables> as a client that supports the cipher suites
           <selectables linebreak="yes">
             <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
@@ -565,7 +565,7 @@
             <title>The product shall not establish a trusted channel if the
               server certificate is invalid
               <selectables>
-              <selectable>with no exceptions</selectable>
+              <selectable exclusive="yes">with no exceptions</selectable>
               <selectable>except when override is authorized</selectable>
             </selectables>.
             </title>
@@ -727,7 +727,7 @@ during handshake.
             <title> The product shall include (choose only one of)
               <selectables>
                 <selectable>renegotiation_info extension</selectable>
-                <selectable>TLS_EMPTY_RENEGOTIATION_INFO_SCSV cipher suite</selectable>
+                <selectable exclusive="yes">TLS_EMPTY_RENEGOTIATION_INFO_SCSV cipher suite</selectable>
               </selectables> in the ClientHello message. </title>
 
             <note role="application">
@@ -798,7 +798,7 @@ during handshake.
           </f-element>  
         </f-component>
         <f-component id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1" ids="dtlsc-impl"/>
+          <selection-depends req="fcs_tls_ext.1.1" ids="dtlsc_impl"/>
           <f-element id="fcs_dtlsc_ext.1.1">
             <title>The product shall implement DTLS 1.2 (RFC 6347) and
             <selectables>
@@ -866,7 +866,7 @@ during handshake.
         </f-component>
 
         <f-component id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1" ids="dtlss-impl"/>
+          <selection-depends req="fcs_tls_ext.1.1" ids="dtlss_impl"/>
           <f-element id="fcs_dtlss_ext.1.1">
             <title>The product shall implement DTLS 1.2 (RFC 6347) and
             <selectables>
@@ -932,7 +932,7 @@ during handshake.
         </f-component>
 
         <f-component id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1" ids="tlss-impl"/>
+          <selection-depends req="fcs_tls_ext.1.1" ids="tlss_impl"/>
           <f-element id="fcs_tlss_ext.1.1">
             <title> The product shall implement TLS 1.2 (RFC 5246) and
             <selectables>
@@ -961,7 +961,7 @@ during handshake.
               <selectables linebreak="yes">
                 <selectable id="tlss_mutual_auth">mutual authentication</selectable>
                 <selectable id="tlss_reneg">session renegotiation</selectable>
-                <selectable>none</selectable>
+                <selectable exclusive="yes">none</selectable>
               </selectables>.
             </title>
             <note role="application">
@@ -1080,7 +1080,7 @@ during handshake.
             SSL 2.0, SSL 3.0, TLS 1.0 and
               <selectables>
                 <selectable>TLS 1.1</selectable>
-                <selectable>none</selectable>
+                <selectable exclusive="yes">none</selectable>
               </selectables>.
             </title>
             <note role="application">All SSL versions are denied. Any TLS version
@@ -1113,7 +1113,7 @@ during handshake.
                   <selectables>
                     <selectable>3072 bits</selectable>
                     <selectable>4096 bits</selectable>
-                    <selectable>no other sizes</selectable>
+                    <selectable exclusive="yes">no other sizes</selectable>
                   </selectables>
                 </selectable>
                 <selectable>ECDHE parameters over NIST curves
@@ -1128,10 +1128,10 @@ during handshake.
                     <selectable>4096 bits</selectable>
                     <selectable>6144 bits</selectable>
                     <selectable>8192 bits</selectable>
-                    <selectable>no other size</selectable>
+                    <selectable exclusive="yes">no other size</selectable>
                   </selectables>
                 </selectable>
-                <selectable>no other key establishment methods</selectable>
+                <selectable exclusive="yes">no other key establishment methods</selectable>
               </selectables>
             </title>
             <note role="application">
