@@ -214,9 +214,11 @@
           <f-element id="fcs_tls_ext.1.1">
 			<title>The product shall implement
         <selectables linebreak="yes">
-          <selectable>TLS</selectable>
-          <selectable>DTLS</selectable>
-        </selectables>
+          <selectable id="tlss-impl">TLS as a server</selectable>
+          <selectable id="tlsc-impl">TLS as a client</selectable>
+          <selectable id="dtlss-impl">DTLS as a server</selectable>
+          <selectable id="dtlsc-impl">DTLS as a client</selectable>
+        </selectables>.
         <!-- that complies with 
         <selectables linebreak="yes">
           <selectable>TLS 1.2 (RFC 5246) </selectable>
@@ -228,11 +230,11 @@
 						<selectable>DTLS 1.0 (RFC 4347)</selectable>
 						<selectable>no earlier TLS versions</selectable>
 					</selectables> -->
-					as a
-					<selectables linebreak="yes">
-						<selectable>client</selectable>
-						<selectable>server</selectable>
-					</selectables>.
+					<!-- as a -->
+					<!-- <selectables linebreak="yes"> -->
+					<!-- 	<selectable>client</selectable> -->
+					<!-- 	<selectable>server</selectable> -->
+					<!-- </selectables>. -->
             </title>
             <note role="application">
               <!--The ST author selects which of the additional RFCs to which
@@ -269,7 +271,7 @@
         </f-component>
 
         <f-component id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1"/>
+          <selection-depends req="fcs_tls_ext.1.1" ids="tlsc-impl"/>
           <f-element id="fcs_tlsc_ext.1.1">
             <title> The product shall implement TLS 1.2 (RFC 5246) and
               <selectables>
@@ -284,20 +286,20 @@
             <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+            <selectable id="tecdhe1">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+            <selectable id="tecdhe2">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+            <selectable id="tecdhe3">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+            <selectable id="tecdhe4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+            <selectable id="tecdhe5">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+            <selectable id="tecdhe6">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+            <selectable id="tecdhe7">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+            <selectable id="tecdhe8">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
           </selectables>
           and also supports functionality for 
           <selectables linebreak="yes">
-            <selectable>mutual authentication</selectable>
-            <selectable>session renegotiation</selectable>
-            <selectable>none</selectable>
+            <selectable id="tlsc_mutual_auth">mutual authentication</selectable>
+            <selectable id="tlsc_reneg">session renegotiation</selectable>
+            <selectable exclusive="yes">none</selectable>
           </selectables>.
           </title>
             <note role="application">
@@ -622,7 +624,7 @@
         </f-component>
         
         <f-component id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="sel-based">
-          <selection-depends req="fcs_tlsc_ext.1.1"/>
+          <selection-depends req="fcs_tlsc_ext.1.1" ids="tlsc_mutual_auth"/>
           <f-element id="fcs_tlsc_ext.2.1">
             <title>The product shall support mutual authentication using X.509v3 certificates.</title>
             <note role="application"> The use of X.509v3 certificates for <abbr
@@ -716,7 +718,7 @@ during handshake.
           </f-element>  
         </f-component>
         <f-component id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
-          <selection-depends req="fcs_tlsc_ext.1.1"/>
+          <selection-depends req="fcs_tlsc_ext.1.1" ids="tlsc_reneg"/>
           <f-element id="fcs_tlsc_ext.4.1">
             <title> The product shall support secure renegotiation through use
               of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
@@ -756,8 +758,8 @@ during handshake.
           </f-element>
         </f-component>
         <f-component id="fcs_tlsc_ext.5" name="TLS Client Support for Supported Groups Extension" status="sel-based">
-          <selection-depends req="fcs_tlsc_ext.1.1"/>
-          <selection-depends req="fcs_dtlsc_ext.1.1"/>
+          <selection-depends req="fcs_tlsc_ext.1.1"  ids="tecdhe1,tecdhe2,tecdhe3,tecdhe4,tecdhe5,tecdhe6,tecdhe7,tecdhe8"/>
+          <selection-depends req="fcs_dtlsc_ext.1.1" ids="decdhe1,decdhe2,decdhe3,decdhe4,decdhe5,decdhe6,decdhe7,decdhe8"/>
           <f-element id="fcs_tlsc_ext.5.1"><!-- Was 1.4 -->
             <!-- TODO: IDs for ECC DHE curves -->
             <title> The product shall present the Supported Groups Extension in the Client Hello
@@ -796,12 +798,12 @@ during handshake.
           </f-element>  
         </f-component>
         <f-component id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1"/>
+          <selection-depends req="fcs_tls_ext.1.1" ids="dtlsc-impl"/>
           <f-element id="fcs_dtlsc_ext.1.1">
             <title>The product shall implement DTLS 1.2 (RFC 6347) and
             <selectables>
               <selectable>DTLS 1.0 (RFC 4347)</selectable>
-              <selectable>no earlier DTLS versions</selectable>
+              <selectable exclusive="yes">no earlier DTLS versions</selectable>
             </selectables> as a client that supports the cipher suites
           <selectables linebreak="yes">
             <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
@@ -811,19 +813,19 @@ during handshake.
             <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+            <selectable id="decdhe1">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+            <selectable id="decdhe2">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+            <selectable id="decdhe3">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+            <selectable id="decdhe4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+            <selectable id="decdhe5">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+            <selectable id="decdhe6">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+            <selectable id="decdhe7">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+            <selectable id="decdhe8">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
             </selectables>
             and also supports functionality for 
             <selectables linebreak="yes">
-              <selectable>mutual authentication</selectable>
-              <selectable>none</selectable>
+              <selectable id="dtlsc_mutual_auth">mutual authentication</selectable>
+              <selectable exclusive="yes">none</selectable>
             </selectables>.
             </title>
             <note role="application">
@@ -864,12 +866,12 @@ during handshake.
         </f-component>
 
         <f-component id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1"/>
+          <selection-depends req="fcs_tls_ext.1.1" ids="dtlss-impl"/>
           <f-element id="fcs_dtlss_ext.1.1">
             <title>The product shall implement DTLS 1.2 (RFC 6347) and
             <selectables>
               <selectable>DTLS 1.0 (RFC 4347)</selectable>
-              <selectable>no earlier DTLS versions</selectable>
+              <selectable exclusive="yes">no earlier DTLS versions</selectable>
             </selectables>
               as a server that supports the ciphersuites
               <selectables linebreak="yes">
@@ -891,8 +893,8 @@ during handshake.
               </selectables> and no other cipher suites,
               and also supports functionality for
               <selectables linebreak="yes">
-                <selectable>mutual authentication</selectable>
-                <selectable>none</selectable>
+                <selectable id="dtlss_mutual_auth">mutual authentication</selectable>
+                <selectable exclusive="yes">none</selectable>
             </selectables>.
             </title>
 	    <note role="application">
@@ -930,12 +932,12 @@ during handshake.
         </f-component>
 
         <f-component id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1"/>
+          <selection-depends req="fcs_tls_ext.1.1" ids="tlss-impl"/>
           <f-element id="fcs_tlss_ext.1.1">
             <title> The product shall implement TLS 1.2 (RFC 5246) and
             <selectables>
               <selectable>TLS 1.1 (RFC 4346)</selectable>
-              <selectable>no earlier DTLS versions</selectable>
+              <selectable exclusive="yes">no earlier DTLS versions</selectable>
             </selectables>
               as a server that supports the cipher suites
               <selectables linebreak="yes">
@@ -957,8 +959,8 @@ during handshake.
               </selectables> and no other cipher suites,
               and also supports functionality for
               <selectables linebreak="yes">
-                <selectable>mutual authentication</selectable>
-                <selectable>session renegotiation</selectable>
+                <selectable id="tlss_mutual_auth">mutual authentication</selectable>
+                <selectable id="tlss_reneg">session renegotiation</selectable>
                 <selectable>none</selectable>
               </selectables>.
             </title>
@@ -1174,7 +1176,7 @@ during handshake.
         </f-component>
 
        <f-component id="FCS_TLSS_EXT.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
-         <selection-depends req="fcs_tlss_ext.1.1"/>
+         <selection-depends req="fcs_tlss_ext.1.1" ids="tlss_mutual_auth"/>
           <f-element id="fcs_tlss_ext.2.1">
             <title>The product shall support authentication of
               TLS clients using X.509v3 certificates.
@@ -1356,7 +1358,7 @@ during handshake.
 	</f-component>
 
 	<f-component id="FCS_TLSS_EXT.4" name="TLS Server Support for Renegotiation" status="sel-based">
-    <selection-depends req="fcs_tlss_ext.1.1"/>
+    <selection-depends req="fcs_tlss_ext.1.1" ids="tlss_reneg"/>
           <f-element id="fcs_tlss_ext.4.1">
             <title>The product shall support the "renegotiation_info" TLS extension
               in accordance with RFC 5746.
@@ -1394,7 +1396,7 @@ during handshake.
 	</f-component>
 
 	<f-component id="FCS_DTLSC_EXT.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
-	  <selection-depends req="fcs_dtlsc_ext.1.1"/>
+	  <selection-depends req="fcs_dtlsc_ext.1.1" ids="dtlsc_mutual_auth"/>
           <f-element id="fcs_dtlsc_ext.2.1">
             <title>The product shall implement the requirements in <linkref linkend="FCS_TLSC_EXT.2" /> for the DTLS
             implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
@@ -1412,7 +1414,7 @@ during handshake.
 	</f-component>
 
 	<f-component id="FCS_DTLSS_EXT.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
-	  <selection-depends req="fcs_dtlss_ext.1.1"/>
+	  <selection-depends req="fcs_dtlss_ext.1.1" ids="dtlss_mutual_auth"/>
           <f-element id="fcs_dtlss_ext.2.1">
             <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.2" /> for the DTLS
             implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
