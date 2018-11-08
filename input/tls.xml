@@ -47,7 +47,7 @@
     the server endpoint.
     <h:p/>
 	  TLS supports many different methods for exchanging keys, encrypting data,
-	  and authenticating message integrity. These are dynamically negotiated
+	  and authenticating message integrity. These methods are dynamically negotiated
     between the client and server when the TLS connection is established.
     As a result, evaluating the implementation of both endpoints is typically
     necessary to provide assurance for the operating environment.
@@ -394,9 +394,16 @@
                   <testlist>
                     <test>
                       Change the <abbr title="Transport Layer Security">TLS</abbr> version
-                      selected by the server in the Server Hello to a non-supported <abbr
+                      selected by the server in the Server Hello to an undefined <abbr
                       title="Transport Layer Security">TLS</abbr> version (for example 1.5
                       represented by the two bytes 03 06) and verify that the client rejects the
+                      connection.
+                    </test>
+                    <test>
+                      Change the <abbr title="Transport Layer Security">TLS</abbr> version
+                      selected by the server in the Server Hello to the most recent unsupported <abbr
+                      title="Transport Layer Security">TLS</abbr> version (for example 1.1
+                      represented by the two bytes 03 02) and verify that the client rejects the
                       connection.
                     </test>
                     <test>
@@ -797,139 +804,6 @@ during handshake.
             </aactivity>
           </f-element>  
         </f-component>
-        <f-component id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1" ids="dtlsc_impl"/>
-          <f-element id="fcs_dtlsc_ext.1.1">
-            <title>The product shall implement DTLS 1.2 (RFC 6347) and
-            <selectables>
-              <selectable>DTLS 1.0 (RFC 4347)</selectable>
-              <selectable exclusive="yes">no earlier DTLS versions</selectable>
-            </selectables> as a client that supports the cipher suites
-          <selectables linebreak="yes">
-            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
-            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-            <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-            <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-            <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-            <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable id="decdhe1">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-            <selectable id="decdhe2">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-            <selectable id="decdhe3">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-            <selectable id="decdhe4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-            <selectable id="decdhe5">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-            <selectable id="decdhe6">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-            <selectable id="decdhe7">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-            <selectable id="decdhe8">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-            </selectables>
-            and also supports functionality for 
-            <selectables linebreak="yes">
-              <selectable id="dtlsc_mutual_auth">mutual authentication</selectable>
-              <selectable exclusive="yes">none</selectable>
-            </selectables>.
-            </title>
-            <note role="application">
-            If any ECDHE or DHE cipher suites are selected, then
-            <linkref linkend="FCS_TLSC_EXT.5"/> is required.
-            <h:br/><h:br/>
-            If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include 
-            the requirements from <linkref linkend="FCS_TLSC_EXT.2"/>. If the TOE implements
-            mutual authentication, this selection must be made.
-          </note>
-            <aactivity>
-              <Tests/>
-              <testlist>
-                <test>
-                  The evaluator shall attempt to establish a connection with a DTLS server, observe
-                  the traffic with a packet analyzer, and verify that the connection succeeds and
-                  that the traffic is identified as DTLS.
-                </test>
-              </testlist>
-            </aactivity>
-          </f-element>
-          <f-element id="fcs_dtlsc_ext.1.2">
-            <title>The product shall implement the requirements in <linkref linkend="FCS_TLSC_EXT.1"/> for the
-              DTLS implementation, except where variations are allowed according to DTLS 1.2
-              (RFC 6347).
-            </title>
-            <note role="application">
-              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the
-              protocols are the same. In particular, for the applicable security characteristics
-              defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all
-              application notes and evaluation activities that are listed for
-              <abbr title="Transport Layer Security">TLS</abbr> apply to the DTLS implementation.
-            </note>
-            <aactivity>
-              The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.1"/>.
-            </aactivity>
-          </f-element>
-        </f-component>
-
-        <f-component id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
-          <selection-depends req="fcs_tls_ext.1.1" ids="dtlss_impl"/>
-          <f-element id="fcs_dtlss_ext.1.1">
-            <title>The product shall implement DTLS 1.2 (RFC 6347) and
-            <selectables>
-              <selectable>DTLS 1.0 (RFC 4347)</selectable>
-              <selectable exclusive="yes">no earlier DTLS versions</selectable>
-            </selectables>
-              as a server that supports the ciphersuites
-              <selectables linebreak="yes">
-                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
-                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-                <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-                <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-                <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-                <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-                <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-                <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-                <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
-              </selectables> and no other cipher suites,
-              and also supports functionality for
-              <selectables linebreak="yes">
-                <selectable id="dtlss_mutual_auth">mutual authentication</selectable>
-                <selectable exclusive="yes">none</selectable>
-            </selectables>.
-            </title>
-	    <note role="application">
-      If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include
-      the requirements from <linkref linkend="FCS_DTLSS_EXT.2"/>.  If the TOE implements
-      mutual authentication, this selection must be made.
-      </note>
-            <aactivity>
-              <Tests/>
-              <testlist>
-                <test>
-                  The evaluator shall attempt to establish a connection with a DTLS server, observe
-                  the traffic with a packet analyzer, and verify that the connection succeeds and
-                  that the traffic is identified as DTLS.
-                </test>
-              </testlist>
-            </aactivity>
-          </f-element>
-          <f-element id="fcs_dtlss_ext.1.2">
-            <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.1"/> for the
-              DTLS implementation, except where variations are allowed according to DTLS 1.2
-              (RFC 6347).
-            </title>
-            <note role="application">
-              Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the
-              protocols are the same. In particular, for the applicable security characteristics
-              defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all
-              application notes and evaluation activities that are listed for
-              <abbr title="Transport Layer Security">TLS</abbr> apply to the DTLS implementation.
-            </note>
-            <aactivity>
-              The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.1"/>.
-            </aactivity>
-          </f-element>
-        </f-component>
 
         <f-component id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
           <selection-depends req="fcs_tls_ext.1.1" ids="tlss_impl"/>
@@ -972,7 +846,7 @@ during handshake.
               It is necessary to limit the cipher suites that can be
               used in an evaluated configuration administratively on
               the server in the test environment.  If administrative
-              steps need to be taken to that the cipher suites
+              steps need to be taken so that the cipher suites
               negotiated by the implementation are limited to those in
               this requirement, then the appropriate instructions need
               to be contained in the guidance.
@@ -1101,7 +975,7 @@ during handshake.
                   connection with version SSL 2.0 and verify that the
                   server denies the connection. The evaluator shall
                   repeat this test with SSL 3.0 and TLS 1.0,
-                  and TLS 1.1 if it was selected.
+                  and TLS 1.1 if it is selected.
                 </test>
               </testlist>
             </aactivity>
@@ -1175,7 +1049,7 @@ during handshake.
           </f-element>
         </f-component>
 
-       <f-component id="FCS_TLSS_EXT.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
+       <f-component id="fcs_tlss_ext.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
          <selection-depends req="fcs_tlss_ext.1.1" ids="tlss_mutual_auth"/>
           <f-element id="fcs_tlss_ext.2.1">
             <title>The product shall support authentication of
@@ -1312,7 +1186,7 @@ during handshake.
           </f-element>
         </f-component>
 
-	<f-component id="FCS_TLSS_EXT.3" name="TLS Server Support for Signature Algorithms Extension" status="objective">
+	<f-component id="fcs_tlss_ext.3" name="TLS Server Support for Signature Algorithms Extension" status="objective">
           <f-element id="fcs_tlss_ext.3.1">
             <title>The product shall present the HashAlgorithm
             enumeration in supported_signature_algorithms in the
@@ -1395,8 +1269,76 @@ during handshake.
 	    </f-element>
 	</f-component>
 
-	<f-component id="FCS_DTLSC_EXT.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
-	  <selection-depends req="fcs_dtlsc_ext.1.1" ids="dtlsc_mutual_auth"/>
+  <f-component id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
+    <selection-depends req="fcs_tls_ext.1.1" ids="dtlsc_impl"/>
+    <f-element id="fcs_dtlsc_ext.1.1">
+      <title>The product shall implement DTLS 1.2 (RFC 6347) and
+      <selectables>
+        <selectable>DTLS 1.0 (RFC 4347)</selectable>
+        <selectable exclusive="yes">no earlier DTLS versions</selectable>
+      </selectables> as a client that supports the cipher suites
+    <selectables linebreak="yes">
+      <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
+      <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+      <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+      <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+      <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+      <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+      <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+      <selectable id="decdhe1">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+      <selectable id="decdhe2">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+      <selectable id="decdhe3">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+      <selectable id="decdhe4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+      <selectable id="decdhe5">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+      <selectable id="decdhe6">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+      <selectable id="decdhe7">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+      <selectable id="decdhe8">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+      </selectables>
+      and also supports functionality for 
+      <selectables linebreak="yes">
+        <selectable id="dtlsc_mutual_auth">mutual authentication</selectable>
+        <selectable exclusive="yes">none</selectable>
+      </selectables>.
+      </title>
+      <note role="application">
+      If any ECDHE or DHE cipher suites are selected, then
+      <linkref linkend="FCS_TLSC_EXT.5"/> is required.
+      <h:br/><h:br/>
+      If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include 
+      the requirements from <linkref linkend="FCS_TLSC_EXT.2"/>. If the TOE implements
+      mutual authentication, this selection must be made.
+    </note>
+      <aactivity>
+        <Tests/>
+        <testlist>
+          <test>
+            The evaluator shall attempt to establish a connection with a DTLS server, observe
+            the traffic with a packet analyzer, and verify that the connection succeeds and
+            that the traffic is identified as DTLS.
+          </test>
+        </testlist>
+      </aactivity>
+    </f-element>
+    <f-element id="fcs_dtlsc_ext.1.2">
+      <title>The product shall implement the requirements in <linkref linkend="FCS_TLSC_EXT.1"/> for the
+        DTLS implementation, except where variations are allowed according to DTLS 1.2
+        (RFC 6347).
+      </title>
+      <note role="application">
+        Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the
+        protocols are the same. In particular, for the applicable security characteristics
+        defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all
+        application notes and evaluation activities that are listed for
+        <abbr title="Transport Layer Security">TLS</abbr> apply to the DTLS implementation.
+      </note>
+      <aactivity>
+        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.1"/>.
+      </aactivity>
+    </f-element>
+  </f-component>
+
+  <f-component id="fcs_dtlsc_ext.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
+    <selection-depends req="fcs_dtlsc_ext.1.1" ids="dtlsc_mutual_auth"/>
           <f-element id="fcs_dtlsc_ext.2.1">
             <title>The product shall implement the requirements in <linkref linkend="FCS_TLSC_EXT.2" /> for the DTLS
             implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
@@ -1406,15 +1348,81 @@ during handshake.
               In particular, for the applicable security characteristics defined for the TSF, the two protocols do not
               differ. Therefore, all application notes and evaluation activities that are listed for TLS apply to the
               DTLS implementation.
-	    </note>
-	    <aactivity>
-	      The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.2" />.
-	    </aactivity>
-	  </f-element>
-	</f-component>
+      </note>
+      <aactivity>
+        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.2" />.
+      </aactivity>
+    </f-element>
+  </f-component>
 
-	<f-component id="FCS_DTLSS_EXT.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
-	  <selection-depends req="fcs_dtlss_ext.1.1" ids="dtlss_mutual_auth"/>
+  <f-component id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
+    <selection-depends req="fcs_tls_ext.1.1" ids="dtlss_impl"/>
+    <f-element id="fcs_dtlss_ext.1.1">
+      <title>The product shall implement DTLS 1.2 (RFC 6347) and
+      <selectables>
+        <selectable>DTLS 1.0 (RFC 4347)</selectable>
+        <selectable exclusive="yes">no earlier DTLS versions</selectable>
+      </selectables>
+        as a server that supports the ciphersuites
+        <selectables linebreak="yes">
+          <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
+          <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+          <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+          <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+          <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+          <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+          <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+          <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289</selectable>
+        </selectables> and no other cipher suites,
+        and also supports functionality for
+        <selectables linebreak="yes">
+          <selectable id="dtlss_mutual_auth">mutual authentication</selectable>
+          <selectable exclusive="yes">none</selectable>
+      </selectables>.
+      </title>
+      <note role="application">
+      If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include
+      the requirements from <linkref linkend="FCS_DTLSS_EXT.2"/>.  If the TOE implements
+      mutual authentication, this selection must be made.
+      </note>
+      <aactivity>
+        <Tests/>
+        <testlist>
+          <test>
+            The evaluator shall attempt to establish a connection with a DTLS server, observe
+            the traffic with a packet analyzer, and verify that the connection succeeds and
+            that the traffic is identified as DTLS.
+          </test>
+        </testlist>
+      </aactivity>
+    </f-element>
+    <f-element id="fcs_dtlss_ext.1.2">
+      <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.1"/> for the
+        DTLS implementation, except where variations are allowed according to DTLS 1.2
+        (RFC 6347).
+      </title>
+      <note role="application">
+        Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the
+        protocols are the same. In particular, for the applicable security characteristics
+        defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all
+        application notes and evaluation activities that are listed for
+        <abbr title="Transport Layer Security">TLS</abbr> apply to the DTLS implementation.
+      </note>
+      <aactivity>
+        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.1"/>.
+      </aactivity>
+    </f-element>
+  </f-component>
+
+  <f-component id="fcs_dtlss_ext.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
+    <selection-depends req="fcs_dtlss_ext.1.1" ids="dtlss_mutual_auth"/>
           <f-element id="fcs_dtlss_ext.2.1">
             <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.2" /> for the DTLS
             implementation, except where variations are allowed according to DTLS 1.2 (RFC 6347).
@@ -1424,12 +1432,12 @@ during handshake.
               In particular, for the applicable security characteristics defined for the TSF, the two protocols do not
               differ. Therefore, all application notes and evaluation activities that are listed for TLS apply to the
               DTLS implementation.
-	    </note>
-	    <aactivity>
-	      The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2" />.
-	    </aactivity>
-	  </f-element>
-	</f-component>	
+      </note>
+      <aactivity>
+        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2" />.
+      </aactivity>
+    </f-element>
+  </f-component>	
 
       </subsection>
     </section>
