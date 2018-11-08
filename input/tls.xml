@@ -214,10 +214,10 @@
           <f-element id="fcs_tls_ext.1.1">
 			<title>The product shall implement
         <selectables linebreak="yes">
-          <selectable id="tlss_impl">TLS as a server</selectable>
           <selectable id="tlsc_impl">TLS as a client</selectable>
-          <selectable id="dtlss_impl">DTLS as a server</selectable>
+          <selectable id="tlss_impl">TLS as a server</selectable>
           <selectable id="dtlsc_impl">DTLS as a client</selectable>
+          <selectable id="dtlss_impl">DTLS as a server</selectable>
         </selectables>.
         <!-- that complies with 
         <selectables linebreak="yes">
@@ -243,15 +243,17 @@
               The RFC selections for this requirement need to be consistent with selections in
               later elements of this Package (e.g., cryptographic algorithms permitted).
               <h:br/><h:br/> -->
-              If <h:i>TLS</h:i> is selected, then the
-              ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" /> when
-              <h:i>client</h:i> is selected, and
-              <linkref linkend="FCS_TLSS_EXT.1"/> when <h:i>server</h:i> is selected.
+              If <h:i>TLS as a client</h:i> is selected, then the
+              ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" />.
+              <h:br/>
+              If <h:i>TLS as a server</h:i> is selected, then the
+              ST must include the requirements from <linkref linkend="FCS_TLSS_EXT.1" />.
               <h:br/><h:br/>
-              If <h:i>DTLS</h:i> is selected, then the
-              ST must include the requirements from <linkref linkend="FCS_DTLSC_EXT.1" /> when
-              <h:i>client</h:i> is selected, and
-              <linkref linkend="FCS_DTLSS_EXT.1"/> when <h:i>server</h:i> is selected.
+              If <h:i>DTLS as a client</h:i> is selected, then the
+              ST must include the requirements from <linkref linkend="FCS_DTLSC_EXT.1" />.
+              <h:br/>
+              If <h:i>DTLS as a server</h:i> is selected, then the
+              ST must include the requirements from <linkref linkend="FCS_DTLSS_EXT.1" />.
               <h:br/><h:br/>
               Some dependent components refer to RFC 5246, which indicates that
               certain cryptographic algorithms are "REQUIRED". This means that
