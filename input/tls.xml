@@ -79,7 +79,7 @@
               of products.</description>
           </entry>
           <entry>
-            <term><abbr title="Protection Profile Module">PP-Module</abbr></term>
+            <term><abbr title="Protection Profile Module">PP Module</abbr></term>
             <description>An extension of the security requirements in a
               Protection Profile which introduces new elements to the base PP
               and may also refine or interpret some of the elements in the base PP.
@@ -150,15 +150,38 @@
       <h:p/>
       The contents of this Package must be appropriately
       combined with a <abbr linkend="PP"/> or <abbr linkend="PP-Module"/>.
-      <h:p/>
-      When this Package is instantiated by a PP or PP-Module, the Package must
+      When this Package is instantiated by a PP or PP Module, the Package must
       include selection-based requirements in accordance with the
-      selections and/or assignments indicated in the PP or PP-Module, by either
-      the ST author or by the author of the PP or PP-Module.
-      The PP or PP-Module must also include
-      the following components:<h:br/>
-      FCS_CKM.2.1, FCS_COP.1.1(*), FCS_RBG_EXT.1.*, FIA_X509_EXT.1.*, FIA_X509_EXT.2.*.
+      selections or assignments indicated in the PP or PP Module.  These may be expanded by the
+      the ST author.
       <h:p/>
+      The PP or PP Module which instantiates this Package must typically include
+      the following components in order to satisfy dependencies of this Package. It is the responsibility
+      of the PP or PP Module author who instantiates this Package to ensure that dependence
+      on these components is satisfied:<h:br/>
+      <componentsneeded>
+      <componentneeded>
+        <componentid>FCS_CKM.2</componentid>
+        <notes>Needed for key exchange</notes>
+      </componentneeded>
+      <componentneeded>
+        <componentid>FCS_COP.1</componentid>
+        <notes>Needed for encryption/decryption and hashing operations (with iterations)</notes>
+      </componentneeded>
+      <componentneeded>
+        <componentid>FCS_RBG_EXT.1</componentid>
+        <notes>Needed for random bit generation</notes>
+      </componentneeded>
+      <componentneeded>
+        <componentid>FIA_X509_EXT.1</componentid>
+        <notes>Needed for cert validation</notes>
+      </componentneeded>
+      <componentneeded>
+        <componentid>FIA_X509_EXT.2</componentid>
+        <notes>Needed for cert validation</notes>
+      </componentneeded>
+    </componentsneeded>
+    <h:p/>
       An ST must identify the applicable version of the <abbr linkend="PP"/> or
       <abbr linkend="PP-Module"/> and this
       Package in its conformance claims.
@@ -175,7 +198,7 @@
           Revision 5. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to
           this Package the
           <abbr linkend="ST" /> must include all components in this
-          Package and the PP or PP-Module that are:
+          Package and the PP or PP Module that are:
           <h:ul>
             <h:li>unconditional (which are always required)</h:li>
             <h:li>selection-based (which are required when certain selections are chosen in the
@@ -557,7 +580,7 @@
             <note role="application">Validity is determined by the identifier verification,
               certificate path, the expiration date, and the revocation status in accordance with
               RFC 5280. Certificate validity shall be tested in accordance with testing performed
-              for <linkref linkend="FIA_X509_EXT.1"/> as defined in any PP or PP-Module which
+              for <linkref linkend="FIA_X509_EXT.1"/> as defined in any PP or PP Module which
               instantiates this Package.
             </note>
             <aactivity>
@@ -1531,12 +1554,12 @@ during handshake.
   <appendix title="Optional Requirements" id="optional">Baseline requirements
     which must be performed by the product are
     contained in the main body of this Package in <secref linkend="req"/> and in
-    the base PPs or PP-Modules which use this Package. As described in
+    the base PPs or PP Modules which use this Package. As described in
     <secref linkend="conf"/> there are three other types of requirements
     specified in <appref linkend="optional"/>, <appref linkend="sel-based"/>, and <appref
       linkend="objective"/>. The first type (in this Appendix) are requirements that can be included
     in the <abbr linkend="ST"/>, but are not required in order for a product to claim conformance to
-    PPs or PP-Modules which use this Package. The second type
+    PPs or PP Modules which use this Package. The second type
     (in <appref linkend="sel-based"/>) are requirements based on selections
     in the body of the Package: if certain selections are made, then additional requirements in that
     appendix must be included. The third type (in <appref linkend="objective"/> are components that
@@ -1552,9 +1575,9 @@ during handshake.
   <appendix title="Selection-Based Requirements" id="sel-based"> As indicated in
     the introduction to this Package, the baseline requirements (those that must
     be performed by the product or its underlying platform) are contained in the
-    main body of this Package, and by the PP or PP-Module which makes use of this
+    main body of this Package, and by the PP or PP Module which makes use of this
     Package. There are additional requirements based on selections in the
-    Package or by the PP or PP-Module: if certain selections are made,
+    Package or by the PP or PP Module: if certain selections are made,
     then additional requirements in this appendix will need to be included. </appendix>
 
   <appendix title="Objective Requirements" id="objective"> This appendix includes requirements that
