@@ -12,7 +12,7 @@
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2018-10-20</PPPubDate>
+      <PPPubDate>2018-11-20</PPPubDate>
       <PPCertificationID>unassigned</PPCertificationID>
       <CCVersion>3.1R5</CCVersion>
       <Keywords>TLS</Keywords>
@@ -26,7 +26,7 @@
   <RevisionHistory>
     <entry>
       <version>1.0</version>
-      <date>2018-11-15</date>
+      <date>2018-11-20</date>
       <subject>First publication</subject>
     </entry>
   </RevisionHistory>
@@ -219,30 +219,8 @@
           <selectable id="dtlsc_impl">DTLS as a client</selectable>
           <selectable id="dtlss_impl">DTLS as a server</selectable>
         </selectables>.
-        <!-- that complies with 
-        <selectables linebreak="yes">
-          <selectable>TLS 1.2 (RFC 5246) </selectable>
-    			<selectable>DTLS 1.2 (RFC 6347)</selectable>
-        </selectables>
-      and
-					<selectables linebreak="yes">
-						<selectable>TLS 1.1 (RFC 4346)</selectable>
-						<selectable>DTLS 1.0 (RFC 4347)</selectable>
-						<selectable>no earlier TLS versions</selectable>
-					</selectables> -->
-					<!-- as a -->
-					<!-- <selectables linebreak="yes"> -->
-					<!-- 	<selectable>client</selectable> -->
-					<!-- 	<selectable>server</selectable> -->
-					<!-- </selectables>. -->
-            </title>
-            <note role="application">
-              <!--The ST author selects which of the additional RFCs to which
-              conformance is being claimed. A TLS product can implement additional RFCs, but only those
-              listed in the selection can be claimed as conformant.
-              The RFC selections for this requirement need to be consistent with selections in
-              later elements of this Package (e.g., cryptographic algorithms permitted).
-              <h:br/><h:br/> -->
+        </title>
+        <note role="application">
               If <h:i>TLS as a client</h:i> is selected, then the
               ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" />.
               <h:br/>
@@ -262,9 +240,7 @@
               this Package, it is not necessary to ensure that algorithms listed
               as "REQUIRED" by the RFC but not required in elements of this Package
               are actually implemented.
-            <h:br/>
-              <h:br/>
-
+            <h:br/><h:br/>
             </note>
             <aactivity>The evaluator shall ensure that the selections indicated in the ST are
               consistent with selections in the dependent components.
@@ -1422,22 +1398,6 @@ during handshake.
         while the undefined DTLS 1.4 would be represented by the bytes 0xfe 0xfb.
       </aactivity>
     </f-element>
-    <!-- <f-element id="fcs_dtlss_ext.1.2">
-      <title>The product shall implement the requirements in <linkref linkend="FCS_TLSS_EXT.1"/> for the
-        DTLS implementation, except where variations are allowed according to DTLS 1.2
-        (RFC 6347).
-      </title>
-      <note role="application">
-        Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the
-        protocols are the same. In particular, for the applicable security characteristics
-        defined for the <abbr linkend="TSF"/>, the two protocols do not differ. Therefore, all
-        application notes and evaluation activities that are listed for
-        <abbr title="Transport Layer Security">TLS</abbr> apply to the DTLS implementation.
-      </note>
-      <aactivity>
-        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.1"/>.
-      </aactivity>
-    </f-element>-->
     <f-element id="fcs_dtlss_ext.1.2">
       <title>The product shall deny connections from clients requesting
         <assignable>list of protocol versions</assignable>.
