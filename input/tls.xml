@@ -52,8 +52,9 @@
     As a result, evaluating the implementation of both endpoints is typically
     necessary to provide assurance for the operating environment.
     <h:p/>
-	  This Package provides a baseline set of Security Functional
-	  Requirements (SFRs) for products that implement TLS. The requirements are
+	  This "Functional Package for Transport Layer Security" (short name "TLS-PKG")
+    defines functional requirements for the implementation of the Transport Layer Security (TLS)
+    and Datagram TLS (DTLS) protocols. The requirements are
     intended to improve the security of products by enabling their evaluation.
     </section>
 
