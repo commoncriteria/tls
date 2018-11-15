@@ -196,7 +196,8 @@
           <h:p/>
           This Package conforms to Common Criteria
           <cite linkend="bibCC" /> for Information Technology Security Evaluation, Version 3.1,
-          Revision 5. It is CC Part 2 extended and CC Part 3 conformant. In order to be conformant to
+          Revision 5. It is CC Part 2 extended and CC Part 3 conformant.
+          <!-- In order to be conformant to
           this Package the
           <abbr linkend="ST" /> must include all components in this
           Package and the PP or PP-Module that are:
@@ -205,7 +206,7 @@
             <h:li>selection-based (which are required when certain selections are chosen in the
               unconditional requirements)</h:li>
           </h:ul>and may include optional and/or objective components that are desirable but not
-          required for conformance.
+          required for conformance.-->
           <h:br/>In accordance with CC Part 1, dependencies are not included when they are addressed
           by other SFRs. The evaluation activities provide adequate proof that any dependencies are
           also satisfied.</description>
