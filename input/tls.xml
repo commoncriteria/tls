@@ -163,16 +163,23 @@
       <componentsneeded>
       <componentneeded>
         <componentid>FCS_CKM.2</componentid>
-        <notes>Needed for key exchange</notes>
+        <notes>To support TLS ciphersuites that use RSA, DHE or ECDHE for key exchange, the PP or PP-Module must
+          include FCS_CKM.2 and specify the corresponding algorithm.</notes>
       </componentneeded>
       <componentneeded>
         <componentid>FCS_COP.1</componentid>
-        <notes>Needed for encryption/decryption and hashing operations (with iterations)</notes>
+        <notes>To support TLS ciphersuites that use AES for encryption/decryption, the PP or PP-module
+          must include FCS_COP.1 (iterating as needed) and specify AES with corresponding key sizes and modes. To
+          support TLS ciphersuites that use SHA for hashing, the PP or PP-Module must include FCS_COP.1
+          (iterating as needed) and specify SHA with corresponding digest sizes.
+          </notes>
       </componentneeded>
+      <!-- The components in the PP or PP-Module that need this SFR should require it;
+      it is not _directly_ depended upon by this Package.
       <componentneeded>
         <componentid>FCS_RBG_EXT.1</componentid>
         <notes>Needed for random bit generation</notes>
-      </componentneeded>
+      </componentneeded> -->
       <componentneeded>
         <componentid>FIA_X509_EXT.1</componentid>
         <notes>Needed for cert validation</notes>
