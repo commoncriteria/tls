@@ -7,19 +7,13 @@
     >
   <!-- <inline-comment color='green'> Hello World TLS </inline-comment> -->
   <!-- <inline-comment color='blue' linebreak='yes'> Hello World TLS </inline-comment> -->
-  <PPReference title="PP Reference">
+  <PPReference>
     <ReferenceTable>
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2018-11-20</PPPubDate>
-      <PPCertificationID>unassigned</PPCertificationID>
-      <CCVersion>3.1R5</CCVersion>
       <Keywords>TLS</Keywords>
-      <entry>
-        <name>Registration</name>
-        <description>National Information Assurance Partnership</description>
-      </entry>
     </ReferenceTable>
   </PPReference>
 
@@ -274,7 +268,9 @@
               are actually implemented.
             <h:br/><h:br/>
             </note>
-            <aactivity>The evaluator shall ensure that the selections indicated in the ST are
+            <aactivity>
+	      <Guidance/>
+		The evaluator shall ensure that the selections indicated in the ST are
               consistent with selections in the dependent components.
             </aactivity>
           </f-element>
@@ -1324,6 +1320,7 @@ during handshake.
       to DTLS apply to this requirement.
     </note>
       <aactivity>
+	<Tests/>
         The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.1.1"/>,
         but ensuring that DTLS (and not TLS) is used in each evaluation activity.
         <h:br/><h:br/>
@@ -1342,6 +1339,7 @@ during handshake.
           to DTLS apply to this requirement.
         </note>
       <aactivity>
+      <Tests/>
       The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.1.2"/>.
       </aactivity>
     </f-element>
@@ -1359,6 +1357,7 @@ during handshake.
         to DTLS apply to this requirement.
       </note>
       <aactivity>
+	<Tests/>
       The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.1.3"/>.
       </aactivity>
     </f-element>
@@ -1375,6 +1374,7 @@ during handshake.
               to DTLS apply to this requirement.
       </note>
       <aactivity>
+	<Tests/>
         The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.2.1" />.
       </aactivity>
     </f-element>
@@ -1421,6 +1421,7 @@ during handshake.
       to DTLS apply to this requirement.
       </note>
       <aactivity>
+	<Tests/>
         The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.1.1"/>,
         but ensuring that DTLS (and not TLS) is used in each stage of the evaluation activities.
         <h:br/><h:br/>
@@ -1441,6 +1442,7 @@ during handshake.
         DTLS 1.0 will be required to be denied.
       </note>
       <aactivity>
+	<Tests/>
         If any DTLS versions are assigned, then the evaluator shall perform the evaluation
         activities listed for <linkref linkend="FCS_TLSS_EXT.1.2" />.
       </aactivity>
@@ -1487,6 +1489,7 @@ during handshake.
         NIST curves selection in the requirement.
       </note>
       <aactivity>
+      <Tests/>
         The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.1.3"/>.
       </aactivity>
     </f-element>
@@ -1524,6 +1527,7 @@ during handshake.
               to DTLS apply to this requirement.
       </note>
       <aactivity>
+	<Tests/>
           The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2.1" />.
       </aactivity>
 
@@ -1537,6 +1541,7 @@ during handshake.
         to DTLS apply to this requirement.
       </note>
       <aactivity>
+	<Tests/>
         The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2.2" />. 
       </aactivity>
     </f-element>
@@ -1551,6 +1556,7 @@ during handshake.
         to DTLS apply to this requirement.
       </note>
       <aactivity>
+	<Tests/>
         The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2.3" />.
       </aactivity>
       </f-element>
