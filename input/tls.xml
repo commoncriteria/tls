@@ -169,18 +169,24 @@
           </notes>
       </componentneeded>
       <!-- The components in the PP or PP-Module that need this SFR should require it;
-      it is not _directly_ depended upon by this Package.
+      it is not _directly_ depended upon by this Package.-->
       <componentneeded>
         <componentid>FCS_RBG_EXT.1</componentid>
-        <notes>Needed for random bit generation</notes>
-      </componentneeded> -->
+        <notes>To support random bit generation needed for the TLS handshake,
+          the PP or PP-Module must include FCS_RBG_EXT.1.</notes>
+      </componentneeded>
       <componentneeded>
         <componentid>FIA_X509_EXT.1</componentid>
-        <notes>Needed for cert validation</notes>
+        <notes>
+          To support validation of certificates needed during TLS connection setup,
+          the PP or PP-Module must include FIA_X509_EXT.1.
+        </notes>
       </componentneeded>
       <componentneeded>
         <componentid>FIA_X509_EXT.2</componentid>
-        <notes>Needed for cert validation</notes>
+        <notes>To support the use of X509 certificates for authentication in TLS connection setup,
+          the PP or PP-Module must include FIA_X509_EXT.2.
+          </notes>
       </componentneeded>
     </componentsneeded>
     <h:p/>
