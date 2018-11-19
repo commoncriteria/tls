@@ -1566,24 +1566,6 @@ during handshake.
         Server rejects the Client's handshake message.
       </aactivity>
     </f-element>
-    <f-element id="fcs_dtlss_ext.1.4">
-    <title>The product shall
-    <selectables>
-      <selectable>terminate the DTLS session</selectable>
-      <selectable>silently discard the record</selectable>
-    </selectables>
-    if a message received contains an invalid MAC.
-    </title>
-    <aactivity>
-      <TSS/>
-      The evaluator shall verify that the TSS describes the actions that take place if a message
-      received from the DTLS client fails the MAC integrity check.
-      <Tests/>
-      The evaluator shall establish a connection using a client. The evaluator will then modify
-      at least one byte in a record message, and verify that the server discards the record or
-      terminates the DTLS session.
-    </aactivity>
-  </f-element>
   </f-component>
 
   <f-component id="fcs_dtlss_ext.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
@@ -1626,12 +1608,29 @@ during handshake.
         to DTLS apply to this requirement.
       </note>
       <aactivity>
-	<Tests/>
+        <Tests/>
         The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2.3" />.
       </aactivity>
       </f-element>
-    </f-component>
-
+      <f-element id="fcs_dtlss_ext.2.4">
+        <title>The product shall
+        <selectables>
+          <selectable>terminate the DTLS session</selectable>
+          <selectable>silently discard the record</selectable>
+        </selectables>
+        if a message received contains an invalid MAC.
+        </title>
+        <aactivity>
+          <TSS/>
+          The evaluator shall verify that the TSS describes the actions that take place if a message
+          received from the DTLS client fails the MAC integrity check.
+          <Tests/>
+          The evaluator shall establish a connection using a client. The evaluator will then modify
+          at least one byte in a record message, and verify that the server discards the record or
+          terminates the DTLS session.
+        </aactivity>
+      </f-element>
+      </f-component>
       </subsection>
     </section>
   </chapter>
