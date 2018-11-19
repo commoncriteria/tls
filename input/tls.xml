@@ -144,6 +144,34 @@
         </glossary>
       </subsection>
 	  </section>
+    <section title="Format of this Document" id="docformat">
+      <secref linkend="req"/> contains baseline requirements
+      which must be implemented in the product and included in any PP/PP-Module/ST
+      that claims conformance to this Package.
+      There are three other types of requirements that can be included in a PP/PP-Module/ST
+      claiming conformance to this Package:
+      <h:ul>
+      <h:li>
+      <appref linkend="optional"/> contains requirements that may optionally be included
+      in the PP/PP-Module/ST, but inclusion is at the discretion of the PP/PP-Module/ST
+      author.  For requirements that have selections, if the PP/PP-Module allows the selection (or the ST
+      selects particular selections), then there are additional requirements based on these
+      selections contained in this appendix that will need to be included in the PP/PP-Module/ST.
+      </h:li>
+      <h:li>
+      <appref linkend="sel-based"/> contains requirements based on selections
+      in the requirements (in <secref linkend="req"/>): if certain selections are allowed/made in
+      the PP/PP-Module/ST, then the corresponding requirements in that appendix must be included.
+      </h:li>
+      <h:li>
+      <appref linkend="objective"/> contains requirements that will
+      be included in the baseline requirements in future versions of this package, and are called
+      "Objective." Earlier adoption by vendors is encouraged. Otherwise, these are treated the same
+      as Optional Requirements.
+      </h:li>
+      </h:ul>
+    </section>
+
     <section title="Compliant Targets of Evaluation" id="TOEdescription">The Target of Evaluation
       (TOE) in this Package is a product which acts as a TLS client or server, or both.
       This Package describes the security functionality of TLS in terms of
@@ -172,7 +200,7 @@
           must include FCS_COP.1 (iterating as needed) and specify AES with corresponding key sizes and modes. To
           support TLS ciphersuites that use SHA for hashing, the PP or PP-Module must include FCS_COP.1
           (iterating as needed) and specify SHA with corresponding digest sizes.
-          </notes>
+        </notes>
       </componentneeded>
       <!-- The components in the PP or PP-Module that need this SFR should require it;
       it is not _directly_ depended upon by this Package.
@@ -1560,32 +1588,17 @@ during handshake.
     </section>
   </chapter>
 
-  <appendix title="Optional Requirements" id="optional">Baseline requirements
-    which must be included in the PP/PP-Module/ST that claims conformance to this
-    Package are contained in <secref linkend="req"/>.
-    There are three other types of requirements that can be included in a PP/PP-Module/ST
-    claiming conformance to this Package.
-    The first type (in this Appendix) are requirements that can be included
-    in the PP/PP-Module/ST, but inclusion is at the discretion of the PP/PP-Module/ST
-    author. The second type (in <appref linkend="sel-based"/>) are requirements based on selections
-    in the requirements (in <secref linkend="req"/>): if certain selections are allowed/made in
-    the PP/PP-Module/ST, then the corresponding requirements in that appendix must be included. The
-    third type (in <appref linkend="objective"/>) are optional reqiurements that will
-    be included in the baseline requirements in future versions of this package, so adoption by
-    vendors is encouraged. Otherwise, they are treated the same as Optional Requirements.
-	  <h:br/><h:br/>
+  <appendix title="Optional Requirements" id="optional">
     There are currently no Optional Requirements in this Package.
   </appendix>
 
   <appendix title="Selection-Based Requirements" id="sel-based">
-    As indicated in the introduction to this Package, requirements that must be included in the
-    PP/PP-Module/ST claiming conformance to this Package are listed in <secref linkend="req"/>.
-    For requirements that have selections, if the PP/PP-Module allows the selection (or the ST
-    selects particular selections), then there are additional requirements based on these
-    selections contained in this appendix that will need to be included in the PP/PP-Module/ST.
+    As indicated in the introduction to this Package, this appendix lists requirements
+    that are activated based on selections made in the PP/PP-Module/ST or in other portions of
+    this Package itself.
   </appendix>
 
-  <appendix title="Objective Requirements" id="objective"> This appendix includes requirements that
+  <appendix title="Objective Requirements" id="objective">This appendix includes requirements that
     specify security functionality which also addresses threats. The requirements are not currently
     mandated in the body of this Package as they describe security functionality not yet widely-available
     in commercial technology. However, these requirements may be included in the ST such that the
