@@ -154,14 +154,13 @@
       </h:li>
       <h:li>
       <appref linkend="sel-based"/> contains requirements based on selections
-      in the requirements (in <secref linkend="req"/>): if certain selections are allowed/made in
-      the PP/PP-Module/ST, then the corresponding requirements in that appendix must be included.
+      in the requirements in <secref linkend="req"/> or the PP/PP-Module/ST: if certain selections are
+      made, then the corresponding requirements in that appendix must be included.
       </h:li>
       <h:li>
       <appref linkend="objective"/> contains requirements that will
-      be included in the baseline requirements in future versions of this package, and are called
-      "Objective." Earlier adoption by vendors is encouraged. Otherwise, these are treated the same
-      as Optional Requirements.
+      be included in the baseline requirements in future versions of this package. Earlier adoption by vendors is
+      encouraged. Otherwise, these are treated the same as Optional Requirements.
       </h:li>
       </h:ul>
     </section>
@@ -232,17 +231,8 @@
           This Package conforms to Common Criteria
           <cite linkend="bibCC" /> for Information Technology Security Evaluation, Version 3.1,
           Revision 5. It is CC Part 2 extended and CC Part 3 conformant.
-          <!-- In order to be conformant to
-          this Package the
-          <abbr linkend="ST" /> must include all components in this
-          Package and the PP or PP-Module that are:
-          <h:ul>
-            <h:li>unconditional (which are always required)</h:li>
-            <h:li>selection-based (which are required when certain selections are chosen in the
-              unconditional requirements)</h:li>
-          </h:ul>and may include optional and/or objective components that are desirable but not
-          required for conformance.-->
-          <h:br/>In accordance with CC Part 1, dependencies are not included when they are addressed
+          <h:p/>
+          In accordance with CC Part 1, dependencies are not included when they are addressed
           by other SFRs. The evaluation activities provide adequate proof that any dependencies are
           also satisfied.</description>
       </cclaim>
