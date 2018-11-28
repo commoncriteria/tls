@@ -12,7 +12,7 @@
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2018-11-20</PPPubDate>
+      <PPPubDate>2018-12-05</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -20,7 +20,7 @@
   <RevisionHistory>
     <entry>
       <version>1.0</version>
-      <date>2018-11-20</date>
+      <date>2018-12-05</date>
       <subject>First publication</subject>
     </entry>
   </RevisionHistory>
@@ -1013,43 +1013,65 @@ during handshake.
           <f-element id="fcs_tlss_ext.1.3">
             <title>The product shall perform key establishment for TLS using
               <selectables>
-                <selectable>RSA with size 2048 bits and
+                <selectable>RSA with size
                   <selectables>
+                    <selectable>2048 bits</selectable>
                     <selectable>3072 bits</selectable>
                     <selectable>4096 bits</selectable>
                     <selectable exclusive="yes">no other sizes</selectable>
                   </selectables>
                 </selectable>
-                <selectable>ECDHE parameters over NIST curves
+                <selectable>Diffie-Hellman parameters with size
                   <selectables>
-                    <selectable>secp256r1</selectable>
-                    <selectable>secp384r1</selectable>
-                    <selectable>secp521r1</selectable>
-                  </selectables> and no other curves</selectable>
-                <selectable>Diffie-Hellman parameters of size 2048 and
-                  <selectables>
+                    <selectable>2048 bits</selectable>
                     <selectable>3072 bits</selectable>
                     <selectable>4096 bits</selectable>
                     <selectable>6144 bits</selectable>
                     <selectable>8192 bits</selectable>
-                    <selectable exclusive="yes">no other size</selectable>
+                    <selectable exclusive="yes">no other sizes</selectable>
                   </selectables>
                 </selectable>
-                <selectable exclusive="yes">no other key establishment methods</selectable>
+                <selectable>Diffie-Hellman groups
+                  <selectables>
+                    <selectable>ffdhe2048</selectable>
+                    <selectable>ffdhe3072</selectable>
+                    <selectable>ffdhe4096</selectable>
+                    <selectable>ffdhe6144</selectable>
+                    <selectable>ffdhe8192</selectable>
+                    <selectable>no other groups</selectable>
+                  </selectables>
+              </selectable>
+              <selectable>ECDHE parameters using elliptic curves
+                <selectables>
+                  <selectable>secp256r1</selectable>
+                  <selectable>secp384r1</selectable>
+                  <selectable>secp521r1</selectable>
+                </selectables> and no other curves
+              </selectable>
+              <selectable exclusive="yes">no other key establishment methods</selectable>
               </selectables>
             </title>
             <note role="application">
               If the ST lists an RSA cipher suite in <linkref
               linkend="FCS_TLSS_EXT.1.1"/>, the ST must include the
               RSA selection in the requirement.
-              <h:br/>
+              <h:br/><h:br/>
               If the ST lists a DHE cipher suite in <linkref
-              linkend="FCS_TLSS_EXT.1.1"/>, the ST must include the
-              Diffie-Hellman selection in the requirement.
-              <h:br/>
+              linkend="FCS_TLSS_EXT.1.1"/>, the ST must include either
+              the Diffie-Hellman selection for parameters of a certain size,
+              or for particular Diffie-Hellman groups.
+              The selection for "Diffie-Hellman parameters" refers to the method defined by RFC 5246 (and RFC 4346)
+              Section 7.4.3 where the server provides Diffie-Hellman parameters to the client. The Supported Groups
+              extension defined in RFC 7919 identifies particular Diffie-Hellman groups, which are listed in the
+              following selection. Regarding this distinction, it is acceptable to use Diffie-Hellman group 14 with
+              TLS (there is currently no ability to negotiate group 14 using the Supported Groups extension, but it
+              could be used with the "generate Diffie-Hellman parameters" selection).  As in RFC 7919, the terms "DHE"
+              or "FFDHE" are used to refer to the finite-field-based Diffie-Hellman ephemeral key exchange mechanism in
+              TLS.
+              <h:br/><h:br/>
               If the ST lists an ECDHE cipher suite in <linkref
               linkend="FCS_TLSS_EXT.1.1"/>, the ST must include the
-              NIST curves selection in the requirement.
+              selection for ECDHE using elliptic curves in the requirement.
             </note>
             <aactivity>
               <TSS/>
@@ -1060,19 +1082,30 @@ during handshake.
               the requirement must be contained in the AGD guidance.
               <Tests/>
               <testlist>
+                The evaluator shall conduct the following tests.  The testing can be carried out
+                manually with a packet analyzer or with an automated framework
+                that similarly captures such empirical evidence.  Note that this testing can be accomplished in
+                conjunction with other testing activities.  For each of the following tests, determining that
+                the size matches the expected size is sufficient.
                 <test>
-                  [conditional] The evaluator shall attempt a
-                  connection using an ECDHE ciphersuite and a
-                  configured curve and
-                  verify that the key agreement parameters in the Key
-                  Exchange message are the ones configured.
-                  (Determining that the size matches the expected size
-                  for the configured curve is sufficient.) The
-                  evaluator shall repeat this test for each supported
-                  NIST elliptic curve and each supported
-                  Diffie-Hellman key size. The testing can be carried out
-                  manually with a packet analyzer or with an automated framework
-                  that similarly captures such empirical evidence.
+                  [conditional] If RSA-based key establishment is selected, the evaluator shall attempt a
+                  connection using RSA-based key establishment with a supported size.
+                  The evaluator shall verify that the size used matches that which is configured. The evaluator
+                  shall repeat this test for each supported size of RSA-based key establishment.
+                </test>
+                <test>
+                  [conditional] If finite-field (i.e. non-EC) Diffie-Hellman ciphers are selected, the evaluator shall attempt a
+                  connection using a Diffie-Hellman key exchange with a supported
+                  parameter size or supported group. The evaluator shall verify that the key agreement parameters in the Key
+                  Exchange message are the ones configured. The evaluator shall repeat this test for each supported
+                  parameter size or group.
+                </test>
+                <test>
+                  [conditional] If ECDHE ciphers are selected, the evaluator shall attempt a connection
+                  using an ECDHE ciphersuite with a
+                  supported curve. The evaluator shall verify that the key agreement parameters in the Key
+                  Exchange message are the ones configured. The evaluator shall repeat this test for each supported
+                  elliptic curve.
                 </test>
               </testlist>
             </aactivity>
