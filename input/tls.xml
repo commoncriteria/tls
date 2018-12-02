@@ -1065,9 +1065,9 @@ during handshake.
               extension defined in RFC 7919 identifies particular Diffie-Hellman groups, which are listed in the
               following selection. Regarding this distinction, it is acceptable to use Diffie-Hellman group 14 with
               TLS (there is currently no ability to negotiate group 14 using the Supported Groups extension, but it
-              could be used with the "generate Diffie-Hellman parameters" selection).  As in RFC 7919, the terms "DHE"
-              or "FFDHE" are used to refer to the finite-field-based Diffie-Hellman ephemeral key exchange mechanism in
-              TLS.
+              could be used with the "Diffie-Hellman parameters" selection).  As in RFC 7919, the terms "DHE" and
+              "FFDHE" are both used to refer to the finite-field-based Diffie-Hellman ephemeral key exchange mechanism,
+              distinct from elliptic-curve-based Diffie Hellman ephemeral key exchange (ECDHE).
               <h:br/><h:br/>
               If the ST lists an ECDHE cipher suite in <linkref
               linkend="FCS_TLSS_EXT.1.1"/>, the ST must include the
