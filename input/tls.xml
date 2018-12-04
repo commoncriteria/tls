@@ -486,7 +486,7 @@
               <h:br/>
               The preferred method for verification is the Subject
               Alternative Name using DNS names, URI names, or Service Names. Verification using the
-              Common Name is required for the purposes of backwards compatibility. Additionally,
+              Common Name for the purposes of backwards compatibility is optional. Additionally,
               support for use of IP addresses in the Subject Name or Subject Alternative name is
               discouraged, as against best practices, but may be implemented. Finally, the client
               should avoid constructing reference identifiers using wildcards. However, if the
@@ -1424,7 +1424,8 @@ during handshake.
       <selectable>terminate the DTLS session</selectable>
       <selectable>silently discard the record</selectable>
     </selectables>
-    if a message received contains an invalid MAC.
+    if a message received contains an invalid MAC or if decryption fails in the case of GCM and other
+    AEAD ciphersuites.
     </title>
     <aactivity>
       <TSS/>
@@ -1522,7 +1523,29 @@ during handshake.
         activities listed for <linkref linkend="FCS_TLSS_EXT.1.2" />.
       </aactivity>
     </f-element>
+
     <f-element id="fcs_dtlss_ext.1.3">
+      <title>
+        The product shall not proceed with a connection handshake attempt if the DTLS Client fails validation.
+      </title>
+      <note role="application">
+        The process to validate the IP address of a DTLS client is specified in section 4.2.1 of RFC 6347 (DTLS 1.2) and
+        RFC 4347 (DTLS 1.0). The server validates the DTLS client during Connection Establishment (Handshaking) and prior
+        to sending a Server Hello message. After receiving a ClientHello, the DTLS Server sends a
+        HelloVerifyRequest along with a cookie. The cookie is a signed message using a keyed hash function. The DTLS
+        Client then sends another ClientHello with the cookie attached. If the DTLS
+        server successfully verifies the signed cookie, the Client is not using a spoofed IP address.
+      </note>
+      <aactivity>
+        <TSS/>
+        The evaluator shall verify that the TSS describes how the DTLS Client IP address is validated prior to
+        issuing a ServerHello message.
+        <Tests/>
+        Modify at least one byte in the cookie from the Server's HelloVerifyRequest message, and verify that the
+        Server rejects the Client's handshake message.
+      </aactivity>
+    </f-element>
+    <f-element id="fcs_dtlss_ext.1.4">
       <title>The product shall perform key establishment for DTLS using
         <selectables>
           <selectable>RSA with size 2048 bits and
@@ -1568,25 +1591,23 @@ during handshake.
         The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.1.3"/>.
       </aactivity>
     </f-element>
-    <f-element id="fcs_dtlss_ext.1.4">
-      <title>
-        The product shall not proceed with a connection handshake attempt if the DTLS Client fails validation.
+    <f-element id="fcs_dtlss_ext.1.5">
+      <title>The product shall
+      <selectables>
+        <selectable>terminate the DTLS session</selectable>
+        <selectable>silently discard the record</selectable>
+      </selectables>
+      if a message received contains an invalid MAC or if decryption fails in the case of GCM and other
+      AEAD ciphersuites.
       </title>
-      <note role="application">
-        The process to validate the IP address of a DTLS client is specified in section 4.2.1 of RFC 6347 (DTLS 1.2) and
-        RFC 4347 (DTLS 1.0). The server validates the DTLS client during Connection Establishment (Handshaking) and prior
-        to sending a Server Hello message. After receiving a ClientHello, the DTLS Server sends a
-        HelloVerifyRequest along with a cookie. The cookie is a signed message using a keyed hash function. The DTLS
-        Client then sends another ClientHello with the cookie attached. If the DTLS
-        server successfully verifies the signed cookie, the Client is not using a spoofed IP address.
-      </note>
       <aactivity>
         <TSS/>
-        The evaluator shall verify that the TSS describes how the DTLS Client IP address is validated prior to
-        issuing a ServerHello message.
+        The evaluator shall verify that the TSS describes the actions that take place if a message
+        received from the DTLS client fails the MAC integrity check.
         <Tests/>
-        Modify at least one byte in the cookie from the Server's HelloVerifyRequest message, and verify that the
-        Server rejects the Client's handshake message.
+        The evaluator shall establish a connection using a client. The evaluator will then modify
+        at least one byte in a record message, and verify that the server discards the record or
+        terminates the DTLS session.
       </aactivity>
     </f-element>
   </f-component>
@@ -1634,24 +1655,6 @@ during handshake.
         <Tests/>
         The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2.3" />.
       </aactivity>
-      </f-element>
-      <f-element id="fcs_dtlss_ext.2.4">
-        <title>The product shall
-        <selectables>
-          <selectable>terminate the DTLS session</selectable>
-          <selectable>silently discard the record</selectable>
-        </selectables>
-        if a message received contains an invalid MAC.
-        </title>
-        <aactivity>
-          <TSS/>
-          The evaluator shall verify that the TSS describes the actions that take place if a message
-          received from the DTLS client fails the MAC integrity check.
-          <Tests/>
-          The evaluator shall establish a connection using a client. The evaluator will then modify
-          at least one byte in a record message, and verify that the server discards the record or
-          terminates the DTLS session.
-        </aactivity>
       </f-element>
       </f-component>
       </subsection>
