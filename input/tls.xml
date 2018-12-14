@@ -12,7 +12,7 @@
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2018-12-05</PPPubDate>
+      <PPPubDate>2018-12-17</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -20,7 +20,7 @@
   <RevisionHistory>
     <entry>
       <version>1.0</version>
-      <date>2018-12-05</date>
+      <date>2018-12-17</date>
       <subject>First publication</subject>
     </entry>
   </RevisionHistory>
