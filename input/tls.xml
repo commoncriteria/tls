@@ -230,7 +230,7 @@
           <h:p/>
           This Package conforms to Common Criteria
           <cite linkend="bibCC" /> for Information Technology Security Evaluation, Version 3.1,
-          Revision 5. It is CC Part 2 extended and CC Part 3 conformant.
+          Revision 5. It is CC Part 2 extended conformant.
           <h:p/>
           In accordance with CC Part 1, dependencies are not included when they are addressed
           by other SFRs. The evaluation activities provide adequate proof that any dependencies are
@@ -282,15 +282,6 @@
               <h:br/>
               If <h:i>DTLS as a server</h:i> is selected, then the
               ST must include the requirements from <linkref linkend="FCS_DTLSS_EXT.1" />.
-              <h:br/><h:br/>
-              Some dependent components refer to RFC 5246, which indicates that
-              certain cryptographic algorithms are "REQUIRED". This means that
-              from the IETF's perspective the implementation must include support,
-              not that the algorithms must be enabled for use. For the purposes of
-              this Package, it is not necessary to ensure that algorithms listed
-              as "REQUIRED" by the RFC but not required in elements of this Package
-              are actually implemented.
-            <h:br/><h:br/>
             </note>
             <aactivity>
 	      <Guidance/>
@@ -349,7 +340,9 @@
 	      the server in the test environment.
 	      GCM cipher suites are preferred over CBC cipher suites,
 	      ECDHE preferred over RSA and DHE, and SHA256 or SHA384
-	      over SHA.  TLS_RSA_WITH_AES_128_CBC_SHA is not required despite being mandated by RFC 5246.
+	      over SHA.
+        <h:br/><h:br/>
+        TLS_RSA_WITH_AES_128_CBC_SHA is not required despite being mandated by RFC 5246.
 	      <h:br/><h:br/>
 	      These requirements will be revisited as new <abbr
 	      title="Transport Layer Security">TLS</abbr> versions are
@@ -883,6 +876,7 @@ during handshake.
 	      GCM cipher suites are preferred over CBC cipher suites,
 	      ECDHE preferred over RSA and DHE, and SHA256 or SHA384
 	      over SHA.
+        <h:br/><h:br/>
         TLS_RSA_WITH_AES_128_CBC_SHA is not required 
 	      despite being mandated by RFC 5246. 
         <h:br/><h:br/>
