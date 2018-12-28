@@ -14,7 +14,7 @@ See the [release](#Release-Version) section if you are looking for the officiall
 * [Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.pdf) (pdf)
 
 ## Release Version
-* [Protection Profile - Functional Package for TLS](https://www.niap-ccevs.org/Profile/Info.cfm?PPID=426)
+* [Protection Profile - Functional Package for TLS](https://www.niap-ccevs.org/Profile/Info.cfm?PPID=426&id=426)
 
 ## Contributing
 
