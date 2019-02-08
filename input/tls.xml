@@ -12,7 +12,7 @@
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.1</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2019-01-06</PPPubDate>
+      <PPPubDate>2019-02-11</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -25,7 +25,7 @@
     </entry>
     <entry>
       <version>1.1</version>
-      <date>2019-01-06</date>
+      <date>2019-02-11</date>
       <subject>Clarifications regarding override for invalid certificates,
       renegotation_info extension, DTLS versions, and named Diffie-Hellman groups in DTLS
       contexts</subject>
@@ -782,21 +782,32 @@ during handshake.
           <f-element id="fcs_tlsc_ext.4.1">
             <title> The product shall support secure renegotiation through use
               of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
-          </f-element>
+<!--          </f-element>
           <f-element id="fcs_tlsc_ext.4.2">
-            <title> The product shall include (choose only one of)
-              <selectables>
+            <title> The product shall include
+            <selectables exclusive="true">
                 <selectable>renegotiation_info extension</selectable>
                 <selectable exclusive="yes">TLS_EMPTY_RENEGOTIATION_INFO_SCSV cipher suite</selectable>
               </selectables> in the ClientHello message. </title>
-
+-->
             <note role="application">
             RFC 5746 defines an extension to TLS that binds
             renegotiation handshakes to the cryptography in the original handshake.
-            The cipher suite included in the selection is a means for clients to
-            be compatible with servers that don’t support the extension.  It is
-            recommended that client implementations support both the cipher suite
-            and the extension.
+            <h:br/><h:br/>
+            Per RFC 5746, the client may present either the
+            "renegotiation_info" extension or the signaling cipher suite value
+            TLS_EMPTY_RENEGOTIATION_INFO_SCSV in the initial ClientHello message to indicate
+            support for renegotiation. (A signaling cipher suite value (SCSV) is presented 
+            as a cipher suite, but its only purpose is to provide other information and not
+            to advertise support for a cipher suite.)  The
+            TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling cipher suite value exists as an alternative
+            to presenting the "renegotation_info" extension so that
+            TLS server implementations that immediately terminate the connection when they encounter
+            any extension they do not understand can still proceed with a connection.  The client may still choose to
+            reject the connection later, if it insists upon renegotiation support. 
+            In any case, RFC 5746 states that during any renegotiation the "renegotiation_info" extension
+            must be presented by both the client and server, and so the extension must be supported during
+            a renegotiation.
             </note>
             <aactivity>
               <Tests/>
