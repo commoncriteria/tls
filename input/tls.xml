@@ -1029,7 +1029,7 @@ during handshake.
               <TSS/>
               The evaluator shall verify that the TSS contains a
               description of the denial of old SSL and TLS versions
-              consistent relative to selections in <linkref linkend="FCS_TLS_EXT.1.1" />.
+              consistent relative to selections in <linkref linkend="FCS_TLSS_EXT.1.2" />.
               <Guidance/>
               The evaluator shall verify that the AGD guidance includes any configuration
               necessary to meet this requirement.
@@ -1544,7 +1544,7 @@ during handshake.
     </f-element>
     <f-element id="fcs_dtlss_ext.1.2">
       <title>The product shall deny connections from clients requesting
-        <assignable>list of protocol versions</assignable>.
+        <assignable>list of DTLS protocol versions</assignable>.
       </title>
       <note role="application">Any specific DTLS version
         not selected in <linkref linkend="FCS_DTLSS_EXT.1.1"/> should be assigned here.
@@ -1553,9 +1553,23 @@ during handshake.
         DTLS 1.0 will be required to be denied.
       </note>
       <aactivity>
-	<Tests/>
-        If any DTLS versions are assigned, then the evaluator shall perform the evaluation
-        activities listed for <linkref linkend="FCS_TLSS_EXT.1.2" />.
+        The following evaluation activities shall be conducted unless "none" is assigned.
+        <h:br/><h:br/>
+        <TSS/>
+        The evaluator shall verify that the TSS contains a
+        description of the denial of old DTLS versions
+        consistent relative to selections in <linkref linkend="FCS_DTLSS_EXT.1.2" />.
+        <Guidance/>
+        The evaluator shall verify that the AGD guidance includes any configuration
+        necessary to meet this requirement.
+        <Tests/>
+        <testlist>
+          <test>
+            The evaluator shall send a Client Hello requesting a
+            connection with each version of DTLS specified in the selection
+            and verify that the server denies the connection.
+          </test>
+        </testlist>
       </aactivity>
     </f-element>
 
