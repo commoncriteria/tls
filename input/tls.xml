@@ -1597,21 +1597,17 @@ during handshake.
     <f-element id="fcs_dtlss_ext.1.4">
       <title>The product shall perform key establishment for DTLS using
         <selectables>
-          <selectable>RSA with size 2048 bits and
+          <selectable>RSA with size
             <selectables>
+              <selectable>2048 bits</selectable>
               <selectable>3072 bits</selectable>
               <selectable>4096 bits</selectable>
               <selectable exclusive="yes">no other sizes</selectable>
             </selectables>
           </selectable>
-          <selectable>ECDHE parameters over NIST curves
+          <selectable>Diffie-Hellman parameters with size
             <selectables>
-              <selectable>secp256r1</selectable>
-              <selectable>secp384r1</selectable>
-              <selectable>secp521r1</selectable>
-            </selectables> and no other curves</selectable>
-          <selectable>Diffie-Hellman parameters of size 2048 and
-            <selectables>
+              <selectable>2048 bits</selectable>
               <selectable>3072 bits</selectable>
               <selectable>4096 bits</selectable>
               <selectable>6144 bits</selectable>
@@ -1619,6 +1615,22 @@ during handshake.
               <selectable exclusive="yes">no other size</selectable>
             </selectables>
           </selectable>
+          <selectable>Diffie-Hellman groups
+            <selectables>
+              <selectable>ffdhe2048</selectable>
+              <selectable>ffdhe3072</selectable>
+              <selectable>ffdhe4096</selectable>
+              <selectable>ffdhe6144</selectable>
+              <selectable>ffdhe8192</selectable>
+              <selectable>no other groups</selectable>
+            </selectables>
+          </selectable>
+          <selectable>ECDHE parameters using elliptic curves
+            <selectables>
+              <selectable>secp256r1</selectable>
+              <selectable>secp384r1</selectable>
+              <selectable>secp521r1</selectable>
+            </selectables> and no other curves</selectable>
           <selectable exclusive="yes">no other key establishment methods</selectable>
         </selectables>.
       </title>
@@ -1628,8 +1640,9 @@ during handshake.
         RSA selection in the requirement.
         <h:br/>
         If the ST lists a DHE cipher suite in <linkref
-        linkend="FCS_DTLSS_EXT.1.1"/>, the ST must include the
-        Diffie-Hellman selection in the requirement.
+        linkend="FCS_DTLSS_EXT.1.1"/>, the ST must include either
+        the Diffie-Hellman selection for parameters of a certain size,
+        or for particular Diffie-Hellman groups.
         <h:br/>
         If the ST lists an ECDHE cipher suite in <linkref
         linkend="FCS_DTLSS_EXT.1.1"/>, the ST must include the
