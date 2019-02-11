@@ -813,10 +813,10 @@ during handshake.
             to presenting the "renegotation_info" extension so that
             TLS server implementations that immediately terminate the connection when they encounter
             any extension they do not understand can still proceed with a connection.  The client may still choose to
-            reject the connection later, if it insists upon renegotiation support. 
-            In any case, RFC 5746 states that during any renegotiation the "renegotiation_info" extension
-            must be presented by both the client and server, and so the extension must be supported during
-            a renegotiation.
+            reject the connection later, if it insists upon renegotiation support and the server does not
+            support it. In any case, RFC 5746 states that during any renegotiation the "renegotiation_info" extension
+            must be presented by the peer initiating renegotiation, and so the client
+            extension must support use of this extension.
             </note>
             <aactivity>
               <Tests/>
