@@ -691,18 +691,27 @@
                 title="Transport Layer Security">TLS</abbr> is addressed in <linkref
                 linkend="FIA_X509_EXT.2.1"/>. This requirement adds that a client must be capable of
               presenting a certificate to a <abbr title="Transport Layer Security">TLS</abbr> server
-              for <abbr title="Transport Layer Security">TLS</abbr> mutual authentication. </note>
+              for <abbr title="Transport Layer Security">TLS</abbr> mutual authentication.
+              Presenting a certificate is not mandatory in all circumstances: it may depend on the
+              configuration of the client or other factors.
+            </note>
             <aactivity>
               <TSS/>
                 The evaluator shall ensure that the <abbr title="TOE Summary Specification"
                 linkend="TSS">TSS</abbr> description required per <linkref
                 linkend="FIA_X509_EXT.2.1"/> includes the use of client-side certificates for TLS
-              mutual authentication. <h:br/>
+              mutual authentication.  The evaluator shall also ensure that the 
+              <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> describes
+              any factors beyond configuration that are necessary in order for the client to engage in mutual
+              authentication using X.509v3 certificates.
+              <h:br/>
               <Guidance/>
-              The evaluator shall verify that the AGD guidance required
+              The evaluator shall ensure that the AGD guidance includes any instructions necessary
+              to configure the TOE to perform mutual authentication.
+              The evaluator also shall verify that the AGD guidance required
               per <linkref linkend="FIA_X509_EXT.2.1"/> includes instructions for configuring the
               client-side certificates for <abbr title="Transport Layer Security">TLS</abbr> mutual
-              authentication. <h:br/> 
+              authentication.<h:br/>
               <Tests/>
               The evaluator shall also perform the following tests:
               
@@ -861,7 +870,7 @@ during handshake.
               <h:br/>
               <testlist>
               <test>
-              The evaluator shall configure a server to perform ECDHE key exchange using each of the TOE’s supported
+              The evaluator shall configure a server to perform key exchange using each of the TOE’s supported
               curves and/or groups. The evaluator shall verify that the TOE successfully connects to the server.
               </test>
               </testlist>
