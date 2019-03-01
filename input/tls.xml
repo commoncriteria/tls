@@ -12,7 +12,7 @@
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.1</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2019-02-22</PPPubDate>
+      <PPPubDate>2019-03-01</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -25,7 +25,7 @@
     </entry>
     <entry>
       <version>1.1</version>
-      <date>2019-02-22</date>
+      <date>2019-03-01</date>
       <subject>Clarifications regarding override for invalid certificates,
       renegotation_info extension, DTLS versions, and named Diffie-Hellman groups in DTLS
       contexts</subject>
