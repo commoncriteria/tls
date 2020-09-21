@@ -281,6 +281,7 @@
               consistent with selections in the dependent components.
             </aactivity>
           </f-element>
+	<audit-event />
         </f-component>
 
         <f-component id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
@@ -674,6 +675,7 @@
 	    </Tests>
             </aactivity>
           </f-element>       
+	<audit-event />
         </f-component>
         
         <f-component id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="sel-based">
@@ -728,6 +730,7 @@ during handshake.
 	    </Tests>
             </aactivity>
           </f-element>
+	<audit-event />
         </f-component>
 	      
         <f-component id="fcs_tlsc_ext.3" name="TLS Client Support for Signature Algorithms Extension" status="objective">
@@ -785,6 +788,7 @@ during handshake.
 	    </Tests>
             </aactivity>
           </f-element>  
+	<audit-event />
         </f-component>
 	      
         <f-component id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
@@ -838,6 +842,7 @@ during handshake.
 	      </Tests?
             </aactivity>
           </f-element>
+	<audit-event />
         </f-component>
 		  
         <f-component id="fcs_tlsc_ext.5" name="TLS Client Support for Supported Groups Extension" status="sel-based">
@@ -881,6 +886,7 @@ during handshake.
 		</Tests>
             </aactivity>
           </f-element>  
+	<audit-event />
         </f-component>
 
         <f-component id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
@@ -1168,6 +1174,7 @@ during handshake.
 	    </Tests>
             </aactivity>
           </f-element>
+	<audit-event />
         </f-component>
 
        <f-component id="fcs_tlss_ext.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
@@ -1311,6 +1318,7 @@ during handshake.
 	    </Tests>
             </aactivity>
           </f-element>
+	<audit-event />
         </f-component>
 
 	<f-component id="fcs_tlss_ext.3" name="TLS Server Support for Signature Algorithms Extension" status="objective">
@@ -1359,6 +1367,7 @@ during handshake.
 	    </Tests>
 	    </aactivity>
 	    </f-element>
+	<audit-event />
 	</f-component>
 
 	<f-component id="FCS_TLSS_EXT.4" name="TLS Server Support for Renegotiation" status="sel-based">
@@ -1398,6 +1407,7 @@ during handshake.
 	    </Tests>
 	    </aactivity>
 	    </f-element>
+	<audit-event />
 	</f-component>
 
   <f-component id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
@@ -1510,6 +1520,7 @@ during handshake.
     </Tests>
     </aactivity>
   </f-element>
+	<audit-event />
   </f-component>
 
   <f-component id="fcs_dtlsc_ext.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
@@ -1528,6 +1539,7 @@ during handshake.
       </Tests>
       </aactivity>
     </f-element>
+	<audit-event />
   </f-component>
 
   <f-component id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
@@ -1720,6 +1732,7 @@ during handshake.
       </Tests>
       </aactivity>
     </f-element>
+	<audit-event />
   </f-component>
 
   <f-component id="fcs_dtlss_ext.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
@@ -1769,6 +1782,7 @@ during handshake.
       </Tests>
 	</aactivity>
       </f-element>
+	<audit-event />
       </f-component>
       </subsection>
     </section>
