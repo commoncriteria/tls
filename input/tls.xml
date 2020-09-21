@@ -60,9 +60,8 @@
     </section>
 	  
 	  
-	<section title="Terms" id="glossary">
+<!--	<section title="Terms" id="glossary">
 		
-		<!--
       <subsection title="Common Criteria Terms"
         id="ccterms">
         <glossary>
@@ -131,7 +130,7 @@
 	      Issuer of digital certificates
             </term>
         </tech-terms>
-  </section>
+<!--  </section>  -->
 	    
     <section title="Format of this Document" id="docformat">
       <secref linkend="req"/> contains baseline requirements
