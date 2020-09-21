@@ -58,8 +58,11 @@
     and Datagram TLS (DTLS) protocols. The requirements are
     intended to improve the security of products by enabling their evaluation.
     </section>
-
-    <section title="Terms" id="glossary">
+	  
+	  
+	<section title="Terms" id="glossary">
+		
+		<!--
       <subsection title="Common Criteria Terms"
         id="ccterms">
         <glossary>
@@ -114,7 +117,7 @@
           </entry>
         </glossary>
       </subsection>
-	    
+	    -->
       <tech-terms>
             <term abbr="TLS" full="Transport Layer Security">
               Cryptographic network protocol for providing communications
