@@ -128,6 +128,7 @@
 	      Issuer of digital certificates
             </term>
         </tech-terms>
+  </section>
 	    
     <section title="Format of this Document" id="docformat">
       <secref linkend="req"/> contains baseline requirements
@@ -156,7 +157,8 @@
       </h:ul>
     </section>
 
-    <section title="Compliant Targets of Evaluation" id="TOEdescription">The Target of Evaluation
+    <section title="Compliant Targets of Evaluation" id="TOEdescription">
+	    The Target of Evaluation
       (TOE) in this Package is a product which acts as a TLS client or server, or both.
       This Package describes the security functionality of TLS in terms of
       <cite linkend="bibCC" />. 
@@ -213,6 +215,7 @@
       Package in its conformance claims.
     </section>
   </chapter>
+	  
   <chapter title="Conformance Claims" id="cclaims">
     <cclaims>
       <cclaim id="Conformance Statement">
@@ -839,7 +842,7 @@ during handshake.
                   the “renegotiation_info” extension.  The evaluator shall modify either the “client_verify_data” or
                   “server_verify_data” value and verify that the client terminates the connection.</test>
               </testlist>
-	      </Tests?
+	    </Tests>
             </aactivity>
           </f-element>
 	<audit-event />
