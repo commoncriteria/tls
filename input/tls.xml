@@ -140,19 +140,22 @@
       claiming conformance to this Package:
       <h:ul>
       <h:li>
-      <appref linkend="optional"/> contains requirements that may optionally be included
+	      <!-- <appref linkend="optional"/> -->
+      <h:a href="#strict-opt-reqs" class='dynref'/> contains requirements that may optionally be included
       in the PP/PP-Module/ST, but inclusion is at the discretion of the PP/PP-Module/ST
       author.  For requirements that have selections, if the PP/PP-Module allows the selection (or the ST
       selects particular selections), then there are additional requirements based on these
       selections contained in this appendix that will need to be included in the PP/PP-Module/ST.
       </h:li>
       <h:li>
-      <appref linkend="sel-based"/> contains requirements based on selections
+	<!--      <appref linkend="sel-based"/>  -->
+	<h:a href="#sel-based-reqs" class='dynref'/> contains requirements based on selections
       in the requirements in <secref linkend="sr"/> or the PP/PP-Module/ST: if certain selections are
       made, then the corresponding requirements in that appendix must be included.
       </h:li>
       <h:li>
-      <appref linkend="objective"/> contains requirements that will
+	      <!-- <appref linkend="objective"/>  -->
+      <h:a href="#obj-reqs" class='dynref'/> contains requirements that will
       be included in the baseline requirements in future versions of this package. Earlier adoption by vendors is
       encouraged. Otherwise, these are treated the same as Optional Requirements.
       </h:li>
