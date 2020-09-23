@@ -133,7 +133,7 @@
 <!--  </section>  -->
 	    
     <section title="Format of this Document" id="docformat">
-      <secref linkend="req"/> contains baseline requirements
+      <secref linkend="sr"/> contains baseline requirements
       which must be implemented in the product and included in any PP/PP-Module/ST
       that claims conformance to this Package.
       There are three other types of requirements that can be included in a PP/PP-Module/ST
@@ -148,7 +148,7 @@
       </h:li>
       <h:li>
       <appref linkend="sel-based"/> contains requirements based on selections
-      in the requirements in <secref linkend="req"/> or the PP/PP-Module/ST: if certain selections are
+      in the requirements in <secref linkend="sr"/> or the PP/PP-Module/ST: if certain selections are
       made, then the corresponding requirements in that appendix must be included.
       </h:li>
       <h:li>
@@ -235,7 +235,8 @@
     </cclaims>
   </chapter>
   
-  <chapter title="Security Requirements" id="req">This chapter describes the security requirements
+  <chapter title="Security Requirements" id="sr">
+	  This chapter describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
     <cite linkend="bibCC" />. The following notations are used:
     <h:ul>
@@ -251,7 +252,7 @@
       <h:li>
         <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)").</h:li>
     </h:ul>
-    <section title="Security Functional Requirements" id="SFRs">The Security Functional Requirements
+    <section title="Security Functional Requirements" id="sfr">The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional
       components.
