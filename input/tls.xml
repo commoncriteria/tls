@@ -141,7 +141,7 @@
       <h:ul>
       <h:li>
 	      <!-- <appref linkend="optional"/> -->
-      <h:a href="#strict-opt-reqs" class='dynref'/> contains requirements that may optionally be included
+      Section <h:a href="#strict-opt-reqs" class='dynref'/> contains requirements that may optionally be included
       in the PP/PP-Module/ST, but inclusion is at the discretion of the PP/PP-Module/ST
       author.  For requirements that have selections, if the PP/PP-Module allows the selection (or the ST
       selects particular selections), then there are additional requirements based on these
@@ -155,7 +155,7 @@
       </h:li>
       <h:li>
 	      <!-- <appref linkend="objective"/>  -->
-      <h:a href="#obj-reqs" class='dynref'/> contains requirements that will
+      Section <h:a href="#obj-reqs" class='dynref'/> contains requirements that will
       be included in the baseline requirements in future versions of this package. Earlier adoption by vendors is
       encouraged. Otherwise, these are treated the same as Optional Requirements.
       </h:li>
@@ -261,7 +261,7 @@
       components.
 	    
       <subsection title="Cryptographic Support (FCS)" id="fcs">
-        <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol">   <!-- status="mandatory" -->
+        <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol" status="mandatory">
           <f-element id="fcs_tls_ext-1e1">
 			<title>The product shall implement
         <selectables linebreak="yes">
