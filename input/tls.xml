@@ -261,7 +261,7 @@
       components.
 	    
       <subsection title="Cryptographic Support (FCS)" id="fcs">
-        <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol" status="mandatory">
+        <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol">
           <f-element id="fcs_tls_ext-1e1">
 			<title>The product shall implement
         <selectables linebreak="yes">
