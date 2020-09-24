@@ -1,3 +1,4 @@
-DIFF_TAGS=v1.0
+-include User.make
+DIFF_TAGS=v1.1
 TRANS?=transforms
 include $(TRANS)/Helper.make
