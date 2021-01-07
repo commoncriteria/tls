@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
 
+<!--
+<?xml-model href="CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>    
+-->
+
 <PP xmlns="https://niap-ccevs.org/cc/v1" name="TLS"
     xmlns:h="http://www.w3.org/1999/xhtml"
-    type="package"
-    >
+    type="package" boilerplate="yes">
+	
   <!-- <inline-comment color='green'> Hello World TLS </inline-comment> -->
   <!-- <inline-comment color='blue' linebreak='yes'> Hello World TLS </inline-comment> -->
   <PPReference>
@@ -27,7 +31,7 @@
       <version>1.1</version>
       <date>2019-03-01</date>
       <subject>Clarifications regarding override for invalid certificates,
-      renegotation_info extension, DTLS versions, and named Diffie-Hellman groups in DTLS
+      renegotiation_info extension, DTLS versions, and named Diffie-Hellman groups in DTLS
       contexts</subject>
     </entry>
   </RevisionHistory>
@@ -92,35 +96,7 @@
             </term>
         </tech-terms>
 
-<!--
-    <section title="Format of this Document" id="docformat">
-      <secref linkend="sr"/> contains baseline requirements
-      which must be implemented in the product and included in any PP/PP-Module/ST
-      that claims conformance to this Package.
-      There are three other types of requirements that can be included in a PP/PP-Module/ST
-      claiming conformance to this Package:
-      <h:ul>
-      <h:li>
-      Section <h:a href="#strict-opt-reqs" class='dynref'/> contains requirements that may optionally be included
-      in the PP/PP-Module/ST, but inclusion is at the discretion of the PP/PP-Module/ST
-      author.  For requirements that have selections, if the PP/PP-Module allows the selection (or the ST
-      selects particular selections), then there are additional requirements based on these
-      selections contained in this appendix that will need to be included in the PP/PP-Module/ST.
-      </h:li>
-      <h:li>
-	<h:a href="#sel-based-reqs" class='dynref'/> contains requirements based on selections
-      in the requirements in <secref linkend="sr"/> or the PP/PP-Module/ST: if certain selections are
-      made, then the corresponding requirements in that appendix must be included.
-      </h:li>
-      <h:li>
-      Section <h:a href="#obj-reqs" class='dynref'/> contains requirements that will
-      be included in the baseline requirements in future versions of this package. Earlier adoption by vendors is
-      encouraged. Otherwise, these are treated the same as Optional Requirements.
-      </h:li>
-      </h:ul>
-    </section>
--->
-	  
+  
 <!-- 			-->
 <!-- 1.3 Compliant Targets of Evaluation	-->
 <!--			-->
@@ -208,23 +184,6 @@
 <!--				-->
   <chapter title="Security Requirements" id="req">
    <!-- Boilerplate -->	  
-<!--	  This chapter describes the security requirements
-    to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
-    <cite linkend="bibCC" />. The following notations are used:
-    <h:ul>
-      <h:li>
-        <h:b>Selection</h:b> (denoted by
-        <h:i>italicized text</h:i>): is used to select one or more options provided by the [CC] in stating
-        a requirement.</h:li>
-      <h:li>
-        <h:b>Assignment</h:b> operation (denoted by
-        <h:span class="assignable-content">italicized text</h:span>): is used to assign a specific 
-        value to an unspecified parameter, such
-        as the length of a password. Showing the value in square brackets indicates assignment.</h:li>
-      <h:li>
-        <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)").</h:li>
-    </h:ul>
--->
 	  
 <!-- 			-->
 <!-- 3.1 Security Functional Requirements 	-->
@@ -1173,7 +1132,7 @@
 	    </Tests>
             </aactivity>
           </f-element>
-	<audit-event>
+	<audit-event type="optional">
 		<audit-event-descr type="optional">Failure to establish a TLS session</audit-event-descr>
 		<audit-event-info type="optional">Reason for failure.</audit-event-info>
 	</audit-event>
@@ -1825,11 +1784,6 @@
 	</audit-table>  -->
     </appendix> 
 	
-<!--  <appendix title="Optional Requirements" id="optional">
-    There are currently no Optional Requirements in this Package.
-  </appendix>
--->
-
 <!--                    -->
 <!-- Appendix B: Selection-based Requirements 	-->
 <!--                    -->
@@ -1843,20 +1797,6 @@
 	</audit-table>   -->
     </appendix> 
 	
-<!--  <appendix title="Selection-Based Requirements" id="sel-based">
-    As indicated in the introduction to this Package, this appendix lists requirements
-    that are activated based on selections made in the PP/PP-Module/ST or in other portions of
-    this Package itself.
-  </appendix>
--->
-	    <!--
-  <appendix title="Objective Requirements" id="objective">This appendix includes requirements that
-    specify security functionality which also addresses threats. The requirements are not currently
-    mandated in the body of this Package as they describe security functionality not yet widely-available
-    in commercial technology. However, these requirements may be included in the ST such that the
-    product is still conformant to this Package, and it is expected that they be included as soon as
-    possible. </appendix>
--->
 
 <!--                    -->
 <!-- Appendix C: References 	-->
@@ -1883,8 +1823,7 @@
       </entry>
     </bibliography>
   </appendix>
-	
-	
+		
 <!--                    -->
 <!-- Appendix D: Acronyms	-->
 <!--                    -->
@@ -1892,122 +1831,4 @@
       <acronyms/>
   </appendix>
 
-<!--	
-  <appendix title="Acronyms" id="acronyms">
-    <acronyms>
-<entry>
-        <term>AES</term>
-        <description>Advanced Encryption Standard</description>
-      </entry>
-      <entry>
-        <term>CA</term>
-        <description>Certificate Authority</description>
-      </entry>      
-      <entry>
-        <term>CBC</term>
-        <description>Cipher Block Chaining</description>
-      </entry>
-      <entry>
-        <term>CN</term>
-        <description>Common Name</description>
-      </entry> 
-      <entry>
-        <term>DHE</term>
-        <description>Diffie-Hellman Ephemeral</description>
-      </entry>
-      <entry>
-        <term>DN</term>
-        <description>Distinguished Name</description>
-      </entry>
-      <entry>
-        <term>DNS</term>
-        <description>Domain Name Server</description>
-      </entry>
-      <entry>
-        <term>DTLS</term>
-        <description>Datagram Transport Layer Security</description>
-      </entry>
-      <entry>
-        <term>EAP</term>
-        <description>Extensible Authentication Protocol</description>
-      </entry>
-      <entry>
-        <term>ECDHE</term>
-        <description>Elliptic Curve Diffie-Hellman Ephemeral</description>
-      </entry>       
-      <entry>
-        <term>ECDSA</term>
-        <description>Elliptic Curve Digital Signature Algorithm</description>
-      </entry>
-      <entry>
-        <term>GCM</term>
-        <description>Galois/Counter Mode</description>
-      </entry>
-      <entry>
-        <term>HTTP</term>
-        <description>Hypertext Transfer Protocol</description>
-      </entry>       
-      <entry>
-        <term>IETF</term>
-        <description>Internet Engineering Task Force</description>
-      </entry>
-      <entry>
-        <term>IP</term>
-        <description>Internet Protocol</description>
-      </entry>
-      <entry>
-        <term>LDAP</term>
-        <description>Lightweight Directory Access Protocol</description>
-      </entry>       
-      <entry>
-        <term>NIST</term>
-        <description>National Institute of Standards and Technology</description>
-      </entry>
-      <entry>
-        <term>RFC</term>
-        <description>Request for Comment (IETF)</description>
-      </entry>
-      <entry>
-        <term>RSA</term>
-        <description>Rivest Shamir Adelman</description>
-      </entry>
-      <entry>
-        <term>SAN</term>
-        <description>Subject Alternative Name</description>
-      </entry> 
-      <entry>
-        <term>SCSV</term>
-        <description>Signaling Cipher Suite Value</description>
-      </entry>
-      <entry>
-        <term>SHA</term>
-        <description>Secure Hash Algorithm</description>
-      </entry>       
-      <entry>
-        <term>SIP</term>
-        <description>Session Initiation Protocol</description>
-      </entry>
-      <entry>
-        <term>TCP</term>
-        <description>Transmission Control Protocol</description>
-      </entry> 
-      <entry>
-        <term>TLS</term>
-        <description>Transport Layer Security</description>
-      </entry> 
-      <entry>
-        <term>UDP</term>
-        <description>User Datagram Protocol</description>
-      </entry>
-      <entry>
-        <term>URI</term>
-        <description>Uniform Resource Identifier</description>
-      </entry>       
-      <entry>
-        <term>URL</term>
-        <description>Uniform Resource Locator</description>
-      </entry>       
-    </acronyms>
-  </appendix>
--->
 </PP>
