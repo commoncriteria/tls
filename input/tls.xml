@@ -268,16 +268,16 @@
         </title>
         <note role="application">
               If <h:i>TLS as a client</h:i> is selected, then the
-              ST must include the requirements from <linkref linkend="FCS_TLSC_EXT.1" />.
+              ST must include the requirements from FCS_TLSC_EXT.1.
               <h:br/>
               If <h:i>TLS as a server</h:i> is selected, then the
-              ST must include the requirements from <linkref linkend="FCS_TLSS_EXT.1" />.
+              ST must include the requirements from FCS_TLSS_EXT.1.
               <h:br/><h:br/>
               If <h:i>DTLS as a client</h:i> is selected, then the
-              ST must include the requirements from <linkref linkend="FCS_DTLSC_EXT.1" />.
+              ST must include the requirements from FCS_DTLSC_EXT.1.
               <h:br/>
               If <h:i>DTLS as a server</h:i> is selected, then the
-              ST must include the requirements from <linkref linkend="FCS_DTLSS_EXT.1" />.
+              ST must include the requirements from FCS_DTLSS_EXT.1.
             </note>
             <aactivity>
 	      <Guidance/>
@@ -348,15 +348,14 @@
 	      title="Transport Layer Security">TLS</abbr> versions are
 	      standardized by the IETF.
 	      <h:br/><h:br/>
-        If any ECDHE or DHE cipher suites are selected, then
-	      <linkref linkend="FCS_TLSC_EXT.5"/> is required.
+        If any ECDHE or DHE cipher suites are selected, then FCS_TLSC_EXT.5 is required.
         <h:br/><h:br/>
         If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include 
-        the requirements from <linkref linkend="FCS_TLSC_EXT.2"/>. If the TOE implements
+        the requirements from FCS_TLSC_EXT.2. If the TOE implements
         mutual authentication, this selection must be made.
         <h:br/><h:br/>
         If <h:i>session renegotiation</h:i> is selected, then the ST must additionally include 
-        the requirements from <linkref linkend="FCS_TLSC_EXT.4"/>. If the TOE implements
+        the requirements from FCS_TLSC_EXT.4. If the TOE implements
         session renegotiation, this selection must be made.
 	    </note>
             <aactivity>
@@ -608,7 +607,7 @@
             <note role="application">Validity is determined by the identifier verification,
               certificate path, the expiration date, and the revocation status in accordance with
               RFC 5280. Certificate validity shall be tested in accordance with testing performed
-              for <linkref linkend="FIA_X509_EXT.1"/> as defined in any PP or PP-Module which
+              for FIA_X509_EXT.1 as defined in any PP or PP-Module which
               instantiates this Package.
               <h:br/><h:br/>
               The selection that permits override for invalid certificates should be interpreted
@@ -682,16 +681,16 @@
 	    </Tests>
             </aactivity>
           </f-element>       
-	<audit-event>
-		<audit-event-descr>Failure to establish a TLS session.</audit-event-descr>
+	<audit-event type="optional">
+		<audit-event-descr>Failure to establish a TLS session</audit-event-descr>
 		<audit-event-info>Reason for failure.</audit-event-info>
 	</audit-event>
-	<audit-event>
-		<audit-event-descr>Failure to verify presented identifier.</audit-event-descr>
+	<audit-event type="optional">
+		<audit-event-descr>Failure to verify presented identifier</audit-event-descr>
 		<audit-event-info>Presented identifier and reference identifier.</audit-event-info>
 	</audit-event>
-	<audit-event>
-		<audit-event-descr>Establishment/termination of a TLS session.</audit-event-descr>
+	<audit-event type="optional">
+		<audit-event-descr>Establishment/termination of a TLS session</audit-event-descr>
 		<audit-event-info>Non-TOE endpoint of connection.</audit-event-info>
 	</audit-event>
         </f-component>
@@ -704,8 +703,8 @@
           <f-element id="fcs_tlsc_ext-2e1">
             <title>The product shall support mutual authentication using X.509v3 certificates.</title>
             <note role="application"> The use of X.509v3 certificates for <abbr
-                title="Transport Layer Security">TLS</abbr> is addressed in <linkref
-                linkend="FIA_X509_EXT.2.1"/>. This requirement adds that a client must be capable of
+                title="Transport Layer Security">TLS</abbr> is addressed in FIA_X509_EXT.2.1. 
+		    This requirement adds that a client must be capable of
               presenting a certificate to a <abbr title="Transport Layer Security">TLS</abbr> server
               for <abbr title="Transport Layer Security">TLS</abbr> mutual authentication.
               Presenting a certificate is not mandatory in all circumstances: it may depend on the
@@ -714,8 +713,8 @@
             <aactivity>
               <TSS>
                 The evaluator shall ensure that the <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr> description required per <linkref
-                linkend="FIA_X509_EXT.2.1"/> includes the use of client-side certificates for TLS
+                linkend="TSS">TSS</abbr> description required per FIA_X509_EXT.2.1 includes the
+		      use of client-side certificates for TLS
               mutual authentication.  The evaluator shall also ensure that the 
               <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> describes
               any factors beyond configuration that are necessary in order for the client to engage in mutual
@@ -726,7 +725,7 @@
               The evaluator shall ensure that the AGD guidance includes any instructions necessary
               to configure the TOE to perform mutual authentication.
               The evaluator also shall verify that the AGD guidance required
-              per <linkref linkend="FIA_X509_EXT.2.1"/> includes instructions for configuring the
+              per FIA_X509_EXT.2.1 includes instructions for configuring the
               client-side certificates for <abbr title="Transport Layer Security">TLS</abbr> mutual
               authentication.<h:br/>
 	    </Guidance>
@@ -892,9 +891,8 @@
               </selectables>.
             </title>
             <note role="application">
-              If an elliptic curve or Diffie-Hellman ciphersuite is selected in <linkref linkend="FCS_TLSC_EXT.1.1"/>
-              or <linkref linkend="FCS_DTLSC_EXT.1.1"/>,
-              then <linkref linkend="FCS_TLSC_EXT.5"/> shall be included in the ST. This requirement does not limit the
+              If an elliptic curve or Diffie-Hellman ciphersuite is selected in FCS_TLSC_EXT.1.1
+              or FCS_DTLSC_EXT.1.1, then FCS_TLSC_EXT.5 shall be included in the ST. This requirement does not limit the
               elliptic curves the client may propose for authentication and key agreement.
               The Supported Groups Extension was previously referred to as the
               Supported Elliptic Curves Extension and is described in RFC 7919.</note>
@@ -977,11 +975,11 @@
 	      versions are standardized by the IETF.
         <h:br/><h:br/>
         If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include
-        the requirements from <linkref linkend="FCS_TLSS_EXT.2"/>.  If the TOE implements
+        the requirements from FCS_TLSS_EXT.2.  If the TOE implements
         mutual authentication, this selection must be made.
         <h:br/><h:br/>
         If <h:i>session renegotiation</h:i> is selected, then the ST must additionally include
-        the requirements from <linkref linkend="FCS_TLSS_EXT.4"/>. If the TOE implements
+        the requirements from FCS_TLSS_EXT.4. If the TOE implements
         session renegotiation, this selection must be made.
             </note>
             <aactivity>
@@ -1077,13 +1075,13 @@
               </selectables>.
             </title>
             <note role="application">All SSL versions are denied. Any TLS version
-              not selected in <linkref linkend="FCS_TLSS_EXT.1.1"/> should be selected here.
+              not selected in FCS_TLSS_EXT.1.1 should be selected here.
             </note>
             <aactivity>
               <TSS>
               The evaluator shall verify that the TSS contains a
               description of the denial of old SSL and TLS versions
-              consistent relative to selections in <linkref linkend="FCS_TLSS_EXT.1.2" />.
+              consistent relative to selections in FCS_TLSS_EXT.1.2.
 	    </TSS>
               <Guidance>
               The evaluator shall verify that the AGD guidance includes any configuration
@@ -1144,12 +1142,10 @@
             </selectables>.
             </title>
             <note role="application">
-              If the ST lists an RSA cipher suite in <linkref
-              linkend="FCS_TLSS_EXT.1.1"/>, the ST must include the
+              If the ST lists an RSA cipher suite in FCS_TLSS_EXT.1.1, the ST must include the
               RSA selection in the requirement.
               <h:br/><h:br/>
-              If the ST lists a DHE cipher suite in <linkref
-              linkend="FCS_TLSS_EXT.1.1"/>, the ST must include either
+              If the ST lists a DHE cipher suite in FCS_TLSS_EXT.1.1, the ST must include either
               the Diffie-Hellman selection for parameters of a certain size,
               or for particular Diffie-Hellman groups.
               The selection for "Diffie-Hellman parameters" refers to the method defined by RFC 5246 (and RFC 4346)
@@ -1161,8 +1157,7 @@
               "FFDHE" are both used to refer to the finite-field-based Diffie-Hellman ephemeral key exchange mechanism,
               distinct from elliptic-curve-based Diffie Hellman ephemeral key exchange (ECDHE).
               <h:br/><h:br/>
-              If the ST lists an ECDHE cipher suite in <linkref
-              linkend="FCS_TLSS_EXT.1.1"/>, the ST must include the
+              If the ST lists an ECDHE cipher suite in FCS_TLSS_EXT.1.1, the ST must include the
               selection for ECDHE using elliptic curves in the requirement.
             </note>
             <aactivity>
@@ -1206,8 +1201,8 @@
             </aactivity>
           </f-element>
 	<audit-event>
-		<audit-event-descr>Failure to establish a TLS session.</audit-event-descr>
-		<audit-event-info>Reason for failure.</audit-event-info>
+		<audit-event-descr type="optional">Failure to establish a TLS session</audit-event-descr>
+		<audit-event-info type="optional">Reason for failure.</audit-event-info>
 	</audit-event>
         </f-component>
 	      
@@ -1226,21 +1221,20 @@
               if the client certificate is invalid.
             </title>
             <note role="application">
-              The use of X.509v3 certificates for TLS is addressed in
-              <linkref linkend="FIA_X509_EXT.2.1"/>
+              The use of X.509v3 certificates for TLS is addressed in FIA_X509_EXT.2.1
               This requirement adds that this use must include support for client-side
               certificates for TLS mutual authentication. Validity is determined by the
               certificate path, the expiration date, and the revocation status in
               accordance with RFC 5280. Certificate validity shall be tested in accordance
-              with testing performed for <linkref linkend="FIA_X509_EXT.1"/>.
+              with testing performed for FIA_X509_EXT.1.
             </note>
             <aactivity>
             <TSS>
-              The evaluator shall ensure that the TSS description required per <linkref linkend="FIA_X509_EXT.2.1" />
+              The evaluator shall ensure that the TSS description required per FIA_X509_EXT.2.1
               includes the use of client-side certificates for TLS mutual authentication.
 	    </TSS>
             <Guidance>
-              The evaluator shall verify that the AGD guidance required per <linkref linkend="FIA_X509_EXT.2.1" />
+              The evaluator shall verify that the AGD guidance required per FIA_X509_EXT.2.1
               includes instructions for configuring the client-side certificates for TLS mutual
               authentication.  The evaluator shall ensure that the AGD guidance
               includes instructions for configuring the server to require
@@ -1248,7 +1242,7 @@
 	    </Guidance>
             <Tests>
 	      The evaluator shall use TLS as a function to verify that the validation rules in
-	      <linkref linkend="FIA_X509_EXT.1.1" /> are adhered to and shall perform the following tests.
+	      FIA_X509_EXT.1.1 are adhered to and shall perform the following tests.
         The evaluator shall apply the AGD guidance to configure the server
         to require TLS mutual authentication of clients for the following tests,
         unless overridden by instructions in the test activity:
@@ -1566,8 +1560,8 @@
     </Tests>
     </aactivity>
   </f-element>
-	<audit-event>
-		<audit-event-descr>Failure of the certificate validity check.</audit-event-descr>
+	<audit-event type="optional">
+		<audit-event-descr>Failure of the certificate validity check</audit-event-descr>
 		<audit-event-info>Issuer Name and Subject Name of certificate.</audit-event-info>
 	</audit-event>
   </f-component>
@@ -1787,8 +1781,8 @@
       </Tests>
       </aactivity>
     </f-element>
-	<audit-event>
-		<audit-event-descr>Failure of the certificate validity check.</audit-event-descr>
+	<audit-event type="optional">
+		<audit-event-descr>Failure of the certificate validity check</audit-event-descr>
 		<audit-event-info>Issuer Name and Subject Name of certificate.</audit-event-info>
 	</audit-event>
   </f-component>
