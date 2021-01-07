@@ -131,7 +131,7 @@
       <cite linkend="bibCC" />. 
       <h:p/>
       The contents of this Package must be appropriately
-      combined with a <abbr linkend="PP"/> or <abbr linkend="PP-Module"/>.
+      combined with a PP or PP-Module.
       When this Package is instantiated by a PP or PP-Module, the Package must
       include selection-based requirements in accordance with the
       selections or assignments indicated in the PP or PP-Module.  These may be expanded by the
@@ -177,8 +177,7 @@
       </componentneeded>
     </componentsneeded>
     <h:p/>
-      An ST must identify the applicable version of the <abbr linkend="PP"/> or
-      <abbr linkend="PP-Module"/> and this
+      An ST must identify the applicable version of the PP or PP-Module and this
       Package in its conformance claims.
     </section>
   </chapter>
@@ -324,8 +323,7 @@
           </selectables>.
           </title>
             <note role="application">
-        The <abbr title="Security Target" linkend="ST">ST
-      </abbr> author should select the cipher suites that are supported,
+        The ST author should select the cipher suites that are supported,
       and must select at least one cipher suite.
 	      The cipher suites to be tested in the evaluated
 	      configuration are limited by this requirement. However,
@@ -344,8 +342,7 @@
         <h:br/><h:br/>
         TLS_RSA_WITH_AES_128_CBC_SHA is not required despite being mandated by RFC 5246.
 	      <h:br/><h:br/>
-	      These requirements will be revisited as new <abbr
-	      title="Transport Layer Security">TLS</abbr> versions are
+	      These requirements will be revisited as new TLS versions are
 	      standardized by the IETF.
 	      <h:br/><h:br/>
         If any ECDHE or DHE cipher suites are selected, then FCS_TLSC_EXT.5 is required.
@@ -361,23 +358,21 @@
             <aactivity>
             <TSS>
               The evaluator shall check the description of the implementation of this
-              protocol in the <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> to
+              protocol in the TSS to
               ensure that the cipher suites supported are specified. The evaluator shall check the
-                <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> to ensure that the
-              cipher suites specified include those listed for this component. 
+                TSS to ensure that the cipher suites specified include those listed for this component. 
 	    </TSS>
             <Guidance>
               The evaluator shall
               also check the operational guidance to ensure that it contains instructions on
               configuring the product so that
-              TLS conforms to the description in the <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr>.
+              TLS conforms to the description in the TSS.
 	    </Guidance>
             <Tests>
               The evaluator shall also perform the following tests:
               <testlist>
                 <test>
-                  The evaluator shall establish a <abbr title="Transport Layer Security">TLS</abbr> connection
+                  The evaluator shall establish a TLS connection
                   using each of the cipher suites specified by the
                   requirement. This connection may be established as part of the establishment of a
                   higher-level protocol, e.g., as part of an EAP session. It is sufficient to
@@ -402,7 +397,7 @@
                   identifiers used, and the chain of trust.
                 </test>
                 <test>
-                  The evaluator shall send a server certificate in the <abbr title="Transport Layer Security">TLS</abbr> connection
+                  The evaluator shall send a server certificate in the TLS connection
                   that does not match the server-selected cipher suite (for example, send a ECDSA certificate while using the
                   TLS_RSA_WITH_AES_128_CBC_SHA cipher suite or send a RSA certificate while using one
                   of the ECDSA cipher suites.) The evaluator shall verify that the product disconnects after
@@ -417,16 +412,14 @@
                   The evaluator shall perform the following modifications to the traffic:
                   <testlist>
                     <test>
-                      Change the <abbr title="Transport Layer Security">TLS</abbr> version
-                      selected by the server in the Server Hello to an undefined <abbr
-                      title="Transport Layer Security">TLS</abbr> version (for example 1.5
-                      represented by the two bytes 03 06) and verify that the client rejects the
-                      connection.
+                      Change the TLS version selected by the server in the Server Hello to an undefined TLS 
+			    version (for example 1.5 represented by the two bytes 03 06) and verify that the client rejects the
+	                      connection.
                     </test>
                     <test>
-                      Change the <abbr title="Transport Layer Security">TLS</abbr> version
-                      selected by the server in the Server Hello to the most recent unsupported <abbr
-                      title="Transport Layer Security">TLS</abbr> version (for example 1.1
+                      Change the TLS version
+                      selected by the server in the Server Hello to the most recent unsupported 
+			    TLS version (for example 1.1
                       represented by the two bytes 03 02) and verify that the client rejects the
                       connection.
                     </test>
@@ -476,8 +469,7 @@
               a Common Name for the Subject Name field of the certificate and a (case-insensitive)
               DNS name, URI name, and Service Name for the Subject Alternative Name field. The
               client then compares this list of all acceptable reference identifiers to the
-              presented identifiers in the <abbr title="Transport Layer Security">TLS</abbr>
-              server’s certificate. 
+              presented identifiers in the TLS server’s certificate. 
               <h:br/>
               The preferred method for verification is the Subject
               Alternative Name using DNS names, URI names, or Service Names. Verification using the
@@ -490,8 +482,7 @@
             </note>
             <aactivity>
             <TSS>
-              The evaluator shall ensure that the <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr> describes the client’s method of establishing all reference
+              The evaluator shall ensure that the TSS describes the client’s method of establishing all reference
               identifiers from the application-configured reference identifier, including which
               types of reference identifiers are supported (e.g. Common Name, DNS Name, URI Name,
               Service Name, or other application-specific Subject Alternative Names) and whether IP
@@ -503,12 +494,12 @@
             <Guidance>
               The evaluator shall verify that the AGD guidance includes instructions for
               setting the reference identifier to be used for the purposes of certificate validation
-              in <abbr title="Transport Layer Security">TLS</abbr>. <h:br/>
+              in TLS. <h:br/>
 	    </Guidance>
             <Tests>
               The evaluator shall
               configure the reference identifier according to the AGD guidance and perform the
-              following tests during a <abbr title="Transport Layer Security">TLS</abbr> connection:
+              following tests during a TLS connection:
               <testlist>
                 <test> 
                   The evaluator shall present a server certificate that contains
@@ -579,12 +570,12 @@
                 </test>
                 <test>
                   [conditional] If URI or Service name reference identifiers are supported, the
-                  evaluator shall configure the <abbr title="Domain Name System">DNS</abbr> name and
+                  evaluator shall configure the DNS name and
                   the service identifier. The evaluator shall present a server certificate
-                  containing the correct <abbr title="Domain Name System">DNS</abbr> name and
+                  containing the correct DNS name and
                   service identifier in the URIName or SRVName fields of the SAN and verify that the
                   connection succeeds. The evaluator shall repeat this test with the wrong service
-                  identifier (but correct <abbr title="Domain Name System">DNS</abbr> name) and
+                  identifier (but correct DNS name) and
                   verify that the connection fails.
                 </test>
                 <test>
@@ -628,8 +619,7 @@
             <aactivity>
             <TSS>
               If the selection for authorizing override of invalid certificates is made, then
-              the evaluator shall ensure that the <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr> includes a description of how and when user or administrator
+              the evaluator shall ensure that the TSS includes a description of how and when user or administrator
                 authorization is obtained.  The evaluator shall also ensure that the TSS describes
                 any mechanism for storing such authorizations, such that future presentation
                 of such otherwise-invalid certificates permits establishment of a trusted channel
@@ -702,21 +692,18 @@
           <selection-depends req="fcs_tlsc_ext-1e1" ids="tlsc_mutual_auth"/>
           <f-element id="fcs_tlsc_ext-2e1">
             <title>The product shall support mutual authentication using X.509v3 certificates.</title>
-            <note role="application"> The use of X.509v3 certificates for <abbr
-                title="Transport Layer Security">TLS</abbr> is addressed in FIA_X509_EXT.2.1. 
-		    This requirement adds that a client must be capable of
-              presenting a certificate to a <abbr title="Transport Layer Security">TLS</abbr> server
-              for <abbr title="Transport Layer Security">TLS</abbr> mutual authentication.
+            <note role="application"> The use of X.509v3 certificates for TLS is addressed in FIA_X509_EXT.2.1. 
+		    This requirement adds that a client must be capable of presenting a certificate to a TLS server
+              for TLS mutual authentication.
               Presenting a certificate is not mandatory in all circumstances: it may depend on the
               configuration of the client or other factors.
             </note>
             <aactivity>
               <TSS>
-                The evaluator shall ensure that the <abbr title="TOE Summary Specification"
-                linkend="TSS">TSS</abbr> description required per FIA_X509_EXT.2.1 includes the
+                The evaluator shall ensure that the 
+                TSS description required per FIA_X509_EXT.2.1 includes the
 		      use of client-side certificates for TLS
-              mutual authentication.  The evaluator shall also ensure that the 
-              <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> describes
+              mutual authentication.  The evaluator shall also ensure that the TSS describes
               any factors beyond configuration that are necessary in order for the client to engage in mutual
               authentication using X.509v3 certificates.
               <h:br/>
@@ -726,7 +713,7 @@
               to configure the TOE to perform mutual authentication.
               The evaluator also shall verify that the AGD guidance required
               per FIA_X509_EXT.2.1 includes instructions for configuring the
-              client-side certificates for <abbr title="Transport Layer Security">TLS</abbr> mutual
+              client-side certificates for TLS mutual
               authentication.<h:br/>
 	    </Guidance>
               <Tests>
@@ -766,17 +753,15 @@
             <note role="application"> This requirement limits the hashing algorithms supported for
               the purpose of digital signature verification by the client and limits the server to
               the supported hashes for the purpose of digital signature generation by the server.
-              The signature_algorithms extension is only supported by <abbr
-                title="Transport Layer Security">TLS</abbr> 1.2. </note>
+              The signature_algorithms extension is only supported by 
+                TLS 1.2. </note>
             <aactivity>
               <TSS>
-              The evaluator shall verify that <abbr title="TOE Summary Specification"
-              linkend="TSS">TSS</abbr> describes the signature_algorithm extension and whether the
+              The evaluator shall verify that TSS describes the signature_algorithm extension and whether the
               required behavior is performed by default or may be configured. 
 	    </TSS>
               <Guidance>
-              If the <abbr title="TOE Summary Specification" linkend="TSS">TSS</abbr> indicates that the
-              signature_algorithm extension must be configured to meet the requirement, the
+              If the TSS indicates that the signature_algorithm extension must be configured to meet the requirement, the
               evaluator shall verify that AGD guidance includes configuration of the
               signature_algorithm extension. <h:br/> 
 	    </Guidance>
@@ -786,8 +771,7 @@
               <testlist>
                 <test>
                   The evaluator shall configure the server to send a
-                  certificate in the <abbr title="Transport Layer
-                    Security">TLS</abbr> connection that is not
+                  certificate in the TLS connection that is not
                   supported according to the Client's HashAlgorithm
                   enumeration within the signature_algorithms
                   extension (for example, send a certificate with a
@@ -898,8 +882,7 @@
               Supported Elliptic Curves Extension and is described in RFC 7919.</note>
             <aactivity>
               <TSS>
-              The evaluator shall verify that <abbr title="TOE Summary Specification"
-              linkend="TSS">TSS</abbr> describes the Supported Groups Extension.
+              The evaluator shall verify that TSS describes the Supported Groups Extension.
 	    </TSS>
             <Tests>
               The evaluator shall also perform the following test:
@@ -953,8 +936,7 @@
               </selectables>.
             </title>
             <note role="application">
-        The <abbr title="Security Target" linkend="ST">ST
-       </abbr> author should select the cipher suites that are supported,
+        The ST author should select the cipher suites that are supported,
        and must select at least one cipher suite.
               It is necessary to limit the cipher suites that can be
               used in an evaluated configuration administratively on
@@ -970,8 +952,7 @@
         TLS_RSA_WITH_AES_128_CBC_SHA is not required 
 	      despite being mandated by RFC 5246. 
         <h:br/><h:br/>
-        These requirements will be revisited as new
-	      <abbr title="Transport Layer Security">TLS</abbr>
+        These requirements will be revisited as new TLS
 	      versions are standardized by the IETF.
         <h:br/><h:br/>
         If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include
@@ -985,25 +966,19 @@
             <aactivity>
               <TSS>
               The evaluator shall check the description of the implementation of this protocol in
-              the <h:abbr title="TOE Summary Specification" linkend="TSS">TSS</h:abbr> to ensure that
-              the cipher suites supported are specified. The evaluator shall check the
-              <h:abbr title="TOE Summary Specification" linkend="TSS">TSS</h:abbr> to ensure that the
-              cipher suites specified include those listed for this component. 
+              the TSS to ensure that the cipher suites supported are specified. The evaluator shall check the
+              TSS to ensure that the cipher suites specified include those listed for this component. 
 	    </TSS>
               <Guidance>
-              The evaluator shall
-              also check the operational guidance to ensure that it contains instructions on
-              configuring the <h:abbr title="Target of Evaluation" linkend="TOE">TOE</h:abbr> so that
-              TLS conforms to the description in the
-              <h:abbr title="TOE Summary Specification" linkend="TSS">TSS</h:abbr>.
+              The evaluator shall also check the operational guidance to ensure that it contains instructions on
+              configuring the TOE so that TLS conforms to the description in the TSS.
 	    </Guidance>
               <Tests>
               The evaluator shall
               also perform the following tests:
               <testlist>
                 <test>
-                  The evaluator shall establish a
-                  <h:abbr title="Transport Layer Security">TLS</h:abbr> connection using each of the
+                  The evaluator shall establish a TLS connection using each of the
                   cipher suites specified by the requirement. This connection may be established as
                   part of the establishment of a higher-level protocol, e.g., as part of an EAP
                   session. It is sufficient to observe the successful negotiation of a cipher suite
@@ -1032,10 +1007,8 @@
                   The evaluator shall perform the following modifications to the traffic:
                   <testlist>
                     <test>
-                      Change the <h:abbr title="Transport Layer Security">TLS</h:abbr> version proposed
-                      by the client in the Client Hello to a non-supported
-                      <h:abbr title="Transport Layer Security">TLS</h:abbr> version (for example 1.3
-                      represented by the two bytes 03 04) and verify that the server rejects the
+                      Change the TLS version proposed by the client in the Client Hello to a non-supported
+                      TLS version (for example 1.3 represented by the two bytes 03 04) and verify that the server rejects the
                       connection.
                     </test>
                     <test>
@@ -1482,21 +1455,20 @@
       </selectables>.
       </title>
       <note role="application">
-      If any ECDHE or DHE cipher suites are selected, then
-      <linkref linkend="FCS_TLSC_EXT.5"/> is required.
+      If any ECDHE or DHE cipher suites are selected, then FCS_TLSC_EXT.5 is required.
       <h:br/><h:br/>
       If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include 
-      the requirements from <linkref linkend="FCS_DTLSC_EXT.2"/>. If the TOE implements
+      the requirements from FCS_DTLSC_EXT.2. If the TOE implements
       mutual authentication, this selection must be made.
       <h:br/><h:br/>
       Differences between DTLS 1.2 and TLS 1.2 are outlined in RFC 6347; otherwise the
       protocols are the same.
-      All application notes listed for <linkref linkend="FCS_TLSC_EXT.1.1" /> that are relevant
+      All application notes listed for FCS_TLSC_EXT.1.1 that are relevant
       to DTLS apply to this requirement.
     </note>
       <aactivity>
 	<Tests>
-        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.1.1"/>,
+        The evaluator shall perform the evaluation activities listed for FCS_TLSC_EXT.1.1,
         but ensuring that DTLS (and not TLS) is used in each evaluation activity.
         <h:br/><h:br/>
         For tests which involve version numbers, note that in DTLS the on-the-wire representation
@@ -1511,12 +1483,12 @@
       <title> The product shall verify that the presented identifier matches the reference
         identifier according to RFC 6125. </title>
         <note role="application">
-          All application notes listed for <linkref linkend="FCS_TLSC_EXT.1.2" /> that are relevant
+          All application notes listed for FCS_TLSC_EXT.1.2 that are relevant
           to DTLS apply to this requirement.
         </note>
       <aactivity>
       <Tests>
-      The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.1.2"/>.
+      The evaluator shall perform the evaluation activities listed for FCS_TLSC_EXT.1.2.
       </Tests>
       </aactivity>
     </f-element>
@@ -1530,12 +1502,12 @@
       </selectables>.
       </title>
       <note role="application">
-        All application notes listed for <linkref linkend="FCS_TLSC_EXT.1.3" /> that are relevant
+        All application notes listed for FCS_TLSC_EXT.1.3 that are relevant
         to DTLS apply to this requirement.
       </note>
       <aactivity>
         <Tests>
-        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.1.3"/>.
+        The evaluator shall perform the evaluation activities listed for FCS_TLSC_EXT.1.3.
       </Tests>
       </aactivity>
     </f-element>
@@ -1576,12 +1548,12 @@
               The product shall support mutual authentication using X.509v3 certificates.
             </title>
             <note role="application">
-              All application notes listed for <linkref linkend="FCS_TLSC_EXT.2.1" /> that are relevant
+              All application notes listed for FCS_TLSC_EXT.2.1 that are relevant
               to DTLS apply to this requirement.
       </note>
       <aactivity>
 	<Tests>
-        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSC_EXT.2.1" />.
+        The evaluator shall perform the evaluation activities listed for FCS_TLSC_EXT.2.1.
       </Tests>
       </aactivity>
     </f-element>
@@ -1625,15 +1597,15 @@
       </title>
       <note role="application">
       If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include
-      the requirements from <linkref linkend="FCS_DTLSS_EXT.2"/>.  If the TOE implements
+      the requirements from FCS_DTLSS_EXT.2.  If the TOE implements
       mutual authentication, this selection must be made.
       <h:br/><h:br/>
-      All application notes listed for <linkref linkend="FCS_TLSS_EXT.1.1" /> that are relevant
+      All application notes listed for FCS_TLSS_EXT.1.1 that are relevant
       to DTLS apply to this requirement.
       </note>
       <aactivity>
 	<Tests>
-        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.1.1"/>,
+        The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.1.1,
         but ensuring that DTLS (and not TLS) is used in each stage of the evaluation activities.
         <h:br/><h:br/>
         For tests which involve version numbers, note that in DTLS the on-the-wire representation
@@ -1648,7 +1620,7 @@
         <assignable>list of DTLS protocol versions</assignable>.
       </title>
       <note role="application">Any specific DTLS version
-        not selected in <linkref linkend="FCS_DTLSS_EXT.1.1"/> should be assigned here.
+        not selected in FCS_DTLSS_EXT.1.1 should be assigned here.
         This version of the PP does not require the server to deny DTLS 1.0, and if the TOE
         supports DTLS 1.0 then "none" can be assigned. In a future version of this PP,
         DTLS 1.0 will be required to be denied.
@@ -1659,7 +1631,7 @@
 		<h:br/><h:br/>
         The evaluator shall verify that the TSS contains a
         description of the denial of old DTLS versions
-        consistent relative to selections in <linkref linkend="FCS_DTLSS_EXT.1.2" />.
+        consistent relative to selections in FCS_DTLSS_EXT.1.2.
       </TSS>
         <Guidance>
         The evaluator shall verify that the AGD guidance includes any configuration
@@ -1741,22 +1713,19 @@
         </selectables>.
       </title>
       <note role="application">
-        If the ST lists an RSA cipher suite in <linkref
-        linkend="FCS_DTLSS_EXT.1.1"/>, the ST must include the
+        If the ST lists an RSA cipher suite in FCS_DTLSS_EXT.1.1, the ST must include the
         RSA selection in the requirement.
         <h:br/>
-        If the ST lists a DHE cipher suite in <linkref
-        linkend="FCS_DTLSS_EXT.1.1"/>, the ST must include either
+        If the ST lists a DHE cipher suite in FCS_DTLSS_EXT.1.1, the ST must include either
         the Diffie-Hellman selection for parameters of a certain size,
         or for particular Diffie-Hellman groups.
         <h:br/>
-        If the ST lists an ECDHE cipher suite in <linkref
-        linkend="FCS_DTLSS_EXT.1.1"/>, the ST must include the
+        If the ST lists an ECDHE cipher suite in FCS_DTLSS_EXT.1.1, the ST must include the
         NIST curves selection in the requirement.
       </note>
       <aactivity>
       <Tests>
-        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.1.3"/>.
+        The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.1.3.
       </Tests>
       </aactivity>
     </f-element>
@@ -1797,12 +1766,12 @@
               The product shall support mutual authentication of DTLS clients using X.509v3 certificates.
             </title>
             <note role="application">
-              All application notes listed for <linkref linkend="FCS_TLSS_EXT.2.1" /> that are relevant
+              All application notes listed for FCS_TLSS_EXT.2.1 that are relevant
               to DTLS apply to this requirement.
       </note>
       <aactivity>
 	<Tests>
-          The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2.1" />.
+          The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.2.1.
       </Tests>
       </aactivity>
 
@@ -1812,12 +1781,12 @@
         if the client certificate is invalid.
       </title>
       <note role="application">
-        All application notes listed for <linkref linkend="FCS_TLSS_EXT.2.2" /> that are relevant
+        All application notes listed for FCS_TLSS_EXT.2.2 that are relevant
         to DTLS apply to this requirement.
       </note>
       <aactivity>
 	<Tests>
-        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2.2" />. 
+        The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.2.2. 
       </Tests>
       </aactivity>
     </f-element>
@@ -1828,12 +1797,12 @@
         for the client.
       </title>
       <note role="application">
-        All application notes listed for <linkref linkend="FCS_TLSS_EXT.2.3" /> that are relevant
+        All application notes listed for FCS_TLSS_EXT.2.3 that are relevant
         to DTLS apply to this requirement.
       </note>
       <aactivity>
         <Tests>
-        The evaluator shall perform the evaluation activities listed for <linkref linkend="FCS_TLSS_EXT.2.3" />.
+        The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.2.3.
       </Tests>
 	</aactivity>
       </f-element>
