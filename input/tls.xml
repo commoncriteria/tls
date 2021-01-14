@@ -54,7 +54,6 @@
 <!-- 1.1 Overview	-->
 <!--			-->	  
     <sec:Overview>
-	    <h:p>
 	  Transport Layer Security (TLS) and the closely-related Datagram TLS (DTLS) are
     cryptographic protocols designed to provide communications security over IP networks.
     Several versions of the protocol are in widespread use in software that provides functionality
