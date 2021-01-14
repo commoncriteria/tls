@@ -5,9 +5,11 @@
 <?xml-model href="CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>    
 -->
 
-<PP xmlns="https://niap-ccevs.org/cc/v1" name="TLS"
-    xmlns:h="http://www.w3.org/1999/xhtml"
-    type="package" boilerplate="yes">
+<package name="TLS" 
+    xmlns="https://niap-ccevs.org/cc/v1" 
+    xmlns:sec="https://niap-ccevs.org/cc/v1/section"
+    xmlns:h="http://www.w3.org/1999/xhtml">
+<!--    type="package" boilerplate="yes">   -->
 	
   <!-- <inline-comment color='green'> Hello World TLS </inline-comment> -->
   <!-- <inline-comment color='blue' linebreak='yes'> Hello World TLS </inline-comment> -->
@@ -1831,4 +1833,4 @@
       <acronyms/>
   </appendix>
 
-</PP>
+</package>
