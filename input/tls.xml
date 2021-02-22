@@ -132,7 +132,7 @@
       The Target of Evaluation
       (TOE) in this Package is a product which acts as a TLS client or server, or both.
       This Package describes the security functionality of TLS in terms of
-      <xref to="bibCC" />. 
+      <xref g="CC" />. 
       <h:p/>
       The contents of this Package must be appropriately
       combined with a PP or PP-Module.
@@ -192,7 +192,7 @@
           SFRs and associated Evaluation Activities specific to TLS clients and servers.  
           <h:p/>
           This Package conforms to Common Criteria
-          <xref to="bibCC" /> for Information Technology Security Evaluation, Version 3.1,
+          <xref g="CC" /> for Information Technology Security Evaluation, Version 3.1,
           Revision 5. It is CC Part 2 extended conformant.
           <h:p/>
           In accordance with CC Part 1, dependencies are not included when they are addressed
@@ -647,7 +647,7 @@
           <f-element id="fel-mut-auth-certs">
             <title>The product shall support mutual authentication using X.509v3 certificates.</title>
             <note role="application">
-              The use of X.509v3 certificates for TLS is addressed in <xref to="FIA_X509_EXT.2.1"/>.
+              The use of X.509v3 certificates for TLS is addressed in FIA_X509_EXT.2.1.
              This requirement adds that a client must be capable of
               presenting a certificate to a TLS server
               for TLS mutual authentication.
@@ -656,7 +656,7 @@
             </note>
             <aactivity>
               <TSS>
-                The evaluator shall ensure that the TSS description required per <xref to="FIA_X509_EXT.2.1"/> includes the use of client-side certificates for TLS
+                The evaluator shall ensure that the TSS description required per FIA_X509_EXT.2.1 includes the use of client-side certificates for TLS
               mutual authentication.  The evaluator shall also ensure that the 
               TSS describes
               any factors beyond configuration that are necessary in order for the client to engage in mutual
@@ -667,7 +667,7 @@
               The evaluator shall ensure that the AGD guidance includes any instructions necessary
               to configure the TOE to perform mutual authentication.
               The evaluator also shall verify that the AGD guidance required
-              per <xref to="FIA_X509_EXT.2.1"/> includes instructions for configuring the
+              per FIA_X509_EXT.2.1 includes instructions for configuring the
               client-side certificates for TLS mutual
               authentication.<h:br/>
 	      </Guidance>
@@ -1137,20 +1137,20 @@ during handshake.
             </title>
             <note role="application">
               The use of X.509v3 certificates for TLS is addressed in
-              <xref to="FIA_X509_EXT.2.1"/>
+              FIA_X509_EXT.2.1
               This requirement adds that this use must include support for client-side
               certificates for TLS mutual authentication. Validity is determined by the
               certificate path, the expiration date, and the revocation status in
               accordance with RFC 5280. Certificate validity shall be tested in accordance
-              with testing performed for <xref to="FIA_X509_EXT.1"/>.
+              with testing performed for FIA_X509_EXT.1.
             </note>
             <aactivity>
               <TSS>
-              The evaluator shall ensure that the TSS description required per <xref to="FIA_X509_EXT.2.1" />
+              The evaluator shall ensure that the TSS description required per FIA_X509_EXT.2.1
               includes the use of client-side certificates for TLS mutual authentication.
 	      </TSS>
               <Guidance>
-              The evaluator shall verify that the AGD guidance required per <xref to="FIA_X509_EXT.2.1" />
+              The evaluator shall verify that the AGD guidance required per FIA_X509_EXT.2.1
               includes instructions for configuring the client-side certificates for TLS mutual
               authentication.  The evaluator shall ensure that the AGD guidance
               includes instructions for configuring the server to require
@@ -1158,7 +1158,7 @@ during handshake.
 	      </Guidance>
               <Tests>
 	      The evaluator shall use TLS as a function to verify that the validation rules in
-	      <xref to="FIA_X509_EXT.1.1" /> are adhered to and shall perform the following tests.
+	      FIA_X509_EXT.1.1 are adhered to and shall perform the following tests.
         The evaluator shall apply the AGD guidance to configure the server
         to require TLS mutual authentication of clients for the following tests,
         unless overridden by instructions in the test activity:
