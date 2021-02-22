@@ -845,7 +845,7 @@ during handshake.
             <title> The product shall present the Supported Groups Extension in the Client Hello
               with the supported groups <selectables linebreak="yes">
                 <selectable>secp256r1</selectable>
-                <selectable>secp384r1</selectable>
+                <selectable id="secp384r1">secp384r1</selectable>
                 <selectable>secp521r1</selectable>
                 <selectable>ffdhe2048(256)</selectable>
                 <selectable>ffdhe3072(257)</selectable>
