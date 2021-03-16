@@ -1467,7 +1467,7 @@ during handshake.
     if a message received contains an invalid MAC or if decryption fails in the case of GCM and other
     AEAD ciphersuites.
     </title>
-    <aactivity>
+    <aactivity level="element">
       <TSS>
       The evaluator shall verify that the TSS describes the actions that take place if a message
       received from the DTLS Server fails the MAC integrity check.
