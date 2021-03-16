@@ -32,6 +32,12 @@
       contexts</subject>
     </entry>
   </RevisionHistory>
+	
+  <!-- PP-style preferences   -->
+  <pp-preferences>
+<!--        <pp-pref name="display-audit-with-sfrs">0</pp-pref> -->
+   	<audit-events-in-sfrs/>
+  </pp-preferences>
 
   <sec:Introduction>
     <section title="Overview" id="ppoverview">
@@ -74,7 +80,10 @@
       <term abbr="DHE" full="Diffie-Hellman Ephemeral"/>
       <term abbr="DN" full="Distinguished Name"/>
       <term abbr="DNS" full="Domain Name Server"/>
-      <term abbr="DTLS" full="Datagram Transport Layer Security"/>
+      <term abbr="DTLS" full="Datagram Transport Layer Security">
+	      Cryptographic network protocol, based on TLS, which provides
+              communications security for datagram protocols
+	    </term>
       <term abbr="EAP" full="Extensible Authentication Protocol"/>
       <term abbr="ECDHE" full="Elliptic Curve Diffie-Hellman Ephemeral"/>
       <term abbr="ECDSA" full="Elliptic Curve Digital Signature Algorithm"/>
@@ -223,6 +232,14 @@
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional
       components.-->
+	  
+    	<section id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
+     		The auditable events specified in this Functional Package are included in a Security Target 
+	  	if the incorporating PP or PP-Module supports audit event reporting through FAU_GEN.1 and all other criteria in the incorporating
+	  	PP or PP-Module are met. <h:p/>
+     	<audit-table table="mandatory"/>
+    	</section>	  
+	  
       <section title="Cryptographic Support (FCS)" id="fcs">
         <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol">
           <f-element id="fel-tls-usage">
@@ -254,6 +271,7 @@
 	      </Guidance>
             </aactivity>
           </f-element>
+	  <audit-event />
         </f-component>
 
         <f-component cc-id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
@@ -639,7 +657,19 @@
               </testlist> -->
 	      </Tests>
             </aactivity>
-          </f-element>       
+          </f-element> 
+	  <audit-event type="optional">
+		<audit-event-descr>Failure to establish a TLS session</audit-event-descr>
+		<audit-event-info>Reason for failure.</audit-event-info>
+	  </audit-event>
+	  <audit-event type="optional">
+		<audit-event-descr>Failure to verify presented identifier</audit-event-descr>
+		<audit-event-info>Presented identifier and reference identifier.</audit-event-info>
+	  </audit-event>
+	  <audit-event type="optional">
+		<audit-event-descr>Establishment/termination of a TLS session</audit-event-descr>
+		<audit-event-info>Non-TOE endpoint of connection.</audit-event-info>
+	 </audit-event>
         </f-component>
         
         <f-component cc-id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="sel-based">
@@ -692,7 +722,9 @@ during handshake.
 	      </Tests>
             </aactivity>
           </f-element>
+	  <audit-event/>
         </f-component>
+	      
         <f-component cc-id="fcs_tlsc_ext.3" name="TLS Client Support for Signature Algorithms Extension" status="objective">
           <f-element id="fel-hello-sig-algs">
             <title> The product shall present the signature_algorithms extension in the Client Hello with
@@ -744,8 +776,10 @@ during handshake.
               </testlist>
 	      </Tests>
             </aactivity>
-          </f-element>  
+          </f-element> 
+	  <audit-event />
         </f-component>
+	      
         <f-component cc-id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
           <selection-depends req="fel-tls-usage" ids="tlsc_reneg"/>
           <f-element id="fel-renego">
@@ -797,7 +831,9 @@ during handshake.
 	      </Tests>
             </aactivity>
           </f-element>
+	  <audit-event />
         </f-component>
+	      
         <f-component cc-id="fcs_tlsc_ext.5" name="TLS Client Support for Supported Groups Extension" status="sel-based">
           <selection-depends req="fel-client"  ids="tecdhe1,tecdhe2,tecdhe3,tecdhe4,tecdhe5,tecdhe6,tecdhe7,tecdhe8"/>
           <selection-depends req="fel-dtlsc-impl" ids="decdhe1,decdhe2,decdhe3,decdhe4,decdhe5,decdhe6,decdhe7,decdhe8"/>
@@ -838,6 +874,7 @@ during handshake.
 	      </Tests>
             </aactivity>
           </f-element>  
+	  <audit-event/>
         </f-component>
 
         <f-component cc-id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
@@ -1122,6 +1159,10 @@ during handshake.
 	      </Tests>
             </aactivity>
           </f-element>
+	  <audit-event type="optional">
+		<audit-event-descr type="optional">Failure to establish a TLS session</audit-event-descr>
+		<audit-event-info type="optional">Reason for failure.</audit-event-info>
+	 </audit-event>
         </f-component>
 
        <f-component cc-id="fcs_tlss_ext.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
@@ -1265,6 +1306,7 @@ during handshake.
 	      </Tests>
             </aactivity>
           </f-element>
+	  <audit-event/>
         </f-component>
 
 	<f-component cc-id="fcs_tlss_ext.3"
@@ -1314,6 +1356,7 @@ during handshake.
 	      </Tests>
 	    </aactivity>
 	    </f-element>
+	   <audit-event />
 	</f-component>
 
 	<f-component cc-id="fcs_tlss_ext.4" name="TLS Server Support for Renegotiation" status="sel-based">
@@ -1353,6 +1396,7 @@ during handshake.
 	</Tests>
 	    </aactivity>
 	    </f-element>
+	<audit-event/>
 	</f-component>
 
   <f-component cc-id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
@@ -1467,6 +1511,10 @@ during handshake.
       </Tests>
     </aactivity>
   </f-element>
+ 	<audit-event type="optional">
+		<audit-event-descr>Failure of the certificate validity check</audit-event-descr>
+		<audit-event-info>Issuer Name and Subject Name of certificate.</audit-event-info>
+	</audit-event> 
   </f-component>
 
   <f-component cc-id="fcs_dtlsc_ext.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
@@ -1485,6 +1533,7 @@ during handshake.
 	</Tests>
       </aactivity>
     </f-element>
+	  <audit-event/>
   </f-component>
 
   <f-component cc-id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
@@ -1674,6 +1723,10 @@ during handshake.
 	</Tests>
       </aactivity>
     </f-element>
+  	<audit-event type="optional">
+		<audit-event-descr>Failure of the certificate validity check</audit-event-descr>
+		<audit-event-info>Issuer Name and Subject Name of certificate.</audit-event-info>
+	</audit-event>
   </f-component>
 
   <f-component cc-id="fcs_dtlss_ext.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
@@ -1723,6 +1776,7 @@ during handshake.
 	</Tests>
       </aactivity>
       </f-element>
+	  <audit-event/>
       </f-component>
       </section>
     </sec:Security_Functional_Requirements>
