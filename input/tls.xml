@@ -73,10 +73,6 @@
       <term abbr="CA" full="Certificate Authority"/>
       <term abbr="CBC" full="Cipher Block Chaining"/>
       <term abbr="CN" full="Common Name"/>
-      <term abbr="DTLS" full="Datagram Transport Layer Security">
-              Cryptographic network protocol, based on TLS, which provides
-              communications security for datagram protocols
-      </term>
       <term abbr="DHE" full="Diffie-Hellman Ephemeral"/>
       <term abbr="DN" full="Distinguished Name"/>
       <term abbr="DNS" full="Domain Name Server"/>
@@ -108,34 +104,6 @@
       <term abbr="URI" full="Uniform Resource Identifier"/>
       <term abbr="URL" full="Uniform Resource Locator"/>
     </tech-terms>
-
-    <sec:Format_of_this_Document>
-      <xref to="Security_Functional_Requirements"/> contains baseline requirements
-      which must be implemented in the product and included in any PP/PP-Module/ST
-      that claims conformance to this Package.
-      There are three other types of requirements that can be included in a PP/PP-Module/ST
-      claiming conformance to this Package:
-      <h:ul>
-      <h:li>
-      <xref g="optional-reqs"/> contains requirements that may optionally be included
-      in the PP/PP-Module/ST, but inclusion is at the discretion of the PP/PP-Module/ST
-      author.  For requirements that have selections, if the PP/PP-Module allows the selection (or the ST
-      selects particular selections), then there are additional requirements based on these
-      selections contained in this appendix that will need to be included in the PP/PP-Module/ST.
-      </h:li>
-      <h:li>
-      <xref g="sel-based-reqs"/> contains requirements based on selections
-      in the requirements in <xref to="Security_Functional_Requirements"/>
-       or the PP/PP-Module/ST: if certain selections are
-      made, then the corresponding requirements in that appendix must be included.
-      </h:li>
-      <h:li>
-      <xref g="objective-reqs"/> contains requirements that will
-      be included in the baseline requirements in future versions of this package. Earlier adoption by vendors is
-      encouraged. Otherwise, these are treated the same as Optional Requirements.
-      </h:li>
-      </h:ul>
-    </sec:Format_of_this_Document>
 
     <sec:Compliant_Targets_of_Evaluation>
       The Target of Evaluation
@@ -458,7 +426,7 @@
               client then compares this list of all acceptable reference identifiers to the
               presented identifiers in the TLS
               server’s certificate. 
-              <h:br/>
+              <h:p/>
               The preferred method for verification is the Subject
               Alternative Name using DNS names, URI names, or Service Names. Verification using the
               Common Name for the purposes of backwards compatibility is optional. Additionally,
