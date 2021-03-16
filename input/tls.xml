@@ -340,7 +340,7 @@
         the requirements from FCS_TLSC_EXT.4. If the TOE implements
         session renegotiation, this selection must be made.
 	    </note>
-            <aactivity>
+            <aactivity level="element">
               <TSS>
               The evaluator shall check the description of the implementation of this
               protocol in the TSS to
@@ -468,7 +468,7 @@
               presented identifiers include wildcards, the client must follow the best practices
               regarding matching; these best practices are captured in the evaluation activity.
             </note>
-            <aactivity>
+            <aactivity level="element">
               <TSS>
               The evaluator shall ensure that the TSS describes the client’s method of establishing all reference
               identifiers from the application-configured reference identifier, including which
@@ -603,7 +603,7 @@
               instantiate this SFR using only the first selection, preventing the ability to
               allow overrides.
             </note>
-            <aactivity>
+            <aactivity level="element">
               <TSS>
               If the selection for authorizing override of invalid certificates is made, then
               the evaluator shall ensure that the TSS includes a description of how and when user or administrator
@@ -941,7 +941,7 @@ during handshake.
         the requirements from FCS_TLSS_EXT.4. If the TOE implements
         session renegotiation, this selection must be made.
             </note>
-            <aactivity>
+            <aactivity level="element">
               <TSS>
               The evaluator shall check the description of the implementation of this protocol in
               the TSS to ensure that
@@ -1036,7 +1036,7 @@ during handshake.
             <note role="application">All SSL versions are denied. Any TLS version
               not selected in <xref to="fel-tlss-impl"/> should be selected here.
             </note>
-            <aactivity>
+            <aactivity level="element">
               <TSS>
               The evaluator shall verify that the TSS contains a
               description of the denial of old SSL and TLS versions
@@ -1119,7 +1119,7 @@ during handshake.
               If the ST lists an ECDHE cipher suite in <xref to="fel-tlss-impl"/>, the ST must include the
               selection for ECDHE using elliptic curves in the requirement.
             </note>
-            <aactivity>
+            <aactivity level="element">
               <TSS>
               The evaluator shall verify that the TSS describes the key agreement parameters
               of the server's Key Exchange message.
@@ -1161,7 +1161,7 @@ during handshake.
           </f-element>
 	  <audit-event type="optional">
 		<audit-event-descr type="optional">Failure to establish a TLS session</audit-event-descr>
-		<audit-event-info type="optional">Reason for failure.</audit-event-info>
+		<audit-event-info type="optional">Reason for failure</audit-event-info>
 	 </audit-event>
         </f-component>
 
@@ -1185,7 +1185,7 @@ during handshake.
               accordance with RFC 5280. Certificate validity shall be tested in accordance
               with testing performed for FIA_X509_EXT.1.
             </note>
-            <aactivity>
+            <aactivity level="element">
               <TSS>
               The evaluator shall ensure that the TSS description required per FIA_X509_EXT.2.1
               includes the use of client-side certificates for TLS mutual authentication.
@@ -1282,7 +1282,7 @@ during handshake.
               the client, or may be passed to a directory server for comparison.
               In the latter case, the matching itself may be performed outside the TOE.
             </note>
-            <aactivity>
+            <aactivity level="element">
               <TSS>
               If the product implements mutual authentication, the evaluator shall
               verify that the TSS describes how the DN and SAN in the certificate
@@ -1444,7 +1444,7 @@ during handshake.
       All application notes listed for <xref to="fel-client"/> that are relevant
       to DTLS apply to this requirement.
     </note>
-      <aactivity>
+      <aactivity level="element">
 	<Tests>
         The evaluator shall perform the evaluation activities listed for <xref to="fel-client"/>,
         but ensuring that DTLS (and not TLS) is used in each evaluation activity.
@@ -1464,7 +1464,7 @@ during handshake.
           All application notes listed for <xref to="fel-present-identifier" /> that are relevant
           to DTLS apply to this requirement.
         </note>
-      <aactivity>
+      <aactivity level="element">
       <Tests>
 	The evaluator shall perform the evaluation activities listed for
 	<xref to="fel-present-identifier"/>.
@@ -1576,7 +1576,7 @@ during handshake.
       All application notes listed for <xref to="fel-tlss-impl" /> that are relevant
       to DTLS apply to this requirement.
       </note>
-      <aactivity>
+      <aactivity level="element">
 	<Tests>
         The evaluator shall perform the evaluation activities listed for <xref to="fel-tlss-impl"/>,
         but ensuring that DTLS (and not TLS) is used in each stage of the evaluation activities.
@@ -1598,7 +1598,7 @@ during handshake.
         supports DTLS 1.0 then "none" can be assigned. In a future version of this PP,
         DTLS 1.0 will be required to be denied.
       </note>
-      <aactivity>
+      <aactivity level="element">
         The following evaluation activities shall be conducted unless "none" is assigned.
         <h:br/><h:br/>
         <TSS>
@@ -1634,7 +1634,7 @@ during handshake.
         Client then sends another ClientHello with the cookie attached. If the DTLS
         server successfully verifies the signed cookie, the Client is not using a spoofed IP address.
       </note>
-      <aactivity>
+      <aactivity level="element">
         <TSS>
         The evaluator shall verify that the TSS describes how the DTLS Client IP address is validated prior to
         issuing a ServerHello message.
@@ -1696,7 +1696,7 @@ during handshake.
         If the ST lists an ECDHE cipher suite in <xref to="fel-dtlss-impl"/>, the ST must include the
         NIST curves selection in the requirement.
       </note>
-      <aactivity>
+      <aactivity level="element">
       <Tests>
         The evaluator shall perform the evaluation activities listed for <xref to="fel-rsa-size"/>.
       </Tests>
@@ -1711,7 +1711,7 @@ during handshake.
       if a message received contains an invalid MAC or if decryption fails in the case of GCM and other
       AEAD ciphersuites.
       </title>
-      <aactivity>
+      <aactivity level="element">
         <TSS>
         The evaluator shall verify that the TSS describes the actions that take place if a message
         received from the DTLS client fails the MAC integrity check.
@@ -1725,7 +1725,7 @@ during handshake.
     </f-element>
   	<audit-event type="optional">
 		<audit-event-descr>Failure of the certificate validity check</audit-event-descr>
-		<audit-event-info>Issuer Name and Subject Name of certificate.</audit-event-info>
+		<audit-event-info>Issuer Name and Subject Name of certificate</audit-event-info>
 	</audit-event>
   </f-component>
 
@@ -1739,7 +1739,7 @@ during handshake.
               All application notes listed for <xref to="fel-auth-client-certs" /> that are relevant
               to DTLS apply to this requirement.
       </note>
-      <aactivity>
+      <aactivity level="element">
 	<Tests>
           The evaluator shall perform the evaluation activities listed for <xref to="fel-auth-client-certs" />.
 	</Tests>
@@ -1754,7 +1754,7 @@ during handshake.
         All application notes listed for <xref to="fel-bad-client-cert" /> that are relevant
         to DTLS apply to this requirement.
       </note>
-      <aactivity>
+      <aactivity level="element">
 	<Tests>
         The evaluator shall perform the evaluation activities listed for <xref to="fel-bad-client-cert" />. 
 	</Tests>
@@ -1770,7 +1770,7 @@ during handshake.
         All application notes listed for <xref to="fel-tlss-match-name" /> that are relevant
         to DTLS apply to this requirement.
       </note>
-      <aactivity>
+      <aactivity level="element">
         <Tests>
         The evaluator shall perform the evaluation activities listed for <xref to="fel-tlss-match-name" />.
 	</Tests>
