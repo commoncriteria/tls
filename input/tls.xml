@@ -243,7 +243,7 @@
         </f-component>
 
         <f-component cc-id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
-          <selection-depends req="fel-tls-usage" ids="tlsc_impl"/>
+		  <depends on-sel="tlsc_impl"/>
           <f-element id="fel-client">
             <title> The product shall implement TLS 1.2 (RFC 5246) and
               <selectables>
@@ -641,7 +641,7 @@
         </f-component>
         
         <f-component cc-id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="sel-based">
-          <selection-depends req="fel-client" ids="tlsc_mutual_auth"/>
+		  <depends on-sel="tlsc_mutual_auth"/>
           <f-element id="fel-mut-auth-certs">
             <title>The product shall support mutual authentication using X.509v3 certificates.</title>
             <note role="application">
@@ -749,7 +749,7 @@ during handshake.
         </f-component>
 	      
         <f-component cc-id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
-          <selection-depends req="fel-tls-usage" ids="tlsc_reneg"/>
+          <depends on-sel="tlsc_reneg"/>
           <f-element id="fel-renego">
             <title> The product shall support secure renegotiation through use
               of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
@@ -803,8 +803,10 @@ during handshake.
         </f-component>
 	      
         <f-component cc-id="fcs_tlsc_ext.5" name="TLS Client Support for Supported Groups Extension" status="sel-based">
-          <selection-depends req="fel-client"  ids="tecdhe1,tecdhe2,tecdhe3,tecdhe4,tecdhe5,tecdhe6,tecdhe7,tecdhe8"/>
-          <selection-depends req="fel-dtlsc-impl" ids="decdhe1,decdhe2,decdhe3,decdhe4,decdhe5,decdhe6,decdhe7,decdhe8"/>
+          <depends on-sel="tecdhe1" on-sel2="tecdhe2" on-sel3="tecdhe3" on-sel4="tecdhe4"
+			on-sel5="tecdhe5" on-sel6="tecdhe6" on-sel7="tecdhe7" on-sel8="tecdhe8"/>
+          <depends on-sel="decdhe1" on-sel2="decdhe2" on-sel3="decdhe3" on-sel4="decdhe4"
+			on-sel5="decdhe5" on-sel6="decdhe6" on-sel7="decdhe7" on-sel8="decdhe8"/>
           <f-element id="fel-hello-group-extension">
             <!-- TODO: IDs for ECC DHE curves -->
             <title> The product shall present the Supported Groups Extension in the Client Hello
@@ -846,7 +848,7 @@ during handshake.
         </f-component>
 
         <f-component cc-id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
-          <selection-depends req="fel-tls-usage" ids="tlss_impl"/>
+          <depends on-sel="tlss_impl"/>
           <f-element id="fel-tlss-impl">
             <title> The product shall implement TLS 1.2 (RFC 5246) and
             <selectables>
@@ -1134,7 +1136,7 @@ during handshake.
         </f-component>
 
        <f-component cc-id="fcs_tlss_ext.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
-         <selection-depends req="fel-tlss-impl" ids="tlss_mutual_auth"/>
+         <depends on-sel="tlss_mutual_auth"/>
           <f-element id="fel-auth-client-certs">
             <title>The product shall support authentication of
               TLS clients using X.509v3 certificates.
@@ -1277,8 +1279,7 @@ during handshake.
 	  <audit-event/>
         </f-component>
 
-	<f-component cc-id="fcs_tlss_ext.3"
-		     name="TLS Server Support for Signature Algorithms Extension" status="objective">
+	<f-component cc-id="fcs_tlss_ext.3" name="TLS Server Support for Signature Algorithms Extension" status="objective">
           <f-element id="fel-tlss-hashalgo">
             <title>The product shall present the HashAlgorithm
             enumeration in supported_signature_algorithms in the
@@ -1328,7 +1329,7 @@ during handshake.
 	</f-component>
 
 	<f-component cc-id="fcs_tlss_ext.4" name="TLS Server Support for Renegotiation" status="sel-based">
-    <selection-depends req="fel-tlss-impl" ids="tlss_reneg"/>
+    <depends on-sel="tlss_reneg"/>
           <f-element id="fel-tlss-renego">
             <title>The product shall support the "renegotiation_info" TLS extension
               in accordance with RFC 5746.
@@ -1368,7 +1369,7 @@ during handshake.
 	</f-component>
 
   <f-component cc-id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
-    <selection-depends req="fel-client" ids="dtlsc_impl"/>
+    <depends on-sel="dtlsc_impl"/>
     <f-element id="fel-dtlsc-impl">
       <title>The product shall implement DTLS 1.2 (RFC 6347) and
       <selectables>
@@ -1486,7 +1487,7 @@ during handshake.
   </f-component>
 
   <f-component cc-id="fcs_dtlsc_ext.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
-    <selection-depends req="fel-dtlsc-impl" ids="dtlsc_mutual_auth"/>
+    <depends on-sel="dtlsc_mutual_auth"/>
           <f-element id="fel-dtlsc-mut-auth">
             <title>
               The product shall support mutual authentication using X.509v3 certificates.
@@ -1505,7 +1506,7 @@ during handshake.
   </f-component>
 
   <f-component cc-id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
-    <selection-depends req="fel-tls-usage" ids="dtlss_impl"/>
+    <depends on-sel="dtlss_impl"/>
     <f-element id="fel-dtlss-impl">
       <title>The product shall implement DTLS 1.2 (RFC 6347) and
       <selectables>
@@ -1698,7 +1699,7 @@ during handshake.
   </f-component>
 
   <f-component cc-id="fcs_dtlss_ext.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
-    <selection-depends req="fel-dtlss-impl" ids="dtlss_mutual_auth"/>
+    <depends on-sel="dtlss_mutual_auth"/>
           <f-element id="fel-dtlss-mut-auth">
             <title>
               The product shall support mutual authentication of DTLS clients using X.509v3 certificates.
