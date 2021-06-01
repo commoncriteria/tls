@@ -439,7 +439,7 @@
               The evaluator shall verify that the AGD guidance includes instructions for
               setting the reference identifier to be used for the purposes of certificate validation
               in TLS. <h:br/>
-              <Guidance>
+              </Guidance>
               <Tests>
               The evaluator shall
               configure the reference identifier according to the AGD guidance and perform the
