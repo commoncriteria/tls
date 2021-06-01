@@ -175,10 +175,9 @@
     </cclaims>
   </section>
   
-	<sec:Security_Requirements>
-	
-    <section title="Security Functional Requirements" id="sfrs">
-    This section describes the security requirements
+	<sec:Security_Requirements title="Security Requirements">
+    <description>
+		This section describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
     <xref to="bibCC" />. The following notations are used:
     <h:ul>
@@ -194,11 +193,14 @@
       <h:li>
         <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)").</h:li>
     </h:ul><h:p/>
+		</description>
+	
+    <section title="Security Functional Requirements" id="sfrs">
 
-	  The Security Functional Requirements
+	  <description>The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional
-      components.
+      components.</description>
 	  
       <section title="Cryptographic Support (FCS)" id="fcs">
 	  
