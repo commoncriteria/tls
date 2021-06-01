@@ -1,3 +1,3 @@
-DIFF_TAGS=v1.0
+-include User.make
 TRANS?=transforms
-include $(TRANS)/Helper.make
+include $(TRANS)/package/Package.make
