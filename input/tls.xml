@@ -176,7 +176,7 @@
   </section>
   
 	
-    <sec:Security_Functional_Requirements>
+    <section title="Security Functional Requirements" id="sfrs">
     This section describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
     <xref to="bibCC" />. The following notations are used:
@@ -225,9 +225,10 @@
               ST must include the requirements from FCS_DTLSS_EXT.1.
             </note>
             <aactivity>
-	      <Guidance/>
+	      <Guidance>
 		The evaluator shall ensure that the selections indicated in the ST are
               consistent with selections in the dependent components.
+			  </Guidance>
             </aactivity>
           </f-element>
         </f-component>
@@ -1710,7 +1711,7 @@ during handshake.
       </f-element>
       </f-component>
       </section>
-    </sec:Security_Functional_Requirements>
+    </section>
 
   <appendix title="Optional Requirements" id="optional">
     There are currently no Optional Requirements in this Package.
