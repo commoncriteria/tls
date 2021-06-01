@@ -175,7 +175,7 @@
     </cclaims>
   </section>
   
-	<sec:Security_Requirements title="Security Requirements">
+	<sec:Security_Requirements>
     <description>
 		This section describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
@@ -195,7 +195,7 @@
     </h:ul><h:p/>
 		</description>
 	
-    <section title="Security Functional Requirements" id="sfrs">
+    <sec:Security_Functional_Requirements title="Security Functional Requirements">
 
 	  <description>The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
@@ -1714,7 +1714,7 @@ during handshake.
       </f-element>
       </f-component>
       </section>
-    </section>
+    </sec:Security_Functional_Requirements>
 	
 	<sec:Security_Assurance_Requirements/>
 	
