@@ -4,8 +4,7 @@
 <Package name="TLS" 
 	xmlns="https://niap-ccevs.org/cc/v1" 
 	xmlns:sec="https://niap-ccevs.org/cc/v1/section"
-    xmlns:h="http://www.w3.org/1999/xhtml"
-    type="package">
+    xmlns:h="http://www.w3.org/1999/xhtml">
 	
   <!-- <inline-comment color='green'> Hello World TLS </inline-comment> -->
   <!-- <inline-comment color='blue' linebreak='yes'> Hello World TLS </inline-comment> -->
@@ -67,10 +66,10 @@
               security over a TCP/IP network.</term>
         <term abbr="DTLS" full="Datagram Transport Layer Security">
               Cryptographic network protocol, based on TLS, which provides
-              communications security for datagram protocols
+              communications security for datagram protocols.
             </term>
         <term abbr="CA" full="Certificate Authority">
-			Issuer of digital certificates
+			Issuer of digital certificates.
             </term>
       </tech-terms>
 
