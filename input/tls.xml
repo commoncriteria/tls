@@ -100,10 +100,11 @@
       </h:ul>
     </section>
 
-    <section title="Compliant Targets of Evaluation" id="TOEdescription">The Target of Evaluation
+    <section title="Compliant Targets of Evaluation" id="TOEdescription">
+		The Target of Evaluation
       (TOE) in this Package is a product which acts as a TLS client or server, or both.
       This Package describes the security functionality of TLS in terms of
-      <xref go="bibCC" />. 
+      <xref to="bibCC" />. 
       <h:p/>
       The contents of this Package must be appropriately
       combined with a PP or PP-Module.
@@ -174,7 +175,8 @@
     </cclaims>
   </section>
   
-  <section title="Security Requirements" id="req">This section describes the security requirements
+  <sec:Security_Requirements>
+    This section describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
     <xref to="bibCC" />. The following notations are used:
     <h:ul>
@@ -190,11 +192,15 @@
       <h:li>
         <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)").</h:li>
     </h:ul>
-    <section title="Security Functional Requirements" id="SFRs">The Security Functional Requirements
+	
+    <sec:Security_Functional_Requirements>
+	  The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional
       components.
+	  
       <section title="Cryptographic Support (FCS)" id="fcs">
+	  
         <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol">
           <f-element id="fcs-tls-ext-1e1">
 			<title>The product shall implement
@@ -292,18 +298,20 @@
         session renegotiation, this selection must be made.
 	    </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               The evaluator shall check the description of the implementation of this
               protocol in the TSS to
               ensure that the cipher suites supported are specified. The evaluator shall check the
                 TSS to ensure that the
               cipher suites specified include those listed for this component. 
-              <Guidance/>
+			  </TSS>
+              <Guidance>
               The evaluator shall
               also check the operational guidance to ensure that it contains instructions on
               configuring the product so that
               TLS conforms to the description in the TSS. 
-              <Tests/>
+			  </Guidance>
+              <Tests>
               The evaluator shall also perform the following tests:
               <testlist>
                 <test>
@@ -388,6 +396,7 @@
                   </testlist>
                 </test>
               </testlist>
+			  </Tests>
             </aactivity>
           </f-element>
           <f-element id="fcs-tlsc-ext-1e2">
@@ -416,7 +425,7 @@
               regarding matching; these best practices are captured in the evaluation activity.
             </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               The evaluator shall ensure that the TSS describes the client’s method of establishing all reference
               identifiers from the application-configured reference identifier, including which
               types of reference identifiers are supported (e.g. Common Name, DNS Name, URI Name,
@@ -425,11 +434,13 @@
               description identifies whether and the manner in which certificate pinning is
               supported or used by the product.
               <h:br/> 
-              <Guidance/>
+              </TSS>
+              <Guidance>
               The evaluator shall verify that the AGD guidance includes instructions for
               setting the reference identifier to be used for the purposes of certificate validation
               in TLS. <h:br/>
-              <Tests/>
+              <Guidance>
+              <Tests>
               The evaluator shall
               configure the reference identifier according to the AGD guidance and perform the
               following tests during a TLS connection:
@@ -517,6 +528,7 @@
                   the connection fails.
                 </test>
               </testlist>
+               </Tests>
             </aactivity>
           </f-element>
           <f-element id="fcs-tlsc-ext-1e3">
@@ -549,14 +561,15 @@
               allow overrides.
             </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               If the selection for authorizing override of invalid certificates is made, then
               the evaluator shall ensure that the TSS includes a description of how and when user or administrator
                 authorization is obtained.  The evaluator shall also ensure that the TSS describes
                 any mechanism for storing such authorizations, such that future presentation
                 of such otherwise-invalid certificates permits establishment of a trusted channel
                 without user or administrator action.
-              <Tests/>
+              </TSS>
+              <Tests>
               The evaluator shall demonstrate that using an invalid certificate (unless excepted)
               results in the function failing as follows, unless excepted:
               <testlist>
@@ -599,6 +612,7 @@
               certificate is rejected), and there is no administrative override available to accept such certificate.
               </test>
             </testlist> -->
+             </Tests>
             </aactivity>
           </f-element>       
         </f-component>
@@ -1696,8 +1710,8 @@ during handshake.
       </f-element>
       </f-component>
       </section>
-    </section>
-  </section>
+    </sec:Security_Functional_Requirements>
+  </sec:Security_Requirements>
 
   <appendix title="Optional Requirements" id="optional">
     There are currently no Optional Requirements in this Package.
@@ -1853,4 +1867,4 @@ during handshake.
       </entry>       
     </acronyms>
   </appendix>
-</PP>
+</Package>
