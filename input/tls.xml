@@ -61,7 +61,7 @@
     </sec:Overview>
 
 	<tech-terms>
-        <term abbr="TLS full="Transport Layer Security">
+        <term abbr="TLS" full="Transport Layer Security">
               Cryptographic network protocol for providing communications
               security over a TCP/IP network.</term>
         <term abbr="DTLS" full="Datagram Transport Layer Security">
