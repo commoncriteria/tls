@@ -175,6 +175,7 @@
     </cclaims>
   </section>
   
+	<sec:Security_Requirements>
 	
     <section title="Security Functional Requirements" id="sfrs">
     This section describes the security requirements
@@ -1712,6 +1713,10 @@ during handshake.
       </f-component>
       </section>
     </section>
+	
+	<sec:Security_Assurance_Requirements/>
+	
+	</sec:Security_Requirements>
 
   <appendix title="Optional Requirements" id="optional">
     There are currently no Optional Requirements in this Package.
