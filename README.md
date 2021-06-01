@@ -1,6 +1,7 @@
 Extended Package for TLS
 ===============
 [![Build Status](https://travis-ci.org/commoncriteria/tls.svg?branch=master)](https://travis-ci.org/commoncriteria/tls)
+![Validate](https://github.com/commoncriteria/tls/workflows/Validate/badge.svg)
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/tls.svg?maxAge=2592000)](https://github.com/commoncriteria/tls/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
