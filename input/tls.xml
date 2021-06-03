@@ -161,6 +161,7 @@
   <section title="Conformance Claims" id="conf">
     <cclaims>
       <cclaim name="Conformance Statement">
+		<description>
         This Package serves to provide Protection Profiles with additional 
           SFRs and associated Evaluation Activities specific to TLS clients and servers.  
           <h:p/>
@@ -171,11 +172,12 @@
           In accordance with CC Part 1, dependencies are not included when they are addressed
           by other SFRs. The evaluation activities provide adequate proof that any dependencies are
           also satisfied.
+		  </description>
       </cclaim>
     </cclaims>
   </section>
   
-	<sec:Security_Requirements>
+	<sec:Security_Requirements title="Security Requirements">
 		This section describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
     <xref to="bibCC" />. The following notations are used:
