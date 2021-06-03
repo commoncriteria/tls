@@ -177,7 +177,7 @@
     </cclaims>
   </section>
   
-	<section title="Security Requirements" id="secreq">
+	<sec:Security_Requirements>
 		This section describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
     <xref to="bibCC" />. The following notations are used:
@@ -195,7 +195,7 @@
         <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)").</h:li>
     </h:ul><h:p/>
 	
-    <section title="Security Functional Requirements" id="sfrs">
+    <sec:Security_Functional_Requirements>
 
 	  The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
@@ -1714,11 +1714,11 @@ during handshake.
       </f-element>
       </f-component>
       </section>
-    </section> <!-- Security_Functional_Requirements -->
+    </sec:Security_Functional_Requirements>
 	
 	<sec:Security_Assurance_Requirements/>
 	
-	</section> <!--Security_Requirements -->
+	</sec:Security_Requirements>
 
   <appendix title="Optional Requirements" id="optional">
     There are currently no Optional Requirements in this Package.
