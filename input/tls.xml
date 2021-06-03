@@ -161,7 +161,7 @@
   <section title="Conformance Claims" id="conf">
     <cclaims>
       <cclaim name="Conformance Statement">
-        <description>This Package serves to provide Protection Profiles with additional 
+        This Package serves to provide Protection Profiles with additional 
           SFRs and associated Evaluation Activities specific to TLS clients and servers.  
           <h:p/>
           This Package conforms to Common Criteria
@@ -170,13 +170,12 @@
           <h:p/>
           In accordance with CC Part 1, dependencies are not included when they are addressed
           by other SFRs. The evaluation activities provide adequate proof that any dependencies are
-          also satisfied.</description>
+          also satisfied.
       </cclaim>
     </cclaims>
   </section>
   
 	<sec:Security_Requirements>
-    <description>
 		This section describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
     <xref to="bibCC" />. The following notations are used:
@@ -193,14 +192,13 @@
       <h:li>
         <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)").</h:li>
     </h:ul><h:p/>
-		</description>
 	
     <sec:Security_Functional_Requirements title="Security Functional Requirements">
 
-	  <description>The Security Functional Requirements
+	  The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional
-      components.</description>
+      components.
 	  
       <section title="Cryptographic Support (FCS)" id="fcs">
 	  
