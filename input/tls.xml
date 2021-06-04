@@ -80,7 +80,7 @@
 	included in an PP/PP-Module/ST claiming conformance to this Package:
       <h:ul>
       <h:li>
-      <xref to="ref-strict-optional"/> contains requirements that may optionally be included
+      <xref g="ref-strict-optional"/> contains requirements that may optionally be included
       in the PP/PP-Module/ST, but inclusion is at the discretion of the PP/PP-Module/ST
       author.  For requirements that have selections, if the PP/PP-Module allows the selection (or the ST
       selects particular selections), then there are additional requirements based on these
@@ -92,7 +92,7 @@
       made, then the corresponding requirements in that appendix must be included.
       </h:li>
       <h:li>
-      <xref to="ref-obj-reqs"/> contains requirements that will
+      <xref g="obj-reqs"/> contains requirements that will
       be included in the baseline requirements in future versions of this package. Earlier adoption by vendors is
       encouraged. Otherwise, these are treated the same as Optional Requirements.
       </h:li>
