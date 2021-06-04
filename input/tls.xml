@@ -177,8 +177,8 @@
     </cclaims>
   </section>
   
-	<sec:Security_Requirements>
-		This section describes the security requirements
+ <sec:Security_Functional_Requirements>
+		This section describes the security functional requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
     <xref to="bibCC" />. The following notations are used:
     <h:ul>
@@ -193,14 +193,8 @@
         as the length of a password. Showing the value in square brackets indicates assignment.</h:li>
       <h:li>
         <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)").</h:li>
-    </h:ul><h:p/>
+    </h:ul>
 	
-    <sec:Security_Functional_Requirements>
-
-	  The Security Functional Requirements
-      included in this section are derived from Part 2 of the Common Criteria for Information
-      Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional
-      components.
 	  
       <section title="Cryptographic Support (FCS)" id="fcs">
 	  
@@ -1716,9 +1710,6 @@ during handshake.
       </section>
     </sec:Security_Functional_Requirements>
 	
-	<sec:Security_Assurance_Requirements/>
-	
-	</sec:Security_Requirements>
 
   <appendix title="Optional Requirements" id="optional">
     There are currently no Optional Requirements in this Package.
