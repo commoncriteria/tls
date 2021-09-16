@@ -52,6 +52,7 @@
 	- <sec:Compliant_Targets_of_Evaluation>
 	- <sec:Security_Functional_Requirements>
 	- Remove all appendixes, add <bibliography>
+	- Fix up the subtags of <aactivity) 
   -->
   
 
@@ -251,7 +252,7 @@
       <section title="Cryptographic Support (FCS)" id="fcs">
 	  
         <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol">
-          <f-element id="fcs_tls_ext-1-1">
+          <f-element id="fcs-tls-ext-1-1">
 			<title>The product shall implement
         <selectables linebreak="yes">
           <selectable id="tlsc_impl">TLS as a client</selectable>
@@ -274,16 +275,17 @@
               ST must include the requirements from FCS_DTLSS_EXT.1.
             </note>
             <aactivity>
-	      <Guidance/>
+	      <Guidance>
 		The evaluator shall ensure that the selections indicated in the ST are
               consistent with selections in the dependent components.
+			  </Guidance>
             </aactivity>
           </f-element>
         </f-component>
 
         <f-component cc-id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
           <depends  on-sel="tlsc_impl"/>
-          <f-element id="fcs_tlsc_ext-1-1">
+          <f-element id="fcs-tlsc-ext-1-1">
             <title> The product shall implement TLS 1.2 (RFC 5246) and
               <selectables>
                 <selectable>TLS 1.1 (RFC 4346)</selectable>
@@ -348,18 +350,20 @@
         session renegotiation, this selection must be made.
 	    </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               The evaluator shall check the description of the implementation of this
               protocol in the TSS to
               ensure that the cipher suites supported are specified. The evaluator shall check the
                 TSS to ensure that the
               cipher suites specified include those listed for this component. 
-              <Guidance/>
+			  </TSS>
+              <Guidance>
               The evaluator shall
               also check the operational guidance to ensure that it contains instructions on
               configuring the product so that
               TLS conforms to the description in the TSS. 
-              <Tests/>
+              </Guidance>
+              <Tests>
               The evaluator shall also perform the following tests:
               <testlist>
                 <test>
@@ -446,9 +450,11 @@
                   </testlist>
                 </test>
               </testlist>
+			  		  </Tests>
+
             </aactivity>
           </f-element>
-          <f-element id="fcs_tlsc_ext-1-2">
+          <f-element id="fcs-tlsc-ext-1-2">
             <title> The product shall verify that the presented identifier matches the reference
               identifier according to RFC 6125. </title>
             <note role="application"> The rules for verification of identity are described in
@@ -474,7 +480,7 @@
               regarding matching; these best practices are captured in the evaluation activity.
             </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               The evaluator shall ensure that the 
                 TSS describes the client’s method of establishing all reference
               identifiers from the application-configured reference identifier, including which
@@ -484,11 +490,13 @@
               description identifies whether and the manner in which certificate pinning is
               supported or used by the product.
               <h:br/> 
-              <Guidance/>
+ 			  </TSS>
+             <Guidance>
               The evaluator shall verify that the AGD guidance includes instructions for
               setting the reference identifier to be used for the purposes of certificate validation
               in TLS. <h:br/>
-              <Tests/>
+              </Guidance>
+              <Tests>
               The evaluator shall
               configure the reference identifier according to the AGD guidance and perform the
               following tests during a TLS connection:
@@ -576,9 +584,11 @@
                   the connection fails.
                 </test>
               </testlist>
+			  		  </Tests>
+
             </aactivity>
           </f-element>
-          <f-element id="fcs_tlsc_ext-1-3">
+          <f-element id="fcs-tlsc-ext-1-3">
             <title>The product shall not establish a trusted channel if the
               server certificate is invalid
               <selectables linebreak="yes">
@@ -608,14 +618,15 @@
               allow overrides.
             </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               If the selection for authorizing override of invalid certificates is made, then
               the evaluator shall ensure that the TSS includes a description of how and when user or administrator
                 authorization is obtained.  The evaluator shall also ensure that the TSS describes
                 any mechanism for storing such authorizations, such that future presentation
                 of such otherwise-invalid certificates permits establishment of a trusted channel
                 without user or administrator action.
-              <Tests/>
+			  </TSS>
+              <Tests>
               The evaluator shall demonstrate that using an invalid certificate (unless excepted)
               results in the function failing as follows, unless excepted:
               <testlist>
@@ -658,13 +669,15 @@
               certificate is rejected), and there is no administrative override available to accept such certificate.
               </test>
             </testlist> -->
+					  </Tests>
+
             </aactivity>
           </f-element>       
         </f-component>
         
         <f-component cc-id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="sel-based">
           <depends on-sel="tlsc_mutual_auth"/>
-          <f-element id="fcs_tlsc_ext-2-1">
+          <f-element id="fcs-tlsc-ext-2-1">
             <title>The product shall support mutual authentication using X.509v3 certificates.</title>
             <note role="application"> The use of X.509v3 certificates for
                 TLS is addressed in FIA_X509_EXT.2.1. This requirement adds that a client must be capable of
@@ -674,21 +687,23 @@
               configuration of the client or other factors.
             </note>
             <aactivity>
-              <TSS/>
+              <TSS>
                 The evaluator shall ensure that the TSS description required per FIA_X509_EXT.2.1 includes the use of client-side certificates for TLS
               mutual authentication.  The evaluator shall also ensure that the 
               TSS describes
               any factors beyond configuration that are necessary in order for the client to engage in mutual
               authentication using X.509v3 certificates.
               <h:br/>
-              <Guidance/>
+ 			  </TSS>
+             <Guidance>
               The evaluator shall ensure that the AGD guidance includes any instructions necessary
               to configure the TOE to perform mutual authentication.
               The evaluator also shall verify that the AGD guidance required
               per FIA_X509_EXT.2.1 includes instructions for configuring the
               client-side certificates for TLS mutual
               authentication.<h:br/>
-              <Tests/>
+              </Guidance>
+              <Tests>
               The evaluator shall also perform the following tests:
               
 	      <testlist>
@@ -706,11 +721,13 @@ during handshake.
 		Verify (type 15) message.
 		</test>
 	      </testlist>
+		  		  </Tests>
+
             </aactivity>
           </f-element>
         </f-component>
         <f-component cc-id="fcs_tlsc_ext.3" name="TLS Client Support for Signature Algorithms Extension" status="objective">
-          <f-element id="fcs_tlsc_ext-3-1">
+          <f-element id="fcs-tlsc-ext-3-1">
             <title> The product shall present the signature_algorithms extension in the Client Hello with
               the supported_signature_algorithms value containing the following hash algorithms: <selectables>
                 <selectable>SHA256</selectable>
@@ -722,15 +739,17 @@ during handshake.
               the supported hashes for the purpose of digital signature generation by the server.
               The signature_algorithms extension is only supported by TLS 1.2. </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               The evaluator shall verify that TSS describes the signature_algorithm extension and whether the
               required behavior is performed by default or may be configured. 
-              <Guidance/>
+			  </TSS>
+              <Guidance>
               If the TSS indicates that the
               signature_algorithm extension must be configured to meet the requirement, the
               evaluator shall verify that AGD guidance includes configuration of the
               signature_algorithm extension. <h:br/> 
-              <Tests/>
+              </Guidance>
+              <Tests>
               The evaluator shall also perform the following
               tests:
               <testlist>
@@ -756,13 +775,15 @@ during handshake.
                   Key Exchange handshake message.
                 </test>
               </testlist>
+			  		  </Tests>
+
             </aactivity>
           </f-element>  
         </f-component>
 		
         <f-component cc-id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
           <depends on-sel="tlsc_reneg"/>
-          <f-element id="fcs_tlsc_ext-4-1">
+          <f-element id="fcs-tlsc-ext-4-1">
             <title> The product shall support secure renegotiation through use
               of the “renegotiation_info” TLS extension in accordance with RFC 5746. </title>
 <!--          </f-element>
@@ -793,7 +814,7 @@ during handshake.
             must support use of this extension.
             </note>
             <aactivity>
-              <Tests/>
+              <Tests>
               The evaluator shall perform the following tests:
               <testlist>
                 <test>The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two
@@ -808,6 +829,8 @@ during handshake.
                   the “renegotiation_info” extension.  The evaluator shall modify either the “client_verify_data” or
                   “server_verify_data” value and verify that the client terminates the connection.</test>
               </testlist>
+			  		  </Tests>
+
             </aactivity>
           </f-element>
         </f-component>
@@ -828,7 +851,7 @@ during handshake.
 		  <depends  on-sel="decdhe6"/>
 		  <depends  on-sel="decdhe7"/>
 		  <depends  on-sel="decdhe8"/>
-          <f-element id="fcs_tlsc_ext-5-1"><!-- Was 1.4 -->
+          <f-element id="fcs-tlsc-ext-5-1"><!-- Was 1.4 -->
             <!-- TODO: IDs for ECC DHE curves -->
             <title> The product shall present the Supported Groups Extension in the Client Hello
               with the supported groups <selectables linebreak="yes">
@@ -850,9 +873,10 @@ during handshake.
               The Supported Groups Extension was previously referred to as the
               Supported Elliptic Curves Extension and is described in RFC 7919.</note>
             <aactivity>
-              <TSS/>
+              <TSS>
               The evaluator shall verify that TSS describes the Supported Groups Extension.
-              <Tests/>
+ 			  </TSS>
+             <Tests>
               The evaluator shall also perform the following test:
               <h:br/>
               <testlist>
@@ -861,13 +885,15 @@ during handshake.
               curves and/or groups. The evaluator shall verify that the TOE successfully connects to the server.
               </test>
               </testlist>
+			  		  </Tests>
+
             </aactivity>
           </f-element>  
         </f-component>
 
         <f-component cc-id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
           <depends on-sel="tlss_impl"/>
-          <f-element id="fcs_tlss_ext-1-1">
+          <f-element id="fcs-tlss-ext-1-1">
             <title> The product shall implement TLS 1.2 (RFC 5246) and
             <selectables>
               <selectable>TLS 1.1 (RFC 4346)</selectable>
@@ -929,19 +955,21 @@ during handshake.
         session renegotiation, this selection must be made.
             </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               The evaluator shall check the description of the implementation of this protocol in
               the TSS to ensure that
               the cipher suites supported are specified. The evaluator shall check the
               TSS to ensure that the
               cipher suites specified include those listed for this component. 
-              <Guidance/>
+			  </TSS>
+              <Guidance>
               The evaluator shall
               also check the operational guidance to ensure that it contains instructions on
               configuring the TOE so that
               TLS conforms to the description in the
               TSS.
-              <Tests/>
+               </Guidance>
+             <Tests>
               The evaluator shall
               also perform the following tests:
               <testlist>
@@ -1007,9 +1035,11 @@ during handshake.
                   </testlist>
                 </test>
               </testlist>
+			  		  </Tests>
+
             </aactivity>
           </f-element>
-          <f-element id="fcs_tlss_ext-1-2">
+          <f-element id="fcs-tlss-ext-1-2">
             <title>The product shall deny connections from clients requesting
             SSL 2.0, SSL 3.0, TLS 1.0 and
               <selectables>
@@ -1021,14 +1051,16 @@ during handshake.
               not selected in FCS_TLSS_EXT.1.1 should be selected here.
             </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               The evaluator shall verify that the TSS contains a
               description of the denial of old SSL and TLS versions
               consistent relative to selections in FCS_TLSS_EXT.1.2.
-              <Guidance/>
+			  </TSS>
+              <Guidance>
               The evaluator shall verify that the AGD guidance includes any configuration
               necessary to meet this requirement.
-              <Tests/>
+               </Guidance>
+             <Tests>
               <testlist>
                 <test>
                   The evaluator shall send a Client Hello requesting a
@@ -1038,9 +1070,11 @@ during handshake.
                   and TLS 1.1 if it is selected.
                 </test>
               </testlist>
+			  		  </Tests>
+
             </aactivity>
           </f-element>
-          <f-element id="fcs_tlss_ext-1-3">
+          <f-element id="fcs-tlss-ext-1-3">
             <title>The product shall perform key establishment for TLS using
               <selectables>
                 <selectable>RSA with size
@@ -1101,13 +1135,15 @@ during handshake.
               selection for ECDHE using elliptic curves in the requirement.
             </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               The evaluator shall verify that the TSS describes the key agreement parameters
               of the server's Key Exchange message.
-              <Guidance/>
+ 			  </TSS>
+             <Guidance>
               The evaluator shall verify that any configuration guidance necessary to meet
               the requirement must be contained in the AGD guidance.
-              <Tests/>
+              </Guidance>
+              <Tests>
               <testlist>
                 The evaluator shall conduct the following tests.  The testing can be carried out
                 manually with a packet analyzer or with an automated framework
@@ -1135,18 +1171,20 @@ during handshake.
                   elliptic curve.
                 </test>
               </testlist>
+			  		  </Tests>
+
             </aactivity>
           </f-element>
         </f-component>
 
        <f-component cc-id="fcs_tlss_ext.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
          <depends ids="tlss_mutual_auth"/>
-          <f-element id="fcs_tlss_ext-2-1">
+          <f-element id="fcs-tlss-ext-2-1">
             <title>The product shall support authentication of
               TLS clients using X.509v3 certificates.
             </title>
           </f-element>
-          <f-element id="fcs_tlss_ext-2-2">
+          <f-element id="fcs-tlss-ext-2-2">
             <title>The product shall not establish a trusted channel
               if the client certificate is invalid.
             </title>
@@ -1160,16 +1198,18 @@ during handshake.
               with testing performed for FIA_X509_EXT.1.
             </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               The evaluator shall ensure that the TSS description required per FIA_X509_EXT.2.1
               includes the use of client-side certificates for TLS mutual authentication.
-              <Guidance/>
+ 			  </TSS>
+             <Guidance>
               The evaluator shall verify that the AGD guidance required per FIA_X509_EXT.2.1
               includes instructions for configuring the client-side certificates for TLS mutual
               authentication.  The evaluator shall ensure that the AGD guidance
               includes instructions for configuring the server to require
               mutual authentication of clients using these certificates.
-        <Tests/>
+              </Guidance>
+        <Tests>
 	      The evaluator shall use TLS as a function to verify that the validation rules in
 	      FIA_X509_EXT.1.1 are adhered to and shall perform the following tests.
         The evaluator shall apply the AGD guidance to configure the server
@@ -1237,9 +1277,11 @@ during handshake.
                   The evaluator shall verify that the server rejects the connection.
                 </test>
               </testlist>
+			  		  </Tests>
+
             </aactivity>
           </f-element>
-          <f-element id="fcs_tlss_ext-2-3">
+          <f-element id="fcs-tlss-ext-2-3">
             <title>The product shall not establish a trusted channel if
               the Distinguished Name (DN) or Subject Alternative Name (SAN)
               contained in a certificate does not match one of the expected identifiers
@@ -1254,16 +1296,18 @@ during handshake.
               In the latter case, the matching itself may be performed outside the TOE.
             </note>
             <aactivity>
-              <TSS/>
+              <TSS>
               If the product implements mutual authentication, the evaluator shall
               verify that the TSS describes how the DN and SAN in the certificate
               is compared to the expected identifier.
-              <Guidance/>
+ 			  </TSS>
+             <Guidance>
               If the DN is not compared automatically to the domain name,
               IP address, username, or email address, the evaluator shall
               ensure that the AGD guidance includes configuration of the
               expected identifier or the directory server for the connection.
-              <Tests/>
+               </Guidance>
+             <Tests>
               <testlist>
                 <test>
                   The evaluator shall send a client certificate with an identifier that does not match any of the
@@ -1272,12 +1316,14 @@ during handshake.
                   for comparison).
                 </test>
               </testlist>
+			  		  </Tests>
+
             </aactivity>
           </f-element>
         </f-component>
 
 	<f-component cc-id="fcs_tlss_ext.3" name="TLS Server Support for Signature Algorithms Extension" status="objective">
-          <f-element id="fcs_tlss_ext-3-1">
+          <f-element id="fcs-tlss-ext-3-1">
             <title>The product shall present the HashAlgorithm
             enumeration in supported_signature_algorithms in the
             Certificate Request with the following hash algorithms:
@@ -1296,18 +1342,20 @@ during handshake.
               supported by TLS 1.2.
 	    </note>
 	    <aactivity>
-        <TSS/>
+        <TSS>
 	      The evaluator shall verify that TSS describes the
 	      supported_signature_algorithms field of the Certificate
 	      Request and whether the required behavior is performed
 	      by default or may be configured.
-        <Guidance/>
+			  </TSS>
+        <Guidance>
         If the TSS indicates
 	      that the supported_signature_algorithms field must be
 	      configured to meet the requirement, the evaluator shall
 	      verify that AGD guidance includes configuration of the
 	      supported_signature_algorithms field.
-	      <Tests/>
+              </Guidance>
+	      <Tests>
 	      The evaluator shall also perform the following test:
 	      <h:br/>
 	      The evaluator shall configure the server to send the
@@ -1317,18 +1365,20 @@ during handshake.
 	      evaluator shall attempt a connection using that client
 	      certificate and verify that the server denies the
 	      client’s connection.
+		  		  </Tests>
+
 	    </aactivity>
 	    </f-element>
 	</f-component>
 
 	<f-component cc-id="FCS_TLSS_EXT.4" name="TLS Server Support for Renegotiation" status="sel-based">
     <depends ids="tlss_reneg"/>
-          <f-element id="fcs_tlss_ext-4-1">
+          <f-element id="fcs-tlss-ext-4-1">
             <title>The product shall support the "renegotiation_info" TLS extension
               in accordance with RFC 5746.
             </title>
           </f-element>
-          <f-element id="fcs_tlss_ext-4-2">
+          <f-element id="fcs-tlss-ext-4-2">
             <title>The product shall include the renegotiation_info extension in
               ServerHello messages.
             </title>
@@ -1337,7 +1387,7 @@ during handshake.
               handshakes to the cryptography in the original handshake.
 	    </note>
 	    <aactivity>
-        <Tests/>
+        <Tests>
 	      The following tests require connection with a client that supports secure
         renegotiation and the "renegotiation_info" extension.
 	      <testlist>
@@ -1355,13 +1405,15 @@ during handshake.
       verify that the server terminates the connection.
 		</test>
 	      </testlist>
+		  		  </Tests>
+
 	    </aactivity>
 	    </f-element>
 	</f-component>
 
   <f-component cc-id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
     <depends ids="dtlsc_impl"/>
-    <f-element id="fcs_dtlsc_ext-1-1">
+    <f-element id="fcs-dtlsc-ext-1-1">
       <title>The product shall implement DTLS 1.2 (RFC 6347) and
       <selectables>
         <selectable>DTLS 1.0 (RFC 4347)</selectable>
@@ -1404,7 +1456,7 @@ during handshake.
       to DTLS apply to this requirement.
     </note>
       <aactivity>
-	<Tests/>
+	<Tests>
         The evaluator shall perform the evaluation activities listed for FCS_TLSC_EXT.1.1,
         but ensuring that DTLS (and not TLS) is used in each evaluation activity.
         <h:br/><h:br/>
@@ -1412,10 +1464,12 @@ during handshake.
         is the 1's complement of the corresponding textual DTLS version numbers. This is described in
         Section 4.1 of RFC 6347 and RFC 4347.  For example, DTLS 1.0 is represented by the bytes 0xfe 0xff,
         while the undefined DTLS 1.4 would be represented by the bytes 0xfe 0xfb.
+				  </Tests>
+
       </aactivity>
     </f-element>
 
-    <f-element id="fcs_dtlsc_ext-1-2">
+    <f-element id="fcs-dtlsc-ext-1-2">
       <title> The product shall verify that the presented identifier matches the reference
         identifier according to RFC 6125. </title>
         <note role="application">
@@ -1423,12 +1477,14 @@ during handshake.
           to DTLS apply to this requirement.
         </note>
       <aactivity>
-      <Tests/>
+      <Tests>
       The evaluator shall perform the evaluation activities listed for FCS_TLSC_EXT.1.2.
+	  		  </Tests>
+
       </aactivity>
     </f-element>
 
-    <f-element id="fcs_dtlsc_ext-1-3">
+    <f-element id="fcs-dtlsc-ext-1-3">
       <title>The product shall not establish a trusted channel if the
         server certificate is invalid
         <selectables>
@@ -1441,11 +1497,13 @@ during handshake.
         to DTLS apply to this requirement.
       </note>
       <aactivity>
-        <Tests/>
+        <Tests>
         The evaluator shall perform the evaluation activities listed for FCS_TLSC_EXT.1.3.
+				  </Tests>
+
       </aactivity>
     </f-element>
-    <f-element id="fcs_dtlsc_ext-1-4">
+    <f-element id="fcs-dtlsc-ext-1-4">
     <title>The product shall
     <selectables>
       <selectable>terminate the DTLS session</selectable>
@@ -1455,20 +1513,23 @@ during handshake.
     AEAD ciphersuites.
     </title>
     <aactivity>
-      <TSS/>
+      <TSS>
       The evaluator shall verify that the TSS describes the actions that take place if a message
       received from the DTLS Server fails the MAC integrity check.
-      <Tests/>
+			  </TSS>
+      <Tests>
       The evaluator shall establish a connection using a server. The evaluator will then modify
       at least one byte in a record message, and verify that the client discards the record or
       terminates the DTLS session.
+	  		  </Tests>
+
     </aactivity>
   </f-element>
   </f-component>
 
   <f-component cc-id="fcs_dtlsc_ext.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
     <depends ids="dtlsc_mutual_auth"/>
-          <f-element id="fcs_dtlsc_ext-2-1">
+          <f-element id="fcs-dtlsc-ext-2-1">
             <title>
               The product shall support mutual authentication using X.509v3 certificates.
             </title>
@@ -1477,15 +1538,17 @@ during handshake.
               to DTLS apply to this requirement.
       </note>
       <aactivity>
-	<Tests/>
+	<Tests>
         The evaluator shall perform the evaluation activities listed for FCS_TLSC_EXT.2.1.
+				  </Tests>
+
       </aactivity>
     </f-element>
   </f-component>
 
   <f-component cc-id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
     <depends ids="dtlss_impl"/>
-    <f-element id="fcs_dtlss_ext1-1">
+    <f-element id="fcs-dtlss-ext1-1">
       <title>The product shall implement DTLS 1.2 (RFC 6347) and
       <selectables>
         <selectable>DTLS 1.0 (RFC 4347)</selectable>
@@ -1524,7 +1587,7 @@ during handshake.
       to DTLS apply to this requirement.
       </note>
       <aactivity>
-	<Tests/>
+	<Tests>
         The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.1.1,
         but ensuring that DTLS (and not TLS) is used in each stage of the evaluation activities.
         <h:br/><h:br/>
@@ -1532,9 +1595,11 @@ during handshake.
         is the 1's complement of the corresponding textual DTLS version numbers. This is described in
         Section 4.1 of RFC 6347 and RFC 4347.  For example, DTLS 1.0 is represented by the bytes 0xfe 0xff,
         while the undefined DTLS 1.4 would be represented by the bytes 0xfe 0xfb.
+				  </Tests>
+
       </aactivity>
     </f-element>
-    <f-element id="fcs_dtlss_ext-1-2">
+    <f-element id="fcs-dtlss-ext-1-2">
       <title>The product shall deny connections from clients requesting
         <assignable>list of DTLS protocol versions</assignable>.
       </title>
@@ -1547,14 +1612,16 @@ during handshake.
       <aactivity>
         The following evaluation activities shall be conducted unless "none" is assigned.
         <h:br/><h:br/>
-        <TSS/>
+        <TSS>
         The evaluator shall verify that the TSS contains a
         description of the denial of old DTLS versions
         consistent relative to selections in FCS_DTLSS_EXT.1.2.
-        <Guidance/>
+			  </TSS>
+        <Guidance>
         The evaluator shall verify that the AGD guidance includes any configuration
         necessary to meet this requirement.
-        <Tests/>
+               </Guidance>
+       <Tests>
         <testlist>
           <test>
             The evaluator shall send a Client Hello requesting a
@@ -1562,10 +1629,12 @@ during handshake.
             and verify that the server denies the connection.
           </test>
         </testlist>
+				  </Tests>
+
       </aactivity>
     </f-element>
 
-    <f-element id="fcs_dtlss_ext-1-3">
+    <f-element id="fcs-dtlss-ext-1-3">
       <title>
         The product shall not proceed with a connection handshake attempt if the DTLS Client fails validation.
       </title>
@@ -1578,15 +1647,18 @@ during handshake.
         server successfully verifies the signed cookie, the Client is not using a spoofed IP address.
       </note>
       <aactivity>
-        <TSS/>
+        <TSS>
         The evaluator shall verify that the TSS describes how the DTLS Client IP address is validated prior to
         issuing a ServerHello message.
-        <Tests/>
+			  </TSS>
+        <Tests>
         Modify at least one byte in the cookie from the Server's HelloVerifyRequest message, and verify that the
         Server rejects the Client's handshake message.
+				  </Tests>
+
       </aactivity>
     </f-element>
-    <f-element id="fcs_dtlss_ext-1-4">
+    <f-element id="fcs-dtlss-ext-1-4">
       <title>The product shall perform key establishment for DTLS using
         <selectables>
           <selectable>RSA with size
@@ -1638,11 +1710,13 @@ during handshake.
         NIST curves selection in the requirement.
       </note>
       <aactivity>
-      <Tests/>
+      <Tests>
         The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.1.3.
+				  </Tests>
+
       </aactivity>
     </f-element>
-    <f-element id="fcs_dtlss_ext-1-5">
+    <f-element id="fcs-dtlss-ext-1-5">
       <title>The product shall
       <selectables>
         <selectable>terminate the DTLS session</selectable>
@@ -1652,20 +1726,23 @@ during handshake.
       AEAD ciphersuites.
       </title>
       <aactivity>
-        <TSS/>
+        <TSS>
         The evaluator shall verify that the TSS describes the actions that take place if a message
         received from the DTLS client fails the MAC integrity check.
-        <Tests/>
+ 			  </TSS>
+       <Tests>
         The evaluator shall establish a connection using a client. The evaluator will then modify
         at least one byte in a record message, and verify that the server discards the record or
         terminates the DTLS session.
+				  </Tests>
+
       </aactivity>
     </f-element>
   </f-component>
 
   <f-component cc-id="fcs_dtlss_ext.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
     <depends ids="dtlss_mutual_auth"/>
-          <f-element id="fcs_dtlss_ext-2-1">
+          <f-element id="fcs-dtlss-ext-2-1">
             <title>
               The product shall support mutual authentication of DTLS clients using X.509v3 certificates.
             </title>
@@ -1674,12 +1751,13 @@ during handshake.
               to DTLS apply to this requirement.
       </note>
       <aactivity>
-	<Tests/>
+	<Tests>
           The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.2.1.
+		  </Tests>
       </aactivity>
 
     </f-element>
-    <f-element id="fcs_dtlss_ext-2-2">
+    <f-element id="fcs-dtlss-ext-2-2">
       <title>The product shall not establish a trusted channel
         if the client certificate is invalid.
       </title>
@@ -1688,11 +1766,13 @@ during handshake.
         to DTLS apply to this requirement.
       </note>
       <aactivity>
-	<Tests/>
+	<Tests>
         The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.2.2. 
+				  </Tests>
+
       </aactivity>
     </f-element>
-    <f-element id="fcs_dtlss_ext-2-3">
+    <f-element id="fcs-dtlss-ext-2-3">
       <title>The product shall not establish a trusted channel if
         the Distinguished Name (DN) or Subject Alternative Name (SAN)
         contained in a certificate does not match one of the expected identifiers
@@ -1703,8 +1783,10 @@ during handshake.
         to DTLS apply to this requirement.
       </note>
       <aactivity>
-        <Tests/>
+        <Tests>
         The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.2.3.
+				  </Tests>
+
       </aactivity>
       </f-element>
       </f-component>
