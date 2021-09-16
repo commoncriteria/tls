@@ -1,5 +1,7 @@
-Extended Package for TLS
+Functional Package for TLS
 ===============
+![Build](https://github.com/commoncriteria/tls/workflows/Build/badge.svg)
+![Validate](https://github.com/commoncriteria/tls/workflows/Validate/badge.svg)
 [![Build Status](https://travis-ci.org/commoncriteria/tls.svg?branch=master)](https://travis-ci.org/commoncriteria/tls)
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/tls.svg?maxAge=2592000)](https://github.com/commoncriteria/tls/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
@@ -9,9 +11,9 @@ This repository hosts the draft version of the Package for TLS based on the
 See the [release](#Release-Version) section if you are looking for the officially released version for evaluations. 
 
 ## Draft Version
-* [Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.html) (html)
-* [Package for TLS in heretical reader-friendly format](https://commoncriteria.github.io/pp/tls/tls.html) (html)
-* [Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.pdf) (pdf)
+* [Functional Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.html) (html)
+* [Functional Package for TLS in heretical reader-friendly format](https://commoncriteria.github.io/pp/tls/tls.html) (html)
+* [Functional Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.pdf) (pdf)
 
 ## Release Version
 * [Protection Profile - Functional Package for TLS](https://www.niap-ccevs.org/Profile/Info.cfm?PPID=426&id=426)
