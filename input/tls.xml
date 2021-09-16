@@ -116,7 +116,6 @@
       <term abbr="URI" full="Uniform Resource Identifier"/>
       <term abbr="URL" full="Uniform Resource Locator"/>
     </tech-terms>
-  </section>
 
     <section title="Format of this Document" id="docformat">
       <xref to="req"/> contains baseline requirements
