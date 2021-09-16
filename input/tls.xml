@@ -41,12 +41,17 @@
 	- Change all <subsection> tags to <section> tags.
 	- Eliminate CC terms section
 	- replace tech terms section with <tech-terms>
-	- Change all refs to the xref tag
-	- remove <abbr> tags
+	- Change all refs to the xref tag, same with cite
+	- remove <abbr> tags and <linkref> tags
 	- Legalize the f-element ids
 	- Change f-component ids to cc-ids
 	- Change <selection-depends> to <depends>
-	
+	- cclaim id changed to name
+	- <sec:Introduction>
+	- <sec:Conformance_Claims>
+	- <sec:Compliant_Targets_of_Evaluation>
+	- <sec:Security_Functional_Requirements>
+	- Remove all appendixes, add <bibliography>
   -->
   
 
@@ -144,7 +149,8 @@
       </h:ul>
     </section>
 
-    <section title="Compliant Targets of Evaluation" id="TOEdescription">The Target of Evaluation
+     <sec:Compliant_Targets_of_Evaluation>
+		The Target of Evaluation
       (TOE) in this Package is a product which acts as a TLS client or server, or both.
       This Package describes the security functionality of TLS in terms of <xref g="CC" />. 
       <h:p/>
@@ -198,12 +204,12 @@
       An ST must identify the applicable version of the PP or
       PP-Module and this
       Package in its conformance claims.
-    </section>
+     </sec:Compliant_Targets_of_Evaluation>
   </sec:Introduction>
   
   <sec:Conformance_Claims>
     <cclaims>
-      <cclaim id="Conformance Statement">
+      <cclaim name="Conformance Statement">
         <description>This Package serves to provide Protection Profiles with additional 
           SFRs and associated Evaluation Activities specific to TLS clients and servers.  
           <h:p/>
@@ -218,9 +224,10 @@
     </cclaims>
   </sec:Conformance_Claims>
   
-  <section title="Security Requirements" id="req">This section describes the security requirements
+      <sec:Security_Functional_Requirements>
+	This section describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
-    <cite linkend="bibCC" />. The following notations are used:
+    <xref g="CC" />. The following notations are used:
     <h:ul>
       <h:li>
         <h:b>Selection</h:b> (denoted by
@@ -234,11 +241,15 @@
       <h:li>
         <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)").</h:li>
     </h:ul>
-    <section title="Security Functional Requirements" id="SFRs">The Security Functional Requirements
+	
+    <section title="Security Functional Requirements" id="SFRs">
+		The Security Functional Requirements
       included in this section are derived from Part 2 of the Common Criteria for Information
       Technology Security Evaluation, Version 3.1, Revision 5, with additional extended functional
       components.
+	  
       <section title="Cryptographic Support (FCS)" id="fcs">
+	  
         <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol">
           <f-element id="fcs_tls_ext-1-1">
 			<title>The product shall implement
@@ -1699,161 +1710,10 @@ during handshake.
       </f-component>
       </section>
     </section>
-  </section>
+  </sec:Security_Functional_Requirements>
 
-  <appendix title="Optional Requirements" id="optional">
-    There are currently no Optional Requirements in this Package.
-  </appendix>
-
-  <appendix title="Selection-Based Requirements" id="sel-based">
-    As indicated in the introduction to this Package, this appendix lists requirements
-    that are activated based on selections made in the PP/PP-Module/ST or in other portions of
-    this Package itself.
-  </appendix>
-
-  <appendix title="Objective Requirements" id="objective">This appendix includes requirements that
-    specify security functionality which also addresses threats. The requirements are not currently
-    mandated in the body of this Package as they describe security functionality not yet widely-available
-    in commercial technology. However, these requirements may be included in the ST such that the
-    product is still conformant to this Package, and it is expected that they be included as soon as
-    possible. </appendix>
-
-  <appendix id="biblio" title="References">
-    <bibliography>
-      <entry id="bibCC">
-        <tag>CC</tag>
-        <description>Common Criteria for Information Technology Security Evaluation -
-          <h:ul>
-            <h:li>
-              <h:a href="http://www.commoncriteriaportal.org/cc">Part 1:
-                Introduction and General Model</h:a>, CCMB-2017-04-001, Version 3.1 Revision 5, April 2017.
-			</h:li>
-            <h:li>
-              <h:a href="http://www.commoncriteriaportal.org/cc">Part 2:
-                Security Functional Components</h:a>, CCMB-2017-04-002, Version 3.1 Revision 5, April 2017.
-			</h:li>
-            <h:li>
-              <h:a href="http://www.commoncriteriaportal.org/cc">Part 3:
-                Security Assurance Components</h:a>, CCMB-2017-04-003, Version 3.1 Revision 5, April 2017.
-              </h:li>
-          </h:ul></description>
-      </entry>
+     <bibliography>
+      <cc-entry/>
     </bibliography>
-  </appendix>
-  <appendix title="Acronyms" id="acronyms">
-    <acronyms>
-<entry>
-        <term>AES</term>
-        <description>Advanced Encryption Standard</description>
-      </entry>
-      <entry>
-        <term>CA</term>
-        <description>Certificate Authority</description>
-      </entry>      
-      <entry>
-        <term>CBC</term>
-        <description>Cipher Block Chaining</description>
-      </entry>
-      <entry>
-        <term>CN</term>
-        <description>Common Name</description>
-      </entry> 
-      <entry>
-        <term>DHE</term>
-        <description>Diffie-Hellman Ephemeral</description>
-      </entry>
-      <entry>
-        <term>DN</term>
-        <description>Distinguished Name</description>
-      </entry>
-      <entry>
-        <term>DNS</term>
-        <description>Domain Name Server</description>
-      </entry>
-      <entry>
-        <term>DTLS</term>
-        <description>Datagram Transport Layer Security</description>
-      </entry>
-      <entry>
-        <term>EAP</term>
-        <description>Extensible Authentication Protocol</description>
-      </entry>
-      <entry>
-        <term>ECDHE</term>
-        <description>Elliptic Curve Diffie-Hellman Ephemeral</description>
-      </entry>       
-      <entry>
-        <term>ECDSA</term>
-        <description>Elliptic Curve Digital Signature Algorithm</description>
-      </entry>
-      <entry>
-        <term>GCM</term>
-        <description>Galois/Counter Mode</description>
-      </entry>
-      <entry>
-        <term>HTTP</term>
-        <description>Hypertext Transfer Protocol</description>
-      </entry>       
-      <entry>
-        <term>IETF</term>
-        <description>Internet Engineering Task Force</description>
-      </entry>
-      <entry>
-        <term>IP</term>
-        <description>Internet Protocol</description>
-      </entry>
-      <entry>
-        <term>LDAP</term>
-        <description>Lightweight Directory Access Protocol</description>
-      </entry>       
-      <entry>
-        <term>NIST</term>
-        <description>National Institute of Standards and Technology</description>
-      </entry>
-      <entry>
-        <term>RFC</term>
-        <description>Request for Comment (IETF)</description>
-      </entry>
-      <entry>
-        <term>RSA</term>
-        <description>Rivest Shamir Adelman</description>
-      </entry>
-      <entry>
-        <term>SAN</term>
-        <description>Subject Alternative Name</description>
-      </entry> 
-      <entry>
-        <term>SCSV</term>
-        <description>Signaling Cipher Suite Value</description>
-      </entry>
-      <entry>
-        <term>SHA</term>
-        <description>Secure Hash Algorithm</description>
-      </entry>       
-      <entry>
-        <term>SIP</term>
-        <description>Session Initiation Protocol</description>
-      </entry>
-      <entry>
-        <term>TCP</term>
-        <description>Transmission Control Protocol</description>
-      </entry> 
-      <entry>
-        <term>TLS</term>
-        <description>Transport Layer Security</description>
-      </entry> 
-      <entry>
-        <term>UDP</term>
-        <description>User Datagram Protocol</description>
-      </entry>
-      <entry>
-        <term>URI</term>
-        <description>Uniform Resource Identifier</description>
-      </entry>       
-      <entry>
-        <term>URL</term>
-        <description>Uniform Resource Locator</description>
-      </entry>       
-    </acronyms>
-  </appendix>
+  
 </Package>
