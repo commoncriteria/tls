@@ -474,7 +474,8 @@
               <Tests>
               The evaluator shall
               configure the reference identifier according to the AGD guidance and perform the
-              following tests during a TLS connection:
+              following tests during a TLS connection.
+	      If the TOE supports certificate pinning, all pinned certificates must be removed before performing Tests 1 through 6. A pinned certificate must be added prior to performing Test 7.	      
               <testlist>
                 <test> 
                   The evaluator shall present a server certificate that contains
