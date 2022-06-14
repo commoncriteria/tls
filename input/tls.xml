@@ -353,7 +353,7 @@
 		    <test>The evaluator shall modify the certificate chain used by the server in test 1a to be invalid and demonstrate that a server using a certificate without a valid certification path to a trust store element of the TOE results in an authentication failure.</test>
 
 		    <test>
-		      <depends/> If the TOE trust store can be managed, the evaluator shall modify the trust store element used in Test 1a to be untrusted and demonstrate that a connection attempt from the same server used in Test 1a results in an authentication failure.
+		      <depends/> If the TOE trust store can be managed, the evaluator shall modify the trust store element used in Test 1.1 to be untrusted and demonstrate that a connection attempt from the same server used in Test 1a results in an authentication failure.
 		    </test>
 		  </testlist>
                 </test>
