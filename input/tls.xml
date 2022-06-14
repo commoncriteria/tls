@@ -279,6 +279,9 @@
           <selectables linebreak="yes">
             <selectable id="tlsc_mutual_auth">mutual authentication</selectable>
             <selectable id="tlsc_reneg">session renegotiation</selectable>
+	    <selectable id="tlsc_resump_ids">session resumption based on session IDs according to RFC 4346 (TLS1.1) or RFC 5246 (TLS1.2)</selectable>
+	    <selectable id="tlsc_resump_tickets">session resumption based on session tickets according to RFC 5077</selectable>
+	    <selectable id="tlsc_noresump">no session resumption or session tickets</selectable>
             <selectable exclusive="yes">none</selectable>
           </selectables>.
           </title>
@@ -315,6 +318,12 @@
         If <h:i>session renegotiation</h:i> is selected, then the ST must additionally include 
         the requirements from FCS_TLSC_EXT.4. If the TOE implements
         session renegotiation, this selection must be made.
+
+	<h:p>If the TOE does not support session resumption or session tickets, select <xref to="tlsc_noresump"/>.
+ If the TOE supports session resumption based on session IDs according to RFC 4346 (TLS1.1) or RFC 5246 (TLS1.2), select <xref to="tlsc_resump_ids"/>.
+ If the TOE supports session resumption based on session tickets according to RFC 5077, select <xref to="tlsc_resump_tickets"/>.
+	</h:p>
+
 	    </note>
             <aactivity level="element">
               <TSS>
@@ -985,14 +994,38 @@ during handshake.
 		      Demonstrate that the TOE will not resume a
 		      session for which the client failed to complete
 		      the handshake (independent of TOE support for
-		      session resumption): Generate a Fatal Alert by
-		      sending a Finished message from the client
-		      before the client sends a ChangeCipherSpec
-		      message, and then send a Client Hello with the
-		      session identifier from the previous incomplete
-		      session, and verify that the server does not
-		      resume the session.
+		      session resumption): 
                     </test>
+
+<test>[conditional]: If the TOE does not support session resumption based on session IDs according to RFC4346 (TLS1.1) or RFC5246 (TLS1.2) or session tickets according to RFC5077, the evaluator shall perform the following test:
+
+a) The evaluator shall send a Client Hello with a zero-length session identifier and with a SessionTicket extension containing a zero-length ticket.
+
+b) The evaluator shall verify the server does not send a NewSessionTicket handshake message (at any point in the handshake).
+
+c) The evaluator shall verify the Server Hello message contains a zero-length session identifier or passes the following steps:
+
+Note: The following steps are only performed if the ServerHello message contains a non-zero length SessionID.
+
+d) The evaluator shall complete the TLS handshake and capture the SessionID from the ServerHello.
+
+e) The evaluator shall send a ClientHello containing the SessionID captured in step d). This can be done by keeping the TLS session in step d) open or start a new TLS session using the SessionID captured in step d).
+
+f) The evaluator shall verify the TOE (1) implicitly rejects the SessionID by sending a ServerHello containing a different SessionID and by performing a full handshake (as shown in Figure 1 of RFC 4346 or RFC 5246), or (2) terminates the connection in some way that prevents the flow of application data.</test>
+
+<test>If the TOE supports session resumption using session IDs according to RFC4346 (TLS1.1) or RFC5246 (TLS1.2), the evaluator shall carry out the following steps (note that for each of these tests, it is not necessary to perform the test case for each supported version of TLS):
+
+a) The evaluator shall conduct a successful handshake and capture the TOE-generated session ID in the Server Hello message. The evaluator shall then initiate a new TLS connection and send the previously captured session ID to show that the TOE resumed the previous session by responding with ServerHello containing the same SessionID immediately followed by ChangeCipherSpec and Finished messages (as shown in Figure 2 of RFC 4346 or RFC 5246).
+
+b) The evaluator shall initiate a handshake and capture the TOE-generated session ID in the Server Hello message. The evaluator shall then, within the same handshake, generate or force an unencrypted fatal Alert message immediately before the client would otherwise send its ChangeCipherSpec message thereby disrupting the handshake. The evaluator shall then initiate a new Client Hello using the previously captured session ID, and verify that the server (1) implicitly rejects the session ID by sending a ServerHello containing a different SessionID and performing a full handshake (as shown in figure 1 of RFC 4346 or RFC 5246), or (2) terminates the connection in some way that prevents the flow of application data.</test>
+
+<test>If the TOE supports session tickets according to RFC5077, the evaluator shall carry out the following steps (note that for each of these tests, it is not necessary to perform the test case for each supported version of TLS):
+
+a) The evaluator shall permit a successful TLS handshake to occur in which a session ticket is exchanged with the non-TOE client. The evaluator shall then attempt to correctly reuse the previous session by sending the session ticket in the ClientHello. The evaluator shall confirm that the TOE responds with a ServerHello with an empty SessionTicket extension, NewSessionTicket, ChangeCipherSpec and Finished messages (as seen in figure 2 of RFC 5077).
+
+b) The evaluator shall permit a successful TLS handshake to occur in which a session ticket is exchanged with the non-TOE client. The evaluator will then modify the session ticket and send it as part of a new Client Hello message. The evaluator shall confirm that the TOE either (1) implicitly rejects the session ticket by performing a full handshake (as shown in figure 3 or 4 of RFC 5077), or (2) terminates the connection in some way that prevents the flow of application data.
+</test>
+		    
                     <test>
                       Send a message consisting of random bytes from
                       the client after the client has issued the
