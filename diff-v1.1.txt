@@ -3,7 +3,7 @@ This page is best viewed with JavaScript enabled! {#this-page-is-best-viewed-wit
 
 ::: {.center}										::: {.center}
 ![NIAP Logo](images/niaplogo.png)\							![NIAP Logo](images/niaplogo.png)\
-										      |	Version: 1.1\
+										      |	Version: 1.2-draft\
 Version: 1.1									      |	2019-03-01\
 										      |	**National Information Assurance Partnership**\
 2019-03-01									      <
@@ -18,6 +18,7 @@ Revision History {#revision-history style="page-break-before:always;"}			Revisio
   --------- ------------ ------------------------------------------------------------ |	  --------- ------------ ------------------------------------------------------------
   1.0       2018-12-17   First publication						  1.0       2018-12-17   First publication
   1.1       2019-03-01   Clarifications regarding override for invalid certificates,  |	  1.1       2019-03-01   Clarifications regarding override for invalid certificates, 
+										      >	  1.2       2022-08-01   Added audit events
 
 Contents										Contents
 --------										--------
