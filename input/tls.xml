@@ -213,7 +213,7 @@
      		The auditable events specified in this Functional Package are included in a Security Target 
 	  	if the incorporating PP or PP-Module supports audit event reporting through FAU_GEN.1 and all other criteria in the incorporating
 	  	PP or PP-Module are met. <h:p/>
-     	<audit-table table="mandatory"/>
+     	<audit-table table="mandatory" id="t-audit-mandatory"/>
     	</section>	  
 	  
       <section title="Cryptographic Support (FCS)" id="fcs">
