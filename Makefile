@@ -1,3 +1,4 @@
+-include ~/commoncriteria/User.make
 -include User.make
 DIFF_TAGS=v1.1
 TRANS?=transforms
