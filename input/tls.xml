@@ -347,14 +347,15 @@
 		
               <testlist>
                 <test>
-                  The evaluator shall establish a TLS connection
-                  using each of the cipher suites specified by the
-                  requirement. This connection may be established as part of the establishment of a
-                  higher-level protocol, e.g., as part of an EAP session. It is sufficient to
-                  observe the successful negotiation of a cipher suite to satisfy the intent of the
-                  test; it is not necessary to examine the characteristics of the encrypted traffic
-                  in an attempt to discern the cipher suite being used (for example, that the
-                  cryptographic algorithm is 128-bit AES and not 256-bit AES).
+		  <testlist>
+		    <test>The evaluator shall demonstrate that a server using a certifcate with a valid certification path successfully connects.</test>
+
+		    <test>The evaluator shall modify the certificate chain used by the server in test 1a to be invalid and demonstrate that a server using a certificate without a valid certification path to a trust store element of the TOE results in an authentication failure.</test>
+
+		    <test>
+		      <depends/> If the TOE trust store can be managed, the evaluator shall modify the trust store element used in Test 1a to be untrusted and demonstrate that a connection attempt from the same server used in Test 1a results in an authentication failure.
+		    </test>
+		  </testlist>
                 </test>
                 <test>
                   The goal of the following test is to verify that the TOE accepts only certificates
