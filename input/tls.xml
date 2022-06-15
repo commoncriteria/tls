@@ -29,7 +29,7 @@
       <version>1.1</version>
       <date>2019-03-01</date>
       <subject>Clarifications regarding override for invalid certificates,
-      renegotation_info extension, DTLS versions, and named Diffie-Hellman groups in DTLS
+      renegotiation_info extension, DTLS versions, and named Diffie-Hellman groups in DTLS
       contexts</subject>
     </entry>
      <entry>
@@ -53,12 +53,13 @@
 	  Transport Layer Security (TLS) and the closely-related Datagram TLS (DTLS) are
     cryptographic protocols designed to provide communications security over IP networks.
     Several versions of the protocol are in widespread use in software that provides functionality
-    such as web browsing, email, instant messaging, and voice-over-IP
-	  (VoIP). Major web sites use TLS to protect communications to
-	  and from their servers. TLS is also used to protect communications between
-	  hosts and network infrastructure devices for administration.
+    such as web browsing, email, instant messaging, and voice-over-IP (VoIP).
+    Major web sites use TLS to protect communications to and from their servers.
+    TLS is also used to protect communications between
+    hosts and network infrastructure devices for administration.
     The underlying platform, such as an operating system, often provides the
-    actual TLS implementation.  The primary goal of the TLS protocol is to
+    actual TLS implementation.
+    The primary goal of the TLS protocol is to
     provide confidentiality and integrity of data transmitted
     between two communicating endpoints, as well as authentication of at least
     the server endpoint.
@@ -289,7 +290,7 @@
           <selectables linebreak="yes">
             <selectable id="tlsc_mutual_auth">mutual authentication</selectable>
             <selectable id="tlsc_reneg">session renegotiation</selectable>
-	    <selectable id="tlsc_resump_ids">session resumption based on session IDs according to RFC 4346 (TLS1.1) or RFC 5246 (TLS1.2)</selectable>
+	    <selectable id="tlsc_resump_ids">session resumption based on session IDs according to RFC 4346 (TLS 1.1) or RFC 5246 (TLS 1.2)</selectable>
 	    <selectable id="tlsc_resump_tickets">session resumption based on session tickets according to RFC 5077</selectable>
 	    <selectable id="tlsc_noresump">no session resumption or session tickets</selectable>
             <selectable exclusive="yes">none</selectable>
@@ -330,7 +331,7 @@
         session renegotiation, this selection must be made.
 
 	<h:p>If the TOE does not support session resumption or session tickets, select <xref to="tlsc_noresump"/>.
- If the TOE supports session resumption based on session IDs according to RFC 4346 (TLS1.1) or RFC 5246 (TLS1.2), select <xref to="tlsc_resump_ids"/>.
+ If the TOE supports session resumption based on session IDs according to RFC 4346 (TLS 1.1) or RFC 5246 (TLS 1.2), select <xref to="tlsc_resump_ids"/>.
  If the TOE supports session resumption based on session tickets according to RFC 5077, select <xref to="tlsc_resump_tickets"/>.
 	</h:p>
 
@@ -355,7 +356,7 @@
               <testlist>
                 <test>
 		  <testlist>
-		    <test>The evaluator shall demonstrate that a server using a certifcate with a valid certification path successfully connects.</test>
+		    <test>The evaluator shall demonstrate that a server using a certificate with a valid certification path successfully connects.</test>
 
 		    <test>The evaluator shall modify the certificate chain used by the server in test 1a to be invalid and demonstrate that a server using a certificate without a valid certification path to a trust store element of the TOE results in an authentication failure.</test>
 
@@ -1011,7 +1012,7 @@ during handshake.
 
 		    <test>
 		      <depends on="tlsc_noresump"/>
-		      If the TOE does not support session resumption based on session IDs according to RFC4346 (TLS1.1) or RFC5246 (TLS1.2) or session tickets according to RFC5077, the evaluator shall perform the following test:
+		      If the TOE does not support session resumption based on session IDs according to RFC 4346 (TLS 1.1) or RFC 5246 (TLS 1.2) or session tickets according to RFC 5077, the evaluator shall perform the following test:
 		    <h:ol type="a">
 		      <h:li>The evaluator shall send a Client Hello with a zero-length session identifier and with a SessionTicket extension containing a zero-length ticket.</h:li>
 		      <h:li>The evaluator shall verify the server does not send a NewSessionTicket handshake message (at any point in the handshake).</h:li>
@@ -1025,7 +1026,7 @@ during handshake.
 
 		    <test>
 		      <depends on="tlsc_resump_ids"/>
-		      If the TOE supports session resumption using session IDs according to RFC4346 (TLS1.1) or RFC5246 (TLS1.2), the evaluator shall carry out the following steps (note that for each of these tests, it is not necessary to perform the test case for each supported version of TLS):
+		      If the TOE supports session resumption using session IDs according to RFC 4346 (TLS 1.1) or RFC 5246 (TLS 1.2), the evaluator shall carry out the following steps (note that for each of these tests, it is not necessary to perform the test case for each supported version of TLS):
 		      <h:ol type="a">
 			<h:li>The evaluator shall conduct a successful handshake and capture the TOE-generated session ID in the Server Hello message. The evaluator shall then initiate a new TLS connection and send the previously captured session ID to show that the TOE resumed the previous session by responding with ServerHello containing the same SessionID immediately followed by ChangeCipherSpec and Finished messages (as shown in Figure 2 of RFC 4346 or RFC 5246).</h:li>
 
@@ -1036,7 +1037,7 @@ during handshake.
 
 		    <test>
 		      <depends on="tlsc_resump_tickets"/>
-		      If the TOE supports session tickets according to RFC5077, the evaluator shall carry out the following steps (note that for each of these tests, it is not necessary to perform the test case for each supported version of TLS):
+		      If the TOE supports session tickets according to RFC 5077, the evaluator shall carry out the following steps (note that for each of these tests, it is not necessary to perform the test case for each supported version of TLS):
 		      <h:ol type="a">
 			
 			<h:li>The evaluator shall permit a successful TLS handshake to occur in which a session ticket is exchanged with the non-TOE client. The evaluator shall then attempt to correctly reuse the previous session by sending the session ticket in the ClientHello. The evaluator shall confirm that the TOE responds with a ServerHello with an empty SessionTicket extension, NewSessionTicket, ChangeCipherSpec and Finished messages (as seen in figure 2 of RFC 5077).</h:li>
@@ -1203,6 +1204,10 @@ during handshake.
             <title>The product shall support authentication of
               TLS clients using X.509v3 certificates.
             </title>
+	    <aactivity level="element">
+	      Testing of this element is done in conjunction with <xref to="fel-bad-client-cert"/>.
+	      <no-tests/>
+	    </aactivity>
           </f-element>
           <f-element id="fel-bad-client-cert">
             <title>The product shall not establish a trusted channel
@@ -1270,7 +1275,7 @@ during handshake.
                   by an impostor CA (either Root CA or intermediate CA). To
                   carry out this test the  evaluator shall configure the client
                   to send a client identity certificate with an issuer field
-                  that identifies a  CA recognised by the TOE as a trusted CA,
+                  that identifies a  CA recognized by the TOE as a trusted CA,
                   but where the key used for the signature on the client
                   certificate  does not in fact correspond to the CA certificate
                   trusted by the TOE (meaning that the client certificate is
