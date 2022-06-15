@@ -1,9 +1,15 @@
 Functional Package for TLS
 ===============
+![Master Badges](https://img.shields.io/badge/Build-master-black.svg)
 ![Build](https://github.com/commoncriteria/tls/workflows/Build/badge.svg)
 ![Validate](https://github.com/commoncriteria/tls/workflows/Validate/badge.svg)
-[![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/tls.svg?maxAge=2592000)](https://github.com/commoncriteria/tls/issues) 
-![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
+
+![Last QuickBuilt Branch](https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/build-branch-badge.svg)
+[![Validation](https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/validation.svg)](https://github.com/commoncriteria/tls/blob/gh-pages/ValidationReport.txt)
+[![SanityChecks](https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/warnings.svg)](https://github.com/commoncriteria/tls/blob/gh-pages/SanityChecksOutput.md)
+[![SpellCheck](https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/spell-badge.svg)](https://github.com/commoncriteria/tls/blob/gh-pages/SpellCheckReport.txt)
+[![QuickBuild](https://github.com/commoncriteria/tls/actions/workflows/quick_build.yml/badge.svg)](https://commoncriteria.github.io/tls)
+![Transforms Version](https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/transforms.svg)
 
 This repository hosts the draft version of the Functional Package for TLS based on the 
 [Essential Security Requirements (ESR)](https://commoncriteria.github.io/pp/tls/tls-esr.html) for products which implement this technology. This repository is used to facilitate collaboration and development on the draft document. 
@@ -13,6 +19,7 @@ See the [release](#Release-Version) section if you are looking for the officiall
 * [Functional Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.html) (html)
 * [Functional Package for TLS in heretical reader-friendly format](https://commoncriteria.github.io/pp/tls/tls.html) (html)
 * [Functional Package for TLS](https://commoncriteria.github.io/pp/tls/tls-release.pdf) (pdf)
+* [Visual Diff against 1.1](https://commoncriteria.github.io/tls/diff-v1.1.html)(html)
 
 ## Release Version
 * [Protection Profile - Functional Package for TLS](https://www.niap-ccevs.org/Profile/Info.cfm?PPID=426&id=426)
