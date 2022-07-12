@@ -1,3 +1,15 @@
+1a
+1's
+
+ffdhe2048
+ffdhe3072
+ffdhe4096
+ffdhe6144
+ffdhe8192
+secp256r1
+secp384r1
+secp521r1
+
 0xfb
 0xfe
 0xff
@@ -6,6 +18,7 @@ FIA
 AGD
 CEM
 
+EncryptedPreMasterSecret
 NewSessionTicket
 HelloVerifyRequest
 ClientHello
