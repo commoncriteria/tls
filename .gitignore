@@ -4,3 +4,10 @@ output/*.*
 input/*.html
 input/schemas.xml
 input/os.rnc
+output/images/diff-first.gif
+output/images/diff-last.gif
+output/images/diff-next.gif
+output/images/diff-previous.gif
+output/images/diffmin.gif
+output/images/diffplus.gif
+output/images/diffunderline.gif
