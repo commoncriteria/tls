@@ -4,9 +4,9 @@ output/*.*
 input/*.html
 input/schemas.xml
 input/os.rnc
+
 User.make
 goorm.manifest
 output/css/**
 output/images/diff*
 output/js/**
-
