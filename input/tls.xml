@@ -263,7 +263,7 @@
 		The evaluator shall ensure that the selections indicated in the ST are
 		consistent with selections in the dependent components.<h:p/>
 	      </Guidance>
-              <test>
+              <Tests>
                 There are no test activities for this SFR; the following informatnio is provided as an overview of the expected functionality and test environment for all subsequent SFRs.
                 <h:p/>
                 <figure entity="images/figure1.png" title="TLS Hello" id="Hello"/>
@@ -281,14 +281,14 @@
                 Tests for TLS 1.2 and TLS 1.3 include examination of the handshake messages and behavior of the TSF when presented with unexpected or invalid messages. 
                 For TLS 1.2 and below, previous versions of this Functional Package only required visibility of network traffic and the ability to modify a valid handshake message sent to the TSF.
                 <h:p/>
-                <figure entity="images/figure2.png" id="Figure2"/>
+                <figure entity="images/figure2.png" title="Test Scenario 1" id="Figure2"/>
                 <h:p/>
                 TLS 1.3 introduces the encryption of handshake messages subsequent to the server hello exchange which prevents visibility and control using midpoint capabilities. 
                 To achieve equivalent validation of TLS 1.3 requires the ability to modify the traffic underlying the encryption applied after the server hello message. 
                 This can be achieved by introducing additional control of the messages sent, and visibility of messages received by the test TLS client, 
                 when validating TLS server functionality or test server, when validating TLS client functionality.
                 <h:p/>
-                <figure entity="images/figure3.png" id="Figure3"/>
+                <figure entity="images/figure3.png" title="Test Scenario 2" id="Figure3"/>
                 <h:p/>
                 Typically, a compliant TLS 1.3 library modified to provide visibility and control of the handshake messages prior to encryption suffices for all tests. 
                 Such modification will require the test client and/or server to be validated. 
@@ -298,8 +298,8 @@
                 For consistency, a compliant TLS client (or TLS server) together with the network sniffers and man-in-the-middle capabilities 
                 will also be referred to as a test TLS client (or test TLS server, respectively) in the following evaluation activities.
                 <h:p/>
-                <figure entity="images/figure4.png" id="Figure4"/>
-              </test>
+                <figure entity="images/figure4.png" title="Test Scenario 3" id="Figure4"/>
+              </Tests>
             </aactivity>
           </f-element>
 	  <audit-event />
