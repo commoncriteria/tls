@@ -1,5 +1,1 @@
-/home/runner/work/tls/tls/input/tls.xml:266:21: error: element "test" not allowed here; expected the element end-tag or element "KMD" or "Tests"
-/home/runner/work/tls/tls/input/tls.xml:284:67: error: element "figure" missing required attribute "title"
-/home/runner/work/tls/tls/input/tls.xml:291:67: error: element "figure" missing required attribute "title"
-/home/runner/work/tls/tls/input/tls.xml:301:67: error: element "figure" missing required attribute "title"
 /home/runner/work/tls/tls/input/tls.xml:1202:22: error: element "title" not allowed here; expected the element end-tag, text, element "_", "assignable", "choice", "componentsneeded", "ctr", "depends", "endnote", "equation", "figure", "management-function-set", "no-link", "provides", "refinement", "requires", "rule", "selectables", "snip", "testlist" or "xref" or an element from another namespace
