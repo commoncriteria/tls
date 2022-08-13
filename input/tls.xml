@@ -1199,9 +1199,7 @@
           </f-element>
           <f-element>
             <title>
-              <title>
                 The TSF shall not send early data in TLS 1.3 sessions. 
-              </title>
             </title>
             <note role="application">
               This SFR is claimed when session resumption is supported for TLS 1.3. RFC 8446 allows pre-shared keys to be used directly, 
