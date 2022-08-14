@@ -6,8 +6,6 @@
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[3]""
 * Error: F-Element FCS_TLSS_EXT.1.4f-element appears not to have an associated evaluation activity.:
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[4]""
-* Error: Detected dangling id-reference to tlsS_impl from attribute
-        on-sel/Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[11]""/depends[1]""/on-sel[1]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[1]""/f-element[1]""/aactivity[1]""/TSS[1]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[1]""/f-element[1]""/aactivity[1]""/Guidance[1]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[1]""/f-element[1]""/aactivity[1]""/Tests[1]"There are"/h:p[1]""
@@ -245,7 +243,6 @@
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[5]""/aactivity[1]""/Tests[1]"The evalu"/testlist[1]""/test[5]"(key exch"/testlist[1]""/test[2]"For each "/h:p[4]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[5]""/aactivity[1]""/Tests[1]"The evalu"/testlist[1]""/test[5]"(key exch"/testlist[1]""/test[3]"(TLS 1.2 "/testlist[1]""/test[1]"[conditio"/h:p[1]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[5]""/aactivity[1]""/Tests[1]"The evalu"/testlist[1]""/test[5]"(key exch"/testlist[1]""/test[3]"(TLS 1.2 "/testlist[1]""/test[1]"[conditio"/h:p[2]""
-* Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[5]""/aactivity[1]""/Tests[1]"The evalu"/testlist[1]""/test[5]"(key exch"/testlist[1]""/test[3]"(TLS 1.2 "/testlist[1]""/test[1]"[conditio"/h:p[3]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[5]""/aactivity[1]""/Tests[1]"The evalu"/testlist[1]""/test[5]"(key exch"/testlist[1]""/test[3]"(TLS 1.2 "/testlist[1]""/test[2]"[conditio"/h:p[1]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[5]""/aactivity[1]""/Tests[1]"The evalu"/testlist[1]""/test[5]"(key exch"/testlist[1]""/test[3]"(TLS 1.2 "/testlist[1]""/test[2]"[conditio"/h:p[2]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[5]""/aactivity[1]""/Tests[1]"The evalu"/testlist[1]""/test[5]"(key exch"/testlist[1]""/test[3]"(TLS 1.2 "/testlist[1]""/test[3]"[conditio"/h:p[1]""
