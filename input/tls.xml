@@ -1823,8 +1823,8 @@
                  <selectable>RFC 2822</selectable>
                  <selectable>RFC 6125</selectable>
                  <selectable>RFC 5280</selectable>
-                 <selectable><assignable>RFC for the supported name type</assignable></selectable> matching rules
-               </selectables>
+                 <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
+               matching rules
              </selectable>
              <selectable>Pass the <selectables>
                <selectable>validated certificate</selectable>
