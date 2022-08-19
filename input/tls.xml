@@ -796,7 +796,7 @@ during handshake.
 
         <f-component cc-id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
           <depends on="tlss_impl"/>
-          <f-element>
+          <f-element id="f-tls-version">
             <title> The product shall implement TLS 1.2 (RFC 5246) and
             <selectables>
               <selectable>TLS 1.1 (RFC 4346)</selectable>
@@ -1270,7 +1270,7 @@ during handshake.
 	</f-component>
 
 	<f-component cc-id="fcs_tlss_ext.4" name="TLS Server Support for Renegotiation" status="sel-based">
-    <depends req="fcs_tlss_ext.1.1" ids="tlss_reneg"/>
+    <depends req="f-tls-version" ids="tlss_reneg"/>
           <f-element>
             <title>The product shall support the "renegotiation_info" TLS extension
               in accordance with RFC 5746.
