@@ -97,14 +97,14 @@
       <term abbr="HTTP" full="Hypertext Transfer Protocol"/>
       <term abbr="IETF" full="Internet Engineering Task Force"/>
       <term abbr="IP" full="Internet Protocol"/>
-      <term abbr="LDAP" full="Lightweight Directory Access Protocol"/>
+      <!-- <term abbr="LDAP" full="Lightweight Directory Access Protocol"/>  -->
       <term abbr="NIST" full="National Institute of Standards and Technology"/>
       <term abbr="RFC" full="Request for Comment (IETF)"/>
       <term abbr="RSA" full="Rivest Shamir Adelman"/>
       <term abbr="SAN" full="Subject Alternative Name"/>
       <term abbr="SCSV" full="Signaling ciphersuite Value"/>
       <term abbr="SHA" full="Secure Hash Algorithm"/>
-      <term abbr="SIP" full="Session Initiation Protocol"/>
+      <!-- <term abbr="SIP" full="Session Initiation Protocol"/> -->
       <term abbr="TCP" full="Transmission Control Protocol"/>
       <term abbr="TLS" full="Transport Layer Security">
         Cryptographic network protocol for providing communications
