@@ -492,7 +492,7 @@
               Finally, the client should avoid constructing reference identifiers using wildcards. 
               However, if the presented identifiers include wildcards, the client must follow the best practices regarding matching; 
               these best practices are captured in the evaluation activity. Support for other name types is rare, but may be claimed for specific applications. 
-              <!-- <h:p/><comment>[JF] App note talks about wildcards best practices being captured in the evaluation activity but nothing in the activity actually covers this.</comment>  -->
+              <h:p/><comment>[JF] App note talks about wildcards best practices being captured in the evaluation activity but nothing in the activity actually covers this.</comment>  
             </note>
           </f-element>
           <f-element>
