@@ -2,6 +2,7 @@ output/tls-release-linkable.html: 4E
 output/tls-release-linkable.html: 4F
 output/tls-release-linkable.html: CIDR
 output/tls-release-linkable.html: CNSA
+output/tls-release-linkable.html: CSRs
 output/tls-release-linkable.html: ContentType
 output/tls-release-linkable.html: EDE
 output/tls-release-linkable.html: IPaddress
@@ -11,6 +12,7 @@ output/tls-release-linkable.html: PSK
 output/tls-release-linkable.html: RC2
 output/tls-release-linkable.html: RC4
 output/tls-release-linkable.html: RDN
+output/tls-release-linkable.html: SME
 output/tls-release-linkable.html: SRV
 output/tls-release-linkable.html: TDES
 output/tls-release-linkable.html: TLSCipherText
@@ -42,6 +44,7 @@ output/tls-release.html: 4E
 output/tls-release.html: 4F
 output/tls-release.html: CIDR
 output/tls-release.html: CNSA
+output/tls-release.html: CSRs
 output/tls-release.html: ContentType
 output/tls-release.html: EDE
 output/tls-release.html: IPaddress
@@ -51,6 +54,7 @@ output/tls-release.html: PSK
 output/tls-release.html: RC2
 output/tls-release.html: RC4
 output/tls-release.html: RDN
+output/tls-release.html: SME
 output/tls-release.html: SRV
 output/tls-release.html: TDES
 output/tls-release.html: TLSCipherText
@@ -82,6 +86,7 @@ output/tls.html: 4E
 output/tls.html: 4F
 output/tls.html: CIDR
 output/tls.html: CNSA
+output/tls.html: CSRs
 output/tls.html: ContentType
 output/tls.html: EDE
 output/tls.html: IPaddress
@@ -91,6 +96,7 @@ output/tls.html: PSK
 output/tls.html: RC2
 output/tls.html: RC4
 output/tls.html: RDN
+output/tls.html: SME
 output/tls.html: SRV
 output/tls.html: TDES
 output/tls.html: TLSCipherText
