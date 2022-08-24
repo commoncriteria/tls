@@ -1611,8 +1611,8 @@
                         then for each supported signature algorithm indicated in the ST, the evaluator shall perform the following sub-tests with certificates that represent the TOE. 
                         For each sub-test, the evaluator shall establish a to-be-signed certificate representing the TOE using a public-private key pair suitable for the specific signature algorithm value, 
                         and request that the certificate from a certification authority that uses the same signature algorithm, in accordance with <no-link>FIA_X509_EXT.3</no-link>.
-                      <!--   <h:p/><comment>the reference to FIA_X509_EXT.3 implies that any PP or module that uses this package must have the ability to generate its own 
-                        CSRs (either as part of the TOE or its underlying platform), unsure if this is intended or if it will be permissible to load a cert issued by a CA.</comment>  -->
+                       <h:p/><comment>the reference to FIA_X509_EXT.3 implies that any PP or module that uses this package must have the ability to generate its own 
+                        CSRs (either as part of the TOE or its underlying platform), unsure if this is intended or if it will be permissible to load a cert issued by a CA.</comment>  
                         <h:p/>
                         If the TSF also supports the signature_algorithms_cert extension, then for each value of the signature_algorithms_cert extension, the evaluator shall repeat the sub-tests 
                         using a to-be-signed certificate using a key pair consistent with the signature algorithm, 
@@ -1656,8 +1656,8 @@
                             and a certificate that does not match the signature_algorithm value. 
                             The evaluator shall observe that the certificate message (for TLS 1.2) does not include the certificate that does not match the signature_algorithm value 
                             (and signature_algorithms_cert value if supported) in the client hello.<h:p/>
-                            <!-- <comment>[JF] Per SME, this test has issues with TLS 1.3 and will need updates</comment>
-                            <h:p/>  -->
+                            <comment>[JF] Per SME, this test has issues with TLS 1.3 and will need updates</comment>
+                            <h:p/>  
                           </test>
                           <test>(TLS 1.2) The evaluator shall provision a certificate as in Test 4.1.1 
                             but shall send a client hello that only offers ciphersuites whose signature component does not match the value of the signature_algorithm extension. The evaluator shall observe that the TSF terminates the handshake.
@@ -1957,7 +1957,7 @@
 	              the evaluator shall establish a valid primary certificate chain with single names for a test client containing only the supported name types 
 	              and a valid alternate certificate chain with single names indicating a different name of the same type. </h:li>
 	            <h:li>[conditional] If any of the supported name types include CN encoding of a name type also supported as a SAN entry, the evaluator shall establish additional certificate chains as follows:
-	              <!-- <comment>[JF] This was updated based on SME feedback but unsure if further updates are needed</comment><h:p/> -->
+	              <comment>[JF] This was updated based on SME feedback but unsure if further updates are needed</comment><h:p/> 
 	              <h:ul>
 	                <h:li>The evaluator shall establish a primary certificate chain with multiple names, to include a leaf certificate with: <h:ul>
 	                  <h:li>a SAN entry that matches the name in the primary certificate chain with single names, of the same SAN name type; and</h:li>
