@@ -5,6 +5,7 @@ output/tls-release-linkable.html: CNSA
 output/tls-release-linkable.html: ContentType
 output/tls-release-linkable.html: EDE
 output/tls-release-linkable.html: IPaddress
+output/tls-release-linkable.html: JF
 output/tls-release-linkable.html: NSS
 output/tls-release-linkable.html: PSK
 output/tls-release-linkable.html: RC2
@@ -44,6 +45,7 @@ output/tls-release.html: CNSA
 output/tls-release.html: ContentType
 output/tls-release.html: EDE
 output/tls-release.html: IPaddress
+output/tls-release.html: JF
 output/tls-release.html: NSS
 output/tls-release.html: PSK
 output/tls-release.html: RC2
@@ -83,6 +85,7 @@ output/tls.html: CNSA
 output/tls.html: ContentType
 output/tls.html: EDE
 output/tls.html: IPaddress
+output/tls.html: JF
 output/tls.html: NSS
 output/tls.html: PSK
 output/tls.html: RC2
