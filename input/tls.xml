@@ -1796,7 +1796,7 @@
 		<audit-event-info>Reason for failure</audit-event-info>
 	 </audit-event>
         </f-component>
-
+<!-- 
        <f-component cc-id="fcs_tlss_ext.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
          <depends on-sel="tlss_mutual_auth"/>
           <f-element>
@@ -1998,7 +1998,7 @@
           </f-element>
 	  <audit-event/>
         </f-component>
-
+ -->
         <f-component cc-id="fcs_tlss_ext.3" name="TLS Server Downgrade Protection" status="sel-based">
           <depends on-sel="tlss_downgrade_protection"/>
           <f-element>
