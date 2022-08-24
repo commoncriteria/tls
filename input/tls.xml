@@ -238,8 +238,7 @@
           <selectable id="tlsc_impl">TLS as a client</selectable>
           <selectable id="tlss_impl">TLS as a server</selectable>
           <selectable id="dtlsc_impl">DTLS as a client</selectable>
-          <selectable id="dtlss_impl">DTLS as a server</selectable>
-        </selectables>.
+          <selectable id="dtlss_impl">DTLS as a server</selectable></selectables>.
         </title>
         <note role="application">
               If <h:i>TLS as a client</h:i> is selected, then the
@@ -263,7 +262,7 @@
 		consistent with selections in the dependent components.<h:p/>
 	      </Guidance>
               <Tests>
-                <!-- 
+                
                 There are no test activities for this SFR; the following information is provided as an overview of the expected functionality and test environment for all subsequent SFRs.
                 <h:p/>
                 <figure entity="images/figure1.png" title="TLS Hello" id="Hello"/>
@@ -303,7 +302,7 @@
                 will also be referred to as a test TLS client (or test TLS server, respectively) in the following evaluation activities.
                 <h:p/>
                 <figure entity="images/figure4.png" title="Combined test environment for TLS 1.2 and TLS 1.3 using both network tools and custom endpoint capabilities" id="Figure4"/>
-                 -->
+                 
               </Tests>
             </aactivity>
           </f-element>
@@ -535,6 +534,7 @@
                 it includes any instructions on configuring the version, ciphersuites, or optional extensions that are supported.
                 <h:p/>
                 The evaluator shall verify that all configurable features for matching identifiers in certificates presented in the TLS handshake to application specific reference identifiers are described.
+                <h:p/>
 	      </Guidance>
               <Tests>
 		The evaluator shall perform the following tests:
@@ -738,7 +738,7 @@
                 </testlist>
                 <h:p/></test>
                 
-                <!-- Test 5 and sub-tests -->
+                <!-- Test 5 and sub-tests -->  
                 <test>(TLS 1.3 extensions) [conditional] If the TSF supports TLS 1.3, the evaluator shall perform the following tests. 
                   For each test, the evaluator shall observe that the TSF’s client hello includes the supported versions extension with the value '03 04' indicating TLS 1.3:
                 <testlist>
@@ -812,6 +812,7 @@
                   <h:p/></test>
                 </testlist>
                 <h:p/></test>
+                
                 
                 <!-- Test 6 and sub-tests -->
                 <test>(corrupt finished message) For each supported version, the evaluator shall initiate a TLS session from the TOE to a test TLS server that sends a compliant set of server handshake messages, 
