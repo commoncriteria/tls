@@ -24,6 +24,7 @@ output/tls-release-linkable.html: doesn
 output/tls-release-linkable.html: eah
 output/tls-release-linkable.html: evalutor
 output/tls-release-linkable.html: ffdhe
+output/tls-release-linkable.html: grey
 output/tls-release-linkable.html: handhake
 output/tls-release-linkable.html: iana
 output/tls-release-linkable.html: indictaing
@@ -65,6 +66,7 @@ output/tls-release.html: doesn
 output/tls-release.html: eah
 output/tls-release.html: evalutor
 output/tls-release.html: ffdhe
+output/tls-release.html: grey
 output/tls-release.html: handhake
 output/tls-release.html: iana
 output/tls-release.html: indictaing
@@ -106,6 +108,7 @@ output/tls.html: doesn
 output/tls.html: eah
 output/tls.html: evalutor
 output/tls.html: ffdhe
+output/tls.html: grey
 output/tls.html: handhake
 output/tls.html: iana
 output/tls.html: indictaing
