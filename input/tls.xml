@@ -274,7 +274,7 @@
                   <h:li>Green text indicates uniqueness to TLS 1.3.</h:li> 
                   <h:li>Black text indicates features common to both TLS 1.2 and TLS 1.3.</h:li> 
                   <h:li>Bold text indicates mandatory features.</h:li>
-                  <h:li>; italics emphasizes optional features. </h:li>
+                  <h:li>italics emphasizes optional features. </h:li>
                   <h:li>A shaded text box indicates that the message is encrypted for TLS 1.2 (blue), TLS 1.3 (green) or both TLS 1.2 and TLS 1.3 (grey).</h:li> 
                   <h:li>An outlined text box indicates that the content in the message is signed, and/or provides authentication of the handshake to that point.</h:li>
                 </h:ul>
@@ -476,7 +476,7 @@
             <note role="application">
               The rules for verification identity are described in Section 6 of RFC 6125 and Section 7 of RFC 5280. 
               The reference identifier is established by the user (e.g., entering a URL into a web browser or clicking a link), 
-              by configuration (e.g., configuring the name of a mail or authentication server), 
+              by configuration (e.g., configuring the name of a mail server or authentication server), 
               or by an application (e.g., a parameter of an API) depending on the product service. 
               The client establishes all acceptable reference identifiers and interfaces with the TLS implementation to provide acceptable reference identifiers, 
               or to accept the presented identifiers as validated in the server’s certificate. 
@@ -665,7 +665,7 @@
                       <h:p/></test>
                       <test>[conditional] If TLS 1.3 is supported, the evaluator shall configure the test TLS server to respond to the TOE with a compliant server hello message selecting TLS 1.3 
                         and a server certificate message, 
-                        but that it sends a certificate verification message that uses a signature algorithm method not included in the signature_algorithms extension. The evaluator shall observe that the TSF terminates the TLS handshake.
+                        but then also sends a certificate verification message that uses a signature algorithm method not included in the signature_algorithms extension. The evaluator shall observe that the TSF terminates the TLS handshake.
                         <h:p/>
                         <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure, illegal parameter, bad certificate, decryption error) in response to this, 
                         but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).  
@@ -1611,6 +1611,11 @@
                         using a to-be-signed certificate using a key pair consistent with the signature algorithm, 
                         with a certificate obtained from a certification authority that signs certificates using the specific value of the signature_algorithms_cert extension. 
                         <h:p/>
+                        <h:b>Note:</h:b> The TSF supports certificate-based server authentication if the TLS 1.2 supported ciphersuites include ciphersuites other than 
+                        TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442, TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487, 
+                        TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442, and TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487. 
+                        If these are the only supported ciphersuites, this test is omitted. For TLS 1.3, certificate-based server authentication, the client hello should not include the PSK extension.
+                        <h:p/>
                         The evaluator shall follow operational guidance instructions to provision the TSF with one or more of these certificates as indicated in the following sub-tests: 
                         <testlist>
                           <test>(TLS 1.2) For each supported value of the signature_algorithm extension, the evaluator shall provision a certificate with a key pair compatible with the specific signature_algorithm value and 
@@ -1650,10 +1655,6 @@
                             but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                             <h:p/></test>
                         </testlist>
-                        <h:b>Note:</h:b> The TSF supports certificate-based server authentication if the TLS 1.2 supported ciphersuites include ciphersuites other than 
-                        TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442, TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487, 
-                        TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442, and TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487. 
-                        If these are the only supported ciphersuites, this test is omitted. For TLS 1.3, certificate-based server authentication, the client hello should not include the PSK extension.
                       <h:p/></test>
                       <test>(extended master secret): The evaluator shall initiate a TLS 1.2 session with the TSF from a test TLS client for which the client hello does not include the extended master secret extension
                         and observe that the TSF terminates the session.
@@ -2088,7 +2089,7 @@
 	                <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., unexpected message) in response to this, 
 	                but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
 	                <h:p/></test>
-	              <test>[conditional]: If the TSF allows renegotiation, for each TLS 1.2 RFC 5746 renegotiation method supported, 
+	              <test>[conditional]: If the TSF allows renegotiation, for each TLS 1.2 renegotiation method claimed in accordance with RFC 5746, 
 	                the evaluator shall send an initial client hello indicating the method, 
 	                send a new TLS 1.2 client hello on the TLS 1.2 channel with a renegotiation_info extension indicating an invalid client_verify_data value (modify a byte of a valid value), and observe that the TSF terminates the session.
 	                <h:p/>
