@@ -1,8 +1,9 @@
 # files not to track in git
 output/*.*
 *~
-input/*.html
 input/schemas.xml
+input/tds/schemas.xml
+input/*.html
 input/os.rnc
 output/images/diff-first.gif
 output/images/diff-last.gif
