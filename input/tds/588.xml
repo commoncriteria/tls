@@ -94,14 +94,12 @@ b) The evaluator shall permit a successful TLS handshake to occur in which a ses
 <Other_References/>
 <Protection_Profiles>
   <Protection_Profile max-inclusive="1.1" name="tls">
-    <replace><!-- Does this mean replace all children? -->
-      <xpath-specified xpath="//*[@id='tlss_reneg']/..">
-                <selectable id="tlss_mutual_auth">mutual authentication</selectable>
+    <replace>
+      <xpath-specified xpath="//*[@id='tlss_reneg']">
                 <selectable id="tlss_reneg">session renegotiation</selectable>
 		<selectable id="tlss_resump_tls">session resumption based on session IDs according to RFC 4346 (TLS1.1) or RFC 5246 (TLS1.2)</selectable>
 		<selectable id="tlss_resump_5077">session resumption based on session tickets according to RFC 5077</selectable>
 		<selectable id="tlss_noresump">no session resumption or session tickets</selectable>
-                <selectable exclusive="yes"> none</selectable>
       </xpath-specified>
     </replace>
 </Protection_Profile>
