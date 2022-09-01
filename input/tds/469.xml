@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<technical-decisions
+    xmlns="https://niap-ccevs.org/cc/v1"
+    xmlns:cc="https://niap-ccevs.org/cc/v1"
+    xmlns:h="http://www.w3.org/1999/xhtml">
+  <decision
+      url="https://www.niap-ccevs.org/Documents_and_Guidance/view_td.cfm?TD=0469"
+      date="2019.11.20"
+      id="469">
+    <Issue_Description>
+      <h:p>
+	In the TLS package 1.1, requirement FCS_TLSS_EXT.1.1 test 4.1 response for a non-supported TLS version is to respond with the highest version capable.
+      </h:p>
+      <h:p>
+	The responding Server does not offer an explicit rejection message.
+      </h:p>
+      <h:p>
+	“If a TLS server receives a ClientHello containing a version number greater than the highest version supported by the server, it MUST reply according to the highest version supported by the server.”
+      </h:p>
+    </Issue_Description>
+    <Resolution>
+    </Resolution>
+    <Justification>
+      See issue description.
+    </Justification>
+    <Protection_Profiles>
+      <Protection_Profile max-inclusive="1.1" name="tls">
+	<replace>
+	  <xpath-specified xpath="//*[@cc-id='fcs_tlss_ext.1']//cc:test[1]">
+	  </xpath-specified>
+	</replace>
+      </Protection_Profile>
+    </Protection_Profiles>
+  </decision>
+</technical-decisions>

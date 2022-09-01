@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<technical-decisions
+    xmlns="https://niap-ccevs.org/cc/v1"
+    xmlns:cc="https://niap-ccevs.org/cc/v1"
+    xmlns:h="http://www.w3.org/1999/xhtml">
+  <decision
+      url="https://www.niap-ccevs.org/Documents_and_Guidance/view_td.cfm?TD=0442"
+      date="2019.11.20"
+      id="442">
+    <Issue_Description>
+      FCS_TLSC_EXT.1.1, FCS_TLSS_EXT.1.1, FCS_DTLSC_EXT.1.1, and FCS_DTLSS_EXT.1.1 in the TLS Package omit the TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, and TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 ciphersuites.
+    </Issue_Description>
+    <Resolution>
+The following SFRs are replaced as follows in PKG_TLS_V1.1. The application notes and evaluation activities remain unchanged.
+
+ 
+FCS_TLSC_EXT.1.1
+
+The product shall implement TLS 1.2 (RFC 5246) and [selection: TLS 1.1 (RFC 4346), no
+
+earlier TLS versions] as a client that supports the cipher suites [selection:
+
+ 
+
+    TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246,
+    TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 5246,
+    TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246,
+    TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246,
+    TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288,
+    TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288,
+    TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246,
+    TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246,
+    TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288,
+    TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288,
+    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289
+
+ 
+
+] and also supports functionality for [selection:
+
+    mutual authentication,
+    session renegotiation,
+    none
+
+].
+
+ 
+FCS_TLSS_EXT.1.1
+
+The product shall implement TLS 1.2 (RFC 5246) and [selection: TLS 1.1 (RFC 4346), no
+
+earlier TLS versions] as a server that supports the cipher suites [selection:
+
+ 
+
+    TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246,
+    TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 5246,
+    TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246,
+    TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246,
+    TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288,
+    TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288,
+    TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246,
+    TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246,
+    TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288,
+    TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288,
+    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289
+
+ 
+
+] and also supports functionality for [selection:
+
+    mutual authentication,
+    session renegotiation,
+    none
+
+].
+
+ 
+FCS_DTLSC_EXT.1.1
+
+The product shall implement DTLS 1.2 (RFC 6347) and [selection: DTLS 1.0 (RFC 4347), no
+
+earlier DTLS versions] as a client that supports the cipher suites [selection:
+
+    TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246,
+    TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 5246,
+    TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246,
+    TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246,
+    TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288,
+    TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288,
+    TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246,
+    TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246,
+    TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288,
+    TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288,
+    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289
+
+ 
+
+] and also supports functionality for [selection:
+
+    mutual authentication,
+    none
+
+].
+
+ 
+FCS_DTLSS_EXT.1.1
+
+The product shall implement DTLS 1.2 (RFC 6347) and [selection: DTLS 1.0 (RFC 4347), no
+
+earlier DTLS versions] as a server that supports the cipher suites [selection:
+
+    TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246,
+    TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 5246,
+    TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246,
+    TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246,
+    TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288,
+    TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288,
+    TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246,
+    TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246,
+    TLS_DHE_RSA_WITH_ASE_128_GCM_SHA256 as defined in RFC 5288,
+    TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288,
+    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289,
+    TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289
+] and also supports functionality for [selection:
+
+    mutual authentication,
+    none
+
+].
+    </Resolution>
+    <Justification>
+      See issue description.
+    </Justification>
+    <Protection_Profiles>
+      <Protection_Profile max-inclusive="1.1" name="tls">
+	<replace>
+	  <xpath-specified xpath="//*[@cc-id='fcs_tlsc_ext.1']/cc:f-element//cc:selectables[2]/cc:selectable[1]">
+	    <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
+	    <selectable>TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 5246</selectable>
+	    <selectable>TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288</selectable>
+	    <selectable>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288</selectable>
+	  </xpath-specified>
+	</replace>
+	<replace>
+	  <xpath-specified xpath="//*[@cc-id='fcs_tlss_ext.1']/cc:f-element//cc:selectables[2]/cc:selectable[1]">
+	    <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
+	    <selectable>TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 5246</selectable>
+	    <selectable>TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288</selectable>
+	    <selectable>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288</selectable>
+	  </xpath-specified>
+	</replace>
+	<replace>
+	  <xpath-specified xpath="//*[@cc-id='fcs_dtlsc_ext.1']/cc:f-element//cc:selectables[2]/cc:selectable[1]">
+	    <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
+	    <selectable>TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 5246</selectable>
+	    <selectable>TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288</selectable>
+	    <selectable>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288</selectable>
+	  </xpath-specified>
+	</replace>
+	<replace>
+	  <xpath-specified xpath="//*[@cc-id='fcs_dtlss_ext.1']/cc:f-element//cc:selectables[2]/cc:selectable[1]">
+	    <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
+	    <selectable>TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 5246</selectable>
+	    <selectable>TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288</selectable>
+	    <selectable>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5288</selectable>
+	  </xpath-specified>
+	</replace>
+      </Protection_Profile>
+    </Protection_Profiles>
+  </decision>
+</technical-decisions>

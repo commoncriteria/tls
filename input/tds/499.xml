@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<technical-decisions
+    xmlns="https://niap-ccevs.org/cc/v1"
+    xmlns:cc="https://niap-ccevs.org/cc/v1"
+    xmlns:h="http://www.w3.org/1999/xhtml">
+  <decision
+      url="https://www.niap-ccevs.org/Documents_and_Guidance/view_td.cfm?TD=0499"
+      date="2020.02.04"
+      id="499">
+    <Issue_Description>
+      
+
+If pinned certificates are supported and present in the TOE, they adversely affect the ability to perform the CN/SAN checking in FCS_TLSC_EXT.1.2 Tests 1-6.
+
+    </Issue_Description>
+    <Resolution>
+    </Resolution>
+    <Justification>
+      See issue description.
+    </Justification>
+    <Protection_Profiles>
+      <Protection_Profile max-inclusive="1.1" name="tls">
+	<replace>
+	  <xpath-specified xpath="//*[@cc-id='fcs_tlsc_ext.1']/cc:f-element[2]//cc:Tests/htm:p[1]">
+	    <h:p>
+The evaluator shall configure the reference identifier according to the AGD guidance and perform the following tests during a TLS connection.
+If the TOE supports certificate pinning, all pinned certificates must be removed before performing Tests 1 through 6. A pinned certificate must be added prior to performing Test 7.
+	    </h:p>
+	  </xpath-specified>
+	</replace>
+      </Protection_Profile>
+    </Protection_Profiles>
+  </decision>
+</technical-decisions>

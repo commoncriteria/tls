@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<technical-decisions
+    xmlns="https://niap-ccevs.org/cc/v1"
+    xmlns:cc="https://niap-ccevs.org/cc/v1"
+    xmlns:h="http://www.w3.org/1999/xhtml">
+  <decision
+      url="https://www.niap-ccevs.org/Documents_and_Guidance/view_td.cfm?TD=0513"
+      date="" 
+      id="513">
+    <Issue_Description>
+      The TLS package does not address the matter of managing trust stores and the test procedures in FCS_TLSC_EXT.1.3 requiring modification of a trust store might impose additional requirements if the PP or PP-Module doesn't require trust store management.
+    </Issue_Description>
+    <Resolution>
+      <h:p>FCS_TLSC_EXT.1.3, Test 1, is replaced as follows:</h:p>
+      <h:p>Test 1a: The evaluator shall demonstrate that a server using a certifcate with a valid certification path successfully connects.
+      </h:p>
+      <h:p>Test 1b: The evaluator shall modify the certificate chain used by the server in test 1a to be invalid and demonstrate that a server using a certificate without a valid certification path to a trust store element of the TOE results in an authentication failure.</h:p>
+
+      <h:p>Test 1c [conditional]: If the TOE trust store can be managed, the evaluator shall modify the trust store element used in Test 1a to be untrusted and demonstrate that a connection attempt from the same server used in Test 1a results in an authentication failure.</h:p>
+    </Resolution>
+    <Justification>
+      Test 1 is modified to account for TOEs that are able to manage trust stores and those that are not.
+    </Justification>
+    <Protection_Profiles>
+      <Protection_Profile max-inclusive="1.1" name="tls">
+	<replace>
+	  <xpath-specified xpath="//*[@cc-id='fcs_tlsc_ext.1']/cc:f-element[3]//cc:testlist/cc:test">
+	    <test>
+	      The evaluator will perform the following subtests:
+	      <test id="t-client-valid">The evaluator will demonstrate that a server using a certificate with a valid certification path successfully connects.</test>
+	      <test id="t-client-invalid">The evaluator will modify the certificate chain used by the server in test <xref to="t-client-valid"/> to be invalid and demonstrate that a server using a certificate without a valid certification path to a trust store element of the TOE results in an authentication failure.</test>
+	      <test>[conditional]: If the TOE trust store can be managed, the evaluator will modify the trust store element used in <xref to="t-client-valid"/> to be untrusted and demonstrate that a connection attempt from the same server used in <xref to="t-client-valid"/> results in an authentication failure.</test>
+	    </test>
+	  </xpath-specified>
+	</replace>
+      </Protection_Profile>
+    </Protection_Profiles>
+  </decision>
+</technical-decisions>
