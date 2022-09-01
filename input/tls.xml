@@ -34,6 +34,7 @@
 
   <sec:Introduction>
     <section title="Overview" id="ppoverview">
+      <h:p>
 	  Transport Layer Security (TLS) and the closely-related Datagram TLS (DTLS) are
     cryptographic protocols designed to provide communications security over IP networks.
     Several versions of the protocol are in widespread use in software that provides functionality
@@ -46,17 +47,18 @@
     provide confidentiality and integrity of data transmitted
     between two communicating endpoints, as well as authentication of at least
     the server endpoint.
-    <h:p/>
+    </h:p><h:p>
 	  TLS supports many different methods for exchanging keys, encrypting data,
 	  and authenticating message integrity. These methods are dynamically negotiated
     between the client and server when the TLS connection is established.
     As a result, evaluating the implementation of both endpoints is typically
     necessary to provide assurance for the operating environment.
-    <h:p/>
+    </h:p><h:p>
 	  This "Functional Package for Transport Layer Security" (short name "TLS-PKG")
     defines functional requirements for the implementation of the Transport Layer Security (TLS)
     and Datagram TLS (DTLS) protocols. The requirements are
     intended to improve the security of products by enabling their evaluation.
+    </h:p>
     </section>
     <tech-terms>
       <term abbr="AES" full="Advanced Encryption Standard"/>
@@ -98,18 +100,20 @@
       <term abbr="URL" full="Uniform Resource Locator"/>
     </tech-terms>
 
-    <section title="Compliant Targets of Evaluation" id="TOEdescription">The Target of Evaluation
+    <section title="Compliant Targets of Evaluation" id="TOEdescription">
+      <h:p>
+      The Target of Evaluation
       (TOE) in this Package is a product which acts as a TLS client or server, or both.
       This Package describes the security functionality of TLS in terms of
       <xref g="CC"/>.
-      <h:p/>
+      </h:p><h:p>
       The contents of this Package must be appropriately
       combined with a PP or PP-Module".
       When this Package is instantiated by a PP or PP-Module, the Package must
       include selection-based requirements in accordance with the
       selections or assignments indicated in the PP or PP-Module.  These may be expanded by the
       the ST author.
-      <h:p/>
+      </h:p><h:p>
       The PP or PP-Module which instantiates this Package must typically include
       the following components in order to satisfy dependencies of this Package. It is the responsibility
       of the PP or PP-Module author who instantiates this Package to ensure that dependence
@@ -149,10 +153,11 @@
           </notes>
       </componentneeded>
     </componentsneeded>
-    <h:p/>
+    </h:p><h:p>
       An ST must identify the applicable version of the PP or
       PP-Module and this
       Package in its conformance claims.
+      </h:p>
     </section>
   </sec:Introduction>
   <sec:Conformance_Claims/>
@@ -160,11 +165,11 @@
   <!--     <cclaim name="Conformance Statement"> -->
   <!--       <description>This Package serves to provide Protection Profiles with additional  -->
   <!--         SFRs and associated Evaluation Activities specific to TLS clients and servers.   -->
-  <!--         <h:p/> -->
+  <!--         </h:p><h:p> -->
   <!--         This Package conforms to Common Criteria -->
   <!--         <cite linkend="bibCC" /> for Information Technology Security Evaluation, Version 3.1, -->
   <!--         Revision 5. It is CC Part 2 extended conformant. -->
-  <!--         <h:p/> -->
+  <!--         </h:p><h:p> -->
   <!--         In accordance with CC Part 1, dependencies are not included when they are addressed -->
   <!--         by other SFRs. The evaluation activities provide adequate proof that any dependencies are -->
   <!--         also satisfied.</description> -->
@@ -422,20 +427,24 @@
               setting the reference identifier to be used for the purposes of certificate validation
               in TLS.</Guidance>
               <Tests>
-              The evaluator shall
-              configure the reference identifier according to the AGD guidance and perform the
-              following tests during a TLS connection:
+		<h:p>
+		  The evaluator shall
+		  configure the reference identifier according to the AGD guidance and perform the
+		  following tests during a TLS connection:
+		</h:p>
               <testlist>
                 <test> 
+		  <h:p>
                   The evaluator shall present a server certificate that contains
                   a CN that does not match the reference identifier and does not
                   contain the SAN extension. The evaluator shall verify that the
                   connection fails. 
-                  <h:p/>Note that some systems might require the presence of the SAN extension.
+                  </h:p><h:p>Note that some systems might require the presence of the SAN extension.
                   In this case the connection would still fail but for the
                   reason of the missing SAN extension instead of the mismatch of
                   CN and reference identifier. Both reasons are acceptable to
                   pass Test 1.
+		  </h:p>
                 </test>
                 <test>
                   The evaluator shall present a server certificate that contains a CN that
