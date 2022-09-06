@@ -27,9 +27,11 @@
 	  <xpath-specified xpath="//*[@cc-id='fcs_tlsc_ext.1']/cc:f-element[3]//cc:testlist/cc:test">
 	    <test>
 	      The evaluator will perform the following subtests:
+	      <testlist>
 	      <test id="t-client-valid">The evaluator will demonstrate that a server using a certificate with a valid certification path successfully connects.</test>
 	      <test id="t-client-invalid">The evaluator will modify the certificate chain used by the server in test <xref to="t-client-valid"/> to be invalid and demonstrate that a server using a certificate without a valid certification path to a trust store element of the TOE results in an authentication failure.</test>
 	      <test>[conditional]: If the TOE trust store can be managed, the evaluator will modify the trust store element used in <xref to="t-client-valid"/> to be untrusted and demonstrate that a connection attempt from the same server used in <xref to="t-client-valid"/> results in an authentication failure.</test>
+	      </testlist>
 	    </test>
 	  </xpath-specified>
 	</replace>

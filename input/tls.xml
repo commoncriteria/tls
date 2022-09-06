@@ -837,7 +837,7 @@ during handshake.
               </selectables>.
             </title>
             <note role="application">
-
+	      <h:p>
         The ST
         author should select the cipher suites that are supported,
        and must select at least one cipher suite.
@@ -851,21 +851,25 @@ during handshake.
 	      GCM cipher suites are preferred over CBC cipher suites,
 	      ECDHE preferred over RSA and DHE, and SHA256 or SHA384
 	      over SHA.
-        <h:br/><h:br/>
+	      </h:p>
+	      <h:p>
         TLS_RSA_WITH_AES_128_CBC_SHA is not required 
 	      despite being mandated by RFC 5246. 
-        <h:br/><h:br/>
-        These requirements will be revisited as new
-	      TLS
-	      versions are standardized by the IETF.
-        <h:br/><h:br/>
+	      </h:p>
+	      <h:p>
+		These requirements will be revisited as new TLS
+		versions are standardized by the IETF.
+	      </h:p>
+	      <h:p>
         If <h:i>mutual authentication</h:i> is selected, then the ST must additionally include
         the requirements from FCS_TLSS_EXT.2.  If the TOE implements
         mutual authentication, this selection must be made.
-        <h:br/><h:br/>
+	      </h:p>
+	      <h:p>
         If <h:i>session renegotiation</h:i> is selected, then the ST must additionally include
         the requirements from FCS_TLSS_EXT.4. If the TOE implements
         session renegotiation, this selection must be made.
+	      </h:p>
             </note>
             <aactivity>
               <TSS>
