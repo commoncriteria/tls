@@ -8,6 +8,7 @@ Functional Package for TLS
 [![Validation](https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/validation.svg)](https://github.com/commoncriteria/tls/blob/gh-pages/ValidationReport.txt)
 [![SanityChecks](https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/warnings.svg)](https://github.com/commoncriteria/tls/blob/gh-pages/SanityChecksOutput.md)
 [![SpellCheck](https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/spell-badge.svg)](https://github.com/commoncriteria/tls/blob/gh-pages/SpellCheckReport.txt)
+[![TD](https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/tds.svg)](https://github.com/commoncriteria/tls/blob/gh-pages/TDValidationReport.txt)
 [![QuickBuild](https://github.com/commoncriteria/tls/actions/workflows/quick_build.yml/badge.svg)](https://commoncriteria.github.io/tls)
 ![Transforms Version](https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/transforms.svg)
 
