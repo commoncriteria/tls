@@ -834,7 +834,7 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
             Strictly Optional requirements.</p><h2 id="objective-reqs" class="indexable" data-level="2">A.2 Objective  Requirements
     </h2><h3 id="fcs-objective" class="indexable" data-level="3">A.2.1 Cryptographic Support (FCS)</h3><div class="comp" id="FCS_TLSC_EXT.3"><h4>FCS_TLSC_EXT.3 TLS Client Support for Signature Algorithms Extension</h4>
           <div class="element"><div class="reqid" id="FCS_TLSC_EXT.3.1"><a href="#FCS_TLSC_EXT.3.1" class="abbr">FCS_TLSC_EXT.3.1</a></div><div class="reqdesc"> The product shall present the signature_algorithms extension in the Client Hello with
-              the supported_signature_algorithms value containing the following hash algorithms: [<b>selection</b>: <span class="selectable-content" id="_s_27">SHA256</span>,  <span class="selectable-content" id="_s_28">SHA384</span>,  <span class="selectable-content" id="_s_29">SHA512</span> ] and no other hash algorithms. <div class="appnote"><span class="note-header">Application
+              the supported_signature_algorithms value containing the following hash algorithms: [<b>selection</b>: <span class="selectable-content" id="_s_30">SHA256</span>,  <span class="selectable-content" id="_s_31">SHA384</span>,  <span class="selectable-content" id="_s_32">SHA512</span> ] and no other hash algorithms. <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note"> This requirement limits the hashing algorithms supported for
               the purpose of digital signature verification by the client and limits the server to
@@ -856,7 +856,7 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
               The evaluator shall also perform the following
               tests:
               <span class="testlist-"><ul>
-                <li class="test-" id="_t_30"><a href="#_t_30" class="definition">Test 1</a>:
+                <li class="test-" id="_t_33"><a href="#_t_33" class="definition">Test 1</a>:
       
                   The evaluator shall configure the server to send a
                   certificate in the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection that is not
@@ -867,7 +867,7 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
                   the product disconnects after receiving the server's
                   Certificate handshake message.
                 </li>
-                <li class="test-" id="_t_31"><a href="#_t_31" class="definition">Test 2</a>:
+                <li class="test-" id="_t_34"><a href="#_t_34" class="definition">Test 2</a>:
       
                   [conditional] If the client supports a <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr>
                   cipher suite, the evaluator shall configure the
@@ -884,7 +884,7 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
           <div class="element"><div class="reqid" id="FCS_TLSS_EXT.3.1"><a href="#FCS_TLSS_EXT.3.1" class="abbr">FCS_TLSS_EXT.3.1</a></div><div class="reqdesc">The product shall present the HashAlgorithm
             enumeration in supported_signature_algorithms in the
             Certificate Request with the following hash algorithms:
-	    [<b>selection</b>: <span class="selectable-content" id="_s_84">SHA256</span>,  <span class="selectable-content" id="_s_85">SHA384</span>,  <span class="selectable-content" id="_s_86">SHA512</span> ] and no other hash algorithms.
+	    [<b>selection</b>: <span class="selectable-content" id="_s_93">SHA256</span>,  <span class="selectable-content" id="_s_94">SHA384</span>,  <span class="selectable-content" id="_s_95">SHA512</span> ] and no other hash algorithms.
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -938,9 +938,9 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
           
           <div class="element"><div class="reqid" id="FCS_TLSC_EXT.1.1"><a href="#FCS_TLSC_EXT.1.1" class="abbr">FCS_TLSC_EXT.1.1</a></div><div class="reqdesc"> The product shall implement <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246) and
               [<b>selection</b>: <span class="selectable-content" id="_s_5"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346)</span>,  <span class="selectable-content" id="_s_6">no earlier <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> versions</span> ] as a client that supports the cipher suites
-          [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_7">TLS_RSA_WITH_AES_128_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_8">TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_9">TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_10">TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_11">TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_12">TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_13">TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="tecdhe1">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe2">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe3">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe5">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe6">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe7">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe8">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li></ul>]
+          [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_7">TLS_RSA_WITH_AES_128_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_8">TLS_RSA_WITH_AES_256_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_9">TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_10">TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_11">TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_12">TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_13">TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_14">TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_15">TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_16">TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="tecdhe1">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe2">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe3">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe5">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe6">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe7">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="tecdhe8">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li></ul>]
           and also supports functionality for 
-          [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlsc_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="tlsc_reneg">session renegotiation</span></li><li style=""><span class="selectable-content" id="_s_24">none</span></li></ul>].
+          [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlsc_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="tlsc_reneg">session renegotiation</span></li><li style=""><span class="selectable-content" id="_s_27">none</span></li></ul>].
           <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -1004,7 +1004,7 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
             </span></div></div></div>
           <div class="element"><div class="reqid" id="FCS_TLSC_EXT.1.3"><a href="#FCS_TLSC_EXT.1.3" class="abbr">FCS_TLSC_EXT.1.3</a></div><div class="reqdesc">The product shall not establish a trusted channel if the
               server certificate is invalid
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_25">with no exceptions</span></li><li style=""><span class="selectable-content" id="_s_26">except when override is authorized</span></li></ul>].
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_28">with no exceptions</span></li><li style=""><span class="selectable-content" id="_s_29">except when override is authorized</span></li></ul>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">Validity is determined by the identifier verification,
@@ -1170,11 +1170,10 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
               </ul></span>
 	      
 		<p>
-		  The evaluator shall
-		  configure the reference identifier according to the AGD guidance and perform the
-		  following tests during a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection:
-		</p>
-              <span class="testlist-"><ul>
+The evaluator shall configure the reference identifier according to the AGD guidance and perform the following tests during a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection.
+If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports certificate pinning, all pinned certificates must be removed before performing Tests 1 through 6. A pinned certificate must be added prior to performing Test 7.
+	    </p>
+	  <span class="testlist-"><ul>
                 <li class="test-" id="_t_13"><a href="#_t_13" class="definition">Test 8</a>:
        
 		  <p>
@@ -1276,19 +1275,24 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
               results in the function failing as follows, unless excepted:
               <span class="testlist-"><ul>
                 <li class="test-" id="_t_24"><a href="#_t_24" class="definition">Test 15</a>:
-      The evaluator shall demonstrate that a server using a certificate without a
-                  valid certification path results in an authentication failure. Using the
-                  administrative guidance, the evaluator shall then load the trusted <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr>
-                  certificate(s) needed to validate the server's certificate, and demonstrate that the
-                  connection succeeds. The evaluator then shall delete one of the <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr> certificates,
-                  and show that the connection fails. </li>
-                <li class="test-" id="_t_25"><a href="#_t_25" class="definition">Test 16</a>:
+      
+	      The evaluator will perform the following subtests:
+	      <span class="testlist-"><ul>
+	      <li class="test-" id="t-client-valid"><a href="#t-client-valid" class="definition">Test 15.1</a>:
+      The evaluator will demonstrate that a server using a certificate with a valid certification path successfully connects.</li>
+	      <li class="test-" id="t-client-invalid"><a href="#t-client-invalid" class="definition">Test 15.2</a>:
+      The evaluator will modify the certificate chain used by the server in test <a href="#t-client-valid" class="">Test 6.1</a> to be invalid and demonstrate that a server using a certificate without a valid certification path to a trust store element of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> results in an authentication failure.</li>
+	      <li class="test-" id="_t_27"><a href="#_t_27" class="definition">Test 15.3</a>:
+      [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> trust store can be managed, the evaluator will modify the trust store element used in <a href="#t-client-valid" class="">Test 6.1</a> to be untrusted and demonstrate that a connection attempt from the same server used in <a href="#t-client-valid" class="">Test 6.1</a> results in an authentication failure.</li>
+	      </ul></span>
+	    </li>
+	  <li class="test-" id="_t_28"><a href="#_t_28" class="definition">Test 16</a>:
        The evaluator shall demonstrate that a server using a certificate which has
                   been revoked results in an authentication failure. </li>
-                <li class="test-" id="_t_26"><a href="#_t_26" class="definition">Test 17</a>:
+                <li class="test-" id="_t_29"><a href="#_t_29" class="definition">Test 17</a>:
        The evaluator shall demonstrate that a server using a certificate which has
                   passed its expiration date results in an authentication failure. </li>
-                <li class="test-" id="_t_27"><a href="#_t_27" class="definition">Test 18</a>:
+                <li class="test-" id="_t_30"><a href="#_t_30" class="definition">Test 18</a>:
        The evaluator shall demonstrate that a server using a certificate which does
                   not have a valid identifier results in an authentication failure. </li>
               </ul></span>
@@ -1326,14 +1330,14 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
               The evaluator shall also perform the following tests:
               
 	      <span class="testlist-"><ul>
-          <li class="test-" id="_t_28"><a href="#_t_28" class="definition">Test 19</a>:
+          <li class="test-" id="_t_31"><a href="#_t_31" class="definition">Test 19</a>:
       The evaluator shall establish a connection to a server that is not
 configured for mutual authentication (i.e. does not send Server’s Certificate
 Request (type 13) message). The evaluator observes negotiation of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel
 and confirms that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> did not send Client’s Certificate message (type 11)
 during handshake. 
 		</li>
-		<li class="test-" id="_t_29"><a href="#_t_29" class="definition">Test 20</a>:
+		<li class="test-" id="_t_32"><a href="#_t_32" class="definition">Test 20</a>:
       The evaluator shall establish a connection to a server with a
 		shared trusted root that is configured for mutual authentication (i.e. it
 		sends Server’s Certificate Request (type 13) message). The evaluator
@@ -1373,17 +1377,17 @@ during handshake.
             <div class="eacategory">Tests</div><div class="ea">
               The evaluator shall perform the following tests:
               <span class="testlist-"><ul>
-                <li class="test-" id="_t_32"><a href="#_t_32" class="definition">Test 21</a>:
+                <li class="test-" id="_t_35"><a href="#_t_35" class="definition">Test 21</a>:
       The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two
                   <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> endpoints.  The evaluator shall verify that either the “renegotiation_info” field or the <abbr class="dyn-abbr"><a href="#abbr_SCSV">SCSV</a></abbr>
                   cipher suite is included in the ClientHello message during the initial handshake.</li>
-                <li class="test-" id="_t_33"><a href="#_t_33" class="definition">Test 22</a>:
+                <li class="test-" id="_t_36"><a href="#_t_36" class="definition">Test 22</a>:
       The evaluator shall verify the Client’s handling of ServerHello messages received during
                   the initial handshake that include the “renegotiation_info” extension.  The evaluator shall modify
                   the length portion of this field in the ServerHello message to be non-zero and verify that the client
                   sends a failure and terminates the connection.  The evaluator shall verify that a properly formatted
                   field results in a successful <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection.</li>
-                <li class="test-" id="_t_34"><a href="#_t_34" class="definition">Test 23</a>:
+                <li class="test-" id="_t_37"><a href="#_t_37" class="definition">Test 23</a>:
       The evaluator shall verify that ServerHello messages received during secure renegotiation contain
                   the “renegotiation_info” extension.  The evaluator shall modify either the “client_verify_data” or
                   “server_verify_data” value and verify that the client terminates the connection.</li>
@@ -1394,7 +1398,7 @@ during handshake.
           
           
           <div class="element"><div class="reqid" id="FCS_TLSC_EXT.5.1"><a href="#FCS_TLSC_EXT.5.1" class="abbr">FCS_TLSC_EXT.5.1</a></div><div class="reqdesc"> The product shall present the Supported Groups Extension in the Client Hello
-              with the supported groups [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_30">secp256r1</span></li><li style=""><span class="selectable-content" id="_s_31">secp384r1</span></li><li style=""><span class="selectable-content" id="_s_32">secp521r1</span></li><li style=""><span class="selectable-content" id="_s_33">ffdhe2048(256)</span></li><li style=""><span class="selectable-content" id="_s_34">ffdhe3072(257)</span></li><li style=""><span class="selectable-content" id="_s_35">ffdhe4096(258)</span></li><li style=""><span class="selectable-content" id="_s_36">ffdhe6144(259)</span></li><li style=""><span class="selectable-content" id="_s_37">ffdhe8192(260)</span></li></ul>].
+              with the supported groups [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_33">secp256r1</span></li><li style=""><span class="selectable-content" id="_s_34">secp384r1</span></li><li style=""><span class="selectable-content" id="_s_35">secp521r1</span></li><li style=""><span class="selectable-content" id="_s_36">ffdhe2048(256)</span></li><li style=""><span class="selectable-content" id="_s_37">ffdhe3072(257)</span></li><li style=""><span class="selectable-content" id="_s_38">ffdhe4096(258)</span></li><li style=""><span class="selectable-content" id="_s_39">ffdhe6144(259)</span></li><li style=""><span class="selectable-content" id="_s_40">ffdhe8192(260)</span></li></ul>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -1413,7 +1417,7 @@ during handshake.
               The evaluator shall also perform the following test:
               <br/>
               <span class="testlist-"><ul>
-              <li class="test-" id="_t_35"><a href="#_t_35" class="definition">Test 24</a>:
+              <li class="test-" id="_t_38"><a href="#_t_38" class="definition">Test 24</a>:
       
               The evaluator shall configure a server to perform key exchange using each of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s supported
               curves and/or groups. The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> successfully connects to the server.
@@ -1424,11 +1428,11 @@ during handshake.
            </i></b></div>
           
           <div class="element"><div class="reqid" id="FCS_TLSS_EXT.1.1"><a href="#FCS_TLSS_EXT.1.1" class="abbr">FCS_TLSS_EXT.1.1</a></div><div class="reqdesc"> The product shall implement <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246) and
-            [<b>selection</b>: <span class="selectable-content" id="_s_38"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346)</span>,  <span class="selectable-content" id="_s_39">no earlier <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> versions</span> ]
+            [<b>selection</b>: <span class="selectable-content" id="_s_41"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346)</span>,  <span class="selectable-content" id="_s_42">no earlier <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> versions</span> ]
               as a server that supports the cipher suites
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_40">TLS_RSA_WITH_AES_128_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_41">TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_42">TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_43">TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_44">TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_45">TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_46">TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_47">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_48">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_49">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_50">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_51">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_52">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_53">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_54">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li></ul>] and no other cipher suites,
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_43">TLS_RSA_WITH_AES_128_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_44">TLS_RSA_WITH_AES_256_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_45">TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_46">TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_47">TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_48">TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_49">TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_50">TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_51">TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_52">TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_53">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_54">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_55">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_56">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_57">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_58">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_59">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_60">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li></ul>] and no other cipher suites,
               and also supports functionality for
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlss_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="tlss_reneg">session renegotiation</span></li><li style=""><span class="selectable-content" id="_s_57">none</span></li></ul>].
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlss_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="tlss_reneg">session renegotiation</span></li><li style=""><span class="selectable-content" id="tlss_resump_tls">session resumption based on session IDs according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346 (TLS1.1) or <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 (TLS1.2)</span></li><li style=""><span class="selectable-content" id="tlss_resump_5077">session resumption based on session tickets according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077</span></li><li style=""><span class="selectable-content" id="tlss_noresump">no session resumption or session tickets</span></li><li style=""><span class="selectable-content" id="_s_66">none</span></li></ul>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -1456,11 +1460,20 @@ during handshake.
 		versions are standardized by the <abbr class="dyn-abbr"><a href="#abbr_IETF">IETF</a></abbr>.
 	      </p>
 	      <p>
-        If <i>mutual authentication</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must additionally include
-        the requirements from <a href="#FCS_TLSS_EXT.2">FCS_TLSS_EXT.2</a>.  If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements
-        mutual authentication, this selection must be made.
-	      </p>
-	      <p>
+	  If <i>session renegotiation</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must additionally include
+          the requirements from <a href="#FCS_TLSS_EXT.4">FCS_TLSS_EXT.4</a>. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements
+          session renegotiation, this selection must be made.
+	</p>
+
+	<p>
+	  If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not support session resumption or session tickets,
+	  select 'no session resumption or session tickets’.
+	  If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports session resumption based on session IDs according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346 (TLS1.1) or <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 (TLS1.2),
+	  select 'session resumption based on session IDs according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346 (TLS1.1) or <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 (TLS1.2)'.
+	  If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports session resumption based on session tickets according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077,
+	  select 'session resumption based on session tickets according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077'.
+	</p>
+      <p>
         If <i>session renegotiation</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must additionally include
         the requirements from <a href="#FCS_TLSS_EXT.4">FCS_TLSS_EXT.4</a>. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements
         session renegotiation, this selection must be made.
@@ -1468,22 +1481,22 @@ during handshake.
             </span></div></div></div>
           <div class="element"><div class="reqid" id="FCS_TLSS_EXT.1.2"><a href="#FCS_TLSS_EXT.1.2" class="abbr">FCS_TLSS_EXT.1.2</a></div><div class="reqdesc">The product shall deny connections from clients requesting
             SSL 2.0, SSL 3.0, <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.0 and
-              [<b>selection</b>: <span class="selectable-content" id="_s_58"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1</span>,  <span class="selectable-content" id="_s_59">none</span> ].
+              [<b>selection</b>: <span class="selectable-content" id="_s_67"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1</span>,  <span class="selectable-content" id="_s_68">none</span> ].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">All SSL versions are denied. Any <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> version
               not selected in <a href="#FCS_TLSS_EXT.1.1">FCS_TLSS_EXT.1.1</a> should be selected here.
             </span></div></div></div>
           <div class="element"><div class="reqid" id="FCS_TLSS_EXT.1.3"><a href="#FCS_TLSS_EXT.1.3" class="abbr">FCS_TLSS_EXT.1.3</a></div><div class="reqdesc">The product shall perform key establishment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> using
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_60"><abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> with size
-                  [<b>selection</b>: <span class="selectable-content" id="_s_61">2048 bits</span>,  <span class="selectable-content" id="_s_62">3072 bits</span>,  <span class="selectable-content" id="_s_63">4096 bits</span>,  <span class="selectable-content" id="_s_64">no other sizes</span> ]
-                </span></li><li style=""><span class="selectable-content" id="_s_65">Diffie-Hellman parameters with size
-                  [<b>selection</b>: <span class="selectable-content" id="_s_66">2048 bits</span>,  <span class="selectable-content" id="_s_67">3072 bits</span>,  <span class="selectable-content" id="_s_68">4096 bits</span>,  <span class="selectable-content" id="_s_69">6144 bits</span>,  <span class="selectable-content" id="_s_70">8192 bits</span>,  <span class="selectable-content" id="_s_71">no other sizes</span> ]
-                </span></li><li style=""><span class="selectable-content" id="_s_72">Diffie-Hellman groups
-                  [<b>selection</b>: <span class="selectable-content" id="_s_73">ffdhe2048</span>,  <span class="selectable-content" id="_s_74">ffdhe3072</span>,  <span class="selectable-content" id="_s_75">ffdhe4096</span>,  <span class="selectable-content" id="_s_76">ffdhe6144</span>,  <span class="selectable-content" id="_s_77">ffdhe8192</span>,  <span class="selectable-content" id="_s_78">no other groups</span> ]
-              </span></li><li style=""><span class="selectable-content" id="_s_79"><abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> parameters using elliptic curves
-                [<b>selection</b>: <span class="selectable-content" id="_s_80">secp256r1</span>,  <span class="selectable-content" id="_s_81">secp384r1</span>,  <span class="selectable-content" id="_s_82">secp521r1</span> ] and no other curves
-              </span></li><li style=""><span class="selectable-content" id="_s_83">no other key establishment methods</span></li></ul>].
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_69"><abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> with size
+                  [<b>selection</b>: <span class="selectable-content" id="_s_70">2048 bits</span>,  <span class="selectable-content" id="_s_71">3072 bits</span>,  <span class="selectable-content" id="_s_72">4096 bits</span>,  <span class="selectable-content" id="_s_73">no other sizes</span> ]
+                </span></li><li style=""><span class="selectable-content" id="_s_74">Diffie-Hellman parameters with size
+                  [<b>selection</b>: <span class="selectable-content" id="_s_75">2048 bits</span>,  <span class="selectable-content" id="_s_76">3072 bits</span>,  <span class="selectable-content" id="_s_77">4096 bits</span>,  <span class="selectable-content" id="_s_78">6144 bits</span>,  <span class="selectable-content" id="_s_79">8192 bits</span>,  <span class="selectable-content" id="_s_80">no other sizes</span> ]
+                </span></li><li style=""><span class="selectable-content" id="_s_81">Diffie-Hellman groups
+                  [<b>selection</b>: <span class="selectable-content" id="_s_82">ffdhe2048</span>,  <span class="selectable-content" id="_s_83">ffdhe3072</span>,  <span class="selectable-content" id="_s_84">ffdhe4096</span>,  <span class="selectable-content" id="_s_85">ffdhe6144</span>,  <span class="selectable-content" id="_s_86">ffdhe8192</span>,  <span class="selectable-content" id="_s_87">no other groups</span> ]
+              </span></li><li style=""><span class="selectable-content" id="_s_88"><abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> parameters using elliptic curves
+                [<b>selection</b>: <span class="selectable-content" id="_s_89">secp256r1</span>,  <span class="selectable-content" id="_s_90">secp384r1</span>,  <span class="selectable-content" id="_s_91">secp521r1</span> ] and no other curves
+              </span></li><li style=""><span class="selectable-content" id="_s_92">no other key establishment methods</span></li></ul>].
             <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -1546,19 +1559,7 @@ during handshake.
               The evaluator shall
               also perform the following tests:
               <span class="testlist-"><ul>
-                <li class="test-" id="_t_36"><a href="#_t_36" class="definition">Test 25</a>:
-      
-                  The evaluator shall establish a
-                  <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection using each of the
-                  cipher suites specified by the requirement. This connection may be established as
-                  part of the establishment of a higher-level protocol, e.g., as part of an <abbr class="dyn-abbr"><a href="#abbr_EAP">EAP</a></abbr>
-                  session. It is sufficient to observe the successful negotiation of a cipher suite
-                  to satisfy the intent of the test; it is not necessary to examine the
-                  characteristics of the encrypted traffic in an attempt to discern the cipher suite
-                  being used (for example, that the cryptographic algorithm is 128-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> and not
-                  256-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>).
-                </li>
-                <li class="test-" id="_t_37"><a href="#_t_37" class="definition">Test 26</a>:
+                <li class="test-" id="_t_39"><a href="#_t_39" class="definition">Test 25</a>:
       
                   The evaluator shall send a Client Hello to the server with a list of
                   cipher suites that does not contain any of the cipher suites in the server’s <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>
@@ -1567,7 +1568,7 @@ during handshake.
                   TLS_NULL_WITH_NULL_NULL cipher suite and verify that the server
                   denies the connection.
                 </li>
-                <li class="test-" id="_t_38"><a href="#_t_38" class="definition">Test 27</a>:
+                <li class="test-" id="_t_40"><a href="#_t_40" class="definition">Test 26</a>:
       
 		  If <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> key exchange is used in one of the selected ciphersuites, the evaluator shall use a client to send a properly
 		  constructed Key Exchange message with a modified
@@ -1576,11 +1577,11 @@ during handshake.
 		  handshake is not completed successfully and no
 		  application data flows.
                 </li>
-                <li class="test-" id="_t_39"><a href="#_t_39" class="definition">Test 28</a>:
+                <li class="test-" id="_t_41"><a href="#_t_41" class="definition">Test 27</a>:
       
                   The evaluator shall perform the following modifications to the traffic:
                   <span class="testlist-"><ul>
-                    <li class="test-" id="_t_40"><a href="#_t_40" class="definition">Test 28.1</a>:
+                    <li class="test-" id="_t_42"><a href="#_t_42" class="definition">Test 27.1</a>:
       
                       Change the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> version proposed
                       by the client in the Client Hello to a non-supported
@@ -1588,25 +1589,70 @@ during handshake.
                       represented by the two bytes 03 04) and verify that the server rejects the
                       connection.
                     </li>
-                    <li class="test-" id="_t_41"><a href="#_t_41" class="definition">Test 28.2</a>:
+                    <li class="test-" id="_t_43"><a href="#_t_43" class="definition">Test 27.2</a>:
       
                       Modify a byte in the data of the client's Finished handshake message, and verify that the
                       server rejects the connection and does not send any application data.
                     </li>
-                    <li class="test-" id="_t_42"><a href="#_t_42" class="definition">Test 28.3</a>:
+                    <li class="test-" id="_t_44"><a href="#_t_44" class="definition">Test 27.3</a>:
       
-		      Demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will not resume a
-		      session for which the client failed to complete
-		      the handshake (independent of <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> support for
-		      session resumption): Generate a Fatal Alert by
-		      sending a Finished message from the client
-		      before the client sends a ChangeCipherSpec
-		      message, and then send a Client Hello with the
-		      session identifier from the previous incomplete
-		      session, and verify that the server does not
-		      resume the session.
-                    </li>
-                    <li class="test-" id="_t_43"><a href="#_t_43" class="definition">Test 28.4</a>:
+	  Demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will not resume a
+	session for which the client failed to complete
+	the handshake (independent of <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> support for
+	session resumption):
+	<span class="testlist-"><ul>
+	<li class="test-" id="_t_45"><a href="#_t_45" class="definition">Test 27.3.1</a>:
+      
+Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not support session resumption based on session IDs according to RFC4346 (TLS1.1) or RFC5246 (TLS1.2) or session tickets according to RFC5077, the evaluator shall perform the following test:
+<span class="testlist-"><ul>
+  <li class="test-" id="_t_46"><a href="#_t_46" class="definition">Test 27.3.1.1</a>:
+      The evaluator shall send a Client Hello with a zero-length session identifier and with a SessionTicket extension containing a zero-length ticket.</li>
+
+  <li class="test-" id="_t_47"><a href="#_t_47" class="definition">Test 27.3.1.2</a>:
+      The evaluator shall verify the server does not send a NewSessionTicket handshake message (at any point in the handshake).</li>
+  <li class="test-" id="_t_48"><a href="#_t_48" class="definition">Test 27.3.1.3</a>:
+      The evaluator shall verify the Server Hello message contains a zero-length session identifier or passes the following steps:
+  <p>Note: The following steps are only performed if the ServerHello message contains a non-zero length SessionID.</p>
+  <span class="testlist-"><ul>
+    <li class="test-" id="t-cap-sess-id"><a href="#t-cap-sess-id" class="definition">Test 27.3.1.3.1</a>:
+      The evaluator shall complete the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> handshake and capture the SessionID from the ServerHello.</li>
+    <li class="test-" id="_t_50"><a href="#_t_50" class="definition">Test 27.3.1.3.2</a>:
+      The evaluator shall send a ClientHello containing the SessionID captured in <a href="#t-cap-sess-id" class="">Test 15.1</a>.
+    This can be done by keeping the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session in <a href="#t-cap-sess-id" class="">Test 15.1</a> open or start a new <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session using the SessionID captured in step <a href="#t-cap-sess-id" class="">Test 15.1</a>.</li>
+
+    <li class="test-" id="_t_51"><a href="#_t_51" class="definition">Test 27.3.1.3.3</a>:
+      The evaluator shall verify the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (1) implicitly rejects the SessionID by sending a ServerHello containing a different SessionID and by performing a full handshake (as shown in Figure 1 of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346 or <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246), or (2) terminates the connection in some way that prevents the flow of application data.</li>
+  </ul></span>
+</li>
+</ul></span>
+</li>
+
+<li class="test-" id="_t_52"><a href="#_t_52" class="definition">Test 27.3.2</a>:
+      Test 4.3ii [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports session resumption using session IDs according to RFC4346 (TLS1.1) or RFC5246 (TLS1.2), the evaluator shall carry out the following steps (note that for each of these tests, it is not necessary to perform the test case for each supported version of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>):
+<span class="testlist-"><ul>
+
+  <li class="test-" id="_t_53"><a href="#_t_53" class="definition">Test 27.3.2.1</a>:
+      a) The evaluator shall conduct a successful handshake and capture the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>-generated session ID in the Server Hello message. The evaluator shall then initiate a new <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection and send the previously captured session ID to show that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> resumed the previous session by responding with ServerHello containing the same SessionID immediately followed by ChangeCipherSpec and Finished messages (as shown in Figure 2 of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346 or <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246).</li>
+
+  <li class="test-" id="_t_54"><a href="#_t_54" class="definition">Test 27.3.2.2</a>:
+      b) The evaluator shall initiate a handshake and capture the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>-generated session ID in the Server Hello message. The evaluator shall then, within the same handshake, generate or force an unencrypted fatal Alert message immediately before the client would otherwise send its ChangeCipherSpec message thereby disrupting the handshake. The evaluator shall then initiate a new Client Hello using the previously captured session ID, and verify that the server (1) implicitly rejects the session ID by sending a ServerHello containing a different SessionID and performing a full handshake (as shown in figure 1 of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346 or <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246), or (2) terminates the connection in some way that prevents the flow of application data.</li>
+</ul></span>
+</li>
+
+<li class="test-" id="_t_55"><a href="#_t_55" class="definition">Test 27.3.3</a>:
+      Test 4.3iii [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports session tickets according to RFC5077, the evaluator shall carry out the following steps (note that for each of these tests, it is not necessary to perform the test case for each supported version of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>):
+<span class="testlist-"><ul>
+
+<li class="test-" id="_t_56"><a href="#_t_56" class="definition">Test 27.3.3.1</a>:
+      a) The evaluator shall permit a successful <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> handshake to occur in which a session ticket is exchanged with the non-TOE client. The evaluator shall then attempt to correctly reuse the previous session by sending the session ticket in the ClientHello. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> responds with a ServerHello with an empty SessionTicket extension, NewSessionTicket, ChangeCipherSpec and Finished messages (as seen in figure 2 of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077).</li>
+
+<li class="test-" id="_t_57"><a href="#_t_57" class="definition">Test 27.3.3.2</a>:
+      b) The evaluator shall permit a successful <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> handshake to occur in which a session ticket is exchanged with the non-TOE client. The evaluator will then modify the session ticket and send it as part of a new Client Hello message. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> either (1) implicitly rejects the session ticket by performing a full handshake (as shown in figure 3 or 4 of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077), or (2) terminates the connection in some way that prevents the flow of application data.</li>
+</ul></span>
+</li>
+	</ul></span>
+	</li>
+      <li class="test-" id="_t_58"><a href="#_t_58" class="definition">Test 27.4</a>:
       
                       Send a message consisting of random bytes from
                       the client after the client has issued the
@@ -1618,7 +1664,7 @@ during handshake.
               </ul></span>
 	      
               <span class="testlist-"><ul>
-                <li class="test-" id="_t_44"><a href="#_t_44" class="definition">Test 29</a>:
+                <li class="test-" id="_t_59"><a href="#_t_59" class="definition">Test 28</a>:
       
                   The evaluator shall send a Client Hello requesting a
                   connection with version SSL 2.0 and verify that the
@@ -1634,14 +1680,14 @@ during handshake.
                 that similarly captures such empirical evidence.  Note that this testing can be accomplished in
                 conjunction with other testing activities.  For each of the following tests, determining that
                 the size matches the expected size is sufficient.
-                <li class="test-" id="_t_45"><a href="#_t_45" class="definition">Test 30</a>:
+                <li class="test-" id="_t_60"><a href="#_t_60" class="definition">Test 29</a>:
       
                   [conditional] If <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr>-based key establishment is selected, the evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> with a
                   certificate containing a supported <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> size and attempt a connection. The evaluator shall verify that
                   the size used matches that which is configured and that the connection is successfully established.
                   The evaluator shall repeat this test for each supported size of <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr>-based key establishment. 
                 </li>
-                <li class="test-" id="_t_46"><a href="#_t_46" class="definition">Test 31</a>:
+                <li class="test-" id="_t_61"><a href="#_t_61" class="definition">Test 30</a>:
       
                   [conditional] If finite-field (i.e. non-EC) Diffie-Hellman ciphers are selected, the evaluator shall attempt a
                   connection using a Diffie-Hellman key exchange with a supported
@@ -1649,7 +1695,7 @@ during handshake.
                   Exchange message are the ones configured. The evaluator shall repeat this test for each supported
                   parameter size or group.
                 </li>
-                <li class="test-" id="_t_47"><a href="#_t_47" class="definition">Test 32</a>:
+                <li class="test-" id="_t_62"><a href="#_t_62" class="definition">Test 31</a>:
       
                   [conditional] If <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> ciphers are selected, the evaluator shall attempt a connection
                   using an <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> ciphersuite with a
@@ -1725,14 +1771,14 @@ during handshake.
         to require <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> mutual authentication of clients for the following tests,
         unless overridden by instructions in the test activity:
               <span class="testlist-"><ul>
-                <li class="test-" id="_t_48"><a href="#_t_48" class="definition">Test 33</a>:
+                <li class="test-" id="_t_63"><a href="#_t_63" class="definition">Test 32</a>:
       
                   The evaluator shall configure the server to send a certificate request
                   to the client.  
                   The client shall send a certificate_list structure which has a length of zero. The evaluator
                   shall verify that the handshake is not finished successfully and no application data flows.
                 </li>
-                <li class="test-" id="_t_49"><a href="#_t_49" class="definition">Test 34</a>:
+                <li class="test-" id="_t_64"><a href="#_t_64" class="definition">Test 33</a>:
       
                   The evaluator shall configure the server to send a certificate request
                   to the client.  
@@ -1740,7 +1786,7 @@ during handshake.
                   message in an attempt to continue the handshake. The evaluator shall verify that the handshake is
                   not finished successfully and no application data flows.
                 </li>
-                <li class="test-" id="_t_50"><a href="#_t_50" class="definition">Test 35</a>:
+                <li class="test-" id="_t_65"><a href="#_t_65" class="definition">Test 34</a>:
       
                   The evaluator shall configure the server to send a certificate request
                   to the client without the supported_signature_algorithm used by the client’s
@@ -1748,7 +1794,7 @@ during handshake.
                   certificate and verify that the handshake is not finished successfully
                   and no application data flows.
                 </li>
-                <li class="test-" id="_t_51"><a href="#_t_51" class="definition">Test 36</a>:
+                <li class="test-" id="_t_66"><a href="#_t_66" class="definition">Test 35</a>:
       
                   The evaluator shall demonstrate that using a certificate without a
                   valid certification path results in the function failing. Using the
@@ -1757,7 +1803,7 @@ during handshake.
                   demonstrate that the function succeeds. The evaluator then shall delete one
                   of the certificates, and show that the function fails.
                 </li>
-                <li class="test-" id="_t_52"><a href="#_t_52" class="definition">Test 37</a>:
+                <li class="test-" id="_t_67"><a href="#_t_67" class="definition">Test 36</a>:
       
                   The aim of this test is to check the response of the server
                   when it receives a client identity  certificate that is signed
@@ -1773,7 +1819,7 @@ during handshake.
                   evaluator shall verify that the attempted connection is
                   denied.
                 </li>
-                <li class="test-" id="_t_53"><a href="#_t_53" class="definition">Test 38</a>:
+                <li class="test-" id="_t_68"><a href="#_t_68" class="definition">Test 37</a>:
       
                   The evaluator shall configure the client to send a certificate with the
                   Client Authentication purpose in the extendedKeyUsage field and verify that
@@ -1782,7 +1828,7 @@ during handshake.
                   denies the connection. Ideally, the two certificates should be identical except
                   for the Client Authentication purpose.
                 </li>
-                <li class="test-" id="_t_54"><a href="#_t_54" class="definition">Test 39</a>:
+                <li class="test-" id="_t_69"><a href="#_t_69" class="definition">Test 38</a>:
       
                   The evaluator shall perform the following modifications to the traffic:
                   a) Configure the server to require mutual authentication and then
@@ -1795,7 +1841,7 @@ during handshake.
               </ul></span>
 	      
               <span class="testlist-"><ul>
-                <li class="test-" id="_t_55"><a href="#_t_55" class="definition">Test 40</a>:
+                <li class="test-" id="_t_70"><a href="#_t_70" class="definition">Test 39</a>:
       
                   The evaluator shall send a client certificate with an identifier that does not match any of the
                   expected identifiers and verify that the server denies the connection. The matching itself
@@ -1824,18 +1870,18 @@ during handshake.
 	      The following tests require connection with a client that supports secure
         renegotiation and the "renegotiation_info" extension.
 	      <span class="testlist-"><ul>
-		<li class="test-" id="_t_56"><a href="#_t_56" class="definition">Test 41</a>:
+		<li class="test-" id="_t_71"><a href="#_t_71" class="definition">Test 40</a>:
       The evaluator shall use a network packet analyzer/sniffer to capture
       the traffic between the two <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> endpoints.  The evaluator shall verify that
       the “renegotiation_info” field is included in the ServerHello message. 
 		</li>
-		<li class="test-" id="_t_57"><a href="#_t_57" class="definition">Test 42</a>:
+		<li class="test-" id="_t_72"><a href="#_t_72" class="definition">Test 41</a>:
       The evaluator shall modify the length portion of the field in the
       ClientHello message in the initial handshake to be non-zero and verify that
       the server sends a failure and terminates the connection.  The evaluator
       shall verify that a properly formatted field results in a successful <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection.
 		</li>
-		<li class="test-" id="_t_58"><a href="#_t_58" class="definition">Test 43</a>:
+		<li class="test-" id="_t_73"><a href="#_t_73" class="definition">Test 42</a>:
       The evaluator shall modify the "client_verify_data" or "server_verify_data"
       value in the ClientHello message received during secure renegotiation and
       verify that the server terminates the connection.
@@ -1846,10 +1892,10 @@ during handshake.
            </i></b></div>
     
     <div class="element"><div class="reqid" id="FCS_DTLSC_EXT.1.1"><a href="#FCS_DTLSC_EXT.1.1" class="abbr">FCS_DTLSC_EXT.1.1</a></div><div class="reqdesc">The product shall implement <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347) and
-      [<b>selection</b>: <span class="selectable-content" id="_s_87"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4347)</span>,  <span class="selectable-content" id="_s_88">no earlier <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> versions</span> ] as a client that supports the cipher suites
-    [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_89">TLS_RSA_WITH_AES_128_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_90">TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_91">TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_92">TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_93">TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_94">TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_95">TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="decdhe1">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe2">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe3">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe5">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe6">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe7">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe8">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li></ul>]
+      [<b>selection</b>: <span class="selectable-content" id="_s_96"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4347)</span>,  <span class="selectable-content" id="_s_97">no earlier <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> versions</span> ] as a client that supports the cipher suites
+    [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_98">TLS_RSA_WITH_AES_128_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_99">TLS_RSA_WITH_AES_256_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_100">TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_101">TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_102">TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_103">TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_104">TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_105">TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_106">TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_107">TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="decdhe1">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe2">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe3">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe4">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe5">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe6">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe7">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="decdhe8">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li></ul>]
       and also supports functionality for 
-      [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="dtlsc_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="_s_105">none</span></li></ul>].
+      [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="dtlsc_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="_s_117">none</span></li></ul>].
       <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -1876,7 +1922,7 @@ during handshake.
 
     <div class="element"><div class="reqid" id="FCS_DTLSC_EXT.1.3"><a href="#FCS_DTLSC_EXT.1.3" class="abbr">FCS_DTLSC_EXT.1.3</a></div><div class="reqdesc">The product shall not establish a trusted channel if the
         server certificate is invalid
-        [<b>selection</b>: <span class="selectable-content" id="_s_106">with no exceptions</span>,  <span class="selectable-content" id="_s_107">except when override is authorized</span> ].
+        [<b>selection</b>: <span class="selectable-content" id="_s_118">with no exceptions</span>,  <span class="selectable-content" id="_s_119">except when override is authorized</span> ].
       <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -1884,7 +1930,7 @@ during handshake.
         to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> apply to this requirement.
       </span></div></div></div>
     <div class="element"><div class="reqid" id="FCS_DTLSC_EXT.1.4"><a href="#FCS_DTLSC_EXT.1.4" class="abbr">FCS_DTLSC_EXT.1.4</a></div><div class="reqdesc">The product shall
-    [<b>selection</b>: <span class="selectable-content" id="_s_108">terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</span>,  <span class="selectable-content" id="_s_109">silently discard the record</span> ]
+    [<b>selection</b>: <span class="selectable-content" id="_s_120">terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</span>,  <span class="selectable-content" id="_s_121">silently discard the record</span> ]
     if a message received contains an invalid MAC or if decryption fails in the case of <abbr class="dyn-abbr"><a href="#abbr_GCM">GCM</a></abbr> and other
     AEAD ciphersuites.
     </div></div>
@@ -1937,11 +1983,11 @@ during handshake.
            </i></b></div>
     
     <div class="element"><div class="reqid" id="FCS_DTLSS_EXT.1.1"><a href="#FCS_DTLSS_EXT.1.1" class="abbr">FCS_DTLSS_EXT.1.1</a></div><div class="reqdesc">The product shall implement <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347) and
-      [<b>selection</b>: <span class="selectable-content" id="_s_110"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4347)</span>,  <span class="selectable-content" id="_s_111">no earlier <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> versions</span> ]
+      [<b>selection</b>: <span class="selectable-content" id="_s_122"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4347)</span>,  <span class="selectable-content" id="_s_123">no earlier <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> versions</span> ]
         as a server that supports the ciphersuites
-        [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_112">TLS_RSA_WITH_AES_128_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_113">TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_114">TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_115">TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_116">TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_117">TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_118">TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_119">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_120">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_121">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_122">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_123">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_124">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_125">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_126">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li></ul>] and no other cipher suites,
+        [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_124">TLS_RSA_WITH_AES_128_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_125">TLS_RSA_WITH_AES_256_CBC_SHA as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_126">TLS_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_127">TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_128">TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_129">TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_130">TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_131">TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_132">TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span></li><li style=""><span class="selectable-content" id="_s_133">TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_134">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_135">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_136">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_137">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_138">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_139">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_140">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li><li style=""><span class="selectable-content" id="_s_141">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289</span></li></ul>] and no other cipher suites,
         and also supports functionality for
-        [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="dtlss_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="_s_128">none</span></li></ul>].
+        [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="dtlss_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="_s_143">none</span></li></ul>].
       <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -1977,14 +2023,14 @@ during handshake.
         server successfully verifies the signed cookie, the Client is not using a spoofed <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address.
       </span></div></div></div>
     <div class="element"><div class="reqid" id="FCS_DTLSS_EXT.1.4"><a href="#FCS_DTLSS_EXT.1.4" class="abbr">FCS_DTLSS_EXT.1.4</a></div><div class="reqdesc">The product shall perform key establishment for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> using
-        [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_129"><abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> with size
-            [<b>selection</b>: <span class="selectable-content" id="_s_130">2048 bits</span>,  <span class="selectable-content" id="_s_131">3072 bits</span>,  <span class="selectable-content" id="_s_132">4096 bits</span>,  <span class="selectable-content" id="_s_133">no other sizes</span> ]
-          </span></li><li style=""><span class="selectable-content" id="_s_134">Diffie-Hellman parameters with size
-            [<b>selection</b>: <span class="selectable-content" id="_s_135">2048 bits</span>,  <span class="selectable-content" id="_s_136">3072 bits</span>,  <span class="selectable-content" id="_s_137">4096 bits</span>,  <span class="selectable-content" id="_s_138">6144 bits</span>,  <span class="selectable-content" id="_s_139">8192 bits</span>,  <span class="selectable-content" id="_s_140">no other size</span> ]
-          </span></li><li style=""><span class="selectable-content" id="_s_141">Diffie-Hellman groups
-            [<b>selection</b>: <span class="selectable-content" id="_s_142">ffdhe2048</span>,  <span class="selectable-content" id="_s_143">ffdhe3072</span>,  <span class="selectable-content" id="_s_144">ffdhe4096</span>,  <span class="selectable-content" id="_s_145">ffdhe6144</span>,  <span class="selectable-content" id="_s_146">ffdhe8192</span>,  <span class="selectable-content" id="_s_147">no other groups</span> ]
-          </span></li><li style=""><span class="selectable-content" id="_s_148"><abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> parameters using elliptic curves
-            [<b>selection</b>: <span class="selectable-content" id="_s_149">secp256r1</span>,  <span class="selectable-content" id="_s_150">secp384r1</span>,  <span class="selectable-content" id="_s_151">secp521r1</span> ] and no other curves</span></li><li style=""><span class="selectable-content" id="_s_152">no other key establishment methods</span></li></ul>].
+        [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_144"><abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> with size
+            [<b>selection</b>: <span class="selectable-content" id="_s_145">2048 bits</span>,  <span class="selectable-content" id="_s_146">3072 bits</span>,  <span class="selectable-content" id="_s_147">4096 bits</span>,  <span class="selectable-content" id="_s_148">no other sizes</span> ]
+          </span></li><li style=""><span class="selectable-content" id="_s_149">Diffie-Hellman parameters with size
+            [<b>selection</b>: <span class="selectable-content" id="_s_150">2048 bits</span>,  <span class="selectable-content" id="_s_151">3072 bits</span>,  <span class="selectable-content" id="_s_152">4096 bits</span>,  <span class="selectable-content" id="_s_153">6144 bits</span>,  <span class="selectable-content" id="_s_154">8192 bits</span>,  <span class="selectable-content" id="_s_155">no other size</span> ]
+          </span></li><li style=""><span class="selectable-content" id="_s_156">Diffie-Hellman groups
+            [<b>selection</b>: <span class="selectable-content" id="_s_157">ffdhe2048</span>,  <span class="selectable-content" id="_s_158">ffdhe3072</span>,  <span class="selectable-content" id="_s_159">ffdhe4096</span>,  <span class="selectable-content" id="_s_160">ffdhe6144</span>,  <span class="selectable-content" id="_s_161">ffdhe8192</span>,  <span class="selectable-content" id="_s_162">no other groups</span> ]
+          </span></li><li style=""><span class="selectable-content" id="_s_163"><abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> parameters using elliptic curves
+            [<b>selection</b>: <span class="selectable-content" id="_s_164">secp256r1</span>,  <span class="selectable-content" id="_s_165">secp384r1</span>,  <span class="selectable-content" id="_s_166">secp521r1</span> ] and no other curves</span></li><li style=""><span class="selectable-content" id="_s_167">no other key establishment methods</span></li></ul>].
       <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -1999,7 +2045,7 @@ during handshake.
         <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> curves selection in the requirement.
       </span></div></div></div>
     <div class="element"><div class="reqid" id="FCS_DTLSS_EXT.1.5"><a href="#FCS_DTLSS_EXT.1.5" class="abbr">FCS_DTLSS_EXT.1.5</a></div><div class="reqdesc">The product shall
-      [<b>selection</b>: <span class="selectable-content" id="_s_153">terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</span>,  <span class="selectable-content" id="_s_154">silently discard the record</span> ]
+      [<b>selection</b>: <span class="selectable-content" id="_s_168">terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</span>,  <span class="selectable-content" id="_s_169">silently discard the record</span> ]
       if a message received contains an invalid MAC or if decryption fails in the case of <abbr class="dyn-abbr"><a href="#abbr_GCM">GCM</a></abbr> and other
       AEAD ciphersuites.
       </div></div>
@@ -2043,7 +2089,7 @@ during handshake.
         while the undefined <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.4 would be represented by the bytes 0xfe 0xfb.
 	
         <span class="testlist-"><ul>
-          <li class="test-" id="_t_59"><a href="#_t_59" class="definition">Test 44</a>:
+          <li class="test-" id="_t_74"><a href="#_t_74" class="definition">Test 43</a>:
       
             The evaluator shall send a Client Hello requesting a
             connection with each version of <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> specified in the selection
