@@ -1023,7 +1023,7 @@ during handshake.
               <selectable>ECDHE parameters using elliptic curves
                 <selectables>
                   <selectable>secp256r1</selectable>
-                  <selectable>secp384r1</selectable>
+                  <selectable id="s-tls-secp384">secp384r1</selectable>
                   <selectable>secp521r1</selectable>
                 </selectables> and no other curves
               </selectable>
