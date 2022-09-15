@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <technical-decisions xmlns="https://niap-ccevs.org/cc/v1"
-	 xmlns:htm="http://www.w3.org/1999/xhtml"
+		     xmlns:htm="http://www.w3.org/1999/xhtml"
+		     xmlns:cc="https://niap-ccevs.org/cc/v1"		     
 	 >
   <decision
       url="https://www.niap-ccevs.org/Documents_and_Guidance/view_td.cfm?TD=0588"
@@ -106,7 +107,7 @@ b) The evaluator shall permit a successful TLS handshake to occur in which a ses
     </replace>
 
     <replace>
-      <xpath-specified xpath="//cc:*[@id='f-tls-version']/cc:note/htm:p[4]">
+      <xpath-specified xpath="//cc:*[@id='f-tlss-version']/cc:note/htm:p[4]">
 	<htm:p>
 	  If <htm:i>session renegotiation</htm:i> is selected, then the ST must additionally include
           the requirements from FCS_TLSS_EXT.4. If the TOE implements
@@ -125,7 +126,7 @@ b) The evaluator shall permit a successful TLS handshake to occur in which a ses
     </replace>
     <replace>
       <!-- <xpath-specified xpath="//cc:*[@id='f-tls-version']//cc:activity/cc:Test/cc:test[4]/cc:test[3]"> -->
-      <xpath-specified xpath="//cc:*[@id='f-tls-version']//cc:aactivity/cc:Tests/cc:testlist[1]/cc:test[3]/cc:testlist/cc:test[3]">
+      <xpath-specified xpath="//cc:*[@id='f-tlss-version']//cc:aactivity/cc:Tests/cc:testlist[1]/cc:test[3]/cc:testlist/cc:test[3]">
       <!-- <xpath-specified xpath="//cc:*[@id='f-tls-version']//cc:aactivity//cc:testlist[1]/cc:test[4]/cc:testlist[1]"> -->
       <test>
 	  Demonstrate that the TOE will not resume a
