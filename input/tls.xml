@@ -1397,7 +1397,7 @@ during handshake.
       <title>The product shall not establish a trusted channel if the
         server certificate is invalid
         <selectables>
-        <selectable exclusive="yes">with no exceptions</selectable>
+        <selectable exclusive="yes" id="s-dtlsc-no-excep">with no exceptions</selectable>
         <selectable>except when override is authorized</selectable>
       </selectables>.
       </title>
