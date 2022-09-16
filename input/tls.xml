@@ -527,7 +527,7 @@
               server certificate is invalid
               <selectables linebreak="yes">
               <selectable exclusive="yes" id="s-tlsc-no-excep">with no exceptions</selectable>
-              <selectable>except when override is authorized</selectable>
+              <selectable id="s-tlsc-override">except when override is authorized</selectable>
             </selectables>.
             </title>
             <note role="application">Validity is determined by the identifier verification,
