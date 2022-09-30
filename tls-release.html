@@ -336,6 +336,10 @@ function showTarget(id){
 	}
 
    
+    .comp .description{
+        padding-bottom: 20px;
+        display: block;
+    }    
    
    
           .figure{
@@ -615,7 +619,7 @@ function showTarget(id){
       contexts</td></tr>
 </table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ppoverview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#TOEdescription" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#Conformance_Claims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#Security_Functional_Requirements" style="text-indent:0px">3<span>Security Functional Requirements</span></a><a href="#fcs" style="text-indent:10px">3.1<span>Cryptographic Support (FCS)</span></a><a href="#opt-app" style="text-indent:0px">Appendix A - <span>Optional Requirements</span></a><a href="#optional-reqs" style="text-indent:10px">A.1<span>Strictly Optional  Requirements
     </span></a><a href="#objective-reqs" style="text-indent:10px">A.2<span>Objective  Requirements
-    </span></a><a href="#fcs-objective" style="text-indent:20px">A.2.1<span>Cryptographic Support (FCS)</span></a><a href="#feat-based-reqs" style="text-indent:10px">A.3<span>Implementation-dependent  Requirements
+    </span></a><a href="#fcs-objective" style="text-indent:20px">A.2.1<span>Cryptographic Support (FCS)</span></a><a href="#feat-based-reqs" style="text-indent:10px">A.3<span>Implementation-based  Requirements
     </span></a><a href="#sel-based-reqs" style="text-indent:0px">Appendix B - <span>Selection-based  Requirements
     </span></a><a href="#fcs-sel-based" style="text-indent:10px">B.1<span>Cryptographic Support (FCS)</span></a><a href="#acronyms" style="text-indent:0px">Appendix C - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix D - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
     <h2 class="indexable" data-level="2" id="ppoverview">1.1 Overview</h2>
@@ -825,7 +829,7 @@ The following sections list Common Criteria and technology terms used in this do
 	  the baseline requirements in future versions of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Package. Adoption by vendors is
 	  encouraged and expected as soon as possible.<br/><br/>
 
-  The third type (<a href="#feat-based-reqs" class="dynref">A.3 Implementation-dependent  Requirements</a>) 
+  The third type (<a href="#feat-based-reqs" class="dynref">A.3 Implementation-based  Requirements</a>) 
 are dependent on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implementing a particular function.
 If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of these requirements, the vendor must either add the related <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> or disable the functionality for the
 	  evaluated configuration. 
@@ -920,10 +924,10 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
 	      evaluator shall attempt a connection using that client
 	      certificate and verify that the server denies the
 	      client’s connection.
-	      </div></div></div></div><h2 id="feat-based-reqs" class="indexable" data-level="2">A.3 Implementation-dependent  Requirements
+	      </div></div></div></div><h2 id="feat-based-reqs" class="indexable" data-level="2">A.3 Implementation-based  Requirements
     </h2><p>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Package does not define any 
-            Implementation-dependent requirements.</p><h1 id="sel-based-reqs" class="indexable" data-level="A">Appendix B -  Selection-based  Requirements
-    </h1>
+            Implementation-based requirements.</p><h1 id="sel-based-reqs" class="indexable" data-level="A">Appendix B -  Selection-based  Requirements
+    </h1><span class="description">
 	<p>As indicated in the introduction to this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Package,
         the baseline requirements
         (those that must be performed by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or its underlying platform)
@@ -932,7 +936,7 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
         the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Package:
         if certain selections are made, then additional requirements below must be included.
  	</p>
-		 <h2 id="fcs-sel-based" class="indexable" data-level="2">B.1 Cryptographic Support (FCS)</h2><div class="comp" id="FCS_TLSC_EXT.1"><h4>FCS_TLSC_EXT.1 TLS Client Protocol</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+		 </span><h2 id="fcs-sel-based" class="indexable" data-level="2">B.1 Cryptographic Support (FCS)</h2><div class="comp" id="FCS_TLSC_EXT.1"><h4>FCS_TLSC_EXT.1 TLS Client Protocol</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
            <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
            </i></b></div>
           
@@ -2147,7 +2151,7 @@ during handshake.
 <tr><td><span class="term" id="abbr_UDP"><abbr class="dyn-abbr"><a href="#abbr_UDP">UDP</a></abbr></span></td><td><span id="long_abbr_UDP">User Datagram Protocol</span></td></tr>
 <tr><td><span class="term" id="abbr_URI"><abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr></span></td><td><span id="long_abbr_URI">Uniform Resource Identifier</span></td></tr>
 <tr><td><span class="term" id="abbr_URL"><abbr class="dyn-abbr"><a href="#abbr_URL">URL</a></abbr></span></td><td><span id="long_abbr_URL">Uniform Resource Locator</span></td></tr>
-</table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix D -  Bibliography</h1><table><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td>Common Criteria for Information Technology Security Evaluation -
+</table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix D -  Bibliography</h1><table><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation -
           <ul>
             <li>
               <a href="http://www.commoncriteriaportal.org/cc">Part 1:
@@ -2161,7 +2165,7 @@ during handshake.
               <a href="http://www.commoncriteriaportal.org/cc">Part 3:
                 Security Assurance Components</a>, CCMB-2017-04-003, Version 3.1 Revision 5, April 2017.
               </li>
-          </ul></td></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td>Common Criteria for Information Technology Security Evaluation - <ul>
+          </ul></span></td></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation - <ul>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R5.pdf">Part
                 1: Introduction and General Model</a>, CCMB-2017-04-001, Version 3.1 Revision 5,
               April 2017.</li>
@@ -2171,4 +2175,4 @@ during handshake.
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R5.pdf">Part
                 3: Security Assurance Components</a>, CCMB-2017-04-003, Version 3.1 Revision 5,
               April 2017.</li>
-          </ul></td></tr></table></body></html>
+          </ul></span></td></tr></table></body></html>

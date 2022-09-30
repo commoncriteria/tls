@@ -336,6 +336,10 @@ function showTarget(id){
 	}
 
    
+    .comp .description{
+        padding-bottom: 20px;
+        display: block;
+    }    
    
    
           .figure{
@@ -615,7 +619,7 @@ function showTarget(id){
       contexts</td></tr>
 </table><h2>Contents</h2><div class="toc" id="toc"><a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#ppoverview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#TOEdescription" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#Conformance_Claims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#Security_Functional_Requirements" style="text-indent:0px">3<span>Security Functional Requirements</span></a><a href="#fcs" style="text-indent:10px">3.1<span>Cryptographic Support (FCS)</span></a><a href="#opt-app" style="text-indent:0px">Appendix A - <span>Optional Requirements</span></a><a href="#optional-reqs" style="text-indent:10px">A.1<span>Strictly Optional  Requirements
     </span></a><a href="#objective-reqs" style="text-indent:10px">A.2<span>Objective  Requirements
-    </span></a><a href="#fcs-objective" style="text-indent:20px">A.2.1<span>Cryptographic Support (FCS)</span></a><a href="#feat-based-reqs" style="text-indent:10px">A.3<span>Implementation-dependent  Requirements
+    </span></a><a href="#fcs-objective" style="text-indent:20px">A.2.1<span>Cryptographic Support (FCS)</span></a><a href="#feat-based-reqs" style="text-indent:10px">A.3<span>Implementation-based  Requirements
     </span></a><a href="#sel-based-reqs" style="text-indent:0px">Appendix B - <span>Selection-based  Requirements
     </span></a><a href="#fcs-sel-based" style="text-indent:10px">B.1<span>Cryptographic Support (FCS)</span></a><a href="#acronyms" style="text-indent:0px">Appendix C - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix D - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
     <h2 class="indexable" data-level="2" id="ppoverview">1.1 Overview</h2>
@@ -825,7 +829,7 @@ The following sections list Common Criteria and technology terms used in this do
 	  the baseline requirements in future versions of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Package. Adoption by vendors is
 	  encouraged and expected as soon as possible.<br/><br/>
 
-  The third type (<a href="#feat-based-reqs" class="dynref">A.3 Implementation-dependent  Requirements</a>) 
+  The third type (<a href="#feat-based-reqs" class="dynref">A.3 Implementation-based  Requirements</a>) 
 are dependent on the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implementing a particular function.
 If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of these requirements, the vendor must either add the related <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> or disable the functionality for the
 	  evaluated configuration. 
@@ -856,7 +860,7 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
               The evaluator shall also perform the following
               tests:
               <span class="testlist-"><ul>
-                <li class="test-"><span id="_t_33">Test 1<a href="#_t_33" class="definition"></a></span>:
+                <li class="test-"><span id="_t_30">Test 1<a href="#_t_30" class="definition"></a></span>:
       
                   The evaluator shall configure the server to send a
                   certificate in the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection that is not
@@ -867,7 +871,7 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
                   the product disconnects after receiving the server's
                   Certificate handshake message.
                 </li>
-                <li class="test-"><span id="_t_34">Test 2<a href="#_t_34" class="definition"></a></span>:
+                <li class="test-"><span id="_t_31">Test 2<a href="#_t_31" class="definition"></a></span>:
       
                   [conditional] If the client supports a <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr>
                   cipher suite, the evaluator shall configure the
@@ -920,10 +924,10 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
 	      evaluator shall attempt a connection using that client
 	      certificate and verify that the server denies the
 	      client’s connection.
-	      </div></div></div></div><h2 id="feat-based-reqs" class="indexable" data-level="2">A.3 Implementation-dependent  Requirements
+	      </div></div></div></div><h2 id="feat-based-reqs" class="indexable" data-level="2">A.3 Implementation-based  Requirements
     </h2><p>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Package does not define any 
-            Implementation-dependent requirements.</p><h1 id="sel-based-reqs" class="indexable" data-level="A">Appendix B -  Selection-based  Requirements
-    </h1>
+            Implementation-based requirements.</p><h1 id="sel-based-reqs" class="indexable" data-level="A">Appendix B -  Selection-based  Requirements
+    </h1><span class="description">
 	<p>As indicated in the introduction to this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Package,
         the baseline requirements
         (those that must be performed by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or its underlying platform)
@@ -932,7 +936,7 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> fulfills any of
         the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Package:
         if certain selections are made, then additional requirements below must be included.
  	</p>
-		 <h2 id="fcs-sel-based" class="indexable" data-level="2">B.1 Cryptographic Support (FCS)</h2><div class="comp" id="FCS_TLSC_EXT.1"><h4>FCS_TLSC_EXT.1 TLS Client Protocol</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+		 </span><h2 id="fcs-sel-based" class="indexable" data-level="2">B.1 Cryptographic Support (FCS)</h2><div class="comp" id="FCS_TLSC_EXT.1"><h4>FCS_TLSC_EXT.1 TLS Client Protocol</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
            <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
            </i></b></div>
           
@@ -1275,24 +1279,19 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports certif
               results in the function failing as follows, unless excepted:
               <span class="testlist-"><ul>
                 <li class="test-"><span id="_t_24">Test 15<a href="#_t_24" class="definition"></a></span>:
-      
-	      The evaluator will perform the following subtests:
-	      <span class="testlist-"><ul>
-	      <li class="test-"><span id="t-client-valid">Test 15.1<a href="#t-client-valid" class="definition"></a></span>:
-      The evaluator will demonstrate that a server using a certificate with a valid certification path successfully connects.</li>
-	      <li class="test-"><span id="t-client-invalid">Test 15.2<a href="#t-client-invalid" class="definition"></a></span>:
-      The evaluator will modify the certificate chain used by the server in test <a href="#t-client-valid" class="dynref">Test 15.1</a> to be invalid and demonstrate that a server using a certificate without a valid certification path to a trust store element of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> results in an authentication failure.</li>
-	      <li class="test-"><span id="_t_27">Test 15.3<a href="#_t_27" class="definition"></a></span>:
-      [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> trust store can be managed, the evaluator will modify the trust store element used in <a href="#t-client-valid" class="dynref">Test 15.1</a> to be untrusted and demonstrate that a connection attempt from the same server used in <a href="#t-client-valid" class="dynref">Test 15.1</a> results in an authentication failure.</li>
-	      </ul></span>
-	    </li>
-	  <li class="test-"><span id="_t_28">Test 16<a href="#_t_28" class="definition"></a></span>:
+      The evaluator shall demonstrate that a server using a certificate without a
+                  valid certification path results in an authentication failure. Using the
+                  administrative guidance, the evaluator shall then load the trusted <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr>
+                  certificate(s) needed to validate the server's certificate, and demonstrate that the
+                  connection succeeds. The evaluator then shall delete one of the <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr> certificates,
+                  and show that the connection fails. </li>
+                <li class="test-"><span id="_t_25">Test 16<a href="#_t_25" class="definition"></a></span>:
        The evaluator shall demonstrate that a server using a certificate which has
                   been revoked results in an authentication failure. </li>
-                <li class="test-"><span id="_t_29">Test 17<a href="#_t_29" class="definition"></a></span>:
+                <li class="test-"><span id="_t_26">Test 17<a href="#_t_26" class="definition"></a></span>:
        The evaluator shall demonstrate that a server using a certificate which has
                   passed its expiration date results in an authentication failure. </li>
-                <li class="test-"><span id="_t_30">Test 18<a href="#_t_30" class="definition"></a></span>:
+                <li class="test-"><span id="_t_27">Test 18<a href="#_t_27" class="definition"></a></span>:
        The evaluator shall demonstrate that a server using a certificate which does
                   not have a valid identifier results in an authentication failure. </li>
               </ul></span>
@@ -1330,14 +1329,14 @@ If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports certif
               The evaluator shall also perform the following tests:
               
 	      <span class="testlist-"><ul>
-          <li class="test-"><span id="_t_31">Test 19<a href="#_t_31" class="definition"></a></span>:
+          <li class="test-"><span id="_t_28">Test 19<a href="#_t_28" class="definition"></a></span>:
       The evaluator shall establish a connection to a server that is not
 configured for mutual authentication (i.e. does not send Server’s Certificate
 Request (type 13) message). The evaluator observes negotiation of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel
 and confirms that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> did not send Client’s Certificate message (type 11)
 during handshake. 
 		</li>
-		<li class="test-"><span id="_t_32">Test 20<a href="#_t_32" class="definition"></a></span>:
+		<li class="test-"><span id="_t_29">Test 20<a href="#_t_29" class="definition"></a></span>:
       The evaluator shall establish a connection to a server with a
 		shared trusted root that is configured for mutual authentication (i.e. it
 		sends Server’s Certificate Request (type 13) message). The evaluator
@@ -1377,17 +1376,17 @@ during handshake.
             <div class="eacategory">Tests</div><div class="ea">
               The evaluator shall perform the following tests:
               <span class="testlist-"><ul>
-                <li class="test-"><span id="_t_35">Test 21<a href="#_t_35" class="definition"></a></span>:
+                <li class="test-"><span id="_t_32">Test 21<a href="#_t_32" class="definition"></a></span>:
       The evaluator shall use a network packet analyzer/sniffer to capture the traffic between the two
                   <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> endpoints.  The evaluator shall verify that either the “renegotiation_info” field or the <abbr class="dyn-abbr"><a href="#abbr_SCSV">SCSV</a></abbr>
                   cipher suite is included in the ClientHello message during the initial handshake.</li>
-                <li class="test-"><span id="_t_36">Test 22<a href="#_t_36" class="definition"></a></span>:
+                <li class="test-"><span id="_t_33">Test 22<a href="#_t_33" class="definition"></a></span>:
       The evaluator shall verify the Client’s handling of ServerHello messages received during
                   the initial handshake that include the “renegotiation_info” extension.  The evaluator shall modify
                   the length portion of this field in the ServerHello message to be non-zero and verify that the client
                   sends a failure and terminates the connection.  The evaluator shall verify that a properly formatted
                   field results in a successful <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection.</li>
-                <li class="test-"><span id="_t_37">Test 23<a href="#_t_37" class="definition"></a></span>:
+                <li class="test-"><span id="_t_34">Test 23<a href="#_t_34" class="definition"></a></span>:
       The evaluator shall verify that ServerHello messages received during secure renegotiation contain
                   the “renegotiation_info” extension.  The evaluator shall modify either the “client_verify_data” or
                   “server_verify_data” value and verify that the client terminates the connection.</li>
@@ -1417,7 +1416,7 @@ during handshake.
               The evaluator shall also perform the following test:
               <br/>
               <span class="testlist-"><ul>
-              <li class="test-"><span id="_t_38">Test 24<a href="#_t_38" class="definition"></a></span>:
+              <li class="test-"><span id="_t_35">Test 24<a href="#_t_35" class="definition"></a></span>:
       
               The evaluator shall configure a server to perform key exchange using each of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s supported
               curves and/or groups. The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> successfully connects to the server.
@@ -1559,7 +1558,19 @@ during handshake.
               The evaluator shall
               also perform the following tests:
               <span class="testlist-"><ul>
-                <li class="test-"><span id="_t_39">Test 25<a href="#_t_39" class="definition"></a></span>:
+                <li class="test-"><span id="_t_36">Test 25<a href="#_t_36" class="definition"></a></span>:
+      
+                  The evaluator shall establish a
+                  <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection using each of the
+                  cipher suites specified by the requirement. This connection may be established as
+                  part of the establishment of a higher-level protocol, e.g., as part of an <abbr class="dyn-abbr"><a href="#abbr_EAP">EAP</a></abbr>
+                  session. It is sufficient to observe the successful negotiation of a cipher suite
+                  to satisfy the intent of the test; it is not necessary to examine the
+                  characteristics of the encrypted traffic in an attempt to discern the cipher suite
+                  being used (for example, that the cryptographic algorithm is 128-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> and not
+                  256-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>).
+                </li>
+                <li class="test-"><span id="_t_37">Test 26<a href="#_t_37" class="definition"></a></span>:
       
                   The evaluator shall send a Client Hello to the server with a list of
                   cipher suites that does not contain any of the cipher suites in the server’s <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>
@@ -1568,7 +1579,7 @@ during handshake.
                   TLS_NULL_WITH_NULL_NULL cipher suite and verify that the server
                   denies the connection.
                 </li>
-                <li class="test-"><span id="_t_40">Test 26<a href="#_t_40" class="definition"></a></span>:
+                <li class="test-"><span id="_t_38">Test 27<a href="#_t_38" class="definition"></a></span>:
       
 		  If <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> key exchange is used in one of the selected ciphersuites, the evaluator shall use a client to send a properly
 		  constructed Key Exchange message with a modified
@@ -1577,11 +1588,11 @@ during handshake.
 		  handshake is not completed successfully and no
 		  application data flows.
                 </li>
-                <li class="test-"><span id="_t_41">Test 27<a href="#_t_41" class="definition"></a></span>:
+                <li class="test-"><span id="_t_39">Test 28<a href="#_t_39" class="definition"></a></span>:
       
                   The evaluator shall perform the following modifications to the traffic:
                   <span class="testlist-"><ul>
-                    <li class="test-"><span id="_t_42">Test 27.1<a href="#_t_42" class="definition"></a></span>:
+                    <li class="test-"><span id="_t_40">Test 28.1<a href="#_t_40" class="definition"></a></span>:
       
                       Change the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> version proposed
                       by the client in the Client Hello to a non-supported
@@ -1589,70 +1600,25 @@ during handshake.
                       represented by the two bytes 03 04) and verify that the server rejects the
                       connection.
                     </li>
-                    <li class="test-"><span id="_t_43">Test 27.2<a href="#_t_43" class="definition"></a></span>:
+                    <li class="test-"><span id="_t_41">Test 28.2<a href="#_t_41" class="definition"></a></span>:
       
                       Modify a byte in the data of the client's Finished handshake message, and verify that the
                       server rejects the connection and does not send any application data.
                     </li>
-                    <li class="test-"><span id="_t_44">Test 27.3<a href="#_t_44" class="definition"></a></span>:
+                    <li class="test-"><span id="_t_42">Test 28.3<a href="#_t_42" class="definition"></a></span>:
       
-	  Demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will not resume a
-	session for which the client failed to complete
-	the handshake (independent of <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> support for
-	session resumption):
-	<span class="testlist-"><ul>
-	<li class="test-"><span id="_t_45">Test 27.3.1<a href="#_t_45" class="definition"></a></span>:
-      
-Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not support session resumption based on session IDs according to RFC4346 (TLS1.1) or RFC5246 (TLS1.2) or session tickets according to RFC5077, the evaluator shall perform the following test:
-<span class="testlist-"><ul>
-  <li class="test-"><span id="_t_46">Test 27.3.1.1<a href="#_t_46" class="definition"></a></span>:
-      The evaluator shall send a Client Hello with a zero-length session identifier and with a SessionTicket extension containing a zero-length ticket.</li>
-
-  <li class="test-"><span id="_t_47">Test 27.3.1.2<a href="#_t_47" class="definition"></a></span>:
-      The evaluator shall verify the server does not send a NewSessionTicket handshake message (at any point in the handshake).</li>
-  <li class="test-"><span id="_t_48">Test 27.3.1.3<a href="#_t_48" class="definition"></a></span>:
-      The evaluator shall verify the Server Hello message contains a zero-length session identifier or passes the following steps:
-  <p>Note: The following steps are only performed if the ServerHello message contains a non-zero length SessionID.</p>
-  <span class="testlist-"><ul>
-    <li class="test-"><span id="t-cap-sess-id">Test 27.3.1.3.1<a href="#t-cap-sess-id" class="definition"></a></span>:
-      The evaluator shall complete the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> handshake and capture the SessionID from the ServerHello.</li>
-    <li class="test-"><span id="_t_50">Test 27.3.1.3.2<a href="#_t_50" class="definition"></a></span>:
-      The evaluator shall send a ClientHello containing the SessionID captured in <a href="#t-cap-sess-id" class="dynref">Test 27.3.1.3.1</a>.
-    This can be done by keeping the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session in <a href="#t-cap-sess-id" class="dynref">Test 27.3.1.3.1</a> open or start a new <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session using the SessionID captured in step <a href="#t-cap-sess-id" class="dynref">Test 27.3.1.3.1</a>.</li>
-
-    <li class="test-"><span id="_t_51">Test 27.3.1.3.3<a href="#_t_51" class="definition"></a></span>:
-      The evaluator shall verify the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (1) implicitly rejects the SessionID by sending a ServerHello containing a different SessionID and by performing a full handshake (as shown in Figure 1 of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346 or <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246), or (2) terminates the connection in some way that prevents the flow of application data.</li>
-  </ul></span>
-</li>
-</ul></span>
-</li>
-
-<li class="test-"><span id="_t_52">Test 27.3.2<a href="#_t_52" class="definition"></a></span>:
-      Test 4.3ii [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports session resumption using session IDs according to RFC4346 (TLS1.1) or RFC5246 (TLS1.2), the evaluator shall carry out the following steps (note that for each of these tests, it is not necessary to perform the test case for each supported version of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>):
-<span class="testlist-"><ul>
-
-  <li class="test-"><span id="_t_53">Test 27.3.2.1<a href="#_t_53" class="definition"></a></span>:
-      a) The evaluator shall conduct a successful handshake and capture the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>-generated session ID in the Server Hello message. The evaluator shall then initiate a new <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection and send the previously captured session ID to show that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> resumed the previous session by responding with ServerHello containing the same SessionID immediately followed by ChangeCipherSpec and Finished messages (as shown in Figure 2 of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346 or <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246).</li>
-
-  <li class="test-"><span id="_t_54">Test 27.3.2.2<a href="#_t_54" class="definition"></a></span>:
-      b) The evaluator shall initiate a handshake and capture the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>-generated session ID in the Server Hello message. The evaluator shall then, within the same handshake, generate or force an unencrypted fatal Alert message immediately before the client would otherwise send its ChangeCipherSpec message thereby disrupting the handshake. The evaluator shall then initiate a new Client Hello using the previously captured session ID, and verify that the server (1) implicitly rejects the session ID by sending a ServerHello containing a different SessionID and performing a full handshake (as shown in figure 1 of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346 or <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246), or (2) terminates the connection in some way that prevents the flow of application data.</li>
-</ul></span>
-</li>
-
-<li class="test-"><span id="_t_55">Test 27.3.3<a href="#_t_55" class="definition"></a></span>:
-      Test 4.3iii [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports session tickets according to RFC5077, the evaluator shall carry out the following steps (note that for each of these tests, it is not necessary to perform the test case for each supported version of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>):
-<span class="testlist-"><ul>
-
-<li class="test-"><span id="_t_56">Test 27.3.3.1<a href="#_t_56" class="definition"></a></span>:
-      a) The evaluator shall permit a successful <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> handshake to occur in which a session ticket is exchanged with the non-TOE client. The evaluator shall then attempt to correctly reuse the previous session by sending the session ticket in the ClientHello. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> responds with a ServerHello with an empty SessionTicket extension, NewSessionTicket, ChangeCipherSpec and Finished messages (as seen in figure 2 of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077).</li>
-
-<li class="test-"><span id="_t_57">Test 27.3.3.2<a href="#_t_57" class="definition"></a></span>:
-      b) The evaluator shall permit a successful <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> handshake to occur in which a session ticket is exchanged with the non-TOE client. The evaluator will then modify the session ticket and send it as part of a new Client Hello message. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> either (1) implicitly rejects the session ticket by performing a full handshake (as shown in figure 3 or 4 of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077), or (2) terminates the connection in some way that prevents the flow of application data.</li>
-</ul></span>
-</li>
-	</ul></span>
-	</li>
-      <li class="test-"><span id="_t_58">Test 27.4<a href="#_t_58" class="definition"></a></span>:
+		      Demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will not resume a
+		      session for which the client failed to complete
+		      the handshake (independent of <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> support for
+		      session resumption): Generate a Fatal Alert by
+		      sending a Finished message from the client
+		      before the client sends a ChangeCipherSpec
+		      message, and then send a Client Hello with the
+		      session identifier from the previous incomplete
+		      session, and verify that the server does not
+		      resume the session.
+                    </li>
+                    <li class="test-"><span id="_t_43">Test 28.4<a href="#_t_43" class="definition"></a></span>:
       
                       Send a message consisting of random bytes from
                       the client after the client has issued the
@@ -1664,7 +1630,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
               </ul></span>
 	      
               <span class="testlist-"><ul>
-                <li class="test-"><span id="_t_59">Test 28<a href="#_t_59" class="definition"></a></span>:
+                <li class="test-"><span id="_t_44">Test 29<a href="#_t_44" class="definition"></a></span>:
       
                   The evaluator shall send a Client Hello requesting a
                   connection with version SSL 2.0 and verify that the
@@ -1680,14 +1646,14 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
                 that similarly captures such empirical evidence.  Note that this testing can be accomplished in
                 conjunction with other testing activities.  For each of the following tests, determining that
                 the size matches the expected size is sufficient.
-                <li class="test-"><span id="_t_60">Test 29<a href="#_t_60" class="definition"></a></span>:
+                <li class="test-"><span id="_t_45">Test 30<a href="#_t_45" class="definition"></a></span>:
       
                   [conditional] If <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr>-based key establishment is selected, the evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> with a
                   certificate containing a supported <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> size and attempt a connection. The evaluator shall verify that
                   the size used matches that which is configured and that the connection is successfully established.
                   The evaluator shall repeat this test for each supported size of <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr>-based key establishment. 
                 </li>
-                <li class="test-"><span id="_t_61">Test 30<a href="#_t_61" class="definition"></a></span>:
+                <li class="test-"><span id="_t_46">Test 31<a href="#_t_46" class="definition"></a></span>:
       
                   [conditional] If finite-field (i.e. non-EC) Diffie-Hellman ciphers are selected, the evaluator shall attempt a
                   connection using a Diffie-Hellman key exchange with a supported
@@ -1695,7 +1661,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
                   Exchange message are the ones configured. The evaluator shall repeat this test for each supported
                   parameter size or group.
                 </li>
-                <li class="test-"><span id="_t_62">Test 31<a href="#_t_62" class="definition"></a></span>:
+                <li class="test-"><span id="_t_47">Test 32<a href="#_t_47" class="definition"></a></span>:
       
                   [conditional] If <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> ciphers are selected, the evaluator shall attempt a connection
                   using an <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> ciphersuite with a
@@ -1771,14 +1737,14 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
         to require <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> mutual authentication of clients for the following tests,
         unless overridden by instructions in the test activity:
               <span class="testlist-"><ul>
-                <li class="test-"><span id="_t_63">Test 32<a href="#_t_63" class="definition"></a></span>:
+                <li class="test-"><span id="_t_48">Test 33<a href="#_t_48" class="definition"></a></span>:
       
                   The evaluator shall configure the server to send a certificate request
                   to the client.  
                   The client shall send a certificate_list structure which has a length of zero. The evaluator
                   shall verify that the handshake is not finished successfully and no application data flows.
                 </li>
-                <li class="test-"><span id="_t_64">Test 33<a href="#_t_64" class="definition"></a></span>:
+                <li class="test-"><span id="_t_49">Test 34<a href="#_t_49" class="definition"></a></span>:
       
                   The evaluator shall configure the server to send a certificate request
                   to the client.  
@@ -1786,7 +1752,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
                   message in an attempt to continue the handshake. The evaluator shall verify that the handshake is
                   not finished successfully and no application data flows.
                 </li>
-                <li class="test-"><span id="_t_65">Test 34<a href="#_t_65" class="definition"></a></span>:
+                <li class="test-"><span id="_t_50">Test 35<a href="#_t_50" class="definition"></a></span>:
       
                   The evaluator shall configure the server to send a certificate request
                   to the client without the supported_signature_algorithm used by the client’s
@@ -1794,7 +1760,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
                   certificate and verify that the handshake is not finished successfully
                   and no application data flows.
                 </li>
-                <li class="test-"><span id="_t_66">Test 35<a href="#_t_66" class="definition"></a></span>:
+                <li class="test-"><span id="_t_51">Test 36<a href="#_t_51" class="definition"></a></span>:
       
                   The evaluator shall demonstrate that using a certificate without a
                   valid certification path results in the function failing. Using the
@@ -1803,7 +1769,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
                   demonstrate that the function succeeds. The evaluator then shall delete one
                   of the certificates, and show that the function fails.
                 </li>
-                <li class="test-"><span id="_t_67">Test 36<a href="#_t_67" class="definition"></a></span>:
+                <li class="test-"><span id="_t_52">Test 37<a href="#_t_52" class="definition"></a></span>:
       
                   The aim of this test is to check the response of the server
                   when it receives a client identity  certificate that is signed
@@ -1819,7 +1785,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
                   evaluator shall verify that the attempted connection is
                   denied.
                 </li>
-                <li class="test-"><span id="_t_68">Test 37<a href="#_t_68" class="definition"></a></span>:
+                <li class="test-"><span id="_t_53">Test 38<a href="#_t_53" class="definition"></a></span>:
       
                   The evaluator shall configure the client to send a certificate with the
                   Client Authentication purpose in the extendedKeyUsage field and verify that
@@ -1828,7 +1794,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
                   denies the connection. Ideally, the two certificates should be identical except
                   for the Client Authentication purpose.
                 </li>
-                <li class="test-"><span id="_t_69">Test 38<a href="#_t_69" class="definition"></a></span>:
+                <li class="test-"><span id="_t_54">Test 39<a href="#_t_54" class="definition"></a></span>:
       
                   The evaluator shall perform the following modifications to the traffic:
                   a) Configure the server to require mutual authentication and then
@@ -1841,7 +1807,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
               </ul></span>
 	      
               <span class="testlist-"><ul>
-                <li class="test-"><span id="_t_70">Test 39<a href="#_t_70" class="definition"></a></span>:
+                <li class="test-"><span id="_t_55">Test 40<a href="#_t_55" class="definition"></a></span>:
       
                   The evaluator shall send a client certificate with an identifier that does not match any of the
                   expected identifiers and verify that the server denies the connection. The matching itself
@@ -1870,18 +1836,18 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
 	      The following tests require connection with a client that supports secure
         renegotiation and the "renegotiation_info" extension.
 	      <span class="testlist-"><ul>
-		<li class="test-"><span id="_t_71">Test 40<a href="#_t_71" class="definition"></a></span>:
+		<li class="test-"><span id="_t_56">Test 41<a href="#_t_56" class="definition"></a></span>:
       The evaluator shall use a network packet analyzer/sniffer to capture
       the traffic between the two <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> endpoints.  The evaluator shall verify that
       the “renegotiation_info” field is included in the ServerHello message. 
 		</li>
-		<li class="test-"><span id="_t_72">Test 41<a href="#_t_72" class="definition"></a></span>:
+		<li class="test-"><span id="_t_57">Test 42<a href="#_t_57" class="definition"></a></span>:
       The evaluator shall modify the length portion of the field in the
       ClientHello message in the initial handshake to be non-zero and verify that
       the server sends a failure and terminates the connection.  The evaluator
       shall verify that a properly formatted field results in a successful <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection.
 		</li>
-		<li class="test-"><span id="_t_73">Test 42<a href="#_t_73" class="definition"></a></span>:
+		<li class="test-"><span id="_t_58">Test 43<a href="#_t_58" class="definition"></a></span>:
       The evaluator shall modify the "client_verify_data" or "server_verify_data"
       value in the ClientHello message received during secure renegotiation and
       verify that the server terminates the connection.
@@ -2089,7 +2055,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
         while the undefined <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.4 would be represented by the bytes 0xfe 0xfb.
 	
         <span class="testlist-"><ul>
-          <li class="test-"><span id="_t_74">Test 43<a href="#_t_74" class="definition"></a></span>:
+          <li class="test-"><span id="_t_59">Test 44<a href="#_t_59" class="definition"></a></span>:
       
             The evaluator shall send a Client Hello requesting a
             connection with each version of <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> specified in the selection
@@ -2193,7 +2159,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
 <tr><td><span class="term" id="abbr_UDP"><abbr class="dyn-abbr"><a href="#abbr_UDP">UDP</a></abbr></span></td><td><span id="long_abbr_UDP">User Datagram Protocol</span></td></tr>
 <tr><td><span class="term" id="abbr_URI"><abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr></span></td><td><span id="long_abbr_URI">Uniform Resource Identifier</span></td></tr>
 <tr><td><span class="term" id="abbr_URL"><abbr class="dyn-abbr"><a href="#abbr_URL">URL</a></abbr></span></td><td><span id="long_abbr_URL">Uniform Resource Locator</span></td></tr>
-</table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix D -  Bibliography</h1><table><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td>Common Criteria for Information Technology Security Evaluation -
+</table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix D -  Bibliography</h1><table><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation -
           <ul>
             <li>
               <a href="http://www.commoncriteriaportal.org/cc">Part 1:
@@ -2207,7 +2173,7 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
               <a href="http://www.commoncriteriaportal.org/cc">Part 3:
                 Security Assurance Components</a>, CCMB-2017-04-003, Version 3.1 Revision 5, April 2017.
               </li>
-          </ul></td></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td>Common Criteria for Information Technology Security Evaluation - <ul>
+          </ul></span></td></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation - <ul>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R5.pdf">Part
                 1: Introduction and General Model</a>, CCMB-2017-04-001, Version 3.1 Revision 5,
               April 2017.</li>
@@ -2217,4 +2183,4 @@ Test 4.3i [conditional]: If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R5.pdf">Part
                 3: Security Assurance Components</a>, CCMB-2017-04-003, Version 3.1 Revision 5,
               April 2017.</li>
-          </ul></td></tr></table></body></html>
+          </ul></span></td></tr></table></body></html>
