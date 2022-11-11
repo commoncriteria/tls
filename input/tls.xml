@@ -551,10 +551,8 @@
 		The evaluator shall perform the following tests:
               <testlist>
                 <!-- TLS Client Supported Configurations -->
-                <test id="tls-client-supported-configurations">
+                <test id="tls-client-supported-configurations">(supported configurations) For each supported version, and for each supported ciphersuite associated with the version:
                   <h:p>
-                  (supported configurations) For each supported version, and for each supported ciphersuite associated with the version:
-                  </h:p><h:p>
                   The evaluator shall establish a TLS connection between the TOE and a test TLS server that is configured to negotiate the tested version and ciphersuite in accordance with the RFC for the version.
                   </h:p><h:p>
                   The evaluator shall observe that the TSF presents a client hello with the highest version of TLS 1.2 or the legacy version (value '03 03') 
@@ -586,27 +584,28 @@
                   
                     <test id="tls-client-obsolete-versions">For each of SSL version 3, TLS version 1.0, and TLS version 1.1, the evaluator shall initiate a TLS connection from the TOE 
                     to a test TLS server that is configured to negotiate the obsolete version and observe that the TSF terminates the connection.
-                      <h:p></h:p>
+                      <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., protocol version, insufficient security) in response to this, 
                     but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
+                      </h:p>
                     </test>
                   <test id="tls-client-nonstandard-versions">
                     The evaluator shall attempt to establish a connection with a test TLS server that is configured to send a server hello message indicating the selected version 
                     (referred to as the legacy version for TLS 1.3) with a value corresponding to an undefined TLS (legacy) version 
                     (e.g., '03 04') and observe that the TSF terminates the connection.
-                    <h:p></h:p>
+                    <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., protocol version) in response to this, 
                     but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
-                    <h:p></h:p>
+                    </h:p><h:p>
                     <xref to="tls-client-nonstandard-versions"/> is intended to test the TSF response to non-standard versions, 
                     including early proposals for ‘beta TLS 1.3’ versions. 
                     RFC 8446 requires the legacy version to have the value '03 03' and specifies TLS 1.3 in the supported versions extension with the value '03 04'. 
                     While not a preferred approach, if continued support for a beta TLS 1.3 version is desired and the TSF cannot be configured to reject such versions, 
                     another value (e.g., '03 05') can be used in <xref to="tls-client-nonstandard-versions"/>. Implementations of non-standard versions are not tested.
-                    <h:p></h:p>
+                    </h:p>
                   </test>
                 </testlist>
-                <h:p/></test>
+                </test>
                 
                 <!-- TLS Client Ciphersuites -->
                 <test>
@@ -615,7 +614,7 @@
                   <testlist>
                     <test>(ciphersuite not offered) For each supported version, the evaluator shall attempt to establish a connection with a test TLS server configured to negotiate the supported version and a ciphersuite 
                       not included in the client hello and observe that the TOE rejects the connection.
-                    <h:p/>
+                    <h:p></h:p>
                       <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure) in response to this, 
                       but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                       <h:p/>
