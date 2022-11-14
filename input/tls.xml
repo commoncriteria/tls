@@ -2638,7 +2638,9 @@
               </h:p>
       </note>
       <aactivity>
+        <no-tests>
         The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.2 while ensuring that DTLS (and not TLS) is used in each evaluation activity.
+        </no-tests>
       </aactivity>
     </f-element>
 	  <audit-event/>
@@ -2662,6 +2664,7 @@
               </h:p>
             </note>
             <aactivity>
+            <no-tests>
               The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.3, with the following modifications:
               <h:ul>
                 <h:li>DTLS (and not TLS) is used in each evaluation activity</h:li> 
@@ -2675,6 +2678,7 @@
                   Otherwise, the evaluator observes the termination of a session (connection state) 
                   by verifying that the TSF does not continue to resend messages after the last timeout expires.</h:li>
               </h:ul>
+            </no-tests>
             </aactivity>
           </f-element> 
           <audit-event/>
@@ -2697,12 +2701,14 @@
               </h:p>
             </note>
             <aactivity>
+            <no-tests>
               The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.4, with the following modifications:
               <h:ul>
                 <h:li>DTLS (and not TLS) is used in each evaluation activity, with references to TLS replaced by references to DTLS.</h:li>
                 <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
                   it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li>
               </h:ul>
+            </no-tests>
             </aactivity>
           </f-element> 
           <audit-event/>
@@ -2731,6 +2737,7 @@
               </h:p>
             </note>
             <aactivity>
+            <no-tests>
               The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.5, with the following modifications:
               <h:ul>
                 <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
@@ -2742,6 +2749,7 @@
                   Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
                   the TSF does not continue to resend messages after the last timeout expires.</h:li>
               </h:ul>
+            </no-tests>
             </aactivity>
           </f-element>  
           <audit-event/>
@@ -2767,8 +2775,10 @@
               </h:p>
             </note>
         <aactivity>
+        <no-tests>
           The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.6, but ensuring that DTLS (and not TLS) is used in each evaluation activity 
           – ‘TLS’ and ‘FCS_TLSC_EXT.5’ are replaced by ‘DTLS’ and ‘FCS_DTLSC_EXT.5.’
+        </no-tests>
         </aactivity>
           </f-element>  
           <audit-event/>
