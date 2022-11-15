@@ -1927,19 +1927,17 @@
                <selectable>continue establishment of a server-only authenticated TLS channel in accordance with FCS_TLSS_EXT.1 in support of <selectables>
                  <selectable>all applications</selectable>
                  <selectable><assignable>list of calling applications that accept both authenticated and unauthenticated client sessions</assignable></selectable></selectables> 
-                 when an empty certificate message is provided by the client
-               </selectable>
+                 when an empty certificate message is provided by the client</selectable>
                <selectable>continue establishment of a mutually authenticated TLS channel when revocation status information for the <selectables>
                  <selectable>client's leaf certificate</selectable>
                  <selectable><assignable>specific intermediate leaf CA certificates</assignable></selectable>
                  <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
                  is not available in support of <selectables>
                    <selectable>all applications</selectable>
-                   <selectable><assignable>list of calling applications configurable to perform certificate status information bypass processing</assignable></selectable>
-                 </selectables> as <selectables>
+                   <selectable><assignable>list of calling applications configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables>
                    <selectable>configured by an administrator</selectable>
                    <selectable>confirmed by the application user</selectable>
-                   <selectable>as a default for <assignable>subset of applications</assignable></selectable></selectables>
+                   <selectable>a default for <assignable>subset of applications</assignable></selectable></selectables>
                </selectable>
                <selectable>no other processing options for missing or invalid client certificates</selectable></selectables>. 
            </title>
@@ -1973,16 +1971,14 @@
                  <selectable>RFC 6125</selectable>
                  <selectable>RFC 5280</selectable>
                  <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
-               matching rules
-             </selectable>
+               matching rules</selectable>
              <selectable>pass the <selectables>
                <selectable>validated certificate</selectable>
                <selectable>RFC 822 name normalized according to RFC 822</selectable>
                <selectable>DNS name normalized according to RFC 6125</selectable>
                <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
-               <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable>
-             </selectables> to <assignable>list of calling applications capable of making access decisions</assignable>
-             </selectable></selectables>. 
+               <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
+               to <assignable>list of calling applications capable of making access decisions</assignable></selectable></selectables>. 
            </title>
            <note role="application">
              <h:p>
@@ -2580,7 +2576,7 @@
           <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
             it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li>
           <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
-            repeatedly the sends flawed messages indicated in the tests. 
+            repeatedly sends the flawed messages indicated in the tests. 
             If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
             Otherwise, the evaluator observes the termination of a session (connection state) by verifying that the TSF does not continue to 
             resend messages after the last timeout expires.</h:li>
@@ -2686,7 +2682,7 @@
                   it might be necessary to resend the message multiple times from the DTLS test server 
                   according to the appropriate DTLS RFC to get the desired response.</h:li>
                 <h:li>DTLS clients do not send fatal error alerts, 
-                  but should generate them for diagnostics if the test DTLS server repeatedly the sends flawed messages indicated in the tests. 
+                  but should generate them for diagnostics if the test DTLS server repeatedly sends the flawed messages indicated in the tests. 
                   If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
                   Otherwise, the evaluator observes the termination of a session (connection state) 
                   by verifying that the TSF does not continue to resend messages after the last timeout expires.</h:li>
@@ -2756,7 +2752,7 @@
                 <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
                 <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so 
                   it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
-                <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server repeatedly the sends flawed messages 
+                <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server repeatedly sends the flawed messages 
                   indicated in the tests. If the product generates alerts, 
                   the evaluator may observe them in logs of the TSF rather than observing them on the line. 
                   Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
@@ -2995,7 +2991,7 @@
           <h:li>DTLS servers may silently drop flawed or unexpected messages from a DTLS test client so it might be necessary to resend the message 
             multiple times from the DTLS test client according to the appropriate DTLS RFC to get the desired response.</h:li> 
           <h:li>DTLS servers do not send fatal error alerts, but should generate them for diagnostics 
-            if the test DTLS client repeatedly the sends flawed messages indicated in the tests. 
+            if the test DTLS client repeatedly sends the flawed messages indicated in the tests. 
             If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
             Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
             the TSF does not continue to resend messages after the last timeout expires.</h:li>
@@ -3039,215 +3035,97 @@
           </testlist>
         </Tests>
       </aactivity>
-      
-      
-      
-      
-      
-      
-      <aactivity level="element">
-	<Tests>
-        The evaluator shall perform the evaluation activities listed for <xref to="fel-tlss-impl"/>,
-        but ensuring that DTLS (and not TLS) is used in each stage of the evaluation activities.
-        <h:br/><h:br/>
-        For tests which involve version numbers, note that in DTLS the on-the-wire representation
-        is the 1's complement of the corresponding textual DTLS version numbers. This is described in
-        Section 4.1 of RFC 6347 and RFC 4347.  For example, DTLS 1.0 is represented by the bytes 0xfe 0xff,
-        while the undefined DTLS 1.4 would be represented by the bytes 0xfe 0xfb.
-	</Tests>
-      </aactivity>
-    </f-element>
-    <f-element id="fel-dtlss-deny-version">
-      <title>The product shall deny connections from clients requesting
-        <assignable>list of DTLS protocol versions</assignable>.
-      </title>
-      <note role="application">Any specific DTLS version
-        not selected in <xref to="fel-dtlss-impl"/> should be assigned here.
-        This version of the FP does not require the server to deny DTLS 1.0, and if the TOE
-        supports DTLS 1.0 then "none" can be assigned. In a future version of this FP,
-        DTLS 1.0 will be required to be denied.
-      </note>
-      <aactivity level="element">
-        The following evaluation activities shall be conducted unless "none" is assigned.
-        <h:br/><h:br/>
-        <TSS>
-        The evaluator shall verify that the TSS contains a
-        description of the denial of old DTLS versions
-        consistent relative to selections in <xref to="fel-dtlss-deny-version" />.
-	</TSS>
-        <Guidance>
-        The evaluator shall verify that the operational guidance includes any configuration
-        necessary to meet this requirement.
-	</Guidance>
-        <Tests>
-        <testlist>
-          <test>
-            The evaluator shall send a Client Hello requesting a
-            connection with each version of DTLS specified in the selection
-            and verify that the server denies the connection.
-          </test>
-        </testlist>
-	</Tests>
-      </aactivity>
-    </f-element>
-
-    <f-element id="fel-dtlss-fail-validation">
-      <title>
-        The product shall not proceed with a connection handshake attempt if the DTLS Client fails validation.
-      </title>
-      <note role="application">
-        The process to validate the IP address of a DTLS client is specified in section 4.2.1 of RFC 6347 (DTLS 1.2) and
-        RFC 4347 (DTLS 1.0). The server validates the DTLS client during Connection Establishment (Handshaking) and prior
-        to sending a Server Hello message. After receiving a ClientHello, the DTLS Server sends a
-        HelloVerifyRequest along with a cookie. The cookie is a signed message using a keyed hash function. The DTLS
-        Client then sends another ClientHello with the cookie attached. If the DTLS
-        server successfully verifies the signed cookie, the Client is not using a spoofed IP address.
-      </note>
-      <aactivity level="element">
-        <TSS>
-        The evaluator shall verify that the TSS describes how the DTLS Client IP address is validated prior to
-        issuing a ServerHello message.
-	</TSS>
-        <Tests>
-        Modify at least one byte in the cookie from the Server's HelloVerifyRequest message, and verify that the
-        Server rejects the Client's handshake message.
-	</Tests>
-      </aactivity>
-    </f-element>
-    <f-element id="fel-dtlss-key-est">
-      <title>The product shall perform key establishment for DTLS using
-        <selectables>
-          <selectable>RSA with size
-            <selectables>
-              <selectable>2048 bits</selectable>
-              <selectable>3072 bits</selectable>
-              <selectable>4096 bits</selectable>
-              <selectable exclusive="yes">no other sizes</selectable>
-            </selectables>
-          </selectable>
-          <selectable>Diffie-Hellman parameters with size
-            <selectables>
-              <selectable>2048 bits</selectable>
-              <selectable>3072 bits</selectable>
-              <selectable>4096 bits</selectable>
-              <selectable>6144 bits</selectable>
-              <selectable>8192 bits</selectable>
-              <selectable exclusive="yes">no other size</selectable>
-            </selectables>
-          </selectable>
-          <selectable>Diffie-Hellman groups
-            <selectables>
-              <selectable>ffdhe2048</selectable>
-              <selectable>ffdhe3072</selectable>
-              <selectable>ffdhe4096</selectable>
-              <selectable>ffdhe6144</selectable>
-              <selectable>ffdhe8192</selectable>
-              <selectable exclusive="yes">no other groups</selectable>
-            </selectables>
-          </selectable>
-          <selectable>ECDHE parameters using elliptic curves
-            <selectables>
-              <selectable>secp256r1</selectable>
-              <selectable>secp384r1</selectable>
-              <selectable>secp521r1</selectable>
-            </selectables> and no other curves</selectable>
-          <selectable exclusive="yes">no other key establishment methods</selectable>
-        </selectables>.
-      </title>
-      <note role="application">
-        If the ST lists an RSA ciphersuite in <xref to="fel-dtlss-impl"/>, the ST must include the
-        RSA selection in the requirement.
-        <h:br/>
-        If the ST lists a DHE ciphersuite in <xref to="fel-dtlss-impl"/>, the ST must include either
-        the Diffie-Hellman selection for parameters of a certain size,
-        or for particular Diffie-Hellman groups.
-        <h:br/>
-        If the ST lists an ECDHE ciphersuite in <xref to="fel-dtlss-impl"/>, the ST must include the
-        NIST curves selection in the requirement.
-      </note>
-      <aactivity level="element">
-      <Tests>
-        The evaluator shall perform the evaluation activities listed for <xref to="fel-tlss-key-est"/>.
-      </Tests>
-      </aactivity>
-    </f-element>
-    <f-element id="fel-dtlss-kill-session">
-      <title>The product shall
-      <selectables onlyone="yes">
-        <selectable>terminate the DTLS session</selectable>
-        <selectable>silently discard the record</selectable>
-      </selectables>
-      if a message received contains an invalid MAC or if decryption fails in the case of GCM and other
-      AEAD ciphersuites.
-      </title>
-      <aactivity level="element">
-        <TSS>
-        The evaluator shall verify that the TSS describes the actions that take place if a message
-        received from the DTLS client fails the MAC integrity check.
-	</TSS>
-        <Tests>
-        The evaluator shall establish a connection using a client. The evaluator will then modify
-        at least one byte in a record message, and verify that the server discards the record or
-        terminates the DTLS session.
-	</Tests>
-      </aactivity>
     </f-element>
   	<audit-event type="optional">
-		<audit-event-descr>Failure of the certificate validity check</audit-event-descr>
-		<audit-event-info>Issuer Name and Subject Name of certificate</audit-event-info>
+  	  <audit-event-descr>Failure to establish a TLS session</audit-event-descr>
+  	  <audit-event-info>Reason for failure</audit-event-info>
 	</audit-event>
   </f-component>
 
   <f-component cc-id="fcs_dtlss_ext.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
     <depends on-sel="dtlss_mutual_auth"/>
           <f-element id="fel-dtlss-mut-auth">
-            <title>
-              The product shall support mutual authentication of DTLS clients using X.509v3 certificates.
+              <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates during the DTLS handshake and <selectables>
+                <selectable>during post-handshake requests</selectable>
+                <selectable>at no other time</selectable></selectables> 
+                using the certificate types indicated in the client’s signature_algorithms and <selectables>
+                  <selectable>signature_algorithms_cert</selectable>
+                  <selectable>no other</selectable></selectables> extension.
             </title>
             <note role="application">
-              All application notes listed for <xref to="fel-tlss-auth" /> that are relevant
-              to DTLS apply to this requirement.
+              <h:p>
+              This SFR is claimed if "mutual authentication" is selected in FCS_DTLSS_EXT.1.1.
+              </h:p><h:p>
+              All application notes for FCS_TLSS_EXT.2.1 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
       </note>
-      <aactivity level="element">
-	<Tests>
-          The evaluator shall perform the evaluation activities listed for <xref to="fel-tlss-auth" />.
-	</Tests>
-      </aactivity>
-
+          </f-element>
+    <f-element>
+      <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with <no-link>FIA_X509_EXT.1</no-link>.</title>
     </f-element>
-    <f-element id="fel-dtlss-bad-cert">
-      <title>The product shall not establish a trusted channel
-        if the client certificate is invalid.
+    <f-element>
+      <title>
+        The TSF shall be able to reject the establishment of a trusted channel if the requested client certificate is invalid and <selectables linebreak="yes">
+          <selectable>continue establishment of a server-only authenticated DTLS channel in accordance with FCS_DTLSS_EXT.1 in support of <selectables>
+            <selectable>all applications</selectable>
+            <selectable><assignable>list of calling applications that accept both authenticated and unauthenticated client sessions</assignable></selectable></selectables> 
+            when an empty certificate message is provided by the client</selectable>
+          <selectable>continue establishment of a mutually authenticated DTLS channel when revocation status information for the <selectables>
+            <selectable>client's leaf certificate</selectable>
+            <selectable><assignable>specific intermediate leaf CA certificates</assignable></selectable>
+            <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
+            is not available in support of <selectables>
+              <selectable>all applications</selectable>
+              <selectable><assignable>list of calling applications configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables>
+                <selectable>configured by an administrator</selectable>
+                <selectable>confirmed by the application user</selectable>
+                <selectable>a default for <assignable>subset of applications</assignable></selectable></selectables>
+          </selectable>
+          <selectable>no other processing options for missing or invalid client certificates</selectable></selectables>. 
+      </title>
+              <note role="application">
+                All application notes for FCS_TLSS_EXT.2.3 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </note>
+    </f-element>
+    <f-element>
+      <title>The TSF shall be able to <selectables linebreak="yes">
+        <selectable>not establish a DTLS session if an entry of the Distinguished Name or a <selectables>
+          <selectable>rfc822_name</selectable>
+          <selectable>dns_name</selectable>
+          <selectable><assignable>supported name types</assignable></selectable></selectables>
+          in the Subject Alternate Name extension contained in the client certificate does not match one of the expected identifiers for the client in accordance with <selectables>
+            <selectable>RFC 2822</selectable>
+            <selectable>RFC 6125</selectable>
+            <selectable>RFC 5280</selectable>
+            <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
+          matching rules</selectable>
+        <selectable>pass the <selectables>
+          <selectable>validated certificate</selectable>
+          <selectable>RFC 822 name normalized according to RFC 822</selectable>
+          <selectable>DNS name normalized according to RFC 6125</selectable>
+          <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
+          <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
+          to <assignable>list of calling applications capable of making access decisions</assignable></selectable></selectables>.     
       </title>
       <note role="application">
-	<comment>This used to point to FCS_TLSS_EXT.2.2 which doesn't exist.</comment>
-        <!-- All application notes listed for <xref to="fel-bad-client-cert" /> that are relevant -->
-        <!-- to DTLS apply to this requirement. -->
-      </note>
-      <aactivity level="element">
-	<Tests>
-	<comment>This used to point to FCS_TLSS_EXT.2.2 which doesn't exist.</comment>
-        <!-- The evaluator shall perform the evaluation activities listed for <xref to="fel-bad-client-cert" />.  -->
-	</Tests>
-      </aactivity>
-    </f-element>
-    <f-element id="fel-dtlss-bad-name">
-      <title>The product shall not establish a trusted channel if
-        the Distinguished Name (DN) or Subject Alternative Name (SAN)
-        contained in a certificate does not match one of the expected identifiers
-        for the client.
-      </title>
-      <note role="application">
-	<comment>This used to point to FCS_TLSS_EXT.2.3, but wording changed</comment>
-        <!-- All application notes listed for <xref to="fel-tlss-match-name" /> that are relevant -->
-        <!-- to DTLS apply to this requirement. -->
-      </note>
-      <aactivity level="element">
-        <Tests>
-	<comment>This used to point to FCS_TLSS_EXT.2.3, but wording changed</comment>
-        <!-- The evaluator shall perform the evaluation activities listed for <xref to="fel-tlss-match-name" />. -->
-	</Tests>
-      </aactivity>
+        All application notes for FCS_TLSS_EXT.2.4 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+      </note>        
+      <aactivity>
+        <no-tests>
+          The evaluator shall perform all evaluation activities listed for FCS_TLSS_EXT.2, with the following modifications:
+          <h:ul>
+            <h:li>DTLS (and not TLS) is used in each evaluation activity – ‘TLS’ is replaced with ‘DTLS’ and references to FCS_TLSS_EXT.2 elements are replaced with 
+              the corresponding reference to the FCS_DTLSS_EXT.2 element.</h:li>
+            <h:li>DTLS servers may silently drop flawed or unexpected messages from a DTLS test client so it might be necessary to resend the message multiple times 
+              from the DTLS test client according to the appropriate DTLS RFC to get the desired response.</h:li> 
+            <h:li>DTLS servers do not send fatal error alerts, but should generate them for diagnostics if the test DTLS client 
+              repeatedly sends the flawed messages indicated in the tests. 
+              If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+              Otherwise, the evaluator observes the termination of a session (connection state) by verifying that the TSF does not continue 
+              to resend messages after the last timeout expires.</h:li> 
+          </h:ul>
+        </no-tests>
+      </aactivity>        
       </f-element>
 	  <audit-event/>
       </f-component>
