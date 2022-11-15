@@ -1381,18 +1381,21 @@
                 <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
                 <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
                 <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
-                <selectable>PP-specific ciphersuites using pre-shared secrets including <selectables linebreak="yes">
-                  <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
-                  <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-                  <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-                  <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
-                  <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
-                  <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable></selectables></selectable>
-                <selectable>the following TLS 1.3 ciphersuites: <selectables linebreak="yes">
-                  <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-                  <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
-                  <selectable><assignable>other TLS 1.3 ciphersuites]</assignable></selectable></selectables></selectable></selectables>
+                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable></selectables>,
+              the following PP-specific ciphersuites using pre-shared secrets:
+              <selectables linebreak="yes">
+                <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
+                <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+                <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+                <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
+                <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+                <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+                <selectable>no ciphersuites using pre-shared secrets</selectable></selectables>,
+              and the following TLS 1.3 ciphersuites: <selectables linebreak="yes">
+                <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
+                <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
+                <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
+                <selectable>no TLS 1.3 ciphersuites</selectable></selectables>
               using a preference order based on <selectables>
                 <selectable>RFC 9151 priority</selectable>
                 <selectable>client hello ordering</selectable>
@@ -2431,18 +2434,21 @@
             <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
             <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
-            <selectable>PP-specific ciphersuites using pre-shared secrets including <selectables linebreak="yes">
-              <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
-              <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-              <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-              <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
-              <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
-              <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable></selectables></selectable>
-            <selectable>the following TLS 1.3 ciphersuites: <selectables linebreak="yes">
-              <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-              <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
-              <selectable><assignable>other TLS 1.3 ciphersuites]</assignable></selectable></selectables></selectable></selectables>
+            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable></selectables>,
+          the following PP-specific ciphersuites using pre-shared secrets:
+          <selectables linebreak="yes">
+            <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
+            <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+            <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+            <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
+            <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+            <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+            <selectable>no ciphersuites using pre-shared secrets</selectable></selectables>,
+          and the following TLS 1.3 ciphersuites: <selectables linebreak="yes">
+            <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
+            <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
+            <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
+            <selectable>no TLS 1.3 ciphersuites</selectable></selectables>
           offering the supported ciphersuites in a client hello message in preference order: 
           <assignable>list of supported ciphersuites</assignable>.
         </title>
@@ -2666,10 +2672,10 @@
               in the server random field. </title>
             <note role="application">
               <h:p>
+                This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSC_EXT.1.1.
+              </h:p><h:p>
                 DTLS uses the TLS downgrade indicators. 
                 The application notes listed for FCS_TLSC_EXT.3 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </h:p><h:p>
-                This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSC_EXT.1.1.
               </h:p>
             </note>
             <aactivity>
@@ -2704,9 +2710,10 @@
                 <selectable>in no other case</selectable></selectables>. 
             </title>
             <note role="application">
-              The application notes listed for FCS_TLSC_EXT.4.1 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
               <h:p>
                 This SFR is claimed if "DTLS as a client" is selected in FCS_TLS_EXT.1.1.
+              </h:p><h:p>
+              The application notes listed for FCS_TLSC_EXT.4 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
               </h:p>
             </note>
             <aactivity>
@@ -2734,6 +2741,8 @@
             </title>
             <note role="application">
               <h:p>
+                This SFR is claimed if "session resumption" is selected in FCS_DTLSC_EXT.1.1.
+              </h:p><h:p>
                 The ST author indicates which session resumption mechanisms are supported. 
                 One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed for DTLS 1.2 resumption. 
                 If resumption of DTLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, 
@@ -2741,8 +2750,6 @@
               </h:p><h:p>
                 While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. 
                 Validation of key exchange and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_DTLSC_EXT.1. 
-              </h:p><h:p>
-              This SFR is claimed if "session resumption" is selected in FCS_DTLSC_EXT.1.1.
               </h:p>
             </note>
             <aactivity>
@@ -2778,9 +2785,9 @@
             </title>
             <note role="application">
               <h:p>
-                The application notes listed for FCS_TLSC_EXT.6.1 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS. 
-              </h:p><h:p>
                 This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSC_EXT.5.1.
+              </h:p><h:p>
+                The application notes listed for FCS_TLSC_EXT.6 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS. 
               </h:p>
             </note>
         <aactivity>
@@ -2850,18 +2857,21 @@
           <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
           <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
           <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-          <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable>
-          <selectable>PP-specific ciphersuites using pre-shared secrets including <selectables linebreak="yes">
-            <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
-            <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-            <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-            <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
-            <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
-            <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable></selectables></selectable>
-          <selectable>the following TLS 1.3 ciphersuites: <selectables linebreak="yes">
-            <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-            <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
-            <selectable><assignable>other TLS 1.3 ciphersuites]</assignable></selectable></selectables></selectable></selectables>
+          <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable></selectables>,
+        the following PP-specific ciphersuites using pre-shared secrets:
+        <selectables linebreak="yes">
+          <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
+          <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+          <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+          <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
+          <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+          <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+          <selectable>no ciphersuites using pre-shared secrets</selectable></selectables>,
+        and the following TLS 1.3 ciphersuites: <selectables linebreak="yes">
+          <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
+          <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
+          <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
+          <selectable>no TLS 1.3 ciphersuites</selectable></selectables>
         using a preference order based on <selectables>
           <selectable>RFC 9151 priority</selectable>
           <selectable>client hello ordering</selectable>
@@ -3129,6 +3139,150 @@
       </f-element>
 	  <audit-event/>
       </f-component>
+        
+        <f-component cc-id="fcs_dtlss_ext.3" name="DTLS Server Downgrade Protection" status="sel-based">
+          <depends on-sel="dtlss_downgrade_protection"/>
+          <f-element>
+            <title>
+              The TSF shall set the server hello extension to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating DTLS 1.2 as indicated in RFC 8446 section 4.1.3.
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSS_EXT.1.1. 
+              </h:p><h:p>
+                The application notes listed for FCS_TLSC_EXT.3 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+            </note>
+            <aactivity>
+             <no-tests>
+               The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.3, with references to TLS replaced by the equivalent reference to DTLS.
+             </no-tests>
+            </aactivity>
+          </f-element>
+          <audit-event />
+        </f-component>
+        
+        <f-component cc-id="fcs_dtlss_ext.4" name="DTLS Server Support for Renegotiation" status="sel-based">
+          <depends on-sel="dtlss_impl"/>
+          <f-element>
+            <title>The TSF shall support secure renegotiation through the use of <selectables>
+              <selectable>the "renegotiation_info" TLS extension</selectable>
+              <selectable>not allowing session renegotiation</selectable></selectables> in accordance with RFC 5746.
+            </title>
+          </f-element>
+          <f-element>
+            <title>The TSF shall, when negotiating a DTLS 1.2 session, <selectables>
+              <selectable>include the renegotiation_info extension in ServerHello messages when a client hello with the renegotiation_info extension is received 
+                and shall terminate a session if neither of the renegotiation_info or TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuites are indicated in the client hello</selectable>
+              <selectable>not allow renegotiation</selectable></selectables>.
+            </title>
+          </f-element>
+          <f-element>
+            <title>
+              The TSF shall terminate the session if an unexpected client hello is received during an active DTLS session.
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "DTLS as a server" is selected in FCS_TLS_EXT.1.1.
+              </h:p><h:p>
+                The application notes listed for FCS_TLSS_EXT.4 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+            </note>
+            <aactivity>
+              <no-tests>
+                The evaluator shall perform all evaluation activities listed for FCS_TLSS_EXT.4, with the following modifications:
+                <h:ul>
+                  <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
+                  <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so it might be necessary to 
+                    resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
+                  <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
+                    repeatedly sends the flawed messages indicated in the tests. 
+                    If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+                    Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
+                    the TSF does not continue to resend messages after the last timeout expires.</h:li>
+                </h:ul>
+              </no-tests>
+            </aactivity>
+          </f-element>
+          <audit-event/>
+        </f-component>
+        
+        
+        <f-component cc-id="fcs_dtlss_ext.5" name="DTLS Server Support for Session Resumption" status="sel-based">
+          <depends on-sel="dtlss_resumption"/> 
+          <f-element>
+            <title>
+              The TSF shall support session resumption as a server via the use of <selectables>
+                <selectable>session ID in accordance with RFC 5246</selectable>
+                <selectable>tickets in accordance with RFC 5077</selectable>
+                <selectable id="dtlss_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "session resumption" is selected in FCS_DTLSS_EXT.1.1.
+              </h:p><h:p>
+                The application notes listed for FCS_TLSS_EXT.5 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+            </note>
+            <aactivity>
+              <no-tests>
+                The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.5, with the following modifications:
+                <h:ul>
+                  <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
+                  <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so it might be necessary 
+                    to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
+                  <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
+                    repeatedly sends the flawed messages indicated in the tests. 
+                    If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+                    Otherwise, the evaluator observes the termination of a session (connection state) by verifying that the TSF 
+                    does not continue to resend messages after the last timeout expires.</h:li>
+                </h:ul>
+              </no-tests>
+            </aactivity>
+          </f-element>
+          <audit-event/>
+        </f-component>
+        
+        
+        <f-component cc-id="fcs_dtlss_ext.6" name="DTLS Server DTLS 1.3 Resumption Refinements" status="sel-based">
+          <depends on-sel="dtlss_v13_resumption"/> 
+          <f-element>
+            <title>
+              The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_mode extension with the value psk_dhe.  
+            </title>
+          </f-element>
+          <f-element>
+            <title>
+              The TSF shall ignore early data received in DTLS 1.3 sessions.
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSS_EXT.5.1.
+              </h:p><h:p>
+                The application notes listed for FCS_TLSS_EXT.6 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+            </note>
+            <aactivity>
+              <no-tests>
+                The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.6, with the following modifications:
+                <h:ul>
+                  <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
+                  <h:li>References to FCS_TLSS_EXT.5 are replaced by corresponding references to FCS_DTLSS_EXT.5.</h:li>
+                  <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so it might be necessary to resend the message multiple times 
+                    from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
+                  <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
+                    repeatedly sends the flawed messages indicated in the tests. 
+                    If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+                    Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
+                    the TSF does not continue to resend messages after the last timeout expires.</h:li>
+                </h:ul>
+              </no-tests>
+            </aactivity>
+          </f-element>  
+          <audit-event/>
+        </f-component>    
+        
+        
       </section>
 
   </sec:Security_Functional_Requirements>
