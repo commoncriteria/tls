@@ -34,8 +34,8 @@
     </entry>
      <entry>
       <version>2.0</version>
-      <date>2022-08-24</date>
-      <subject>Added audit events, added TLS 1.3 support, deprecated TLS 1.0 and 1.1, updated algorithms/ciphersuites in accordance with CNSA suite RFC and to consider PSK, restructured SFRs for clarity</subject>
+      <date>2022-11-18</date>
+      <subject>Added audit events, added TLS/DTLS 1.3 support, deprecated TLS 1.0 and 1.1, updated algorithms/ciphersuites in accordance with CNSA suite RFC and to consider PSK, restructured SFRs for clarity</subject>
     </entry>
 
 	  
@@ -2397,6 +2397,8 @@
       </title>
       <note role="application">
         <h:p>
+          This SFR is claimed if "TLS as a client" is selected in FCS_TLS_EXT.1.1.
+        </h:p><h:p>
         The ST author will claim DTLS 1.3 functionality if supported, and optional functionality as appropriate for the claimed versions. 
         </h:p><h:p>
         Session renegotiation protection is required for both DTLS 1.2 and DTLS 1.3, and the ST must include the requirements from FCS_DTLSC_EXT.4. 
@@ -2569,8 +2571,6 @@
         <h:p>
         All supported responses are claimed; at least one option is claimed. 
         If both options are supported, the ST describes when each method is used and whether the behavior is configurable. 
-        </h:p><h:p>
-          This SFR is claimed if "DTLS as a client" is selected in FCS_TLS_EXT.1.1.
         </h:p>
       </note>
       <aactivity>
@@ -2647,9 +2647,9 @@
             </title>
             <note role="application">
               <h:p>
-              All application notes for FCS_TLSC_EXT.2.1 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </h:p><h:p>
                 This SFR is claimed if "mutual authentication" is selected in FCS_DTLSC_EXT.1.1.
+              </h:p><h:p>
+              All application notes for FCS_TLSC_EXT.2.1 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
               </h:p>
       </note>
       <aactivity>
