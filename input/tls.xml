@@ -338,12 +338,12 @@
               </h:p><h:p>
               The ST author will claim TLS 1.3 functionality if supported, and optional functionality as appropriate for the claimed versions. 
               </h:p><h:p>
-                If mutual authentication is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.2. 
+                If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.2. 
                 If the TOE implements mutual authentication, this selection must be made.
               </h:p><h:p>
-                If supplemental downgrade protection is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.3. 
+                If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.3. 
               </h:p><h:p>
-                If session resumption is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.5. 
+                If "session resumption" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.5. 
               </h:p>
             </note>
           </f-element>
@@ -2489,7 +2489,7 @@
       <selectables>
         <selectable>DTLS 1.3 (RFC 9147)</selectable>
         <selectable exclusive="yes">no other DTLS versions</selectable>
-      </selectables> as a client that supports additional functionality for session renegotiation and <selectables linebreak="yes">
+      </selectables> as a client that supports additional functionality for session renegotiation protection and <selectables linebreak="yes">
         <selectable id="dtlsc_mutual_auth">mutual authentication</selectable>
         <selectable id="dtlsc_downgrade_protection">supplemental downgrade protection</selectable>
         <selectable id="dtlsc_resumption">session resumption</selectable>
@@ -2498,22 +2498,22 @@
       </title>
       <note role="application">
         <h:p>
-          This SFR is claimed if "TLS as a client" is selected in FCS_TLS_EXT.1.1.
+          This SFR is claimed if "DTLS as a client" is selected in FCS_TLS_EXT.1.1.
         </h:p><h:p>
         The ST author will claim DTLS 1.3 functionality if supported, and optional functionality as appropriate for the claimed versions. 
         </h:p><h:p>
         Session renegotiation protection is required for both DTLS 1.2 and DTLS 1.3, and the ST must include the requirements from FCS_DTLSC_EXT.4. 
         Within FCS_DTLSC_EXT.4, options for implementation of secure session renegotiation for DTLS 1.2, or rejecting renegotiation requests are claimed.  
         </h:p><h:p>
-        If mutual authentication is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.2. 
+        If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.2. 
         If the TOE implements mutual authentication, this selection must be made.
         </h:p><h:p>
-        If supplemental downgrade protection is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.3. 
+        If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.3. 
         This is claimed if DTLS 1.3 is supported, or if the product supports TLS 1.1 or below downgrade protection using the mechanism described in RFC 8446. 
         Note that TLS 1.1 or below downgrade protection in DTLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3, 
         but that it received a client hello indicating maximum support for DTLS 1.0 (there is no DTLS version 1.1). 
         </h:p><h:p>
-        If session resumption is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.5. 
+        If "session resumption" is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.5. 
         </h:p><h:p>
         DTLS version numbers are denoted on the wire as the 1’s complement of the corresponding textual DTLS versions as described in Section 4.1 of RFC 6347. 
         DTLS version 1.2 is 0xfefd; DTLS version 1.3 is 0xfefc. 
@@ -2522,7 +2522,7 @@
     </f-element>
     <f-element>
         <title>
-          The TSF shall be able to support the following TLS 1.2 cipher suites: <selectables linebreak="yes">
+          The TSF shall be able to support the following TLS 1.2 ciphersuites: <selectables linebreak="yes">
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289, RFC 8422</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289, RFC 8422</selectable>
             <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
@@ -2557,8 +2557,8 @@
         </title>
       <note role="application">
         <h:p>
-        DTLS uses TLS cipher suites. The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite 
-        for each DTLS version supported – TLS 1.2 cipher suites for DTLS 1.2 and TLS 1.3 cipher suites for DTLS 1.3. 
+        DTLS uses TLS ciphersuites. The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite 
+        for each DTLS version supported – TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. 
         </h:p><h:p>
         The application note for FCS_TLSC_EXT.1.2 applies to this requirement, with ‘FCS_TLSC_EXT.1.1’ replaced by ‘FCS_DTLSC_EXT.1.1.’
         </h:p>
@@ -2691,7 +2691,7 @@
             There are no DTLS equivalents of SSL versions or TLS 1.1.</h:li>
           <h:li>The equivalent of <xref to="tls-client-nonstandard-versions"/> should use ‘fe’fc’ in the legacy version to test for responses to DTLS 
             equivalents to beta TLS versions, or use ‘fe fb’ to test for undefined versions.</h:li>
-          <h:li>The equivalent of <xref to="tls-client-deprecated-encryption"/> should still include a test for RC4 cipher suites, 
+          <h:li>The equivalent of <xref to="tls-client-deprecated-encryption"/> should still include a test for RC4 ciphersuites, 
             even though DTLS does not support stream ciphers. The test only verifies that the TSF can reject such a negotiation from a test DTLS server, 
             and does not require the use of the cipher.</h:li>
           <h:li>In the equivalent of <xref to="tls-client-missing-finished"/>, DTLS clients may buffer unexpected application messages, 
@@ -2980,7 +2980,7 @@
         </selectables>.
       </title>
         <note role="application">
-          DTLS supports TLS ciphersuites. The ST author should select the cipher suites that are supported and must select at least one ciphersuite suitable for each 
+          DTLS supports TLS ciphersuites. The ST author should select the ciphersuites that are supported and must select at least one ciphersuite suitable for each 
           supported DTLS version – TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. 
           All other application notes for FCS_TLSS_EXT.1.2 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS. 
         </note>
@@ -3112,7 +3112,7 @@
             There are no DTLS equivalents of SSL versions or TLS 1.1.</h:li>
           <h:li>The equivalent of <xref to="tls-server-beta-versions"/> should use ‘fe’fc’ in the legacy version to test for responses 
             to DTLS equivalents to beta TLS versions, or use ‘fe fb’ to test for undefined versions.</h:li>
-          <h:li>The equivalent of <xref to="tls-server-deprecated-encryption"/> should still include a test for RC4 cipher suites, 
+          <h:li>The equivalent of <xref to="tls-server-deprecated-encryption"/> should still include a test for RC4 ciphersuites, 
             even though DTLS does not support stream ciphers. The test only verifies that the TSF can reject such an offer from a test DTLS client, 
             and does not require the use of the cipher.</h:li>
           <h:li>In <xref to="tls-server-key-exchange"/>, DTLS messages include an epoch field that changes with each change_cipher_spec message. 
