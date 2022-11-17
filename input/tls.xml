@@ -2033,7 +2033,7 @@
                  when an empty certificate message is provided by the client</selectable>
                <selectable>continue establishment of a mutually authenticated TLS channel when revocation status information for the <selectables>
                  <selectable>client's leaf certificate</selectable>
-                 <selectable><assignable>specific intermediate leaf CA certificates</assignable></selectable>
+                 <selectable><assignable>specific intermediate CA certificates</assignable></selectable>
                  <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
                  is not available in support of <selectables>
                    <selectable>all applications</selectable>
@@ -2566,7 +2566,7 @@
     </f-element>
     <f-element>
       <title>
-        The TSF shall not offer the following ciphersuites indicating the following: 
+        The TSF shall not offer ciphersuites indicating the following: 
         <h:ul>
           <h:li>the null encryption component</h:li>
           <h:li>support for anonymous servers</h:li>
@@ -2927,7 +2927,7 @@
           Within FCS_DTLSS_EXT.4, options for implementation of secure session renegotiation for DTLS 1.2, or rejecting renegotiation requests are claimed.  
         </h:p>
         <h:p>
-          If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_TLSS_EXT.2. 
+          If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_DTLSS_EXT.2. 
           If the TOE implements mutual authentication, this selection must be made.
         </h:p><h:p>
           If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_DTLSS_EXT.3. 
@@ -3183,7 +3183,7 @@
             when an empty certificate message is provided by the client</selectable>
           <selectable>continue establishment of a mutually authenticated DTLS channel when revocation status information for the <selectables>
             <selectable>client's leaf certificate</selectable>
-            <selectable><assignable>specific intermediate leaf CA certificates</assignable></selectable>
+            <selectable><assignable>specific intermediate CA certificates</assignable></selectable>
             <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
             is not available in support of <selectables>
               <selectable>all applications</selectable>
@@ -3251,7 +3251,7 @@
               <h:p>
                 This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSS_EXT.1.1. 
               </h:p><h:p>
-                The application notes listed for FCS_TLSC_EXT.3 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+                The application notes listed for FCS_TLSS_EXT.3 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
               </h:p>
             </note>
             <aactivity>
