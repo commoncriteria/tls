@@ -14,7 +14,7 @@
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>2.0-draft</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2022-08-24</PPPubDate>
+      <PPPubDate>2022-11-18</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -510,7 +510,7 @@
               Finally, the client should avoid constructing reference identifiers using wildcards. 
               However, if the presented identifiers include wildcards, the client must follow the best practices regarding matching; 
               these best practices are captured in the evaluation activity. Support for other name types is rare, but may be claimed for specific applications. 
-              </h:p><comment>[JF] App note talks about wildcards best practices being captured in the evaluation activity but nothing in the activity actually covers this.</comment>  
+              </h:p>  
             </note>
           </f-element>
           <f-element id="fel-tlsc-bad-cert">
@@ -620,7 +620,7 @@
                 
                 <testlist>
                   
-                    <test id="tls-client-obsolete-versions">For each of SSL version 3, TLS version 1.0, and TLS version 1.1, the evaluator shall initiate a TLS connection from the TOE 
+                    <test id="tls-client-obsolete-versions">For each of SSL version 2, SSL version 3, TLS version 1.0, and TLS version 1.1, the evaluator shall initiate a TLS connection from the TOE 
                     to a test TLS server that is configured to negotiate the obsolete version and observe that the TSF terminates the connection.
                       <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., protocol version, insufficient security) in response to this, 
@@ -656,7 +656,7 @@
                       <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure) in response to this, 
                       but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                     </h:p><h:p>
-                      This test intended to test the TSF’s generic ability to recognize non-offered ciphersuites. 
+                      This test is intended to test the TSF’s generic ability to recognize non-offered ciphersuites. 
                       If the ciphersuites in the client hello are configurable, 
                       the evaluator shall configure the TSF to offer a ciphersuite outside those that are supported and use that ciphersuite in the test. 
                       If the TSF ciphersuite list is not configurable, it is acceptable to use a named ciphersuite from the IANA TLS protocols associated with the tested version. 
@@ -1697,7 +1697,7 @@
                         but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                         </h:p></test>
                       <test id="tls-server-beta-versions">The evaluator shall follow the operational guidance to configure the TSF to ensure any supported beta TLS 1.3 versions are disabled, as necessary. 
-                        The evaluator shall send the TSF a client hello message indicating the supported version (referred to as the legacy version for TLS 1.3) 
+                        The evaluator shall send the TSF a client hello message indicating the supported version (referred to as the legacy version in RFC 8446) 
                         with the value '03 04' and observe that the TSF responds with a server hello indicating the highest version supported.
                         <h:p>
                         <h:b>Note:</h:b> <xref to="tls-server-beta-versions"/> is intended to test the TSF response to non-standard versions, including beta versions of TLS 1.3. 
