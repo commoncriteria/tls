@@ -629,7 +629,7 @@
                     </test>
                   <test id="tls-client-nonstandard-versions">
                     The evaluator shall attempt to establish a connection with a test TLS server that is configured to send a server hello message indicating the selected version 
-                    (referred to as the legacy version for TLS 1.3) with a value corresponding to an undefined TLS (legacy) version 
+                    (referred to as the legacy version in RFC 8446) with a value corresponding to an undefined TLS (legacy) version 
                     (e.g., '03 04') and observe that the TSF terminates the connection.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., protocol version) in response to this, 
