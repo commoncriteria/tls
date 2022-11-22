@@ -547,9 +547,8 @@
                 </h:p><h:p>
                 The evaluator shall verify that the ST includes a description of matching methods used for each supported name type to 
                 the supported application defined reference identifiers. 
-                If the options claimed in FCS_TLSC_EXT.1.2 indicate that wildcards are supported, the evaluator shall verify that the ST includes a description 
-                of the wildcards used for each name type supported and shall verify that the matching rules meet or exceed best practices. 
-                <comment>[JF] FCS_TLSC_EXT.1.2 does not have any selection options that explicitly refer to wildcards</comment>
+                The evaluator shall verify that the ST includes a description 
+                of wildcards recognized for each name type claimed in FCS_TLSC_EXT.1.5 and shall verify that the matching rules meet or exceed best practices. 
                 In particular, the evaluator shall ensure that the matching rules are as restrictive as, or more restrictive than the following: 
                 <h:ul>
                 <h:li>DNS names: The ‘*’ character used in the complete leftmost label of a DNS name represents any valid name which have the same number of labels, 
@@ -1782,13 +1781,9 @@
                         (signature algorithms) [conditional] If the TSF supports certificate-based authentication, 
                         then for each supported signature algorithm indicated in the ST, the evaluator shall perform the following sub-tests with certificates that represent the TOE. 
                         For each sub-test, the evaluator shall establish a certificate
-                        
-                        representing the TOE and using a public-private key pair suitable for the specific signature algorithm value, and signed by a certifiaction authority
-                        
-                        that uses the same signature algorithm, in accordance with <no-link>FIA_X509_EXT.3</no-link>.
-                       <h:p><comment>the reference to FIA_X509_EXT.3 implies that any PP or module that uses this package must have the ability to generate its own 
-                        CSRs (either as part of the TOE or its underlying platform), unsure if this is intended or if it will be permissible to load a cert issued by a CA.</comment>  
-                       </h:p><h:p>
+                        representing the TOE and using a public-private key pair suitable for the specific signature algorithm value, and signed by a certification authority
+                        that uses the same signature algorithm.
+                       <h:p>
                         If the TSF also supports the signature_algorithms_cert extension, then for each value of the signature_algorithms_cert extension, 
                         the evaluator shall repeat the sub-tests 
                         
@@ -2653,7 +2648,6 @@
         The TSF shall not establish a trusted channel if the server certificate is invalid <selectables>
           <selectable>with no exceptions</selectable>
           <selectable>except when override is authorized in the case where valid revocation information is not available</selectable></selectables>. 
-        <comment>Structure is from the current DTLS element. Assuming both can be selected, there is a potential management function and configuration guidance.</comment>
       </title>
       <note role="application">
         All override mechanisms supported are described. All other application notes for FCS_TLSC_EXT.1.6 apply to this requirement,
@@ -3080,7 +3074,6 @@
     </f-element>
     <f-element>
       <title>
-        <h:p><comment>[JF] There is no analog for this element in FCS_TLSS_EXT.1 - should there be, or it this DTLS exclusive?</comment></h:p>
         The TSF shall not proceed with a connection handshake attempt if the DTLS client fails validation.
       </title>
       <note role="application">
