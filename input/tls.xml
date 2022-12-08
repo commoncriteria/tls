@@ -418,7 +418,7 @@
            <h:ul>
              <h:li>signature_algorithms extension (RFC 8446) indicating support for 
                <selectables linebreak="yes">
-                 <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                 <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                  <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                    <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                    <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
@@ -431,7 +431,7 @@
              <h:li>
                the following other extensions: <selectables linebreak="yes">
                  <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-                   <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                   <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                    <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                      <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                      <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
@@ -1512,7 +1512,7 @@
             <h:ul>
               <h:li>signature_algorithms extension (RFC 8446) indicating support for 
                 <selectables linebreak="yes">
-                  <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                  <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                   <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                     <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                     <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
@@ -1525,7 +1525,7 @@
               <h:li>
                 the following other extensions: <selectables linebreak="yes">
                   <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-                    <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                    <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                     <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                       <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                       <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
@@ -2576,7 +2576,7 @@
       <h:ul>
         <h:li>signature_algorithms extension (RFC 8446) indicating support for 
           <selectables linebreak="yes">
-            <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+            <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
             <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
               <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
               <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
@@ -2589,7 +2589,7 @@
         <h:li>
           the following other extensions: <selectables linebreak="yes">
             <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-              <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+              <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
               <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                 <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                 <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
@@ -2990,7 +2990,7 @@
         <h:ul>
           <h:li>signature_algorithms extension (RFC 8446) indicating support for 
             <selectables linebreak="yes">
-              <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+              <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
               <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                 <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                 <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
@@ -3003,7 +3003,7 @@
           <h:li>
             the following other extensions: <selectables linebreak="yes">
               <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-                <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                <selectable>ecdsa-_secp384r1_sha384 (RFC 8446)</selectable>
                 <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                   <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                   <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
