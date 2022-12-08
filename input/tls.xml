@@ -408,7 +408,7 @@
               <h:li>the null encryption component</h:li>
               <h:li>support for anonymous servers</h:li>
               <h:li>use of deprecated or export-grade cryptography including DES, 3DES, RC2, RC4, or IDEA for encryption</h:li>
-              <h:li>use of MD</h:li>
+              <h:li>use of MD5</h:li>
             </h:ul> and shall abort sessions where a server attempts to negotiate ciphersuites not enumerated in the client hello message.
           </title>
           </f-element>
