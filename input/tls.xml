@@ -327,7 +327,7 @@
                 <selectable id="tlsc_downgrade_protection">supplemental downgrade protection</selectable>
                 <selectable id="tlsc_resumption">session resumption</selectable>
                 <selectable>no optional functionality</selectable></selectables>
-              and shall abort attempts by a server to negotiate all other TLS or SSL versions. 
+              and shall abort attempts by a server to negotiate any TLS or SSL version prior to TLS 1.2 (RFC 5246). 
             </title>
             <note role="application">
               <h:p>
