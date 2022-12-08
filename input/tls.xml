@@ -512,7 +512,7 @@
           <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
           <h:li>Version indicators are 1’s complement values of the corresponding text versions (the legacy or supported version value 
             is ‘fe fd’ for DTLS 1.2 and ‘fe fc’ for DTLS 1.3).</h:li> 
-          <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
+          <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server. Therefore,
             it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li>
           <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
             repeatedly sends the flawed messages indicated in the tests. 
@@ -536,10 +536,10 @@
         The evaluator shall also perform the following evaluation activities for FCS_DTLSC_EXT.1.7:
         </h:p>
         <TSS>
-          The evaluator shall verify that the TSS describes the actions that take place if a message received from the DTLS Server fails the integrity check.
+          The evaluator shall verify that the TSS describes the actions that take place if a message received from the DTLS server fails the integrity check.
         </TSS>
         <Guidance>
-          If the ST indicates the behavior of the TSF on receiving a message from the DTLS Server that fails the MAC integrity check is configurable, 
+          If the ST indicates the behavior of the TSF on receiving a message from the DTLS server that fails the MAC integrity check is configurable, 
           the evaluator shall verify that the guidance documentation describes instructions for configuring the behavior.
         </Guidance>
         <Tests>
@@ -617,7 +617,7 @@
               <h:ul>
                 <h:li>DTLS (and not TLS) is used in each evaluation activity</h:li> 
                 <h:li>References to FCS_TLSC_EXT.1.1 are replaced with references to FCS_DTLSC_EXT.1.1.</h:li>
-                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
+                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server. Therefore,
                   it might be necessary to resend the message multiple times from the DTLS test server 
                   according to the appropriate DTLS RFC to get the desired response.</h:li>
                 <h:li>DTLS clients do not send fatal error alerts, 
@@ -654,7 +654,7 @@
               The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.4, with the following modifications:
               <h:ul>
                 <h:li>DTLS (and not TLS) is used in each evaluation activity, with references to TLS replaced by references to DTLS.</h:li>
-                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
+                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server. Therefore,
                   it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li>
               </h:ul>
             </no-tests>
@@ -690,7 +690,7 @@
               The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.5, with the following modifications:
               <h:ul>
                 <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
-                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so 
+                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server. Therefore,
                   it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
                 <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server repeatedly sends the flawed messages 
                   indicated in the tests. If the product generates alerts, 
@@ -917,10 +917,10 @@
       <note role="application">
         The process to validate the IP address of a DTLS client is specified in section 4.2.1 of RFC 6347 (DTLS 1.2) and in section 5.1 of RFC 9147 (DTLS 1.3). 
         The server validates the DTLS client during connection establishment (handshaking) and prior to sending a server hello message. 
-        After receiving a client hello, a DTLS 1.2 Server sends a HelloVerifyRequest along with a cookie, 
+        After receiving a client hello, a DTLS 1.2 server sends a HelloVerifyRequest along with a cookie, 
         whereas a DTLS 1.3 server sends a HelloRetryRequest message along with a cookie. 
         In both TLS 1.2 and TLS 1.3, the cookie is a signed message using a keyed hash function. 
-        The DTLS Client then sends another client hello with the cookie attached. 
+        The DTLS client then sends another client hello with the cookie attached. 
         If the DTLS server successfully verifies the signed cookie, the client is not using a spoofed IP address.
       </note>
       <aactivity>
@@ -958,7 +958,7 @@
           The evaluator shall also perform the following evaluation activities for FCS_DTLSS_EXT.1.6
         </h:p>
         <TSS>
-          <h:p>The evaluator shall verify that the TSS describes how the DTLS Client IP address is validated prior to issuing a server hello message.</h:p>
+          <h:p>The evaluator shall verify that the TSS describes how the DTLS client IP address is validated prior to issuing a server hello message.</h:p>
         </TSS>
         <Guidance>
           <h:p>
@@ -968,12 +968,12 @@
         <Tests>
           <testlist>
             <test>The evaluator shall send a TLS 1.2 client hello message from a test client and observe that the TSF sends a HelloVerifyRequest message. 
-              The evaluator shall modify at least one byte in the cookie from the Server's HelloVerifyRequest message and include the modified value 
-              as a cookie in the test client’s second clienthello message. The evaluator shall verify that the Server rejects the Client's handshake message.</test>
+              The evaluator shall modify at least one byte in the cookie from the server's HelloVerifyRequest message and include the modified value 
+              as a cookie in the test client’s second client hello message. The evaluator shall verify that the server rejects the client's handshake message.</test>
             <test>[conditional] If the TSF supports DTLS 1.3, the evaluator shall send a TLS 1.3 client hello message from a test client and observe that the TSF sends 
-              a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the Server's HelloRetryRequest message and 
-              include the modified value as a cookie in the test client’s second clienthello message. 
-              The evaluator shall verify that the Server rejects the Client's handshake message.</test>
+              a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloRetryRequest message and 
+              include the modified value as a cookie in the test client’s second client hello message. 
+              The evaluator shall verify that the server rejects the client's handshake message.</test>
           </testlist>
         </Tests>
       </aactivity>
@@ -1477,7 +1477,7 @@
                   ‘any’ email address at a host, or ‘any’ email address on a domain 
                   (e.g., “example.com” matches any email address on the host example.com and “.example.com” matches any email address in the domain example.com, 
                   but does not match email addresses at the host “example.com”). Such matching is prohibited for internationalized RFC 2822 names.</h:li>
-                <h:li>Embedded CN name types: the CN relative distinguished name of a DNS name type included in the subject field is not strongly typed. 
+                <h:li>Embedded CN name types: The CN relative distinguished name of a DNS name type included in the subject field is not strongly typed. 
                   Attempts to match both the name type and wildcard specifications can result in matches not intended, 
                   and therefore, not authoritatively asserted by a certification authority. It is preferred that no matching of CN embedded names be supported, 
                   but if necessary for backward compatibility, the description should clearly indicate how different name types are interpreted in the matching algorithm. 
