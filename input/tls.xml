@@ -242,16 +242,16 @@
         </title>
         <note role="application">
               If <h:i>TLS as a client</h:i> is selected, then the
-              ST must include the requirements from FCS_TLSC_EXT.1.
+              ST must include the requirements from FCS_TLSC_EXT.1 and FCS_TLSC_EXT.4.
               <h:br/>
               If <h:i>TLS as a server</h:i> is selected, then the
-              ST must include the requirements from FCS_TLSS_EXT.1.
+              ST must include the requirements from FCS_TLSS_EXT.1 and FCS_TLSS_EXT.4.
               <h:br/><h:br/>
               If <h:i>DTLS as a client</h:i> is selected, then the
-              ST must include the requirements from FCS_DTLSC_EXT.1.
+              ST must include the requirements from FCS_DTLSC_EXT.1 and FCS_DTLSC_EXT.4.
               <h:br/>
               If <h:i>DTLS as a server</h:i> is selected, then the
-              ST must include the requirements from FCS_DTLSS_EXT.1.
+              ST must include the requirements from FCS_DTLSS_EXT.1 and FCS_DTLSS_EXT.4.
             </note>
             <aactivity>
               <TSS>
@@ -278,9 +278,9 @@
                   <h:li>Green text indicates uniqueness to TLS 1.3.</h:li> 
                   <h:li>Black text indicates features common to both TLS 1.2 and TLS 1.3.</h:li> 
                   <h:li>Bold text indicates mandatory features.</h:li>
-                  <h:li>Italics emphasizes optional features. </h:li>
-                  <h:li>A shaded text box indicates that the message is encrypted for TLS 1.2 (blue), TLS 1.3 (green) or both TLS 1.2 and TLS 1.3 (grey).</h:li> 
-                  <h:li>An outlined text box indicates that the content in the message is signed, and/or provides authentication of the handshake to that point.</h:li>
+                  <h:li>Italicized text emphasizes optional features. </h:li>
+                  <h:li>A shaded text box indicates that the message is encrypted for TLS 1.2 (blue), TLS 1.3 (green), or both TLS 1.2 and TLS 1.3 (grey).</h:li> 
+                  <h:li>An outlined text box indicates that the content in the message is signed or provides authentication of the handshake to that point.</h:li>
                 </h:ul>
                 </h:p><h:p>
                 <h:b>Test Environment:</h:b>
@@ -293,15 +293,16 @@
                 TLS 1.3 introduces the encryption of handshake messages subsequent to the server hello exchange which prevents visibility and control using midpoint capabilities. 
                 To achieve equivalent validation of TLS 1.3 requires the ability to modify the traffic underlying the encryption applied after the server hello message. 
                 This can be achieved by introducing additional control of the messages sent, and visibility of messages received by the test TLS client, 
-                when validating TLS server functionality or test server, when validating TLS client functionality.
+                (when validating TLS server functionality) or the test server (when validating TLS client functionality).
                 </h:p><h:p>
                 <figure entity="images/figure3.png" title="Test environment for TLS 1.3 using custom endpoint capabilities for visibility and control" id="Figure3"/>
                 </h:p><h:p>
                 Typically, a compliant TLS 1.3 library modified to provide visibility and control of the handshake messages prior to encryption suffices for all tests. 
-                Such modification will require the test client and/or server to be validated. 
+                Such modification will require the test client, test server, or both to be validated. 
                 </h:p><h:p>
                 Since validations of products supporting only TLS 1.2 are still expected under this Package, 
-                the test environment for TLS 1.2-only validations may include network sniffers and man-in-the-middle products that do not require such modifications to a compliant TLS 1.2 library. 
+                the test environment for TLS 1.2-only validations may include network sniffers and man-in-the-middle products that do not require such 
+                modifications to a compliant TLS 1.2 library. 
                 For consistency, a compliant TLS client (or TLS server) together with the network sniffers and man-in-the-middle capabilities 
                 will also be referred to as a test TLS client (or test TLS server, respectively) in the following evaluation activities.
                 </h:p>
@@ -313,6 +314,907 @@
 	  <audit-event />
         </f-component>
 
+
+  <f-component cc-id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
+    <depends on-sel="dtlsc_impl"/>
+    <f-element id="fel-dtlsc-impl">
+      <title>The TSF shall implement DTLS 1.2 (RFC 6347) and
+      <selectables>
+        <selectable>DTLS 1.3 (RFC 9147)</selectable>
+        <selectable exclusive="yes">no other DTLS versions</selectable>
+      </selectables> as a client that supports additional functionality for session renegotiation protection and <selectables linebreak="yes">
+        <selectable id="dtlsc_mutual_auth">mutual authentication</selectable>
+        <selectable id="dtlsc_downgrade_protection">supplemental downgrade protection</selectable>
+        <selectable id="dtlsc_resumption">session resumption</selectable>
+        <selectable>no optional functionality</selectable>
+      </selectables> and shall abort attempts by a server to negotiate all other DTLS versions.
+      </title>
+      <note role="application">
+        <h:p>
+          This SFR is claimed if "DTLS as a client" is selected in FCS_TLS_EXT.1.1.
+        </h:p><h:p>
+        The ST author will claim DTLS 1.3 functionality if supported, and optional functionality as appropriate for the claimed versions. 
+        </h:p><h:p>
+        Session renegotiation protection is required for both DTLS 1.2 and DTLS 1.3, and the ST must include the requirements from FCS_DTLSC_EXT.4. 
+        Within FCS_DTLSC_EXT.4, options for implementation of secure session renegotiation for DTLS 1.2 or rejecting renegotiation requests are claimed.  
+        </h:p><h:p>
+        If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.2. 
+        If the TOE implements mutual authentication, this selection must be made.
+        </h:p><h:p>
+        If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.3. 
+        This is claimed if DTLS 1.3 is supported, or if the product supports TLS 1.1 or below downgrade protection using the mechanism described in RFC 8446. 
+        Note that TLS 1.1 or below downgrade protection in DTLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3, 
+        but that it received a client hello indicating maximum support for DTLS 1.0 (there is no DTLS version 1.1). 
+        </h:p><h:p>
+        If "session resumption" is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.5. 
+        </h:p><h:p>
+        DTLS version numbers are denoted on the wire as the 1’s complement of the corresponding textual DTLS versions as described in Section 4.1 of RFC 6347. 
+        DTLS version 1.2 is 0xfefd; DTLS version 1.3 is 0xfefc. 
+        </h:p>
+      </note>
+    </f-element>
+    <f-element>
+        <title>
+          The TSF shall be able to support the following TLS 1.2 ciphersuites: <selectables linebreak="yes">
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+            <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+            <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+            <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable></selectables>,
+          the following PP-specific ciphersuites using pre-shared secrets:
+          <selectables linebreak="yes">
+            <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
+            <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+            <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+            <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
+            <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+            <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+            <selectable>no ciphersuites using pre-shared secrets</selectable></selectables>,
+          and the following TLS 1.3 ciphersuites: <selectables linebreak="yes">
+            <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
+            <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
+            <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
+            <selectable>no TLS 1.3 ciphersuites</selectable></selectables>
+          offering the supported ciphersuites in a client hello message in preference order: 
+          <assignable>list of supported ciphersuites</assignable>.
+        </title>
+      <note role="application">
+        <h:p>
+        DTLS uses TLS ciphersuites. The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite 
+        for each DTLS version supported – TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. 
+        </h:p><h:p>
+        The application note for FCS_TLSC_EXT.1.2 applies to this requirement, with ‘FCS_TLSC_EXT.1.1’ replaced by ‘FCS_DTLSC_EXT.1.1.’
+        </h:p>
+      </note>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall not offer ciphersuites indicating the following: 
+        <h:ul>
+          <h:li>the null encryption component</h:li>
+          <h:li>support for anonymous servers</h:li>
+          <h:li>use of deprecated or export-grade cryptography including DES, 3DES, RC2, RC4, or IDEA for encryption</h:li>
+          <h:li>use of MD</h:li>
+        </h:ul> and shall abort sessions where a server attempts to negotiate ciphersuites not enumerated in the client hello message.
+      </title>
+    </f-element>
+    <f-element>
+    <title>
+      The TSF shall be able to support the following TLS client hello message extensions: 
+      <h:ul>
+        <h:li>signature_algorithms extension (RFC 8446) indicating support for 
+          <selectables linebreak="yes">
+            <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+            <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+              <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
+              <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+              <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
+              <selectable>no other signature algorithms</selectable></selectables>
+        </h:li>
+        <h:li>
+          extended_master_secret extension (RFC 7627) enforcing server support
+        </h:li>
+        <h:li>
+          the following other extensions: <selectables linebreak="yes">
+            <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
+              <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+              <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
+                <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
+                <selectable>rsa_pss_rsae_sha256 (RFC 8446)</selectable>
+                <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
+                <selectable>no other signature algorithms</selectable>
+              </selectables></selectable>
+            <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3</selectable>
+            <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
+              <selectable>secp256r1</selectable>
+              <selectable>secp384r1</selectable>
+              <selectable>secp521r1</selectable>
+              <selectable>ffdhe2048(256)</selectable>
+              <selectable>ffdhe3072(257)</selectable>
+              <selectable>ffdhe4096(258)</selectable>
+              <selectable>ffdhe6144(259)</selectable>
+              <selectable>ffdhe8192(260)</selectable></selectables></selectable>
+            <selectable>key_share extension (RFC 8446)</selectable>
+            <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_mode (RFC 8446) indicating DHE or ECDHE mode</selectable>
+            <selectable>no other extensions</selectable></selectables>
+          and shall not send the following extensions: <h:ul>
+            <h:li>early_data</h:li>
+            <h:li>psk_key_exchange_mode indicating PSK only mode.</h:li>
+          </h:ul>
+        </h:li>
+      </h:ul>
+    </title>  
+      <note role="application">
+        DTLS uses TLS extensions. All other application notes for FCS_TLSC_EXT.1.4 apply to this requirement, 
+        with references to TLS and FCS_TLSC_EXT.1 elements replaced by DTLS and the corresponding reference to FCS_DTLSC_EXT.1 elements.
+    </note>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall be able to <selectables linebreak="yes">
+          <selectable>verify that a presented identifier of name type: <selectables linebreak="yes">
+            <selectable>DNS name type according to RFC 6125</selectable>
+            <selectable>URN name type according to RFC 6125</selectable> 
+            <selectable>SRV name type according to RFC 6125</selectable>
+            <selectable>Common Name conversion to DNS name according to RFC 6125</selectable>
+            <selectable>Directory name type according to RFC 5280</selectable>
+            <selectable>IPaddress name type according to RFC 5280</selectable>
+            <selectable>rfc822Name type according to RFC 5280</selectable>
+            <selectable><assignable>other name type</assignable></selectable></selectables></selectable>  
+          <selectable>interface with a client application requesting the DTLS channel to verify that a presented identifier</selectable></selectables> 
+        matches a reference identifier of the requested DTLS server and shall abort the session if no match is found.
+      </title>
+      <note role="application">
+        All supported methods for matching names are claimed. All other application notes for FCS_TLSC_EXT.1.5 
+        apply to this requirement, with ‘TLS Servers’ replaced by ‘DTLS Servers.’ 
+      </note>
+    </f-element>
+    <f-element id="fel-dtlsc-bad-cert">
+      <title>
+        The TSF shall not establish a trusted channel if the server certificate is invalid <selectables>
+          <selectable>with no exceptions</selectable>
+          <selectable>except when override is authorized in the case where valid revocation information is not available</selectable></selectables>. 
+      </title>
+      <note role="application">
+        All override mechanisms supported are described. All other application notes for FCS_TLSC_EXT.1.6 apply to this requirement,
+        with references to TLS replaced by appropriate references for DTLS, as explained in the DTLS RFCs.
+      </note>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall <selectables>
+          <selectable>terminate the DTLS session</selectable>
+          <selectable>silently discard the record</selectable>
+        </selectables>
+        if a message received contains an invalid MAC or if decryption fails in the case of GCM and other AEAD ciphersuites.
+      </title>
+      <note role="application">
+        <h:p>
+        All supported responses are claimed; at least one option is claimed. 
+        If both options are supported, the ST describes when each method is used and whether the behavior is configurable. 
+        </h:p>
+      </note>
+      <aactivity>
+        The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.1, with the following modifications: 
+        <h:ul>
+          <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
+          <h:li>Version indicators are 1’s complement values of the corresponding text versions (the legacy or supported version value 
+            is ‘fe fd’ for DTLS 1.2 and ‘fe fc’ for DTLS 1.3).</h:li> 
+          <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
+            it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li>
+          <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
+            repeatedly sends the flawed messages indicated in the tests. 
+            If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+            Otherwise, the evaluator observes the termination of a session (connection state) by verifying that the TSF does not continue to 
+            resend messages after the last timeout expires.</h:li>
+          <h:li>The equivalent of <xref to="tls-client-obsolete-versions"/> only includes a test for DTLS 1.0 (version value ‘fe ff’). 
+            There are no DTLS equivalents of SSL versions or TLS 1.1.</h:li>
+          <h:li>The equivalent of <xref to="tls-client-nonstandard-versions"/> should use ‘fe’fc’ in the legacy version to test for responses to DTLS 
+            equivalents to beta TLS versions, or use ‘fe fb’ to test for undefined versions.</h:li>
+          <h:li>The equivalent of <xref to="tls-client-deprecated-encryption"/> should still include a test for RC4 ciphersuites, 
+            even though DTLS does not support stream ciphers. The test only verifies that the TSF can reject such a negotiation from a test DTLS server, 
+            and does not require the use of the cipher.</h:li>
+          <h:li>In the equivalent of <xref to="tls-client-missing-finished"/>, DTLS clients may buffer unexpected application messages, 
+            and resend previous messages in response to timeouts for missing messages. 
+          It is acceptable for the evaluator to observe the TSF resend its finished message multiple times 
+          as an indication that it will not process application messages until the server finished message is received. 
+          The evaluator should not resend application messages from the test DTLS server, as this might cause the TSF’s counter to continue to reset.</h:li>
+        </h:ul>
+        <h:p>
+        The evaluator shall also perform the following evaluation activities for FCS_DTLSC_EXT.1.7:
+        </h:p>
+        <TSS>
+          The evaluator shall verify that the TSS describes the actions that take place if a message received from the DTLS Server fails the integrity check.
+        </TSS>
+        <Guidance>
+          If the ST indicates the behavior of the TSF on receiving a message from the DTLS Server that fails the MAC integrity check is configurable, 
+          the evaluator shall verify that the guidance documentation describes instructions for configuring the behavior.
+        </Guidance>
+        <Tests>
+          For each version supported, the evaluator shall establish a connection using a compliant handshake negotiating the version.  
+          The evaluator will then cause the test server to send application data with at least one byte in a record message modified 
+          from what a compliant test server would send, and verify that the client discards the record or terminates the DTLS session as described in the TSS. 
+          If multiple behaviors are supported, the evaluator shall repeat the test for each behavior.
+        </Tests>
+      </aactivity>
+    </f-element>
+    <audit-event type="optional">
+      <audit-event-descr>Failure to establish a DTLS session</audit-event-descr>
+      <audit-event-info>Reason for failure.</audit-event-info>
+    </audit-event>
+    <audit-event type="optional">
+      <audit-event-descr>Failure to verify presented identifier</audit-event-descr>
+      <audit-event-info>Presented identifier and reference identifier.</audit-event-info>
+    </audit-event>
+    <audit-event type="optional">
+      <audit-event-descr>Establishment/termination of a DTLS session</audit-event-descr>
+      <audit-event-info>Non-TOE endpoint of connection.</audit-event-info>
+    </audit-event>
+  </f-component>
+      
+
+  <f-component cc-id="fcs_dtlsc_ext.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
+    <depends on-sel="dtlsc_mutual_auth"/>
+          <f-element id="fel-dtlsc-mut-auth">
+            <title>
+              The TSF shall support mutual authentication using X.509v3 certificates during the handshake and 
+              <selectables>
+                <selectable>in support of post-handshake authentication requests</selectable>
+                <selectable>at no other time</selectable>
+              </selectables>, in accordance with <selectables>
+                <selectable>RFC 5246 section 7.4.4</selectable>
+                <selectable>RFC 8446 section 4.3.2</selectable>
+              </selectables>.
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "mutual authentication" is selected in FCS_DTLSC_EXT.1.1.
+              </h:p><h:p>
+              All application notes for FCS_TLSC_EXT.2.1 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+      </note>
+      <aactivity>
+        <no-tests>
+        The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.2 while ensuring that DTLS (and not TLS) is used in each evaluation activity.
+        </no-tests>
+      </aactivity>
+    </f-element>
+	  <audit-event/>
+  </f-component>
+
+
+        <f-component cc-id="fcs_dtlsc_ext.3" name="DTLS Client Downgrade Protection" status="sel-based">
+          <depends on-sel="dtlsc_downgrade_protection"/>
+          <f-element>
+            <title>The TSF shall not establish a DTLS channel if the server hello message includes a
+              <selectables>
+                <selectable>TLS 1.2 downgrade indicator</selectable>
+                <selectable>TLS 1.1 or below downgrade indicator</selectable></selectables>
+              in the server random field. </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSC_EXT.1.1.
+              </h:p><h:p>
+                DTLS uses the TLS downgrade indicators. 
+                The application notes listed for FCS_TLSC_EXT.3 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+            </note>
+            <aactivity>
+            <no-tests>
+              The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.3, with the following modifications:
+              <h:ul>
+                <h:li>DTLS (and not TLS) is used in each evaluation activity</h:li> 
+                <h:li>References to FCS_TLSC_EXT.1.1 are replaced with references to FCS_DTLSC_EXT.1.1.</h:li>
+                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
+                  it might be necessary to resend the message multiple times from the DTLS test server 
+                  according to the appropriate DTLS RFC to get the desired response.</h:li>
+                <h:li>DTLS clients do not send fatal error alerts, 
+                  but should generate them for diagnostics if the test DTLS server repeatedly sends the flawed messages indicated in the tests. 
+                  If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+                  Otherwise, the evaluator observes the termination of a session (connection state) 
+                  by verifying that the TSF does not continue to resend messages after the last timeout expires.</h:li>
+              </h:ul>
+            </no-tests>
+            </aactivity>
+          </f-element> 
+          <audit-event/>
+        </f-component>
+        
+        <f-component cc-id="fcs_dtlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
+          <depends on-sel="tlsc_impl"/>
+          <f-element id="fel-renego">
+            <title>The TSF shall support secure renegotiation through use of <selectables>
+              <selectable>the “renegotiation_info” TLS extension</selectable>
+              <selectable>the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value</selectable></selectables>
+              in accordance with RFC 5746, and shall terminate the session if an unexpected server hello is received or <selectables>
+                <selectable>hello request message is received</selectable>
+                <selectable>in no other case</selectable></selectables>. 
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "DTLS as a client" is selected in FCS_TLS_EXT.1.1.
+              </h:p><h:p>
+              The application notes listed for FCS_TLSC_EXT.4 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+            </note>
+            <aactivity>
+            <no-tests>
+              The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.4, with the following modifications:
+              <h:ul>
+                <h:li>DTLS (and not TLS) is used in each evaluation activity, with references to TLS replaced by references to DTLS.</h:li>
+                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
+                  it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li>
+              </h:ul>
+            </no-tests>
+            </aactivity>
+          </f-element> 
+          <audit-event/>
+        </f-component>
+        
+        <f-component cc-id="fcs_dtlsc_ext.5" name="DTLS Client Support for Session Resumption" status="sel-based">
+          <depends on-sel="dtlsc_resumption"/> 
+          <f-element>
+            <title>
+              The TSF shall support session resumption as a client via the use of <selectables>
+                <selectable>session ID in accordance with RFC 5246</selectable>
+                <selectable>tickets in accordance with RFC 5077</selectable>
+                <selectable id="dtlsc_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "session resumption" is selected in FCS_DTLSC_EXT.1.1.
+              </h:p><h:p>
+                The ST author indicates which session resumption mechanisms are supported. 
+                One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed for DTLS 1.2 resumption. 
+                If resumption of DTLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, 
+                and the selection-based SFR FCS_DTLSC_EXT.6 must also be claimed.
+              </h:p><h:p>
+                While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. 
+                Validation of key exchange and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_DTLSC_EXT.1. 
+              </h:p>
+            </note>
+            <aactivity>
+            <no-tests>
+              The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.5, with the following modifications:
+              <h:ul>
+                <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
+                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so 
+                  it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
+                <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server repeatedly sends the flawed messages 
+                  indicated in the tests. If the product generates alerts, 
+                  the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+                  Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
+                  the TSF does not continue to resend messages after the last timeout expires.</h:li>
+              </h:ul>
+            </no-tests>
+            </aactivity>
+          </f-element>  
+          <audit-event/>
+        </f-component>
+        
+        
+        <f-component cc-id="fcs_dtlsc_ext.6" name="DTLS Client DTLS 1.3 Resumption Refinements" status="sel-based">
+          <depends on-sel="dtlsc_v13_resumption"/> 
+          <f-element>
+            <title>
+              The TSF shall send a psk_key_exchange_mode extension with value psk_dhe when DTLS 1.3 session resumption is offered. 
+            </title>
+          </f-element>
+          <f-element>
+            <title>
+              The TSF shall not send early data in DTLS 1.3 sessions. 
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSC_EXT.5.1.
+              </h:p><h:p>
+                The application notes listed for FCS_TLSC_EXT.6 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS. 
+              </h:p>
+            </note>
+        <aactivity>
+        <no-tests>
+          The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.6, but ensuring that DTLS (and not TLS) is used in each evaluation activity 
+          – ‘TLS’ and ‘FCS_TLSC_EXT.5’ are replaced by ‘DTLS’ and ‘FCS_DTLSC_EXT.5.’
+        </no-tests>
+        </aactivity>
+          </f-element>  
+          <audit-event/>
+        </f-component> 
+        
+        
+  <f-component cc-id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
+    <depends on-sel="dtlss_impl"/>
+    <f-element id="fel-dtlss-impl">
+      <title>The TSF shall implement DTLS 1.2 (RFC 6347) and
+      <selectables>
+        <selectable>DTLS 1.3 (RFC 9147)</selectable>
+        <selectable>no earlier DTLS versions</selectable>
+      </selectables> as a server that supports additional functionality for session renegotiation protection and
+        <selectables linebreak="yes">
+          <selectable id="dtlss_mutual_auth">mutual authentication</selectable>
+          <selectable id="dtlss_downgrade_protection">supplemental downgrade protection</selectable>
+          <selectable id="dtlss_resumption">session resumption</selectable>
+          <selectable>no optional functionality</selectable></selectables>
+        and shall reject connection attempts from clients supporting only DTLS 1.0.
+      </title>
+      <note role="application">
+        <h:p>
+          This SFR is claimed if "DTLS as a server" is selected in FCS_TLS_EXT.1.1.
+        </h:p><h:p>
+          The ST author will claim DTLS 1.3 functionality if supported, and optional functionality as appropriate for the claimed versions. 
+        </h:p><h:p>
+          Session renegotiation protection is required for both DTLS 1.2 and DTLS 1.3, and the ST must include the requirements from FCS_DTLSS_EXT.4. 
+          Within FCS_DTLSS_EXT.4, options for implementation of secure session renegotiation for DTLS 1.2, or rejecting renegotiation requests are claimed.  
+        </h:p>
+        <h:p>
+          If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_DTLSS_EXT.2. 
+          If the TOE implements mutual authentication, this selection must be made.
+        </h:p><h:p>
+          If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_DTLSS_EXT.3. 
+          If the TOE provides downgrade protection as indicated in RFC 8446, in particular, if DTLS 1.3 is supported, this selection must be made. 
+        </h:p><h:p>
+          If "session resumption" is selected, then the ST must additionally include the requirements from FCS_DTLSS_EXT.5.
+        </h:p><h:p>
+          DTLS version numbers are denoted on the wire as the 1’s complement of the corresponding textual DTLS versions as described in Section 4.1 of RFC 6347. 
+          DTLS version 1.2 is 0xfefd; DTLS version 1.3 is 0xfefc. 
+        </h:p>
+      </note>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall be able to support the following TLS 1.2 ciphersuites:
+        <selectables linebreak="yes">
+          <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+          <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+          <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+          <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+          <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
+          <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+          <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+          <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+          <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+          <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+          <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+          <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable></selectables>,
+        the following PP-specific ciphersuites using pre-shared secrets:
+        <selectables linebreak="yes">
+          <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
+          <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+          <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+          <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
+          <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+          <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+          <selectable>no ciphersuites using pre-shared secrets</selectable></selectables>,
+        and the following TLS 1.3 ciphersuites: <selectables linebreak="yes">
+          <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
+          <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
+          <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
+          <selectable>no TLS 1.3 ciphersuites</selectable></selectables>
+        using a preference order based on <selectables>
+          <selectable>RFC 9151 priority</selectable>
+          <selectable>client hello ordering</selectable>
+          <selectable><assignable>additional priority</assignable></selectable>
+        </selectables>.
+      </title>
+        <note role="application">
+          DTLS supports TLS ciphersuites. The ST author should select the ciphersuites that are supported and must select at least one ciphersuite suitable for each 
+          supported DTLS version – TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. 
+          All other application notes for FCS_TLSS_EXT.1.2 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS. 
+        </note>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall not establish a connection with a client that does not indicate support for at least one of the supported ciphersuites.
+      </title>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall be able to process the following TLS client hello message extensions: 
+        <h:ul>
+          <h:li>signature_algorithms extension (RFC 8446) indicating support for 
+            <selectables linebreak="yes">
+              <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+              <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
+                <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
+                <selectable>no other signature algorithms</selectable></selectables>
+          </h:li>
+          <h:li>
+            extended_master_secret extension (RFC 7627) enforcing client support
+          </h:li>
+          <h:li>
+            the following other extensions: <selectables linebreak="yes">
+              <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
+                <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                  <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
+                  <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                  <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
+                  <selectable>rsa_pss_rsae_sha256 (RFC 8446)</selectable>
+                  <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
+                  <selectable>no other signature algorithms</selectable>
+                </selectables></selectable>
+              <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3</selectable>
+              <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
+                <selectable>secp256r1</selectable>
+                <selectable>secp384r1</selectable>
+                <selectable>secp521r1</selectable>
+                <selectable>ffdhe2048(256)</selectable>
+                <selectable>ffdhe3072(257)</selectable>
+                <selectable>ffdhe4096(258)</selectable>
+                <selectable>ffdhe6144(259)</selectable>
+                <selectable>ffdhe8192(260)</selectable></selectables></selectable>
+              <selectable>key_share extension (RFC 8446)</selectable>
+              <selectable>no other extensions</selectable></selectables>.
+          </h:li>
+        </h:ul>
+      </title>
+      <note role="application">
+        DTLS uses TLS extensions. If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. 
+        Even if support for DTLS 1.3 is not claimed, if ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the entry for supported_groups is claimed. 
+        Support for additional extensions is acceptable.
+        For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
+      </note>
+    </f-element>    
+    <f-element>
+      <title>
+        The TSF shall perform key establishment for DTLS using <selectables linebreak="yes">
+          <selectable>RSA with size <selectables>
+            <selectable>2048</selectable>
+            <selectable>3072</selectable>
+            <selectable>4096</selectable></selectables> bits and no other sizes</selectable>
+          <selectable>Diffie-Hellman parameters with size <selectables>
+            <selectable>2048</selectable>
+            <selectable>3072</selectable>
+            <selectable>4096</selectable>
+            <selectable>6144</selectable>
+            <selectable>8192</selectable></selectables> bits and no other sizes</selectable>
+          <selectable>Diffie-Hellman groups <selectables>
+            <selectable>ffdhe2048</selectable>
+            <selectable>ffdhe3072</selectable>
+            <selectable>ffdhe4096</selectable>
+            <selectable>ffdhe6144</selectable>
+            <selectable>ffdhe8192</selectable></selectables> and no other groups,
+            consistent with the client's supported groups extension and <selectables>
+              <selectable>key share</selectable>
+              <selectable>no other</selectable></selectables> extension
+          </selectable>
+          <selectable>ECDHE parameters using elliptic curves <selectables>
+            <selectable>secp256r1</selectable>
+            <selectable>secp384r1</selectable>
+            <selectable>secp521r1</selectable></selectables> and no other curves,  
+            consistent with the client's supported groups extension and <selectables>
+              <selectable>key share</selectable>
+              <selectable>no other</selectable></selectables> extension and using non-compressed formatting for points
+          </selectable></selectables>.
+      </title>
+      <note role="application">
+      DTLS uses key establishment mechanisms from the equivalent TLS version. 
+      The application notes for FCS_TLSS_EXT.1.5 apply to this requirement, with ‘TLS’ replaced by ‘DTLS’ 
+      and references to ‘FCS_TLSS_EXT.1’ elements replaced by the corresponding element of ‘FCS_DTLSS_EXT.1.’
+      </note>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall not proceed with a connection handshake attempt if the DTLS client fails validation.
+      </title>
+      <note role="application">
+        The process to validate the IP address of a DTLS client is specified in section 4.2.1 of RFC 6347 (DTLS 1.2) and in section 5.1 of RFC 9147 (DTLS 1.3). 
+        The server validates the DTLS client during connection establishment (handshaking) and prior to sending a server hello message. 
+        After receiving a client hello, a DTLS 1.2 Server sends a HelloVerifyRequest along with a cookie, 
+        whereas a DTLS 1.3 server sends a HelloRetryRequest message along with a cookie. 
+        In both TLS 1.2 and TLS 1.3, the cookie is a signed message using a keyed hash function. 
+        The DTLS Client then sends another client hello with the cookie attached. 
+        If the DTLS server successfully verifies the signed cookie, the client is not using a spoofed IP address.
+      </note>
+      <aactivity>
+        The evaluator shall perform all evaluation activities listed for FCS_TLSS_EXT.1, with the following modifications: 
+        <h:ul>
+          <h:li>DTLS (and not TLS) is used in each evaluation activity - ‘TLS’ is replaced with ‘DTLS’ and references to FCS_TLSS_EXT.1 elements are replaced with 
+            the corresponding FCS_DTLSS_EXT.1 element.</h:li>
+          <h:li>Version indicators are 1’s complement values of the corresponding text versions 
+            (the legacy or supported version value is ‘fe fd’ for DTLS 1.2 and ‘fe fc’ for DTLS 1.3).</h:li> 
+          <h:li>DTLS servers may silently drop flawed or unexpected messages from a DTLS test client. Therefore, it might be necessary to resend the message 
+            multiple times from the DTLS test client according to the appropriate DTLS RFC to get the desired response.</h:li> 
+          <h:li>DTLS servers do not send fatal error alerts, but should generate them for diagnostics 
+            if the test DTLS client repeatedly sends the flawed messages indicated in the tests. 
+            If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+            Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
+            the TSF does not continue to resend messages after the last timeout expires.</h:li>
+          <h:li>In addition to descriptions of the TLS mechanisms described in TLS RFCs used by DTLS, 
+            the evaluator shall ensure that the DTLS description also describes the mechanisms unique to DTLS as indicated in the DTLS RFCs.</h:li>
+          <h:li>The equivalent of <xref to="tls-server-obsolete-versions"/> only includes a test for DTLS 1.0 (version value ‘fe ff’). 
+            There are no DTLS equivalents of SSL versions or TLS 1.1.</h:li>
+          <h:li>The equivalent of <xref to="tls-server-beta-versions"/> should use ‘fe’fc’ in the legacy version to test for responses 
+            to DTLS equivalents to beta TLS versions, or use ‘fe fb’ to test for undefined versions.</h:li>
+          <h:li>The equivalent of <xref to="tls-server-deprecated-encryption"/> should still include a test for RC4 ciphersuites, 
+            even though DTLS does not support stream ciphers. The test only verifies that the TSF can reject such an offer from a test DTLS client, 
+            and does not require the use of the cipher.</h:li>
+          <h:li>In <xref to="tls-server-key-exchange"/>, DTLS messages include an epoch field that changes with each change_cipher_spec message. 
+            This can be used in DTLS 1.3 to indicate the internal change of state corresponding to the implied message.</h:li>
+          <h:li>In the equivalent of <xref to="tls-server-no-finished-msg"/>, a DTLS server may buffer unexpected application messages, 
+            and resend previous messages in response to timeouts for missing messages. 
+            It is acceptable for the evaluator to observe the TSF resend its final flight multiple times as an indication that 
+            it will not process application messages until the client finished message is received. 
+            The evaluator should not resend application messages from the test DTLS client, as this might cause the TSF’s counter to continue to reset.</h:li>
+        </h:ul>
+        <h:p>
+          The evaluator shall also perform the following evaluation activities for FCS_DTLSS_EXT.1.6
+        </h:p>
+        <TSS>
+          <h:p>The evaluator shall verify that the TSS describes how the DTLS Client IP address is validated prior to issuing a server hello message.</h:p>
+        </TSS>
+        <Guidance>
+          <h:p>
+          There are no guidance evaluation activities for this element.
+          </h:p>
+        </Guidance>
+        <Tests>
+          <testlist>
+            <test>The evaluator shall send a TLS 1.2 client hello message from a test client and observe that the TSF sends a HelloVerifyRequest message. 
+              The evaluator shall modify at least one byte in the cookie from the Server's HelloVerifyRequest message and include the modified value 
+              as a cookie in the test client’s second clienthello message. The evaluator shall verify that the Server rejects the Client's handshake message.</test>
+            <test>[conditional] If the TSF supports DTLS 1.3, the evaluator shall send a TLS 1.3 client hello message from a test client and observe that the TSF sends 
+              a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the Server's HelloRetryRequest message and 
+              include the modified value as a cookie in the test client’s second clienthello message. 
+              The evaluator shall verify that the Server rejects the Client's handshake message.</test>
+          </testlist>
+        </Tests>
+      </aactivity>
+    </f-element>
+  	<audit-event type="optional">
+  	  <audit-event-descr>Failure to establish a TLS session</audit-event-descr>
+  	  <audit-event-info>Reason for failure</audit-event-info>
+	</audit-event>
+  </f-component>
+
+  <f-component cc-id="fcs_dtlss_ext.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
+    <depends on-sel="dtlss_mutual_auth"/>
+          <f-element id="fel-dtlss-mut-auth">
+              <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates during the DTLS handshake and <selectables>
+                <selectable>during post-handshake requests</selectable>
+                <selectable>at no other time</selectable></selectables> 
+                using the certificate types indicated in the client’s signature_algorithms and <selectables>
+                  <selectable>signature_algorithms_cert</selectable>
+                  <selectable>no other</selectable></selectables> extension.
+            </title>
+            <note role="application">
+              <h:p>
+              This SFR is claimed if "mutual authentication" is selected in FCS_DTLSS_EXT.1.1.
+              </h:p><h:p>
+              All application notes for FCS_TLSS_EXT.2.1 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+      </note>
+          </f-element>
+    <f-element>
+      <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with <no-link>FIA_X509_EXT.1</no-link>.</title>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall be able to reject the establishment of a trusted channel if the requested client certificate is invalid and <selectables linebreak="yes">
+          <selectable>continue establishment of a server-only authenticated DTLS channel in accordance with FCS_DTLSS_EXT.1 in support of <selectables>
+            <selectable>all applications</selectable>
+            <selectable><assignable>list of calling applications that accept both authenticated and unauthenticated client sessions</assignable></selectable></selectables> 
+            when an empty certificate message is provided by the client</selectable>
+          <selectable>continue establishment of a mutually authenticated DTLS channel when revocation status information for the <selectables>
+            <selectable>client's leaf certificate</selectable>
+            <selectable><assignable>specific intermediate CA certificates</assignable></selectable>
+            <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
+            is not available in support of <selectables>
+              <selectable>all applications</selectable>
+              <selectable><assignable>list of calling applications configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables>
+                <selectable>configured by an administrator</selectable>
+                <selectable>confirmed by the application user</selectable>
+                <selectable>a default for <assignable>subset of applications</assignable></selectable></selectables>
+          </selectable>
+          <selectable>no other processing options for missing or invalid client certificates</selectable></selectables>. 
+      </title>
+              <note role="application">
+                All application notes for FCS_TLSS_EXT.2.3 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </note>
+    </f-element>
+    <f-element>
+      <title>The TSF shall be able to <selectables linebreak="yes">
+        <selectable>not establish a DTLS session if an entry of the Distinguished Name or a <selectables>
+          <selectable>rfc822_name</selectable>
+          <selectable>dns_name</selectable>
+          <selectable><assignable>supported name types</assignable></selectable></selectables>
+          in the Subject Alternate Name extension contained in the client certificate does not match one of the expected identifiers for the client in accordance with <selectables>
+            <selectable>RFC 2822</selectable>
+            <selectable>RFC 6125</selectable>
+            <selectable>RFC 5280</selectable>
+            <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
+          matching rules</selectable>
+        <selectable>pass the <selectables>
+          <selectable>validated certificate</selectable>
+          <selectable>RFC 2822 name normalized according to RFC 2822</selectable>
+          <selectable>DNS name normalized according to RFC 6125</selectable>
+          <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
+          <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
+          to <assignable>list of calling applications capable of making access decisions</assignable></selectable></selectables>.     
+      </title>
+      <note role="application">
+        All application notes for FCS_TLSS_EXT.2.4 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+      </note>        
+      <aactivity>
+        <no-tests>
+          The evaluator shall perform all evaluation activities listed for FCS_TLSS_EXT.2, with the following modifications:
+          <h:ul>
+            <h:li>DTLS (and not TLS) is used in each evaluation activity – ‘TLS’ is replaced with ‘DTLS’ and references to FCS_TLSS_EXT.2 elements are replaced with 
+              the corresponding reference to the FCS_DTLSS_EXT.2 element.</h:li>
+            <h:li>DTLS servers may silently drop flawed or unexpected messages from a DTLS test client. Therefore, it might be necessary to resend the message multiple times 
+              from the DTLS test client according to the appropriate DTLS RFC to get the desired response.</h:li> 
+            <h:li>DTLS servers do not send fatal error alerts, but should generate them for diagnostics if the test DTLS client 
+              repeatedly sends the flawed messages indicated in the tests. 
+              If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+              Otherwise, the evaluator observes the termination of a session (connection state) by verifying that the TSF does not continue 
+              to resend messages after the last timeout expires.</h:li> 
+          </h:ul>
+        </no-tests>
+      </aactivity>        
+      </f-element>
+	  <audit-event/>
+      </f-component>
+        
+        <f-component cc-id="fcs_dtlss_ext.3" name="DTLS Server Downgrade Protection" status="sel-based">
+          <depends on-sel="dtlss_downgrade_protection"/>
+          <f-element>
+            <title>
+              The TSF shall set the server hello extension to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating DTLS 1.2 as indicated in RFC 8446 section 4.1.3.
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSS_EXT.1.1. 
+              </h:p><h:p>
+                The application notes listed for FCS_TLSS_EXT.3 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+            </note>
+            <aactivity>
+             <no-tests>
+               The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.3, with references to TLS replaced by the equivalent reference to DTLS.
+             </no-tests>
+            </aactivity>
+          </f-element>
+          <audit-event />
+        </f-component>
+        
+        <f-component cc-id="fcs_dtlss_ext.4" name="DTLS Server Support for Renegotiation" status="sel-based">
+          <depends on-sel="dtlss_impl"/>
+          <f-element>
+            <title>The TSF shall support secure renegotiation through the use of <selectables>
+              <selectable>the "renegotiation_info" TLS extension</selectable>
+              <selectable>not allowing session renegotiation</selectable></selectables> in accordance with RFC 5746.
+            </title>
+          </f-element>
+          <f-element>
+            <title>The TSF shall, when negotiating a DTLS 1.2 session, <selectables>
+              <selectable>include the renegotiation_info extension in server hello messages when a client hello with the renegotiation_info extension is received 
+                and shall terminate a session if neither of the renegotiation_info or TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuites are indicated in the client hello</selectable>
+              <selectable>not allow renegotiation</selectable></selectables>.
+            </title>
+          </f-element>
+          <f-element>
+            <title>
+              The TSF shall terminate the session if an unexpected client hello is received during an active DTLS session.
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "DTLS as a server" is selected in FCS_TLS_EXT.1.1.
+              </h:p><h:p>
+                The application notes listed for FCS_TLSS_EXT.4 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+            </note>
+            <aactivity>
+              <no-tests>
+                The evaluator shall perform all evaluation activities listed for FCS_TLSS_EXT.4, with the following modifications:
+                <h:ul>
+                  <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
+                  <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server. Therefore, it might be necessary to 
+                    resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
+                  <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
+                    repeatedly sends the flawed messages indicated in the tests. 
+                    If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+                    Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
+                    the TSF does not continue to resend messages after the last timeout expires.</h:li>
+                </h:ul>
+              </no-tests>
+            </aactivity>
+          </f-element>
+          <audit-event/>
+        </f-component>
+        
+        
+        <f-component cc-id="fcs_dtlss_ext.5" name="DTLS Server Support for Session Resumption" status="sel-based">
+          <depends on-sel="dtlss_resumption"/> 
+          <f-element>
+            <title>
+              The TSF shall support session resumption as a server via the use of <selectables>
+                <selectable>session ID in accordance with RFC 5246</selectable>
+                <selectable>tickets in accordance with RFC 5077</selectable>
+                <selectable id="dtlss_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "session resumption" is selected in FCS_DTLSS_EXT.1.1.
+              </h:p><h:p>
+                The application notes listed for FCS_TLSS_EXT.5 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p><h:p>
+                If resumption of DTLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_DTLSS_EXT.6 must also be claimed.
+              </h:p>
+            </note>
+            <aactivity>
+              <no-tests>
+                The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.5, with the following modifications:
+                <h:ul>
+                  <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
+                  <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server. Therefore, it might be necessary 
+                    to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
+                  <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
+                    repeatedly sends the flawed messages indicated in the tests. 
+                    If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+                    Otherwise, the evaluator observes the termination of a session (connection state) by verifying that the TSF 
+                    does not continue to resend messages after the last timeout expires.</h:li>
+                </h:ul>
+              </no-tests>
+            </aactivity>
+          </f-element>
+          <audit-event/>
+        </f-component>
+        
+        
+        <f-component cc-id="fcs_dtlss_ext.6" name="DTLS Server DTLS 1.3 Resumption Refinements" status="sel-based">
+          <depends on-sel="dtlss_v13_resumption"/> 
+          <f-element>
+            <title>
+              The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_mode extension with the value psk_dhe.  
+            </title>
+          </f-element>
+          <f-element>
+            <title>
+              The TSF shall ignore early data received in DTLS 1.3 sessions.
+            </title>
+            <note role="application">
+              <h:p>
+                This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSS_EXT.5.1.
+              </h:p><h:p>
+                The application notes listed for FCS_TLSS_EXT.6 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
+              </h:p>
+            </note>
+            <aactivity>
+              <no-tests>
+                The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.6, with the following modifications:
+                <h:ul>
+                  <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
+                  <h:li>References to FCS_TLSS_EXT.5 are replaced by corresponding references to FCS_DTLSS_EXT.5.</h:li>
+                  <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server. Therefore, it might be necessary to resend the message multiple times 
+                    from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
+                  <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
+                    repeatedly sends the flawed messages indicated in the tests. 
+                    If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
+                    Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
+                    the TSF does not continue to resend messages after the last timeout expires.</h:li>
+                </h:ul>
+              </no-tests>
+            </aactivity>
+          </f-element>  
+          <audit-event/>
+        </f-component>   
 
         <f-component cc-id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
 		  <depends on-sel="tlsc_impl"/>
@@ -342,6 +1244,7 @@
                 If the TOE implements mutual authentication, this selection must be made.
               </h:p><h:p>
                 If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.3. 
+                This is claimed if TLS 1.3 is supported, or if the product supports TLS 1.1 or below downgrade protection using the mechanism described in RFC 8446.
               </h:p><h:p>
                 If "session resumption" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.5. 
               </h:p>
@@ -351,8 +1254,8 @@
             <title>
               The TSF shall be able to support the following TLS 1.2 ciphersuites:
           <selectables linebreak="yes">
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289, RFC 8422</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289, RFC 8422</selectable>
+            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+            <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
@@ -388,17 +1291,19 @@
               The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite for each TLS version supported. 
               The ciphersuites to be tested in the evaluated configuration are limited by this requirement. 
               However, this requirement does not restrict the TOE's ability to propose additional non-deprecated ciphersuites beyond the ones listed in this requirement 
-              in its Client Hello message as indicated in the ST. 
+              in its client hello message as indicated in the ST. 
               That is, the TOE may propose any ciphersuite not excluded by this element, 
               but the evaluation will only test ciphersuites from the above list. 
               It is necessary to limit the ciphersuites that can be used in an evaluated configuration administratively on the server in the test environment. 
               </h:p><h:p>
               TLS 1.3 ciphersuites are claimed if support for TLS 1.3 is claimed in FCS_TLSC_EXT.1.1. 
               The assignment of preference order provides an ordered list of all supported ciphersuites with the most preferred ciphersuites listed first. 
-              Ciphersuites listed in [RFC 9151, “CNSA Suite TLS Profile”] are preferred over all other ciphersuites, 
-              GCM ciphersuites are preferred over CBC ciphersuites, ECDHE preferred over RSA and DHE, and SHA256 or SHA384 over SHA1. 
+              Ciphersuites listed in RFC 9151, “Commercial National Security Algorithm (CNSA)
+              Suite Profile for TLS and DTLS 1.2 and 1.3” are preferred over all other ciphersuites, 
+              GCM ciphersuites are preferred over CBC ciphersuites, ECDHE preferred over RSA and DHE, and SHA-256 or SHA-384 over SHA-1. 
               </h:p>
-              Ciphersuites for TLS 1.2 are of the form TLS_{key exchange algorithm}_WITH_{encryption algorithm}_(message digest algorithm}, and are listed in the TLS parameters section of the internet assignments at iana.org. 
+              Ciphersuites for TLS 1.2 are of the form TLS_(key exchange algorithm)_WITH_(encryption algorithm)_(message digest algorithm}, 
+              and are listed in the TLS parameters section of the internet assignments at iana.org. 
             </note>
           </f-element>
           <f-element>
@@ -495,7 +1400,7 @@
               <h:p>
               The rules for verification identity are described in Section 6 of RFC 6125 and Section 7 of RFC 5280. 
               The reference identifier is established by the user (e.g., entering a URL into a web browser or clicking a link), 
-              by configuration (e.g., configuring the name of a mail server or authentication server), 
+              by configuration (e.g., configuring the name of a mail or authentication server), 
               or by an application (e.g., a parameter of an API) depending on the product service. 
               The client establishes all acceptable reference identifiers and interfaces with the TLS implementation to provide acceptable reference identifiers, 
               or to accept the presented identifiers as validated in the server’s certificate. 
@@ -504,12 +1409,17 @@
               or the presented identifiers from the certificate to the application, the second option is claimed. 
               </h:p><h:p>
               In most cases where TLS servers are represented by DNS-type names, 
-              the preferred method for verification is the Subject Alternative Name using DNS names, URI names, or Service Names. 
+              the preferred method for verification is the Subject Alternative Name using DNS, URI, or Service Names. 
               Verification using a conversion of the Common Name relative distinguished name from a DNS name type in the subject field is allowed for the purposes of backward compatibility. 
               </h:p><h:p>
-              Finally, the client should avoid constructing reference identifiers using wildcards. 
-              However, if the presented identifiers include wildcards, the client must follow the best practices regarding matching; 
-              these best practices are captured in the evaluation activity. Support for other name types is rare, but may be claimed for specific applications. 
+                The client should avoid constructing reference identifiers using wildcards. However, if the presented identifiers include wildcards, 
+                the client must follow the best practices regarding matching; these best practices are captured in the evaluation activity. 
+                If the TSF supports wildcards, and allows names with DNS portions containing internationalized names, 
+                the internationalized name does not match any wildcard, in accordance with RFC 6125 section 7.2.
+              </h:p><h:p>  
+                Support for other name types is rare, but may be claimed for specific applications. 
+                If specified, the assignment includes both the RFC describing normalization and matching rules, 
+                and any refinements necessary to resolve options available in the RFC.
               </h:p>  
             </note>
           </f-element>
@@ -528,7 +1438,7 @@
               Override mechanisms are for use with certificates with published revocation status information that is not accessible, 
               whether temporarily or because the information cannot be accessed during the state of the TOE (e.g., for verifying signatures on boot code). 
               The circumstances should be described by the ST author, who should indicate the override mechanism and conditions that apply to the override, 
-              including system state, user/admin actions, etc. 
+              including system state, user or admin actions, etc. 
               </h:p>
             </note>
          
@@ -551,9 +1461,9 @@
                 of wildcards recognized for each name type claimed in FCS_TLSC_EXT.1.5 and shall verify that the matching rules meet or exceed best practices. 
                 In particular, the evaluator shall ensure that the matching rules are as restrictive as, or more restrictive than the following: 
                 <h:ul>
-                <h:li>DNS names: The ‘*’ character used in the complete leftmost label of a DNS name represents any valid name which have the same number of labels, 
-                  and which matches all remaining labels. The ‘*’ character must only be used in the left-most complete label of a properly formatted DNS name. 
-                  The ‘*’ must not be used to represent a public suffix, or in the left most label immediately following a public suffix. </h:li>
+                <h:li>DNS names: The ‘*’ character used in the complete leftmost label of a DNS name represents any valid name that has the same number of labels, 
+                  and that matches all remaining labels. The ‘*’ character must only be used in the leftmost complete label of a properly formatted DNS name. 
+                  The ‘*’ must not be used to represent a public suffix, or in the leftmost label immediately following a public suffix. </h:li>
                 <h:li>URI or SRV names: The ‘*’ character can only occur in the domain name portion of the name represented as a DNS name. 
                   All restrictions for wildcards in DNS names apply to the DNS portion of the name.
                 URI host names presented as an IP address are matched according to IP address matching rules – see best practices for IP addresses below. 
@@ -562,17 +1472,17 @@
                   but indicates that presented names may be compared to IP address ranges present in name constraints. 
                   If the TSF supports IP address ranges as reference identifiers, the reference identifier matches if the presented name is in the range. 
                   IP ranges in name constraints (including reference identifiers) should be presented in CIDR format. </h:li>
-                <h:li>RFC 822 names: RFC 5280 and updates RFC 8398 and RFC 8399 do not support special indicators representing 
+                <h:li>RFC 2822 names: RFC 5280 and updates RFC 8398 and RFC 8399 do not support special indicators representing 
                   more than a single mailbox as a presented name, but indicates that presented names may be compared to a single mailbox, 
                   ‘any’ email address at a host, or ‘any’ email address on a domain 
                   (e.g., “example.com” matches any email address on the host example.com and “.example.com” matches any email address in the domain example.com, 
-                  but does not match email addresses at the host “example.com”). Such matching is prohibited for internationalized RFC 822 names.</h:li>
-                <h:li>Embedded CN name types: the CN relative distinguished name of a DNS name type included in the subject field is not strongly typed, 
-                  and attempts to match both the name type and wildcard specifications can result in matches not intended, 
+                  but does not match email addresses at the host “example.com”). Such matching is prohibited for internationalized RFC 2822 names.</h:li>
+                <h:li>Embedded CN name types: the CN relative distinguished name of a DNS name type included in the subject field is not strongly typed. 
+                  Attempts to match both the name type and wildcard specifications can result in matches not intended, 
                   and therefore, not authoritatively asserted by a certification authority. It is preferred that no matching of CN embedded names be supported, 
                   but if necessary for backward compatibility, the description should clearly indicate how different name types are interpreted in the matching algorithm. 
                   In particular, the ‘*’ character in a CN is not to be interpreted as representing more than a single entity unless 
-                  the entirety of the RDN is properly formatted as a DNS, URI or SVR name, and represents a wildcard meeting best practices as described above.</h:li>
+                  the entirety of the RDN is properly formatted as a DNS, URI, or SVR name, and represents a wildcard meeting best practices as described above.</h:li>
                 </h:ul>
                 </h:p>
 	      </TSS>
@@ -682,7 +1592,7 @@
                     <test>(anon ciphersuite) The evaluator shall attempt to establish a TLS 1.2 connection with a test TLS server configured to negotiate a ciphersuite using the anonymous server authentication method 
                       and observe that the TOE rejects the connection.
                       <h:p>
-                      It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, 
+                      Note: It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, 
                       but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                       </h:p></test>
                     <h:p>
@@ -754,7 +1664,7 @@
                     but which is signed by a valid Certification Authority using a signature and hash combination not included in the TSF’s signature_algorithms_cert extension 
                     (e.g., a certificate signed using RSA and SHA-1). The evaluator shall confirm the TSF terminates the session.
                     </h:p><h:p>
-                    <h:b>Note:</h:b> Support for certificate based authentication is assumed if the signature_algorithms_cert is supported. 
+                    <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert is supported. 
                     For TLS 1.2, a non-PSK ciphersuite, or one of TLS_RSA_PSK_WITH_AES_256_GCM_SHA384  
                     or TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487 is used to indicate certificate-based server authentication. 
                     For TLS 1.3, the test server completes a full handshake, even if a PSK is offered to indicate certificate-based server authentication. 
@@ -836,7 +1746,7 @@
                   </testlist>
                     </test>
                   <test>
-                    (PSK support) [conditional] If the TOE supports pre-shared keys, the evaluator shall follow the operational guidance to use pre-shared keys, 
+                    (PSK support) [conditional] If the TSF supports pre-shared keys, the evaluator shall follow the operational guidance to use pre-shared keys, 
                     shall establish a pre-shared key between the TSF and the test TLS server, and initiate TLS 1.3 sessions in turn 
                     between the TSF and the test TLS server configured as indicated in the following sub-tests:
                     <testlist>
@@ -901,7 +1811,7 @@
                     (or, if supported, the signature_algorithms_cert) extension, 
                     and if the ST indicates one or more TLS 1.2 ciphersuites indicating each of the RSA and ECDSA methods in its signature components, 
                     the evaluator shall choose two ciphersuites: one indicating an RSA signature (cipher 1) and one indictaing an ECDSA signature (cipher 2).
-                    The evalutor shall then establish establish two certificates that are trusted by the TOE: one representing the test TLS 1.2 server using an RSA signature (cert 1) and one 
+                    The evalutor shall then establish two certificates that are trusted by the TOE: one representing the test TLS 1.2 server using an RSA signature (cert 1) and one 
                     representing the test TLS 1.2 server using an ECDSA signature (cert 2).
                     
                     The evaluator shall initiate a TLS session between the TOE and the test TLS 1.2 server that is configured to select cipher 1 and to send cert 2. The evaluator shall verify that the TSF terminates this TLS session.
@@ -919,10 +1829,10 @@
                   then for each supported version, the evaluator will initiate a TLS session from the TOE to the compliant test TLS server 
                   configured to negotiate the tested version, and to authenticate using a certificate trusted by the TSF as specified in the following:
                   <testlist>
-                    <test>(certificate extended key usage purpose) The evaluator shall send a server certificate that contains the Server Authentication purpose in the extendedKeyUsage extension 
+                    <test>(certificate extended key usage purpose) The evaluator shall send a server certificate that contains the Server Authentication purpose in the ExtendedKeyUsage extension 
                       and verify that a connection is established. 
                       The evaluator shall repeat this test using a different certificate that is otherwise valid and trusted but lacks the 
-                      Server Authentication purpose in the extendedKeyUsage extension and observe the TSS terminates the session.
+                      Server Authentication purpose in the ExtendedKeyUsage extension and observe the TSS terminates the session.
                       <h:p>
                       Note: This test may be performed as part of certificate validation testing (FIA_X509_EXT.1).
                       </h:p><h:p>
@@ -945,13 +1855,13 @@
                           <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., bad certificate, unknown certificate) in response to this, 
                           but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                           </h:p></test>
-                        <test id="tls-client-valid-wildcard">[conditional] If the TSF supports wildcards for a DNS, URI or SVR name type, the evaluator shall prepare the TSF as necessary 
+                        <test id="tls-client-valid-wildcard">[conditional] If the TSF supports wildcards for a DNS, URI, or SVR name type, the evaluator shall prepare the TSF as necessary 
                           to use the matching method for the name type, and establish a reference identifier. 
                           The evaluator shall establish a certificate for the test server that includes a wildcard name for the DNS portion of 
                           the appropriate name type which matches the reference identifier. 
                           The evaluator shall ensure the TLS server sends the certificate containing the wildcard name of the type tested, 
                           and observe that the TSF completes the connection. </test>
-                        <test id="tls-client-no-wildcard">[conditional] If the TSF supports a DNS, URI or SVR name type, but does not support wildcards (in general, 
+                        <test id="tls-client-no-wildcard">[conditional] If the TSF supports a DNS, URI, or SVR name type, but does not support wildcards (in general, 
                           or specifically for internationalized names of the specified type), the evaluator shall prepare the TSF as necessary 
                           to use the matching method and establish a reference identifier that matches a wildcard name for the DNS portion of the appropriate name type, 
                           in accordance with the appropriate RFC, in a certificate representing the server. 
@@ -961,27 +1871,27 @@
                           <h:b>Note:</h:b> If the TSF's ability to support wildcard certificates is configurable, 
                           both <xref to="tls-client-valid-wildcard"/> and <xref to="tls-client-no-wildcard"/> are performed under the appropriate configuration. 
                           This test is required if the TSF supports internationalized names of the specified type – in this case, the reference identifier only includes 
-                          an internationalized encoding in the left-most label. 
+                          an internationalized encoding in the leftmost label. 
                           The certificate used is intended to match the certificate as if wildcards were supported and if the wildcard extended to internationalized names.
                         </h:p>
                         </test>
                         <test id="tls-client-invalid-wildcard">
-                          [conditional] If the TSF supports wildcards for a DNS, URI or SVR name type, the evaluator shall prepare the TSF as necessary to use the matching method. 
+                          [conditional] If the TSF supports wildcards for a DNS, URI, or SVR name type, the evaluator shall prepare the TSF as necessary to use the matching method. 
                           The evaluator shall establish a reference identifier and a certificate for the server as indicated in each of the subtests described below. 
                           The evaluator shall in turn, ensure the TLS server sends the certificate associated with the reference identifier 
                           and observe that the TSF terminates the session. 
                           <testlist>
                             <test>The reference identifier contains a DNS portion with two labels, and the certificate includes a name whose DNS portion includes 
-                              a matching right-most label and a wildcard in the left-most label.</test>
-                            <test>The reference identifier contains a DNS portion with 4 labels, 
-                              and the certificate includes a name whose DNS portion includes two right-most labels matching the reference identifier, 
-                              and a wildcard in the third (left-most) label.</test>
-                            <test>The reference identifier contains a DNS portion with 3 labels, 
-                              and the certificate includes a name whose DNS portion includes two right-most labels matching the reference identifier, 
-                              and a wildcard in the third (left-most) label.</test>
+                              a matching rightmost label and a wildcard in the leftmost label.</test>
+                            <test>The reference identifier contains a DNS portion with four labels, 
+                              and the certificate includes a name whose DNS portion includes two rightmost labels matching the reference identifier, 
+                              and a wildcard in the third (leftmost) label.</test>
+                            <test>The reference identifier contains a DNS portion with three labels, 
+                              and the certificate includes a name whose DNS portion includes two rightmost labels matching the reference identifier, 
+                              and a wildcard in the third (leftmost) label.</test>
                           </testlist>
                         </test>
-                        <test>[conditional] If the TSF supports wildcards and supports embedded DNS, URI or SVR name types in the CN, 
+                        <test>[conditional] If the TSF supports wildcards and supports embedded DNS, URI, or SVR name types in the CN, 
                           then for each supported name type, the evaluator shall repeat 
                           <xref to="tls-client-valid-wildcard"/>, <xref to="tls-client-no-wildcard"/>, and <xref to="tls-client-invalid-wildcard"/>
                           using certificates with the prescribed name embedded in the CN. 
@@ -1000,7 +1910,7 @@
                     
                     
                     <test>(mixed identifiers)[conditional] If the TSF supports a name matching method where the TSF performs matching of both CN-encoded name types and SAN names of the same type, 
-                      then for each such method, and for eah such name type, the evaluator shall establish a valid certificate trusted by the TSF 
+                      then for each such method, and for each such name type, the evaluator shall establish a valid certificate trusted by the TSF 
                       to represent the test server using one name for the CN-encoded name type and a different name for the SAN name type The evaluator shall perform the following tests: 
                     <testlist>
                       <test>The evaluator shall follow the operational guidance to configure the TSF to use the name matching method and establish reference identifiers matching only the SAN. 
@@ -1097,7 +2007,7 @@
               <Guidance>
                 <h:p>
                 The evaluator shall ensure that the operational guidance includes any instructions necessary to configure the TOE to perform mutual authentication. 
-                The evaluator also shall verify that the operational guidance required per <no-link>FIA_X509_EXT.2.1</no-link> includes instructions for configuring the client-side certificates for TLS mutual authentication.
+                The evaluator shall also verify that the operational guidance required per <no-link>FIA_X509_EXT.2.1</no-link> includes instructions for configuring the client-side certificates for TLS mutual authentication.
                 </h:p>
 	      </Guidance>
               <Tests>
@@ -1248,7 +2158,7 @@
                 <testlist>
                   <test id="tls-client-offers-renegotiation">The evaluator shall initiate a TLS connection with a test server configured to negotiate a compliant TLS 1.2 handshake. 
                     The evaluator shall inspect the messages received by the test TLS 1.2 server. 
-                    The evaluator shall observe that either the “renegotiation_info” field or the SCSV ciphersuite is included in the ClientHello message during the initial handshake.</test>
+                    The evaluator shall observe that either the “renegotiation_info” field or the SCSV ciphersuite is included in the client hello message during the initial handshake.</test>
                   <test>For each of the following sub-tests, the evaluator shall initiate a new TLS connection with a test TLS 1.2 server configured to send a renegotiation_info extension as specified, 
                     but otherwise complete a compliant TLS 1.2 session:
                   <testlist>
@@ -1260,7 +2170,7 @@
                       </h:p>
                     </test>
                     <test>The evaluator shall configure the test TLS 1.2 server to send a compliant renegotiation_info extension and observe the TSF successfully completes the TLS 1.2 connection.</test>
-                    <test>The evaluator shall initiate a session renegotiation after completing a successful handhake with a test TLS 1.2 server that completes a successful TLS 1.2 handshake 
+                    <test>The evaluator shall initiate a session renegotiation after completing a successful handshake with a test TLS 1.2 server that completes a successful TLS 1.2 handshake 
                       (as in <xref to="tls-client-offers-renegotiation"/>) and then sends a hello reset request from the test TLS server with a 
                       “renegotiation_info” extension that has an unexpected “client_verify_data” or “server_verify_data” 
                       value (modify a byte from a compliant response). The evaluator shall verify that the TSF terminates the connection.
@@ -1447,8 +2357,8 @@
             <title>
               The TSF shall be able to support the following TLS 1.2 ciphersuites:
               <selectables linebreak="yes">
-                <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289, RFC 8422</selectable>
-                <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289, RFC 8422</selectable>
+                <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+                <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
                 <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
                 <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
                 <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
@@ -1559,15 +2469,15 @@
             <title>
               The TSF shall perform key establishment for TLS using <selectables linebreak="yes">
                 <selectable>RSA with size <selectables>
-                  <selectable>2048 bits</selectable>
-                  <selectable>3072 bits</selectable>
-                  <selectable>4096 bits</selectable></selectables> and no other sizes</selectable>
+                  <selectable>2048</selectable>
+                  <selectable>3072</selectable>
+                  <selectable>4096</selectable></selectables> bits and no other sizes</selectable>
                 <selectable>Diffie-Hellman parameters with size <selectables>
-                  <selectable>2048 bits</selectable>
-                  <selectable>3072 bits</selectable>
-                  <selectable>4096 bits</selectable>
-                  <selectable>6144 bits</selectable>
-                  <selectable>8192 bits</selectable></selectables> and no other sizes</selectable>
+                  <selectable>2048</selectable>
+                  <selectable>3072</selectable>
+                  <selectable>4096</selectable>
+                  <selectable>6144</selectable>
+                  <selectable>8192</selectable></selectables> bits and no other sizes</selectable>
                 <selectable>Diffie-Hellman groups <selectables>
                   <selectable>ffdhe2048</selectable>
                   <selectable>ffdhe3072</selectable>
@@ -1788,7 +2698,7 @@
                         the evaluator shall repeat the sub-tests 
                         
                         using a certificate representing the TOE and using a key pair consistent with the signature algorithm, 
-                        but signed by a certification authority using the signature algorithm specified in the signature_algorithm_cert extension. 
+                        but signed by a certification authority using the signature algorithm specified in the signature_algorithms_cert extension. 
                        </h:p><h:p>
                         <h:b>Note:</h:b> The TSF supports certificate-based server authentication if the TLS 1.2 supported ciphersuites include ciphersuites other than 
                         TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442, TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487, 
@@ -1798,8 +2708,8 @@
                         The evaluator shall follow operational guidance instructions to provision the TSF with one or more of these certificates as indicated in the following sub-tests:
                        </h:p>
                         <testlist>
-                          <test id="tls-server-correct-signature">(TLS 1.2) For each supported value of the signature_algorithm extension, the evaluator shall provision a certificate with a key pair compatible with the specific signature_algorithm value and 
-                            send the TSF a TLS 1.2 client hello that indicates all supported ciphersuites and has a signature_algorithm extension consisting of a single value matching the specific signature algorithm.
+                          <test id="tls-server-correct-signature">(TLS 1.2) For each supported value of the signature_algorithms extension, the evaluator shall provision a certificate with a key pair compatible with the specific signature_algorithm value and 
+                            send the TSF a TLS 1.2 client hello that indicates all supported ciphersuites and has a signature_algorithms extension consisting of a single value matching the specific signature algorithm.
                             <h:p>
                             If the TSF supports signature_algorithms_cert extension, the client hello also contains the value consistent with the previsioned certificate.
                             </h:p><h:p>
@@ -1808,17 +2718,17 @@
                             with the specific signature_algorithm value (and signed using the signature_algorithms_cert extension value, if supported). 
                             </h:p><h:p>
                             <h:b>Note:</h:b> For TLS 1.2, the ciphersuite describes the signature algorithm as RSA or ECDSA 
-                            and is compatible with the certificate used if the signature algorithm component of the ciphersuite is of the same type as the signature value of the signature_algorithm extension. 
+                            and is compatible with the certificate used if the signature algorithm component of the ciphersuite is of the same type as the signature value of the signature_algorithms extension. 
                             </h:p>
                           </test>
                           <test id="tls-server-correct-1-3-signature">[conditional] If the TSF supports TLS 1.3, then for each supported value of the signature_algorithm, 
                             the evaluator shall provision a certificate with a key pair that is compatible with the specific signature_algorithm value, 
-                            send a TLS 1.3 client hello that indicates a supported ciphersuite and has a signature_algorithm extension consisting of a single value matching the specific signature algorithm. 
+                            send a TLS 1.3 client hello that indicates a supported ciphersuite and has a signature_algorithms extension consisting of a single value matching the specific signature algorithm. 
                             <h:p>
                             If the TSF supports the signature_algorithms_cert extension, the client hello also contains a signature_algorithms_cert extension with a value consistent with the provisioned certificate.
                             </h:p><h:p>
                             The evaluator shall observe that the TSF sends a certificate message containing the provisioned certificate consistent with the 
-                            specific signature_algorithm value (and signed using the signature_algorithms_cert extension value) and a certificate verify message using the signature_algorithm extension value.
+                            specific signature_algorithm value (and signed using the signature_algorithms_cert extension value) and a certificate verify message using the signature_algorithms extension value.
                             </h:p><h:p>
                             <h:b>Note:</h:b> For TLS 1.3, the certificate message and certificate verify is encrypted. The evaluator confirms the values of these messages as received at the test TLS client, using logs, or using a test TLS client designed to expose the certificates after they are decrypted. 
                             </h:p><h:p>
@@ -1840,17 +2750,17 @@
                                 using the signature_algorithm value specified in the client hello, 
                                 and observe that the certificate message sent by the TSF does not include the certificate that 
                                 does not match the value of the signature_algorithm entry in the client hello. </test>
-                              <test>[conditional] If the ST also indicates support for the signature_algorithm_cert extension, 
+                              <test>[conditional] If the ST also indicates support for the signature_algorithms_cert extension, 
                                 the evaluator shall repeat <xref to="tls-server-mismatch-signature"/> and <xref to="tls-server-mismatch-1-3-signature"/> 
                                 (if TLS 1.3 is supported) using additional provisioned certificates 
                                 representing the TOE that use public keys consistent with the signature_algorithm value, 
-                                but which are signed by CAs using signature algorithms that do not match the value of the signature_algorithm_cert in the client hello 
+                                but which are signed by CAs using signature algorithms that do not match the value of the signature_algorithms_cert in the client hello 
                                 and observe that the TSF’s certificate message does not include the certificate that does not match 
-                                the signature_algorithm_cert values in the client hello.</test>
+                                the signature_algorithms_cert values in the client hello.</test>
                             </testlist>  
                           </test>
                           <test>(TLS 1.2) The evaluator shall provision a certificate as in <xref to="tls-server-correct-signature"/> 
-                            but shall send a client hello that only offers ciphersuites whose signature component does not match the value of the signature_algorithm extension. The evaluator shall observe that the TSF terminates the handshake.
+                            but shall send a client hello that only offers ciphersuites whose signature component does not match the value of the signature_algorithms extension. The evaluator shall observe that the TSF terminates the handshake.
                             <h:p>
                             <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure, illegal parameter) in response to this, 
                             but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
@@ -1876,7 +2786,7 @@
                           <test>For each supported RSA key size, the evaluator shall provision the TSF with a valid certificate that has an RSA public key of that size. 
                             The evaluator shall initiate a valid TLS 1.2 handshake from a compliant test TLS 1.2 client and observe that the server certificate message matches the provisioned certificate.</test>
                           <test>For each supported RSA key size, the evaluator shall send the TSF a compliant TLS 1.2 client hello, 
-                            but in place of the client’s key exchange message, the evaluator shall send the TSF a (non-compliant) Key Exchange message that is properly formatted but uses an invalid EncryptedPreMasterSecret 
+                            but in place of the client’s key exchange message, the evaluator shall send the TSF a (non-compliant) key exchange message that is properly formatted but uses an invalid EncryptedPreMasterSecret 
                             field in the TLS handshake (e.g., modify a byte of a properly computed value). 
                             The evaluator shall attempt to complete the handshake using compliant client change cipher spec and finished messages and verify that the TSF terminates the handshake in a manner that is indistinguishable 
                             from a finished message error and does not send application data.
@@ -1896,7 +2806,7 @@
                         <h:p>
                         <h:b>Note:</h:b> TLS 1.2 handshakes include explicit change cipher spec messages, 
                         but TLS 1.3 omits the change cipher spec message. If TLS 1.3 is supported, the modified finished message is sent as the final message from the client 
-                        after receiving the server’s second flight of handshake messages {encrypted extensions, (new ticket), (certificate, certificate verify), (certificate request)}.
+                        after receiving the server’s second flight of handshake messages [encrypted extensions, (new ticket), (certificate, certificate verify), (certificate request)].
                         </h:p><h:p>
                         It is preferred that the TSF send a fatal decryption failure error alert, but it is acceptable that the TSF terminate the session using another error alert or without sending an error alert.
                         </h:p><h:p>
@@ -2072,7 +2982,7 @@
                matching rules</selectable>
              <selectable>pass the <selectables>
                <selectable>validated certificate</selectable>
-               <selectable>RFC 822 name normalized according to RFC 822</selectable>
+               <selectable>RFC 2822 name normalized according to RFC 2822</selectable>
                <selectable>DNS name normalized according to RFC 6125</selectable>
                <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
                <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
@@ -2090,11 +3000,8 @@
              If name normalization is claimed, care should be taken regarding wildcards and IP addresses. 
              IP addresses embedded in DNS host names and in Directory Name CN components have been observed to include non-standard wildcard designations including the ‘*’ character. 
              Any embedded IP addresses should use standard CIDR notation and should not include nonstandard encoding. 
-             </h:p><h:p>
-             This SFR is claimed if "mutual authentication" is selected in FCS_TLSS_EXT.1.1.
              </h:p>
            </note>
-
 	    <aactivity>
 	      <TSS>
 	        <h:p>
@@ -2256,7 +3163,7 @@
           </f-element>
           <f-element>
             <title>The TSF shall, when negotiating a TLS 1.2 session, <selectables>
-              <selectable>include the renegotiation_info extension in ServerHello messages when a client hello with the renegotiation_info extension is received 
+              <selectable>include the renegotiation_info extension in server hello messages when a client hello with the renegotiation_info extension is received 
                 and shall terminate a session if neither of the renegotiation_info or TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuites are indicated in the client hello</selectable>
               <selectable>not allow renegotiation</selectable></selectables>.
             </title>
@@ -2400,7 +3307,7 @@
                     the evaluator shall establish a compliant initial TLS session with the TOE for the version using the specified method. 
                     The evaluator shall close the successful session and initiate resumption using the specified mechanism. 
                     The evaluator shall observe that the TSF successfully establishes the resumed session in accordance with the requirements. </test>
-                  <test>For each supported version and each supported resumption method for the version, 
+                  <test>For each supported version and each supported resumption method for that version, 
                     the evaluator shall send a compliant client hello message supporting only the specific version and indicating support for the resumption method. 
                     The evaluator shall allow the TOE and test client to continue with the compliant handshake until resumption information is established but then cause a fatal error to terminate the session. 
                     The evaluator shall then send a new client hello in an attempt to resume the session with the resumption information provided 
@@ -2476,905 +3383,7 @@
           </f-element>  
           <audit-event/>
         </f-component>
-
-  <f-component cc-id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
-    <depends on-sel="dtlsc_impl"/>
-    <f-element id="fel-dtlsc-impl">
-      <title>The TSF shall implement DTLS 1.2 (RFC 6347) and
-      <selectables>
-        <selectable>DTLS 1.3 (RFC 9147)</selectable>
-        <selectable exclusive="yes">no other DTLS versions</selectable>
-      </selectables> as a client that supports additional functionality for session renegotiation protection and <selectables linebreak="yes">
-        <selectable id="dtlsc_mutual_auth">mutual authentication</selectable>
-        <selectable id="dtlsc_downgrade_protection">supplemental downgrade protection</selectable>
-        <selectable id="dtlsc_resumption">session resumption</selectable>
-        <selectable>no optional functionality</selectable>
-      </selectables> and shall abort attempts by a server to negotiate all other DTLS versions.
-      </title>
-      <note role="application">
-        <h:p>
-          This SFR is claimed if "DTLS as a client" is selected in FCS_TLS_EXT.1.1.
-        </h:p><h:p>
-        The ST author will claim DTLS 1.3 functionality if supported, and optional functionality as appropriate for the claimed versions. 
-        </h:p><h:p>
-        Session renegotiation protection is required for both DTLS 1.2 and DTLS 1.3, and the ST must include the requirements from FCS_DTLSC_EXT.4. 
-        Within FCS_DTLSC_EXT.4, options for implementation of secure session renegotiation for DTLS 1.2, or rejecting renegotiation requests are claimed.  
-        </h:p><h:p>
-        If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.2. 
-        If the TOE implements mutual authentication, this selection must be made.
-        </h:p><h:p>
-        If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.3. 
-        This is claimed if DTLS 1.3 is supported, or if the product supports TLS 1.1 or below downgrade protection using the mechanism described in RFC 8446. 
-        Note that TLS 1.1 or below downgrade protection in DTLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3, 
-        but that it received a client hello indicating maximum support for DTLS 1.0 (there is no DTLS version 1.1). 
-        </h:p><h:p>
-        If "session resumption" is selected, then the ST must additionally include the requirements from FCS_DTLSC_EXT.5. 
-        </h:p><h:p>
-        DTLS version numbers are denoted on the wire as the 1’s complement of the corresponding textual DTLS versions as described in Section 4.1 of RFC 6347. 
-        DTLS version 1.2 is 0xfefd; DTLS version 1.3 is 0xfefc. 
-        </h:p>
-      </note>
-    </f-element>
-    <f-element>
-        <title>
-          The TSF shall be able to support the following TLS 1.2 ciphersuites: <selectables linebreak="yes">
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289, RFC 8422</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289, RFC 8422</selectable>
-            <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-            <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-            <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-            <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-            <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable></selectables>,
-          the following PP-specific ciphersuites using pre-shared secrets:
-          <selectables linebreak="yes">
-            <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
-            <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-            <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-            <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
-            <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
-            <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
-            <selectable>no ciphersuites using pre-shared secrets</selectable></selectables>,
-          and the following TLS 1.3 ciphersuites: <selectables linebreak="yes">
-            <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-            <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
-            <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
-            <selectable>no TLS 1.3 ciphersuites</selectable></selectables>
-          offering the supported ciphersuites in a client hello message in preference order: 
-          <assignable>list of supported ciphersuites</assignable>.
-        </title>
-      <note role="application">
-        <h:p>
-        DTLS uses TLS ciphersuites. The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite 
-        for each DTLS version supported – TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. 
-        </h:p><h:p>
-        The application note for FCS_TLSC_EXT.1.2 applies to this requirement, with ‘FCS_TLSC_EXT.1.1’ replaced by ‘FCS_DTLSC_EXT.1.1.’
-        </h:p>
-      </note>
-    </f-element>
-    <f-element>
-      <title>
-        The TSF shall not offer ciphersuites indicating the following: 
-        <h:ul>
-          <h:li>the null encryption component</h:li>
-          <h:li>support for anonymous servers</h:li>
-          <h:li>use of deprecated or export-grade cryptography including DES, 3DES, RC2, RC4, or IDEA for encryption</h:li>
-          <h:li>use of MD</h:li>
-        </h:ul> and shall abort sessions where a server attempts to negotiate ciphersuites not enumerated in the client hello message.
-      </title>
-    </f-element>
-    <f-element>
-    <title>
-      The TSF shall be able to support the following TLS client hello message extensions: 
-      <h:ul>
-        <h:li>signature_algorithms extension (RFC 8446) indicating support for 
-          <selectables linebreak="yes">
-            <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-            <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-              <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-              <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
-              <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
-              <selectable>no other signature algorithms</selectable></selectables>
-        </h:li>
-        <h:li>
-          extended_master_secret extension (RFC 7627) enforcing server support
-        </h:li>
-        <h:li>
-          the following other extensions: <selectables linebreak="yes">
-            <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-              <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-              <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
-                <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
-                <selectable>rsa_pss_rsae_sha256 (RFC 8446)</selectable>
-                <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
-                <selectable>no other signature algorithms</selectable>
-              </selectables></selectable>
-            <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3</selectable>
-            <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
-              <selectable>secp256r1</selectable>
-              <selectable>secp384r1</selectable>
-              <selectable>secp521r1</selectable>
-              <selectable>ffdhe2048(256)</selectable>
-              <selectable>ffdhe3072(257)</selectable>
-              <selectable>ffdhe4096(258)</selectable>
-              <selectable>ffdhe6144(259)</selectable>
-              <selectable>ffdhe8192(260)</selectable></selectables></selectable>
-            <selectable>key_share extension (RFC 8446)</selectable>
-            <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_mode (RFC 8446) indicating DHE or ECDHE mode</selectable>
-            <selectable>no other extensions</selectable></selectables>
-          and shall not send the following extensions: <h:ul>
-            <h:li>early_data</h:li>
-            <h:li>psk_key_exchange_mode indicating PSK only mode.</h:li>
-          </h:ul>
-        </h:li>
-      </h:ul>
-    </title>  
-      <note role="application">
-        DTLS uses TLS extensions. All other application notes for FCS_TLSC_EXT.1.4 apply to this requirement, 
-        with references to TLS and FCS_TLSC_EXT.1 elements replaced by DTLS and the corresponding reference to FCS_DTLSC_EXT.1 elements.
-    </note>
-    </f-element>
-    <f-element>
-      <title>
-        The TSF shall be able to <selectables linebreak="yes">
-          <selectable>verify that a presented identifier of name type: <selectables linebreak="yes">
-            <selectable>DNS name type according to RFC 6125</selectable>
-            <selectable>URN name type according to RFC 6125</selectable> 
-            <selectable>SRV name type according to RFC 6125</selectable>
-            <selectable>Common Name conversion to DNS name according to RFC 6125</selectable>
-            <selectable>Directory name type according to RFC 5280</selectable>
-            <selectable>IPaddress name type according to RFC 5280</selectable>
-            <selectable>rfc822Name type according to RFC 5280</selectable>
-            <selectable><assignable>other name type</assignable></selectable></selectables></selectable>  
-          <selectable>interface with a client application requesting the DTLS channel to verify that a presented identifier</selectable></selectables> 
-        matches a reference identifier of the requested DTLS server and shall abort the session if no match is found.
-      </title>
-      <note role="application">
-        All supported methods for matching names are claimed. All other application notes for FCS_TLSC_EXT.1.5 
-        apply to this requirement, with ‘TLS Servers’ replaced by ‘DTLS Servers’. 
-      </note>
-    </f-element>
-    <f-element id="fel-dtlsc-bad-cert">
-      <title>
-        The TSF shall not establish a trusted channel if the server certificate is invalid <selectables>
-          <selectable>with no exceptions</selectable>
-          <selectable>except when override is authorized in the case where valid revocation information is not available</selectable></selectables>. 
-      </title>
-      <note role="application">
-        All override mechanisms supported are described. All other application notes for FCS_TLSC_EXT.1.6 apply to this requirement,
-        with references to TLS replaced by appropriate references for DTLS, as explained in the DTLS RFC(s).
-      </note>
-    </f-element>
-    <f-element>
-      <title>
-        The TSF shall <selectables>
-          <selectable>terminate the DTLS session</selectable>
-          <selectable>silently discard the record</selectable>
-        </selectables>
-        if a message received contains an invalid MAC or if decryption fails in the case of GCM and other AEAD ciphersuites.
-      </title>
-      <note role="application">
-        <h:p>
-        All supported responses are claimed; at least one option is claimed. 
-        If both options are supported, the ST describes when each method is used and whether the behavior is configurable. 
-        </h:p>
-      </note>
-      <aactivity>
-        The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.1, with the following modifications: 
-        <h:ul>
-          <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
-          <h:li>Version indicators are one’s complement values of the corresponding text versions (the legacy or supported version value 
-            is ‘fe fd’ for DTLS 1.2 and ‘fe fc’ for DTLS 1.3).</h:li> 
-          <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
-            it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li>
-          <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
-            repeatedly sends the flawed messages indicated in the tests. 
-            If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
-            Otherwise, the evaluator observes the termination of a session (connection state) by verifying that the TSF does not continue to 
-            resend messages after the last timeout expires.</h:li>
-          <h:li>The equivalent of <xref to="tls-client-obsolete-versions"/> only includes a test for DTLS 1.0 (version value ‘fe ff’). 
-            There are no DTLS equivalents of SSL versions or TLS 1.1.</h:li>
-          <h:li>The equivalent of <xref to="tls-client-nonstandard-versions"/> should use ‘fe’fc’ in the legacy version to test for responses to DTLS 
-            equivalents to beta TLS versions, or use ‘fe fb’ to test for undefined versions.</h:li>
-          <h:li>The equivalent of <xref to="tls-client-deprecated-encryption"/> should still include a test for RC4 ciphersuites, 
-            even though DTLS does not support stream ciphers. The test only verifies that the TSF can reject such a negotiation from a test DTLS server, 
-            and does not require the use of the cipher.</h:li>
-          <h:li>In the equivalent of <xref to="tls-client-missing-finished"/>, DTLS clients may buffer unexpected application messages, 
-            and resend previous messages in response to timeouts for missing messages. 
-          It is acceptable for the evaluator to observe the TSF resend its finished message multiple times 
-          as an indication that it will not process application messages until the server finished message is received. 
-          The evaluator should not resend application messages from the test DTLS server, as this might cause the TSF’s counter to continue to reset.</h:li>
-        </h:ul>
-        <h:p>
-        The evaluator shall also perform the following evaluation activities for FCS_DTLSC_EXT.1.7:
-        </h:p>
-        <TSS>
-          The evaluator shall verify that the TSS describes the actions that take place if a message received from the DTLS Server fails the integrity check.
-        </TSS>
-        <Guidance>
-          If the ST indicates the behavior of the TSF on receiving a message from the DTLS Server that fails the MAC integrity check is configurable, 
-          the evaluator shall verify that the guidance documentation describes instructions for configuring the behavior.
-        </Guidance>
-        <Tests>
-          For each version supported, the evaluator shall establish a connection using a compliant handshake negotiating the version.  
-          The evaluator will then cause the test server to send application data with at least one byte in a record message modified 
-          from what a compliant test server would send, and verify that the client discards the record or terminates the DTLS session as described in the TSS. 
-          If multiple behaviors are supported, the evaluator shall repeat the test for each behavior.
-        </Tests>
-      </aactivity>
-    </f-element>
-    <audit-event type="optional">
-      <audit-event-descr>Failure to establish a DTLS session</audit-event-descr>
-      <audit-event-info>Reason for failure.</audit-event-info>
-    </audit-event>
-    <audit-event type="optional">
-      <audit-event-descr>Failure to verify presented identifier</audit-event-descr>
-      <audit-event-info>Presented identifier and reference identifier.</audit-event-info>
-    </audit-event>
-    <audit-event type="optional">
-      <audit-event-descr>Establishment/termination of a DTLS session</audit-event-descr>
-      <audit-event-info>Non-TOE endpoint of connection.</audit-event-info>
-    </audit-event>
-  </f-component>
-      
-
-  <f-component cc-id="fcs_dtlsc_ext.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
-    <depends on-sel="dtlsc_mutual_auth"/>
-          <f-element id="fel-dtlsc-mut-auth">
-            <title>
-              The TSF shall support mutual authentication using X.509v3 certificates during the handshake and 
-              <selectables>
-                <selectable>in support of post-handshake authentication requests</selectable>
-                <selectable>at no other time</selectable>
-              </selectables>, in accordance with <selectables>
-                <selectable>RFC 5246 section 7.4.4</selectable>
-                <selectable>RFC 8446 section 4.3.2</selectable>
-              </selectables>.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "mutual authentication" is selected in FCS_DTLSC_EXT.1.1.
-              </h:p><h:p>
-              All application notes for FCS_TLSC_EXT.2.1 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </h:p>
-      </note>
-      <aactivity>
-        <no-tests>
-        The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.2 while ensuring that DTLS (and not TLS) is used in each evaluation activity.
-        </no-tests>
-      </aactivity>
-    </f-element>
-	  <audit-event/>
-  </f-component>
-
-
-        <f-component cc-id="fcs_dtlsc_ext.3" name="DTLS Client Downgrade Protection" status="sel-based">
-          <depends on-sel="dtlsc_downgrade_protection"/>
-          <f-element>
-            <title>The TSF shall not establish a DTLS channel if the server hello message includes 
-              <selectables>
-                <selectable>TLS 1.2 downgrade indicator</selectable>
-                <selectable>TLS 1.1 or below downgrade indicator</selectable></selectables>
-              in the server random field. </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSC_EXT.1.1.
-              </h:p><h:p>
-                DTLS uses the TLS downgrade indicators. 
-                The application notes listed for FCS_TLSC_EXT.3 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </h:p>
-            </note>
-            <aactivity>
-            <no-tests>
-              The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.3, with the following modifications:
-              <h:ul>
-                <h:li>DTLS (and not TLS) is used in each evaluation activity</h:li> 
-                <h:li>References to FCS_TLSC_EXT.1.1 are replaced with references to FCS_DTLSC_EXT.1.1.</h:li>
-                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
-                  it might be necessary to resend the message multiple times from the DTLS test server 
-                  according to the appropriate DTLS RFC to get the desired response.</h:li>
-                <h:li>DTLS clients do not send fatal error alerts, 
-                  but should generate them for diagnostics if the test DTLS server repeatedly sends the flawed messages indicated in the tests. 
-                  If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
-                  Otherwise, the evaluator observes the termination of a session (connection state) 
-                  by verifying that the TSF does not continue to resend messages after the last timeout expires.</h:li>
-              </h:ul>
-            </no-tests>
-            </aactivity>
-          </f-element> 
-          <audit-event/>
-        </f-component>
-        
-        <f-component cc-id="fcs_dtlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
-          <depends on-sel="tlsc_impl"/>
-          <f-element id="fel-renego">
-            <title>The TSF shall support secure renegotiation through use of <selectables>
-              <selectable>the “renegotiation_info” TLS extension</selectable>
-              <selectable>the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value</selectable></selectables>
-              in accordance with RFC 5746, and shall terminate the session if an unexpected server hello is received or <selectables>
-                <selectable>hello request message is received</selectable>
-                <selectable>in no other case</selectable></selectables>. 
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "DTLS as a client" is selected in FCS_TLS_EXT.1.1.
-              </h:p><h:p>
-              The application notes listed for FCS_TLSC_EXT.4 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </h:p>
-            </note>
-            <aactivity>
-            <no-tests>
-              The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.4, with the following modifications:
-              <h:ul>
-                <h:li>DTLS (and not TLS) is used in each evaluation activity, with references to TLS replaced by references to DTLS.</h:li>
-                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so
-                  it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li>
-              </h:ul>
-            </no-tests>
-            </aactivity>
-          </f-element> 
-          <audit-event/>
-        </f-component>
-        
-        <f-component cc-id="fcs_dtlsc_ext.5" name="DTLS Client Support for Session Resumption" status="sel-based">
-          <depends on-sel="dtlsc_resumption"/> 
-          <f-element>
-            <title>
-              The TSF shall support session resumption as a client via the use of <selectables>
-                <selectable>session ID in accordance with RFC 5246</selectable>
-                <selectable>tickets in accordance with RFC 5077</selectable>
-                <selectable id="dtlsc_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "session resumption" is selected in FCS_DTLSC_EXT.1.1.
-              </h:p><h:p>
-                The ST author indicates which session resumption mechanisms are supported. 
-                One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed for DTLS 1.2 resumption. 
-                If resumption of DTLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, 
-                and the selection-based SFR FCS_DTLSC_EXT.6 must also be claimed.
-              </h:p><h:p>
-                While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. 
-                Validation of key exchange and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_DTLSC_EXT.1. 
-              </h:p>
-            </note>
-            <aactivity>
-            <no-tests>
-              The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.5, with the following modifications:
-              <h:ul>
-                <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
-                <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so 
-                  it might be necessary to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
-                <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server repeatedly sends the flawed messages 
-                  indicated in the tests. If the product generates alerts, 
-                  the evaluator may observe them in logs of the TSF rather than observing them on the line. 
-                  Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
-                  the TSF does not continue to resend messages after the last timeout expires.</h:li>
-              </h:ul>
-            </no-tests>
-            </aactivity>
-          </f-element>  
-          <audit-event/>
-        </f-component>
-        
-        
-        <f-component cc-id="fcs_dtlsc_ext.6" name="DTLS Client DTLS 1.3 Resumption Refinements" status="sel-based">
-          <depends on-sel="dtlsc_v13_resumption"/> 
-          <f-element>
-            <title>
-              The TSF shall send a psk_key_exchange_mode extension with value psk_dhe when DTLS 1.3 session resumption is offered. 
-            </title>
-          </f-element>
-          <f-element>
-            <title>
-              The TSF shall not send early data in DTLS 1.3 sessions. 
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSC_EXT.5.1.
-              </h:p><h:p>
-                The application notes listed for FCS_TLSC_EXT.6 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS. 
-              </h:p>
-            </note>
-        <aactivity>
-        <no-tests>
-          The evaluator shall perform all evaluation activities listed for FCS_TLSC_EXT.6, but ensuring that DTLS (and not TLS) is used in each evaluation activity 
-          – ‘TLS’ and ‘FCS_TLSC_EXT.5’ are replaced by ‘DTLS’ and ‘FCS_DTLSC_EXT.5.’
-        </no-tests>
-        </aactivity>
-          </f-element>  
-          <audit-event/>
-        </f-component> 
-        
-        
-  <f-component cc-id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
-    <depends on-sel="dtlss_impl"/>
-    <f-element id="fel-dtlss-impl">
-      <title>The TSF shall implement DTLS 1.2 (RFC 6347) and
-      <selectables>
-        <selectable>DTLS 1.3 (RFC 9147)</selectable>
-        <selectable>no earlier DTLS versions</selectable>
-      </selectables> as a server that supports additional functionality for session renegotiation protection and
-        <selectables linebreak="yes">
-          <selectable id="dtlss_mutual_auth">mutual authentication</selectable>
-          <selectable id="dtlss_downgrade_protection">supplemental downgrade protection</selectable>
-          <selectable id="dtlss_resumption">session resumption</selectable>
-          <selectable>no optional functionality</selectable></selectables>
-        and shall reject connection attempts from clients supporting only DTLS 1.0.
-      </title>
-      <note role="application">
-        <h:p>
-          This SFR is claimed if "DTLS as a server" is selected in FCS_TLS_EXT.1.1.
-        </h:p><h:p>
-          The ST author will claim DTLS 1.3 functionality if supported, and optional functionality as appropriate for the claimed versions. 
-        </h:p><h:p>
-          Session renegotiation protection is required for both DTLS 1.2 and DTLS 1.3, and the ST must include the requirements from FCS_DTLSS_EXT.4. 
-          Within FCS_DTLSS_EXT.4, options for implementation of secure session renegotiation for DTLS 1.2, or rejecting renegotiation requests are claimed.  
-        </h:p>
-        <h:p>
-          If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_DTLSS_EXT.2. 
-          If the TOE implements mutual authentication, this selection must be made.
-        </h:p><h:p>
-          If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_DTLSS_EXT.3. 
-          If the TOE provides downgrade protection as indicated in RFC 8446, in particular, if DTLS 1.3 is supported, this selection must be made. 
-        </h:p><h:p>
-          If "session resumption" is selected, then the ST must additionally include the requirements from FCS_DTLSS_EXT.5.
-        </h:p><h:p>
-          DTLS version numbers are denoted on the wire as the 1’s complement of the corresponding textual DTLS versions as described in Section 4.1 of RFC 6347. 
-          DTLS version 1.2 is 0xfefd; DTLS version 1.3 is 0xfefc. 
-        </h:p>
-      </note>
-    </f-element>
-    <f-element>
-      <title>
-        The TSF shall be able to support the following TLS 1.2 ciphersuites:
-        <selectables linebreak="yes">
-          <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289, RFC 8422</selectable>
-          <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289, RFC 8422</selectable>
-          <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-          <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-          <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-          <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-          <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-          <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
-          <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-          <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
-          <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-          <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
-          <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-          <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
-          <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246</selectable></selectables>,
-        the following PP-specific ciphersuites using pre-shared secrets:
-        <selectables linebreak="yes">
-          <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
-          <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-          <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-          <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
-          <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
-          <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
-          <selectable>no ciphersuites using pre-shared secrets</selectable></selectables>,
-        and the following TLS 1.3 ciphersuites: <selectables linebreak="yes">
-          <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-          <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
-          <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
-          <selectable>no TLS 1.3 ciphersuites</selectable></selectables>
-        using a preference order based on <selectables>
-          <selectable>RFC 9151 priority</selectable>
-          <selectable>client hello ordering</selectable>
-          <selectable><assignable>additional priority</assignable></selectable>
-        </selectables>.
-      </title>
-        <note role="application">
-          DTLS supports TLS ciphersuites. The ST author should select the ciphersuites that are supported and must select at least one ciphersuite suitable for each 
-          supported DTLS version – TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. 
-          All other application notes for FCS_TLSS_EXT.1.2 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS. 
-        </note>
-    </f-element>
-    <f-element>
-      <title>
-        The TSF shall not establish a connection with a client that does not indicate support for at least one of the supported ciphersuites.
-      </title>
-    </f-element>
-    <f-element>
-      <title>
-        The TSF shall be able to process the following TLS client hello message extensions: 
-        <h:ul>
-          <h:li>signature_algorithms extension (RFC 8446) indicating support for 
-            <selectables linebreak="yes">
-              <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-              <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
-                <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
-                <selectable>no other signature algorithms</selectable></selectables>
-          </h:li>
-          <h:li>
-            extended_master_secret extension (RFC 7627) enforcing client support
-          </h:li>
-          <h:li>
-            the following other extensions: <selectables linebreak="yes">
-              <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-                <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-                <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                  <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                  <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
-                  <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
-                  <selectable>rsa_pss_rsae_sha256 (RFC 8446)</selectable>
-                  <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
-                  <selectable>no other signature algorithms</selectable>
-                </selectables></selectable>
-              <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3</selectable>
-              <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
-                <selectable>secp256r1</selectable>
-                <selectable>secp384r1</selectable>
-                <selectable>secp521r1</selectable>
-                <selectable>ffdhe2048(256)</selectable>
-                <selectable>ffdhe3072(257)</selectable>
-                <selectable>ffdhe4096(258)</selectable>
-                <selectable>ffdhe6144(259)</selectable>
-                <selectable>ffdhe8192(260)</selectable></selectables></selectable>
-              <selectable>key_share extension (RFC 8446)</selectable>
-              <selectable>no other extensions</selectable></selectables>.
-          </h:li>
-        </h:ul>
-      </title>
-      <note role="application">
-        DTLS uses TLS extensions. If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. 
-        Even if support for DTLS 1.3 is not claimed, if ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the entry for supported_groups is claimed. 
-        Support for additional extensions is acceptable.
-        For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
-      </note>
-    </f-element>    
-    <f-element>
-      <title>
-        The TSF shall perform key establishment for DTLS using <selectables linebreak="yes">
-          <selectable>RSA with size <selectables>
-            <selectable>2048 bits</selectable>
-            <selectable>3072 bits</selectable>
-            <selectable>4096 bits</selectable></selectables> and no other sizes</selectable>
-          <selectable>Diffie-Hellman parameters with size <selectables>
-            <selectable>2048 bits</selectable>
-            <selectable>3072 bits</selectable>
-            <selectable>4096 bits</selectable>
-            <selectable>6144 bits</selectable>
-            <selectable>8192 bits</selectable></selectables> and no other sizes</selectable>
-          <selectable>Diffie-Hellman groups <selectables>
-            <selectable>ffdhe2048</selectable>
-            <selectable>ffdhe3072</selectable>
-            <selectable>ffdhe4096</selectable>
-            <selectable>ffdhe6144</selectable>
-            <selectable>ffdhe8192</selectable></selectables> and no other groups,
-            consistent with the client's supported groups extension and <selectables>
-              <selectable>key share</selectable>
-              <selectable>no other</selectable></selectables> extension
-          </selectable>
-          <selectable>ECDHE parameters using elliptic curves <selectables>
-            <selectable>secp256r1</selectable>
-            <selectable>secp384r1</selectable>
-            <selectable>secp521r1</selectable></selectables> and no other curves,  
-            consistent with the client's supported groups extension and <selectables>
-              <selectable>key share</selectable>
-              <selectable>no other</selectable></selectables> extension and using non-compressed formatting for points
-          </selectable></selectables>.
-      </title>
-      <note role="application">
-      DTLS uses key establishment mechanisms from the equivalent TLS version. 
-      The application notes for FCS_TLSS_EXT.1.5 apply to this requirement, with ‘TLS’ replaced by ‘DTLS’ 
-      and references to ‘FCS_TLSS_EXT.1’ elements replaced by the corresponding element of ‘FCS_DTLSS_EXT.1.’
-      </note>
-    </f-element>
-    <f-element>
-      <title>
-        The TSF shall not proceed with a connection handshake attempt if the DTLS client fails validation.
-      </title>
-      <note role="application">
-        The process to validate the IP address of a DTLS client is specified in section 4.2.1 of RFC 6347 (DTLS 1.2) and in section 5.1 of RFC 9147 (DTLS 1.3). 
-        The server validates the DTLS client during Connection Establishment (Handshaking) and prior to sending a Server Hello message. 
-        After receiving a ClientHello, a DTLS 1.2 Server sends a HelloVerifyRequest along with a cookie, 
-        whereas a DTLS 1.3 Server sends a HelloRetryRequest message along with a cookie. 
-        In both TLS 1.2 and TLS 1.3, the cookie is a signed message using a keyed hash function. 
-        The DTLS Client then sends another ClientHello with the cookie attached. 
-        If the DTLS server successfully verifies the signed cookie, the Client is not using a spoofed IP address.
-      </note>
-      <aactivity>
-        The evaluator shall perform all evaluation activities listed for FCS_TLSS_EXT.1, with the following modifications: 
-        <h:ul>
-          <h:li>DTLS (and not TLS) is used in each evaluation activity - ‘TLS’ is replaced with ‘DTLS’ and references to FCS_TLSS_EXT.1 elements are replaced with 
-            the corresponding FCS_DTLSS_EXT.1 element.</h:li>
-          <h:li>Version indicators are one’s complement values of the corresponding text versions 
-            (the legacy or supported version value is ‘fe fd’ for DTLS 1.2 and ‘fe fc’ for DTLS 1.3).</h:li> 
-          <h:li>DTLS servers may silently drop flawed or unexpected messages from a DTLS test client so it might be necessary to resend the message 
-            multiple times from the DTLS test client according to the appropriate DTLS RFC to get the desired response.</h:li> 
-          <h:li>DTLS servers do not send fatal error alerts, but should generate them for diagnostics 
-            if the test DTLS client repeatedly sends the flawed messages indicated in the tests. 
-            If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
-            Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
-            the TSF does not continue to resend messages after the last timeout expires.</h:li>
-          <h:li>In addition to descriptions of the TLS mechanisms described in TLS RFC(s) used by DTLS, 
-            the evaluator shall ensure that the DTLS description also describes the mechanisms unique to DTLS as indicated in the DTLS RFC(s).</h:li>
-          <h:li>The equivalent of <xref to="tls-server-obsolete-versions"/> only includes a test for DTLS 1.0 (version value ‘fe ff’). 
-            There are no DTLS equivalents of SSL versions or TLS 1.1.</h:li>
-          <h:li>The equivalent of <xref to="tls-server-beta-versions"/> should use ‘fe’fc’ in the legacy version to test for responses 
-            to DTLS equivalents to beta TLS versions, or use ‘fe fb’ to test for undefined versions.</h:li>
-          <h:li>The equivalent of <xref to="tls-server-deprecated-encryption"/> should still include a test for RC4 ciphersuites, 
-            even though DTLS does not support stream ciphers. The test only verifies that the TSF can reject such an offer from a test DTLS client, 
-            and does not require the use of the cipher.</h:li>
-          <h:li>In <xref to="tls-server-key-exchange"/>, DTLS messages include an epoch field that changes with each change_cipher_spec message. 
-            This can be used in DTLS 1.3 to indicate the internal change of state corresponding to the implied message.</h:li>
-          <h:li>In the equivalent of <xref to="tls-server-no-finished-msg"/>, a DTLS server may buffer unexpected application messages, 
-            and resend previous messages in response to timeouts for missing messages. 
-            It is acceptable for the evaluator to observe the TSF resend its final flight multiple times as an indication that 
-            it will not process application messages until the client finished message is received. 
-            The evaluator should not resend application messages from the test DTLS client, as this might cause the TSF’s counter to continue to reset.</h:li>
-        </h:ul>
-        <h:p>
-          The evaluator shall also perform the following evaluation activities for FCS_DTLSS_EXT.1.6
-        </h:p>
-        <TSS>
-          <h:p>The evaluator shall verify that the TSS describes how the DTLS Client IP address is validated prior to issuing a ServerHello message.</h:p>
-        </TSS>
-        <Guidance>
-          <h:p>
-          There are no guidance evaluation activities for this element.
-          </h:p>
-        </Guidance>
-        <Tests>
-          <testlist>
-            <test>The evaluator shall send a TLS 1.2 client hello message from a test client and observe that the TSF sends a HelloVerifyRequest message. 
-              The evaluator shall modify at least one byte in the cookie from the Server's HelloVerifyRequest message and include the modified value 
-              as a cookie in the test client’s second clienthello message. The evaluator shall verify that the Server rejects the Client's handshake message.</test>
-            <test>[conditional] If the TSF supports DTLS 1.3, the evaluator shall send a TLS 1.3 client hello message from a test client and observe that the TSF sends 
-              a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the Server's HelloRetryRequest message and 
-              include the modified value as a cookie in the test client’s second clienthello message. 
-              The evaluator shall verify that the Server rejects the Client's handshake message.</test>
-          </testlist>
-        </Tests>
-      </aactivity>
-    </f-element>
-  	<audit-event type="optional">
-  	  <audit-event-descr>Failure to establish a TLS session</audit-event-descr>
-  	  <audit-event-info>Reason for failure</audit-event-info>
-	</audit-event>
-  </f-component>
-
-  <f-component cc-id="fcs_dtlss_ext.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
-    <depends on-sel="dtlss_mutual_auth"/>
-          <f-element id="fel-dtlss-mut-auth">
-              <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates during the DTLS handshake and <selectables>
-                <selectable>during post-handshake requests</selectable>
-                <selectable>at no other time</selectable></selectables> 
-                using the certificate types indicated in the client’s signature_algorithms and <selectables>
-                  <selectable>signature_algorithms_cert</selectable>
-                  <selectable>no other</selectable></selectables> extension.
-            </title>
-            <note role="application">
-              <h:p>
-              This SFR is claimed if "mutual authentication" is selected in FCS_DTLSS_EXT.1.1.
-              </h:p><h:p>
-              All application notes for FCS_TLSS_EXT.2.1 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </h:p>
-      </note>
-          </f-element>
-    <f-element>
-      <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with <no-link>FIA_X509_EXT.1</no-link>.</title>
-    </f-element>
-    <f-element>
-      <title>
-        The TSF shall be able to reject the establishment of a trusted channel if the requested client certificate is invalid and <selectables linebreak="yes">
-          <selectable>continue establishment of a server-only authenticated DTLS channel in accordance with FCS_DTLSS_EXT.1 in support of <selectables>
-            <selectable>all applications</selectable>
-            <selectable><assignable>list of calling applications that accept both authenticated and unauthenticated client sessions</assignable></selectable></selectables> 
-            when an empty certificate message is provided by the client</selectable>
-          <selectable>continue establishment of a mutually authenticated DTLS channel when revocation status information for the <selectables>
-            <selectable>client's leaf certificate</selectable>
-            <selectable><assignable>specific intermediate CA certificates</assignable></selectable>
-            <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
-            is not available in support of <selectables>
-              <selectable>all applications</selectable>
-              <selectable><assignable>list of calling applications configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables>
-                <selectable>configured by an administrator</selectable>
-                <selectable>confirmed by the application user</selectable>
-                <selectable>a default for <assignable>subset of applications</assignable></selectable></selectables>
-          </selectable>
-          <selectable>no other processing options for missing or invalid client certificates</selectable></selectables>. 
-      </title>
-              <note role="application">
-                All application notes for FCS_TLSS_EXT.2.3 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </note>
-    </f-element>
-    <f-element>
-      <title>The TSF shall be able to <selectables linebreak="yes">
-        <selectable>not establish a DTLS session if an entry of the Distinguished Name or a <selectables>
-          <selectable>rfc822_name</selectable>
-          <selectable>dns_name</selectable>
-          <selectable><assignable>supported name types</assignable></selectable></selectables>
-          in the Subject Alternate Name extension contained in the client certificate does not match one of the expected identifiers for the client in accordance with <selectables>
-            <selectable>RFC 2822</selectable>
-            <selectable>RFC 6125</selectable>
-            <selectable>RFC 5280</selectable>
-            <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
-          matching rules</selectable>
-        <selectable>pass the <selectables>
-          <selectable>validated certificate</selectable>
-          <selectable>RFC 822 name normalized according to RFC 822</selectable>
-          <selectable>DNS name normalized according to RFC 6125</selectable>
-          <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
-          <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
-          to <assignable>list of calling applications capable of making access decisions</assignable></selectable></selectables>.     
-      </title>
-      <note role="application">
-        All application notes for FCS_TLSS_EXT.2.4 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-      </note>        
-      <aactivity>
-        <no-tests>
-          The evaluator shall perform all evaluation activities listed for FCS_TLSS_EXT.2, with the following modifications:
-          <h:ul>
-            <h:li>DTLS (and not TLS) is used in each evaluation activity – ‘TLS’ is replaced with ‘DTLS’ and references to FCS_TLSS_EXT.2 elements are replaced with 
-              the corresponding reference to the FCS_DTLSS_EXT.2 element.</h:li>
-            <h:li>DTLS servers may silently drop flawed or unexpected messages from a DTLS test client so it might be necessary to resend the message multiple times 
-              from the DTLS test client according to the appropriate DTLS RFC to get the desired response.</h:li> 
-            <h:li>DTLS servers do not send fatal error alerts, but should generate them for diagnostics if the test DTLS client 
-              repeatedly sends the flawed messages indicated in the tests. 
-              If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
-              Otherwise, the evaluator observes the termination of a session (connection state) by verifying that the TSF does not continue 
-              to resend messages after the last timeout expires.</h:li> 
-          </h:ul>
-        </no-tests>
-      </aactivity>        
-      </f-element>
-	  <audit-event/>
-      </f-component>
-        
-        <f-component cc-id="fcs_dtlss_ext.3" name="DTLS Server Downgrade Protection" status="sel-based">
-          <depends on-sel="dtlss_downgrade_protection"/>
-          <f-element>
-            <title>
-              The TSF shall set the server hello extension to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating DTLS 1.2 as indicated in RFC 8446 section 4.1.3.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSS_EXT.1.1. 
-              </h:p><h:p>
-                The application notes listed for FCS_TLSS_EXT.3 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </h:p>
-            </note>
-            <aactivity>
-             <no-tests>
-               The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.3, with references to TLS replaced by the equivalent reference to DTLS.
-             </no-tests>
-            </aactivity>
-          </f-element>
-          <audit-event />
-        </f-component>
-        
-        <f-component cc-id="fcs_dtlss_ext.4" name="DTLS Server Support for Renegotiation" status="sel-based">
-          <depends on-sel="dtlss_impl"/>
-          <f-element>
-            <title>The TSF shall support secure renegotiation through the use of <selectables>
-              <selectable>the "renegotiation_info" TLS extension</selectable>
-              <selectable>not allowing session renegotiation</selectable></selectables> in accordance with RFC 5746.
-            </title>
-          </f-element>
-          <f-element>
-            <title>The TSF shall, when negotiating a DTLS 1.2 session, <selectables>
-              <selectable>include the renegotiation_info extension in ServerHello messages when a client hello with the renegotiation_info extension is received 
-                and shall terminate a session if neither of the renegotiation_info or TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuites are indicated in the client hello</selectable>
-              <selectable>not allow renegotiation</selectable></selectables>.
-            </title>
-          </f-element>
-          <f-element>
-            <title>
-              The TSF shall terminate the session if an unexpected client hello is received during an active DTLS session.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "DTLS as a server" is selected in FCS_TLS_EXT.1.1.
-              </h:p><h:p>
-                The application notes listed for FCS_TLSS_EXT.4 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </h:p>
-            </note>
-            <aactivity>
-              <no-tests>
-                The evaluator shall perform all evaluation activities listed for FCS_TLSS_EXT.4, with the following modifications:
-                <h:ul>
-                  <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
-                  <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so it might be necessary to 
-                    resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
-                  <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
-                    repeatedly sends the flawed messages indicated in the tests. 
-                    If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
-                    Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
-                    the TSF does not continue to resend messages after the last timeout expires.</h:li>
-                </h:ul>
-              </no-tests>
-            </aactivity>
-          </f-element>
-          <audit-event/>
-        </f-component>
-        
-        
-        <f-component cc-id="fcs_dtlss_ext.5" name="DTLS Server Support for Session Resumption" status="sel-based">
-          <depends on-sel="dtlss_resumption"/> 
-          <f-element>
-            <title>
-              The TSF shall support session resumption as a server via the use of <selectables>
-                <selectable>session ID in accordance with RFC 5246</selectable>
-                <selectable>tickets in accordance with RFC 5077</selectable>
-                <selectable id="dtlss_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "session resumption" is selected in FCS_DTLSS_EXT.1.1.
-              </h:p><h:p>
-                The application notes listed for FCS_TLSS_EXT.5 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </h:p>
-            </note>
-            <aactivity>
-              <no-tests>
-                The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.5, with the following modifications:
-                <h:ul>
-                  <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
-                  <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so it might be necessary 
-                    to resend the message multiple times from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
-                  <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
-                    repeatedly sends the flawed messages indicated in the tests. 
-                    If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
-                    Otherwise, the evaluator observes the termination of a session (connection state) by verifying that the TSF 
-                    does not continue to resend messages after the last timeout expires.</h:li>
-                </h:ul>
-              </no-tests>
-            </aactivity>
-          </f-element>
-          <audit-event/>
-        </f-component>
-        
-        
-        <f-component cc-id="fcs_dtlss_ext.6" name="DTLS Server DTLS 1.3 Resumption Refinements" status="sel-based">
-          <depends on-sel="dtlss_v13_resumption"/> 
-          <f-element>
-            <title>
-              The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_mode extension with the value psk_dhe.  
-            </title>
-          </f-element>
-          <f-element>
-            <title>
-              The TSF shall ignore early data received in DTLS 1.3 sessions.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSS_EXT.5.1.
-              </h:p><h:p>
-                The application notes listed for FCS_TLSS_EXT.6 also apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
-              </h:p>
-            </note>
-            <aactivity>
-              <no-tests>
-                The evaluator shall perform the evaluation activities listed for FCS_TLSS_EXT.6, with the following modifications:
-                <h:ul>
-                  <h:li>DTLS (and not TLS) is used in each evaluation activity.</h:li> 
-                  <h:li>References to FCS_TLSS_EXT.5 are replaced by corresponding references to FCS_DTLSS_EXT.5.</h:li>
-                  <h:li>DTLS clients may silently drop flawed or unexpected messages from a DTLS test server so it might be necessary to resend the message multiple times 
-                    from the DTLS test server according to the appropriate DTLS RFC to get the desired response.</h:li> 
-                  <h:li>DTLS clients do not send fatal error alerts, but should generate them for diagnostics if the test DTLS server 
-                    repeatedly sends the flawed messages indicated in the tests. 
-                    If the product generates alerts, the evaluator may observe them in logs of the TSF rather than observing them on the line. 
-                    Otherwise, the evaluator observes the termination of a session (connection state) by verifying that 
-                    the TSF does not continue to resend messages after the last timeout expires.</h:li>
-                </h:ul>
-              </no-tests>
-            </aactivity>
-          </f-element>  
-          <audit-event/>
-        </f-component>    
+ 
         
         
       </section>
