@@ -230,7 +230,12 @@
    <audit-table table="mandatory" id="t-audit-mandatory"/>
 
  </sec:Auditable_Events_for_Mandatory_SFRs>
-      <section title="Cryptographic Support (FCS)" id="fcs">
+ <section title="Cryptographic Support (FCS)" id="fcs">
+
+        <ext-comp-def fam-id="FCS_TLS_EXT" title="TLS Role">
+          <fam-behavior>This family defines requirements for the TLS role.</fam-behavior>
+        </ext-comp-def>
+   
         <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol">
           <f-element id="fel-tls-usage">
 			<title>The TSF shall implement
@@ -309,6 +314,8 @@
 	  <audit-event />
         </f-component>
 
+
+	
         <f-component cc-id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
 		  <depends on-sel="tlsc_impl"/>
           <f-element id="fel-client">
