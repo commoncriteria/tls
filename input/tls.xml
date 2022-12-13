@@ -181,6 +181,7 @@
 
   </sec:Introduction>
   <sec:Conformance_Claims>
+    <!-- 
     <cclaims>
       <cclaim name="Conformance Statement">
         <description>
@@ -197,6 +198,7 @@
           also satisfied.</h:p></description>
       </cclaim>
     </cclaims>
+    -->
   </sec:Conformance_Claims>
   
   <sec:Security_Functional_Requirements>
@@ -237,7 +239,7 @@
         </ext-comp-def>
    
         <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol">
-          
+          <!-- 
           <comp-lev> requires the TSF to specify whether it implements TLS or DTLS as a client or as a server.
           </comp-lev>
           <management>No specific management functions are identified.
@@ -246,7 +248,7 @@
           </audit>
           <dependencies>No dependencies.
           </dependencies>
-          
+           -->
           <f-element id="fel-tls-usage">
 			<title>The TSF shall implement
         <selectables linebreak="yes">
@@ -433,7 +435,7 @@
         <h:li>signature_algorithms extension (RFC 8446) indicating support for 
           <selectables linebreak="yes">
             <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-            <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+            <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
               <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
               <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
               <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
@@ -446,7 +448,7 @@
           the following other extensions: <selectables linebreak="yes">
             <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
               <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-              <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+              <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                 <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                 <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                 <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
@@ -484,7 +486,7 @@
         The TSF shall be able to <selectables linebreak="yes">
           <selectable>verify that a presented identifier of name type: <selectables linebreak="yes">
             <selectable>DNS name type according to RFC 6125</selectable>
-            <selectable>URN name type according to RFC 6125</selectable> 
+            <selectable>URI name type according to RFC 6125</selectable> 
             <selectable>SRV name type according to RFC 6125</selectable>
             <selectable>Common Name conversion to DNS name according to RFC 6125</selectable>
             <selectable>Directory name type according to RFC 5280</selectable>
@@ -521,7 +523,6 @@
       <note role="application">
         <h:p>
         All supported responses are claimed; at least one option is claimed. 
-        If both options are supported, the ST describes when each method is used and whether the behavior is configurable. 
         </h:p>
       </note>
       <aactivity>
@@ -554,7 +555,8 @@
         The evaluator shall also perform the following evaluation activities for FCS_DTLSC_EXT.1.7:
         </h:p>
         <TSS>
-          The evaluator shall verify that the TSS describes the actions that take place if a message received from the DTLS server fails the integrity check.
+          The evaluator shall verify that the TSS describes the actions that take place if a message received from the DTLS server fails the integrity check. 
+          If both selections are chosen in FCS_DTLSC_EXT.1.7, the evaluator shall verify that the TSS describes when each method is used and whether the behavior is configurable. 
         </TSS>
         <Guidance>
           If the ST indicates the behavior of the TSF on receiving a message from the DTLS server that fails the MAC integrity check is configurable, 
@@ -727,7 +729,7 @@
           <depends on-sel="dtlsc_v13_resumption"/> 
           <f-element>
             <title>
-              The TSF shall send a psk_key_exchange_mode extension with value psk_dhe when DTLS 1.3 session resumption is offered. 
+              The TSF shall send a psk_key_exchange_mode extension with value psk_dhe_ke when DTLS 1.3 session resumption is offered. 
             </title>
           </f-element>
           <f-element>
@@ -850,7 +852,7 @@
           <h:li>signature_algorithms extension (RFC 8446) indicating support for 
             <selectables linebreak="yes">
               <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-              <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+              <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                 <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                 <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                 <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
@@ -863,7 +865,7 @@
             the following other extensions: <selectables linebreak="yes">
               <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
                 <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-                <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                   <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                   <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                   <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
@@ -1203,7 +1205,7 @@
           <depends on-sel="dtlss_v13_resumption"/> 
           <f-element>
             <title>
-              The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_mode extension with the value psk_dhe.  
+              The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_mode extension with the value psk_dhe_ke.  
             </title>
           </f-element>
           <f-element>
@@ -1348,7 +1350,7 @@
              <h:li>signature_algorithms extension (RFC 8446) indicating support for 
                <selectables linebreak="yes">
                  <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-                 <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                 <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                    <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                    <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                    <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
@@ -1361,7 +1363,7 @@
                the following other extensions: <selectables linebreak="yes">
                  <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
                    <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-                   <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                   <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                      <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                      <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                      <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
@@ -1410,7 +1412,7 @@
               The TSF shall be able to <selectables linebreak="yes">
               <selectable>verify that a presented identifier of name type: <selectables linebreak="yes">
                 <selectable>DNS name type according to RFC 6125</selectable>
-                <selectable>URN name type according to RFC 6125</selectable> 
+                <selectable>URI name type according to RFC 6125</selectable> 
                 <selectable>SRV name type according to RFC 6125</selectable>
                 <selectable>Common Name conversion to DNS name according to RFC 6125</selectable>
                 <selectable>Directory name type according to RFC 5280</selectable>
@@ -1491,7 +1493,7 @@
                 <h:li>URI or SRV names: The ‘*’ character can only occur in the domain name portion of the name represented as a DNS name. 
                   All restrictions for wildcards in DNS names apply to the DNS portion of the name.
                 URI host names presented as an IP address are matched according to IP address matching rules – see best practices for IP addresses below. 
-                In accordance with RFC 6215, it is preferred that such URNs are presented a matching name of type IP address in the SAN. </h:li>
+                In accordance with RFC 6125, it is preferred that such URNs are presented a matching name of type IP address in the SAN. </h:li>
                 <h:li>IP addresses: RFC 5280 does not support IP address ranges as presented names, 
                   but indicates that presented names may be compared to IP address ranges present in name constraints. 
                   If the TSF supports IP address ranges as reference identifiers, the reference identifier matches if the presented name is in the range. 
@@ -1633,7 +1635,7 @@
                       </h:p><h:p>
                       See IANA TLS parameters for available ciphersuites to be tested. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. 
                       For example, if the TSF only supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test server could select
-                      TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5 TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.  
+                      TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.  
                       </h:p></test>
                   </testlist>
                 </test>
@@ -1856,7 +1858,7 @@
                     <test>(certificate extended key usage purpose) The evaluator shall send a server certificate that contains the Server Authentication purpose in the ExtendedKeyUsage extension 
                       and verify that a connection is established. 
                       The evaluator shall repeat this test using a different certificate that is otherwise valid and trusted but lacks the 
-                      Server Authentication purpose in the ExtendedKeyUsage extension and observe the TSS terminates the session.
+                      Server Authentication purpose in the ExtendedKeyUsage extension and observe the TSF terminates the session.
                       <h:p>
                       Note: This test may be performed as part of certificate validation testing (FIA_X509_EXT.1).
                       </h:p><h:p>
@@ -2297,7 +2299,7 @@
           <depends on-sel="tlsc_v13_resumption"/> 
           <f-element>
             <title>
-              The TSF shall send a psk_key_exchange_mode extension with the value psk_dhe when TLS 1.3 session resumption is offered. 
+              The TSF shall send a psk_key_exchange_mode extension with the value psk_dhe_ke when TLS 1.3 session resumption is offered. 
             </title>
           </f-element>
           <f-element>
@@ -2332,7 +2334,7 @@
                 the evaluator shall follow operational guidance to configure the application not to send early data. 
                 The evaluator shall cause the application to initiate a resumed TLS 1.3 session between the TSF and a compliant test TLS 1.3 server as in 
                 <xref to="tls-client-successful-resumption"/> in FCS_TLSC_EXT.5. 
-                The evaluator shall observe that the TSF client hello for TLS 1.3 includes the psk_mode extension with the value PSK_DHE and sends a key share value for a supported group. 
+                The evaluator shall observe that the TSF client hello for TLS 1.3 includes the psk_mode extension with the value psk_dhe_ke and sends a key share value for a supported group. 
                 The evaluator shall confirm that early data is not received by the test TLS server.
                 <h:p>
                 <h:b>Note:</h:b> If no applications supported by the TOE provide data to TLS 1.3 that can be sent using PSK, this test is omitted.
@@ -2449,7 +2451,7 @@
               <h:li>signature_algorithms extension (RFC 8446) indicating support for 
                 <selectables linebreak="yes">
                   <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-                  <selectable>rsa_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                  <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                     <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                     <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                     <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
@@ -2462,7 +2464,7 @@
                 the following other extensions: <selectables linebreak="yes">
                   <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
                     <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-                    <selectable>rsk_psks1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                    <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                       <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                       <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                       <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
@@ -2487,7 +2489,7 @@
           </title>
           <note role="application">
             If support for TLS 1.3 is claimed in FCS_TLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. 
-            Even if support for TLS 1.3 is not claimed, if ECDHE ciphersuites are claimed in FCS_TLSS_EXT.1.4, the entry for supported_groups is claimed. Support for additional extensions is acceptable.
+            Even if support for TLS 1.3 is not claimed, if ECDHE ciphersuites are claimed in FCS_TLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable.
             For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
           </note>
           </f-element>
@@ -2531,7 +2533,7 @@
               The options depend on the supported ciphersuites. For each session, the key exchange method is consistent with the selected ciphersuite (TLS 1.2), 
               the supported groups extension (TLS 1.3 and conditionally, TLS 1.2), or the key share extension (TLS 1.3). 
               </h:p><h:p>
-              If the ST lists an RSA ciphersuite in FCS_TLSS_EXT.1.1, the ST must include the RSA selection in the requirement.
+              If the ST lists an RSA ciphersuite in FCS_TLSS_EXT.1.2, the ST must include the RSA selection in the requirement.
               </h:p><h:p>
               If the ST lists a DHE ciphersuite in FCS_TLSS_EXT.1.2, the ST must include the Diffie-Hellman selection for parameters of a certain size, the Diffie-Hellman groups selection in support of TLS 1.2 exchanges, or both. 
               The selection for "Diffie-Hellman parameters" refers to the method defined by RFC 5246, section 7.4.3 where the server provides Diffie-Hellman parameters to the client.  
@@ -2704,7 +2706,7 @@
                         See IANA TLS parameters for available ciphersuites to be included. 
                         The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. 
                         For example, if the TSF supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test could include
-                        TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5 TLS_ECDHE_RSA_WITH_RC4_128_SHA, 
+                        TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, 
                         TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.  
                         </h:p></test>
                     </testlist>
@@ -3357,7 +3359,7 @@
           <depends on-sel="tlss_v13_resumption"/> 
           <f-element>
             <title>
-              The TSF shall support TLS 1.3 resumption using PSK with psk_key_exchange_mode extension with the value psk_dhe.  
+              The TSF shall support TLS 1.3 resumption using PSK with psk_key_exchange_mode extension with the value psk_dhe_ke.  
             </title>
           </f-element>
           <f-element>
