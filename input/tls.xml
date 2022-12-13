@@ -285,7 +285,9 @@
               <Tests>
                 <h:p>
                 There are no test activities for this SFR; the following information is provided as an overview of the expected functionality and test environment for all subsequent SFRs.
-                </h:p><h:p>
+                </h:p>
+                <!-- 
+                <h:p>
                 <figure entity="images/figure1.png" title="TLS Hello" id="Hello"/>
                 </h:p><h:p>
                 The chart above provides an overview of the TLS hello messages, 
@@ -299,7 +301,9 @@
                   <h:li>A shaded text box indicates that the message is encrypted for TLS 1.2 (blue), TLS 1.3 (green), or both TLS 1.2 and TLS 1.3 (grey).</h:li> 
                   <h:li>An outlined text box indicates that the content in the message is signed or provides authentication of the handshake to that point.</h:li>
                 </h:ul>
-                </h:p><h:p>
+                </h:p>
+                 -->
+                <h:p>
                 <h:b>Test Environment:</h:b>
                 </h:p><h:p>
                 Tests for TLS 1.2 and TLS 1.3 include examination of the handshake messages and behavior of the TSF when presented with unexpected or invalid messages. 
