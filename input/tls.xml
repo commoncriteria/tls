@@ -1497,7 +1497,7 @@
                 <h:li>URI or SRV names: The ‘*’ character can only occur in the domain name portion of the name represented as a DNS name. 
                   All restrictions for wildcards in DNS names apply to the DNS portion of the name.
                 URI host names presented as an IP address are matched according to IP address matching rules – see best practices for IP addresses below. 
-                In accordance with RFC 6125, it is preferred that such URNs are presented a matching name of type IP address in the SAN. </h:li>
+                In accordance with RFC 6125, it is preferred that such URIs are presented a matching name of type IP address in the SAN. </h:li>
                 <h:li>IP addresses: RFC 5280 does not support IP address ranges as presented names, 
                   but indicates that presented names may be compared to IP address ranges present in name constraints. 
                   If the TSF supports IP address ranges as reference identifiers, the reference identifier matches if the presented name is in the range. 
