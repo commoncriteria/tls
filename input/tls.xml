@@ -234,9 +234,11 @@
  </sec:Auditable_Events_for_Mandatory_SFRs>
  <section title="Cryptographic Support (FCS)" id="fcs">
 
+<!-- 
         <ext-comp-def fam-id="FCS_TLS_EXT" title="TLS Role">
           <fam-behavior>This family defines the TLS claims that can be made by a conformant TOE.</fam-behavior>
         </ext-comp-def>
+   -->
    
         <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol">
           <!-- 
@@ -335,9 +337,11 @@
 	  <audit-event />
         </f-component>
 
+<!-- 
    <ext-comp-def fam-id="FCS_DTLSC_EXT" title="DTLS Client Protocol">
      <fam-behavior>This family defines requirements for implementation of DTLS as a client.</fam-behavior>
    </ext-comp-def>
+   -->
    
   <f-component cc-id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
     <depends on-sel="dtlsc_impl"/>
@@ -757,9 +761,11 @@
           <audit-event/>
         </f-component> 
         
+        <!--
    <ext-comp-def fam-id="FCS_DTLSS_EXT" title="DTLS Server Protocol">
      <fam-behavior>This family defines requirements for implementation of DTLS as a server.</fam-behavior>
    </ext-comp-def>
+   -->
         
   <f-component cc-id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
     <depends on-sel="dtlss_impl"/>
@@ -1243,9 +1249,11 @@
           <audit-event/>
         </f-component>   
 
+<!-- 
    <ext-comp-def fam-id="FCS_TLSC_EXT" title="TLS Client Protocol">
      <fam-behavior>This family defines requirements for implementation of TLS as a client.</fam-behavior>
    </ext-comp-def>
+   -->
         <f-component cc-id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
 		  <depends on-sel="tlsc_impl"/>
           <f-element id="fel-client">
@@ -2349,9 +2357,11 @@
           <audit-event/>
         </f-component>
 
+<!--
    <ext-comp-def fam-id="FCS_TLSS_EXT" title="TLS Server Protocol">
      <fam-behavior>This family defines requirements for implementation of TLS as a server.</fam-behavior>
    </ext-comp-def>
+   -->
         <f-component cc-id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
           <depends on-sel="tlss_impl"/>
           <f-element id="fel-tlss-impl">
