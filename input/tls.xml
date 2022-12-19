@@ -12,9 +12,9 @@
   <PPReference>
     <ReferenceTable>
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
-      <PPVersion>2.0-draft</PPVersion>
+      <PPVersion>2.0</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2022-11-18</PPPubDate>
+      <PPPubDate>2022-12-19</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -34,7 +34,7 @@
     </entry>
      <entry>
       <version>2.0</version>
-      <date>2022-11-18</date>
+      <date>2022-12-19</date>
       <subject>Added audit events, added TLS/DTLS 1.3 support, deprecated TLS 1.0 and 1.1, updated algorithms/ciphersuites in accordance with CNSA suite RFC and to consider PSK, restructured SFRs for clarity</subject>
     </entry>
 
