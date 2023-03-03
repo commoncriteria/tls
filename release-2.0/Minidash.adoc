@@ -17,4 +17,5 @@ https://commoncriteria.github.io/tls/release-2.0/diff-v1.1.html[diff-v1.1.html] 
 https://commoncriteria.github.io/tls/release-2.0/tls-release-linkable.html[tls-release-linkable.html] +
 https://commoncriteria.github.io/tls/release-2.0/tls-release.html[tls-release.html] +
 https://commoncriteria.github.io/tls/release-2.0/tls.html[tls.html] +
+https://commoncriteria.github.io/tls/release-2.0/tls-paged.pdf[tls-paged.pdf] +
 |===
