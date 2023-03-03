@@ -1,0 +1,23 @@
+[cols="1,1,1,1,1,1,1,1"]
+|===
+8+|tls 
+| https://github.com/commoncriteria/tls/tree/release-1.1[release-1.1] 
+a| https://commoncriteria.github.io/tls/release-1.1/tls-release.html[📄]
+a|[link=https://github.com/commoncriteria/tls/blob/gh-pages/release-1.1/ValidationReport.txt]
+image::https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/release-1.1/validation.svg[Validation]
+a|[link=https://github.com/commoncriteria/tls/blob/gh-pages/release-1.1/SanityChecksOutput.md]
+image::https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/release-1.1/warnings.svg[SanityChecks]
+a|[link=https://github.com/commoncriteria/tls/blob/gh-pages/release-1.1/SpellCheckReport.txt]
+image::https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/release-1.1/spell-badge.svg[SpellCheck]
+a|[link=https://github.com/commoncriteria/tls/blob/gh-pages/release-1.1/TDValidationReport.txt]
+image::https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/release-1.1/tds.svg[TDs]
+a|image::https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/release-1.1/transforms.svg[transforms,150]
+a| 
+https://commoncriteria.github.io/tls/release-1.1/AppliedTDs-Diff.html[AppliedTDs-Diff.html] +
+https://commoncriteria.github.io/tls/release-1.1/AppliedTDs.html[AppliedTDs.html] +
+https://commoncriteria.github.io/tls/release-1.1/diff-v1.0.html[diff-v1.0.html] +
+https://commoncriteria.github.io/tls/release-1.1/tls-release-linkable.html[tls-release-linkable.html] +
+https://commoncriteria.github.io/tls/release-1.1/tls-release.html[tls-release.html] +
+https://commoncriteria.github.io/tls/release-1.1/tls.html[tls.html] +
+https://commoncriteria.github.io/tls/release-1.1/tls-paged.pdf[tls-paged.pdf] +
+|===
