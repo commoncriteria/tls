@@ -1,4 +1,4 @@
-name: QuickBuild v4.1
+name: QuickBuild v4.2
 
 on:
   push:
@@ -94,10 +94,8 @@ jobs:
            ls input/tds/*.xml ; then
           echo "Master branch should not have TDs" >> output/TDValidationReport.txt
         fi
-        if ls input/tds/*.xml; then
-           PP_XML=output/effective.xml PP_RELEASE_HTML=output/AppliedTDs.html make release
-           java -jar ExecuteDaisy-master/*.jar output/*-release.html output/AppliedTDs.html --file=output/AppliedTDs-Diff.html
-        fi
+        PP_XML=output/effective.xml PP_RELEASE_HTML=output/AppliedTDs.html make release
+        java -jar ExecuteDaisy-master/*.jar output/*-release.html output/AppliedTDs.html --file=output/AppliedTDs-Diff.html
 
 
     - name: Set TD badge attributes
