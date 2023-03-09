@@ -15,7 +15,6 @@ a|image::https://raw.githubusercontent.com/commoncriteria/tls/gh-pages/release-1
 a| 
 https://commoncriteria.github.io/tls/release-1.1/AppliedTDs-Diff.html[AppliedTDs-Diff.html] +
 https://commoncriteria.github.io/tls/release-1.1/AppliedTDs.html[AppliedTDs.html] +
-https://commoncriteria.github.io/tls/release-1.1/diff-v1.0.html[diff-v1.0.html] +
 https://commoncriteria.github.io/tls/release-1.1/tls-release-linkable.html[tls-release-linkable.html] +
 https://commoncriteria.github.io/tls/release-1.1/tls-release.html[tls-release.html] +
 https://commoncriteria.github.io/tls/release-1.1/tls.html[tls.html] +
