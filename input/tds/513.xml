@@ -24,7 +24,7 @@
     <Protection_Profiles>
       <Protection_Profile max-inclusive="1.1" name="tls">
 	<replace>
-	  <xpath-specified xpath="//*[@cc-id='fcs_tlsc_ext.1']/cc:f-element[3]//cc:testlist/cc:test">
+	  <xpath-specified xpath="//*[@cc-id='fcs_tlsc_ext.1']/cc:f-element[3]//cc:Tests/cc:testlist/cc:test[1]">
 	    <test>
 	      The evaluator will perform the following subtests:
 	      <testlist>
