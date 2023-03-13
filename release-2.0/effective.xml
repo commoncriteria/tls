@@ -33,7 +33,7 @@
 	  
   </RevisionHistory>
 	
-  <!-- PP-style preferences   -->
+  <release-notes><h:h3>TDs Applied</h:h3></release-notes><!-- PP-style preferences   -->
   <pp-preferences>
 <!--        <pp-pref name="display-audit-with-sfrs">0</pp-pref> -->
    	<audit-events-in-sfrs/>
