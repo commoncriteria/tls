@@ -188,10 +188,8 @@ jobs:
         echo "a|[link=$gurl/TDValidationReport.txt]"
         echo "image::$rurl/tds.svg[TDs]"
         echo "a|image::$rurl/transforms.svg[transforms,150]"
-        echo "a| "
-        for aa in output/*.html output/*.pdf; do
-           echo "$surl/${aa#*/}[${aa#*/}] +"
-        done
+        echo "a| [link=$gurl/HTMLs.adoc]image::$rurl/html_count.svg +"
+        echo "[link=$gurl/PDFs.adoc]image::$rurl/pdf_count.svg +"
         echo '|==='
         ) > output/Minidash.adoc
 
@@ -216,7 +214,7 @@ jobs:
         echo "action_pdf_count=$PDF_COUNT" >> $GITHUB_ENV
 
 
-    - name: TD Badge
+    - name: HTML Badge
       uses: emibcn/badge-action@v2.0.2
       with:
         label: 'HTMLs'
@@ -224,13 +222,13 @@ jobs:
         color:  gray
         path: output/html_count.svg
 
-    - name: TD Badge
+    - name: PDF Badge
       uses: emibcn/badge-action@v2.0.2
       with:
         label: 'PDFs'
         status: ${{ env.action_pdf_count }}
         color:  gray
-        path: output/html.svg
+        path: output/pdf_count.svg
 
         
     - name:  Prepare checkout
