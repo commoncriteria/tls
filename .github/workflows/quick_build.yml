@@ -194,18 +194,25 @@ jobs:
         done
         echo '|==='
         ) > output/Minidash.adoc
-        (
+
+
+    - name: HTML List
+      run: |
+        surl="https://commoncriteria.github.io/${{env.action_projname}}/${{env.action_branch}}"            (
         for aa in output/*.html ; do
            echo "* $surl/${aa#*/}[${aa#*/}]"
         done
         ) > output/HTMLs.adoc
         HTML_COUNT=$(wc -l < output/HTMLs.adoc)
         echo "action_html_count=$HTML_COUNT" >> $GITHUB_ENV
-        (
-        if ls output/*.pdf && (for aa in output/*.pdf ; do
+
+    - name: PDF List
+      run: |
+        surl="https://commoncriteria.github.io/${{env.action_projname}}/${{env.action_branch}}"
+        if ls output/*.pdf && \
+        (for aa in output/*.pdf ; do
            echo "* $surl/${aa#*/}[${aa#*/}]"
-        done )
-        ) >> output/PDFs.adoc
+        done ) >> output/PDFs.adoc
         echo "action_pdf_count=$(wc -l < output/PDFs.adoc)" >> $GITHUB_ENV
 
 
