@@ -209,7 +209,7 @@ jobs:
       run: |
         surl="https://commoncriteria.github.io/${{env.action_projname}}/${{env.action_branch}}"
         cd output
-        (for aa in (find . -name '*.pdf') ; do
+        (for aa in $(find . -name '*.pdf') ; do
            echo "* $surl/${aa#*/}[${aa#*/}]"
         done ) > PDFs.adoc
         PDF_COUNT=$(wc -l < PDFs.adoc)
