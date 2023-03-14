@@ -208,11 +208,12 @@ jobs:
     - name: PDF List
       run: |
         surl="https://commoncriteria.github.io/${{env.action_projname}}/${{env.action_branch}}"
-        if ls output/*.pdf && \
-        (for aa in output/*.pdf ; do
+        cd output
+        (for aa in (find . -name '*.pdf') ; do
            echo "* $surl/${aa#*/}[${aa#*/}]"
-        done ) > output/PDFs.adoc
-        echo "action_pdf_count=$(wc -l < output/PDFs.adoc)" >> $GITHUB_ENV
+        done ) > PDFs.adoc
+        PDF_COUNT=$(wc -l < PDFs.adoc)
+        echo "action_pdf_count=$PDF_COUNT" >> $GITHUB_ENV
 
 
     - name: TD Badge
