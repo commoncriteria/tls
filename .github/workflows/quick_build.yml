@@ -201,13 +201,6 @@ jobs:
         ) > output/Docs.adoc
         HTML_COUNT=$(wc -l output/Docs.adoc)
         echo "action_html_count=$HTML_COUNT" >> $GITHUB_ENV
-        (
-        if ls output/*.pdf && (for aa in output/*.pdf ; do
-           echo "* $surl/${aa#*/}[${aa#*/}]"
-        done)
-        ) >> output/Docs.adoc
-        echo "action_pdf_count=$(expr $(wc -l output/Docs.adoc) - $HTML_COUNT)" >> $GITHUB_ENV
-
 
     - name: TD Badge
       uses: emibcn/badge-action@v2.0.2
@@ -216,14 +209,6 @@ jobs:
         status: ${{ env.action_html_count }}
         color:  gray
         path: output/html_count.svg
-
-    - name: TD Badge
-      uses: emibcn/badge-action@v2.0.2
-      with:
-        label: 'PDFs'
-        status: ${{ env.action_pdf_count }}
-        color:  gray
-        path: output/html.svg
 
         
     - name:  Prepare checkout
