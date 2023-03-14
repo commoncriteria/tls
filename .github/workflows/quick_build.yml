@@ -1,4 +1,4 @@
-name: QuickBuild v4.2
+name: QuickBuild v4.3
 
 on:
   push:
@@ -170,10 +170,10 @@ jobs:
 
     - name:  Make Dashboard Snippet
       run: |
-        (
         rurl="https://raw.githubusercontent.com/commoncriteria/${{env.action_projname}}/gh-pages/${{env.action_branch}}"
         surl="https://commoncriteria.github.io/${{env.action_projname}}/${{env.action_branch}}"
         gurl="https://github.com/commoncriteria/${{env.action_projname}}/blob/gh-pages/${{env.action_branch}}"
+        (
         echo '[cols="1,1,1,1,1,1,1,1"]'
         echo '|==='
         echo "8+|${{ env.action_projname }} "
@@ -194,7 +194,36 @@ jobs:
         done
         echo '|==='
         ) > output/Minidash.adoc
+        (
+        for aa in output/*.html ; do
+           echo "* $surl/${aa#*/}[${aa#*/}] +"
+        done
+        ) > output/Docs.adoc
+        HTML_COUNT=$(wc -l output/Docs.adoc)
+        echo "action_html_count=$HTML_COUNT" >> $GITHUB_ENV
+        (
+        if ls output/*.pdf && for aa in output/*.pdf ; do
+           echo "* $surl/${aa#*/}[${aa#*/}] +"
+        done
+        ) > output/Docs.adoc
+        echo "action_pdf_count=$(expr $(wc -l output/Docs.adoc) - $HTML_COUNT)" >> $GITHUB_ENV
 
+
+    - name: TD Badge
+      uses: emibcn/badge-action@v2.0.2
+      with:
+        label: 'HTMLs'
+        status: ${{ env.action_html_count }}
+        color:  gray
+        path: output/html_count.svg
+
+    - name: TD Badge
+      uses: emibcn/badge-action@v2.0.2
+      with:
+        label: 'PDFs'
+        status: ${{ env.action_pdf_count }}
+        color:  gray
+        path: output/html.svg
 
         
     - name:  Prepare checkout
