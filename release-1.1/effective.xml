@@ -24,7 +24,7 @@
     </entry>
   </RevisionHistory>
 
-  <release-notes><h:h3>TDs Applied</h:h3><h:div class="td-">588</h:div><h:div class="td-">513</h:div><h:div class="td-">499</h:div><h:div class="td-">469</h:div><h:div class="td-">442</h:div></release-notes><sec:Introduction>
+  <release-notes><h:h3>TDs Applied</h:h3><h:div class="td-">588 (20210512)</h:div><h:div class="td-">513 ()</h:div><h:div class="td-">499 (2020.02.04)</h:div><h:div class="td-">469 (2019.11.20)</h:div><h:div class="td-">442 (2019.11.20)</h:div></release-notes><sec:Introduction>
     <section title="Overview" id="ppoverview">
       <h:p>
 	  Transport Layer Security (TLS) and the closely-related Datagram TLS (DTLS) are
