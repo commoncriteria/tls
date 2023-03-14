@@ -188,8 +188,10 @@ jobs:
         echo "a|[link=$gurl/TDValidationReport.txt]"
         echo "image::$rurl/tds.svg[TDs]"
         echo "a|image::$rurl/transforms.svg[transforms,150]"
-        echo "a| [link=$gurl/HTMLs.adoc]image::$rurl/html_count.svg[HTML Count]"
-        echo "[link=$gurl/PDFs.adoc]image::$rurl/pdf_count.svg[PDF Count]"
+        echo "a| [link=$gurl/HTMLs.adoc]"
+        echo "image::$rurl/html_count.svg[HTML Count]"
+        echo "[link=$gurl/PDFs.adoc]"
+        echo "image::$rurl/pdf_count.svg[PDF Count]"
         echo '|==='
         ) > output/Minidash.adoc
 
