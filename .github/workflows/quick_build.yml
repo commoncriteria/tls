@@ -196,16 +196,16 @@ jobs:
         ) > output/Minidash.adoc
         (
         for aa in output/*.html ; do
-           echo "* $surl/${aa#*/}[${aa#*/}] +"
+           echo "* $surl/${aa#*/}[${aa#*/}]"
         done
         ) > output/Docs.adoc
         HTML_COUNT=$(wc -l output/Docs.adoc)
         echo "action_html_count=$HTML_COUNT" >> $GITHUB_ENV
         (
-        if ls output/*.pdf && for aa in output/*.pdf ; do
-           echo "* $surl/${aa#*/}[${aa#*/}] +"
-        done
-        ) > output/Docs.adoc
+        if ls output/*.pdf && (for aa in output/*.pdf ; do
+           echo "* $surl/${aa#*/}[${aa#*/}]"
+        done)
+        ) >> output/Docs.adoc
         echo "action_pdf_count=$(expr $(wc -l output/Docs.adoc) - $HTML_COUNT)" >> $GITHUB_ENV
 
 
