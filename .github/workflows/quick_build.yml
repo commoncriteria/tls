@@ -198,7 +198,8 @@ jobs:
 
     - name: HTML List
       run: |
-        surl="https://commoncriteria.github.io/${{env.action_projname}}/${{env.action_branch}}"            ( for aa in output/*.html ; do
+        surl="https://commoncriteria.github.io/${{env.action_projname}}/${{env.action_branch}}"
+        ( for aa in output/*.html ; do
            echo "* $surl/${aa#*/}[${aa#*/}]"
         done ) > output/HTMLs.adoc
         HTML_COUNT=$(wc -l < output/HTMLs.adoc)
