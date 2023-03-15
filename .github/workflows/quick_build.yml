@@ -118,7 +118,7 @@ jobs:
             echo "GOING THROUGH HERE $NUM"
         else
             echo "action_tdcolor=$(if [ -s output/TDValidationReport.txt ]; then echo orange; else echo green; fi)" >> $GITHUB_ENV
-            echo "action_tdwarns='$NUM:$(wc -l output/TDValidationReport.txt | { read first rest ; echo $first;})'" >> $GITHUB_ENV
+            echo "action_tdwarns=$NUM:$(wc -l output/TDValidationReport.txt | { read first rest ; echo $first;})" >> $GITHUB_ENV
             echo "THERE ARE TDs $NUM"
             
         fi
