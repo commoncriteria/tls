@@ -112,7 +112,7 @@ jobs:
     - name: Set TD badge attributes
       run: |
         NUM=$(ls input/tds/*.xml | wc -l)
-        if [ $NUM == 0 ]: then
+        if [ $NUM == 0 ]; then
             echo "action_tdcolor=gray" >> $GITHUB_ENV
             echo "action_tdwarns=N/A"  >> $GITHUB_ENV
         else
