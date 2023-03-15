@@ -122,11 +122,11 @@ jobs:
             echo "THERE ARE TDs $NUM"
             
         fi
-        
+      # Not sure what the point of this is
     - name: Validate Effective
       run: |
-        echo "action_tdcolor=$(if [ -s output/TDValidationReport.txt ]; then echo orange; else echo green; fi)" >> $GITHUB_ENV
-        echo "action_tdwarns=$(wc -l output/TDValidationReport.txt | { read first rest ; echo $first;} )"       >> $GITHUB_ENV
+        echo "action_effvalcolor=$(if [ -s output/TDValidationReport.txt ]; then echo orange; else echo green; fi)" >> $GITHUB_ENV
+        echo "action_effvalwarns=$(wc -l output/TDValidationReport.txt | { read first rest ; echo $first;} )"       >> $GITHUB_ENV
 
 
     - name: Prepare environment
