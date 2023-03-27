@@ -42,8 +42,10 @@ against 1.1](html)
 
 === Release Version
 
+==== V1.1
 * https://www.niap-ccevs.org/Profile/Info.cfm?PPID=426&id=426[Protection
 Profile - Functional Package for TLS]
+* https://commoncriteria.github.io/tls/release-1.1/AppliedTDs.html [Effective HTML]
 
 === Contributing
 
