@@ -60,9 +60,9 @@ against 1.1](html)
 
 === Release Version
 
-==== V1.1
-* https://www.niap-ccevs.org/Profile/Info.cfm?PPID=426&id=426[On NIAP]
-* https://commoncriteria.github.io/tls/release-1.1/AppliedTDs.html[Effective HTML]
+==== V2.0
+* https://www.niap-ccevs.org/Profile/Info.cfm?PPID=465&id=465[On NIAP]
+* https://commoncriteria.github.io/tls/release-2.0/AppliedTDs.html[Effective HTML]
 
 === Contributing
 
