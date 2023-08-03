@@ -182,8 +182,8 @@
         <description>An ST must claim exact conformance to this Functional Package.
           <h:br/><h:br/>
           The evaluation methods used for evaluating the TOE are a combination of the workunits defined in <xref to="bibCEM"/> as well as the
-          Evaluation Activities for ensuring that individual SFRs have sufficient level of supporting evidence in the Security Target and 
-          guidance documentation and have been sufficiently tested by the laboratory as part of completing ATE_IND.1.
+          EAs for ensuring that individual SFRs have a sufficient level of supporting evidence in the Security Target and 
+          guidance documentation, and have been sufficiently tested by the laboratory as part of completing ATE_IND.1.
         </description>
       </cclaim>
       <cclaim name="CC Conformance Claims">
@@ -191,9 +191,9 @@
           do not contain any SARs so no CC Part 3 claim is made.</description>
       </cclaim>
       <cclaim name="PP Claim">
-        <description>This Functional Package does not claim conformance to any Protection Profile.<h:br/><h:br/>
+        <description>This Functional Package does not claim conformance to any PP.<h:br/><h:br/>
           PP-Configurations do not require enumeration of Functional Packages; this Functional Package can be claimed in any PP-Configuration that includes
-          a Protection Profile or PP-Module that permits the Functional Package to be claimed as part of it.
+          a PP or PP-Module that permits the Functional Package to be claimed as part of it.
         </description>
       </cclaim>
       <cclaim name="Package Claim">
@@ -3951,5 +3951,12 @@
   </sec:Security_Functional_Requirements>
     <bibliography>
       <cc-entry/>
+      <entry id="bibCEM">
+        <tag>CEM</tag>
+        <description>
+          <h:a href="https://commoncriteriaportal.org/files/ccfiles/CEM2022R1.pdf">Common
+            Methodology for Information Technology Security - Evaluation Methodology</h:a>,
+          CCMB-2022-11-006, CEM:2022, Revision 1, November 2022. </description>
+      </entry>
     </bibliography>
 </Package>
