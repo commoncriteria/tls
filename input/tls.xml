@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
+<?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCPackage.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
 <!-- <Package name="TLS" repo-name="tls" pp-version="1.1"  -->
 <Package name="TLS"
@@ -12,9 +13,9 @@
   <PPReference>
     <ReferenceTable>
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
-      <PPVersion>2.0</PPVersion>
+      <PPVersion>2.1</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2022-12-19</PPPubDate>
+      <PPPubDate>2023-08-04</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -37,7 +38,11 @@
       <date>2022-12-19</date>
       <subject>Added audit events, added TLS/DTLS 1.3 support, deprecated TLS 1.0 and 1.1, updated algorithms/ciphersuites in accordance with CNSA suite RFC and to consider PSK, restructured SFRs for clarity</subject>
     </entry>
-
+    <entry>
+      <version>2.1</version>
+      <date>2023-08-04</date>
+      <subject>Updated for CC:2022 conformance, incorporated applicable errata.</subject>
+    </entry>
 	  
   </RevisionHistory>
 	
@@ -153,11 +158,11 @@
       </componentneeded>
       <!-- The components in the PP or PP-Module that need this SFR should require it;
       it is not _directly_ depended upon by this Package.-->
-      <componentneeded>
-        <componentid>FCS_RBG_EXT.1</componentid>
-        <notes>To support random bit generation needed for the TLS handshake,
-          the PP or PP-Module must include FCS_RBG_EXT.1.</notes>
-      </componentneeded>
+        <componentneeded>
+          <componentid>FCS_RBG.1</componentid>
+          <notes>To support random bit generation needed for SSH key generation,
+            the PP or PP-Module must include FCS_RBG.1 or an extended SFR that defines comparable functionality.</notes>
+        </componentneeded>
       <componentneeded>
         <componentid>FIA_X509_EXT.1</componentid>
         <notes>
@@ -180,25 +185,31 @@
     </sec:Compliant_Targets_of_Evaluation>
 
   </sec:Introduction>
-  <sec:Conformance_Claims>
-    <!-- 
+  <sec:Conformance_Claims boilerplate="no">
     <cclaims>
       <cclaim name="Conformance Statement">
-        <description>
-	  <h:p>
-	    This Package serves to provide Protection Profiles with additional 
-          SFRs and associated Evaluation Activities specific to TLS clients and servers.  
-          </h:p><h:p>
-          This Package conforms to Common Criteria
-          <xref g="CC" /> for Information Technology Security Evaluation, Version 3.1,
-          Revision 5. It is CC Part 2 extended conformant.
-          </h:p><h:p>
-          In accordance with CC Part 1, dependencies are not included when they are addressed
-          by other SFRs. The evaluation activities provide adequate proof that any dependencies are
-          also satisfied.</h:p></description>
+        <description>An ST must claim exact conformance to this Functional Package.
+          <h:br/><h:br/>
+          The evaluation methods used for evaluating the TOE are a combination of the workunits defined in <xref to="bibCEM"/> as well as the
+          Evaluation Activities for ensuring that individual SFRs have sufficient level of supporting evidence in the Security Target and 
+          guidance documentation and have been sufficiently tested by the laboratory as part of completing ATE_IND.1.
+        </description>
+      </cclaim>
+      <cclaim name="CC Conformance Claims">
+        <description>This Functional Package is conformant to Part 2 (extended) of Common Criteria CC:2022, Revision 1. Functional Packages
+          do not contain any SARs so no CC Part 3 claim is made.</description>
+      </cclaim>
+      <cclaim name="PP Claim">
+        <description>This Functional Package does not claim conformance to any Protection Profile.<h:br/><h:br/>
+          PP-Configurations do not require enumeration of Functional Packages; this Functional Package can be claimed in any PP-Configuration that includes
+          a Protection Profile or PP-Module that permits the Functional Package to be claimed as part of it.
+        </description>
+      </cclaim>
+      <cclaim name="Package Claim">
+        <description>This Functional Package does not claim conformance to any other Functional Packages.
+        </description>
       </cclaim>
     </cclaims>
-    -->
   </sec:Conformance_Claims>
   
   <sec:Security_Functional_Requirements>
@@ -227,21 +238,24 @@
    <h:p>
      The auditable events specified in this Functional Package are included in a Security Target 
      if the incorporating PP or PP-Module supports audit event reporting through FAU_GEN.1 and all other criteria in the incorporating
-     PP or PP-Module are met.
+     PP or PP-Module are met. 
+     
+     Note that, if "None" is not selected in the "Auditable Events" column, it should not be selected in the "Additional Audit Record Contents" column. 
+     Likewise, if "None" is selected in the "Auditable Events" column, it should also be selected in the "Additional Audit Record Contents" column.
    </h:p>
    <audit-table table="mandatory" id="t-audit-mandatory"/>
 
  </sec:Auditable_Events_for_Mandatory_SFRs>
  <section title="Cryptographic Support (FCS)" id="fcs">
 
-<!-- 
-        <ext-comp-def fam-id="FCS_TLS_EXT" title="TLS Role">
+        <ext-comp-def fam-id="FCS_TLS_EXT" title="TLS Protocol">
           <fam-behavior>This family defines the TLS claims that can be made by a conformant TOE.</fam-behavior>
         </ext-comp-def>
-   -->
+
+   
    
         <f-component cc-id="fcs_tls_ext.1" name="TLS Protocol">
-          <!-- 
+          
           <comp-lev> requires the TSF to specify whether it implements TLS or DTLS as a client or as a server.
           </comp-lev>
           <management>No specific management functions are identified.
@@ -250,7 +264,7 @@
           </audit>
           <dependencies>No dependencies.
           </dependencies>
-           -->
+          
           <f-element id="fel-tls-usage">
 			<title>The TSF shall implement
         <selectables linebreak="yes">
@@ -337,14 +351,35 @@
 	  <audit-event />
         </f-component>
 
-<!-- 
+ 
    <ext-comp-def fam-id="FCS_DTLSC_EXT" title="DTLS Client Protocol">
      <fam-behavior>This family defines requirements for implementation of DTLS as a client.</fam-behavior>
    </ext-comp-def>
-   -->
+   
    
   <f-component cc-id="fcs_dtlsc_ext.1" name="DTLS Client Protocol" status="sel-based">
     <depends on-sel="dtlsc_impl"/>
+    
+    <comp-lev> requires the TSF to implement DTLS as a client in the specified manner.
+    </comp-lev>
+    <management>No specific management functions are identified.
+    </management>
+    <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
+      PP, PP-Module, functional package, or ST:<h:ul>
+        <h:li>Esbalishment and termination of a DTLS session</h:li>
+        <h:li>Failure to establish a DTLS session</h:li>
+        <h:li>Failure to verify presented identifier</h:li>
+      </h:ul>
+    </audit>
+    <dependencies>
+      FCS_CKM.1 Cryptographic Key Generation<h:br/>
+      FCS_CKM.2 Cryptographic Key Derivation<h:br/>
+      FCS_COP.1 Cryptographic Operation<h:br/>
+      FCS_RBG.1 Random Bit Generation<h:br/>
+      FIA_X509_EXT.1 X.509 Certificate Validation<h:br/>
+      FIA_X509_EXT.2 X.509 Certificate Authentication
+    </dependencies> 
+    
     <f-element id="fel-dtlsc-impl">
       <title>The TSF shall implement DTLS 1.2 (RFC 6347) and
       <selectables>
@@ -416,6 +451,18 @@
           offering the supported ciphersuites in a client hello message in preference order: 
           <assignable>list of supported ciphersuites</assignable>.
         </title>
+      <ext-comp-def-title>
+        <title>
+          The TSF shall be able to support the following TLS 1.2 ciphersuites:
+            <assignable>list of supported TLS 1.2 ciphersuites</assignable>,
+          the following PP-specific ciphersuites using pre-shared secrets:
+          <assignable>list of supported pre-shared key ciphersuites</assignable>,
+          and the following TLS 1.3 ciphersuites: 
+          <assignable>list of supported TLS 1.3 ciphersuites</assignable>,
+          offering the supported ciphersuites in a client hello message in preference order: 
+          <assignable>list of supported ciphersuites</assignable>.
+        </title>
+      </ext-comp-def-title>
       <note role="application">
         <h:p>
         DTLS uses TLS ciphersuites. The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite 
@@ -484,6 +531,33 @@
         </h:li>
       </h:ul>
     </title>  
+      <ext-comp-def-title>
+        <title>
+            The TSF shall be able to support the following TLS client hello message extensions: 
+            <h:ul>
+              <h:li>signature_algorithms extension (RFC 8446) indicating support for 
+                <selectables linebreak="yes">
+                  <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                  <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                    <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
+                    <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                    <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
+                    <selectable>no other signature algorithms</selectable></selectables>
+              </h:li>
+              <h:li>
+                extended_master_secret extension (RFC 7627) enforcing server support
+              </h:li>
+              <h:li>
+                the following other extensions: <assignable>other supported DTLS extensions</assignable>
+                and shall not send the following extensions: <h:ul>
+                  <h:li>early_data</h:li>
+                  <h:li>psk_key_exchange_mode indicating PSK only mode.</h:li>
+                </h:ul>
+              </h:li>
+            </h:ul>
+            
+        </title>
+      </ext-comp-def-title>
       <note role="application">
         DTLS uses TLS extensions. All other application notes for FCS_TLSC_EXT.1.4 apply to this requirement, 
         with references to TLS and FCS_TLSC_EXT.1 elements replaced by DTLS and the corresponding reference to FCS_DTLSC_EXT.1 elements.
@@ -504,6 +578,15 @@
           <selectable>interface with a client application requesting the DTLS channel to verify that a presented identifier</selectable></selectables> 
         matches a reference identifier of the requested DTLS server and shall abort the session if no match is found.
       </title>
+      <ext-comp-def-title>
+        <title>
+          The TSF shall be able to <selectables linebreak="yes">
+            <selectable>verify that a presented identifier of name type: 
+            <assignable>supported name types</assignable></selectable>  
+            <selectable>interface with a client application requesting the DTLS channel to verify that a presented identifier</selectable></selectables> 
+          matches a reference identifier of the requested DTLS server and shall abort the session if no match is found.
+        </title>
+      </ext-comp-def-title>
       <note role="application">
         All supported methods for matching names are claimed. All other application notes for FCS_TLSC_EXT.1.5 
         apply to this requirement, with ‘TLS Servers’ replaced by ‘DTLS Servers.’ 
@@ -580,24 +663,43 @@
     </f-element>
     <audit-event type="optional">
       <audit-event-descr>Failure to establish a DTLS session</audit-event-descr>
-      <audit-event-info>Reason for failure.</audit-event-info>
+      <audit-event-info><selectables>
+        <selectable>Reason for failure</selectable>
+        <selectable>None</selectable>
+      </selectables></audit-event-info>
     </audit-event>
     <audit-event type="optional">
       <audit-event-descr>Failure to verify presented identifier</audit-event-descr>
-      <audit-event-info>Presented identifier and reference identifier.</audit-event-info>
+      <audit-event-info><selectables>
+        <selectable>Presented identifier and reference identifier</selectable>
+        <selectable>None</selectable>
+      </selectables></audit-event-info>
     </audit-event>
     <audit-event type="optional">
       <audit-event-descr>Establishment/termination of a DTLS session</audit-event-descr>
-      <audit-event-info>Non-TOE endpoint of connection.</audit-event-info>
+      <audit-event-info><selectables>
+        <selectable>Non-TOE endpoint of connection</selectable>
+        <selectable>None</selectable>
+      </selectables></audit-event-info>
     </audit-event>
   </f-component>
       
 
   <f-component cc-id="fcs_dtlsc_ext.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
     <depends on-sel="dtlsc_mutual_auth"/>
+    
+    <comp-lev> requires the TSF to support mutually-authenticated DTLS when acting as a DTLS client.
+    </comp-lev>
+    <management>No specific management functions are identified.
+    </management>
+    <audit>There are no auditable events foreseen.
+    </audit>
+    <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol
+    </dependencies>
+    
           <f-element id="fel-dtlsc-mut-auth">
             <title>
-              The TSF shall support mutual authentication using X.509v3 certificates during the handshake and 
+              The TSF shall support mutual DTLS authentication using X.509v3 certificates during the handshake and 
               <selectables>
                 <selectable>in support of post-handshake authentication requests</selectable>
                 <selectable>at no other time</selectable>
@@ -625,6 +727,16 @@
 
         <f-component cc-id="fcs_dtlsc_ext.3" name="DTLS Client Downgrade Protection" status="sel-based">
           <depends on-sel="dtlsc_downgrade_protection"/>
+          
+          <comp-lev> requires the TSF to implement version downgrade protection when acting as a DTLS client.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol
+          </dependencies>
+          
           <f-element>
             <title>The TSF shall not establish a DTLS channel if the server hello message includes a
               <selectables>
@@ -660,10 +772,20 @@
           <audit-event/>
         </f-component>
         
-        <f-component cc-id="fcs_dtlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
+        <f-component cc-id="fcs_dtlsc_ext.4" name="DTLS Client Support for Renegotiation" status="sel-based">
           <depends on-sel="tlsc_impl"/>
+          
+          <comp-lev> requires the TSF to support session renegotiation when acting as a DTLS client.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol
+          </dependencies>
+          
           <f-element id="fel-renego">
-            <title>The TSF shall support secure renegotiation through use of <selectables>
+            <title>The TSF shall support secure DTLS renegotiation through use of <selectables>
               <selectable>the “renegotiation_info” TLS extension</selectable>
               <selectable>the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value</selectable></selectables>
               in accordance with RFC 5746, and shall terminate the session if an unexpected server hello is received or <selectables>
@@ -692,10 +814,20 @@
         </f-component>
         
         <f-component cc-id="fcs_dtlsc_ext.5" name="DTLS Client Support for Session Resumption" status="sel-based">
-          <depends on-sel="dtlsc_resumption"/> 
+          <depends on-sel="dtlsc_resumption"/>
+          
+          <comp-lev> requires the TSF to support session resumption when acting as a DTLS client.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol
+          </dependencies>
+          
           <f-element>
             <title>
-              The TSF shall support session resumption as a client via the use of <selectables>
+              The TSF shall support session resumption as a DTLS client via the use of <selectables>
                 <selectable>session ID in accordance with RFC 5246</selectable>
                 <selectable>tickets in accordance with RFC 5077</selectable>
                 <selectable id="dtlsc_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
@@ -735,6 +867,17 @@
         
         <f-component cc-id="fcs_dtlsc_ext.6" name="DTLS Client DTLS 1.3 Resumption Refinements" status="sel-based">
           <depends on-sel="dtlsc_v13_resumption"/> 
+          
+          <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a DTLS client.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol<h:br/>
+            FCS_DTLSC_EXT.5 DTLS Client Support for Session Resumption
+          </dependencies>
+          
           <f-element>
             <title>
               The TSF shall send a psk_key_exchange_mode extension with value psk_dhe_ke when DTLS 1.3 session resumption is offered. 
@@ -761,14 +904,33 @@
           <audit-event/>
         </f-component> 
         
-        <!--
+        
    <ext-comp-def fam-id="FCS_DTLSS_EXT" title="DTLS Server Protocol">
      <fam-behavior>This family defines requirements for implementation of DTLS as a server.</fam-behavior>
    </ext-comp-def>
-   -->
+   
         
   <f-component cc-id="fcs_dtlss_ext.1" name="DTLS Server Protocol" status="sel-based">
     <depends on-sel="dtlss_impl"/>
+    
+    <comp-lev> requires the TSF to implement DTLS as a server in the specified manner.
+    </comp-lev>
+    <management>No specific management functions are identified.
+    </management>
+    <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
+      PP, PP-Module, functional package, or ST:<h:ul>
+        <h:li>Failure to establish a DTLS session</h:li>
+      </h:ul>
+    </audit>
+    <dependencies>
+      FCS_CKM.1 Cryptographic Key Generation<h:br/>
+      FCS_CKM.2 Cryptographic Key Derivation<h:br/>
+      FCS_COP.1 Cryptographic Operation<h:br/>
+      FCS_RBG.1 Random Bit Generation<h:br/>
+      FIA_X509_EXT.1 X.509 Certificate Validation<h:br/>
+      FIA_X509_EXT.2 X.509 Certificate Authentication
+    </dependencies> 
+    
     <f-element id="fel-dtlss-impl">
       <title>The TSF shall implement DTLS 1.2 (RFC 6347) and
       <selectables>
@@ -844,6 +1006,21 @@
           <selectable><assignable>additional priority</assignable></selectable>
         </selectables>.
       </title>
+      <ext-comp-def-title>
+        <title>
+          The TSF shall be able to support the following TLS 1.2 ciphersuites:
+          <assignable>list of supported TLS 1.2 ciphersuites</assignable>,
+          the following PP-specific ciphersuites using pre-shared secrets:
+          <assignable>list of supported pre-shared key ciphersuites</assignable>,
+          and the following TLS 1.3 ciphersuites: 
+          <assignable>list of supported TLS 1.3 ciphersuites</assignable>,
+          using a preference order based on <selectables>
+            <selectable>RFC 9151 priority</selectable>
+            <selectable>client hello ordering</selectable>
+            <selectable><assignable>additional priority</assignable></selectable>
+          </selectables>.
+        </title>
+      </ext-comp-def-title>
         <note role="application">
           DTLS supports TLS ciphersuites. The ST author should select the ciphersuites that are supported and must select at least one ciphersuite suitable for each 
           supported DTLS version – TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. 
@@ -898,6 +1075,28 @@
           </h:li>
         </h:ul>
       </title>
+      <ext-comp-def-title>
+        <title>
+          The TSF shall be able to process the following TLS client hello message extensions: 
+          <h:ul>
+            <h:li>signature_algorithms extension (RFC 8446) indicating support for 
+              <selectables linebreak="yes">
+                <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                  <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
+                  <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                  <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
+                  <selectable>no other signature algorithms</selectable></selectables>
+            </h:li>
+            <h:li>
+              extended_master_secret extension (RFC 7627) enforcing client support
+            </h:li>
+            <h:li>
+              the following other extensions: <assignable>other supported DTLS extensions</assignable>
+            </h:li>
+          </h:ul>
+        </title>
+      </ext-comp-def-title>
       <note role="application">
         DTLS uses TLS extensions. If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. 
         Even if support for DTLS 1.3 is not claimed, if ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the entry for supported_groups is claimed. 
@@ -937,6 +1136,11 @@
               <selectable>no other</selectable></selectables> extension and using non-compressed formatting for points
           </selectable></selectables>.
       </title>
+      <ext-comp-def-title>
+        <title>
+          The TSF shall perform key establishment for DTLS using <assignable>key establishment parameters</assignable>. 
+        </title>
+      </ext-comp-def-title>
       <note role="application">
       DTLS uses key establishment mechanisms from the equivalent TLS version. 
       The application notes for FCS_TLSS_EXT.1.5 apply to this requirement, with ‘TLS’ replaced by ‘DTLS’ 
@@ -1012,13 +1216,28 @@
       </aactivity>
     </f-element>
   	<audit-event type="optional">
-  	  <audit-event-descr>Failure to establish a TLS session</audit-event-descr>
-  	  <audit-event-info>Reason for failure</audit-event-info>
+  	  <audit-event-descr>Failure to establish a DTLS session</audit-event-descr>
+  	  <audit-event-info>
+  	    <selectables>
+  	    <selectable>Reason for failure</selectable>
+  	    <selectable>None</selectable>
+  	    </selectables>
+  	  </audit-event-info>
 	</audit-event>
   </f-component>
 
   <f-component cc-id="fcs_dtlss_ext.2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
     <depends on-sel="dtlss_mutual_auth"/>
+    
+    <comp-lev> requires the TSF to support mutually-authenticated DTLS when acting as a DTLS server.
+    </comp-lev>
+    <management>No specific management functions are identified.
+    </management>
+    <audit>There are no auditable events foreseen.
+    </audit>
+    <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol
+    </dependencies>
+    
           <f-element id="fel-dtlss-mut-auth">
               <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates during the DTLS handshake and <selectables>
                 <selectable>during post-handshake requests</selectable>
@@ -1107,6 +1326,16 @@
         
         <f-component cc-id="fcs_dtlss_ext.3" name="DTLS Server Downgrade Protection" status="sel-based">
           <depends on-sel="dtlss_downgrade_protection"/>
+          
+          <comp-lev> requires the TSF to implement version downgrade protection when acting as a DTLS server.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol
+          </dependencies>
+          
           <f-element>
             <title>
               The TSF shall set the server hello extension to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating DTLS 1.2 as indicated in RFC 8446 section 4.1.3.
@@ -1129,8 +1358,18 @@
         
         <f-component cc-id="fcs_dtlss_ext.4" name="DTLS Server Support for Renegotiation" status="sel-based">
           <depends on-sel="dtlss_impl"/>
+          
+          <comp-lev> requires the TSF to support session renegotiation when acting as a DTLS server.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol
+          </dependencies>
+          
           <f-element>
-            <title>The TSF shall support secure renegotiation through the use of <selectables>
+            <title>The TSF shall support secure DTLS renegotiation through the use of <selectables>
               <selectable>the "renegotiation_info" TLS extension</selectable>
               <selectable>not allowing session renegotiation</selectable></selectables> in accordance with RFC 5746.
             </title>
@@ -1175,9 +1414,20 @@
         
         <f-component cc-id="fcs_dtlss_ext.5" name="DTLS Server Support for Session Resumption" status="sel-based">
           <depends on-sel="dtlss_resumption"/> 
+          
+          
+          <comp-lev> requires the TSF to support session resumption when acting as a DTLS server.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol
+          </dependencies>
+          
           <f-element>
             <title>
-              The TSF shall support session resumption as a server via the use of <selectables>
+              The TSF shall support session resumption as a DTLS server via the use of <selectables>
                 <selectable>session ID in accordance with RFC 5246</selectable>
                 <selectable>tickets in accordance with RFC 5077</selectable>
                 <selectable id="dtlss_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
@@ -1213,6 +1463,19 @@
         
         <f-component cc-id="fcs_dtlss_ext.6" name="DTLS Server DTLS 1.3 Resumption Refinements" status="sel-based">
           <depends on-sel="dtlss_v13_resumption"/> 
+          
+          
+          <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a DTLS server.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol<h:br/>
+            FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption
+          </dependencies>
+          
+          
           <f-element>
             <title>
               The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_mode extension with the value psk_dhe_ke.  
@@ -1249,13 +1512,35 @@
           <audit-event/>
         </f-component>   
 
-<!-- 
+
    <ext-comp-def fam-id="FCS_TLSC_EXT" title="TLS Client Protocol">
      <fam-behavior>This family defines requirements for implementation of TLS as a client.</fam-behavior>
    </ext-comp-def>
-   -->
+
         <f-component cc-id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
 		  <depends on-sel="tlsc_impl"/>
+          
+          
+          <comp-lev> requires the TSF to implement TLS as a client in the specified manner.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
+            PP, PP-Module, functional package, or ST:<h:ul>
+              <h:li>Esbalishment and termination of a TLS session</h:li>
+              <h:li>Failure to establish a TLS session</h:li>
+              <h:li>Failure to verify presented identifier</h:li>
+            </h:ul>
+          </audit>
+          <dependencies>
+            FCS_CKM.1 Cryptographic Key Generation<h:br/>
+            FCS_CKM.2 Cryptographic Key Derivation<h:br/>
+            FCS_COP.1 Cryptographic Operation<h:br/>
+            FCS_RBG.1 Random Bit Generation<h:br/>
+            FIA_X509_EXT.1 X.509 Certificate Validation<h:br/>
+            FIA_X509_EXT.2 X.509 Certificate Authentication
+          </dependencies> 
+          
           <f-element id="fel-client">
             <title> The TSF shall implement TLS 1.2 (RFC 5246) and
               <selectables>
@@ -1324,6 +1609,18 @@
               offering the supported ciphersuites in a client hello message in preference order: 
               <assignable>list of supported ciphersuites</assignable>.
           </title>
+            <ext-comp-def-title>
+              <title>
+                The TSF shall be able to support the following TLS 1.2 ciphersuites:
+                <assignable>list of supported TLS 1.2 ciphersuites</assignable>,
+                the following PP-specific ciphersuites using pre-shared secrets:
+                <assignable>list of supported pre-shared key ciphersuites</assignable>,
+                and the following TLS 1.3 ciphersuites: 
+                <assignable>list of supported TLS 1.3 ciphersuites</assignable>,
+                offering the supported ciphersuites in a client hello message in preference order: 
+                <assignable>list of supported ciphersuites</assignable>.
+              </title>
+            </ext-comp-def-title>
             <note role="application">
               <h:p>
               The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite for each TLS version supported. 
@@ -1403,6 +1700,32 @@
              </h:li>
            </h:ul>
          </title>
+            <ext-comp-def-title>
+              <title>
+                The TSF shall be able to support the following TLS client hello message extensions: 
+                <h:ul>
+                  <h:li>signature_algorithms extension (RFC 8446) indicating support for 
+                    <selectables linebreak="yes">
+                      <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                      <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                        <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
+                        <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                        <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
+                        <selectable>no other signature algorithms</selectable></selectables>
+                  </h:li>
+                  <h:li>
+                    extended_master_secret extension (RFC 7627) enforcing server support
+                  </h:li>
+                  <h:li>
+                    the following other extensions: <assignable>other supported TLS extensions</assignable>
+                    and shall not send the following extensions: <h:ul>
+                      <h:li>early_data</h:li>
+                      <h:li>psk_key_exchange_mode indicating PSK only mode.</h:li>
+                    </h:ul>
+                  </h:li>
+                </h:ul>
+              </title>
+            </ext-comp-def-title>
          <note role="application">
            <h:p>
            If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446. 
@@ -1434,6 +1757,15 @@
               <selectable>interface with a client application requesting the TLS channel to verify that a presented identifier</selectable></selectables> 
               matches a reference identifier of the requested TLS server and shall abort the session if no match is found.
             </title>
+            <ext-comp-def-title>
+              <title>
+                The TSF shall be able to <selectables linebreak="yes">
+                  <selectable>verify that a presented identifier of name type: 
+                    <assignable>supported name types</assignable></selectable>  
+                  <selectable>interface with a client application requesting the TLS channel to verify that a presented identifier</selectable></selectables> 
+                matches a reference identifier of the requested TLS server and shall abort the session if no match is found.
+              </title>
+            </ext-comp-def-title>
             <note role="application">
               <h:p>
               The rules for verification identity are described in Section 6 of RFC 6125 and Section 7 of RFC 5280. 
@@ -1574,19 +1906,22 @@
                     but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                       </h:p>
                     </test>
+                  <!-- updated per TD0731 -->
                   <test id="tls-client-nonstandard-versions">
-                    The evaluator shall attempt to establish a connection with a test TLS server that is configured to send a server hello message indicating the selected version 
-                    (referred to as the legacy version in RFC 8446) with a value corresponding to an undefined TLS (legacy) version 
-                    (e.g., '03 04') and observe that the TSF terminates the connection.
+                    The evaluator shall follow the operational guidance to configure the TSF to
+                    ensure any supported beta TLS 1.3 versions are disabled, as necessary. The evaluator
+                    shall send the TSF a client hello message indicating the supported version (referred to
+                    as the legacy version in RFC 8446) with the value '03 04' but without including the
+                    supported_versions extension and observe that the TSF either
+                    responds with a server hello indicating TLS 1.2 or terminates the connection.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., protocol version) in response to this, 
                     but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                     </h:p><h:p>
-                    <xref to="tls-client-nonstandard-versions"/> is intended to test the TSF response to non-standard versions, 
-                    including early proposals for ‘beta TLS 1.3’ versions. 
-                    RFC 8446 requires the legacy version to have the value '03 03' and specifies TLS 1.3 in the supported versions extension with the value '03 04'. 
-                    While not a preferred approach, if continued support for a beta TLS 1.3 version is desired and the TSF cannot be configured to reject such versions, 
-                    another value (e.g., '03 05') can be used in <xref to="tls-client-nonstandard-versions"/>. Implementations of non-standard versions are not tested.
+                      <xref to="tls-client-nonstandard-versions"/> is intended to test the TSF response to non-standard versions,
+                      including beta versions of TLS 1.3. If the TSF supports such beta versions, the
+                      evaluator shall follow the operational guidance instructions to disable them prior to
+                      conducting <xref to="tls-client-nonstandard-versions"/>.
                     </h:p>
                   </test>
                 </testlist>
@@ -1995,26 +2330,47 @@
 	             </Tests>
             </aactivity>
           </f-element> 
-	  <audit-event type="optional">
-		<audit-event-descr>Failure to establish a TLS session</audit-event-descr>
-		<audit-event-info>Reason for failure.</audit-event-info>
-	  </audit-event>
-	  <audit-event type="optional">
-		<audit-event-descr>Failure to verify presented identifier</audit-event-descr>
-		<audit-event-info>Presented identifier and reference identifier.</audit-event-info>
-	  </audit-event>
-	  <audit-event type="optional">
-		<audit-event-descr>Establishment/termination of a TLS session</audit-event-descr>
-		<audit-event-info>Non-TOE endpoint of connection.</audit-event-info>
-	 </audit-event>
+	    <audit-event type="optional">
+	      <audit-event-descr>Failure to establish a TLS session</audit-event-descr>
+	      <audit-event-info><selectables>
+	        <selectable>Reason for failure</selectable>
+	        <selectable>None</selectable>
+	      </selectables></audit-event-info>
+	    </audit-event>
+	    <audit-event type="optional">
+	      <audit-event-descr>Failure to verify presented identifier</audit-event-descr>
+	      <audit-event-info><selectables>
+	        <selectable>Presented identifier and reference identifier</selectable>
+	        <selectable>None</selectable>
+	      </selectables></audit-event-info>
+	    </audit-event>
+	    <audit-event type="optional">
+	      <audit-event-descr>Establishment/termination of a TLS session</audit-event-descr>
+	      <audit-event-info><selectables>
+	        <selectable>Non-TOE endpoint of connection</selectable>
+	        <selectable>None</selectable>
+	      </selectables></audit-event-info>
+	    </audit-event>
+	 
         </f-component>
         
         
         
         <f-component cc-id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="sel-based">
 		  <depends on-sel="tlsc_mutual_auth"/>
+          
+          
+          <comp-lev> requires the TSF to support mutually-authenticated DTLS when acting as a TLS client.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol
+          </dependencies>
+          
           <f-element id="fel-mut-auth-certs">
-            <title>The TSF shall support mutual authentication using X.509v3 certificates during the handshake and <selectables>
+            <title>The TSF shall support mutual TLS authentication using X.509v3 certificates during the handshake and <selectables>
               <selectable>in support of post-handshake authentication requests</selectable>
               <selectable>at no other time</selectable></selectables>, in accordance with <selectables> 
               <selectable>RFC 5246, section 7.4.4</selectable>
@@ -2078,6 +2434,16 @@
 	      
         <f-component cc-id="fcs_tlsc_ext.3" name="TLS Client Downgrade Protection" status="sel-based">
           <depends on-sel="tlsc_downgrade_protection"/>
+          
+          <comp-lev> requires the TSF to implement version downgrade protection when acting as a TLS client.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol
+          </dependencies>
+          
           <f-element>
             <title>The TSF shall not establish a TLS channel if the server hello message includes 
               <selectables>
@@ -2144,8 +2510,19 @@
 	      
         <f-component cc-id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
           <depends on-sel="tlsc_impl"/>
+          
+          
+          <comp-lev> requires the TSF to support session renegotiation when acting as a TLS client.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol
+          </dependencies>
+          
           <f-element id="fel-renego">
-            <title>The TSF shall support secure renegotiation through use of <selectables>
+            <title>The TSF shall support secure TLS renegotiation through use of <selectables>
               <selectable>the “renegotiation_info” TLS extension</selectable>
               <selectable>the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value</selectable></selectables>
            in accordance with RFC 5746, and shall terminate the session if an unexpected server hello is received or <selectables>
@@ -2250,9 +2627,20 @@
 	      
         <f-component cc-id="fcs_tlsc_ext.5" name="TLS Client Support for Session Resumption" status="sel-based">
           <depends on-sel="tlsc_resumption"/> 
+          
+          
+          <comp-lev> requires the TSF to support session resumption when acting as a TLS client.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol
+          </dependencies>
+          
           <f-element>
           <title>
-            The TSF shall support session resumption as a client via the use of <selectables>
+            The TSF shall support session resumption as a TLS client via the use of <selectables>
               <selectable>session ID in accordance with RFC 5246</selectable>
               <selectable>tickets in accordance with RFC 5077</selectable>
               <selectable id="tlsc_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
@@ -2309,6 +2697,17 @@
 
         <f-component cc-id="fcs_tlsc_ext.6" name="TLS Client TLS 1.3 Resumption Refinements" status="sel-based">
           <depends on-sel="tlsc_v13_resumption"/> 
+          
+          <comp-lev> requires the TSF to support session resumption behavior specific to TLS 1.3 when acting as a TLS client.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol<h:br/>
+            FCS_TLSC_EXT.5 TLS Client Support for Session Resumption
+          </dependencies>
+          
           <f-element>
             <title>
               The TSF shall send a psk_key_exchange_mode extension with the value psk_dhe_ke when TLS 1.3 session resumption is offered. 
@@ -2357,13 +2756,33 @@
           <audit-event/>
         </f-component>
 
-<!--
+
    <ext-comp-def fam-id="FCS_TLSS_EXT" title="TLS Server Protocol">
      <fam-behavior>This family defines requirements for implementation of TLS as a server.</fam-behavior>
    </ext-comp-def>
-   -->
+
         <f-component cc-id="fcs_tlss_ext.1" name="TLS Server Protocol" status="sel-based">
           <depends on-sel="tlss_impl"/>
+          
+          
+          <comp-lev> requires the TSF to implement TLS as a server in the specified manner.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
+            PP, PP-Module, functional package, or ST:<h:ul>
+              <h:li>Failure to establish a TLS session</h:li>
+            </h:ul>
+          </audit>
+          <dependencies>
+            FCS_CKM.1 Cryptographic Key Generation<h:br/>
+            FCS_CKM.2 Cryptographic Key Derivation<h:br/>
+            FCS_COP.1 Cryptographic Operation<h:br/>
+            FCS_RBG.1 Random Bit Generation<h:br/>
+            FIA_X509_EXT.1 X.509 Certificate Validation<h:br/>
+            FIA_X509_EXT.2 X.509 Certificate Authentication
+          </dependencies> 
+          
           <f-element id="fel-tlss-impl">
             <title> The TSF shall implement TLS 1.2 (RFC 5246) and
               <selectables>
@@ -2434,6 +2853,21 @@
                 <selectable><assignable>additional priority</assignable></selectable>
               </selectables>.
             </title>
+            <ext-comp-def-title>
+              <title>
+                The TSF shall be able to support the following TLS 1.2 ciphersuites:
+                <assignable>list of supported TLS 1.2 ciphersuites</assignable>,
+                the following PP-specific ciphersuites using pre-shared secrets:
+                <assignable>list of supported pre-shared key ciphersuites</assignable>,
+                and the following TLS 1.3 ciphersuites: 
+                <assignable>list of supported TLS 1.3 ciphersuites</assignable>,
+                using a preference order based on <selectables>
+                  <selectable>RFC 9151 priority</selectable>
+                  <selectable>client hello ordering</selectable>
+                  <selectable><assignable>additional priority</assignable></selectable>
+                </selectables>.
+              </title>
+            </ext-comp-def-title>
             <note role="application">
               <h:p>
               The ST author should select the ciphersuites that are supported and must select at least one ciphersuite for each TLS version supported. 
@@ -2501,7 +2935,51 @@
               </h:li>
             </h:ul>
           </title>
-          <note role="application">
+            <ext-comp-def-title>
+              <title>
+                The TSF shall be able to process the following TLS client hello message extensions: 
+                <h:ul>
+                  <h:li>signature_algorithms extension (RFC 8446) indicating support for 
+                    <selectables linebreak="yes">
+                      <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                      <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                        <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
+                        <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                        <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
+                        <selectable>no other signature algorithms</selectable></selectables>
+                  </h:li>
+                  <h:li>
+                    extended_master_secret extension (RFC 7627) enforcing client support
+                  </h:li>
+                  <h:li>
+                    the following other extensions: <selectables linebreak="yes">
+                      <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
+                        <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                        <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                          <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
+                          <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                          <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
+                          <selectable>rsa_pss_rsae_sha256 (RFC 8446)</selectable>
+                          <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
+                          <selectable>no other signature algorithms</selectable>
+                        </selectables></selectable>
+                      <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3</selectable>
+                      <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
+                        <selectable>secp256r1</selectable>
+                        <selectable>secp384r1</selectable>
+                        <selectable>secp521r1</selectable>
+                        <selectable>ffdhe2048(256)</selectable>
+                        <selectable>ffdhe3072(257)</selectable>
+                        <selectable>ffdhe4096(258)</selectable>
+                        <selectable>ffdhe6144(259)</selectable>
+                        <selectable>ffdhe8192(260)</selectable></selectables></selectable>
+                      <selectable>key_share extension (RFC 8446)</selectable>
+                      <selectable>no other extensions</selectable></selectables>.
+                  </h:li>
+                </h:ul>
+              </title>
+            </ext-comp-def-title>
+            <note role="application">
             If support for TLS 1.3 is claimed in FCS_TLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. 
             Even if support for TLS 1.3 is not claimed, if ECDHE ciphersuites are claimed in FCS_TLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable.
             For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
@@ -2539,6 +3017,13 @@
                     <selectable>no other</selectable></selectables> extension and using non-compressed formatting for points
                 </selectable></selectables>.
             </title>
+            <ext-comp-def-title>
+              
+                <title>
+                  The TSF shall perform key establishment for TLS using <assignable>key establishment parameters</assignable>. 
+                </title>
+              
+            </ext-comp-def-title>
             <note role="application">
               <h:p>
               TLS 1.2 and TLS 1.3 perform key exchange using different mechanisms. In TLS 1.2, the requirements apply to the key exchange messages received by the server and optionally 
@@ -2941,14 +3426,30 @@
             </aactivity>
           </f-element>
         
-	  <audit-event type="optional">
-		<audit-event-descr>Failure to establish a TLS session</audit-event-descr>
-		<audit-event-info>Reason for failure</audit-event-info>
-	 </audit-event>
+          <audit-event type="optional">
+            <audit-event-descr>Failure to establish a TLS session</audit-event-descr>
+            <audit-event-info>
+              <selectables>
+                <selectable>Reason for failure</selectable>
+                <selectable>None</selectable>
+              </selectables>
+            </audit-event-info>
+          </audit-event>
         </f-component>
 
        <f-component cc-id="fcs_tlss_ext.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
          <depends on-sel="tlss_mutual_auth"/>
+         
+         
+         <comp-lev> requires the TSF to support mutually-authenticated TLS when acting as a TLS server.
+         </comp-lev>
+         <management>No specific management functions are identified.
+         </management>
+         <audit>There are no auditable events foreseen.
+         </audit>
+         <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol
+         </dependencies>
+         
           <f-element id="fel-tlss-auth">
             <title>The TSF shall support authentication of TLS clients using X.509v3 certificates during the TLS handshake and <selectables>
               <selectable>during post-handshake requests</selectable>
@@ -3161,6 +3662,16 @@
  
         <f-component cc-id="fcs_tlss_ext.3" name="TLS Server Downgrade Protection" status="sel-based">
           <depends on-sel="tlss_downgrade_protection"/>
+          
+          <comp-lev> requires the TSF to implement version downgrade protection when acting as a TLS server.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol
+          </dependencies>
+          
           <f-element>
             <title>
               The TSF shall set the server hello extension to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating TLS 1.2 as indicated in RFC 8446 section 4.1.3.
@@ -3197,8 +3708,18 @@
 
 	<f-component cc-id="fcs_tlss_ext.4" name="TLS Server Support for Renegotiation" status="sel-based">
 	  <depends on-sel="tlss_impl"/>
+	  
+	  <comp-lev> requires the TSF to support session renegotiation when acting as a TLS server.
+	  </comp-lev>
+	  <management>No specific management functions are identified.
+	  </management>
+	  <audit>There are no auditable events foreseen.
+	  </audit>
+	  <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol
+	  </dependencies>
+	  
           <f-element>
-            <title>The TSF shall support secure renegotiation through the use of <selectables>
+            <title>The TSF shall support secure TLS renegotiation through the use of <selectables>
               <selectable>the "renegotiation_info" TLS extension</selectable>
               <selectable>not allowing session renegotiation</selectable></selectables> in accordance with RFC 5746.
             </title>
@@ -3312,9 +3833,19 @@
         
         <f-component cc-id="fcs_tlss_ext.5" name="TLS Server Support for Session Resumption" status="sel-based">
           <depends on-sel="tlss_resumption"/> 
+          
+          <comp-lev> requires the TSF to support session resumption when acting as a TLS server.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol
+          </dependencies>
+          
           <f-element>
             <title>
-              The TSF shall support session resumption as a server via the use of <selectables>
+              The TSF shall support session resumption as a TLS server via the use of <selectables>
                 <selectable>session ID in accordance with RFC 5246</selectable>
                 <selectable>tickets in accordance with RFC 5077</selectable>
                 <selectable id="tlss_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
@@ -3371,6 +3902,18 @@
         
         <f-component cc-id="fcs_tlss_ext.6" name="TLS Server TLS 1.3 Resumption Refinements" status="sel-based">
           <depends on-sel="tlss_v13_resumption"/> 
+          
+          
+          <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a TLS server.
+          </comp-lev>
+          <management>No specific management functions are identified.
+          </management>
+          <audit>There are no auditable events foreseen.
+          </audit>
+          <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol<h:br/>
+            FCS_TLSS_EXT.5 TLS Server Support for Session Resumption
+          </dependencies>
+          
           <f-element>
             <title>
               The TSF shall support TLS 1.3 resumption using PSK with psk_key_exchange_mode extension with the value psk_dhe_ke.  
@@ -3411,8 +3954,14 @@
                     but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                     </h:p>
                   </test>
-                  <test>The evaluator shall initiate a resumed session (as for FCS_TLSS_EXT.5 <xref to="tls-server-successful-resumption"/>) with a test TLS 1.3 client attempting to provide early data that provokes a known reaction at the TOE if received. 
-                    The evaluator shall observe that the TSF does not react to the early data, indicating that the data was ignored.
+                  <!-- updated per TD0729 -->
+                  <test>
+                    The evaluator shall establish a valid TLS 1.3 session with the TOE and send the data as application data after the finished messages have been verified, 
+                    and observe the response. The evaluator shall then configure the TOE to clear the response and initiate a resumed session
+                    (as for FCS_TLSS_EXT.5 <xref to="tls-server-successful-resumption"/>) with a test TLS 1.3 client attempting to provide
+                    the same data in early data. 
+                    The evaluator shall observe that the TSF does not react to the early data as it did when presented as application data 
+                    after the finished messages, indicating that the data was ignored.
                     <h:p>
                     <h:b>Note:</h:b> The specific early data used may depend on the applications calling the TLS session and should be selected to initiate an observable response in the TSF or calling application as described in the ST. 
                     For HTTPS, for example, the early data can be an HTTP POST that updates data at the TOE, which can then be observed via a user interface for the application if the data was 
