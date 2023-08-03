@@ -5,6 +5,7 @@ output/tls-release-linkable.html: 4F
 output/tls-release-linkable.html: CIDR
 output/tls-release-linkable.html: CNSA
 output/tls-release-linkable.html: ContentType
+output/tls-release-linkable.html: Esbalishment
 output/tls-release-linkable.html: ExtendedKeyUsage
 output/tls-release-linkable.html: HelloRetryRequest
 output/tls-release-linkable.html: IPaddress
@@ -45,12 +46,12 @@ output/tls-release.html: 00’
 output/tls-release.html: 01’
 output/tls-release.html: 0xfefc
 output/tls-release.html: 0xfefd
-output/tls-release.html: 3’
 output/tls-release.html: 4E
 output/tls-release.html: 4F
 output/tls-release.html: CIDR
 output/tls-release.html: CNSA
 output/tls-release.html: ContentType
+output/tls-release.html: Esbalishment
 output/tls-release.html: ExtendedKeyUsage
 output/tls-release.html: HelloRetryRequest
 output/tls-release.html: IPaddress
@@ -104,12 +105,12 @@ output/tls.html: 00’
 output/tls.html: 01’
 output/tls.html: 0xfefc
 output/tls.html: 0xfefd
-output/tls.html: 3’
 output/tls.html: 4E
 output/tls.html: 4F
 output/tls.html: CIDR
 output/tls.html: CNSA
 output/tls.html: ContentType
+output/tls.html: Esbalishment
 output/tls.html: ExtendedKeyUsage
 output/tls.html: HelloRetryRequest
 output/tls.html: IPaddress
