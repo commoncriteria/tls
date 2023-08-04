@@ -8,7 +8,6 @@ output/tls-release-linkable.html: ContentType
 output/tls-release-linkable.html: Esbalishment
 output/tls-release-linkable.html: ExtendedKeyUsage
 output/tls-release-linkable.html: HelloRetryRequest
-output/tls-release-linkable.html: IPaddress
 output/tls-release-linkable.html: NSS
 output/tls-release-linkable.html: PSK
 output/tls-release-linkable.html: RC2
@@ -29,6 +28,7 @@ output/tls-release-linkable.html: fc
 output/tls-release-linkable.html: fd
 output/tls-release-linkable.html: fe
 output/tls-release-linkable.html: ffdhe
+output/tls-release-linkable.html: iPAddress
 output/tls-release-linkable.html: iana
 output/tls-release-linkable.html: indictaing
 output/tls-release-linkable.html: ke
@@ -54,7 +54,6 @@ output/tls-release.html: ContentType
 output/tls-release.html: Esbalishment
 output/tls-release.html: ExtendedKeyUsage
 output/tls-release.html: HelloRetryRequest
-output/tls-release.html: IPaddress
 output/tls-release.html: NSS
 output/tls-release.html: PSK
 output/tls-release.html: RC2
@@ -81,6 +80,7 @@ output/tls-release.html: fe
 output/tls-release.html: fe’fc’
 output/tls-release.html: ffdhe
 output/tls-release.html: ff’
+output/tls-release.html: iPAddress
 output/tls-release.html: iana
 output/tls-release.html: indictaing
 output/tls-release.html: ke
@@ -113,7 +113,6 @@ output/tls.html: ContentType
 output/tls.html: Esbalishment
 output/tls.html: ExtendedKeyUsage
 output/tls.html: HelloRetryRequest
-output/tls.html: IPaddress
 output/tls.html: NSS
 output/tls.html: PSK
 output/tls.html: RC2
@@ -140,6 +139,7 @@ output/tls.html: fe
 output/tls.html: fe’fc’
 output/tls.html: ffdhe
 output/tls.html: ff’
+output/tls.html: iPAddress
 output/tls.html: iana
 output/tls.html: indictaing
 output/tls.html: ke
