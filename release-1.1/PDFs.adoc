@@ -1,3 +1,3 @@
-* https://commoncriteria.github.io/tls/release-1.1/tls.html.pdf[tls.html.pdf]
-* https://commoncriteria.github.io/tls/release-1.1/tls-release.html.pdf[tls-release.html.pdf]
 * https://commoncriteria.github.io/tls/release-1.1/tls-release-linkable.html.pdf[tls-release-linkable.html.pdf]
+* https://commoncriteria.github.io/tls/release-1.1/tls-release.html.pdf[tls-release.html.pdf]
+* https://commoncriteria.github.io/tls/release-1.1/tls.html.pdf[tls.html.pdf]
