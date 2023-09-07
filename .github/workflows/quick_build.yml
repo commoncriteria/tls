@@ -25,10 +25,17 @@ jobs:
     - name: Install Build Packages
 #      run: "sudo apt-get update && sudo apt-get install -y xsltproc hunspell pandoc"
       run: "sudo apt-get update && sudo apt-get install -y git gsfonts libfontconfig libxrender1 make python3-bs4 python3-lxml wget xsltproc xvfb xz-utils hunspell"
-
+    
+    - name: Download wkhtmltopdf
       run: "wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz"
+    
+    - name: Untar wkhtmltopdf
       run: "tar -xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C /opt/"
+    
+    - name: Remove wkhtmltopdf tar file
       run: "rm wkhtmltox-0.12.4_linux-generic-amd64.tar.xz"
+    
+    - name: Add wkhtmltodpdf to PATH
       run: "echo '/opt/wkhtmltox/bin/' >> $GITHUB_PATH"
 
     - name: Install Jing
