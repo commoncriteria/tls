@@ -14,7 +14,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-trusty
+    runs-on: ubuntu-18.04
     name: Quick Build
     steps:
     - name: Checkout project and transforms

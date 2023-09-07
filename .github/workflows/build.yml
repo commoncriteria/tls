@@ -11,7 +11,7 @@ jobs:
   build-project:
 
     # The type of runner that the job will run on
-    runs-on: ubuntu-trusty
+    runs-on: ubuntu-18.04
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout project and transforms
@@ -24,11 +24,11 @@ jobs:
       
       - name: Download wkhtmltopdf
         run: |
-        wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-        tar -xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C /opt/
-        rm wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-        echo "/opt/wkhtmltox/bin/" >> $GITHUB_PATH
-        ln -s /opt/wkhtmltox/bin/wkhtmltopdf /usr/bin/wkhtmltopdf 
+          wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+          tar -xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C /opt/
+          rm wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+          echo "/opt/wkhtmltox/bin/" >> $GITHUB_PATH
+          ln -s /opt/wkhtmltox/bin/wkhtmltopdf /usr/bin/wkhtmltopdf 
 
       - name: Debug
         run: echo "The trigger was " ${{ github.event_name }}
