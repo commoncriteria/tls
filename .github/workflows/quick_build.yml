@@ -14,7 +14,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-trusty
     name: Quick Build
     steps:
     - name: Checkout project and transforms
@@ -25,6 +25,11 @@ jobs:
     - name: Install Build Packages
 #      run: "sudo apt-get update && sudo apt-get install -y xsltproc hunspell pandoc"
       run: "sudo apt-get update && sudo apt-get install -y git gsfonts libfontconfig libxrender1 make python3-bs4 python3-lxml wget xsltproc xvfb xz-utils hunspell"
+
+      run: "wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz"
+      run: "tar -xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C /opt/"
+      run: "rm wkhtmltox-0.12.4_linux-generic-amd64.tar.xz"
+      run: "echo '/opt/wkhtmltox/bin/' >> $GITHUB_PATH"
 
     - name: Install Jing
       run: wget -O - https://github.com/relaxng/jing-trang/releases/download/V20181222/jing-20181222.zip | jar -x
@@ -52,7 +57,7 @@ jobs:
     - name: PDFify
       if: ${{ env.action_is_release == 'YES' }}
       run: |
-        sudo apt-get install -y wkhtmltopdf xvfb
+        sudo apt-get install -y xvfb
         cd output
         for aa in *.html; do
           xvfb-run --auto-servernum --server-args='-screen 0, 1024x768x16' /usr/bin/wkhtmltopdf \
