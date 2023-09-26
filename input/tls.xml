@@ -12,7 +12,7 @@
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>1.1</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2019-02-12</PPPubDate>
+      <PPPubDate>2019-03-01</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -1132,10 +1132,11 @@ during handshake.
                 conjunction with other testing activities.  For each of the following tests, determining that
                 the size matches the expected size is sufficient.
                 <test>
-                  [conditional] If RSA-based key establishment is selected, the evaluator shall attempt a
-                  connection using RSA-based key establishment with a supported size.
-                  The evaluator shall verify that the size used matches that which is configured. The evaluator
-                  shall repeat this test for each supported size of RSA-based key establishment.
+                  [conditional] If RSA-based key establishment is selected, the evaluator shall configure the TOE with
+                  a certificate containing a supported RSA size and attempt a connection.
+                  The evaluator shall verify that the size used matches that which is configured and that the connection is
+		  successfully established. The evaluator shall repeat this test for each supported size of RSA-based key 
+		  establishment.
                 </test>
                 <test>
                   [conditional] If finite-field (i.e. non-EC) Diffie-Hellman ciphers are selected, the evaluator shall attempt a
