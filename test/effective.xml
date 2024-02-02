@@ -203,6 +203,430 @@
     </cclaims>
   </sec:Conformance_Claims>
   
+   <!-- Security Problem Definition -->
+  <sec:Security_Problem_Definition>
+    The security problem is defined in terms of the threats that the TOE is expected to address,
+assumptions about its OE, and any organizational security policies that the TOE is
+expected to enforce.<h:br/><h:br/>
+    This PP-Module is written to address the situation in which a user accesses a private network (e.g. the
+    user’s office network) or terminal endpoint (e.g. a network device) using a less trusted network (such as
+    a public Wi-Fi network or local area network). Protection of network packets is desired as they traverse
+    a public network. To protect the data in-transit from disclosure and modification, a VPN is created to
+    establish secure communications. The VPN client provides one end of the secure VPN tunnel and
+    performs encryption and decryption of network packets in accordance with a VPN security policy
+    negotiated between the VPN client (TOE) and its IPsec peer.<h:br/><h:br/>
+    The proper installation and configuration of the VPN client is critical to its correct operation such that
+    proper handling of the TOE by an administrator is also addressed.<h:br/><h:br/>
+    Note that as a PP-Module, all threats, assumptions, and organizational security policies (OSPs) defined in the Base-PP will also apply to a
+    TOE unless otherwise specified, depending on which of the Base-PPs it extends. The SFRs
+    defined in this PP-Module will mitigate the threats that are defined in the PP-Module but
+    may also mitigate some threats defined in the Base-PPs in more comprehensive detail due to the
+    specific capabilities provided by a VPN client.
+    
+    <!-- 3.1 Threats -->
+    <section title="Threats" id="threats">
+      The following threats defined in this PP-Module extend the threats defined by the Base-PPs.
+      <threats>
+        <threat name="T.UNAUTHORIZED_ACCESS">
+          <description>This PP-Module does not include requirements that can protect against an insider threat. Authorized
+            users are not considered hostile or malicious and are trusted to follow appropriate guidance. Only
+            authorized personnel should have access to the system or device that contains the IPsec VPN client.
+            Therefore, the primary threat agents are the unauthorized entities that try to gain access to the
+            protected network (in cases where tunnel mode is used) or to plaintext data that traverses the
+            public network (regardless of whether transport mode or tunnel mode is used). <h:br/><h:br/>
+            The endpoint of the network communication can be both geographically and logically distant from
+            the TOE, and can pass through a variety of other systems. These intermediate systems may be under
+            the control of the adversary, and offer an opportunity for communications over the network to be
+            compromised. <h:br/><h:br/>
+            Plaintext communication over the network may allow critical data (such as passwords, configuration
+            settings, and user data) to be read or manipulated directly by a malicious user or process on intermediate systems, leading to
+            a compromise of the TOE or to the secured environmental systems that the TOE is being used to
+            facilitate communications with. IPsec can be used to provide protection for this communication;
+            however, there are numerous options that can be implemented for the protocol to be compliant to the
+            protocol specification listed in the RFC. Some of these options can have negative impacts on the
+            security of the connection. For instance, using a weak encryption algorithm (even one that is
+            allowed by the RFC, such as DES) can allow an adversary to read and even manipulate the data on
+            the encrypted channel, thus circumventing countermeasures in place to prevent such attacks.
+            Further, if the protocol is implemented with little-used or non-standard options, it may be compliant 
+            with the protocol specification but will not be able to interact with other diverse equipment that is
+            typically found in large enterprises. <h:br/><h:br/>
+            Even though the communication path is protected, there is a possibility that the IPsec peer could be
+            tricked into thinking that a malicious third-party user or system is the TOE. For instance, a
+            middleman could intercept a connection request to the TOE, and respond to the request as if it were
+            the TOE. In a similar manner, the TOE could also be tricked into thinking that it is establishing
+            communications with a legitimate IPsec peer when in fact it is not. An attacker could also mount a
+            malicious man-in-the-middle-type of attack, in which an intermediate system is compromised, and
+            the traffic is proxied, examined, and modified by this system. This attack can even be mounted via
+            encrypted communication channels if appropriate countermeasures are not applied. These attacks
+            are, in part, enabled by a malicious attacker capturing network traffic (for instance, an
+            authentication session) and “playing back” that traffic in order to fool an endpoint into thinking it
+            was communicating with a legitimate remote entity.</description>
+          <objective-refer ref="O.AUTHENTICATION">
+            <rationale>The TOE mitigates the threat of unauthorized access by requiring IPsec
+              communications to be properly authenticated.
+            </rationale>
+          </objective-refer>
+          <objective-refer ref="O.CRYPTOGRAPHIC_FUNCTIONS">
+            <rationale>The TOE mitigates the threat of unauthorized access by implementing IPsec
+              using strong cryptographic algorithms.
+            </rationale>
+          </objective-refer>
+        </threat>
+
+        <threat name="T.TSF_CONFIGURATION">
+          <description> Configuring VPN tunnels is a complex and time-consuming process, and prone to errors if the
+            interface for doing so is not well-specified or well-behaved. The inability or failure of an ignorant or careless administrator to configure certain aspects
+            of the interface may also lead to the mis-specification of the desired communications policy or use
+            of cryptography that may be desired or required for a particular site. This may result in unintended
+            weak or plaintext communications while the user thinks that their data are being protected. Other
+            aspects of configuring the TOE or using its security mechanisms (for example, the update process)
+            may also result in a reduction in the trustworthiness of the VPN client.</description>
+          <objective-refer ref="O.KNOWN_STATE">
+            <rationale>The TOE mitigates the threat of inadequate configuration by providing a management
+              interface that allows all security-relevant functionality to be configured.</rationale>
+          </objective-refer>
+          <objective-refer ref="OE.TRUSTED_CONFIG">
+            <rationale>This objective mitigates the threat of misconfiguration by ensuring that a
+              malicious actor is not given direct administrative control over the TOE.</rationale>
+          </objective-refer>
+        </threat>
+
+        <threat name="T.USER_DATA_REUSE">
+          <description>Data traversing the TOE could inadvertently be sent to a different user as a consequence of a poorly-designed TOE; since these data may be
+            sensitive, this may cause a compromise that is unacceptable. The specific threat that must be
+            addressed concerns user data that is retained by the TOE in the course of processing network traffic
+            that could be inadvertently re-used in sending network traffic to a user other than that intended by
+            the sender of the original network traffic.
+          </description>
+          <objective-refer ref="O.NONDISCLOSURE">
+            <rationale>The TOE mitigates the threat of data reuse by ensuring that persistently stored data is
+              protected from unauthorized access, non-persistently stored data is appropriately
+              purged, and potentially to ensure that no network traffic is inadvertently transmitted
+              outside of the IPsec tunnel.</rationale>
+          </objective-refer>
+        </threat>
+
+        <threat name="T.TSF_FAILURE">
+          <description> Security mechanisms of the TOE generally build up from a primitive set of mechanisms (e.g.,
+            memory management, privileged modes of process execution) to more complex sets of
+            mechanisms. Failure of the primitive mechanisms could lead to a compromise in more complex
+            mechanisms, resulting in a compromise of the TSF.
+          </description>
+          <objective-refer ref="O.KNOWN_STATE">
+            <rationale>The TOE mitigates the threat of TSF failure by enforcing the use of self-tests so that the
+              TOE remains in a known state, and potentially to generate audit records that
+              allow for potential failures to be diagnosed.</rationale>
+          </objective-refer>
+        </threat>
+      </threats>
+    </section>
+    
+    <!-- 3.2 Assumptions -->
+    <sec:Assumptions>
+<!--    <section title="Assumptions" id="assumption">  -->
+<!--       These assumptions are made on the OE in order to be able to ensure that the
+      security functionality specified in the PP-Module can be provided by the TOE. If the TOE is placed in an
+      OE that does not meet these assumptions, the TOE may no longer be able to
+      provide all of its security functionality.  -->
+      <assumptions>
+        <assumption name="A.NO_TOE_BYPASS">
+          <description>Information cannot flow onto the network to which the VPN client's host is connected without
+            passing through the TOE.
+          </description>
+          <objective-refer ref="OE.NO_TOE_BYPASS">
+            <rationale>This assumption is satisfied by the environmental objective that ensures
+              network routes do not exist that allow traffic to be transmitted from the TOE system to its
+              intended destination without going through the TOE’s IPsec tunnel.</rationale>
+          </objective-refer>
+        </assumption>
+        <assumption name="A.PHYSICAL">
+          <description>Physical security, commensurate with the value of the TOE and the data it contains, is assumed to
+            be provided by the environment.
+          </description>
+          <objective-refer ref="OE.PHYSICAL">
+            <rationale>This assumption is satisfied by the environmental objective that ensures the
+              TOE is not deployed on a system that is vulnerable to loss of physical custody.</rationale>
+          </objective-refer>
+        </assumption>
+        <assumption name="A.TRUSTED_CONFIG">
+          <description>Personnel configuring the TOE and its OE will follow the applicable security
+            configuration guidance.
+          </description>
+          <objective-refer ref="OE.TRUSTED_CONFIG">
+            <rationale>This assumption is satisfied by the environmental objective that ensures that
+              anyone responsible for administering the TOE can be trusted not to misconfigure it,
+              whether intentionally or not.</rationale>
+          </objective-refer>
+        </assumption>
+      </assumptions>
+    </sec:Assumptions>
+    
+    <!-- 3.3 Organizational Security Policies -->
+	<sec:Organizational_Security_Policies>
+<!--      This PP-Module defines no additional organizational security policies beyond those defined in the
+      supported Base-PPs. -->
+		<OSPs/>
+    </sec:Organizational_Security_Policies>
+  </sec:Security_Problem_Definition>
+    
+  <!-- 4. Security Objectives --> 
+  <sec:Security_Objectives>  
+<!--  <section title="Security Objectives" id="obj"> -->
+    
+    <!-- 4.1 Security Objectives for the TOE -->
+    <sec:Security_Objectives_for_the_TOE>
+      <SOs>
+        <SO name="O.AUTHENTICATION">
+          <description>To address the issues associated with unauthorized disclosure of information in transit, a compliant
+            TOE’s authentication ability (IPsec) will allow the TSF to establish VPN connectivity with a remote
+            VPN gateway or peer and ensure that any such connection attempt is both authenticated and
+            authorized.<h:br/><h:br/>
+			Addressed by: FIA_X509_EXT.3 (when GPOS PP is Base-PP), FDP_IFC_EXT.1 (refined
+			from MDF PP), FIA_X509_EXT.2 (refined from MDF PP),
+			FIA_X509_EXT.2 (refined from App PP), FIA_X509_EXT.2 (refined from MDM PP),
+			FCS_IPSEC_EXT.1, FIA_BMA_EXT.1 (optional), FPF_MFA_EXT.1 (optional), FCS_EAP_EXT.1 (selection-based), FIA_HOTP_EXT.1 (selection-based), FIA_PSK_EXT.1 (selection-based), 
+			FIA_PSK_EXT.2 (selection-based), FIA_PSK_EXT.3 (selection-based), FIA_PSK_EXT.4 (selection-based), FIA_PSK_EXT.5 (selection-based),
+			FIA_TOTP_EXT.1 (selection-based).
+          </description>
+		  <consistency-rationale/>
+          <addressed-by>FIA_X509_EXT.3 (when GPOS PP is Base-PP)</addressed-by>
+			<rationale>This SFR supports the objective by enforcing the use
+				of X.509 certificate authentication for IPsec.</rationale>
+          <addressed-by>FDP_IFC_EXT.1 (refined from MDF PP)</addressed-by>
+			<rationale>This SFR supports the objective by affirming that the
+				TOE includes a VPN client.</rationale>
+          <addressed-by>FIA_X509_EXT.2 (refined from MDF PP)</addressed-by>
+			<rationale>This SFR supports the objective by enforcing the use
+				of X.509 certificate authentication for IPsec.</rationale>
+          <addressed-by>FIA_X509_EXT.2 (refined from App PP)</addressed-by>
+			<rationale>This SFR supports the objective by enforcing the use
+				of X.509 certificate authentication for IPsec.</rationale>
+          <addressed-by>FIA_X509_EXT.2 (refined from MDM PP)</addressed-by>
+			<rationale>This SFR supports the objective by enforcing the use
+				of X.509 certificate authentication for IPsec.</rationale>
+          <addressed-by>FCS_IPSEC_EXT.1</addressed-by>
+			<rationale>This SFR supports the objective by requiring the
+				TOE’s implementation of IPsec to include requirements for how the remote VPN gateway or
+				peer is authenticated.</rationale>
+          <addressed-by>FIA_BMA_EXT.1 (optional)</addressed-by>
+          <rationale>This SFR supports the objective by optionally defining the TOE's support for a platform-based biometric mechanism to use as an authentication mechanism.</rationale>
+        <addressed-by>FPF_MFA_EXT.1 (optional)</addressed-by>
+        <rationale>This SFR supports the objective by optionally enforcing a multifactor authentication requirement on an IPsec connection.</rationale>
+          
+          <addressed-by>FCS_EAP_EXT.1 (selection-based)</addressed-by>
+          <rationale>This SFR supports the objective by optionally implementing EAP-TLS or EAP-TTLS as a mechanism for authentication.</rationale>
+          
+          <addressed-by>FIA_HOTP_EXT.1 (selection-based)</addressed-by>
+          <rationale>This SFR supports the objective by optionally defining the implementation of HOTP as an authentication mechanism.</rationale>
+          
+          <addressed-by>FIA_PSK_EXT.1 (selection-based)</addressed-by>
+          <rationale>This SFR supports the objective by optionally
+            requiring support for pre-shared keys as an alternate authentication method for IPsec.</rationale>
+          <addressed-by>FIA_PSK_EXT.2 (selection-based)</addressed-by>
+          <rationale>This SFR supports the objective by optionally specifying whether the TOE generates its own pre-shared keys used for authentication or accept them from an external source.</rationale>
+          <addressed-by>FIA_PSK_EXT.3 (selection-based)</addressed-by>
+          <rationale>This SFR supports the objective by optionally defining the composition and use of password-based pre-shared keys used for authentication.</rationale>
+          <addressed-by>FIA_PSK_EXT.4 (selection-based)</addressed-by>
+          <rationale>This SFR supports the objective by optionally
+            defining HOTP as an authentication mechanism.</rationale>
+          <addressed-by>FIA_PSK_EXT.5 (selection-based)</addressed-by>
+          <rationale>This SFR supports the objective by optionally
+            defining TOTP as an authentication mechanism.</rationale>
+          
+          <addressed-by>FIA_TOTP_EXT.1 (selection-based)</addressed-by>
+          <rationale>This SFR supports the objective by optionally defining the implementation of TOTP as an authentication mechanism.</rationale>
+          
+          </SO>
+        <SO name="O.CRYPTOGRAPHIC_FUNCTIONS">
+          <description>To address the issues associated with unauthorized disclosure of information in transit, a compliant
+            TOE will implement cryptographic capabilities. These capabilities are intended to maintain
+            confidentiality and allow for detection and modification of data that is transmitted outside of the
+            TOE.<h:br/><h:br/>
+			  Addressed by: FCS_CKM.1 (refined from GPOS PP), FCS_CKM.2 (refined from GPOS PP)
+			  FCS_COP.1/1 (refined from GPOS PP), FTP_ITC.1 (when GPOS PP is Base-PP)
+			  FCS_CKM.1 (refined from MDF PP), FCS_CKM.2/UNLOCKED (refined from MDF PP)
+			  FCS_COP.1/ENCRYPT (refined from MDF PP), FTP_ITC_EXT.1 (refined from MDF PP)
+			  FCS_CKM.1/AK (refined from App PP), FCS_CKM.2 (refined from App PP)
+			  FCS_CKM_EXT.1 (refined from App PP), FCS_COP.1/SKC (refined from App PP), FTP_DIT_EXT.1 (refined from App PP),
+			  FCS_CKM.1 (refined from MDM PP), FCS_CKM.2 (refined from MDM PP)
+			  FCS_COP.1/1 (refined from MDM PP), FPT_ITT.1/1 (if applicable, refined from MDM PP)
+			  FTP_ITC.1/1 (if applicable, refined from MDM PP), FTP_TRP.1/1 (if applicable, refined from MDM PP)
+			  FCS_CKM.1/VPN, FCS_IPSEC_EXT.1, FCS_EAP_EXT.1 (selection-based).
+		  </description>
+		  <consistency-rationale>Consistency rationale for O.CRYPTOGRAPHIC_FUNCTIONS.</consistency-rationale>
+          <addressed-by>FCS_CKM.1 (refined from GPOS PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring that the
+				TOE implement key generation using certain methods.</rationale>
+          <addressed-by>FCS_CKM.2 (refined from GPOS PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring that the
+				TOE implement key establishment using certain methods. </rationale>
+          <addressed-by>FCS_COP.1/1 (refined from GPOS PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring that the
+				TOE implement symmetric encryption and decryption using certain methods.</rationale>
+          <addressed-by>FTP_ITC.1 (when GPOS PP is Base-PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to support the use of IPsec as a trusted channel.</rationale>
+          <addressed-by>FCS_CKM.1 (refined from MDF PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring that the
+				TOE implement key generation using certain methods.</rationale>
+          <addressed-by>FCS_CKM.2/UNLOCKED (refined from MDF PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring that the
+				TOE implement key establishment using certain methods.</rationale>
+          <addressed-by>FCS_COP.1/ENCRYPT (refined from MDF PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring that the
+				TOE implement symmetric encryption and decryption using certain methods.</rationale>
+          <addressed-by>FTP_ITC_EXT.1 (refined from MDF PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to support the use of IPsec as a trusted channel.</rationale>
+          <addressed-by>FCS_CKM.1/AK (refined from App PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to implement key generation using certain methods or to support invoking this function from its OS
+				platform.</rationale>
+          <addressed-by>FCS_CKM.2 (refined from App PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to implement key establishment using certain methods or to support invoking this function from its
+				OS platform.</rationale>
+          <addressed-by>FCS_CKM_EXT.1 (refined from App PP)</addressed-by>
+		  <rationale>This SFR supports the objective by requiring the TOE
+			to specify whether it implements its own cryptographic primitives or invokes platform
+			cryptographic services for these functions.</rationale>
+          <addressed-by>FCS_COP.1/SKC (refined from App PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring that the
+				TOE implement symmetric encryption and decryption using certain methods.
+				</rationale>
+          <addressed-by>FTP_DIT_EXT.1 (refined from App PP)</addressed-by>
+          <rationale>This SFR supports the objective by requiring the TOE
+            to support the use of IPsec as a trusted channel.
+          </rationale>
+          <addressed-by>FCS_CKM.1 (refined from MDM PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to implement key generation using certain methods or to support invoking this function from its OS
+				platform.</rationale>
+          <addressed-by>FCS_CKM.2 (refined from MDM PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to implement key establishment using certain methods or to support invoking this function from its
+				OS platform.</rationale>
+          <addressed-by>FCS_COP.1/1 (refined from MDM PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring that the
+				TOE implement symmetric encryption and decryption using certain methods or invoke platform
+				functionality that provides this capability.</rationale>
+          <addressed-by>FPT_ITT.1/1 (if applicable, refined from MDM PP)</addressed-by>
+			<rationale>If the MDM TOE includes a claim of this PP-Module
+				to support protection of communications between distributed TOE components, this SFR supports the
+				objective by requiring the TOE to support the use of IPsec for that interface.</rationale>
+          <addressed-by>FTP_ITC.1/1 (if applicable, refined from MDM PP)</addressed-by>
+			<rationale>If the MDM TOE includes a claim of this PP-Module
+				to support protection of communications between the TOE and one or more trusted external IT entities,
+				this SFR supports the objective by requiring the TOE to support the use of IPsec for that 
+				interface.</rationale>
+          <addressed-by>FTP_TRP.1/1 (if applicable, refined from MDM PP)</addressed-by>
+			<rationale>If the MDM TOE includes a claim of this PP-Module
+				to support protection of communications between remote administrators and the TOE, this	SFR
+				supports the objective by requiring the TOE to support the use of IPsec for that interface.</rationale>
+          <addressed-by>FCS_CKM.1/VPN</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to generate keys used for IKE using certain methods.</rationale>
+          <addressed-by>FCS_IPSEC_EXT.1</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to implement the IPsec protocol in the specified manner.</rationale>
+          <addressed-by>FCS_EAP_EXT.1 (selection-based)</addressed-by>
+          <rationale>This SFR supports the objective by optionally defining the TOE's implementation of EAP-TLS or EAP-TTLS.</rationale>
+        </SO>
+        <SO name="O.KNOWN_STATE">
+          <description>The TOE will provide sufficient measures to ensure it is operating in a known state. At minimum this
+            includes management functionality to allow the security functionality to be configured and self-test
+            functionality that allows it to assert its own integrity. It may also include auditing functionality that
+            can be used to determine the operational behavior of the TOE.<h:br/><h:br/>
+			Addressed by: FMT_SMF_EXT.1 (refined from MDF PP), FMT_SMF.1/VPN, FPT_TST_EXT.1/VPN, 
+			FAU_GEN.1/VPN (optional), FAU_SEL.1/VPN (optional).
+          </description>
+		  <consistency-rationale>Consistency rationale for O.KNOWN_STATE.</consistency-rationale>
+          <addressed-by>FMT_SMF_EXT.1 (refined from MDF PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring the
+				portion of the TOE described by the Base-PP to
+				include a management capability for the VPN client.</rationale>
+          <addressed-by>FMT_SMF.1/VPN</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to implement certain administratively-configurable functions.</rationale>
+          <addressed-by>FPT_TST_EXT.1/VPN</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to execute self-tests that demonstrate that its integrity is maintained.</rationale>
+          <addressed-by>FAU_GEN.1/VPN (optional)</addressed-by>
+			<rationale>This SFR supports the objective by optionally
+				requiring the TOE to generate audit records of its behavior.</rationale>
+          <addressed-by>FAU_SEL.1/VPN (optional)</addressed-by>
+			<rationale>This SFR supports the objective by optionally
+				requiring the TOE to allow for the configuration of what behavior is audited.</rationale>
+        </SO>
+        <SO name="O.NONDISCLOSURE">
+          <description>To address the issues associated with unauthorized disclosure of information at rest, a compliant
+            TOE will ensure that non-persistent data is purged when no longer needed. The TSF may also
+            implement measures to protect against the disclosure of stored cryptographic keys and data
+            through implementation of protected storage and secure erasure methods. The TOE may optionally
+            also enforce split-tunneling prevention to ensure that data in transit cannot be disclosed
+            inadvertently outside of the IPsec tunnel and prohibit transmission of packets through a connection until certain conditions are met. <h:br/><h:br/>
+            Addressed by: FCS_CKM_EXT.2 (when GPOS PP is Base-PP), FCS_CKM_EXT.2 (when App PP is Base-PP),
+            FCS_CKM_EXT.4 (when App PP is Base-PP), FDP_RIP.2, FDP_VPX_EXT.1 (implementation-dependent), FPF_MFA_EXT.1 (optional).
+          </description>
+		  <consistency-rationale>This objective is consistent with the O.PROTECTED_STORAGE objective of
+			the GPOS PP, which ensures that sensitive data is not disclosed without
+			authorization.</consistency-rationale>
+			<addressed-by>FCS_CKM_EXT.2 (when GPOS PP is Base-PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				to store sensitive data in the OS’ key storage.</rationale>
+          <addressed-by>FCS_CKM_EXT.2 (when App PP is Base-PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				or its platform to store sensitive data in the OS' key storage.</rationale>
+          <addressed-by>FCS_CKM_EXT.4 (when App PP is Base-PP)</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE
+				or its platform to zeroize key data when no longer needed.</rationale>
+          <addressed-by>FDP_RIP.2</addressed-by>
+			<rationale>This SFR supports the objective by requiring the TOE or its platform to ensure that
+				residual data is purged from the system.</rationale>
+          <addressed-by>FDP_VPN_EXT.1 (optional)</addressed-by>
+          <rationale>This SFR supports the objective by optionally
+            requiring the TOE to prohibit split-tunneling so that network traffic cannot be transmitted outside of an
+            established IPsec tunnel.</rationale>
+          <addressed-by>FPF_MFA_EXT.1 (optional)</addressed-by>
+          <rationale>This SFR supports the objective by optionally
+            requiring the TOE to prohibit transmission of packet data aside from those packets needed to perform multifactor authentication.</rationale>
+        </SO>
+      </SOs>
+    </sec:Security_Objectives_for_the_TOE>
+    
+    <!-- 4.2 Security Objectives for the Operational Environment -->
+    <section title="Security Objectives for the Operational Environment" id="SecurityObjectivesTOEorEnvironment">
+ 
+      <SOEs>
+        <SOE name="OE.NO_TOE_BYPASS">
+          <description>Information cannot flow onto the network to which the VPN client’s host is connected without
+            passing through the TOE.
+          </description>
+          <consistency-rationale/>
+        </SOE>
+        <SOE name="OE.PHYSICAL">
+          <description>Physical security, commensurate with the value of the TOE and the data it contains, is assumed to
+            be provided by the environment.</description>
+          <consistency-rationale/>
+        </SOE>
+        <SOE name="OE.TRUSTED_CONFIG">
+          <description>Personnel configuring the TOE and its OE will follow the applicable security
+            configuration guidance.
+          </description>
+          <consistency-rationale/>
+        </SOE>
+      </SOEs>
+    </section>
+    
+    <!-- 4.3 Security Objectives Rationale -->
+    <section title="Security Objectives Rationale" id="SOR">
+      <!-- NOTE: This section should remain empty and is populated from the rationale tags in the previous sections.  -->
+    </section>
+    
+  </sec:Security_Objectives>
+  
+  
+  
   <sec:Security_Functional_Requirements>
  <!--   This chapter describes the security requirements
     to be fulfilled by the product. Those requirements comprise functional components from Part 2 of
