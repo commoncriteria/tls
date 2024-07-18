@@ -33,6 +33,7 @@ output/tls-release-linkable.html: iana
 output/tls-release-linkable.html: indictaing
 output/tls-release-linkable.html: ke
 output/tls-release-linkable.html: keyshare
+output/tls-release-linkable.html: ocnfiguration
 output/tls-release-linkable.html: previsioned
 output/tls-release-linkable.html: psk
 output/tls-release-linkable.html: pss
@@ -85,6 +86,7 @@ output/tls-release.html: iana
 output/tls-release.html: indictaing
 output/tls-release.html: ke
 output/tls-release.html: keyshare
+output/tls-release.html: ocnfiguration
 output/tls-release.html: ordering’
 output/tls-release.html: previsioned
 output/tls-release.html: priority’
