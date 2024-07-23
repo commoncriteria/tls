@@ -6,7 +6,7 @@
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>2.1</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2023-08-04</PPPubDate>
+      <PPPubDate>2024-08-01</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -31,7 +31,7 @@
     </entry>
     <entry>
       <version>2.1</version>
-      <date>2023-08-04</date>
+      <date>2024-08-01</date>
       <subject>Updated for CC:2022 conformance, incorporated applicable errata.</subject>
     </entry>
 	  
