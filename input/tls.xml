@@ -494,12 +494,12 @@
           Transport Layer Security (RFC 7250) for server certificates.
         </h:p>
         <h:p>
-          Ciphersuites for TLS 1.2 are of the form TLS_(key exchange algorithm)_WITH_(encryption algorithm)_(message digest algorithm}, and
+          Ciphersuites for TLS 1.2 are of the form TLS_(key exchange algorithm)_WITH_(encryption algorithm)_(message digest algorithm), and
           are listed in the TLS parameters section of the internet assignments at iana.org. This requirement constrains the value of 
-          (encryption algorithm} and (message digest algorithm}.
+          (encryption algorithm) and (message digest algorithm).
         </h:p>
         <h:p>
-          Ciphersuites for TLS 1.3 are of the form TLS_(AEAD}_(HASH), where (AEAD) is of the form (encryption algorithm)_(symmetric key 
+          Ciphersuites for TLS 1.3 are of the form TLS_(AEAD)_(HASH), where (AEAD) is of the form (encryption algorithm)_(symmetric key 
           length)_(mode) for an authenticated encryption with associated data specification (RFC 5116). This requirement constrains the 
           value of the (encryption algorithm) component of (AEAD) and the value of (HASH). 
         </h:p>
@@ -512,18 +512,20 @@
         <h:li>signature_algorithms extension (RFC 8446) indicating support for 
           <selectables linebreak="yes">
             <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-            <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+            <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
+          </selectables>, and <selectables linebreak="yes">
               <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
               <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
               <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
-              <selectable>no other signature algorithms</selectable></selectables>
-          and
+              <selectable>no other signature algorithms</selectable>
+          </selectables> and
         </h:li>
         <h:li>
           <selectables linebreak="yes">
             <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
               <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-              <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+              <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
+            </selectables>, and <selectables linebreak="yes">
                 <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                 <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                 <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
@@ -563,14 +565,15 @@
               <h:li>signature_algorithms extension (RFC 8446) indicating support for 
                 <selectables linebreak="yes">
                   <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
-                  <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                  <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
+                </selectables>, and <selectables linebreak="yes">
                     <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                     <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                     <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
-                    <selectable>no other signature algorithms</selectable></selectables>
+                    <selectable>no other signature algorithms</selectable>
+                </selectables> and
               </h:li>
-              and
-              <assignable>other supported DTLS extensions</assignable>
+                <assignable>other supported DTLS extensions</assignable>
                 and shall not send the following extensions: <h:ul>
                   <h:li>early_data</h:li>
                   <h:li>psk_key_exchange_mode indicating PSK only mode.</h:li>
@@ -597,6 +600,11 @@
           groups claimed. If DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, it is preferred that the appropriate ffdhe groups be claimed
           here. In a subsequent version of this FP, support for ffdhe groups will be required whenever DHE ciphersuites are claimed.
         </h:p>
+        <h:p>
+          When "other non-deprecated signature algorithms" is claimed, the assignment will describe the standard signature and hash algorithms
+          supported. MD5 and SHA-1 hashes are deprecated and are not included in the signature_algorithms or signature_algorithms_cert
+          extensions.
+        </h:p>
     </note>
     </f-element>
     <f-element>
@@ -606,7 +614,7 @@
             <selectable>DNS name type according to RFC 6125</selectable>
             <selectable>URI name type according to RFC 6125</selectable> 
             <selectable>SRV name type according to RFC 6125</selectable>
-            <selectable>Common Name conversion to DNS name according to RFC 6125</selectable>
+            <selectable>Common Name conversion to DNS name according to RFC 5280 and RFC 6125</selectable>
             <selectable>Directory name type according to RFC 5280</selectable>
             <selectable>iPAddress name type according to RFC 5280</selectable>
             <selectable>rfc822Name type according to RFC 5280</selectable>
@@ -652,7 +660,7 @@
         <h:p>
           The client should avoid constructing reference identifiers using wildcards. However, if the presented identifiers include wildcards,
           the client must follow the best practices regarding matching; these best practices are captured in the evaluation activity. If the
-          TSF supports wildcards, and allows names with DNS portions containing internationalized names, the internationalized name does not
+          TSF supports wildcards and allows names with DNS portions containing internationalized names, the internationalized name does not
           match any wildcard, in accordance with RFC 6125 section 7.2.
         </h:p>
         <h:p>
@@ -678,8 +686,10 @@
           Note that FIA_X509_EXT.1 may allow methods other than CRL or OCSP to validate the revocation status of a certificate. A
           certificate that exclusively uses these alternate methods may not advertise revocation status information locations. Thus, a
           certificate that is valid according to FIA_X509_EXT.1 and does not advertise revocation status information in a CRL_DP or AIA
-          extension is considered to be not revoked. DTLS-specific override mechanisms are for use with certificates with published revocation status information that is not accessible, whether temporarily
-          or because the information cannot be accessed during the state of the TOE (e.g., for verifying signatures on boot code). The circumstances should be described by the ST author, who should indicate the override mechanism and conditions that apply to the override, including system state, user or admin actions, etc.
+          extension is considered to be not revoked. DTLS-specific override mechanisms are for use with certificates with published
+          revocation status information that is not accessible, whether temporarily or because the information cannot be accessed during the
+          state of the TOE (e.g., for verifying signatures on boot code). The circumstances should be described by the ST author, who should
+          indicate the override mechanism and conditions that apply to the override, including system state, user, or admin actions, etc.
         </h:p>
       </note>
     </f-element>
@@ -883,8 +893,7 @@
           </dependencies>
           
           <f-element id="fel-renego">
-            <title>The TSF shall support secure DTLS renegotiation through use of
-              <selectables>
+            <title>The TSF shall support secure DTLS renegotiation through use of <selectables>
                 <selectable>the “renegotiation_info” TLS extension in accordance with RFC 5746</selectable>
                 <selectable>the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value in accordance with RFC 5746</selectable>
                 <selectable>rejection of all renegotiation attempts</selectable>
@@ -1147,7 +1156,7 @@
           <assignable>list of supported TLS 1.2 ciphersuites</assignable>,
           the following PP-specific ciphersuites using pre-shared secrets:
           <assignable>list of supported pre-shared key ciphersuites</assignable>,
-          and the following TLS 1.3 ciphersuites: 
+          TLS 1.3 ciphersuites: 
           <assignable>list of supported TLS 1.3 ciphersuites</assignable>,
           using a preference order based on <selectables>
             <selectable>RFC 9151 priority</selectable>
@@ -1173,7 +1182,7 @@
             NSS systems and "RFC 9151 priority" is claimed if those ciphersuites are selected whenever offered by the client.
           </h:p>
           <h:p>
-            The ‘client hello ordering’ option is claimed if client priority is considered; if both are claimed, the ST author should indicate
+            The "client hello ordering" option is claimed if client priority is considered; if both are claimed, the ST author should indicate
             which is primary and which is secondary, and whether the priority scheme is configurable. If other priority schemes or tertiary
             priority is used, the ST author will claim the third option and describe the scheme in the ST.
           </h:p>
@@ -1239,7 +1248,7 @@
                 <selectable>ffdhe6144(259)</selectable>
                 <selectable>ffdhe8192(260)</selectable></selectables></selectable>
               <selectable>key_share extension (RFC 8446)</selectable>
-              <selectable>extended_master_secret extension (RFC 7627) enforcing client support, and
+              <selectable>extended_master_secret extension (RFC 7627) enforcing client support and
                 <selectables>
                   <selectable>allowing legacy client support</selectable>
                   <selectable>no other enforcement mode</selectable>
@@ -1308,18 +1317,18 @@
           DTLS uses key establishment mechanisms from the equivalent TLS version.  
         </h:p>
         <h:p>
-          If DTLS 1.2 is supported and if RSA ciphersuites are supported, The ST author claims the “RSA with key size …” option and the key
+          If DTLS 1.2 and RSA ciphersuites are supported, the ST author claims the “RSA with key size …” option and the key
           sizes supported. The requirements apply to the RSA key size for the server’s certificate and in the key exchange messages received
           by the server.
         </h:p>
         <h:p>
-          If DTLS 1.2 is supported and DHE ciphersuites are supported, the ST author may claim the “Diffie-Hellman parameters…”. The
+          If DTLS 1.2 and DHE ciphersuites are supported, the ST author may claim the “Diffie-Hellman parameters…”. The
           requirements apply to the server key exchange message sent by the TSF. 
         </h:p>
         <h:p>
-          If DTLS 1.2 is supported and supported groups extension is supported (for ECDHE or DHE groups), the ST author claims the
-          “Diffie_Hellman groups…” or “ECDHE parameters...” according to the supported ciphersuites and supported groups extension values.
-          This is required when ECDHE ciphersuites are supported, and recommended when DHE ciphersuites are supported.
+          If DTLS 1.2 and supported groups extension are supported (for ECDHE or DHE groups), the ST author claims either the
+          “Diffie_Hellman groups…” or “ECDHE parameters...” option according to the supported ciphersuites and supported groups extension
+          values. This is required when ECDHE ciphersuites are supported and recommended when DHE ciphersuites are supported.
         </h:p>
         <h:p>
           If DTLS 1.3 is supported, the ST author claims one or both of “Diffie-Hellman groups…” or ECDHE parameters…” options and the “key
@@ -1445,19 +1454,25 @@
             <selectable>all applications</selectable>
             <selectable><assignable>list of calling applications that accept both authenticated and unauthenticated client sessions</assignable></selectable></selectables> 
             when an empty certificate message is provided by the client</selectable>
-          <selectable>continue establishment of a mutually authenticated DTLS channel when revocation status information for the <selectables>
+          <selectable>continue establishment of a mutually authenticated DTLS channel when revocation status information for the
+            <selectables linebreak="yes">
             <selectable>client's leaf certificate</selectable>
             <selectable><assignable>specific intermediate CA certificates</assignable></selectable>
-            <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
-            is not available in support of <selectables>
+            <selectable>any non-trust store certificate in the certificate chain</selectable>
+            </selectables>  
+            is not available in support of
+            <selectables linebreak="yes">
               <selectable>all applications</selectable>
               <selectable><assignable>list of calling applications configurable to perform certificate status information bypass processing
-              </assignable></selectable></selectables> as <selectables>
+              </assignable></selectable></selectables>
+            as <selectables linebreak="yes">
                 <selectable>configured by an administrator</selectable>
                 <selectable>confirmed by the supported function user</selectable>
-                <selectable>a DTLS-specific default for <assignable>subset of supported function</assignable></selectable></selectables>
+                <selectable>a DTLS-specific default for <assignable>subset of supported function</assignable></selectable>
+            </selectables>
           </selectable>
-          <selectable>no other processing options for missing or invalid client certificates</selectable></selectables>. 
+          <selectable>no other processing options for missing or invalid client certificates</selectable>
+        </selectables>. 
       </title>
               <note role="application">
                 <h:p>
@@ -1474,7 +1489,7 @@
                   CA certificates are included in the exception (for example, “all intermediates but the issuing CA” or “specific end-entity
                   certificates as configured”). Within this selection, the ST author specifies which applications are impacted and which
                   supported function or authorized user is allowed to approve continuing with the session when revocation information is not
-                  available. If an administrator configures whether a user may accept a certificate without status information, both selections
+                  available. If an administrator configures that a user may accept a certificate without status information, both selections
                   are claimed. The "as a DTLS-specific default..." should only be selected for applications that do not have access to revocation
                   information. This is not claimed when alternate revocation methods are claimed in FIA_X509_EXT.1 that apply to TLS client
                   certificates. Methods for obtaining revocation information are included in FIA_X509_EXT.1.
@@ -1604,8 +1619,8 @@
           </f-element>
           <f-element>
             <title>The TSF shall
-              <selectables>
-               <selectable>indicate support for renegotiating a DTLS 1.2 session, by including the renegotiation_info extension in the server hello
+              <selectables linebreak="yes">
+               <selectable>indicate support for renegotiating a DTLS 1.2 session by including the renegotiation_info extension in the server hello
                 message and shall terminate a DTLS 1.2 session if neither of the renegotiation_info or TLS_EMPTY_RENEGOTIATION_INFO_SCSV
                 signaling ciphersuites are indicated in the client hello</selectable>
               <selectable>not allow renegotiation</selectable></selectables>.
@@ -1624,15 +1639,15 @@
               </h:p>
               <h:p>
                 If the TSF supports DTLS 1.2, the ST author claims either method of protecting against insecure renegotiation attempts. The
-                first selection refines RFC 5746. RFC 5746 defines an extension to (D)TLS 1.2 that binds renegotiation handshakes to the
+                first selection refines RFC 5746, which defines an extension to (D)TLS 1.2 that binds renegotiation handshakes to the
                 cryptography in the original handshake, but allows interoperability with clients that do not follow RFC 5746. As a
                 refinement of the RFC, servers that support DTLS 1.2 renegotiation will terminate a session if neither of the methods
                 described in RFC 5746 are offered by the client. Alternatively, a DTLS  server supporting DTLS 1.2 may negotiate DTLS 1.2
-                without any RFC 5746 client renegotiation indicators if it always terminates an existing session when a new client hello is
+                without any RFC 5746 client renegotiation indicators, if it always terminates an existing session when a new client hello is
                 received or silently ignores unexpected client hello messages, similar to the implementation of DTLS 1.3.
               </h:p>
               <h:p>
-                If the TSF supports DTLS 1.3, the ST author must claim “does not allow renegotiation”. DTLS 1.3 does not allow renegotiation. 
+                If the TSF supports DTLS 1.3, the ST author must claim “does not allow renegotiation.” DTLS 1.3 does not allow renegotiation. 
               </h:p>
               <h:p>
                 Termination of the session or silently ignoring the unexpected message, as indicated in FCS_DTLSS_EXT.4.3, covers DTLS 1.3
@@ -1839,7 +1854,8 @@
             <title>
               The TSF shall be able to support the following
           <selectables linebreak="yes">
-            <selectable>TLS 1.2 ciphersuites:<selectables>
+            <selectable>TLS 1.2 ciphersuites:
+          <selectables linebreak="yes">
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
@@ -1892,7 +1908,7 @@
               </h:p>
               <h:p>
               While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is deprecated by this SFR and should not be included in “other TLS 1.3
-              ciphersuites” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+              ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
               </h:p>
               <h:p>
               In addition to the supported ciphersuites, the ST author indicates the order of ciphersuites included in the client hello,
@@ -1920,12 +1936,12 @@
                 Transport Layer Security (RFC 7250) for server certificates.
               </h:p>
               <h:p>
-                Ciphersuites for TLS 1.2 are of the form TLS_(key exchange algorithm)_WITH_(encryption algorithm)_(message digest algorithm}, and
+                Ciphersuites for TLS 1.2 are of the form TLS_(key exchange algorithm)_WITH_(encryption algorithm)_(message digest algorithm), and
                 are listed in the TLS parameters section of the internet assignments at iana.org. This requirement constrains the value of 
-                (encryption algorithm} and (message digest algorithm}.
+                (encryption algorithm) and (message digest algorithm).
               </h:p>
               <h:p>
-                Ciphersuites for TLS 1.3 are of the form TLS_(AEAD}_(HASH), where (AEAD) is of the form (encryption algorithm)_(symmetric key 
+                Ciphersuites for TLS 1.3 are of the form TLS_(AEAD)_(HASH), where (AEAD) is of the form (encryption algorithm)_(symmetric key 
                 length)_(mode) for an authenticated encryption with associated data specification (RFC 5116). This requirement constrains the 
                 value of the (encryption algorithm) component of (AEAD) and the value of (HASH). 
               </h:p> 
@@ -1943,6 +1959,7 @@
                    <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                    <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
                    <selectable>no other signature algorithms</selectable></selectables>
+               and
              </h:li>
              <h:li>
                <selectables linebreak="yes">
@@ -1955,7 +1972,7 @@
                      <selectable>no other signature algorithms</selectable>
                    </selectables></selectable>
                  <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables>
-                   <selectable>DTLS 1.2</selectable>
+                   <selectable>TLS 1.2</selectable>
                    <selectable>no other versions</selectable>
                  </selectables></selectable>
                  <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
@@ -1970,7 +1987,7 @@
                    (DHE or ECDHE) mode</selectable>
                  <selectable>extended_master_secret extension (RFC 7627) enforcing server support, and
                    <selectables>
-                     <selectable>allowing legacy support</selectable>
+                     <selectable>allowing legacy server support</selectable>
                      <selectable>no other enforcement mode</selectable>
                    </selectables></selectable>
                  <selectable>no other extensions</selectable></selectables>
@@ -1993,6 +2010,7 @@
                         <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                         <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
                         <selectable>no other signature algorithms</selectable></selectables>
+                    and
                   </h:li>
                   <assignable>other supported TLS extensions</assignable>
                     and shall not send the following extensions: <h:ul>
@@ -2054,7 +2072,7 @@
             </ext-comp-def-title>
             <note role="application">
               <h:p>
-              The rules for verification of identity are described in RFC 6125, Section 6 and RFC 5280, Section 7. If "Common name conversion"
+              The rules for verification of identity are described in RFC 6125, Section 6 and RFC 5280, Section 7. If "Common name conversion..."
               is claimed, both the subject field and the converted common name are matched.
               The reference identifier is established by the user (e.g., entering a URL into a web browser or clicking a link), 
               by configuration (e.g., configuring the name of a mail or authentication server), 
@@ -2160,7 +2178,7 @@
                   includes requirements to match the name types passed. 
                 </h:p>
                 <h:p>
-                  If name constraints are passed to the certification verification function, the evaluator shall verity that the ST describes
+                  If name constraints are passed to the certification verification function, the evaluator shall verify that the ST describes
                   the initial allow and deny tables for each reference identity reference name supported.
                 </h:p>
 	      </TSS>
@@ -2188,8 +2206,8 @@
                   </h:p><h:p>
                   The evaluator shall observe that the TOE successfully completes the TLS handshake.
                   </h:p><h:p>
-                  <h:b>Note:</h:b> If the TSF supports both TLS 1.2 and TLS 1.3, and has a configuration to prefer TLS 1.3, but allowing a
-                  server to negotiate TLS 1.2, should include all ciphersuites and all extensions as required for either version. 
+                  <h:b>Note:</h:b> If the TSF supports both TLS 1.2 and TLS 1.3 and has a configuration to prefer TLS 1.3, but allows a
+                  server to negotiate TLS 1.2, it should include all ciphersuites and all extensions as required for either version. 
                   If such a TOE is configurable to support only TLS 1.2, only TLS 1.3, or both TLS 1.2 and TLS 1.3, <xref to="tls-client-supported-configurations"/>
                   should be performed in each configuration – with advertised ciphersuites appropriate for the configuration.
                   </h:p><h:p>
@@ -2287,7 +2305,7 @@
                     </h:p>
                     <h:p>
                       [conditional:} If the TSF supports TLS 1.3, the evaluator shall attempt to establish a TLS 1.3 connection with a test TLS server
-                      configured to assert ‘raw public key’  via RFC 7250, and to send its certificate message including the raw public key indicator
+                      configured to assert ‘raw public key’ via RFC 7250, and to send its certificate message including the raw public key indicator
                       for the public key information field. The evaluator shall observe that the TSF does not send the server_certificate_type
                       extension indicating support for raw public keys in its client hello message and terminates the session when receiving the
                       server’s certificate message.
@@ -2782,7 +2800,7 @@
               but should only be claimed if the TSF is capable of detecting the indicator. 
               This package requires the TSF to always terminate TLS 1.1 sessions based on the server hello negotiated version field; it is 
               acceptable to ignore any downgrade indicator. 
-              However, a TSF that is capable of detecting the TLS 1.1 or below downgrade indicator may claime this option if it takes
+              However, a TSF that is capable of detecting the TLS 1.1 or below downgrade indicator may claim this option if it takes
               different actions depending on whether the TLS 1.1 or below downgrade indicator is set. 
               </h:p>
             </note>
@@ -2845,10 +2863,11 @@
           </dependencies>
           
           <f-element id="fel-renego">
-            <title>The TSF shall support secure TLS renegotiation through use of <selectables>
-              <selectable>the “renegotiation_info” TLS extension</selectable>
-              <selectable>the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value in accordance with RFC 5746</selectable>
-              <selectable>rejection of all renegotiation attempts</selectable>
+            <title>The TSF shall support secure TLS renegotiation through use of
+              <selectables linebreak="yes">
+                <selectable>the “renegotiation_info” TLS extension</selectable>
+                <selectable>the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value in accordance with RFC 5746</selectable>
+                <selectable>rejection of all renegotiation attempts</selectable>
            </selectables>
               and shall terminate the session if an unexpected server hello is received or <selectables>
              <selectable>hello request message is received</selectable>
@@ -2868,7 +2887,7 @@
               client hello message to indicate support for secure renegotiation.
               </h:p>
               <h:p>
-                A client supporting TLS 1.3 must claim "rejection of all renegotiation attempts," and this option may also be claimed as a 
+                A client supporting TLS 1.3 must claim "rejection of all renegotiation attempts." This option may also be claimed as a 
                 method for TLS 1.2 renegotiation protection.
               </h:p>
               <h:p>
@@ -2885,7 +2904,7 @@
               an initial server hello negotiating TLS 1.2 that has a renegotiation_info extension that is non-empty, 
               a subsequent server hello renegotiating TLS 1.2 that does not contain a renegotiation_info extension, 
               a subsequent server hello negotiating TLS 1.2 that has a renegotiation_info extension with an incorrect renegotiated_connection
-              value and a server hello request message when renegotiation is not allowed (for TLS 1.3 or when the option is claimed for TLS 1.2). 
+              value, and a server hello request message when renegotiation is not allowed (for TLS 1.3 or when the option is claimed for TLS 1.2). 
               </h:p>
               <h:p>
               TLS 1.3 provides protection against insecure renegotiation by not allowing renegotiation. 
@@ -3208,13 +3227,13 @@
               </h:p>
               <h:p>
               The final selection indicates the TOE’s preference for negotiating a ciphersuite. 
-              RFC 9151 indicates the required ciphersuites for NSS systems and ‘RFC 9151 priority’ is claimed if those ciphersuites are
-              selected whenever offered by the client; the final option is used to provide a specific preference ordering that does not agree
+              RFC 9151 indicates the required ciphersuites for NSS systems and "RFC 9151 priority" is claimed if those ciphersuites are
+              selected whenever offered by the client. The final option is used to provide a specific preference ordering that does not agree
               with either of the other options.               
               </h:p>
               <h:p>
-                While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is deprecated by this SFR and should not be
-                included in “other TLS 1.3 ciphersuites” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+              While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is deprecated by this SFR and should not be
+              included in “other TLS 1.3 ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
               </h:p>
               <h:p>
               The ‘client hello ordering’ option is claimed if client priority is considered; 
@@ -3257,6 +3276,7 @@
                     <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                     <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
                     <selectable>no other signature algorithms</selectable></selectables>
+                and
                 </h:li>
               <h:li>
                   <selectables linebreak="yes">
@@ -3268,7 +3288,7 @@
                       <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
                       <selectable>no other signature algorithms</selectable>
                     </selectables></selectable>
-                  <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3 and<selectables>
+                  <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3 and <selectables>
                     <selectable>DTLS 1.2</selectable>
                     <selectable>no other versions</selectable>
                   </selectables></selectable>
@@ -3297,6 +3317,7 @@
                         <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
                         <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
                         <selectable>no other signature algorithms</selectable></selectables>
+                    and
                   </h:li>
                   <h:li>
                     and
@@ -3351,16 +3372,16 @@
               <h:p>
               TLS 1.2 and TLS 1.3 perform key exchange using different mechanisms
               </h:p>
-              <h:p>If TLS 1.2 is supported and RSA ciphersuites are supported, the ST author claimes the "RSA with key size..." option and the
+              <h:p>If TLS 1.2 and RSA ciphersuites are supported, the ST author claims the "RSA with key size..." option and the
                 key sizes supported. The requirements apply to the RSA key size for the server's certificate and in the key exchange messages
                 received by the server
               </h:p>
               <h:p>
-              If TLS 1.2 is supported and DHE are supported, the ST author may claim the "Diffie-Hellman parameters..." The requirements apply
+              If TLS 1.2 and DHE are supported, the ST author may claim the "Diffie-Hellman parameters..." The requirements apply
               to the server key exchange messaged sent by the TSF. 
               </h:p>
               <h:p>
-              If TLS 1.2 is supported and supported groups extension is supported (for ECDHE or DHE groups), the ST author claims the
+              If TLS 1.2 and supported groups extension are supported (for ECDHE or DHE groups), the ST author claims the
               “Diffie_Hellman groups…” or “ECDHE parameters...” according to the supported ciphersuites and supported groups extension
               values. This is required when ECDHE ciphersuites are supported and recommended when DHE ciphersuites are supported.
               </h:p>
@@ -3805,8 +3826,8 @@
                  <selectable><assignable>specific intermediate CA certificates</assignable></selectable>
                  <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
                  is not available in support of <selectables>
-                   <selectable>all applications</selectable>
-                   <selectable><assignable>list of calling applications configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables>
+                   <selectable>all supported functions</selectable>
+                   <selectable><assignable>list of calling supported functions configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables>
                    <selectable>configured by an administrator</selectable>
                    <selectable>confirmed by the supported function user</selectable>
                    <selectable>a default for <assignable>subset of supported functions</assignable></selectable></selectables>
@@ -3863,7 +3884,7 @@
            <note role="application">
              <h:p>
              Authorization for services provided by the applications that are protected by the TLS session is determined by the supported
-             function establishing a set of reference identifiers, by passing the received identifiers to the supported function or by passing
+             function establishing a set of reference identifiers, by passing the received identifiers to the supported function, or by passing
              initial name constraints to the certification path validation function. 
              The ST author indicates the methods supported and, for each method supported, indicates all name types supported; if name types are
              processed by the TSF, at least one name type is required. 
@@ -3907,7 +3928,7 @@
 	            For each supported version, the evaluator shall follow the operational guidance to configure the TOE to require valid client authentication with no exceptions and initiate a TLS session from a compliant TLS test client 
 	            supporting that version. The evaluator shall ensure that the test client sends a certificate_list structure which has a length of zero. The evaluator shall verify the TSF terminates the session and no application data flows. 
 	            <h:p>
-	            <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure, bad certificaate, unknown certificate, unknown CA) in response to this, 
+	            <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure, bad certificate, unknown certificate, unknown CA) in response to this, 
 	            but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
 	            </h:p>
 	          </test>
@@ -4060,7 +4081,7 @@
           <f-element>
             <title>The TSF shall
               <selectables>
-                <selectable>Indicate support for renegotiating a TLS 1.2 session by including the renegotiation_info extension in the server
+                <selectable>indicate support for renegotiating a TLS 1.2 session by including the renegotiation_info extension in the server
                   hello message when a client hello with the renegotiation_info extension is received and shall terminate a session if
                   neither of the renegotiation_info or TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuites are indicated in the client
                   hello</selectable>
