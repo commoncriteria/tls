@@ -122,7 +122,7 @@
       When this Package is instantiated by a PP or PP-Module, the Package must
       include selection-based requirements in accordance with the
       selections or assignments indicated in the PP or PP-Module.  These may be expanded by the
-      the ST author.
+      ST author.
       </h:p><h:p>
       The PP or PP-Module which instantiates this Package must typically include
       the following components in order to satisfy dependencies of this Package. It is the responsibility
@@ -357,7 +357,7 @@
     </management>
     <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
       PP, PP-Module, functional package, or ST:<h:ul>
-        <h:li>Esbalishment and termination of a DTLS session</h:li>
+        <h:li>Establishment and termination of a DTLS session</h:li>
         <h:li>Failure to establish a DTLS session</h:li>
         <h:li>Failure to verify presented identifier</h:li>
       </h:ul>
@@ -1791,7 +1791,7 @@
           </management>
           <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
             PP, PP-Module, functional package, or ST:<h:ul>
-              <h:li>Esbalishment and termination of a TLS session</h:li>
+              <h:li>Establishment and termination of a TLS session</h:li>
               <h:li>Failure to establish a TLS session</h:li>
               <h:li>Failure to verify presented identifier</h:li>
             </h:ul>
@@ -2512,8 +2512,8 @@
                   <test>(TLS 1.2 only) [conditional] If the ST indicates support for both RSA and ECDSA methods in the signature_algorithm 
                     (or, if supported, the signature_algorithms_cert) extension, 
                     and if the ST indicates one or more TLS 1.2 ciphersuites indicating each of the RSA and ECDSA methods in its signature components, 
-                    the evaluator shall choose two ciphersuites: one indicating an RSA signature (cipher 1) and one indictaing an ECDSA signature (cipher 2).
-                    The evalutor shall then establish two certificates that are trusted by the TOE: one representing the test TLS 1.2 server using an RSA signature (cert 1) and one 
+                    the evaluator shall choose two ciphersuites: one indicating an RSA signature (cipher 1) and one indicating an ECDSA signature (cipher 2).
+                    The evaluator shall then establish two certificates that are trusted by the TOE: one representing the test TLS 1.2 server using an RSA signature (cert 1) and one 
                     representing the test TLS 1.2 server using an ECDSA signature (cert 2).
                     
                     The evaluator shall initiate a TLS session between the TOE and the test TLS 1.2 server that is configured to select cipher 1 and to send cert 2. The evaluator shall verify that the TSF terminates this TLS session.
@@ -3034,7 +3034,7 @@
                 </test>
                 <test>(TLS 1.3 session id echo) [conditional] If the TSF supports TLS 1.3, the evaluator shall initiate a new TLS 1.3 session with a test TLS server. 
                   The evaluator shall cause the test TLS server to send a TLS 1.3 server hello message 
-                  (or a hello retry request if the TSF doesn’t include the key share extension) that contains a different value in the legacy_session_id field, and observe that the TSF terminates the session.
+                  (or a hello retry request if the TSF does not include the key share extension) that contains a different value in the legacy_session_id field, and observe that the TSF terminates the session.
                   <h:p>
                   <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., illegal parameter) in response to this, 
                   but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
@@ -3605,7 +3605,7 @@
                                 the signature_algorithm value in the client hello. </test>
                               <test id="tls-server-mismatch-1-3-signature">[conditional] If the ST also indicates support for TLS 1.3, 
                                 the evaluator shall similarly repeat <xref to="tls-server-correct-1-3-signature"/> 
-                                with both the provisioned certificate indicated for test <xref to="tls-server-correct-1-3-signature"/> and a provisioned certificate 
+                                with both the provisioned certificate indicated for <xref to="tls-server-correct-1-3-signature"/> and a provisioned certificate 
                                 with public keys that are not consistent with the signature_algorithm value but which are signed by a CA 
                                 using the signature_algorithm value specified in the client hello, 
                                 and observe that the certificate message sent by the TSF does not include the certificate that 

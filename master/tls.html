@@ -716,7 +716,7 @@ The following sections list Common Criteria and technology terms used in this do
       When this Package is instantiated by a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, the Package must
       include selection-based requirements in accordance with the
       selections or assignments indicated in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.  These may be expanded by the
-      the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author.
+      <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author.
       </p><p>
       The <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> which instantiates this Package must typically include
       the following components in order to satisfy dependencies of this Package. It is the responsibility
@@ -2538,8 +2538,8 @@ The following sections list Common Criteria and technology terms used in this do
       (<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 only) [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> indicates support for both <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_ECDSA">ECDSA</a></abbr> methods in the signature_algorithm 
                     (or, if supported, the signature_algorithms_cert) extension, 
                     and if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> indicates one or more <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites indicating each of the <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_ECDSA">ECDSA</a></abbr> methods in its signature components, 
-                    the evaluator shall choose two ciphersuites: one indicating an <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> signature (cipher 1) and one indictaing an <abbr class="dyn-abbr"><a href="#abbr_ECDSA">ECDSA</a></abbr> signature (cipher 2).
-                    The evalutor shall then establish two certificates that are trusted by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>: one representing the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server using an <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> signature (cert 1) and one 
+                    the evaluator shall choose two ciphersuites: one indicating an <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> signature (cipher 1) and one indicating an <abbr class="dyn-abbr"><a href="#abbr_ECDSA">ECDSA</a></abbr> signature (cipher 2).
+                    The evaluator shall then establish two certificates that are trusted by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>: one representing the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server using an <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> signature (cert 1) and one 
                     representing the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server using an <abbr class="dyn-abbr"><a href="#abbr_ECDSA">ECDSA</a></abbr> signature (cert 2).
                     
                     The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server that is configured to select cipher 1 and to send cert 2. The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates this <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session.
@@ -3042,7 +3042,7 @@ The following sections list Common Criteria and technology terms used in this do
                 <li class="test-"><a id="_t_75" class="defined" href="#_t_75">Test FCS_TLSC_EXT.5:2</a>:
       (<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 session id echo) [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall initiate a new <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 session with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server. 
                   The evaluator shall cause the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server to send a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server hello message 
-                  (or a hello retry request if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> doesn’t include the key share extension) that contains a different value in the legacy_session_id field, and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
+                  (or a hello retry request if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not include the key share extension) that contains a different value in the legacy_session_id field, and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
                   <p>
                   <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., illegal parameter) in response to this, 
                   but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
@@ -3494,7 +3494,7 @@ The following sections list Common Criteria and technology terms used in this do
                               <li class="test-"><a id="tls-server-mismatch-1-3-signature" class="defined" href="#tls-server-mismatch-1-3-signature">Test FCS_TLSS_EXT.1:4.1.3.2</a>:
       [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> also indicates support for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, 
                                 the evaluator shall similarly repeat <a href="#tls-server-correct-1-3-signature" class="dynref">Test FCS_TLSS_EXT.1:4.1.2</a> 
-                                with both the provisioned certificate indicated for test <a href="#tls-server-correct-1-3-signature" class="dynref">Test FCS_TLSS_EXT.1:4.1.2</a> and a provisioned certificate 
+                                with both the provisioned certificate indicated for <a href="#tls-server-correct-1-3-signature" class="dynref">Test FCS_TLSS_EXT.1:4.1.2</a> and a provisioned certificate 
                                 with public keys that are not consistent with the signature_algorithm value but which are signed by a <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr> 
                                 using the signature_algorithm value specified in the client hello, 
                                 and observe that the certificate message sent by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not include the certificate that 
@@ -4223,7 +4223,7 @@ The following sections list Common Criteria and technology terms used in this do
           </p><h4>Management: FCS_DTLSC_EXT.1</h4><p>No specific management functions are identified.
     </p><h4>Audit: FCS_DTLSC_EXT.1</h4><p>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
       <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, functional package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:<ul>
-        <li>Esbalishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</li>
+        <li>Establishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</li>
         <li>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</li>
         <li>Failure to verify presented identifier</li>
       </ul>
@@ -4464,7 +4464,7 @@ The following sections list Common Criteria and technology terms used in this do
           </p><h4>Management: FCS_TLSC_EXT.1</h4><p>No specific management functions are identified.
           </p><h4>Audit: FCS_TLSC_EXT.1</h4><p>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
             <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, functional package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:<ul>
-              <li>Esbalishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session</li>
+              <li>Establishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session</li>
               <li>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session</li>
               <li>Failure to verify presented identifier</li>
             </ul>
