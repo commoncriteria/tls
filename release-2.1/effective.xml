@@ -3323,11 +3323,11 @@
                 <selectable>RSA with size <selectables>
                   <selectable>3072</selectable>
                   <selectable>4096</selectable></selectables> bits and no other sizes</selectable>
-                <selectable>Diffie-Hellman parameters with size <selectables>
+         <!--        <selectable>Diffie-Hellman parameters with size <selectables>
                   <selectable>3072</selectable>
                   <selectable>4096</selectable>
                   <selectable>6144</selectable>
-                  <selectable>8192</selectable></selectables> bits and no other sizes</selectable>
+                  <selectable>8192</selectable></selectables> bits and no other sizes</selectable>  -->
                 <selectable>Diffie-Hellman groups <selectables>
                   <selectable>ffdhe3072</selectable>
                   <selectable>ffdhe4096</selectable>
@@ -3355,7 +3355,7 @@
             </ext-comp-def-title>
             <note role="application">
               <h:p>
-              TLS 1.2 and TLS 1.3 perform key exchange using different mechanisms
+              TLS 1.2 and TLS 1.3 perform key exchange using different mechanisms.
               </h:p>
               <h:p>If TLS 1.2 and RSA ciphersuites are supported, the ST author claims the "RSA with key size..." option and the
                 key sizes supported. The requirements apply to the RSA key size for the server's certificate and in the key exchange messages
@@ -3806,13 +3806,13 @@
                  <selectable>all applications</selectable>
                  <selectable><assignable>list of calling applications that accept both authenticated and unauthenticated client sessions</assignable></selectable></selectables> 
                  when an empty certificate message is provided by the client</selectable>
-               <selectable>continue establishment of a mutually authenticated TLS channel when revocation status information for the <selectables>
+               <selectable>continue establishment of a mutually authenticated TLS channel when revocation status information for the <selectables linebreak="yes">
                  <selectable>client's leaf certificate</selectable>
                  <selectable><assignable>specific intermediate CA certificates</assignable></selectable>
                  <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
-                 is not available in support of <selectables>
+                 is not available in support of <selectables linebreak="yes">
                    <selectable>all supported functions</selectable>
-                   <selectable><assignable>list of calling supported functions configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables>
+                   <selectable><assignable>list of calling supported functions configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables linebreak="yes">
                    <selectable>configured by an administrator</selectable>
                    <selectable>confirmed by the supported function user</selectable>
                    <selectable>a default for <assignable>subset of supported functions</assignable></selectable></selectables>
