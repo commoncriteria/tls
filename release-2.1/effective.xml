@@ -3263,7 +3263,8 @@
                     <selectable>no other signature algorithms</selectable></selectables>
                 and
                 </h:li>
-              <h:li>
+            </h:ul>
+              
                   <selectables linebreak="yes">
                   <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
                     <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
@@ -3287,8 +3288,7 @@
                   <selectable>key_share extension (RFC 8446)</selectable>
                   <selectable>extended_master_secret extension (RFC 7627) enforcing client support and</selectable>
                   <selectable>no other extensions</selectable></selectables>.
-              </h:li>
-            </h:ul>
+              
           </title>
             <ext-comp-def-title>
               <title>
