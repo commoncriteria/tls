@@ -1211,8 +1211,8 @@
                 <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
                 <selectable>no other signature algorithms</selectable></selectables>
           </h:li>
-         
-          <h:li>
+        </h:ul>
+          
             the following other extensions: <selectables linebreak="yes">
               <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
                 <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
@@ -1242,8 +1242,7 @@
                   <selectable>no other enforcement mode</selectable>
                 </selectables></selectable>
               <selectable>no other extensions</selectable></selectables>.
-          </h:li>
-        </h:ul>
+         
       </title>
       <ext-comp-def-title>
         <title>
