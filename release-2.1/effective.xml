@@ -419,13 +419,13 @@
               <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
               <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
               <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
-            </selectables>
-         the following PP-specific ciphersuites using pre-shared secrets:
+    
+         <selectable>the following PP-specific ciphersuites using pre-shared secrets:
             <selectables linebreak="yes">
               <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
               <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
               <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-            </selectables>
+            </selectables></selectable></selectables>
               and shall not offer other TLS 1.2 ciphersuites,</selectable>
             <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
               <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
@@ -612,7 +612,7 @@
           <selectable>pass initial name constraints to the certification path processing function to verify, in accordance with
           FIA_X509_EXT.1, that the presented identifier</selectable>
         </selectables> 
-        matches a reference identifier or the requested DTLS server and shall abort the session if no match is found.
+        matches a reference identifier for the requested DTLS server and shall abort the session if no match is found.
       </title>
       <ext-comp-def-title>
         <title>
@@ -623,7 +623,7 @@
             <selectable>pass initial name constraints to the certification path processing function to verify, in accordance with
               FIA_X509_EXT.1, that the presented identifier</selectable>          
           </selectables> 
-          matches a reference identifier or the requested DTLS server and shall abort the session if no match is found.
+          matches a reference identifier for the requested DTLS server and shall abort the session if no match is found.
         </title>
       </ext-comp-def-title>
       <note role="application">
@@ -678,7 +678,7 @@
           extension is considered to be not revoked. DTLS-specific override mechanisms are for use with certificates with published
           revocation status information that is not accessible, whether temporarily or because the information cannot be accessed during the
           state of the TOE (e.g., for verifying signatures on boot code). The circumstances should be described by the ST author, who should
-          indicate the override mechanism and conditions that apply to the override, including system state, user, or admin actions, etc.
+          indicate the override mechanism and conditions that apply to the override, including system state, user or admin actions, etc.
         </h:p>
       </note>
     </f-element>
