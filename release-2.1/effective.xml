@@ -439,13 +439,8 @@
         <title>
           The TSF shall be able to support the following
             <assignable>list of supported TLS ciphersuites</assignable>,
-          the following PP-specific ciphersuites using pre-shared secrets:
-          <assignable>list of supported pre-shared key ciphersuites</assignable>,
-          and shall not offer other TLS 1.2 ciphersuites, 
-          TLS 1.3 ciphersuites: 
-          <assignable>list of supported TLS 1.3 ciphersuites</assignable>,
           offering the supported ciphersuites in a client hello message in preference order: 
-          <assignable>list of supported ciphersuites</assignable>.
+          <assignable>priority</assignable>.
         </title>
       </ext-comp-def-title>
       <note role="application">
@@ -575,12 +570,12 @@
         <h:p>
           DTLS uses TLS extensions.
         </h:p>
-        <h:P>
+        <h:p>
           If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in 
           accordance with RFC 8446. If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed. If DTLS 1.2 is
           claimed, extended_master_secret extension is claimed, with the ability to enforce server support, and optionally, the ability to 
           support legacy servers.
-        </h:P>
+        </h:p>
         <h:p>
           Other extensions may be supported; certain extensions may need to be claimed based on other SFR claims made.
         </h:p>
@@ -1141,16 +1136,9 @@
       <ext-comp-def-title>
         <title>
           The TSF shall be able to support the following
-          <assignable>list of supported TLS 1.2 ciphersuites</assignable>,
-          the following PP-specific ciphersuites using pre-shared secrets:
-          <assignable>list of supported pre-shared key ciphersuites</assignable>,
-          TLS 1.3 ciphersuites: 
-          <assignable>list of supported TLS 1.3 ciphersuites</assignable>,
-          using a preference order based on <selectables>
-            <selectable>RFC 9151 priority</selectable>
-            <selectable>client hello ordering</selectable>
-            <selectable><assignable>additional priority</assignable></selectable>
-          </selectables>.
+          <assignable>list of supported TLS ciphersuites</assignable>,
+          offering the supported ciphersuites in a client hello message in preference order: 
+          <assignable>priority</assignable>.
         </title>
       </ext-comp-def-title>
         <note role="application">
@@ -1257,10 +1245,11 @@
                   <selectable><assignable>other non-deprecated signature algorithms</assignable></selectable>
                   <selectable>no other signature algorithms</selectable></selectables>
             </h:li>
-            <h:li>
-              and the following other extensions: <assignable>other supported DTLS extensions</assignable>
-            </h:li>
           </h:ul>
+            
+              and the following other extensions: <assignable>other supported DTLS extensions</assignable>
+            
+          
         </title>
       </ext-comp-def-title>
       <note role="application">
@@ -1867,15 +1856,9 @@
           </title>
             <ext-comp-def-title>
               <title>
-                The TSF shall be able to support the following
-                <assignable>list of supported TLS 1.2 ciphersuites</assignable>,
-                the following PP-specific ciphersuites using pre-shared secrets:
-                <assignable>list of supported pre-shared key ciphersuites</assignable>,
-                and shall not offer other TLS 1.2 ciphersuites,
-                TLS 1.3 ciphersuites: 
-                <assignable>list of supported TLS 1.3 ciphersuites</assignable>,
+                The TSF shall be able to support the following <assignable/>,
                 offering the supported ciphersuites in a client hello message in preference order: 
-                <assignable>list of supported ciphersuites</assignable>.
+                <assignable>priority</assignable>.
               </title>
             </ext-comp-def-title>
             <note role="application">
@@ -3191,17 +3174,10 @@
             </title>
             <ext-comp-def-title>
               <title>
-                The TSF shall be able to support the following:
-                <assignable>list of supported TLS 1.2 ciphersuites</assignable>,
-                the following PP-specific ciphersuites using pre-shared secrets:
-                <assignable>list of supported pre-shared key ciphersuites</assignable>,
-               TLS 1.3 ciphersuites: 
-                <assignable>list of supported TLS 1.3 ciphersuites</assignable>,
-                using a preference order based on <selectables>
-                  <selectable>RFC 9151 priority</selectable>
-                  <selectable>client hello ordering</selectable>
-                  <selectable><assignable>additional priority</assignable></selectable>
-                </selectables>.
+                The TSF shall be able to support the following
+                <assignable>list of supported TLS ciphersuites</assignable>,
+                offering the supported ciphersuites in a client hello message in preference order: 
+                <assignable>priority</assignable>.
               </title>
             </ext-comp-def-title>
             <note role="application">
@@ -3304,11 +3280,12 @@
                         <selectable>no other signature algorithms</selectable></selectables>
                     and
                   </h:li>
-                  <h:li>
+                </h:ul>
+                  
                     and
                     <assignable>other supported TLS extensions</assignable>
-                  </h:li>
-                </h:ul>
+                  
+                
               </title>
             </ext-comp-def-title>
             <note role="application">
