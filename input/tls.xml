@@ -555,8 +555,6 @@
             <h:li>early_data</h:li>
             <h:li>psk_key_exchange_mode indicating PSK only mode.</h:li>
           </h:ul>
-        
-      </h:ul>
     </title>  
       <ext-comp-def-title>
         <title>
