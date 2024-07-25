@@ -876,7 +876,7 @@
           <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol
           </dependencies>
           
-          <f-element id="fel-renego">
+          <f-element id="fel-dtlsc-renego">
             <title>The TSF shall support secure DTLS renegotiation through use of <selectables>
                 <selectable>the “renegotiation_info” TLS extension in accordance with RFC 5746</selectable>
                 <selectable>the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value in accordance with RFC 5746</selectable>
@@ -2830,7 +2830,7 @@
           <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol
           </dependencies>
           
-          <f-element id="fel-renego">
+          <f-element id="fel-tlsc-renego">
             <title>The TSF shall support secure TLS renegotiation through use of
               <selectables linebreak="yes">
                 <selectable>the “renegotiation_info” TLS extension</selectable>
@@ -3542,7 +3542,7 @@
                           <test id="tls-server-correct-signature">(TLS 1.2) For each supported value of the signature_algorithms extension, the evaluator shall provision a certificate with a key pair compatible with the specific signature_algorithm value and 
                             send the TSF a TLS 1.2 client hello that indicates all supported ciphersuites and has a signature_algorithms extension consisting of a single value matching the specific signature algorithm.
                             <h:p>
-                            If the TSF supports signature_algorithms_cert extension, the client hello also contains the value consistent with the previsioned certificate.
+                            If the TSF supports signature_algorithms_cert extension, the client hello also contains the value consistent with the provisioned certificate.
                             </h:p><h:p>
                             The evaluator shall observe that the TSF negotiates TLS 1.2 with
                             a TLS 1.2 ciphersuite that is compatible with the signature algorithm, and that it sends a certificate message containing the provisioned certificate with a key pair that is consistent 
