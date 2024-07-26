@@ -3251,7 +3251,7 @@
                       <selectable>no other signature algorithms</selectable>
                     </selectables></selectable>
                   <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3 and <selectables>
-                    <selectable>DTLS 1.2</selectable>
+                    <selectable>TLS 1.2</selectable>
                     <selectable>no other versions</selectable>
                   </selectables></selectable>
                   <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
