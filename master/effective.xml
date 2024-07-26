@@ -364,9 +364,9 @@
     </audit>
     <dependencies>
       FCS_CKM.1 Cryptographic Key Generation<h:br/>
-      FCS_CKM.2 Cryptographic Key Derivation<h:br/>
+      FCS_CKM.2 Cryptographic Key Distribution<h:br/>
       FCS_COP.1 Cryptographic Operation<h:br/>
-      FCS_RBG.1 Random Bit Generation<h:br/>
+      FCS_RBG.1 Random Bit Generation (RBG)<h:br/>
       FIA_X509_EXT.1 X.509 Certificate Validation<h:br/>
       FIA_X509_EXT.2 X.509 Certificate Authentication
     </dependencies> 
@@ -440,7 +440,7 @@
           The TSF shall be able to support the following
             <assignable>list of supported TLS ciphersuites</assignable>,
           offering the supported ciphersuites in a client hello message in preference order: 
-          <assignable>priority</assignable>.
+          <assignable>list of supported ciphersuites</assignable>.
         </title>
       </ext-comp-def-title>
       <note role="application">
@@ -557,7 +557,7 @@
                     <selectable>no other signature algorithms</selectable>
                 </selectables> and
               </h:li>
-                <assignable>other supported DTLS extensions</assignable>
+                <assignable>other supported DTLS extensions</assignable><h:br/>
                 and shall not send the following extensions: <h:ul>
                   <h:li>early_data</h:li>
                   <h:li>psk_key_exchange_mode indicating PSK only mode.</h:li>
@@ -750,7 +750,7 @@
       </selectables></audit-event-info>
     </audit-event>
     <audit-event type="optional">
-      <audit-event-descr>Establishment/termination of a DTLS session</audit-event-descr>
+      <audit-event-descr>Establishment and termination of a DTLS session</audit-event-descr>
       <audit-event-info><selectables>
         <selectable>Non-TOE endpoint of connection</selectable>
         <selectable>None</selectable>
@@ -1062,9 +1062,9 @@
     </audit>
     <dependencies>
       FCS_CKM.1 Cryptographic Key Generation<h:br/>
-      FCS_CKM.2 Cryptographic Key Derivation<h:br/>
+      FCS_CKM.2 Cryptographic Key Distribution<h:br/>
       FCS_COP.1 Cryptographic Operation<h:br/>
-      FCS_RBG.1 Random Bit Generation<h:br/>
+      FCS_RBG.1 Random Bit Generation (RBG)<h:br/>
       FIA_X509_EXT.1 X.509 Certificate Validation<h:br/>
       FIA_X509_EXT.2 X.509 Certificate Authentication
     </dependencies> 
@@ -1783,9 +1783,9 @@
           </audit>
           <dependencies>
             FCS_CKM.1 Cryptographic Key Generation<h:br/>
-            FCS_CKM.2 Cryptographic Key Derivation<h:br/>
+            FCS_CKM.2 Cryptographic Key Distribution<h:br/>
             FCS_COP.1 Cryptographic Operation<h:br/>
-            FCS_RBG.1 Random Bit Generation<h:br/>
+            FCS_RBG.1 Random Bit Generation (RBG)<h:br/>
             FIA_X509_EXT.1 X.509 Certificate Validation<h:br/>
             FIA_X509_EXT.2 X.509 Certificate Authentication
           </dependencies> 
@@ -1858,7 +1858,7 @@
               <title>
                 The TSF shall be able to support the following <assignable/>,
                 offering the supported ciphersuites in a client hello message in preference order: 
-                <assignable>priority</assignable>.
+                <assignable>list of supported ciphersuites</assignable>.
               </title>
             </ext-comp-def-title>
             <note role="application">
@@ -1980,7 +1980,7 @@
                         <selectable>no other signature algorithms</selectable></selectables>
                     and
                   </h:li>
-                  <assignable>other supported TLS extensions</assignable>
+                  <assignable>other supported TLS extensions</assignable><h:br/>
                     and shall not send the following extensions: <h:ul>
                       <h:li>early_data</h:li>
                       <h:li>psk_key_exchange_mode indicating PSK only mode.</h:li>
@@ -2651,7 +2651,7 @@
 	      </selectables></audit-event-info>
 	    </audit-event>
 	    <audit-event type="optional">
-	      <audit-event-descr>Establishment/termination of a TLS session</audit-event-descr>
+	      <audit-event-descr>Establishment and termination of a TLS session</audit-event-descr>
 	      <audit-event-info><selectables>
 	        <selectable>Non-TOE endpoint of connection</selectable>
 	        <selectable>None</selectable>
@@ -3105,9 +3105,9 @@
           </audit>
           <dependencies>
             FCS_CKM.1 Cryptographic Key Generation<h:br/>
-            FCS_CKM.2 Cryptographic Key Derivation<h:br/>
+            FCS_CKM.2 Cryptographic Key Distribution<h:br/>
             FCS_COP.1 Cryptographic Operation<h:br/>
-            FCS_RBG.1 Random Bit Generation<h:br/>
+            FCS_RBG.1 Random Bit Generation (RBG)<h:br/>
             FIA_X509_EXT.1 X.509 Certificate Validation<h:br/>
             FIA_X509_EXT.2 X.509 Certificate Authentication
           </dependencies> 
@@ -3281,9 +3281,7 @@
                     and
                   </h:li>
                 </h:ul>
-                  
-                    and
-                    <assignable>other supported TLS extensions</assignable>
+                  <assignable>other supported TLS extensions</assignable>
                   
                 
               </title>
