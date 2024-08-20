@@ -49,14 +49,10 @@ are looking for the officially released version for evaluations.
 
 === Draft Version
 
-* https://commoncriteria.github.io/pp/tls/tls-release.html[Functional
+* https://commoncriteria.github.io/tls/master/tls-release.html[Functional
 Package for TLS] (html)
-* https://commoncriteria.github.io/pp/tls/tls.html[Functional Package
+* https://commoncriteria.github.io/tls/master/tls.html[Functional Package
 for TLS in heretical reader-friendly format] (html)
-* https://commoncriteria.github.io/pp/tls/tls-release.pdf[Functional
-Package for TLS] (pdf)
-* https://commoncriteria.github.io/tls/diff-v1.1.html[Visual Diff
-against 1.1](html)
 
 === Release Version
 
