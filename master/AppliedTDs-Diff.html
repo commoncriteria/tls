@@ -942,13 +942,16 @@
                                  <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> uses <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> extensions. 
                             </p>
                             <p>
-                                 If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is claimed in <a href="#FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</a>, supported_versions, supported_groups, and key_share extensions are claimed in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446. If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is not claimed, supported_versions and key_share extensions are not claimed. If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 is claimed, extended_master_secret extension is claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers. If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 is supported and if <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> ciphersuites are claimed in <a href="#FCS_DTLSC_EXT.1.2">FCS_DTLSC_EXT.1.2</a>, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed. 
+                                 If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is claimed in <a href="#FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</a>, supported_versions, supported_groups, and key_share extensions are claimed in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446. If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is not claimed, supported_versions and key_share extensions are not claimed. 
+                            </p>
+                            <p>
+                                 If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 is claimed, extended_master_secret extension is claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers. 
+                            </p>
+                            <p>
+                                 If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 is supported and if <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> ciphersuites are claimed in <a href="#FCS_DTLSC_EXT.1.2">FCS_DTLSC_EXT.1.2</a>, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed. 
                             </p>
                             <p>
                                  Other extensions may be supported; certain extensions may need to be claimed based on other <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> claims made. 
-                            </p>
-                            <p>
-                                 If <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> ciphersuites are claimed in <a href="#FCS_DTLSC_EXT.1.2">FCS_DTLSC_EXT.1.2</a>, the supported_groups extension is claimed here with appropriate secp groups claimed. If <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> ciphersuites are claimed in <a href="#FCS_DTLSC_EXT.1.2">FCS_DTLSC_EXT.1.2</a>, it is preferred that the appropriate ffdhe groups be claimed here. In a subsequent version of this <abbr class="dyn-abbr"><a href="#abbr_FP">FP</a></abbr>, support for ffdhe groups will be required whenever <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> ciphersuites are claimed. 
                             </p>
                             <p>
                                  When "other non-deprecated signature algorithms" is claimed, the assignment will describe the standard signature and hash algorithms supported. MD5 and <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 hashes are deprecated and are not included in the signature_algorithms or signature_algorithms_cert extensions. 
