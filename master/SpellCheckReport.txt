@@ -29,8 +29,6 @@ output/tls-release-linkable.html: ffdhe
 output/tls-release-linkable.html: iPAddress
 output/tls-release-linkable.html: iana
 output/tls-release-linkable.html: ke
-output/tls-release-linkable.html: keyshare
-output/tls-release-linkable.html: ocnfiguration
 output/tls-release-linkable.html: psk
 output/tls-release-linkable.html: pss
 output/tls-release-linkable.html: rfc
@@ -39,7 +37,6 @@ output/tls-release-linkable.html: rfc822Name
 output/tls-release-linkable.html: rsae
 output/tls-release-linkable.html: secp
 output/tls-release-linkable.html: subtests
-output/tls-release-linkable.html: tls
 output/tls-release.html: 00’
 output/tls-release.html: 01’
 output/tls-release.html: 0xfefc
@@ -63,6 +60,7 @@ output/tls-release.html: SVR
 output/tls-release.html: TDES
 output/tls-release.html: TLSCipherText
 output/tls-release.html: URIs
+output/tls-release.html: algorithms’
 output/tls-release.html: any’
 output/tls-release.html: data’
 output/tls-release.html: dhe
@@ -77,13 +75,13 @@ output/tls-release.html: ff’
 output/tls-release.html: iPAddress
 output/tls-release.html: iana
 output/tls-release.html: ke
-output/tls-release.html: keyshare
 output/tls-release.html: key’
-output/tls-release.html: ocnfiguration
+output/tls-release.html: methods’
 output/tls-release.html: ordering’
 output/tls-release.html: psk
 output/tls-release.html: pss
 output/tls-release.html: received’
+output/tls-release.html: renegotiation’
 output/tls-release.html: request’
 output/tls-release.html: rfc
 output/tls-release.html: rfc822
@@ -92,7 +90,6 @@ output/tls-release.html: rsae
 output/tls-release.html: secp
 output/tls-release.html: subtests
 output/tls-release.html: time’
-output/tls-release.html: tls
 output/tls-release.html: ’
 output/tls.html: 00’
 output/tls.html: 01’
@@ -117,6 +114,7 @@ output/tls.html: SVR
 output/tls.html: TDES
 output/tls.html: TLSCipherText
 output/tls.html: URIs
+output/tls.html: algorithms’
 output/tls.html: any’
 output/tls.html: data’
 output/tls.html: dhe
@@ -131,12 +129,13 @@ output/tls.html: ff’
 output/tls.html: iPAddress
 output/tls.html: iana
 output/tls.html: ke
-output/tls.html: keyshare
 output/tls.html: key’
+output/tls.html: methods’
 output/tls.html: ordering’
 output/tls.html: psk
 output/tls.html: pss
 output/tls.html: received’
+output/tls.html: renegotiation’
 output/tls.html: request’
 output/tls.html: rfc
 output/tls.html: rfc822
@@ -145,5 +144,4 @@ output/tls.html: rsae
 output/tls.html: secp
 output/tls.html: subtests
 output/tls.html: time’
-output/tls.html: tls
 output/tls.html: ’
