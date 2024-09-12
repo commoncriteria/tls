@@ -581,17 +581,16 @@
         </h:p>
         <h:p>
           If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in 
-          accordance with RFC 8446. If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed. If DTLS 1.2 is
+          accordance with RFC 8446. If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.
+        </h:p><h:p>
+          If DTLS 1.2 is
           claimed, extended_master_secret extension is claimed, with the ability to enforce server support, and optionally, the ability to 
-          support legacy servers. If DTLS 1.2 is supported and if ECDHE or DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed.
+          support legacy servers. 
+        </h:p><h:p>
+          If DTLS 1.2 is supported and if ECDHE or DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed.
         </h:p>
         <h:p>
           Other extensions may be supported; certain extensions may need to be claimed based on other SFR claims made.
-        </h:p>
-        <h:p>
-          If ECDHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp 
-          groups claimed. If DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, it is preferred that the appropriate ffdhe groups be claimed
-          here. In a subsequent version of this FP, support for ffdhe groups will be required whenever DHE ciphersuites are claimed.
         </h:p>
         <h:p>
           When "other non-deprecated signature algorithms" is claimed, the assignment will describe the standard signature and hash algorithms
