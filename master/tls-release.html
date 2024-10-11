@@ -2912,14 +2912,15 @@ The following sections list Common Criteria and technology terms used in this do
                             The IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters website lists registered <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> groups for use in selecting a non-supported group. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports all registered <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> groups, it is acceptable to send the client hello without a supported groups extension. The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> should reject such a client hello, but it is acceptable for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to default to a supported group. In this case, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> passes the test.
                           </p>
                         </li>                      
-                    
-                    <li class="test-"><a id="_t_106" class="defined" href="#_t_106">Test FCS_DTLSS_EXT.1:5.3.3</a>:
+                          </ul></span>
+                        </li>  
+                    <li class="test-"><a id="_t_106" class="defined" href="#_t_106">Test FCS_DTLSS_EXT.1:5.4</a>:
       (<abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 key exchange) [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, then for each supported group the evaluator shall perform the following sub-tests: 
                       <span class="testlist-"><ul>
-                        <li class="test-"><a id="_t_107" class="defined" href="#_t_107">Test FCS_DTLSS_EXT.1:5.3.3.1</a>:
+                        <li class="test-"><a id="_t_107" class="defined" href="#_t_107">Test FCS_DTLSS_EXT.1:5.4.1</a>:
       The evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a compliant <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 client hello indicating a single key share value from the supported group and shall observe that the server hello 
                           includes valid elements of the supported group.</li>
-                        <li class="test-"><a id="_t_108" class="defined" href="#_t_108">Test FCS_DTLSS_EXT.1:5.3.3.2</a>:
+                        <li class="test-"><a id="_t_108" class="defined" href="#_t_108">Test FCS_DTLSS_EXT.1:5.4.2</a>:
       The evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 client hello indicating a supported groups value supported by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> 
                           but containing a key share extension indicating an element claiming to be in the supported group that does not represent a 
                           valid element of the group. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message or terminates the session.
@@ -2932,7 +2933,8 @@ The following sections list Common Criteria and technology terms used in this do
                           </p></li>
                       </ul></span>
                     </li>
-                    <li class="test-"><a id="tls-server-no-finished-msg" class="defined" href="#tls-server-no-finished-msg">Test FCS_DTLSS_EXT.1:5.3.4</a>:
+                    
+                          <li class="test-"><a id="tls-server-no-finished-msg" class="defined" href="#tls-server-no-finished-msg">Test FCS_DTLSS_EXT.1:5.5</a>:
       For each supported version, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> handshake from a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> client 
                       with compliant handshake messages negotiating the version and supported parameters 
                       to include the change cipher spec message (implied for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3), but which omits the finished message and instead 
@@ -2943,16 +2945,19 @@ The following sections list Common Criteria and technology terms used in this do
                       </p><p>
                         Application data is indicated by the TLSCipherText ContentType field having value 23 (application data). 
                         The legacy record version '03 03' and length fields should match a valid TLSCipherText message of the same size.
-                      </p></li></ul></span></li>
-                <li class="test-"><a id="_t_110" class="defined" href="#_t_110">Test FCS_DTLSS_EXT.1:5.4</a>:
+                      </p>
+                    </li>
+                    </ul></span> 
+                </li>
+                <li class="test-"><a id="_t_110" class="defined" href="#_t_110">Test FCS_DTLSS_EXT.1:6</a>:
       
                   [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, the evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 client hello message from a test client and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a HelloVerifyRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloVerifyRequest message and include the modified value as a cookie in the test client’s second client hello message. The evaluator shall verify that the server rejects the client's handshake message.
                 </li>
-                <li class="test-"><a id="_t_111" class="defined" href="#_t_111">Test FCS_DTLSS_EXT.1:5.5</a>:
+                <li class="test-"><a id="_t_111" class="defined" href="#_t_111">Test FCS_DTLSS_EXT.1:7</a>:
       
                   [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, the evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 client hello message from a test client and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloRetryRequest message and include the modified value as a cookie in the test client’s second client hello message. The evaluator shall verify that the server rejects the client's handshake message.
                 </li>
-                  </ul></span></li></ul></span>
+          </ul></span>
         </div></div></div></div></div><div class="comp" id="FCS_DTLSS_EXT.2"><h4>FCS_DTLSS_EXT.2 DTLS Server Support for Mutual Authentication</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
            <a href="#FCS_DTLSS_EXT.1.1">FCS_DTLSS_EXT.1.1</a>.
            </i></b></div>

@@ -2498,7 +2498,8 @@
                             The IANA TLS parameters website lists registered ECDHE groups for use in selecting a non-supported group. If the TSF supports all registered ECDHE groups, it is acceptable to send the client hello without a supported groups extension. The TSF should reject such a client hello, but it is acceptable for the TSF to default to a supported group. In this case, the TSF passes the test.
                           </h:p>
                         </test>                      
-                    
+                          </testlist>
+                        </test>  
                     <test>(DTLS 1.3 key exchange) [conditional] If the TSF supports DTLS 1.3, then for each supported group the evaluator shall perform the following sub-tests: 
                       <testlist>
                         <test>The evaluator shall send the TSF a compliant DTLS 1.3 client hello indicating a single key share value from the supported group and shall observe that the server hello 
@@ -2515,7 +2516,8 @@
                           </h:p></test>
                       </testlist>
                     </test>
-                    <test id="tls-server-no-finished-msg">For each supported version, the evaluator shall initiate a DTLS handshake from a test DTLS client 
+                    
+                          <test id="tls-server-no-finished-msg">For each supported version, the evaluator shall initiate a DTLS handshake from a test DTLS client 
                       with compliant handshake messages negotiating the version and supported parameters 
                       to include the change cipher spec message (implied for DTLS 1.3), but which omits the finished message and instead 
                       sends an application message containing random data. The evaluator shall observe that the TSF silently drops the message or 
@@ -2525,14 +2527,17 @@
                       </h:p><h:p>
                         Application data is indicated by the TLSCipherText ContentType field having value 23 (application data). 
                         The legacy record version '03 03' and length fields should match a valid TLSCipherText message of the same size.
-                      </h:p></test></testlist></test>
+                      </h:p>
+                    </test>
+                    </testlist> 
+                </test>
                 <test>
                   [conditional] If the TSF supports DTLS 1.2, the evaluator shall send a DTLS 1.2 client hello message from a test client and observe that the TSF sends a HelloVerifyRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloVerifyRequest message and include the modified value as a cookie in the test client’s second client hello message. The evaluator shall verify that the server rejects the client's handshake message.
                 </test>
                 <test>
                   [conditional] If the TSF supports DTLS 1.3, the evaluator shall send a DTLS 1.3 client hello message from a test client and observe that the TSF sends a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloRetryRequest message and include the modified value as a cookie in the test client’s second client hello message. The evaluator shall verify that the server rejects the client's handshake message.
                 </test>
-                  </testlist></test></testlist>
+          </testlist>
         </Tests>      
                 
       </aactivity>
