@@ -36,7 +36,6 @@ output/tls-release-linkable.html: rfc822
 output/tls-release-linkable.html: rfc822Name
 output/tls-release-linkable.html: rsae
 output/tls-release-linkable.html: secp
-output/tls-release-linkable.html: subtests
 output/tls-release.html: 00’
 output/tls-release.html: 01’
 output/tls-release.html: 0xfefc
@@ -88,7 +87,6 @@ output/tls-release.html: rfc822
 output/tls-release.html: rfc822Name
 output/tls-release.html: rsae
 output/tls-release.html: secp
-output/tls-release.html: subtests
 output/tls-release.html: time’
 output/tls-release.html: ’
 output/tls.html: 00’
@@ -142,6 +140,5 @@ output/tls.html: rfc822
 output/tls.html: rfc822Name
 output/tls.html: rsae
 output/tls.html: secp
-output/tls.html: subtests
 output/tls.html: time’
 output/tls.html: ’
