@@ -3591,7 +3591,7 @@
                   <!-- updated per TD0731 -->
                   <test id="tls-client-nonstandard-versions">
                     The evaluator shall follow the operational guidance to configure the TSF to
-                    ensure any supported beta TLS 1.3 versions are disabled, as necessary. The evaluator
+                  `  ensure any supported beta TLS 1.3 versions are disabled, as necessary. The evaluator
                     shall send the TSF a client hello message indicating the supported version (referred to
                     as the legacy version in RFC 8446) with the value '03 04' but without including the
                     supported_versions extension and observe that the TSF either
@@ -3675,10 +3675,9 @@
                         The evaluator shall perform one or more of the following tests to demonstrate that the TOE does not accept connections using deprecated ciphersuites:
                       </h:p>
                       <h:p>
-                        [conditional] (deprecated encryption algorithm) If the TSF supports TLS 1.2, for each
-                      deprecated encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and AES-128), 
-                      the evaluator shall attempt to establish a TLS 1.2 connection with a test TLS server configured to negotiate a ciphersuite using the deprecated encryption algorithm 
-                      and observe that the TOE rejects the connection.
+                        [conditional] (deprecated encryption algorithm) If the TSF supports TLS 1.2, send the TSF a TLS 1.2 that is compliant with RFC 9151, except that for each 
+                        deprecated encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and AES-128), the evaluator shall attempt to establish a TLS 1.2 connection with a test TLS
+                        server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the TOE rejects the connection.
                       </h:p><h:p>
                         [conditional] (deprecated encryption algorithm) If the TSF supports TLS 1.3, for each TLS 1.3 ciphersuite registered in IANA TLS parameters using AES-128 as the encryption algorithm, the evaluator shall attempt to establish a TLS 1.3 connection with a test TLS server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the TOE rejects the connection.   
                       </h:p><h:p>

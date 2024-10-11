@@ -3796,7 +3796,7 @@ The following sections list Common Criteria and technology terms used in this do
                   <li class="test-"><a id="tls-client-nonstandard-versions" class="defined" href="#tls-client-nonstandard-versions">Test FCS_TLSC_EXT.1:2.2</a>:
       
                     The evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to
-                    ensure any supported beta <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 versions are disabled, as necessary. The evaluator
+                  `  ensure any supported beta <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 versions are disabled, as necessary. The evaluator
                     shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a client hello message indicating the supported version (referred to
                     as the legacy version in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) with the value '03 04' but without including the
                     supported_versions extension and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> either
@@ -3886,10 +3886,9 @@ The following sections list Common Criteria and technology terms used in this do
                         The evaluator shall perform one or more of the following tests to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not accept connections using deprecated ciphersuites:
                       </p>
                       <p>
-                        [conditional] (deprecated encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, for each
-                      deprecated encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128), 
-                      the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate a ciphersuite using the deprecated encryption algorithm 
-                      and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
+                        [conditional] (deprecated encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151, except that for each 
+                        deprecated encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128), the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>
+                        server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
                       </p><p>
                         [conditional] (deprecated encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, for each <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuite registered in IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters using <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128 as the encryption algorithm, the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.   
                       </p><p>
