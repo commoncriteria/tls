@@ -3554,7 +3554,7 @@
                   <h:p>
                   The evaluator shall establish a TLS connection between the TOE and a test TLS server that is configured to negotiate the tested version and ciphersuite in accordance with the RFC for the version.
                   </h:p><h:p>
-                  The evaluator shall observe that the TSF presents a client hello indicating TLS 1.2 (value '03 03') in the highest or legacy version field and, if TLS 1.3 is supported, the supported versions extension is present and contains the value '03 04' for TLS 1.3
+                  The evaluator shall observe that the TSF presents a client hello indicating TLS 1.2 (value '03 03') in the highest or legacy version field and, if TLS 1.3 is supported, the supported versions extension is present and contains the value '03 04' for TLS 1.3.
                   </h:p><h:p>
                   The evaluator shall observe that the client hello indicates the supported ciphersuites in the order indicated, 
                   and that it includes only the extensions supported, with appropriate values, for that version in accordance with the requirement.
@@ -3675,7 +3675,7 @@
                         The evaluator shall perform one or more of the following tests to demonstrate that the TOE does not accept connections using deprecated ciphersuites:
                       </h:p>
                       <h:p>
-                        [conditional] (deprecated encryption algorithm) If the TSF supports TLS 1.2, send the TSF a TLS 1.2 that is compliant with RFC 9151, except that for each 
+                        [conditional] (deprecated encryption algorithm) If the TSF supports TLS 1.2, send the TSF a TLS 1.2 client hello that is compliant with RFC 9151, except that for each 
                         deprecated encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and AES-128), the evaluator shall attempt to establish a TLS 1.2 connection with a test TLS
                         server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the TOE rejects the connection.
                       </h:p><h:p>
