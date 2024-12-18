@@ -2779,13 +2779,13 @@ The following sections list Common Criteria and technology terms used in this do
                           exchange with a valid point in the group and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully completes the session.
                           </li><li class="test-"><a id="_t_105" class="defined" href="#_t_105">Test FCS_DTLSS_EXT.1:5.3.2</a>:
       
-                            The evaluator shall close the session and resend a similar client hello with identical ciphersuite and supported
+                            The evaluator shall send a client hello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as in the previous test with identical ciphersuite and supported
                             group extension values. After the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds with a valid key exchange message, the evaluator shall send the 
                             <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a client key exchange with the public key value '0.' The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops
                             the message or terminates the session.
                           </li><li class="test-"><a id="_t_106" class="defined" href="#_t_106">Test FCS_DTLSS_EXT.1:5.3.3</a>:
       
-                            The evaluator shall send a third client hello including the same ciphersuite but indicating a group not supported by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> in the supported groups extension. 
+                            The evaluator shall send a client hello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as in the previous two tests including the same ciphersuite, but now instead indicating a group not supported by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> in the supported groups extension. 
                             The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message or terminates the session.
                             <p>
                             <b>Note:</b> If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the sessions for the second and third handshake, the test is successful.
@@ -2804,13 +2804,13 @@ The following sections list Common Criteria and technology terms used in this do
                           The evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a client key exchange message to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> consisting of a valid element in the supported group and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully completes the session.
                         </li><li class="test-"><a id="_t_108" class="defined" href="#_t_108">Test FCS_DTLSS_EXT.1:5.3.5</a>:
       
-                            The evaluator shall close the session and resend a similar client hello with identical ciphersuite and supported
+                            The evaluator shall send a client hello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as in the previous test with identical ciphersuite and supported
                             group extension values. After the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends the valid key exchange message, the evaluator shall send a client key 
                             exchange message consisting of an invalid element of the supported group and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops
                             the key exchange message or terminates the handshake.
                         </li><li class="test-"><a id="_t_109" class="defined" href="#_t_109">Test FCS_DTLSS_EXT.1:5.3.6</a>:
       
-                            The evaluator shall send a third client hello to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> indicating the same supported <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> ciphersuite and including an <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> group that is not supported. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the client hello message or terminates the session. 
+                            The evaluator shall send a third client hello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as in the previous two tests indicating the same supported <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> ciphersuite, but now instead including an <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> group that is not supported. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the client hello message or terminates the session. 
                           <p>
                             <b>Note:</b> Note: If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the sessions for the second and third handshake, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the key exchange message (second handshake) and client hello message (third handshake), the evaluator shall continue sending the respective messages until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> logs a fatal error alert message (e.g., decryption failure, illegal parameter, handshake error, insufficient security) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without logging a fatal error alert).  
                           </p><p>
@@ -3631,12 +3631,12 @@ The following sections list Common Criteria and technology terms used in this do
                 The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> implementation description includes the extensions as required in <a href="#FCS_TLSC_EXT.1.4">FCS_TLSC_EXT.1.4</a>.
                 </p>
                 <p>
-                The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> describes applications that use the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> functions and how they establish reference identifiers.
+                The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes applications that use the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> functions and how they establish reference identifiers.
                 </p>
                 <p>
-                If name matching is supported, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> includes a description of matching methods used for each supported name type to 
+                If name matching is supported, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> includes a description of matching methods used for each supported name type to 
                 the supported application defined reference identifiers. 
-                The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> includes a description 
+                The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> includes a description 
                 of wildcards recognized for each name type claimed in <a href="#FCS_TLSC_EXT.1.5">FCS_TLSC_EXT.1.5</a> and shall verify that the matching rules meet or exceed best practices. 
                 In particular, the evaluator shall ensure that the matching rules are as restrictive as, or more restrictive than the following: 
                 <ul>
@@ -3663,7 +3663,7 @@ The following sections list Common Criteria and technology terms used in this do
                   If name types are passed to the supported functions, the evaluator shall verify that for each claimed supported function, the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> includes a description of the information used to validate the identifier that is passed to that function.
                 </p>
                 <p>
-                  If name constraints are passed to the certificate verification function, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> describes
+                  If name constraints are passed to the certificate verification function, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes
                   the initial allow and deny tables for each reference identity reference name supported.
                 </p>
 	      </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
@@ -4167,7 +4167,7 @@ The following sections list Common Criteria and technology terms used in this do
                         </p></li>
                       <li class="test-"><a id="_t_187" class="defined" href="#_t_187">Test FCS_TLSC_EXT.1:9.3.2</a>:
       The evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to use the name matching method and establish reference identifiers matching only the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr>-encoded name. 
-                        The evaluator shall ensure that the test server sends the certificate with the matching <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr>-encoded name and matching <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name, and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
+                        The evaluator shall ensure that the test server sends the certificate with the matching <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr>-encoded name and non-matching <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr>, and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
                         <p>
                         It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., bad certificate, unknown certificate) in response to this, 
                         but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).  
@@ -4466,10 +4466,6 @@ The following sections list Common Criteria and technology terms used in this do
                   <span class="testlist-"><ul>
                     <li class="test-"><a id="_t_202" class="defined" href="#_t_202">Test FCS_TLSC_EXT.4:2.1</a>:
       [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and supports a configuration to reject <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to prevent renegotiation.  The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session between the so-configured <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server that is configured to perform a compliant handshake, followed by a hello reset request. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> completes the initial handshake successfully but does not initiate renegotiation after receiving the hello request.
-                      <p>
-                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., unexpected message) in response to this, 
-                      but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
-                      </p>
                     </li>
                     <li class="test-"><a id="_t_203" class="defined" href="#_t_203">Test FCS_TLSC_EXT.4:2.2</a>:
       [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session between the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server that completes a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 handshake, 
@@ -4683,7 +4679,7 @@ The following sections list Common Criteria and technology terms used in this do
               <p>
                 In <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 handshakes, the cryptographic parameters are determined by the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuite components passed in the client
                 hello. In <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the cryptographic parameters are determined by the ciphersuite components and the supported group
-                extension. When both <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 are supported, cryptographic parameters are determined by the highest version
+                extension. When both <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 are supported, cryptographic parameters are determined by the highest version
                 supported by the client.
               </p>
               <p>
@@ -5098,11 +5094,12 @@ The following sections list Common Criteria and technology terms used in this do
                             The evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> a client key exchange with a valid point in the group and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully completes the session.
                           </li><li class="test-"><a id="_t_237" class="defined" href="#_t_237">Test FCS_TLSS_EXT.1:5.3.2</a>:
       
-                            The evaluator shall close the session and resend the client hello. After the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds with a valid key exchange message, 
+                            The evaluator shall send a client hello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as in the previous test with identical ciphersuite and supported
+                            group extension values. After the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds with a valid key exchange message, 
                             the evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a client key exchange with the public key value '0.' The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
                           </li><li class="test-"><a id="_t_238" class="defined" href="#_t_238">Test FCS_TLSS_EXT.1:5.3.3</a>:
       
-                            The evaluator shall send a new client hello including the same ciphersuite but indicating a group not supported by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> in the supported groups extension. 
+                            The evaluator shall send a client hello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as in the previous two tests including the same ciphersuite, but now instead indicating a group not supported by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> in the supported groups extension. 
                             The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
                             <p>
                             <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., decryption failure, illegal parameter, handshake error) in response to this, 
@@ -5116,11 +5113,11 @@ The following sections list Common Criteria and technology terms used in this do
                             The evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a client key exchange message to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> consisting of a valid element in the supported group and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully completes the session.
                           </li><li class="test-"><a id="_t_240" class="defined" href="#_t_240">Test FCS_TLSS_EXT.1:5.3.5</a>:
       
-                            The evaluator shall close the session and resend the client hello. After the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends the valid key exchange message, 
+                            The evaluator shall send a client hello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as in the previous test with identical ciphersuite and supported group extension values. After the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends the valid key exchange message, 
                             the evaluator shall send a client key exchange message consisting of an invalid element of the supported group and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the handshake.
                           </li><li class="test-"><a id="_t_241" class="defined" href="#_t_241">Test FCS_TLSS_EXT.1:5.3.6</a>:
       
-                            The evaluator shall send a third client hello to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> indicating the supported <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> ciphersuite and including an <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> group that is not supported. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session. 
+                            The evaluator shall send a client hello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as in the previous two tests indicating the supported <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> ciphersuite, but now including an <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> group that is not supported. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session. 
                             <p>
                             <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., decryption failure, illegal parameter, handshake error, insufficient security) in response to this, 
                             but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).  
@@ -5208,18 +5205,18 @@ The following sections list Common Criteria and technology terms used in this do
     </span><span class="note">
              <p>
              The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims any certificate processing exceptions that are allowed for specific calling applications. 
-             The ‘continue establishment of a server-only authenticated <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel…’ selection is claimed if the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> product supports applications that can 
+             The "continue establishment of a server-only authenticated <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel" selection is claimed if the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> product supports applications that can 
              provide services to unauthenticated users if the user does not possess an appropriate certificate. 
              Within this selection, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author indicates which applications are able to support both authenticated and unauthenticated users.
              </p><p>
-             The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims "continue establishment of a mutually authenticated <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel…" if there is an administrator configuration or 
+             The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims "continue establishment of a mutually authenticated <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel" if there is an administrator configuration or 
              user confirmation that revocation status information is not available for one or more of the certificates in the client’s certificate chain. 
              If claimed, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author will describe in the assignment for intermediate values which <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr> certificates are included in the exception 
              (for example, “all intermediates but the issuing <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr>” or “specific end-entity certificates as configured”). 
              Within this selection, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specifies which applications are impacted and which authorized user is allowed to approve continuing with the session 
-             when revocation information is not available. 
+             when revocation information is not available.</p><p> 
              If an administrator configures whether a user may accept a certificate without status information, both selections are claimed. 
-             The "as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>-specific default" should only be selected for applications that do not have access to revocation information. This
+             The "a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>-specific default" selection should only be chosen for applications that do not have access to revocation information. This
              is not claimed when alternate revocation methods are claimed in <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> that apply to <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client certificates.
              Methods for obtaining revocation information are included in <span class="no-link">FIA_X509_EXT.1</span>.
              </p>
@@ -5540,7 +5537,7 @@ The following sections list Common Criteria and technology terms used in this do
 	              </li>
 	              <li class="test-"><a id="_t_260" class="defined" href="#_t_260">Test FCS_TLSS_EXT.4:2.6</a>:
       
-	                [conditional]  If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall follow the operational guidance as necessary to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to negotiate the version and reject renegotiation. The evaluator shall initiate a valid initial session for the specified version, send a valid client hello on the non-renegotiable <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel, and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
+	                [conditional]  If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall follow the operational guidance as necessary to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to negotiate the version. The evaluator shall initiate a valid initial session for the specified version, send a valid client hello on the non-renegotiable <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel, and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
 	                <p>
 	                <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., unexpected message) in response to this, 
 	                but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
