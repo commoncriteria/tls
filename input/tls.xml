@@ -1032,7 +1032,7 @@
                         <h:p>
                           <h:b>Note:</h:b> If the TSF terminates the handshake, the test is successful. If the TSF silently drops the
                           message, the evaluator shall continue sending the server hello until the TSF times out. It is preferred that
-                          the TSF logss a fatal error alert message (e.g., handshake failure, illegal parameter, bad certificate,
+                          the TSF logs a fatal error alert message (e.g., handshake failure, illegal parameter, bad certificate,
                           decryption error) in response to this, but it is acceptable that the TSF terminates the connection silently
                           (i.e., without logging a fatal error alert).  
                         </h:p></test>
