@@ -2478,12 +2478,12 @@
                           that the server key exchange message indicates the specific group. The evaluator shall send the TOE a client key 
                           exchange with a valid point in the group and observe that the TSF successfully completes the session.
                           </test><test>
-                            The evaluator shall close the session and resend a similar client hello with identical ciphersuite and supported
+                            The evaluator shall send a client hello to the TOE as in the previous test with identical ciphersuite and supported
                             group extension values. After the TSF responds with a valid key exchange message, the evaluator shall send the 
                             TSF a client key exchange with the public key value '0.' The evaluator shall observe that the TSF silently drops
                             the message or terminates the session.
                           </test><test>
-                            The evaluator shall send a third client hello including the same ciphersuite but indicating a group not supported by the TSF in the supported groups extension. 
+                            The evaluator shall send a client hello to the TOE as in the previous two tests including the same ciphersuite, but now instead indicating a group not supported by the TSF in the supported groups extension. 
                             The evaluator shall observe that the TSF silently drops the message or terminates the session.
                             <h:p>
                             <h:b>Note:</h:b> If the TSF terminates the sessions for the second and third handshake, the test is successful.
@@ -2500,12 +2500,12 @@
                           The evaluator shall observe that the TSF sends a key exchange message with a valid point of the specified group. 
                           The evaluator shall send the TSF a client key exchange message to the TSF consisting of a valid element in the supported group and observe that the TSF successfully completes the session.
                         </test><test>
-                            The evaluator shall close the session and resend a similar client hello with identical ciphersuite and supported
+                            The evaluator shall send a client hello to the TOE as in the previous test with identical ciphersuite and supported
                             group extension values. After the TSF sends the valid key exchange message, the evaluator shall send a client key 
                             exchange message consisting of an invalid element of the supported group and observe that the TSF silently drops
                             the key exchange message or terminates the handshake.
                         </test><test>
-                            The evaluator shall send a third client hello to the TSF indicating the same supported ECDHE ciphersuite and including an ECDHE group that is not supported. The evaluator shall observe that the TSF silently drops the client hello message or terminates the session. 
+                            The evaluator shall send a third client hello to the TOE as in the previous two tests indicating the same supported ECDHE ciphersuite, but now instead including an ECDHE group that is not supported. The evaluator shall observe that the TSF silently drops the client hello message or terminates the session. 
                           <h:p>
                             <h:b>Note:</h:b> Note: If the TSF terminates the sessions for the second and third handshake, the test is successful. If the TSF silently drops the key exchange message (second handshake) and client hello message (third handshake), the evaluator shall continue sending the respective messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., decryption failure, illegal parameter, handshake error, insufficient security) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).  
                           </h:p><h:p>
@@ -3520,12 +3520,12 @@
                 The evaluator shall verify that the TLS implementation description includes the extensions as required in FCS_TLSC_EXT.1.4.
                 </h:p>
                 <h:p>
-                The evaluator shall verify that the ST describes applications that use the TLS functions and how they establish reference identifiers.
+                The evaluator shall verify that the TSS describes applications that use the TLS functions and how they establish reference identifiers.
                 </h:p>
                 <h:p>
-                If name matching is supported, the evaluator shall verify that the ST includes a description of matching methods used for each supported name type to 
+                If name matching is supported, the evaluator shall verify that the TSS includes a description of matching methods used for each supported name type to 
                 the supported application defined reference identifiers. 
-                The evaluator shall verify that the ST includes a description 
+                The evaluator shall verify that the TSS includes a description 
                 of wildcards recognized for each name type claimed in FCS_TLSC_EXT.1.5 and shall verify that the matching rules meet or exceed best practices. 
                 In particular, the evaluator shall ensure that the matching rules are as restrictive as, or more restrictive than the following: 
                 <h:ul>
@@ -3552,7 +3552,7 @@
                   If name types are passed to the supported functions, the evaluator shall verify that for each claimed supported function, the TSS includes a description of the information used to validate the identifier that is passed to that function.
                 </h:p>
                 <h:p>
-                  If name constraints are passed to the certificate verification function, the evaluator shall verify that the ST describes
+                  If name constraints are passed to the certificate verification function, the evaluator shall verify that the TSS describes
                   the initial allow and deny tables for each reference identity reference name supported.
                 </h:p>
 	      </TSS>
@@ -4004,7 +4004,7 @@
                         <h:b>Note:</h:b> Configuration of the TSF may depend on the application using TLS.
                         </h:p></test>
                       <test>The evaluator shall follow the operational guidance to configure the TSF to use the name matching method and establish reference identifiers matching only the CN-encoded name. 
-                        The evaluator shall ensure that the test server sends the certificate with the matching CN-encoded name and matching SAN name, and observe that the TSF terminates the session.
+                        The evaluator shall ensure that the test server sends the certificate with the matching CN-encoded name and non-matching SAN, and observe that the TSF terminates the session.
                         <h:p>
                         It is preferred that the TSF sends a fatal error alert message (e.g., bad certificate, unknown certificate) in response to this, 
                         but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).  
@@ -4334,10 +4334,6 @@
                 <test id="tls-client-prevents-renegotiation">[conditional] if the TSF supports a configuration that prevents renegotiation, the evaluator shall perform the following tests:
                   <testlist>
                     <test>[conditional] If the TSF supports TLS 1.2 and supports a configuration to reject TLS 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to prevent renegotiation.  The evaluator shall initiate a TLS session between the so-configured TSF and a test TLS 1.2 server that is configured to perform a compliant handshake, followed by a hello reset request. The evaluator shall confirm that the TSF completes the initial handshake successfully but does not initiate renegotiation after receiving the hello request.
-                      <h:p>
-                      <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., unexpected message) in response to this, 
-                      but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
-                      </h:p>
                     </test>
                     <test>[conditional] If the TSF supports TLS 1.3, the evaluator shall initiate a TLS session between the TSF and a test TLS 1.3 server that completes a compliant TLS 1.3 handshake, 
                       followed by a hello reset message. The evaluator shall observe that the TSF completes the initial TLS 1.3 handshake successfully, but terminates the session on receiving the hello reset message.
@@ -4614,7 +4610,7 @@
               <h:p>
                 In TLS 1.2 handshakes, the cryptographic parameters are determined by the TLS 1.2 ciphersuite components passed in the client
                 hello. In TLS 1.3, the cryptographic parameters are determined by the ciphersuite components and the supported group
-                extension. When both TLS 1.2 and DTLS 1.3 are supported, cryptographic parameters are determined by the highest version
+                extension. When both TLS 1.2 and TLS 1.3 are supported, cryptographic parameters are determined by the highest version
                 supported by the client.
               </h:p>
               <h:p>
@@ -5070,10 +5066,11 @@
                             The evaluator shall observe that the TSF negotiates TLS 1.2 using the indicated ciphersuite and that the server key exchange message indicates the specific group. 
                             The evaluator shall send the TOE a client key exchange with a valid point in the group and observe that the TSF successfully completes the session.
                           </test><test>
-                            The evaluator shall close the session and resend the client hello. After the TSF responds with a valid key exchange message, 
+                            The evaluator shall send a client hello to the TOE as in the previous test with identical ciphersuite and supported
+                            group extension values. After the TSF responds with a valid key exchange message, 
                             the evaluator shall send the TSF a client key exchange with the public key value '0.' The evaluator shall observe that the TSF terminates the session.
                           </test><test>
-                            The evaluator shall send a new client hello including the same ciphersuite but indicating a group not supported by the TSF in the supported groups extension. 
+                            The evaluator shall send a client hello to the TOE as in the previous two tests including the same ciphersuite, but now instead indicating a group not supported by the TSF in the supported groups extension. 
                             The evaluator shall observe that the TSF terminates the session.
                             <h:p>
                             <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., decryption failure, illegal parameter, handshake error) in response to this, 
@@ -5085,10 +5082,10 @@
                             The evaluator shall observe that the TSF sends a key exchange message with a valid point of the specified group. 
                             The evaluator shall send the TSF a client key exchange message to the TSF consisting of a valid element in the supported group and observe that the TSF successfully completes the session.
                           </test><test>
-                            The evaluator shall close the session and resend the client hello. After the TSF sends the valid key exchange message, 
+                            The evaluator shall send a client hello to the TOE as in the previous test with identical ciphersuite and supported group extension values. After the TSF sends the valid key exchange message, 
                             the evaluator shall send a client key exchange message consisting of an invalid element of the supported group and observe that the TSF terminates the handshake.
                           </test><test>
-                            The evaluator shall send a third client hello to the TSF indicating the supported ECDHE ciphersuite and including an ECDHE group that is not supported. The evaluator shall observe that the TSF terminates the session. 
+                            The evaluator shall send a client hello to the TOE as in the previous two tests indicating the supported ECDHE ciphersuite, but now including an ECDHE group that is not supported. The evaluator shall observe that the TSF terminates the session. 
                             <h:p>
                             <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., decryption failure, illegal parameter, handshake error, insufficient security) in response to this, 
                             but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).  
@@ -5203,18 +5200,18 @@
            <note role="application">
              <h:p>
              The ST author claims any certificate processing exceptions that are allowed for specific calling applications. 
-             The ‘continue establishment of a server-only authenticated TLS channel…’ selection is claimed if the TLS product supports applications that can 
+             The "continue establishment of a server-only authenticated TLS channel" selection is claimed if the TLS product supports applications that can 
              provide services to unauthenticated users if the user does not possess an appropriate certificate. 
              Within this selection, the ST author indicates which applications are able to support both authenticated and unauthenticated users.
              </h:p><h:p>
-             The ST author claims "continue establishment of a mutually authenticated TLS channel…" if there is an administrator configuration or 
+             The ST author claims "continue establishment of a mutually authenticated TLS channel" if there is an administrator configuration or 
              user confirmation that revocation status information is not available for one or more of the certificates in the client’s certificate chain. 
              If claimed, the ST author will describe in the assignment for intermediate values which CA certificates are included in the exception 
              (for example, “all intermediates but the issuing CA” or “specific end-entity certificates as configured”). 
              Within this selection, the ST author specifies which applications are impacted and which authorized user is allowed to approve continuing with the session 
-             when revocation information is not available. 
+             when revocation information is not available.</h:p><h:p> 
              If an administrator configures whether a user may accept a certificate without status information, both selections are claimed. 
-             The "as a TLS-specific default" should only be selected for applications that do not have access to revocation information. This
+             The "a TLS-specific default" selection should only be chosen for applications that do not have access to revocation information. This
              is not claimed when alternate revocation methods are claimed in FIA_X509_EXT.1 that apply to TLS client certificates.
              Methods for obtaining revocation information are included in <no-link>FIA_X509_EXT.1</no-link>.
              </h:p>
@@ -5550,7 +5547,7 @@
 	              <test>[conditional]  If the TSF rejects renegotiation for TLS 1.2, the evaluator shall follow the operational guidance as necessary to configure the TSF to reject renegotiation. The evaluator shall initiate a valid initial session, send a valid Client Hello on the non-renegotiable TLS channel, and observe that the TSF does not perform renegotiation of the TLS channel.
 	              </test>
 	              <test>
-	                [conditional]  If the TSF supports TLS 1.3, the evaluator shall follow the operational guidance as necessary to configure the TSF to negotiate the version and reject renegotiation. The evaluator shall initiate a valid initial session for the specified version, send a valid client hello on the non-renegotiable TLS channel, and observe that the TSF terminates the session.
+	                [conditional]  If the TSF supports TLS 1.3, the evaluator shall follow the operational guidance as necessary to configure the TSF to negotiate the version. The evaluator shall initiate a valid initial session for the specified version, send a valid client hello on the non-renegotiable TLS channel, and observe that the TSF terminates the session.
 	                <h:p>
 	                <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., unexpected message) in response to this, 
 	                but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
