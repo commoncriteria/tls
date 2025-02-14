@@ -105,7 +105,7 @@
       <term abbr="IP" full="Internet Protocol"/>
       <!-- <term abbr="LDAP" full="Lightweight Directory Access Protocol"/>  -->
       <term abbr="NIST" full="National Institute of Standards and Technology"/>
-      <term full="Presented identifier">A piece of data supplied by an external entity to identify itself to the calling application via an X.509 certificate as part of the (D)TLS handshake. The certificate may include one or more identifiers in the subject field of the certificate or in the Subject Altenrative Name (SAN) extension. The presented identifier is compared to the reference identifier to determine the validity of the external entity.</term>
+      <term full="Presented identifier">A piece of data supplied by an external entity to identify itself to the calling application via an X.509 certificate as part of the (D)TLS handshake. The certificate may include one or more identifiers in the subject field of the certificate or in the Subject Alternative Name (SAN) extension. The presented identifier is compared to the reference identifier to determine the validity of the external entity.</term>
       <term full="Reference identifier">A piece of data defined by a calling application that is used to specify how an external entity is expected to present itself (such as the DNS name of a server that presents a certificate to the TOE). </term>
       <term abbr="RFC" full="Request for Comment (IETF)"/>
       <term abbr="RSA" full="Rivest Shamir Adelman"/>
