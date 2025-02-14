@@ -3,7 +3,6 @@ output/tls-release-linkable.html: 0xfefd
 output/tls-release-linkable.html: 4E
 output/tls-release-linkable.html: 4F
 output/tls-release-linkable.html: AIA
-output/tls-release-linkable.html: Altenrative
 output/tls-release-linkable.html: CIDR
 output/tls-release-linkable.html: CNSA
 output/tls-release-linkable.html: ContentType
@@ -48,7 +47,6 @@ output/tls-release.html: 0xfefd
 output/tls-release.html: 4E
 output/tls-release.html: 4F
 output/tls-release.html: AIA
-output/tls-release.html: Altenrative
 output/tls-release.html: CIDR
 output/tls-release.html: CNSA
 output/tls-release.html: ContentType
@@ -105,7 +103,6 @@ output/tls.html: 0xfefd
 output/tls.html: 4E
 output/tls.html: 4F
 output/tls.html: AIA
-output/tls.html: Altenrative
 output/tls.html: CIDR
 output/tls.html: CNSA
 output/tls.html: ContentType
