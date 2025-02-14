@@ -2557,7 +2557,7 @@
                 
       </aactivity>
     </f-element>
-  	<audit-event type="optional">
+  	<audit-event>
   	  <audit-event-descr>Failure to establish a DTLS session</audit-event-descr>
   	  <audit-event-info>Reason for failure</audit-event-info>
 	</audit-event>
@@ -4042,15 +4042,15 @@
 	             </Tests>
             </aactivity>
           </f-element> 
-	    <audit-event type="optional">
+	    <audit-event>
 	      <audit-event-descr>Failure to establish a TLS session</audit-event-descr>
 	      <audit-event-info>eason for failure</audit-event-info>
 	    </audit-event>
-	    <audit-event type="optional">
+	    <audit-event>
 	      <audit-event-descr>Failure to verify presented identifier</audit-event-descr>
 	      <audit-event-info>Presented identifier and reference identifier</audit-event-info>
 	    </audit-event>
-	    <audit-event type="optional">
+	    <audit-event>
 	      <audit-event-descr>Establishment and termination of a TLS session</audit-event-descr>
 	      <audit-event-info>Non-TOE endpoint of connection</audit-event-info>
 	    </audit-event>
@@ -5128,7 +5128,7 @@
             </aactivity>
           </f-element>
         
-          <audit-event type="optional">
+          <audit-event>
             <audit-event-descr>Failure to establish a TLS session</audit-event-descr>
             <audit-event-info>Reason for failure</audit-event-info>
           </audit-event>
