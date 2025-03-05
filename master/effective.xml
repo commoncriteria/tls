@@ -6,7 +6,7 @@
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>2.1</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2024-10-23</PPPubDate>
+      <PPPubDate>2025-03-05</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -31,7 +31,7 @@
     </entry>
     <entry>
       <version>2.1</version>
-      <date>2024-10-23</date>
+      <date>2025-03-05</date>
       <subject>Updated for CC:2022 conformance, incorporated applicable errata.</subject>
     </entry>
 	  
@@ -546,7 +546,7 @@
               (DHE or ECDHE) mode</selectable>
             <selectable>extended_master_secret extension (RFC 7627) enforcing server support, and
               <selectables>
-                <selectable>allowing legacy support</selectable>
+                <selectable>allowing legacy servers</selectable>
                 <selectable>no other enforcement mode</selectable>
               </selectables></selectable>
             <selectable>no other extensions</selectable></selectables>
@@ -2075,8 +2075,7 @@
                 <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                   <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
                   <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
-                  <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
-                  <selectable>rsa_pss_rsae_sha256 (RFC 8446)</selectable>
+
                 
                   <selectable>no other signature algorithms</selectable>
                 </selectables></selectable>
@@ -2094,7 +2093,7 @@
               <selectable>key_share extension (RFC 8446)</selectable>
               <selectable>extended_master_secret extension (RFC 7627) enforcing client support and
                 <selectables>
-                  <selectable>allowing legacy client support</selectable>
+                  <selectable>allowing legacy clients</selectable>
                   <selectable>no other enforcement mode</selectable>
                 </selectables></selectable>
               <selectable>no other extensions</selectable></selectables>.
@@ -3338,7 +3337,7 @@
                    (DHE or ECDHE) mode</selectable>
                  <selectable>extended_master_secret extension (RFC 7627) enforcing server support, and
                    <selectables>
-                     <selectable>allowing legacy server support</selectable>
+                     <selectable>allowing legacy servers</selectable>
                      <selectable>no other enforcement mode</selectable>
                    </selectables></selectable>
                  <selectable>no other extensions</selectable></selectables>
@@ -4653,7 +4652,7 @@
                   <selectable>key_share extension (RFC 8446)</selectable>
                     <selectable>extended_master_secret extension (RFC 7627) enforcing client support and
                       <selectables>
-                        <selectable>allowing legacy client support</selectable>
+                        <selectable>allowing legacy clients</selectable>
                         <selectable>no other enforcement mode</selectable>
                       </selectables></selectable>
                   <selectable>no other extensions</selectable></selectables>.
