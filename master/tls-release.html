@@ -1065,7 +1065,7 @@ The following sections list Common Criteria and technology terms used in this do
         </p>
         <p>
           In addition to the supported ciphersuites, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author indicates the order of ciphersuites included in the ClientHello, 
-          indicating the preferred ciphersuites for server negotiation. To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. It is recommended, but not required, that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites
+          indicating the preferred ciphersuites for server negotiation. To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is running) the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> uses the assignment to specify a dynamic ordering and the describes in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> the conditions for presenting the ordering. It is recommended, but not required, that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites
           claimed are listed before <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites, and that any other ciphersuites are listed last among the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.
         </p>
       </span></div></div></div>
@@ -1133,7 +1133,9 @@ The following sections list Common Criteria and technology terms used in this do
         </p><p>
           If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 is supported and if <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> ciphersuites are claimed in <a href="#FCS_DTLSC_EXT.1.2">FCS_DTLSC_EXT.1.2</a>, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed.
         </p>
-        
+        <p>
+          For compatibility purposes, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> clients may offer additional supported_groups values beyond what is specified in the selection.
+        </p>
         <p>
           Other extensions may be supported; certain extensions and values may need to be claimed for <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> defined outside of this package related to the calling applications.
         </p>
@@ -1892,13 +1894,13 @@ The following sections list Common Criteria and technology terms used in this do
       The reference identifier contains a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion with two labels, and the certificate includes a name whose <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion includes 
                               a matching rightmost label and a wildcard in the leftmost label (e.g., *.com).</li>
                             <li class="test-"><a id="_t_48" class="defined" href="#_t_48">Test FCS_DTLSC_EXT.1:9.2.5.2</a>:
+      The reference identifier contains a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion with two labels, 
+                              and the certificate includes a name whose <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion includes two rightmost labels matching the reference identifier, 
+                              and a wildcard in a third (leftmost) label (e.g., *.example.com, which does not match "example.com").</li>
+                            <li class="test-"><a id="_t_49" class="defined" href="#_t_49">Test FCS_DTLSC_EXT.1:9.2.5.3</a>:
       The reference identifier contains a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion with four labels, 
                               and the certificate includes a name whose <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion includes two rightmost labels matching the reference identifier, 
                               and a wildcard in the third label, and a matching identifier in the fourth (leftmost) label (e.g., foo.*.example.com).</li>
-                            <li class="test-"><a id="_t_49" class="defined" href="#_t_49">Test FCS_DTLSC_EXT.1:9.2.5.3</a>:
-      The reference identifier contains a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion with three labels, 
-                              and the certificate includes a name whose <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion includes two rightmost labels matching the reference identifier, 
-                              and a wildcard in the third (leftmost) label (e.g., *.example.com).</li>
                             <p>
                               <b>Note:</b> For negative sub-tests, if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>
                               silently drops the message, the evaluator shall continue sending the server finished until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out.
@@ -3564,7 +3566,7 @@ The following sections list Common Criteria and technology terms used in this do
               </p>
               <p>
               In addition to the supported ciphersuites, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author indicates the order of ciphersuites included in the ClientHello,
-              indicating the preferred ciphersuites for server negotiation.  To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. It is recommended, but not required, that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites
+              indicating the preferred ciphersuites for server negotiation.  To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is running) the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> uses the assignment to specify a dynamic ordering and the describes in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> the conditions for presenting the ordering. It is recommended, but not required, that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites
               claimed are listed before <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites, and that any other ciphersuites are listed last among the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.
               </p>
             </span></div></div></div>
@@ -4227,13 +4229,13 @@ The following sections list Common Criteria and technology terms used in this do
       The reference identifier contains a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion with two labels, and the certificate includes a name whose <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion includes 
                               a matching rightmost label and a wildcard in the leftmost label (e.g., *.com).</li>
                             <li class="test-"><a id="_t_180" class="defined" href="#_t_180">Test FCS_TLSC_EXT.1:9.2.5.2</a>:
+      The reference identifier contains a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion with two labels, 
+                              and the certificate includes a name whose <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion includes two rightmost labels matching the reference identifier, 
+                              and a wildcard in a third (leftmost) label (e.g., *.example.com, which does not match "example.com").</li>
+                            <li class="test-"><a id="_t_181" class="defined" href="#_t_181">Test FCS_TLSC_EXT.1:9.2.5.3</a>:
       The reference identifier contains a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion with four labels, 
                               and the certificate includes a name whose <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion includes two rightmost labels matching the reference identifier, 
                               and a wildcard in the third label, and a matching identifier in the fourth (leftmost) label (e.g., foo.*.example.com).</li>
-                            <li class="test-"><a id="_t_181" class="defined" href="#_t_181">Test FCS_TLSC_EXT.1:9.2.5.3</a>:
-      The reference identifier contains a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion with three labels, 
-                              and the certificate includes a name whose <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion includes two rightmost labels matching the reference identifier, 
-                              and a wildcard in the third (leftmost) label (e.g., *.example.com).</li>
                           </ul></span>
                         </li>
                         <li class="test-"><a id="_t_182" class="defined" href="#_t_182">Test FCS_TLSC_EXT.1:9.2.6</a>:
@@ -4805,6 +4807,9 @@ The following sections list Common Criteria and technology terms used in this do
               <p>
             If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> ciphersuites are claimed in <a href="#FCS_TLSS_EXT.1.2">FCS_TLSS_EXT.1.2</a>, the entry for supported_groups is claimed. Support for additional extensions is acceptable.
             For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
+              </p>
+              <p>
+                For compatibility purposes, <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> clients may offer additional supported_groups values beyond what is specified in the selection.
               </p>
           </span></div></div></div>
           <div class="element"><div class="reqid" id="FCS_TLSS_EXT.1.5"><a href="#FCS_TLSS_EXT.1.5" class="abbr">FCS_TLSS_EXT.1.5</a></div><div class="reqdesc">
