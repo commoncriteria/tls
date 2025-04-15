@@ -126,7 +126,7 @@
       include selection-based requirements in accordance with the
       selections or assignments indicated in the PP or PP-Module.  These may be expanded by the
       ST author.
-      </h:p><h:p>
+      </h:p>
       The PP or PP-Module which instantiates this Package must typically include
       the following components in order to satisfy dependencies of this Package. It is the responsibility
       of the PP or PP-Module author who instantiates this Package to ensure that dependence
@@ -171,7 +171,7 @@
           </notes>
       </componentneeded>
     </componentsneeded>
-    </h:p><h:p>
+    <h:p>
       An ST must identify the applicable version of the PP or
       PP-Module and this Package in its conformance claims.
       </h:p>
