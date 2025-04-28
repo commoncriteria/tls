@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="..\transformspp2html.xsl"?>
 <?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<Package xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section">
+<Package name="TLS" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section">
  <PPReference>
   <ReferenceTable>
    <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
@@ -33,7 +33,6 @@
    <subject>Updated for CC:2022 conformance, incorporated applicable errata.</subject>
   </entry>
  </RevisionHistory>
- <modules/>
  <pp-preferences>
   <!--          <pp-pref name="display-audit-with-sfrs">0</pp-pref>   -->
   <audit-events-in-sfrs></audit-events-in-sfrs>
@@ -52,42 +51,38 @@
         security over a TCP/IP network.</term>
   </tech-terms>
   <section title="Compliant Targets of Evaluation" id="TOEdescription">
+   The Target of Evaluation (TOE) in this Package is a product that acts as a (D)TLS client, a (D)TLS server, or both. This Package describes the security functionality of TLS and DTLS in terms of
+   <xref g="CC"></xref>
+   .
+   <h:br/>
+   <h:br/>
+   The contents of this Package must be appropriately combined with a PP or PP-Module. When this Package is instantiated by a PP or PP-Module, the Package must include selection-based requirements in accordance with the selections or assignments indicated in the PP or PP-Module. These may be expanded by the ST author.
+   <h:br/>
+   <h:br/>
    <componentsneeded>
     <componentneeded>
-     <componentneeded>
-      <componentID>FCS_CKM.1</componentID>
-      <notes>To support TLS ciphersuites that use RSA, DHE or ECDHE for key exchange, the PP or PP-Module must include FCS_CKM.1 and specify the corresponding key generation algorithm.</notes>
-     </componentneeded>
+     <componentID>FCS_CKM.1</componentID>
+     <notes>To support TLS ciphersuites that use RSA, DHE or ECDHE for key exchange, the PP or PP-Module must include FCS_CKM.1 and specify the corresponding key generation algorithm.</notes>
     </componentneeded>
     <componentneeded>
-     <componentneeded>
-      <componentID>FCS_CKM.2</componentID>
-      <notes>To support TLS ciphersuites that use RSA, DHE or ECDHE for key exchange, the PP or PP-Module must include FCS_CKM.2 and specify the corresponding algorithm.</notes>
-     </componentneeded>
+     <componentID>FCS_CKM.2</componentID>
+     <notes>To support TLS ciphersuites that use RSA, DHE or ECDHE for key exchange, the PP or PP-Module must include FCS_CKM.2 and specify the corresponding algorithm.</notes>
     </componentneeded>
     <componentneeded>
-     <componentneeded>
-      <componentID>FCS_COP.1</componentID>
-      <notes>To support TLS ciphersuites that use AES for encryption and decryption, the PP or PP-Module must include FCS_COP.1 (iterating as needed) and specify AES with corresponding key sizes and modes. To support TLS ciphersuites that use SHA for hashing, the PP or PP-Module must include FCS_COP.1 (iterating as needed) and specify SHA with corresponding digest sizes.</notes>
-     </componentneeded>
+     <componentID>FCS_COP.1</componentID>
+     <notes>To support TLS ciphersuites that use AES for encryption and decryption, the PP or PP-Module must include FCS_COP.1 (iterating as needed) and specify AES with corresponding key sizes and modes. To support TLS ciphersuites that use SHA for hashing, the PP or PP-Module must include FCS_COP.1 (iterating as needed) and specify SHA with corresponding digest sizes.</notes>
     </componentneeded>
     <componentneeded>
-     <componentneeded>
-      <componentID>FCS_RBG.1</componentID>
-      <notes>To support random bit generation needed for SSH key generation, the PP or PP-Module must include FCS_RBG.1 or an extended SFR that defines comparable functionality.</notes>
-     </componentneeded>
+     <componentID>FCS_RBG.1</componentID>
+     <notes>To support random bit generation needed for SSH key generation, the PP or PP-Module must include FCS_RBG.1 or an extended SFR that defines comparable functionality.</notes>
     </componentneeded>
     <componentneeded>
-     <componentneeded>
-      <componentID>FIA_X509_EXT.1</componentID>
-      <notes>To support validation of certificates needed during TLS connection setup, the PP or PP-Module must include FIA_X509_EXT.1.</notes>
-     </componentneeded>
+     <componentID>FIA_X509_EXT.1</componentID>
+     <notes>To support validation of certificates needed during TLS connection setup, the PP or PP-Module must include FIA_X509_EXT.1.</notes>
     </componentneeded>
     <componentneeded>
-     <componentneeded>
-      <componentID>FIA_X509_EXT.2</componentID>
-      <notes>To support the use of X509 certificates for authentication in TLS connection setup, the PP or PP-Module must include FIA_X509_EXT.2.</notes>
-     </componentneeded>
+     <componentID>FIA_X509_EXT.2</componentID>
+     <notes>To support the use of X509 certificates for authentication in TLS connection setup, the PP or PP-Module must include FIA_X509_EXT.2.</notes>
     </componentneeded>
    </componentsneeded>
   </section>
