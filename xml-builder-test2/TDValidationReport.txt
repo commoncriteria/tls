@@ -1,3 +1,0 @@
-/home/runner/work/tls/tls/output/effective.xml:2371:9: error: text not allowed here; expected element "appendix", "bibliography" or "section" or an element from another namespace
-/home/runner/work/tls/tls/output/effective.xml:2371:50: error: text not allowed here; expected element "appendix", "bibliography" or "section" or an element from another namespace
-/home/runner/work/tls/tls/output/effective.xml:2371:54: error: text not allowed here; expected element "appendix", "bibliography" or "section" or an element from another namespace

@@ -1,2 +1,0 @@
-/home/runner/work/tls/tls/input/tls.xml:2374:9: error: text not allowed here; expected element "appendix", "bibliography" or "section" or an element from another namespace
-/home/runner/work/tls/tls/input/tls.xml:2374:51: error: text not allowed here; expected element "appendix", "bibliography" or "section" or an element from another namespace
