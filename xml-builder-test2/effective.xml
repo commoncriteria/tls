@@ -152,7 +152,7 @@
   <!-- 3.0 Security Problem Definition-->
   <!-- 4.0 Security Objectives -->
   <!-- 5.0 Security Requirements -->
-  <sec:SFRs title="Security Functional Requirements">
+  <sec:Security_Functional_Requirements title="Security Functional Requirements">
     <sec:Auditable_Events_for_Mandatory_SFRs><h:p>The auditable events specified in this Functional Package are included in a Security Target if the incorporating PP or PP-Module supports audit event reporting through FAU_GEN.1 and all other criteria in the incorporating PP or PP-Module are met. Note that, if "None" is not selected in the "Auditable Events" column, it should not be selected in the "Additional Audit Record Contents" column. Likewise, if "None" is selected in the "Auditable Events" column, it should also be selected in the "Additional Audit Record Contents" column.</h:p><audit-table table="mandatory" id="t-audit-mandatory"/></sec:Auditable_Events_for_Mandatory_SFRs>
     <!--5.1.1 Class: Cryptographic Support (FCS)-->
     <section id="fcs" title="Class: Cryptographic Support (FCS)">
@@ -2365,7 +2365,7 @@
         <audit-event/>
       </f-component>
     </section>
-  </sec:SFRs>
+  </sec:Security_Functional_Requirements>
   <bibliography>
     <cc-entry/>
     <entry id="bibCEM">
