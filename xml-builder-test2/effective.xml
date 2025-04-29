@@ -136,6 +136,10 @@
           <notes>To support the use of X509 certificates for authentication in TLS connection setup, the PP or PP-Module must include FIA_X509_EXT.2.</notes>
         </componentneeded>
       </componentsneeded>
+      
+      An ST must identify the applicable version of the PP or
+      PP-Module and this Package in its conformance claims.
+      <h:br/>
     </section>
   </sec:Introduction>
   <sec:Conformance_Claims boilerplate="no">
