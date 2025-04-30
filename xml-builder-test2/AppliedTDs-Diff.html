@@ -1146,9 +1146,6 @@
                                         <p></p>
                                         It is sufficient to observe the successful negotiation of a ciphersuite to satisfy the intent of the test; it is not necessary to examine the characteristics of the encrypted traffic in an attempt to discern the ciphersuite being used (for example, that the cryptographic algorithm is 128-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> and not 256-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>).
                                         <p></p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="dtls-client-obsolete-versions" class="defined" href="#dtls-client-obsolete-versions">Test FCS_DTLSC_EXT.1:2</a>: (obsolete versions) The evaluator shall perform the following tests: <span class="testlist-">
@@ -1287,9 +1284,7 @@
                                         </span> 
                                     </li>
                                     <li class="test-">
-                                        <a id="_t_20" class="defined" href="#_t_20">Test FCS_DTLSC_EXT.1:6</a>: (corrupt finished message) For each supported version, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server that sends a compliant set of server handshake messages, except for sending a modified finished message (modify a byte of the finished message that would have been sent by a compliant server). The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message or terminates the session and in either case, does not complete the handshake by observing that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not send application data provided to the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel. <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
+                                        <a id="_t_20" class="defined" href="#_t_20">Test FCS_DTLSC_EXT.1:6</a>: (corrupt finished message) For each supported version, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server that sends a compliant set of server handshake messages, except for sending a modified finished message (modify a byte of the finished message that would have been sent by a compliant server). The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message or terminates the session and in either case, does not complete the handshake by observing that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not send application data provided to the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel.
                                     </li>
                                     <li class="test-">
                                         <a id="dtls-client-missing-finished" class="defined" href="#dtls-client-missing-finished">Test FCS_DTLSC_EXT.1:7</a>: (missing finished message) For each supported version, the evaluator shall initiate a session from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server providing a compliant handshake, except for sending a random <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> message (the five byte header indicates a correct <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> message for the negotiated version, but not indicating a finished message) as the final message. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message or terminates the session and in either case, does not send application data.
@@ -1299,9 +1294,6 @@
                                         <p></p>
                                         For <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, the modified message is sent after the change_cipher_spec message. For <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, the modified message is sent as the last message of the server&rsquo;s second flight of messages.
                                         <p></p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_22" class="defined" href="#_t_22">Test FCS_DTLSC_EXT.1:8</a>: (unexpected/corrupt signatures within handshake) The evaluator shall perform the following tests, according to the versions supported. <span class="testlist-">
@@ -1370,9 +1362,6 @@
                                         <p>
                                             For each version supported, the evaluator shall establish a connection using a compliant handshake negotiating the version. The evaluator shall then cause the test server to send application data with at least one byte in a record message modified from what a compliant test server would send, and verify that the client discards the record or terminates the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session as described in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>. If multiple behaviors are supported, the evaluator shall repeat the test for each behavior.
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -1438,23 +1427,16 @@
                              For each supported <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version, the evaluator shall perform the following tests: <span class="testlist-">
                                 <ul>
                                     <li class="test-">
-                                        <a id="_t_33" class="defined" href="#_t_33">Test FCS_DTLSC_EXT.2:1</a>: The evaluator shall establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> connection from the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server that negotiates the tested version and which is not configured for mutual authentication (i.e., does not send a Server&rsquo;s Certificate Request (type 13) message). The evaluator shall observe negotiation of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> did not send a Client&rsquo;s Certificate message (type 11) during handshake. <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
+                                        <a id="_t_33" class="defined" href="#_t_33">Test FCS_DTLSC_EXT.2:1</a>: The evaluator shall establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> connection from the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server that negotiates the tested version and which is not configured for mutual authentication (i.e., does not send a Server&rsquo;s Certificate Request (type 13) message). The evaluator shall observe negotiation of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> did not send a Client&rsquo;s Certificate message (type 11) during handshake.
                                     </li>
                                     <li class="test-">
-                                        <a id="_t_34" class="defined" href="#_t_34">Test FCS_DTLSC_EXT.2:2</a>: The evaluator shall establish a connection to a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server with a shared trusted root that is configured for mutual authentication (i.e., it sends a Server&rsquo;s Certificate Request (type 13) message). The evaluator shall observe negotiation of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> responds with a non-empty Client&rsquo;s Certificate message (type 11) and Certificate Verify (type 15) message. <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
+                                        <a id="_t_34" class="defined" href="#_t_34">Test FCS_DTLSC_EXT.2:2</a>: The evaluator shall establish a connection to a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server with a shared trusted root that is configured for mutual authentication (i.e., it sends a Server&rsquo;s Certificate Request (type 13) message). The evaluator shall observe negotiation of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> responds with a non-empty Client&rsquo;s Certificate message (type 11) and Certificate Verify (type 15) message.
                                     </li>
                                     <li class="test-">
                                         <a id="_t_35" class="defined" href="#_t_35">Test FCS_DTLSC_EXT.2:3</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports post-handshake authentication, the evaluator shall establish a pre-shared key between the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 server. The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session using the pre-shared key and confirm the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 server successfully complete the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> handshake and both support post-handshake authentication. After the session is successfully established, the evaluator shall initiate a certificate request message from the test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 server. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> receives that authentication request and shall take necessary actions, in accordance with the operational guidance, to complete the authentication request. The evaluator shall confirm that the test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 server receives certificate and certificate verification messages from the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> over the channel that authenticates the client.
                                         <p>
                                             <b>Note:</b><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 certificate requests from the test server and client certificate and certificate verify messages are encrypted. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends the appropriate messages by examining the messages received at the test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> receives data configured at the test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server.
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -1524,9 +1506,6 @@
                                         <p>
                                             <b>Note:</b>If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message, the evaluator shall continue sending the server message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> logs a fatal error alert message (e.g., illegal parameter), but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminate the session without logging an error alert.
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_37" class="defined" href="#_t_37">Test FCS_DTLSC_EXT.3:2</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator to prevent downgrade to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0, and if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> indicates a configuration where the indicator is processed, the evaluator shall follow operational guidance instructions to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> so it parses a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.1 ServerHello message to detect and process the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> downgrade indicator. The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server that is configured to send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 ServerHello message with the downgrade indicator &lsquo;44 4F 57 4E 47 52 44 00&rsquo; in the last eight bytes of the server random field, but which is otherwise compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4347. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the ServerHello message or terminates the session as described in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
@@ -1536,9 +1515,6 @@
                                         <p></p>
                                         Use of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 and below indicator as a redundant mechanism where there is no configuration that actually processes the value does not require additional testing, since this would be addressed by <a href="#dtls-client-obsolete-versions" class="dynref">Test FCS_DTLSC_EXT.1:2</a>for <a href="#FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</a>. This test is only required if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds differently (e.g., a different error alert) when the downgrade indicator is present than when <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 or below is negotiated and the downgrade indicator is not present.
                                         <p></p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -1719,18 +1695,12 @@
                                         <p>
                                             <b>Note:</b>For each method, successful establishment refers to proper use of the mechanism, to include compliant extensions and behavior, as indicated in the referenced <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr>.
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_45" class="defined" href="#_t_45">Test FCS_DTLSC_EXT.5:2</a>: (<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 session id echo) [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, the evaluator shall initiate a new <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 session with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server. The evaluator shall cause the test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server to send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 ServerHello message (or a hello retry request if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not include the key share extension) that contains a different value in the legacy_session_id field from the expected 32-byte value, and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the ServerHello message or terminates the session.
                                         <p>
                                             <b>Note:</b>If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message, the evaluator shall continue sending the ServerHello message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> logs a fatal error alert message (e.g., illegal parameter) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without logging a fatal error alert).
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -2326,14 +2296,10 @@
                                         </span> 
                                     </li>
                                     <li class="test-">
-                                        <a id="_t_68" class="defined" href="#_t_68">Test FCS_DTLSS_EXT.1:6</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, the evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 ClientHello message from a test client and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a HelloVerifyRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloVerifyRequest message and include the modified value as a cookie in the test client&rsquo;s second ClientHello message. The evaluator shall verify that the server rejects the client's handshake message. <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
+                                        <a id="_t_68" class="defined" href="#_t_68">Test FCS_DTLSS_EXT.1:6</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, the evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 ClientHello message from a test client and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a HelloVerifyRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloVerifyRequest message and include the modified value as a cookie in the test client&rsquo;s second ClientHello message. The evaluator shall verify that the server rejects the client's handshake message.
                                     </li>
                                     <li class="test-">
-                                        <a id="_t_69" class="defined" href="#_t_69">Test FCS_DTLSS_EXT.1:7</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, the evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 ClientHello message from a test client and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloRetryRequest message and include the modified value as a cookie in the test client&rsquo;s second ClientHello message. The evaluator shall verify that the server rejects the client's handshake message. <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
+                                        <a id="_t_69" class="defined" href="#_t_69">Test FCS_DTLSS_EXT.1:7</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, the evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 ClientHello message from a test client and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloRetryRequest message and include the modified value as a cookie in the test client&rsquo;s second ClientHello message. The evaluator shall verify that the server rejects the client's handshake message.
                                     </li>
                                 </ul>
                             </span> 
@@ -2509,9 +2475,6 @@
                                         <p>
                                             <b>Note:</b>If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message, the evaluator shall continue sending the client certificate message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> logs a fatal error alert message (e.g., handshake failure, bad certificate, unknown certificate, unknown <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr>) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without logging a fatal error alert).
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_71" class="defined" href="#_t_71">Test FCS_DTLSS_EXT.2:2</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> indicates that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports establishment of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session for missing or invalid certificates, then for each supported version, and for each supported response option for a missing or invalid certificate indicated in <a href="#FCS_DTLSS_EXT.2.3">FCS_DTLSS_EXT.2.3</a>, the evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> according to the operational guidance to respond as indicated for the calling application. The evaluator shall send client handshake messages from a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> client as indicated for each sub-test. The evaluator shall perform the following sub-tests: <span class="testlist-">
@@ -2587,9 +2550,6 @@
                                         <p></p>
                                         The intent of this test is to confirm that for each method that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> uses to match name types presented in validated certificates, it is able to recognize both matching and non-matching names. Names of special types implicitly encoded in the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> entry of the certificate subject name are especially prone to error since they may only be validated by the issuing <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr> as a directory name (RDN) type, especially if the issuing <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr> is unaware of the intended encoding as a different name type. It is a best practice that when the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> is interpreted as an embedded name type other than RDN, an explicitly encoded <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry should take precedence.
                                         <p></p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -2852,9 +2812,7 @@
                              The evaluator shall perform the following tests: <span class="testlist-">
                                 <ul>
                                     <li class="test-">
-                                        <a id="dtls-server-successful-resumption" class="defined" href="#dtls-server-successful-resumption">Test FCS_DTLSS_EXT.5:1</a>: For each supported version, and for each supported resumption method for that version, the evaluator shall establish a compliant initial <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for the version using the specified method. The evaluator shall close the successful session and initiate resumption using the specified mechanism. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully establishes the resumed session in accordance with the requirements. <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
+                                        <a id="dtls-server-successful-resumption" class="defined" href="#dtls-server-successful-resumption">Test FCS_DTLSS_EXT.5:1</a>: For each supported version, and for each supported resumption method for that version, the evaluator shall establish a compliant initial <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for the version using the specified method. The evaluator shall close the successful session and initiate resumption using the specified mechanism. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully establishes the resumed session in accordance with the requirements.
                                     </li>
                                     <li class="test-">
                                         <a id="_t_85" class="defined" href="#_t_85">Test FCS_DTLSS_EXT.5:2</a>: For each supported version and each supported resumption method for that version, the evaluator shall send a compliant ClientHello message supporting only the specific version and indicating support for the resumption method. The evaluator shall allow the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and test client to continue with the compliant handshake until resumption information is established but then cause a fatal error to terminate the session. The evaluator shall then send a new ClientHello in an attempt to resume the session with the resumption information provided and verify that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not resume the session, but instead silently drops the message, terminates the session, or completes a full handshake, ignoring the resumption information.
@@ -2864,9 +2822,6 @@
                                         <p></p>
                                         To terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session, it might be necessary to continue sending the invalid finished or application message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session or responds with a full handshake ignoring the resumption information, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the ClientHello containing the resumption information of the failed session, the evaluator shall continue sending the message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out.
                                         <p></p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -2940,18 +2895,12 @@
                                         <p>
                                             <b>Note:</b>If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session or completes a full <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 handshake, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message, the evaluator shall continue sending the ClientHello message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> logs a fatal error alert message (e.g., illegal parameter) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without logging a fatal error alert).
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_87" class="defined" href="#_t_87">Test FCS_DTLSS_EXT.6:2</a>: The evaluator shall establish a valid <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 session with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and send the data as application data after the finished messages have been verified, and observe the response. The evaluator shall then configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to clear the response and initiate a resumed session (see <a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a> <a href="#dtls-server-successful-resumption" class="dynref">Test FCS_DTLSS_EXT.5:1</a>) with a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not react to the early data as it did when presented as application data after the finished messages, indicating that the data was ignored.
                                         <p>
                                             <b>Note:</b>The specific early data used may depend on the applications calling the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session and should be selected to initiate an observable response in the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or calling application as described in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. For HTTPS, for example, the early data can be an <abbr class="dyn-abbr"><a href="#abbr_HTTP">HTTP</a></abbr> POST that updates data at the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -3418,9 +3367,6 @@
                                         <p></p>
                                         It is sufficient to observe the successful negotiation of a ciphersuite to satisfy the intent of the test; it is not necessary to examine the characteristics of the encrypted traffic in an attempt to discern the ciphersuite being used (for example, that the cryptographic algorithm is 128-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> and not 256-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>).
                                         <p></p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_89" class="defined" href="#_t_89">Test FCS_TLSC_EXT.1:2</a>: (obsolete versions) The evaluator shall perform the following tests: <span class="testlist-">
@@ -3559,9 +3505,7 @@
                                         </span> 
                                     </li>
                                     <li class="test-">
-                                        <a id="_t_107" class="defined" href="#_t_107">Test FCS_TLSC_EXT.1:6</a>: (corrupt finished message) For each supported version, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that sends a compliant set of server handshake messages, except for sending a modified finished message (modify a byte of the finished message that would have been sent by a compliant server). The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session and does not complete the handshake by observing that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not send application data provided to the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel. <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
+                                        <a id="_t_107" class="defined" href="#_t_107">Test FCS_TLSC_EXT.1:6</a>: (corrupt finished message) For each supported version, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that sends a compliant set of server handshake messages, except for sending a modified finished message (modify a byte of the finished message that would have been sent by a compliant server). The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session and does not complete the handshake by observing that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not send application data provided to the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel.
                                     </li>
                                     <li class="test-">
                                         <a id="tls-client-missing-finished" class="defined" href="#tls-client-missing-finished">Test FCS_TLSC_EXT.1:7</a>: (missing finished message) For each supported version, the evaluator shall initiate a session from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server providing a compliant handshake, except for sending a random <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> message (the five byte header indicates a correct <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> message for the negotiated version, but not indicating a finished message) as the final message. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session and does not send application data.
@@ -3571,9 +3515,6 @@
                                         <p></p>
                                         For <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, the modified message is sent after the change_cipher_spec message. For <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the modified message is sent as the last message of the server&rsquo;s second flight of messages.
                                         <p></p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_109" class="defined" href="#_t_109">Test FCS_TLSC_EXT.1:8</a>: (unexpected/corrupt signatures within handshake) The evaluator shall perform the following tests, according to the versions supported. <span class="testlist-">
@@ -3701,23 +3642,16 @@
                              For each supported <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> version, the evaluator shall perform the following tests: <span class="testlist-">
                                 <ul>
                                     <li class="test-">
-                                        <a id="_t_119" class="defined" href="#_t_119">Test FCS_TLSC_EXT.2:1</a>: The evaluator shall establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection from the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that negotiates the tested version and which is not configured for mutual authentication (i.e., does not send a Server&rsquo;s Certificate Request (type 13) message). The evaluator shall observe negotiation of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> did not send a Client&rsquo;s Certificate message (type 11) during handshake. <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
+                                        <a id="_t_119" class="defined" href="#_t_119">Test FCS_TLSC_EXT.2:1</a>: The evaluator shall establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection from the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that negotiates the tested version and which is not configured for mutual authentication (i.e., does not send a Server&rsquo;s Certificate Request (type 13) message). The evaluator shall observe negotiation of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> did not send a Client&rsquo;s Certificate message (type 11) during handshake.
                                     </li>
                                     <li class="test-">
-                                        <a id="_t_120" class="defined" href="#_t_120">Test FCS_TLSC_EXT.2:2</a>: The evaluator shall establish a connection to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server with a shared trusted root that is configured for mutual authentication (i.e., it sends a Server&rsquo;s Certificate Request (type 13) message). The evaluator shall observe negotiation of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> responds with a non-empty Client&rsquo;s Certificate message (type 11) and Certificate Verify (type 15) message. <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
+                                        <a id="_t_120" class="defined" href="#_t_120">Test FCS_TLSC_EXT.2:2</a>: The evaluator shall establish a connection to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server with a shared trusted root that is configured for mutual authentication (i.e., it sends a Server&rsquo;s Certificate Request (type 13) message). The evaluator shall observe negotiation of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> responds with a non-empty Client&rsquo;s Certificate message (type 11) and Certificate Verify (type 15) message.
                                     </li>
                                     <li class="test-">
                                         <a id="_t_121" class="defined" href="#_t_121">Test FCS_TLSC_EXT.2:3</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports post-handshake authentication, the evaluator shall establish a pre-shared key between the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server. The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session using the pre-shared key and confirm the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server successfully complete the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> handshake and both support post-handshake authentication. After the session is successfully established, the evaluator shall initiate a certificate request message from the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> receives that authentication request and shall take necessary actions, in accordance with the operational guidance, to complete the authentication request. The evaluator shall confirm that the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server receives certificate and certificate verification messages from the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> over the channel that authenticates the client.
                                         <p>
                                             <b>Note:</b><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 certificate requests from the test server and client certificate and certificate verify messages are encrypted. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends the appropriate messages by examining the messages received at the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> receives data configured at the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server.
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -3785,9 +3719,6 @@
                                         <p>
                                             <b>Note:</b>It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> send a fatal error alert message (e.g., illegal parameter), but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminate the session without sending an error alert.
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_123" class="defined" href="#_t_123">Test FCS_TLSC_EXT.3:2</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator and if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> indicates a configuration where the indicator is processed, the evaluator shall follow operational guidance instructions to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> so it parses a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 handshake to detect and process the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> downgrade indicator. The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that is configured to send a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 ServerHello message with the downgrade indicator &lsquo;44 4F 57 4E 47 52 44 00&rsquo; in the last eight bytes of the server random field, but which is otherwise compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session as described in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
@@ -3797,9 +3728,6 @@
                                         <p></p>
                                         Use of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 and below indicator as a redundant mechanism where there is no configuration that actually processes the value does not require additional testing, since this would be addressed by <a href="#tls-client-obsolete-versions" class="dynref" data-format=""></a>for <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>. This test is only required if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds differently (e.g., a different error alert) when the downgrade indicator is present than when <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below is negotiated and the downgrade indicator is not present.
                                         <p></p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -3975,18 +3903,12 @@
                                         <p>
                                             <b>Note:</b>For each method, successful establishment refers to proper use of the mechanism, to include compliant extensions and behavior, as indicated in the referenced <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr>.
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_131" class="defined" href="#_t_131">Test FCS_TLSC_EXT.5:2</a>: (<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 session id echo) [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall initiate a new <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 session with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server. The evaluator shall cause the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server to send a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ServerHello message (or a hello retry request if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not include the key share extension) that contains a different value in the legacy_session_id field from the expected 32-byte value, and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
                                         <p>
                                             <b>Note:</b>It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., illegal parameter) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -4750,9 +4672,6 @@
                                         <p>
                                             <b>Note:</b>It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake failure, bad certificate, unknown certificate, unknown <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr>) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_156" class="defined" href="#_t_156">Test FCS_TLSS_EXT.2:2</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> indicates that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports establishment of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session for missing or invalid certificates, then for each supported version, and for each supported response option for a missing or invalid certificate indicated in <a href="#FCS_TLSS_EXT.2.3">FCS_TLSS_EXT.2.3</a>, the evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> according to the operational guidance to respond as indicated for the calling application. The evaluator shall send client handshake messages from a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client as indicated for each sub-test. The evaluator shall perform the following sub-tests: <span class="testlist-">
@@ -4830,9 +4749,6 @@
                                         <p></p>
                                         <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 certificate requests from the test server and client certificate and certificate verify messages are encrypted. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends the appropriate messages by examining the messages received at the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> receives data configured at the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server.
                                         <p></p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -5087,18 +5003,13 @@
                              The evaluator shall perform the following tests: <span class="testlist-">
                                 <ul>
                                     <li class="test-">
-                                        <a id="tls-server-successful-resumption" class="defined" href="#tls-server-successful-resumption">Test FCS_TLSS_EXT.5:1</a>: For each supported version, and for each supported resumption method for that version, the evaluator shall establish a compliant initial <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for the version using the specified method. The evaluator shall close the successful session and initiate resumption using the specified mechanism. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully establishes the resumed session in accordance with the requirements. <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
+                                        <a id="tls-server-successful-resumption" class="defined" href="#tls-server-successful-resumption">Test FCS_TLSS_EXT.5:1</a>: For each supported version, and for each supported resumption method for that version, the evaluator shall establish a compliant initial <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for the version using the specified method. The evaluator shall close the successful session and initiate resumption using the specified mechanism. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully establishes the resumed session in accordance with the requirements.
                                     </li>
                                     <li class="test-">
                                         <a id="_t_171" class="defined" href="#_t_171">Test FCS_TLSS_EXT.5:2</a>: For each supported version and each supported resumption method for that version, the evaluator shall send a compliant ClientHello message supporting only the specific version and indicating support for the resumption method. The evaluator shall allow the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and test client to continue with the compliant handshake until resumption information is established but then cause a fatal error to terminate the session. The evaluator shall then send a new ClientHello in an attempt to resume the session with the resumption information provided and verify that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not resume the session, but instead either terminates the session or completes a full handshake, ignoring the resumption information.
                                         <p>
                                             <b>Note:</b>For <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, resumption information should be established at the point the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a ServerHello, either acknowledging the session-based resumption or acknowledging support for ticket-based resumption and sending a new_ticket message. A <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 session can then be terminated by sending a modified finished message. For <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the new_ticket message is sent after the finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted application data.
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
@@ -5172,18 +5083,12 @@
                                         <p>
                                             <b>Note:</b>It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., illegal parameter) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                     <li class="test-">
                                         <a id="_t_173" class="defined" href="#_t_173">Test FCS_TLSS_EXT.6:2</a>: The evaluator shall establish a valid <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 session with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and send the data as application data after the finished messages have been verified, and observe the response. The evaluator shall then configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to clear the response and initiate a resumed session (see <a href="#FCS_TLSS_EXT.5">FCS_TLSS_EXT.5</a> <a href="#tls-server-successful-resumption" class="dynref">Test FCS_TLSS_EXT.5:1</a>) with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not react to the early data as it did when presented as application data after the finished messages, indicating that the data was ignored.
                                         <p>
                                             <b>Note:</b>The specific early data used may depend on the applications calling the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session and should be selected to initiate an observable response in the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or calling application as described in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. For HTTPS, for example, the early data can be an <abbr class="dyn-abbr"><a href="#abbr_HTTP">HTTP</a></abbr> POST that updates data at the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
                                         </p>
-                                         <span class="testlist-">
-                                            <ul></ul>
-                                        </span> 
                                     </li>
                                 </ul>
                             </span> 
