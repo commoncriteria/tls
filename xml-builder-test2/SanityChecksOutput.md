@@ -1,3 +1,7 @@
+* Error: Detected multiple elements with an id of 'dtls-client-obsolete-versions'.
+* Error: Detected multiple elements with an id of 'dtls-client-obsolete-versions'.
+* Error: Detected multiple elements with an id of 'tls-server-no-finished-msg'.
+* Error: Detected multiple elements with an id of 'tls-server-no-finished-msg'.
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Introduction[1]""/sec:Overview[1]"Transport"/h:p[1]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Introduction[1]""/sec:Overview[1]"Transport"/h:p[2]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[1]""/f-element[1]""/note[1]""/h:p[1]"This SFR "/h:p[1]""
@@ -270,20 +274,6 @@
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[25]""/f-element[1]""/aactivity[1]""/Tests[1]""/h:p[1]"There are"/h:p[5]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[25]""/f-element[1]""/aactivity[1]""/Tests[1]""/h:p[1]"There are"/h:p[6]""
 * Warning: Detected an empty _p_ element./Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[25]""/f-element[1]""/aactivity[1]""/Tests[1]""/h:p[1]"There are"/h:p[7]""
- Failed to find a reference to dtls-client-nonstandard-versions.
- Failed to find a reference to dtls-client-nonstandard-versions.
- Failed to find a reference to dtls-client-signature-algs-cert.
- Failed to find a reference to dtls-server-version-confusion.
- Failed to find a reference to dtls-server-version-confusion.
- Failed to find a reference to tls-client-nonstandard-versions.
- Failed to find a reference to tls-client-nonstandard-versions.
- Failed to find a reference to tls-client-signature-algs-cert.
- Failed to find a reference to tls-client-obsolete-versions.
- Failed to find a reference to tls-server-supported-configurations.
- Failed to find a reference to tls-server-beta-versions.
- Failed to find a reference to tls-server-beta-versions.
- Failed to find a reference to tls-server-version-confusion.
- Failed to find a reference to tls-server-version-confusion.
 * Warning: Since FCS_TLS_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_DTLSC_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
