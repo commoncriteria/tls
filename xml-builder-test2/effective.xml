@@ -576,7 +576,6 @@
                 <test>[conditional] If the TSF supports DTLS 1.2, the evaluator shall send a DTLS 1.2 ClientHello message from a test client and observe that the TSF sends a HelloVerifyRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloVerifyRequest message and include the modified value as a cookie in the test client’s second ClientHello message. The evaluator shall verify that the server rejects the client's handshake message.</test>
                 <test>[conditional] If the TSF supports DTLS 1.3, the evaluator shall send a DTLS 1.3 ClientHello message from a test client and observe that the TSF sends a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloRetryRequest message and include the modified value as a cookie in the test client’s second ClientHello message. The evaluator shall verify that the server rejects the client's handshake message.</test>
               </testlist>
-              <testlist/>
             </Tests>
           </aactivity>
         </f-element>
