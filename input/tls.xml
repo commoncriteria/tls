@@ -437,7 +437,6 @@
             <selectable>TLS 1.2 ciphersuites: <selectables linebreak="yes">
               <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
               <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-              <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
               <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
               <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
               <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
@@ -522,8 +521,8 @@
             <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
             <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
           </selectables>, and <selectables linebreak="yes">
-              <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-              <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+              <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+              <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
 
               <selectable>no other signature algorithms</selectable>
           </selectables> and
@@ -534,22 +533,24 @@
               <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
               <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
             </selectables>, and <selectables linebreak="yes">
-                <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
             
                 <selectable>no other signature algorithms</selectable>
               </selectables></selectable>
-            <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables>
-                <selectable>DTLS 1.2</selectable>
+            <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3 and <selectables>
+                <selectable>TLS 1.2</selectable>
                 <selectable>no other versions</selectable>
               </selectables></selectable>
-            <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
-              <selectable>secp384r1</selectable>
-              <selectable>secp521r1</selectable>
-              <selectable>ffdhe3072(257)</selectable>
-              <selectable>ffdhe4096(258)</selectable>
-              <selectable>ffdhe6144(259)</selectable>
-              <selectable>ffdhe8192(260)</selectable></selectables></selectable>
+            <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
+              <selectable>secp384r1 (RFC 8446)</selectable>
+              <selectable>ffdhe3072(257) (RFC 7919)</selectable>
+              <selectable>ffdhe4096(258) (RFC 7919)</selectable>
+            </selectables> and <selectables linebreak="yes">
+              <selectable>secp521r1 (RFC 8446)</selectable>
+              <selectable>ffdhe6144(259) (RFC 7919)</selectable>
+              <selectable>ffdhe8192(260) (RFC 7919)</selectable>
+              <selectable>no other supported groups</selectable></selectables></selectable>
             <selectable>key_share extension (RFC 8446)</selectable>
             <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke
               (DHE or ECDHE) mode</selectable>
@@ -573,8 +574,8 @@
                   <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
                   <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
                 </selectables>, and <selectables linebreak="yes">
-                    <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                    <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                    <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                    <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
                     
                     <selectable>no other signature algorithms</selectable>
                 </selectables> and
@@ -1992,7 +1993,6 @@
           <selectable>TLS 1.2 ciphersuites: <selectables linebreak="yes">
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-            <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
@@ -2074,8 +2074,8 @@
             <selectables linebreak="yes">
               <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
               <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
     
                 <selectable>no other signature algorithms</selectable></selectables>
           </h:li>
@@ -2085,23 +2085,25 @@
               <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
                 <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
                 <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                  <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                  <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                  <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                  <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
 
                 
                   <selectable>no other signature algorithms</selectable>
                 </selectables></selectable>
-              <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables>
-                <selectable>DTLS 1.2</selectable>
+              <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3 and <selectables>
+                <selectable>TLS 1.2</selectable>
                 <selectable>no other versions</selectable>
               </selectables></selectable>
-              <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
-                <selectable>secp384r1</selectable>
-                <selectable>secp521r1</selectable>
-                <selectable>ffdhe3072(257)</selectable>
-                <selectable>ffdhe4096(258)</selectable>
-                <selectable>ffdhe6144(259)</selectable>
-                <selectable>ffdhe8192(260)</selectable></selectables></selectable>
+              <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
+                <selectable>secp384r1 (RFC 8446)</selectable>
+                <selectable>ffdhe3072(257) (RFC 7919)</selectable>
+                <selectable>ffdhe4096(258) (RFC 7919)</selectable>
+              </selectables> and <selectables linebreak="yes">
+                <selectable>secp521r1 (RFC 8446)</selectable>
+                <selectable>ffdhe6144(259) (RFC 7919)</selectable>
+                <selectable>ffdhe8192(260) (RFC 7919)</selectable>
+                <selectable>no other supported groups</selectable></selectables></selectable>
               <selectable>key_share extension (RFC 8446)</selectable>
               <selectable>extended_master_secret extension (RFC 7627) enforcing client support and
                 <selectables>
@@ -2119,8 +2121,8 @@
               <selectables linebreak="yes">
                 <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
                 <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                  <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                  <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                  <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                  <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
        
                   <selectable>no other signature algorithms</selectable></selectables>
             </h:li>
@@ -3226,7 +3228,6 @@
           <selectables linebreak="yes">
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-            <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
@@ -3317,33 +3318,35 @@
                <selectables linebreak="yes">
                  <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
                  <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                   <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                   <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                   <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                   <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
                
                    <selectable>no other signature algorithms</selectable></selectables>
                and
              </h:li>
            </h:ul>
                <selectables linebreak="yes">
-                 <selectable>signature_algorithms_cert extension (RFC 5246, RFC 8446) indicating support for <selectables linebreak="yes">
+                 <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
                    <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
                    <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                     <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                     <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                     <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                     <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
                   
                      <selectable>no other signature algorithms</selectable>
                    </selectables></selectable>
-                 <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables>
+                 <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3 and <selectables>
                    <selectable>TLS 1.2</selectable>
                    <selectable>no other versions</selectable>
                  </selectables></selectable>
-                 <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
-                   <selectable>secp384r1</selectable>
-                   <selectable>secp521r1</selectable>
-                   <selectable>ffdhe3072(257)</selectable>
-                   <selectable>ffdhe4096(258)</selectable>
-                   <selectable>ffdhe6144(259)</selectable>
-                   <selectable>ffdhe8192(260)</selectable></selectables></selectable>
+                 <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
+                   <selectable>secp384r1 (RFC 8446)</selectable>
+                   <selectable>ffdhe3072(257) (RFC 7919)</selectable>
+                   <selectable>ffdhe4096(258) (RFC 7919)</selectable>
+                 </selectables> and <selectables linebreak="yes">
+                   <selectable>secp521r1 (RFC 8446)</selectable>
+                   <selectable>ffdhe6144(259) (RFC 7919)</selectable>
+                   <selectable>ffdhe8192(260) (RFC 7919)</selectable>
+                   <selectable>no other supported groups</selectable></selectables></selectable>
                  <selectable>key_share extension (RFC 8446)</selectable>
                  <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke
                    (DHE or ECDHE) mode</selectable>
@@ -3366,8 +3369,8 @@
                     <selectables linebreak="yes">
                       <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
                       <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                        <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                        <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                        <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                        <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
                     
                         <selectable>no other signature algorithms</selectable></selectables>
                     and
@@ -4552,7 +4555,6 @@
               <selectables linebreak="yes">
                 <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
                 <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-                <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
                 <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
                 <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
                 <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289</selectable>
@@ -4634,8 +4636,8 @@
                 <selectables linebreak="yes">
                   <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
                   <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                    <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                    <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                    <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                    <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
            
                     <selectable>no other signature algorithms</selectable></selectables>
                 and
@@ -4646,8 +4648,8 @@
                   <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
                     <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
                     <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                      <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                      <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                      <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                      <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
               
                       <selectable>no other signature algorithms</selectable>
                     </selectables></selectable>
@@ -4655,13 +4657,14 @@
                     <selectable>TLS 1.2</selectable>
                     <selectable>no other versions</selectable>
                   </selectables></selectable>
-                  <selectable>supported_groups extension (RFC 7919, RFC 8446) indicating support for <selectables linebreak="yes">
-                    <selectable>secp384r1</selectable>
-                    <selectable>secp521r1</selectable>
-                    <selectable>ffdhe3072(257)</selectable>
-                    <selectable>ffdhe4096(258)</selectable>
-                    <selectable>ffdhe6144(259)</selectable>
-                    <selectable>ffdhe8192(260)</selectable></selectables></selectable>
+                  <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
+                    <selectable>secp384r1 (RFC 8446)</selectable>
+                    <selectable>ffdhe3072(257) (RFC 7919)</selectable>
+                    <selectable>ffdhe4096(258) (RFC 7919)</selectable>
+                  </selectables> and <selectables linebreak="yes">
+                    <selectable>secp521r1 (RFC 8446)</selectable>
+                    <selectable>ffdhe6144(259) (RFC 7919)</selectable>
+                    <selectable>ffdhe8192(260) (RFC 7919)</selectable></selectables></selectable>
                   <selectable>key_share extension (RFC 8446)</selectable>
                     <selectable>extended_master_secret extension (RFC 7627) enforcing client support and
                       <selectables>
@@ -4679,8 +4682,8 @@
                     <selectables linebreak="yes">
                       <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
                       <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                        <selectable>rsa_pss_pss_sha384 (RFC 8603)</selectable>
-                        <selectable>rsa_pss_rsae_sha384 (RFC 8603)</selectable>
+                        <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                        <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
                        
                         <selectable>no other signature algorithms</selectable></selectables>
                     and
