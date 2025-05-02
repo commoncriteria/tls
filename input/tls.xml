@@ -3792,15 +3792,66 @@
                     It is preferred that the TSF sends a fatal error alert message (e.g., unsupported certificate, bad certificate, decryption error, handshake failure) in response to this, 
                     but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                   </h:p></test>
-                  <test>(extended_master_secret) [conditional] If TLS 1.2 is supported, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation and initiate a TLS 1.2 session with a test TLS server configured to compute a master secret according to RFC 5246, section 8.
+                  <test>(extended_master_secret) [conditional] If the TSF supports TLS 1.2 and the extended_master_secret extension is supported the evaluator shall establish a connection 
+                    from the TOE with a test TLS server configured as described in the following test and observe the behavior.
                     <h:p>
-                    The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627, 
-                    and ensures that the test TLS server does not include the extended master secret extension in its ServerHello. 
-                    The evaluator shall observe that the TSF terminates the session.
-                    </h:p><h:p>
-                    <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure) in response to this, 
-                    but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
-                  </h:p></test>
+                      <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure) in response to terminating a session, but it is acceptable that 
+                      the TSF terminates the connection silently (i.e., without sending a fatal error alert).
+                    </h:p>
+                    <h:p>If the TOE supports Legacy Servers, perform test 3.</h:p>
+                    <h:p>If the TOE supports session resumption, perform tests 6-7.</h:p>
+                    <h:p>If the TOE supports both, perform tests 4-5.</h:p>
+                    <testlist>
+                      <test>
+                        <h:p>The evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and initiate 
+                        a TLS 1.2 session with a test TLS server configured to use the extended_master_secret extension/compute a master secret according to RFC 7627, section 4.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627, and ensures that the test TLS server 
+                          includes the extended master secret extension in its ServerHello. The evaluator shall observe that the TLS session between the TOE and TLS Server is established successfully.</h:p>
+                      </test>
+                      <test>
+                        <h:p>The evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and initiate a TLS 1.2 
+                          session with a test TLS server configured to omit the extended_master_secret extension/compute a master secret according to RFC 5246, section 8.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensure that the test TLS server does not 
+                          include the extended master secret extension in its ServerHello.  The evaluator shall observe that the TSF terminates the connection in accordance with the behavior documented 
+                          in the ST and the TLS session between the TOE and TLS Server fails.</h:p>
+                      </test>
+                      <test>
+                        <h:p>[conditional] If the TOE supports allowing legacy servers the evaluator shall configure the TSF (if so configurable) to allow legacy servers and initiate a TLS 1.2 session 
+                          with a test TLS server configured to omit the extended_master_secret extension/compute a master secret according to RFC 5246, section 8.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensures that the test TLS server does 
+                          not include the extended master secret extension in its ServerHello.  The evaluator shall observe that the TLS session between the TOE and TLS Server is established successfully.</h:p>
+                      </test>
+                      <test>
+                        <h:p>[conditional] If the TOE supports allowing legacy servers, and the TOE supports TLS session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy 
+                          servers and resume a TLS 1.2 session that previously computed the master secret in accordance with RFC 5246, section 8 (did not use the extended master secret extension in accordance 
+                          with RFC 7627) with a test TLS server configured to include the extended_master_secret extension/compute a master secret according to RFC 7627, section 4.</h:p>
+                        <h:p>
+                          The evaluator shall observe that the TSF’s ClientHello omits the extended master secret extension and ensures that the test TLS server includes the extended master secret extension in 
+                          its ServerHello.  The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session 
+                          between the TOE and TLS Server fails.</h:p>
+                      </test>
+                      <test>
+                        <h:p>[conditional] If the TOE supports allowing legacy servers, and the TOE supports TLS session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy 
+                          servers and resume a TLS 1.2 session that previously used the extended master secret extension in accordance with RFC 7627 with a test TLS server configured to omit the extended_master_secret extension.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensures that the test TLS server does not include the extended master 
+                          secret extension in its ServerHello.  The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session 
+                          between the TOE and TLS Server fails.</h:p>
+                      </test>
+                      <test>
+                        <h:p>[conditional] If the TOE supports TLS session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) 
+                          and resume a TLS 1.2 session that previously computed the master secret in accordance with RFC 5246, section 8 (did not use the extended master secret extension in accordance with RFC 7627) with a test TLS server 
+                          configured to include the extended_master_secret extension/compute a master secret according to RFC 7627, section 4.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello omits the extended master secret extension and ensures that the test TLS server includes the extended master secret extension in its ServerHello. 
+                          The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS Server fails.</h:p>
+                      </test>
+                      <test>
+                        <h:p>[conditional] If the TOE supports TLS session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) 
+                          and resume a TLS 1.2 session that previously used the extended master secret extension in accordance with RFC 7627 with a test TLS server configured to omit the extended_master_secret extension.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensures that the test TLS server does not include the extended master secret 
+                          extension in its ServerHello.  The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS Server fails.</h:p>
+                      </test>
+                    </testlist>
+                  </test>
                   <test>(supported_groups for TLS 1.2) [conditional] If the TSF supports TLS 1.2, and supports ECDHE or DHE ciphersuites, the evaluator shall perform the following tests.
                   <testlist>
                     <test>For each supported group, the evaluator shall initiate a TLS session with a compliant test TLS 1.2 server supporting RFC 7919. 
