@@ -510,12 +510,12 @@
               </h:p></note>
           <aactivity level="component">
             <TSS><h:p>
-            The evaluator shall ensure that the TSS description required per  includes the use of client-side certificates for DTLS mutual authentication. 
+            The evaluator shall ensure that the TSS description required per  <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client-side certificates for DTLS mutual authentication. 
             The evaluator shall also ensure that the TSS describes any factors beyond configuration that are necessary in order for the client to engage in mutual authentication using X.509v3 certificates.
           </h:p></TSS>
             <Guidance><h:p>
             The evaluator shall ensure that the operational guidance includes any instructions necessary to configure the TOE to perform mutual authentication. 
-            The evaluator shall also verify that the operational guidance required per  includes instructions for configuring the client-side certificates for DTLS mutual authentication.
+            The evaluator shall also verify that the operational guidance required per  <no-link>FIA_X509_EXT.2.1</no-link> includes instructions for configuring the client-side certificates for DTLS mutual authentication.
           </h:p></Guidance>
             <Tests>
               For each supported DTLS version, the evaluator shall perform the following tests:
@@ -967,7 +967,7 @@
               </h:p></note>
           <aactivity level="component">
             <TSS><h:p>
-            The evaluator shall ensure that the TSS description required per  includes the use of client-side certificates for DTLS mutual authentication, 
+            The evaluator shall ensure that the TSS description required per  <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client-side certificates for DTLS mutual authentication, 
             and that the description includes any certificate validation exception rules and the name types supported for matching to reference identifiers for all applications that use DTLS. 
             The evaluator shall examine the TSS to ensure that any CN-embedded name types that are used include a description of the encoding and matching rules.<h:p/>
               The evaluator shall ensure that the TSS includes a description of each response option claimed in FCS_DTLSS_EXT.2.3, to include the supporting functions using the option, and the behavior of functions exercising a non-authenticated option or exception processing (if claimed).
@@ -1016,7 +1016,7 @@
           </aactivity>
         </f-element>
         <f-element id="fcs_dtlss_ext-2-2">
-          <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with.</title>
+          <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with<no-link>FIA_X509_EXT.1</no-link>  .</title>
         </f-element>
         <f-element id="fcs_dtlss_ext-2-3">
           <title>The TSF shall be able to reject the establishment of a trusted channel if the requested client certificate is invalid and <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.2.3_1">continue establishment of a server-only authenticated DTLS channel in accordance with FCS_DTLSS_EXT.1 in support of <selectables><selectable id="fcs_dtlss_ext.2.3_2">all applications</selectable><selectable id="fcs_dtlss_ext.2.3_4"><assignable>list of calling applications that accept both authenticated and unauthenticated client sessions</assignable></selectable></selectables> when an empty certificate message is provided by the client</selectable><selectable id="fcs_dtlss_ext.2.3_5">continue establishment of a mutually authenticated DTLS channel when revocation status information for the <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.2.3_6">client's leaf certificate</selectable><selectable id="fcs_dtlss_ext.2.3_8"><assignable>specific intermediate CA certificates</assignable></selectable><selectable id="fcs_dtlss_ext.2.3_9">any non-trust store certificate in the certificate chain</selectable></selectables> is not available in support of <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.2.3_10">all applications</selectable><selectable id="fcs_dtlss_ext.2.3_12"><assignable>list of calling applications configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.2.3_13">configured by an administrator</selectable><selectable id="fcs_dtlss_ext.2.3_14">confirmed by the supported function user</selectable><selectable id="fcs_dtlss_ext.2.3_16"><assignable>subset of supported function</assignable></selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.2.3_17">no other processing options for missing or invalid client certificates</selectable> </selectables>.</title>
@@ -1573,12 +1573,12 @@
               </h:p></note>
           <aactivity level="component">
             <TSS><h:p>
-                The evaluator shall ensure that the TSS description required per  includes the use of client-side certificates for TLS mutual authentication. 
+                The evaluator shall ensure that the TSS description required per  <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client-side certificates for TLS mutual authentication. 
                 The evaluator shall also ensure that the TSS describes any factors beyond configuration that are necessary in order for the client to engage in mutual authentication using X.509v3 certificates.
                 </h:p></TSS>
             <Guidance><h:p>
                 The evaluator shall ensure that the operational guidance includes any instructions necessary to configure the TOE to perform mutual authentication. 
-                The evaluator shall also verify that the operational guidance required per  includes instructions for configuring the client-side certificates for TLS mutual authentication.
+                The evaluator shall also verify that the operational guidance required per  <no-link>FIA_X509_EXT.2.1</no-link> includes instructions for configuring the client-side certificates for TLS mutual authentication.
                 </h:p></Guidance>
             <Tests>
               For each supported TLS version, the evaluator shall perform the following tests:
@@ -2010,7 +2010,7 @@
               </h:p></note>
           <aactivity level="component">
             <TSS><h:p>
-	          The evaluator shall ensure that the TSS description required per  includes the use of client-side certificates for TLS mutual authentication, 
+	          The evaluator shall ensure that the TSS description required per  <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client-side certificates for TLS mutual authentication, 
 	        and that the description includes any certificate validation exception rules and the name types supported for matching to reference identifiers for all applications that use TLS. 
 	        The evaluator shall examine the TSS to ensure that any CN-embedded name types that are used include a description of the encoding and matching rules.<h:p/>
 	          The evaluator shall ensure that the TSS includes a description of each response option claimed in  <xref to="fel-tlss-invalid-client-cert"/>, to include the supporting functions using the option, and the behavior of functions exercising a non-authenticated option or exception processing (if claimed).
@@ -2064,7 +2064,7 @@
           </aactivity>
         </f-element>
         <f-element id="fel-tlss-x509-auth">
-          <title>The TSF shall support authentication of TLS clients using X.509v3 certificates in accordance with.</title>
+          <title>The TSF shall support authentication of TLS clients using X.509v3 certificates in accordance with<no-link>FIA_X509_EXT.1</no-link>  .</title>
         </f-element>
         <f-element id="fel-tlss-invalid-client-cert">
           <title>The TSF shall be able to reject the establishment of a trusted channel if the requested client certificate is invalid and <selectables linebreak="yes"><selectable id="fcs_tlss_ext.2.3_1">continue establishment of a server-only authenticated TLS channel in accordance with FCS_TLSS_EXT.1 in support of <selectables><selectable id="fcs_tlss_ext.2.3_2">all applications</selectable><selectable id="fcs_tlss_ext.2.3_4"><assignable>list of calling applications that accept both authenticated and unauthenticated client sessions</assignable></selectable></selectables> when an empty certificate message is provided by the client</selectable><selectable id="fcs_tlss_ext.2.3_5">continue establishment of a mutually authenticated TLS channel when revocation status information for the <selectables linebreak="yes"><selectable id="fcs_tlss_ext.2.3_6">client's leaf certificate</selectable><selectable id="fcs_tlss_ext.2.3_8"><assignable>specific intermediate CA certificates</assignable></selectable><selectable id="fcs_tlss_ext.2.3_9">any non-trust store certificate in the certificate chain</selectable></selectables> is not available in support of <selectables linebreak="yes"><selectable id="fcs_tlss_ext.2.3_10">all supported functions</selectable><selectable id="fcs_tlss_ext.2.3_12"><assignable>list of calling supported functions configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables linebreak="yes"><selectable id="fcs_tlss_ext.2.3_13">configured by an administrator</selectable><selectable id="fcs_tlss_ext.2.3_14">confirmed by the supported function user</selectable><selectable id="fcs_tlss_ext.2.3_16"><assignable>subset of supported functions</assignable></selectable></selectables> </selectable><selectable id="fcs_tlss_ext.2.3_17">no other processing options for missing or invalid client certificates</selectable> </selectables>.</title>
@@ -2083,7 +2083,7 @@
              If an administrator configures whether a user may accept a certificate without status information, both selections are claimed. 
              The "a TLS-specific default" selection should only be chosen for applications that do not have access to revocation information. This
              is not claimed when alternate revocation methods are claimed in FIA_X509_EXT.1 that apply to TLS client certificates.
-             Methods for obtaining revocation information are included in .
+             Methods for obtaining revocation information are included in  <no-link>FIA_X509_EXT.1</no-link>.
              </h:p></note>
         </f-element>
         <f-element id="fcs_tlss_ext-2-4">
