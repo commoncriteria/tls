@@ -462,7 +462,7 @@
         DTLS 1.2 are only claimed as required by a specific PP.
         </h:p>
         <h:p>
-          While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is deprecated by this SFR and should not be included in “other TLS 1.3 
+          While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be included in “other TLS 1.3 
           ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
         </h:p>
         <h:p>
@@ -478,7 +478,7 @@
         <h:ul>
           <h:li>null encryption</h:li>
           <h:li>support for anonymous servers</h:li>
-          <h:li>use of deprecated or export-grade cryptography including DES, 3DES, RC2, RC4, or IDEA for encryption</h:li>
+          <h:li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</h:li>
           <h:li>use of MD-5 or SHA-1 for key derivation.</h:li>
         </h:ul> and shall abort sessions where a server attempts to negotiate cryptographic options not enumerated in the ClientHello
         message.
@@ -505,11 +505,11 @@
     </f-element>
     <f-element>
     <title>
-      The TSF shall be able to support the following TLS ClientHello message extensions: 
+      The TSF shall be able to support the following DTLS ClientHello message extensions: 
       <h:ul>
-        <h:li>signature_algorithms extension (RFC 5246, RFC 8446) indicating support for 
+        <h:li>signature_algorithms extension (RFC 8446) indicating support for 
           <selectables linebreak="yes">
-            <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+            <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
             <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
           </selectables>, and <selectables linebreak="yes">
               <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
@@ -521,7 +521,7 @@
       </h:ul>
           <selectables linebreak="yes">
             <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-              <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+              <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
               <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
             </selectables>, and <selectables linebreak="yes">
                 <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
@@ -529,18 +529,18 @@
             
                 <selectable>no other signature algorithms</selectable>
               </selectables></selectable>
-            <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3 and <selectables>
-                <selectable>TLS 1.2</selectable>
+            <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables>
+                <selectable>DTLS 1.2</selectable>
                 <selectable>no other versions</selectable>
               </selectables></selectable>
             <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
               <selectable>secp384r1 (RFC 8446)</selectable>
-              <selectable>ffdhe3072(257) (RFC 7919)</selectable>
-              <selectable>ffdhe4096(258) (RFC 7919)</selectable>
+              <selectable>ffdhe3072 (RFC 7919)</selectable>
+              <selectable>ffdhe4096 (RFC 7919)</selectable>
             </selectables> and <selectables linebreak="yes">
               <selectable>secp521r1 (RFC 8446)</selectable>
-              <selectable>ffdhe6144(259) (RFC 7919)</selectable>
-              <selectable>ffdhe8192(260) (RFC 7919)</selectable>
+              <selectable>ffdhe6144(RFC 7919)</selectable>
+              <selectable>ffdhe8192 (RFC 7919)</selectable>
               <selectable>no other supported groups</selectable></selectables></selectable>
             <selectable>key_share extension (RFC 8446)</selectable>
             <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke
@@ -562,7 +562,7 @@
             <h:ul>
               <h:li>signature_algorithms extension (RFC 8446) indicating support for 
                 <selectables linebreak="yes">
-                  <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                  <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                   <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
                 </selectables>, and <selectables linebreak="yes">
                     <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
@@ -585,7 +585,7 @@
           DTLS uses TLS extensions.
         </h:p>
         <h:p>
-          Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
+          Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
         </h:p>
         <h:p>
           If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in 
@@ -973,20 +973,20 @@
                     <test id="dtls-client-deprecated-encryption">
                       <h:p>
                         The evaluator shall perform one or more of the following tests to demonstrate that the TOE does not accept
-                        connections using deprecated ciphersuites:
+                        connections using disallowed ciphersuites:
                       </h:p>
                       <h:p>
-                        [conditional] (deprecated encryption algorithm) If the TSF supports DTLS 1.2, for each
-                        deprecated encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and AES-128), 
+                        [conditional] (disallowed encryption algorithm) If the TSF supports DTLS 1.2, for each
+                        disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and AES-128), 
                         the evaluator shall attempt to establish a DTLS 1.2 connection with a test DTLS server 
-                        configured to negotiate a ciphersuite using the deprecated encryption algorithm 
+                        configured to negotiate a ciphersuite using the disallowed encryption algorithm 
                         and observe that the TOE silently drops the message or rejects the connection.
                       </h:p>
                       <h:p>
-                        [conditional] (deprecated encryption algorithm) If the TSF supports DTLS 1.3, for each DTLS 1.3 ciphersuite
+                        [conditional] (disallowed encryption algorithm) If the TSF supports DTLS 1.3, for each DTLS 1.3 ciphersuite
                         registered in IANA TLS parameters using AES-128 as the encryption algorithm, the evaluator shall attempt to
                         establish a DTLS 1.3 connection with a test DTLS server configured to negotiate a ciphersuite using the
-                        deprecated encryption algorithm and observe that the TOE silently drops the message or rejects the connection.   
+                        disallowed encryption algorithm and observe that the TOE silently drops the message or rejects the connection.   
                       </h:p>
                       <h:p>
                         <h:b>Note:</h:b> If the TSF rejects the connection, the test is successful. If the TSF silently drops the message,
@@ -2021,7 +2021,7 @@
             requirement, then the appropriate instructions need to be contained in the guidance.
           </h:P>
           <h:p>
-            While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is deprecated by this SFR and should not be
+            While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be
             included in “other TLS 1.3 ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
           </h:p>
           <h:p>
@@ -2059,11 +2059,11 @@
     </f-element>
     <f-element>
       <title>
-        The TSF shall be able to process the following TLS ClientHello message extensions: 
+        The TSF shall be able to process the following DTLS ClientHello message extensions: 
         <h:ul>
-          <h:li>signature_algorithms extension (RFC 5246, RFC 8446) indicating support for 
+          <h:li>signature_algorithms extension (RFC 8446) indicating support for 
             <selectables linebreak="yes">
-              <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+              <selectable>_secp384r1_sha384 (RFC 8446)</selectable>
               <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                 <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                 <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
@@ -2074,7 +2074,7 @@
           
            and the following other extensions: <selectables linebreak="yes">
               <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-                <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                 <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                   <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                   <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
@@ -2082,18 +2082,18 @@
                 
                   <selectable>no other signature algorithms</selectable>
                 </selectables></selectable>
-              <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3 and <selectables>
-                <selectable>TLS 1.2</selectable>
+              <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables>
+                <selectable>DTLS 1.2</selectable>
                 <selectable>no other versions</selectable>
               </selectables></selectable>
               <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
                 <selectable>secp384r1 (RFC 8446)</selectable>
-                <selectable>ffdhe3072(257) (RFC 7919)</selectable>
-                <selectable>ffdhe4096(258) (RFC 7919)</selectable>
+                <selectable>ffdhe3072 (RFC 7919)</selectable>
+                <selectable>ffdhe4096 (RFC 7919)</selectable>
               </selectables> and <selectables linebreak="yes">
                 <selectable>secp521r1 (RFC 8446)</selectable>
-                <selectable>ffdhe6144(259) (RFC 7919)</selectable>
-                <selectable>ffdhe8192(260) (RFC 7919)</selectable>
+                <selectable>ffdhe6144 (RFC 7919)</selectable>
+                <selectable>ffdhe8192 (RFC 7919)</selectable>
                 <selectable>no other supported groups</selectable></selectables></selectable>
               <selectable>key_share extension (RFC 8446)</selectable>
               <selectable>extended_master_secret extension (RFC 7627) enforcing client support and
@@ -2110,7 +2110,7 @@
           <h:ul>
             <h:li>signature_algorithms extension (RFC 8446) indicating support for 
               <selectables linebreak="yes">
-                <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                 <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                   <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                   <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
@@ -2129,7 +2129,7 @@
         DTLS uses TLS extensions. 
         </h:p>
         <h:p>
-          Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
+          Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
         </h:p>
         <h:p>
         If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. If DTLS 1.3 is not claimed, supported_versions and key_share are not claimed.
@@ -2321,10 +2321,10 @@
                 </test>
                 <test id="dtls-server-deprecated-encryption">
                   <h:p>
-                    (deprecated encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions:
+                    (disallowed encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions:
                   </h:p>
                     <h:p>
-                    [conditional] If DTLS 1.2 is supported, the evaluator shall send the TSF a DTLS 1.2 ClientHello that is compliant with RFC 9151, except that the ciphersuites field is a list consisting only of ciphersuites indicating a deprecated encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and AES-128. The evaluator shall observe that the TOE silently drops the message or rejects the connection.
+                    [conditional] If DTLS 1.2 is supported, the evaluator shall send the TSF a DTLS 1.2 ClientHello that is compliant with RFC 9151, except that the ciphersuites field is a list consisting only of ciphersuites indicating a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and AES-128. The evaluator shall observe that the TOE silently drops the message or rejects the connection.
                   </h:p>
                   <h:p>
                     <h:b>Note:</h:b> See IANA TLS parameters for available TLS 1.2 ciphersuites to be included. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the TSF supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test could include TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.
@@ -3250,7 +3250,7 @@
               The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite for each TLS version
               supported. Pre-shared secret ciphersuites for TLS 1.2 are only claimed as required by a specific PP. The ciphersuites to be
               tested in the evaluated configuration are limited by this requirement. However, this requirement does not restrict the TOE's
-              ability to propose additional non-deprecated ciphersuites beyond the ones listed in this requirement in its ClientHello
+              ability to propose additional ciphersuites beyond the ones listed in this requirement in its ClientHello
               message as indicated in the ST. That is, the TOE may propose any ciphersuite not excluded by this element, but the evaluation
               will only test ciphersuites from the above list. It is necessary to limit the ciphersuites that can be used administratively in
               an evaluated configuration on the server in the test environment. 
@@ -3261,7 +3261,7 @@
               listed first. 
               </h:p>
               <h:p>
-              While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is deprecated by this SFR and should not be included in “other TLS 1.3
+              While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be included in “other TLS 1.3
               ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
               </h:p>
               <h:p>
@@ -3277,7 +3277,7 @@
             <h:ul>
               <h:li>null encryption</h:li>
               <h:li>support for anonymous servers</h:li>
-              <h:li>use of deprecated or export-grade cryptography including DES, 3DES, RC2, RC4, or IDEA for encryption</h:li>
+              <h:li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</h:li>
               <h:li>use of MD-5 or SHA-1 for key derivation</h:li>
             </h:ul> and shall abort sessions where a server attempts to negotiate ciphersuites not enumerated in the ClientHello message.
           </title>
@@ -3307,7 +3307,7 @@
            <h:ul>
              <h:li>signature_algorithms extension (RFC 8446) indicating support for 
                <selectables linebreak="yes">
-                 <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                 <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                  <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                    <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                    <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
@@ -3318,7 +3318,7 @@
            </h:ul>
                <selectables linebreak="yes">
                  <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-                   <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                   <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                    <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                      <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                      <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
@@ -3331,12 +3331,12 @@
                  </selectables></selectable>
                  <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
                    <selectable>secp384r1 (RFC 8446)</selectable>
-                   <selectable>ffdhe3072(257) (RFC 7919)</selectable>
-                   <selectable>ffdhe4096(258) (RFC 7919)</selectable>
+                   <selectable>ffdhe3072 (RFC 7919)</selectable>
+                   <selectable>ffdhe4096 (RFC 7919)</selectable>
                  </selectables> and <selectables linebreak="yes">
                    <selectable>secp521r1 (RFC 8446)</selectable>
-                   <selectable>ffdhe6144(259) (RFC 7919)</selectable>
-                   <selectable>ffdhe8192(260) (RFC 7919)</selectable>
+                   <selectable>ffdhe6144 (RFC 7919)</selectable>
+                   <selectable>ffdhe8192 (RFC 7919)</selectable>
                    <selectable>no other supported groups</selectable></selectables></selectable>
                  <selectable>key_share extension (RFC 8446)</selectable>
                  <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke
@@ -3358,7 +3358,7 @@
                 <h:ul>
                   <h:li>signature_algorithms extension (RFC 8446) indicating support for 
                     <selectables linebreak="yes">
-                      <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                      <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                       <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                         <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                         <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
@@ -3376,7 +3376,7 @@
             </ext-comp-def-title>
          <note role="application">
            <h:p>
-             Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
+             Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
            </h:p>
            <h:p>
            If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in
@@ -3696,14 +3696,14 @@
                     </test>
                     <test id="tls-client-deprecated-encryption">
                       <h:p>
-                        The evaluator shall perform one or more of the following tests to demonstrate that the TOE does not accept connections using deprecated ciphersuites:
+                        The evaluator shall perform one or more of the following tests to demonstrate that the TOE does not accept connections using disallowed ciphersuites:
                       </h:p>
                       <h:p>
-                        [conditional] (deprecated encryption algorithm) If the TSF supports TLS 1.2, send the TSF a TLS 1.2 ClientHello that is compliant with RFC 9151, except that for each 
-                        deprecated encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and AES-128), the evaluator shall attempt to establish a TLS 1.2 connection with a test TLS
-                        server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the TOE rejects the connection.
+                        [conditional] (disallowed encryption algorithm) If the TSF supports TLS 1.2, send the TSF a TLS 1.2 ClientHello that is compliant with RFC 9151, except that for each 
+                        disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and AES-128), the evaluator shall attempt to establish a TLS 1.2 connection with a test TLS
+                        server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the TOE rejects the connection.
                       </h:p><h:p>
-                        [conditional] (deprecated encryption algorithm) If the TSF supports TLS 1.3, for each TLS 1.3 ciphersuite registered in IANA TLS parameters using AES-128 as the encryption algorithm, the evaluator shall attempt to establish a TLS 1.3 connection with a test TLS server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the TOE rejects the connection.   
+                        [conditional] (disallowed encryption algorithm) If the TSF supports TLS 1.3, for each TLS 1.3 ciphersuite registered in IANA TLS parameters using AES-128 as the encryption algorithm, the evaluator shall attempt to establish a TLS 1.3 connection with a test TLS server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the TOE rejects the connection.   
                       </h:p><h:p>
                       <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, 
                       but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
@@ -4638,7 +4638,7 @@
               with either of the other options.               
               </h:p>
               <h:p>
-              While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is deprecated by this SFR and should not be
+              While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be
               included in “other TLS 1.3 ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
               </h:p>
               <h:p>
@@ -4674,9 +4674,9 @@
           <title>
             The TSF shall be able to process the following TLS ClientHello message extensions: 
             <h:ul>
-              <h:li>signature_algorithms extension (RFC 5246, RFC 8446) indicating support for 
+              <h:li>signature_algorithms extension (RFC 8446) indicating support for 
                 <selectables linebreak="yes">
-                  <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                  <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                   <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                     <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                     <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
@@ -4688,7 +4688,7 @@
               
                   <selectables linebreak="yes">
                   <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-                    <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                    <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                     <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                       <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                       <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
@@ -4701,12 +4701,12 @@
                   </selectables></selectable>
                   <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
                     <selectable>secp384r1 (RFC 8446)</selectable>
-                    <selectable>ffdhe3072(257) (RFC 7919)</selectable>
-                    <selectable>ffdhe4096(258) (RFC 7919)</selectable>
+                    <selectable>ffdhe3072 (RFC 7919)</selectable>
+                    <selectable>ffdhe4096 (RFC 7919)</selectable>
                   </selectables> and <selectables linebreak="yes">
                     <selectable>secp521r1 (RFC 8446)</selectable>
-                    <selectable>ffdhe6144(259) (RFC 7919)</selectable>
-                    <selectable>ffdhe8192(260) (RFC 7919)</selectable></selectables></selectable>
+                    <selectable>ffdhe6144 (RFC 7919)</selectable>
+                    <selectable>ffdhe8192 (RFC 7919)</selectable></selectables></selectable>
                   <selectable>key_share extension (RFC 8446)</selectable>
                     <selectable>extended_master_secret extension (RFC 7627) enforcing client support and
                       <selectables>
@@ -4722,7 +4722,7 @@
                 <h:ul>
                   <h:li>signature_algorithms extension (RFC 8446) indicating support for 
                     <selectables linebreak="yes">
-                      <selectable>ecdsa-secp384r1_sha384 (RFC 8446)</selectable>
+                      <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
                       <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                         <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                         <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
@@ -4738,7 +4738,7 @@
             </ext-comp-def-title>
             <note role="application">
               <h:p>
-                Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
+                Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
               </h:p>
               <h:p>
             If support for TLS 1.3 is claimed in FCS_TLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. 
@@ -4968,9 +4968,9 @@
                       </test>
                       <test id="tls-server-deprecated-encryption">
                         <h:p>
-                        (deprecated encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions: 
+                        (disallowed encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions: 
                         </h:p><h:p>
-                          [conditional] If TLS 1.2 is supported, the evaluator shall send the TSF a TLS 1.2 ClientHello that is compliant with RFC 9591, except that the ciphersuites field is a list consisting only of ciphersuites indicating a deprecated encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and AES-128. The evaluator shall observe that the TOE rejects the connection.
+                          [conditional] If TLS 1.2 is supported, the evaluator shall send the TSF a TLS 1.2 ClientHello that is compliant with RFC 9591, except that the ciphersuites field is a list consisting only of ciphersuites indicating a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and AES-128. The evaluator shall observe that the TOE rejects the connection.
                         </h:p><h:p>
                           <h:b>Note:</h:b> See IANA TLS parameters for available TLS 1.2 ciphersuites to be included. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the TSF supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test could include TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.
                         </h:p><h:p>

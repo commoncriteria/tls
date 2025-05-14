@@ -802,7 +802,7 @@
                                  <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> uses <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select the ciphersuites that are supported, and must select at least one ciphersuite for each <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version supported &ndash; <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3. Pre-shared secret ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 are only claimed as required by a specific <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. 
                             </p>
                             <p>
-                                 While mandatory for <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, TLS_AES_128_GCM_SHA256 is deprecated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and should not be included in &ldquo;other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.&rdquo; The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may list additional <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites as they are registered. 
+                                 While mandatory for <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, TLS_AES_128_GCM_SHA256 is disallowed by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and should not be included in &ldquo;other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.&rdquo; The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may list additional <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites as they are registered. 
                             </p>
                             <p>
                                  In addition to the supported ciphersuites, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author indicates the order of ciphersuites included in the ClientHello, indicating the preferred ciphersuites for server negotiation. To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is running) the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> uses the assignment to specify a dynamic ordering and the describes in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> the conditions for presenting the ordering. It is recommended, but not required, that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites claimed are listed before <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites, and that any other ciphersuites are listed last among the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites. 
@@ -820,7 +820,7 @@
                     <ul>
                         <li>null encryption</li>
                         <li>support for anonymous servers</li>
-                        <li>use of deprecated or export-grade cryptography including DES, 3DES, RC2, RC4, or IDEA for encryption</li>
+                        <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</li>
                         <li>
                             use of MD-5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation.
                         </li>
@@ -846,13 +846,13 @@
                     <a href="#FCS_DTLSC_EXT.1.4" class="abbr">FCS_DTLSC_EXT.1.4</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ClientHello message extensions: 
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> ClientHello message extensions: 
                     <ul>
                         <li>
-                            signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                             <ul>
                                 <li style="">
-                                    <span class="selectable-content" id="_s_24">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                    <span class="selectable-content" id="_s_24">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                 </li>
                                 <li style="">
                                     <span class="selectable-content" id="_s_25">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -879,7 +879,7 @@
                             <span class="selectable-content" id="_s_29">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_30">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="_s_30">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_31">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -900,7 +900,7 @@
                                 ]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_35">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="_s_36"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2</span>, <span class="selectable-content" id="_s_37">no other versions</span>]</span>
+                            <span class="selectable-content" id="_s_35">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="_s_36"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2</span>, <span class="selectable-content" id="_s_37">no other versions</span>]</span>
                         </li>
                         <li style="">
                             <span class="selectable-content" id="_s_38">supported_groups extension indicating support for [<b>selection</b>: 
@@ -909,10 +909,10 @@
                                         <span class="selectable-content" id="_s_39">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_40">ffdhe3072(257) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_40">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_41">ffdhe4096(258) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_41">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                 </ul>
                                 ] and [<b>selection</b>: 
@@ -921,10 +921,10 @@
                                         <span class="selectable-content" id="_s_42">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_43">ffdhe6144(259) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_43">ffdhe6144(<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_44">ffdhe8192(260) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_44">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_45">no other supported groups</span>
@@ -956,7 +956,7 @@
                                  <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> uses <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> extensions. 
                             </p>
                             <p>
-                                 Support for the signature_algorithms extension is optional in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 but is mandated for this functional package. Support for the signature_algorithms extension is mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 and remains so in this functional package. Whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation conforms to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, or both is dependent on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, or both. 
+                                 Support for the signature_algorithms extension is optional in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 but is mandated for this functional package in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151. Support for the signature_algorithms extension is mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 and remains so in this functional package. Whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation conforms to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, or both is dependent on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, or both. 
                             </p>
                             <p>
                                  If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is claimed in <a href="#FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</a>, supported_versions, supported_groups, and key_share extensions are claimed in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446. If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is not claimed, supported_versions and key_share extensions are not claimed. 
@@ -1262,13 +1262,13 @@
                                                 <li class="test-">
                                                     <a id="dtls-client-deprecated-encryption" class="defined" href="#dtls-client-deprecated-encryption">Test FCS_DTLSC_EXT.1:3.5</a>: 
                                                     <p>
-                                                         The evaluator shall perform one or more of the following tests to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not accept connections using deprecated ciphersuites: 
+                                                         The evaluator shall perform one or more of the following tests to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not accept connections using disallowed ciphersuites: 
                                                     </p>
                                                     <p>
-                                                         [conditional] (deprecated encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, for each deprecated encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128), the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 connection with a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> silently drops the message or rejects the connection. 
+                                                         [conditional] (disallowed encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, for each disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128), the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 connection with a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> silently drops the message or rejects the connection. 
                                                     </p>
                                                     <p>
-                                                         [conditional] (deprecated encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, for each <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 ciphersuite registered in IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters using <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128 as the encryption algorithm, the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 connection with a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> silently drops the message or rejects the connection. 
+                                                         [conditional] (disallowed encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, for each <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 ciphersuite registered in IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters using <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128 as the encryption algorithm, the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 connection with a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> silently drops the message or rejects the connection. 
                                                     </p>
                                                     <p>
                                                          <b>Note:</b> If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> rejects the connection, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message, the evaluator shall continue sending the ServerHello until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> logs a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without logging a fatal error alert). 
@@ -2130,7 +2130,7 @@
                                  <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects the ciphersuites that are supported and must select at least one ciphersuite suitable for each supported <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version &ndash; <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3. It is necessary to limit the ciphersuites that can be used administratively in an evaluated configuration on the server in the test environment. If administrative steps need to be taken so that the ciphersuites negotiated by the implementation are limited to those in this requirement, then the appropriate instructions need to be contained in the guidance. 
                             </p>
                             <p>
-                                 While indicated as mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is deprecated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and should not be included in &ldquo;other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.&rdquo; The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may list additional <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites as they are registered. 
+                                 While indicated as mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is disallowed by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and should not be included in &ldquo;other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.&rdquo; The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may list additional <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites as they are registered. 
                             </p>
                             <p>
                                  The final selection indicates the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>&rsquo;s preference for negotiating a ciphersuite. <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151 indicates the required ciphersuites for NSS systems and "<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151 priority" is claimed if those ciphersuites are selected whenever offered by the client. 
@@ -2168,13 +2168,13 @@
                     <a href="#FCS_DTLSS_EXT.1.4" class="abbr">FCS_DTLSS_EXT.1.4</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to process the following <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ClientHello message extensions: 
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to process the following <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> ClientHello message extensions: 
                     <ul>
                         <li>
-                            signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                             <ul>
                                 <li style="">
-                                    <span class="selectable-content" id="_s_113">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                    <span class="selectable-content" id="_s_113">_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                 </li>
                                 <li style="">
                                     <span class="selectable-content" id="_s_114">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -2201,7 +2201,7 @@
                             <span class="selectable-content" id="_s_118">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_119">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="_s_119">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_120">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -2222,7 +2222,7 @@
                                 ]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_124">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="_s_125"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2</span>, <span class="selectable-content" id="_s_126">no other versions</span>]</span>
+                            <span class="selectable-content" id="_s_124">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="_s_125"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2</span>, <span class="selectable-content" id="_s_126">no other versions</span>]</span>
                         </li>
                         <li style="">
                             <span class="selectable-content" id="_s_127">supported_groups extension indicating support for [<b>selection</b>: 
@@ -2231,10 +2231,10 @@
                                         <span class="selectable-content" id="_s_128">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_129">ffdhe3072(257) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_129">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_130">ffdhe4096(258) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_130">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                 </ul>
                                 ] and [<b>selection</b>: 
@@ -2243,10 +2243,10 @@
                                         <span class="selectable-content" id="_s_131">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_132">ffdhe6144(259) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_132">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_133">ffdhe8192(260) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_133">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_134">no other supported groups</span>
@@ -2271,7 +2271,7 @@
                                  <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> uses <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> extensions. 
                             </p>
                             <p>
-                                 Support for the signature_algorithms extension is optional in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 but is mandated for this functional package. Support for the signature_algorithms extension is mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 and remains so in this functional package. Whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation conforms to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, or both is dependent on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, or both. 
+                                 Support for the signature_algorithms extension is optional in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 but is mandated for this functional package in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151. Support for the signature_algorithms extension is mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 and remains so in this functional package. Whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation conforms to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, or both is dependent on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, or both. 
                             </p>
                             <p>
                                  If support for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is claimed in <a href="#FCS_DTLSS_EXT.1.1">FCS_DTLSS_EXT.1.1</a>, the selections for supported_versions, supported_groups, and key_share are claimed. If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is not claimed, supported_versions and key_share are not claimed. 
@@ -2478,9 +2478,9 @@
                                                 </li>
                                                 <li class="test-">
                                                     <a id="dtls-server-deprecated-encryption" class="defined" href="#dtls-server-deprecated-encryption">Test FCS_DTLSS_EXT.1:3.5</a>: 
-                                                    <p> (deprecated encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions: </p>
+                                                    <p> (disallowed encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions: </p>
                                                     <p>
-                                                         [conditional] If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 is supported, the evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 ClientHello that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151, except that the ciphersuites field is a list consisting only of ciphersuites indicating a deprecated encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> silently drops the message or rejects the connection. 
+                                                         [conditional] If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 is supported, the evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 ClientHello that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151, except that the ciphersuites field is a list consisting only of ciphersuites indicating a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> silently drops the message or rejects the connection. 
                                                     </p>
                                                     <p>
                                                          <b>Note:</b> See IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters for available <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites to be included. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test could include TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA. 
@@ -3395,13 +3395,13 @@
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">
                             <p>
-                                 The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select the ciphersuites that are supported, and must select at least one ciphersuite for each <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> version supported. Pre-shared secret ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 are only claimed as required by a specific <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. The ciphersuites to be tested in the evaluated configuration are limited by this requirement. However, this requirement does not restrict the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s ability to propose additional non-deprecated ciphersuites beyond the ones listed in this requirement in its ClientHello message as indicated in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. That is, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may propose any ciphersuite not excluded by this element, but the evaluation will only test ciphersuites from the above list. It is necessary to limit the ciphersuites that can be used administratively in an evaluated configuration on the server in the test environment. 
+                                 The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select the ciphersuites that are supported, and must select at least one ciphersuite for each <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> version supported. Pre-shared secret ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 are only claimed as required by a specific <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. The ciphersuites to be tested in the evaluated configuration are limited by this requirement. However, this requirement does not restrict the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s ability to propose additional ciphersuites beyond the ones listed in this requirement in its ClientHello message as indicated in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. That is, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may propose any ciphersuite not excluded by this element, but the evaluation will only test ciphersuites from the above list. It is necessary to limit the ciphersuites that can be used administratively in an evaluated configuration on the server in the test environment. 
                             </p>
                             <p>
                                  <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites are claimed if support for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is claimed in <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>. The assignment of preference order provides an ordered list of all supported ciphersuites with the most preferred ciphersuites listed first. 
                             </p>
                             <p>
-                                 While mandatory for <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, TLS_AES_128_GCM_SHA256 is deprecated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and should not be included in &ldquo;other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.&rdquo; The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may list additional <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites as they are registered. 
+                                 While mandatory for <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, TLS_AES_128_GCM_SHA256 is disallowed by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and should not be included in &ldquo;other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.&rdquo; The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may list additional <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites as they are registered. 
                             </p>
                             <p>
                                  In addition to the supported ciphersuites, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author indicates the order of ciphersuites included in the ClientHello, indicating the preferred ciphersuites for server negotiation. To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is running) the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> uses the assignment to specify a dynamic ordering and the describes in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> the conditions for presenting the ordering. It is recommended, but not required, that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites claimed are listed before <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites, and that any other ciphersuites are listed last among the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites. 
@@ -3419,7 +3419,7 @@
                     <ul>
                         <li>null encryption</li>
                         <li>support for anonymous servers</li>
-                        <li>use of deprecated or export-grade cryptography including DES, 3DES, RC2, RC4, or IDEA for encryption</li>
+                        <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</li>
                         <li>
                             use of MD-5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation
                         </li>
@@ -3451,7 +3451,7 @@
                             signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                             <ul>
                                 <li style="">
-                                    <span class="selectable-content" id="_s_224">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                    <span class="selectable-content" id="_s_224">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                 </li>
                                 <li style="">
                                     <span class="selectable-content" id="_s_225">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -3478,7 +3478,7 @@
                             <span class="selectable-content" id="_s_229">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_230">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="_s_230">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_231">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -3508,10 +3508,10 @@
                                         <span class="selectable-content" id="_s_239">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_240">ffdhe3072(257) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_240">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_241">ffdhe4096(258) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_241">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                 </ul>
                                 ] and [<b>selection</b>: 
@@ -3520,10 +3520,10 @@
                                         <span class="selectable-content" id="_s_242">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_243">ffdhe6144(259) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_243">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_244">ffdhe8192(260) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_244">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_245">no other supported groups</span>
@@ -3552,7 +3552,7 @@
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">
                             <p>
-                                 Support for the signature_algorithms extension is optional in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 but is mandated for this functional package. Support for the signature_algorithms extension is mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 and remains so in this functional package. Whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation conforms to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, or both is dependent on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, or both. 
+                                 Support for the signature_algorithms extension is optional in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 but is mandated for this functional package in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151. Support for the signature_algorithms extension is mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 and remains so in this functional package. Whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation conforms to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, or both is dependent on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, or both. 
                             </p>
                             <p>
                                  If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is claimed in <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>, supported_versions, supported_groups, and key_share extensions are claimed in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446. If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is not claimed, supported_versions and key_share extensions are not claimed. 
@@ -3846,13 +3846,13 @@
                                                 <li class="test-">
                                                     <a id="tls-client-deprecated-encryption" class="defined" href="#tls-client-deprecated-encryption">Test FCS_TLSC_EXT.1:3.5</a>: 
                                                     <p>
-                                                         The evaluator shall perform one or more of the following tests to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not accept connections using deprecated ciphersuites: 
+                                                         The evaluator shall perform one or more of the following tests to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not accept connections using disallowed ciphersuites: 
                                                     </p>
                                                     <p>
-                                                         [conditional] (deprecated encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ClientHello that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151, except that for each deprecated encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128), the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection. 
+                                                         [conditional] (disallowed encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ClientHello that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151, except that for each disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128), the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection. 
                                                     </p>
                                                     <p>
-                                                         [conditional] (deprecated encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, for each <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuite registered in IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters using <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128 as the encryption algorithm, the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate a ciphersuite using the deprecated encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection. 
+                                                         [conditional] (disallowed encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, for each <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuite registered in IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters using <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128 as the encryption algorithm, the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection. 
                                                     </p>
                                                     <p>
                                                          <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
@@ -4757,7 +4757,7 @@
                                  The final selection indicates the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>&rsquo;s preference for negotiating a ciphersuite. <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151 indicates the required ciphersuites for NSS systems and "<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151 priority" is claimed if those ciphersuites are selected whenever offered by the client. The final option is used to provide a specific preference ordering that does not agree with either of the other options. 
                             </p>
                             <p>
-                                 While indicated as mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is deprecated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and should not be included in &ldquo;other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.&rdquo; The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may list additional <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites as they are registered. 
+                                 While indicated as mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is disallowed by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and should not be included in &ldquo;other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.&rdquo; The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may list additional <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites as they are registered. 
                             </p>
                             <p>
                                  The &lsquo;ClientHello ordering&rsquo; option is claimed if client priority is considered; if both are claimed, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should indicate which is primary and which is secondary, and whether the priority scheme is configurable. If other priority schemes or if tertiary priority is used, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author will claim the third option and describe the scheme in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. 
@@ -4795,10 +4795,10 @@
                      The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to process the following <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ClientHello message extensions: 
                     <ul>
                         <li>
-                            signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                             <ul>
                                 <li style="">
-                                    <span class="selectable-content" id="_s_319">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                    <span class="selectable-content" id="_s_319">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                 </li>
                                 <li style="">
                                     <span class="selectable-content" id="_s_320">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -4825,7 +4825,7 @@
                             <span class="selectable-content" id="_s_324">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_325">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="_s_325">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_326">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -4855,10 +4855,10 @@
                                         <span class="selectable-content" id="_s_334">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_335">ffdhe3072(257) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_335">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_336">ffdhe4096(258) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_336">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                 </ul>
                                 ] and [<b>selection</b>: 
@@ -4867,10 +4867,10 @@
                                         <span class="selectable-content" id="_s_337">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_338">ffdhe6144(259) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_338">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_339">ffdhe8192(260) (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="_s_339">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                 </ul>
                                 ]</span>
@@ -4889,7 +4889,7 @@
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">
                             <p>
-                                 Support for the signature_algorithms extension is optional in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 but is mandated for this functional package. Support for the signature_algorithms extension is mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 and remains so in this functional package. Whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation conforms to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, or both is dependent on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, or both. 
+                                 Support for the signature_algorithms extension is optional in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 but is mandated for this functional package in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151. Support for the signature_algorithms extension is mandatory in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 and remains so in this functional package. Whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s implementation conforms to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, or both is dependent on whether the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, or both. 
                             </p>
                             <p>
                                  If support for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is claimed in <a href="#FCS_TLSS_EXT.1.1">FCS_TLSS_EXT.1.1</a>, the selections for supported_versions, supported_groups, and key_share are claimed. If support for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is not claimed, supported_versions and key_share are not claimed. 
@@ -5091,9 +5091,9 @@
                                                 </li>
                                                 <li class="test-">
                                                     <a id="tls-server-deprecated-encryption" class="defined" href="#tls-server-deprecated-encryption">Test FCS_TLSS_EXT.1:3.5</a>: 
-                                                    <p> (deprecated encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions: </p>
+                                                    <p> (disallowed encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions: </p>
                                                     <p>
-                                                         [conditional] If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported, the evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ClientHello that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9591, except that the ciphersuites field is a list consisting only of ciphersuites indicating a deprecated encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection. 
+                                                         [conditional] If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported, the evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ClientHello that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9591, except that the ciphersuites field is a list consisting only of ciphersuites indicating a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection. 
                                                     </p>
                                                     <p>
                                                          <b>Note:</b> See IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters for available <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites to be included. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test could include TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA. 
@@ -6074,7 +6074,7 @@
                         <ul>
                             <li>null encryption</li>
                             <li>support for anonymous servers</li>
-                            <li>use of deprecated or export-grade cryptography including DES, 3DES, RC2, RC4, or IDEA for encryption</li>
+                            <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</li>
                             <li>
                                 use of MD-5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation.
                             </li>
@@ -6087,7 +6087,7 @@
                                 signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_52">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="_s_52">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_53">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -6330,7 +6330,7 @@
                                 signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_140">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="_s_140">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_141">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -6629,7 +6629,7 @@
                         <ul>
                             <li>null encryption</li>
                             <li>support for anonymous servers</li>
-                            <li>use of deprecated or export-grade cryptography including DES, 3DES, RC2, RC4, or IDEA for encryption</li>
+                            <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</li>
                             <li>
                                 use of MD-5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation
                             </li>
@@ -6642,7 +6642,7 @@
                                 signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_252">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="_s_252">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_253">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
@@ -6907,7 +6907,7 @@
                                 signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_345">ecdsa-secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="_s_345">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_346">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
