@@ -1,0 +1,3 @@
+* https://commoncriteria.github.io/tls/50-fcs_tlsc_ext14-updates/tls-release-linkable.html.pdf[tls-release-linkable.html.pdf]
+* https://commoncriteria.github.io/tls/50-fcs_tlsc_ext14-updates/tls.html.pdf[tls.html.pdf]
+* https://commoncriteria.github.io/tls/50-fcs_tlsc_ext14-updates/tls-release.html.pdf[tls-release.html.pdf]
