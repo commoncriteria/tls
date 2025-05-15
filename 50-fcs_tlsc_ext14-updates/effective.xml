@@ -480,7 +480,7 @@
           <h:li>null encryption</h:li>
           <h:li>support for anonymous servers</h:li>
           <h:li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</h:li>
-          <h:li>use of MD-5 or SHA-1 for key derivation.</h:li>
+          <h:li>use of MD5 or SHA-1 for key derivation</h:li>
         </h:ul> and shall abort sessions where a server attempts to negotiate cryptographic options not enumerated in the ClientHello
         message.
       </title>
@@ -3274,7 +3274,7 @@
               <h:li>null encryption</h:li>
               <h:li>support for anonymous servers</h:li>
               <h:li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</h:li>
-              <h:li>use of MD-5 or SHA-1 for key derivation</h:li>
+              <h:li>use of MD5 or SHA-1 for key derivation</h:li>
             </h:ul> and shall abort sessions where a server attempts to negotiate ciphersuites not enumerated in the ClientHello message.
           </title>
             <note role="application">
