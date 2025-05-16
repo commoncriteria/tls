@@ -543,8 +543,8 @@
               <selectable>ffdhe8192(260) (RFC 7919)</selectable>
               <selectable>no other supported groups</selectable></selectables></selectable>
             <selectable>key_share extension (RFC 8446)</selectable>
-            <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke
-              (DHE or ECDHE) mode</selectable>
+            <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), 
+              and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable>
             <selectable>extended_master_secret extension (RFC 7627) enforcing server support, and
               <selectables>
                 <selectable>allowing legacy servers</selectable>
@@ -589,12 +589,14 @@
         </h:p>
         <h:p>
           If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in 
-          accordance with RFC 8446. If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.
+          accordance with RFC 8446 and the tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. 
+          If TLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151. 
+          If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.
         </h:p>
         <h:p>
           If DTLS 1.2 is
-          claimed, extended_master_secret extension is claimed, with the ability to enforce server support, and optionally, the ability to 
-          support legacy servers. 
+          claimed, extended_master_secret extension must be claimed, with the ability to enforce server support, and optionally, the ability to 
+          support legacy servers. The extended_master_secret extension (RFC 7627) selection cannot be claimed when TLS 1.3 is claimed.
         </h:p><h:p>
           If DTLS 1.2 is supported and if ECDHE or DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed.
         </h:p>
@@ -1091,19 +1093,69 @@
                     decryption error, handshake failure) in response to this, but it is acceptable that the TSF terminates the connection
                     silently (i.e., without logging a fatal error alert). 
                   </h:p></test>
-                  <test>(extended_master_secret) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF (if so
-                    configurable) to enforce server support of extended master secret computation and initiate a DTLS 1.2 session with
-                    a test DTLS server configured to compute a master secret according to RFC 5246, section 8.
+                  <test>(extended_master_secret for DTLS 1.2) [conditional] If the TSF supports DTLS 1.2, the evaluator shall establish a connection 
+                    from the TOE with a test DTLS server configured as described in the following test and observe the behavior.
                     <h:p>
-                    The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance
-                    with RFC 7627, and ensures that the test DTLS server does not include the extended master secret extension in its server
-                    hello. The evaluator shall observe that the TSF silently drops the ServerHello or terminates the session.
-                    </h:p><h:p>
                       <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message,
                       the evaluator shall continue sending the ServerHello until the TSF times out. It is preferred that the TSF logs
                       a fatal error alert message (e.g., handshake failure) in response to this, but it is acceptable that the TSF
                       terminates the connection silently (i.e., without logging a fatal error alert). 
-                  </h:p></test>
+                    </h:p>
+                    <h:p>In addition to mandatory tests 1-2:</h:p>
+                    <h:p>if the TOE supports Legacy Servers, also perform test 3;</h:p>
+                    <h:p>if the TOE supports session resumption, also perform tests 6-7;</h:p>
+                    <h:p>if the TOE supports both, also perform tests 4-5.</h:p>
+                    <testlist>
+                      <test>
+                        <h:p>The evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and initiate 
+                        a DTLS 1.2 session with a test DTLS server configured to use the extended_master_secret extension/compute a master secret according to RFC 7627, section 4.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627, and ensures that the test DTLS server 
+                          includes the extended master secret extension in its ServerHello. The evaluator shall observe that the DTLS session between the TOE and DTLS Server is established successfully.</h:p>
+                      </test>
+                      <test>
+                        <h:p>The evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and initiate a DTLS 1.2 
+                          session with a test DTLS server configured to omit the extended_master_secret extension/compute a master secret according to RFC 5246, section 8.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensure that the test DTLS server does not 
+                          include the extended master secret extension in its ServerHello.  The evaluator shall observe that the TSF silently drops the message or terminates the connection in accordance with the behavior documented 
+                          in the ST and the DTLS session between the TOE and DTLS Server fails.</h:p>
+                      </test>
+                      <test>
+                        <h:p>[conditional] If the TOE supports allowing legacy servers the evaluator shall configure the TSF (if so configurable) to allow legacy servers and initiate a DTLS 1.2 session 
+                          with a test DTLS server configured to omit the extended_master_secret extension/compute a master secret according to RFC 5246, section 8.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensures that the test DTLS server does 
+                          not include the extended master secret extension in its ServerHello.  The evaluator shall observe that the DTLS session between the TOE and DTLS Server is established successfully.</h:p>
+                      </test>
+                      <test>
+                        <h:p>[conditional] If the TOE supports allowing legacy servers, and the TOE supports DTLS session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy 
+                          servers and resume a DTLS 1.2 session that previously computed the master secret in accordance with RFC 5246, section 8 (did not use the extended master secret extension in accordance 
+                          with RFC 7627) with a test DTLS server configured to include the extended_master_secret extension/compute a master secret according to RFC 7627, section 4.</h:p>
+                        <h:p>
+                          The evaluator shall observe that the TSF’s ClientHello omits the extended master secret extension and ensures that the test DTLS server includes the extended master secret extension in 
+                          its ServerHello.  The evaluator shall observe that the TSF silently drops the message or terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the DTLS session 
+                          between the TOE and DTLS Server fails.</h:p>
+                      </test>
+                      <test>
+                        <h:p>[conditional] If the TOE supports allowing legacy servers, and the TOE supports DTLS session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy 
+                          servers and resume a DTLS 1.2 session that previously used the extended master secret extension in accordance with RFC 7627 with a test DTLS server configured to omit the extended_master_secret extension.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensures that the test DTLS server does not include the extended master 
+                          secret extension in its ServerHello.  The evaluator shall observe that the TSF silently drops the message or terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the DTLS session 
+                          between the TOE and DTLS Server fails.</h:p>
+                      </test>
+                      <test>
+                        <h:p>[conditional] If the TOE supports DTLS session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) 
+                          and resume a DTLS 1.2 session that previously computed the master secret in accordance with RFC 5246, section 8 (did not use the extended master secret extension in accordance with RFC 7627) with a test DTLS server 
+                          configured to include the extended_master_secret extension/compute a master secret according to RFC 7627, section 4.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello omits the extended master secret extension and ensures that the test DTLS server includes the extended master secret extension in its ServerHello. 
+                          The evaluator shall observe that the TSF silently drops the message or terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the DTLS session between the TOE and DTLS Server fails.</h:p>
+                      </test>
+                      <test>
+                        <h:p>[conditional] If the TOE supports DTLS session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) 
+                          and resume a DTLS 1.2 session that previously used the extended master secret extension in accordance with RFC 7627 with a test DTLS server configured to omit the extended_master_secret extension.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensures that the test DTLS server does not include the extended master secret 
+                          extension in its ServerHello.  The evaluator shall observe that the TSF silently drops the message or terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the DTLS session between the TOE and DTLS Server fails.</h:p>
+                      </test>
+                    </testlist>
+                  </test>
                   <test>(supported_groups for DTLS 1.2) [conditional] If the TSF supports DTLS 1.2, and supports ECDHE or DHE ciphersuites,
                     the evaluator shall perform the following tests.
                   <testlist>
@@ -3339,8 +3391,8 @@
                    <selectable>ffdhe8192(260) (RFC 7919)</selectable>
                    <selectable>no other supported groups</selectable></selectables></selectable>
                  <selectable>key_share extension (RFC 8446)</selectable>
-                 <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke
-                   (DHE or ECDHE) mode</selectable>
+                 <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), 
+                  and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable>
                  <selectable>extended_master_secret extension (RFC 7627) enforcing server support, and
                    <selectables>
                      <selectable>allowing legacy servers</selectable>
@@ -3380,7 +3432,9 @@
            </h:p>
            <h:p>
            If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in
-           accordance with RFC 8446. If TLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed. 
+           accordance with RFC 8446 and the tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. 
+           If TLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151.
+           If TLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed. 
            </h:p><h:p>
            If TLS 1.2 is
            claimed, extended_master_secret extension is claimed, with the ability to enforce server support, and optionally, the ability to
@@ -3783,15 +3837,16 @@
                     It is preferred that the TSF sends a fatal error alert message (e.g., unsupported certificate, bad certificate, decryption error, handshake failure) in response to this, 
                     but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                   </h:p></test>
-                  <test>(extended_master_secret) [conditional] If the TSF supports TLS 1.2 and the extended_master_secret extension is supported the evaluator shall establish a connection 
+                  <test>(extended_master_secret for TLS 1.2) [conditional] If the TSF supports TLS 1.2, the evaluator shall establish a connection 
                     from the TOE with a test TLS server configured as described in the following test and observe the behavior.
                     <h:p>
                       <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure) in response to terminating a session, but it is acceptable that 
                       the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                     </h:p>
-                    <h:p>If the TOE supports Legacy Servers, perform test 3.</h:p>
-                    <h:p>If the TOE supports session resumption, perform tests 6-7.</h:p>
-                    <h:p>If the TOE supports both, perform tests 4-5.</h:p>
+                    <h:p>In addition to mandatory tests 1-2:</h:p>
+                    <h:p>if the TOE supports Legacy Servers, also perform test 3;</h:p>
+                    <h:p>if the TOE supports session resumption, also perform tests 6-7;</h:p>
+                    <h:p>if the TOE supports both, also perform tests 4-5.</h:p>
                     <testlist>
                       <test>
                         <h:p>The evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and initiate 
@@ -4745,7 +4800,8 @@
             If support for TLS 1.3 is not claimed, supported_versions and key_share are not claimed.
               </h:p>
               <h:p>
-                If TLS 1.2 is claimed, extended_master_secret extension is claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients.     
+                If TLS 1.2 is claimed, extended_master_secret extension must be claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. 
+                The extended_master_secret extension (RFC 7627) selection cannot be claimed when TLS 1.3 is claimed.     
               </h:p>
               <h:p>
             If TLS 1.2 is supported and DHE or ECDHE ciphersuites are claimed in FCS_TLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable.
