@@ -31,6 +31,7 @@ output/tls-release-linkable.html: fe
 output/tls-release-linkable.html: ffdhe
 output/tls-release-linkable.html: iPAddress
 output/tls-release-linkable.html: iana
+output/tls-release-linkable.html: inFCS
 output/tls-release-linkable.html: ke
 output/tls-release-linkable.html: psk
 output/tls-release-linkable.html: pss
@@ -40,7 +41,6 @@ output/tls-release-linkable.html: rfc822Name
 output/tls-release-linkable.html: rsae
 output/tls-release-linkable.html: secp
 output/tls-release-linkable.html: uniformResourceIdentifier
-output/tls-release-linkable.html: unles
 output/tls-release.html: 00’
 output/tls-release.html: 01’
 output/tls-release.html: 0xfefc
@@ -66,13 +66,14 @@ output/tls-release.html: TDES
 output/tls-release.html: TLSCipherText
 output/tls-release.html: URIs
 output/tls-release.html: any’
+output/tls-release.html: cli
 output/tls-release.html: dNSName
 output/tls-release.html: data’
 output/tls-release.html: dhe
 output/tls-release.html: directoryName
 output/tls-release.html: dns
 output/tls-release.html: eason
-output/tls-release.html: ementation
+output/tls-release.html: ent
 output/tls-release.html: fc
 output/tls-release.html: fc’
 output/tls-release.html: fd
@@ -81,7 +82,7 @@ output/tls-release.html: fe
 output/tls-release.html: ffdhe
 output/tls-release.html: iPAddress
 output/tls-release.html: iana
-output/tls-release.html: impl
+output/tls-release.html: inFCS
 output/tls-release.html: ke
 output/tls-release.html: key’
 output/tls-release.html: methods’
@@ -124,12 +125,13 @@ output/tls.html: TDES
 output/tls.html: TLSCipherText
 output/tls.html: URIs
 output/tls.html: any’
+output/tls.html: cli
 output/tls.html: dNSName
 output/tls.html: data’
 output/tls.html: dhe
 output/tls.html: directoryName
 output/tls.html: dns
-output/tls.html: ementation
+output/tls.html: ent
 output/tls.html: fc
 output/tls.html: fc’
 output/tls.html: fd
@@ -138,7 +140,7 @@ output/tls.html: fe
 output/tls.html: ffdhe
 output/tls.html: iPAddress
 output/tls.html: iana
-output/tls.html: impl
+output/tls.html: inFCS
 output/tls.html: ke
 output/tls.html: key’
 output/tls.html: methods’
