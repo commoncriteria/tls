@@ -2193,10 +2193,11 @@
           Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
         </h:p>
         <h:p>
-        If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. If DTLS 1.3 is not claimed, supported_versions and key_share are not claimed.
+        If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. 
+        If DTLS 1.3 is not claimed, supported_versions and key_share are not claimed.
         </h:p>
         <h:p>
-          If DTLS 1.2 is claimed, extended_master_secret extension is claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. 
+          If DTLS 1.2 is claimed, extended_master_secret extension must be claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. The extended_master_secret extension (RFC 7627) selection cannot be claimed when TLS 1.3 is claimed.
         </h:p>
         <h:p>
           If DTLS 1.2 is supported and DHE or ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable. For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
@@ -2485,7 +2486,7 @@
                           </h:p></test>
                       </testlist>
                     </test>
-                    <test>(extended master secret) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a DTLS 1.2 session with the TSF from a test DTLS client for which the ClientHello does not include the extended master secret extension and observe that the TSF terminates the session.
+                    <test>(extended master secret for DTLS 1.2) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a DTLS 1.2 session with the TSF from a test DTLS client for which the ClientHello does not include the extended master secret extension and observe that the TSF terminates the session.
                       <h:p>
                         <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake error) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                       </h:p>
@@ -4770,8 +4771,11 @@
                   </selectables> and <selectables linebreak="yes">
                     <selectable>secp521r1 (RFC 8446)</selectable>
                     <selectable>ffdhe6144(259) (RFC 7919)</selectable>
-                    <selectable>ffdhe8192(260) (RFC 7919)</selectable></selectables></selectable>
+                    <selectable>ffdhe8192(260) (RFC 7919)</selectable>
+                    <selectable>no other supported groups</selectable></selectables></selectable>
                   <selectable>key_share extension (RFC 8446)</selectable>
+                  <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), 
+                    and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable>
                     <selectable>extended_master_secret extension (RFC 7627) enforcing client support and
                       <selectables>
                         <selectable>allowing legacy clients</selectable>
@@ -5130,15 +5134,11 @@
                             </h:p></test>
                         </testlist>
                       </test>
-                      <test>(extended master secret) [conditional] If TLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a TLS 1.2 session with the TSF from a test TLS client for which the ClientHello does not include the extended master secret extension and observe that the TSF terminates the session.
+                      <test>(extended master secret for TLS 1.2) [conditional] If TLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a TLS 1.2 session with the TSF from a test TLS client for which the ClientHello does not include the extended master secret extension and observe that the TSF terminates the session.
                         <h:p>
                         <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake error) in response to this, 
                         but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                         </h:p>
-                      </test>
-                      <test>
-                        (supported_groups for TLS 1.2) 
-                        [conditional] If the TSF supports TLS 1.2, and supports ECDHE or DHE ciphersuites, the evaluator shall perform the following tests.                        
                       </test>
                     </testlist>
                   </test>
