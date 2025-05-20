@@ -1183,7 +1183,7 @@
                                         </p>
                                     </li>
                                     <li class="test-">
-                                        <a id="dtls-client-obsolete-versions" class="defined" href="#dtls-client-obsolete-versions">Test FCS_DTLSC_EXT.1:2</a>: (obsolete versions) The evaluator shall perform the following tests: <span class="testlist-">
+                                        <a id="dtls-client-obsoleteIf the TSF responds with a ServerHello indicating DTLS 1.2-versions" class="defined" href="#dtls-client-obsoleteIf the TSF responds with a ServerHello indicating DTLS 1.2-versions">Test FCS_DTLSC_EXT.1:2</a>: (obsolete versions) The evaluator shall perform the following tests: <span class="testlist-">
                                             <ul>
                                                 <li class="test-">
                                                     <a id="dtls-client-obsolete-versions" class="defined" href="#dtls-client-obsolete-versions">Test FCS_DTLSC_EXT.1:2.1</a>: For each of <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 if it is not supported, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> connection from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server that is configured to negotiate the obsolete version and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message or terminates the connection.
@@ -1719,7 +1719,7 @@
                                             <b>Note:</b> The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is required not to accept a negotiation of <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0. This test confirms the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is able to distinguish attempts to negotiate <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 when the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 and below downgrade indicator is provided, and is only performed when the indicator is processed resulting in a different behavior than other attempts to negotiate <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session according to the unique behavior indicated in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message, the evaluator shall continue sending the server finished until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> demonstrates the unique response to the downgrade indicator as described in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> logs a fatal error alert message (illegal parameter or unsupported version), but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminate the session without logging an error alert.
                                         </p>
                                         <p>
-                                            Use of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 and below indicator as a redundant mechanism where there is no configuration that actually processes the value does not require additional testing, since this would be addressed by<a href="#dtls-client-obsolete-versions" class="dynref">Test FCS_DTLSC_EXT.1:2</a><a href="#dtls-client-obsolete-versions" class="dynref">Test FCS_DTLSC_EXT.1:2</a> for <a href="#FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</a>. This test is only required if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds differently (e.g., a different error alert) when the downgrade indicator is present than when <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 or below is negotiated and the downgrade indicator is not present.
+                                            Use of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 and below indicator as a redundant mechanism where there is no configuration that actually processes the value does not require additional testing, since this would be addressed by<a href="#dtls-client-obsolete-versions" class="dynref">Test FCS_DTLSC_EXT.1:2.1</a> for <a href="#FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</a>. This test is only required if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds differently (e.g., a different error alert) when the downgrade indicator is present than when <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 or below is negotiated and the downgrade indicator is not present.
                                         </p>
                                     </li>
                                 </ul>
@@ -5255,7 +5255,7 @@
                                 ] is not available in support of [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.2.3_10">all supported functions</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.2.3_10">all supported functioπns</span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="fcs_tlss_ext.2.3_12">[<b>assignment</b>: <span class="assignable-content">list of calling supported functions configurable to perform certificate status information bypass processing</span>]</span>
@@ -6884,7 +6884,7 @@
                                     ] is not available in support of [<b>selection</b>: 
                                     <ul>
                                         <li style="">
-                                            <span class="selectable-content" id="fcs_tlss_ext.2.3_10">all supported functions</span>
+                                            <span class="selectable-content" id="fcs_tlss_ext.2.3_10">all supported functioπns</span>
                                         </li>
                                         <li style="">
                                             <span class="selectable-content" id="fcs_tlss_ext.2.3_12">[<b>assignment</b>: <span class="assignable-content">list of calling supported functions configurable to perform certificate status information bypass processing</span>]</span>
