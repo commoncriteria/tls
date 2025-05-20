@@ -29,12 +29,10 @@ output/tls-release-linkable.html: fc
 output/tls-release-linkable.html: fd
 output/tls-release-linkable.html: fe
 output/tls-release-linkable.html: ffdhe
-output/tls-release-linkable.html: functio
 output/tls-release-linkable.html: iPAddress
 output/tls-release-linkable.html: iana
 output/tls-release-linkable.html: inFCS
 output/tls-release-linkable.html: ke
-output/tls-release-linkable.html: ns
 output/tls-release-linkable.html: psk
 output/tls-release-linkable.html: pss
 output/tls-release-linkable.html: rfc
@@ -82,7 +80,6 @@ output/tls-release.html: fd
 output/tls-release.html: fd’
 output/tls-release.html: fe
 output/tls-release.html: ffdhe
-output/tls-release.html: functioπns
 output/tls-release.html: iPAddress
 output/tls-release.html: iana
 output/tls-release.html: inFCS
@@ -141,7 +138,6 @@ output/tls.html: fd
 output/tls.html: fd’
 output/tls.html: fe
 output/tls.html: ffdhe
-output/tls.html: functioπns
 output/tls.html: iPAddress
 output/tls.html: iana
 output/tls.html: inFCS
