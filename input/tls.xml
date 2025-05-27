@@ -1119,49 +1119,49 @@
                       <test>
                         <h:p>The evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and initiate 
                         a DTLS 1.2 session with a test DTLS server configured to use the extended_master_secret extension/compute a master secret according to RFC 7627, section 4.</h:p>
-                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627, and ensures that the test DTLS server 
-                          includes the extended master secret extension in its ServerHello. The evaluator shall observe that the DTLS session between the TOE and DTLS Server is established successfully.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended_master_secret extension in accordance with RFC 7627, and ensures that the test DTLS server 
+                          includes the extended_master_secret extension in its ServerHello. The evaluator shall observe that the DTLS session between the TOE and DTLS Server is established successfully.</h:p>
                       </test>
                       <test>
                         <h:p>The evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and initiate a DTLS 1.2 
                           session with a test DTLS server configured to omit the extended_master_secret extension/compute a master secret according to RFC 5246, section 8.</h:p>
-                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensure that the test DTLS server does not 
-                          include the extended master secret extension in its ServerHello.  The evaluator shall observe that the TSF silently drops the message or terminates the connection in accordance with the behavior documented 
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended_master_secret extension in accordance with RFC 7627 and ensure that the test DTLS server does not 
+                          include the extended_master_secret extension in its ServerHello.  The evaluator shall observe that the TSF silently drops the message or terminates the connection in accordance with the behavior documented 
                           in the ST and the DTLS session between the TOE and DTLS Server fails.</h:p>
                       </test>
                       <test>
                         <h:p>[conditional] If the TOE supports allowing legacy servers the evaluator shall configure the TSF (if so configurable) to allow legacy servers and initiate a DTLS 1.2 session 
                           with a test DTLS server configured to omit the extended_master_secret extension/compute a master secret according to RFC 5246, section 8.</h:p>
-                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensures that the test DTLS server does 
-                          not include the extended master secret extension in its ServerHello.  The evaluator shall observe that the DTLS session between the TOE and DTLS Server is established successfully.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended_master_secret extension in accordance with RFC 7627 and ensures that the test DTLS server does 
+                          not include the extended_master_secret extension in its ServerHello.  The evaluator shall observe that the DTLS session between the TOE and DTLS Server is established successfully.</h:p>
                       </test>
                       <test>
                         <h:p>[conditional] If the TOE supports allowing legacy servers, and the TOE supports DTLS session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy 
-                          servers and resume a DTLS 1.2 session that previously computed the master secret in accordance with RFC 5246, section 8 (did not use the extended master secret extension in accordance 
+                          servers and resume a DTLS 1.2 session that previously computed the master secret in accordance with RFC 5246, section 8 (did not use the extended_master_secret extension in accordance 
                           with RFC 7627) with a test DTLS server configured to include the extended_master_secret extension/compute a master secret according to RFC 7627, section 4.</h:p>
                         <h:p>
-                          The evaluator shall observe that the TSF’s ClientHello omits the extended master secret extension and ensures that the test DTLS server includes the extended master secret extension in 
+                          The evaluator shall observe that the TSF’s ClientHello omits the extended_master_secret extension and ensures that the test DTLS server includes the extended_master_secret extension in 
                           its ServerHello.  The evaluator shall observe that the TSF silently drops the message or terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the DTLS session 
                           between the TOE and DTLS Server fails.</h:p>
                       </test>
                       <test>
                         <h:p>[conditional] If the TOE supports allowing legacy servers, and the TOE supports DTLS session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy 
-                          servers and resume a DTLS 1.2 session that previously used the extended master secret extension in accordance with RFC 7627 with a test DTLS server configured to omit the extended_master_secret extension.</h:p>
-                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensures that the test DTLS server does not include the extended master 
-                          secret extension in its ServerHello.  The evaluator shall observe that the TSF silently drops the message or terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the DTLS session 
+                          servers and resume a DTLS 1.2 session that previously used the extended_master_secret extension in accordance with RFC 7627 with a test DTLS server configured to omit the extended_master_secret extension.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended_master_secret extension in accordance with RFC 7627 and ensures that the test DTLS server does not include the extended_master_secret 
+                          extension in its ServerHello.  The evaluator shall observe that the TSF silently drops the message or terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the DTLS session 
                           between the TOE and DTLS Server fails.</h:p>
                       </test>
                       <test>
                         <h:p>[conditional] If the TOE supports DTLS session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) 
-                          and resume a DTLS 1.2 session that previously computed the master secret in accordance with RFC 5246, section 8 (did not use the extended master secret extension in accordance with RFC 7627) with a test DTLS server 
+                          and resume a DTLS 1.2 session that previously computed the master secret in accordance with RFC 5246, section 8 (did not use the extended_master_secret extension in accordance with RFC 7627) with a test DTLS server 
                           configured to include the extended_master_secret extension/compute a master secret according to RFC 7627, section 4.</h:p>
-                        <h:p>The evaluator shall observe that the TSF’s ClientHello omits the extended master secret extension and ensures that the test DTLS server includes the extended master secret extension in its ServerHello. 
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello omits the extended_master_secret extension and ensures that the test DTLS server includes the extended_master_secret extension in its ServerHello. 
                           The evaluator shall observe that the TSF silently drops the message or terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the DTLS session between the TOE and DTLS Server fails.</h:p>
                       </test>
                       <test>
                         <h:p>[conditional] If the TOE supports DTLS session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) 
-                          and resume a DTLS 1.2 session that previously used the extended master secret extension in accordance with RFC 7627 with a test DTLS server configured to omit the extended_master_secret extension.</h:p>
-                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended master secret extension in accordance with RFC 7627 and ensures that the test DTLS server does not include the extended master secret 
+                          and resume a DTLS 1.2 session that previously used the extended_master_secret extension in accordance with RFC 7627 with a test DTLS server configured to omit the extended_master_secret extension.</h:p>
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended_master_secret extension in accordance with RFC 7627 and ensures that the test DTLS server does not include the extended_master_secret 
                           extension in its ServerHello.  The evaluator shall observe that the TSF silently drops the message or terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the DTLS session between the TOE and DTLS Server fails.</h:p>
                       </test>
                     </testlist>
@@ -3890,8 +3890,8 @@
                       <test>
                         <h:p>[conditional] If the TOE supports allowing legacy servers, and the TOE supports TLS session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy 
                           servers and resume a TLS 1.2 session that previously used the extended_master_secret extension in accordance with RFC 7627 with a test TLS server configured to omit the extended_master_secret extension.</h:p>
-                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended_master_secret extension in accordance with RFC 7627 and ensures that the test TLS server does not include the extended master 
-                          secret extension in its ServerHello.  The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session 
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended_master_secret extension in accordance with RFC 7627 and ensures that the test TLS server does not include the extended_master_secret 
+                          extension in its ServerHello.  The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session 
                           between the TOE and TLS Server fails.</h:p>
                       </test>
                       <test>
@@ -3904,7 +3904,7 @@
                       <test>
                         <h:p>[conditional] If the TOE supports TLS session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) 
                           and resume a TLS 1.2 session that previously used the extended_master_secret extension in accordance with RFC 7627 with a test TLS server configured to omit the extended_master_secret extension.</h:p>
-                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended_master_secret extension in accordance with RFC 7627 and ensures that the test TLS server does not include the extended master secret 
+                        <h:p>The evaluator shall observe that the TSF’s ClientHello includes the extended_master_secret extension in accordance with RFC 7627 and ensures that the test TLS server does not include the extended_master_secret 
                           extension in its ServerHello.  The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS Server fails.</h:p>
                       </test>
                     </testlist>
