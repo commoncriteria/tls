@@ -2489,7 +2489,7 @@
                           </h:p></test>
                       </testlist>
                     </test>
-                    <test>(extended master secret) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a DTLS 1.2 session with the TSF from a test DTLS client for which the ClientHello does not include the extended_master_secret extension and observe that the TSF terminates the session.
+                    <test>(extended_master_secret) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a DTLS 1.2 session with the TSF from a test DTLS client for which the ClientHello does not include the extended_master_secret extension and observe that the TSF terminates the session.
                       <h:p>
                         <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake error) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                       </h:p>
@@ -4772,7 +4772,8 @@
                   </selectables> and <selectables linebreak="yes">
                     <selectable>secp521r1 (RFC 8446)</selectable>
                     <selectable>ffdhe6144 (RFC 7919)</selectable>
-                    <selectable>ffdhe8192 (RFC 7919)</selectable></selectables></selectable>
+                    <selectable>ffdhe8192 (RFC 7919)</selectable>
+                    <selectable>no other supported groups</selectable></selectables></selectable>
                   <selectable>key_share extension (RFC 8446)</selectable>
                   <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), 
                     and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable>
@@ -5135,7 +5136,7 @@
                             </h:p></test>
                         </testlist>
                       </test>
-                      <test>(extended master secret) [conditional] If TLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a TLS 1.2 session with the TSF from a test TLS client for which the ClientHello does not include the extended_master_secret extension and observe that the TSF terminates the session.
+                      <test>(extended_master_secret) [conditional] If TLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a TLS 1.2 session with the TSF from a test TLS client for which the ClientHello does not include the extended_master_secret extension and observe that the TSF terminates the session.
                         <h:p>
                         <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake error) in response to this, 
                         but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
