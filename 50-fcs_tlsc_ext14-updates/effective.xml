@@ -2061,7 +2061,7 @@
         <h:ul>
           <h:li>signature_algorithms extension (RFC 8446) indicating support for 
             <selectables linebreak="yes">
-              <selectable>_secp384r1_sha384 (RFC 8446)</selectable>
+              <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
               <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                 <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                 <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
