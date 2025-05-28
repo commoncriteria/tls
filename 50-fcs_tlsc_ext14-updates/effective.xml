@@ -2179,7 +2179,7 @@
         </h:p>
         <h:p>
           If DTLS 1.2 and supported_groups extension are supported (for ECDHE or DHE groups), the ST author claims either the
-          “Diffie_Hellman groups…” or “ECDHE parameters...” option according to the supported ciphersuites and supported_groups extension
+          “Diffie-Hellman groups…” or “ECDHE parameters...” option according to the supported ciphersuites and supported_groups extension
           values. This is required when ECDHE ciphersuites are supported and recommended when DHE ciphersuites are supported.
         </h:p>
         <h:p>
@@ -4801,7 +4801,7 @@
               </h:p>
               <h:p>
               If TLS 1.2 and supported_groups extension are supported (for ECDHE or DHE groups), the ST author claims the
-              “Diffie_Hellman groups…” or “ECDHE parameters...” according to the supported ciphersuites and supported_groups extension
+              “Diffie-Hellman groups…” or “ECDHE parameters...” according to the supported ciphersuites and supported_groups extension
               values. This is required when ECDHE ciphersuites are supported and recommended when DHE ciphersuites are supported.
               </h:p>
               <h:p>
