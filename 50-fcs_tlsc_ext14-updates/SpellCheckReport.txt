@@ -5,8 +5,11 @@ output/tls-release-linkable.html: 4F
 output/tls-release-linkable.html: AIA
 output/tls-release-linkable.html: CIDR
 output/tls-release-linkable.html: CNSA
+output/tls-release-linkable.html: CertificateRequest
+output/tls-release-linkable.html: CertificateVerify
 output/tls-release-linkable.html: ClientKeyExchange
 output/tls-release-linkable.html: ContentType
+output/tls-release-linkable.html: EncryptedExtensions
 output/tls-release-linkable.html: ExtendedKeyUsage
 output/tls-release-linkable.html: HelloRequest
 output/tls-release-linkable.html: HelloRetryRequest
@@ -35,6 +38,7 @@ output/tls-release-linkable.html: ffdhe
 output/tls-release-linkable.html: iPAddress
 output/tls-release-linkable.html: iana
 output/tls-release-linkable.html: ke
+output/tls-release-linkable.html: owngrade
 output/tls-release-linkable.html: psk
 output/tls-release-linkable.html: pss
 output/tls-release-linkable.html: rfc
@@ -52,8 +56,11 @@ output/tls-release.html: 4F
 output/tls-release.html: AIA
 output/tls-release.html: CIDR
 output/tls-release.html: CNSA
+output/tls-release.html: CertificateRequest
+output/tls-release.html: CertificateVerify
 output/tls-release.html: ClientKeyExchange
 output/tls-release.html: ContentType
+output/tls-release.html: EncryptedExtensions
 output/tls-release.html: ExtendedKeyUsage
 output/tls-release.html: HelloRequest
 output/tls-release.html: HelloRetryRequest
@@ -89,6 +96,7 @@ output/tls-release.html: ke
 output/tls-release.html: key’
 output/tls-release.html: methods’
 output/tls-release.html: ordering’
+output/tls-release.html: owngrade
 output/tls-release.html: psk
 output/tls-release.html: pss
 output/tls-release.html: received’
@@ -111,8 +119,11 @@ output/tls.html: 4F
 output/tls.html: AIA
 output/tls.html: CIDR
 output/tls.html: CNSA
+output/tls.html: CertificateRequest
+output/tls.html: CertificateVerify
 output/tls.html: ClientKeyExchange
 output/tls.html: ContentType
+output/tls.html: EncryptedExtensions
 output/tls.html: ExtendedKeyUsage
 output/tls.html: HelloRequest
 output/tls.html: HelloRetryRequest
@@ -147,6 +158,7 @@ output/tls.html: ke
 output/tls.html: key’
 output/tls.html: methods’
 output/tls.html: ordering’
+output/tls.html: owngrade
 output/tls.html: psk
 output/tls.html: pss
 output/tls.html: received’
