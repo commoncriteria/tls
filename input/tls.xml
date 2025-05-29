@@ -905,7 +905,7 @@
                         </h:p><h:p>
                         Once the handshake is successful, the evaluator shall cause the test DTLS server to send a CertificateRequest message and observe that the TSF provides Certificate message and CertificateVerify messages. 
                         </h:p><h:p>
-                        <h:b>Note:</h:b> It may be necessary to complete a standard handshake and send a new-ticket message from the test DTLS server to establish a pre-shared key, or it might be possible to configure the pre-shared key manually via out-of-band mechanisms. 
+                        <h:b>Note:</h:b> It may be necessary to complete a standard handshake and send a NewSessionTicket message from the test DTLS server to establish a pre-shared key, or it might be possible to configure the pre-shared key manually via out-of-band mechanisms. 
                         This can be performed in conjunction with other testing that is not tested as part of this SFR. 
                         It is not required at this time to support emerging standards on establishing PSK, but as such standards are finalized, this FP may be updated to require such support.
                         </h:p><h:p>
@@ -924,15 +924,15 @@
                 
                 
                 <!-- DTLS Client Corrupt Finished Message -->
-                <test>(corrupt finished message) For each supported version, the evaluator shall initiate a DTLS session from the TOE to a test DTLS server that sends a compliant set of server handshake messages, except for sending a modified finished message (modify a byte of the finished message that would have been sent by a compliant server). The evaluator shall observe that the TSF silently drops the message or terminates the session and in either case, does not complete the handshake by observing that the TSF does not send application data provided to the DTLS channel.</test>
+                <test>(corrupt Finished message) For each supported version, the evaluator shall initiate a DTLS session from the TOE to a test DTLS server that sends a compliant set of server handshake messages, except for sending a modified Finished message (modify a byte of the Finished message that would have been sent by a compliant server). The evaluator shall observe that the TSF silently drops the message or terminates the session and in either case, does not complete the handshake by observing that the TSF does not send application data provided to the DTLS channel.</test>
                 
                 <!-- DTLS Client Missing Finished Message -->
-                <test id="dtls-client-missing-finished">(missing finished message) For each supported version, the evaluator shall initiate a session from the TOE to a test DTLS server providing a compliant handshake, except for sending a random DTLS message (the five byte header indicates a correct DTLS message for the negotiated version, but not indicating a finished message) as the final message. 
+                <test id="dtls-client-missing-finished">(missing Finished message) For each supported version, the evaluator shall initiate a session from the TOE to a test DTLS server providing a compliant handshake, except for sending a random DTLS message (the five byte header indicates a correct DTLS message for the negotiated version, but not indicating a Finished message) as the final message. 
                   The evaluator shall observe that the TSF silently drops the message or terminates the session and in either case, does not send application data.
                   <h:p>
                     <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., decryption error) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                   </h:p><h:p>
-                  For DTLS 1.2, the modified message is sent after the change_cipher_spec message. For DTLS 1.3, the modified message is sent as the last message of the server’s second flight of messages.
+                  For DTLS 1.2, the modified message is sent after the ChangeCipherSpec message. For DTLS 1.3, the modified message is sent as the last message of the server’s second flight of messages.
                   </h:p></test>
                 
                 <!-- DTLS Client Invalid Handshake Signatures -->
@@ -1120,8 +1120,8 @@
         <Tests>
           For each supported DTLS version, the evaluator shall perform the following tests:
           <testlist>
-            <test>The evaluator shall establish a DTLS connection from the TSF to a test DTLS server that negotiates the tested version and which is not configured for mutual authentication (i.e., does not send a server’s CertificateRequest (type 13) message). The evaluator shall observe negotiation of a DTLS channel and confirm that the TOE did not send a Client’s Certificate message (type 11) during handshake.</test>
-            <test>The evaluator shall establish a connection to a test DTLS server with a shared trusted root that is configured for mutual authentication (i.e., it sends a server’s CertificateRequest (type 13) message). The evaluator shall observe negotiation of a DTLS channel and confirm that the TOE responds with a non-empty client’s Certificate message (type 11) and CertificateVerify (type 15) message.</test>
+            <test>The evaluator shall establish a DTLS connection from the TSF to a test DTLS server that negotiates the tested version and which is not configured for mutual authentication (i.e., does not send a server’s CertificateRequest message). The evaluator shall observe negotiation of a DTLS channel and confirm that the TOE did not send a Client’s Certificate message during handshake.</test>
+            <test>The evaluator shall establish a connection to a test DTLS server with a shared trusted root that is configured for mutual authentication (i.e., it sends a server’s CertificateRequest message). The evaluator shall observe negotiation of a DTLS channel and confirm that the TOE responds with a non-empty client’s Certificate message and CertificateVerify message.</test>
             <test>[conditional] If the TSF supports post-handshake authentication, the evaluator shall establish a pre-shared key between the TSF and a test DTLS 1.3 server. 
               The evaluator shall initiate a DTLS session using the pre-shared key and confirm the TSF and test DTLS 1.3 server successfully complete the DTLS handshake and both support post-handshake authentication. 
               After the session is successfully established, the evaluator shall initiate a CertificateRequest message from the test DTLS 1.3 server. 
@@ -1928,10 +1928,10 @@
                       <testlist>
                         <test>For each supported RSA key size, the evaluator shall provision the TSF with a valid certificate that has an RSA public key of that size. 
                           The evaluator shall initiate a valid DTLS 1.2 handshake from a compliant test DTLS 1.2 client and observe that the server Certificate message matches the provisioned certificate.</test>
-                        <test>For each supported RSA key size, the evaluator shall send the TSF a compliant DTLS 1.2 ClientHello, but in place of the client’s key exchange message, the evaluator shall send the TSF a (non-compliant) key exchange message that is properly formatted but uses an invalid EncryptedPreMasterSecret field in the DTLS handshake (e.g., modify a byte of a properly computed value). The evaluator shall attempt to complete the handshake using compliant client change cipher spec and finished messages and verify that the TSF terminates the handshake in a manner that is indistinguishable from a finished message error and does not send application data.
+                        <test>For each supported RSA key size, the evaluator shall send the TSF a compliant DTLS 1.2 ClientHello, but in place of the client’s key exchange message, the evaluator shall send the TSF a (non-compliant) key exchange message that is properly formatted but uses an invalid EncryptedPreMasterSecret field in the DTLS handshake (e.g., modify a byte of a properly computed value). The evaluator shall attempt to complete the handshake using compliant client e ChangeCipherSpec and Finished messages and verify that the TSF terminates the handshake in a manner that is indistinguishable from a Finished message error and does not send application data.
                           <h:p>
-                            <h:b>Note:</h:b> Mitigations for oracle attacks described in RFC 5246 Appendix D require the TSF to exhibit the same behavior for key establishment failures as it does for finished message failures.
-                            While DTLS generally allows invalid messages to be silently dropped, this behavior may produce an oracle. Recommended approaches include generating a random key and continuing the handshake until after the finished message is received. If the TSF terminates the session and sends an error alert message, it is preferred that the TSF send a fatal decrypt failure error alert at the end of the handshake in both this case and for a finished message error, but it is acceptable that the TSF terminate the session with another error alert, or without sending an error alert in either case. 
+                            <h:b>Note:</h:b> Mitigations for oracle attacks described in RFC 5246 Appendix D require the TSF to exhibit the same behavior for key establishment failures as it does for Finished message failures.
+                            While DTLS generally allows invalid messages to be silently dropped, this behavior may produce an oracle. Recommended approaches include generating a random key and continuing the handshake until after the Finished message is received. If the TSF terminates the session and sends an error alert message, it is preferred that the TSF send a fatal decrypt failure error alert at the end of the handshake in both this case and for a Finished message error, but it is acceptable that the TSF terminate the session with another error alert, or without sending an error alert in either case. 
                             If the failure error alert is not for a decryption failure, the evaluator shall note that the TSF’s response agrees with the response observed in the DTLS 1.2 iteration of <xref to="dtls-server-rejects-bad-client-finished"/>. 
                           </h:p>
                         </test>
@@ -1940,12 +1940,12 @@
                     <test id="dtls-server-rejects-bad-client-finished">For each supported version, the evaluator shall initiate a compliant handshake up through the (implied for DTLS 1.3) ChangeCipherSpec message. 
                       The evaluator shall then send a (non-compliant) client Finished handshake message with an invalid ‘verify_data’ value and verify that the server silently drops the message or terminates the session and does not send any application data.
                       <h:p>
-                        <h:b>Note:</h:b> DTLS 1.2 handshakes include explicit change cipher spec messages, but DTLS 1.3 omits the change cipher spec message. If DTLS 1.3 is supported, the modified finished message is sent as the final message from the client after receiving the server’s second flight of handshake messages [EncryptedExtensions, (NewSessionTicket), (Certificate, CertificateVerify), (CertificateRequest)].
+                        <h:b>Note:</h:b> DTLS 1.2 handshakes include explicit e ChangeCipherSpec messages, but DTLS 1.3 omits the e ChangeCipherSpec message. If DTLS 1.3 is supported, the modified Finished message is sent as the final message from the client after receiving the server’s second flight of handshake messages [EncryptedExtensions, (NewSessionTicket), (Certificate, CertificateVerify), (CertificateRequest)].
                       </h:p><h:p>
                         <h:b>Note:</h:b>
-                        If the TSF rejects the connection, and no application data is sent, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client finished message until the TSF times out, noting that no application data is sent. It is preferred that the TSF logs a fatal decryption failure error alert, but it is acceptable that the TSF terminate the session using another error alert or without logging an error alert.
+                        If the TSF rejects the connection, and no application data is sent, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client Finished message until the TSF times out, noting that no application data is sent. It is preferred that the TSF logs a fatal decryption failure error alert, but it is acceptable that the TSF terminate the session using another error alert or without logging an error alert.
                       </h:p><h:p>
-                        The finished message is encrypted. The invalid 'verify_data' can be constructed by modifying a byte of a compliant Finished message payload.
+                        The Finished message is encrypted. The invalid 'verify_data' can be constructed by modifying a byte of a compliant Finished message payload.
                       </h:p>
                     </test>                    
                         <test>
@@ -3139,7 +3139,7 @@
                 
                 
                 <!-- TLS Client Corrupt Finished Message -->
-                <test>(corrupt finished message) For each supported version, the evaluator shall initiate a TLS session from the TOE to a test TLS server that sends a compliant set of server handshake messages, except for sending a modified Finished message (modify a byte of the Finished message that would have been sent by a compliant server). 
+                <test>(corrupt Finished message) For each supported version, the evaluator shall initiate a TLS session from the TOE to a test TLS server that sends a compliant set of server handshake messages, except for sending a modified Finished message (modify a byte of the Finished message that would have been sent by a compliant server). 
                   The evaluator shall observe that the TSF terminates the session and does not complete the handshake by observing that the TSF does not send Application Data provided to the TLS channel.</test>
                 
                 <!-- TLS Client Missing Finished Message -->
