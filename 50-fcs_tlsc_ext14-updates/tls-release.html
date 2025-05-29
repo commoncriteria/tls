@@ -3117,8 +3117,7 @@ The following sections list Common Criteria and technology terms used in this do
                   </p><p>
                   The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> presents a ClientHello indicating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 (value '03 03') in the highest or legacy version field and, if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is supported, the supported versions extension is present and contains the value '03 04' for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3.
                   </p><p>
-                  The evaluator shall observe that the ClientHello indicates the supported ciphersuites in the order indicated, 
-                  and that it includes only the extensions supported, with appropriate values, for that version in accordance with the requirement.
+                  The evaluator shall observe that the ClientHello indicates the supported ciphersuites in the order indicated,  and that it includes only the extensions supported, with appropriate values, for that version in accordance with the requirement.
                   </p><p>
                   The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> successfully completes the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> handshake.
                   </p><p>
@@ -3127,12 +3126,9 @@ The following sections list Common Criteria and technology terms used in this do
                   <p>
                     If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is configurable to support only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, or both <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, <a href="#tls-client-supported-configurations" class="dynref">Test FCS_TLSC_EXT.1:1</a> should be performed in each configuration, with ciphersuites and extensions appropriate for the configured version.
                   </p><p>
-                  The connection in <a href="#tls-client-supported-configurations" class="dynref">Test FCS_TLSC_EXT.1:1</a> may be established as part of the establishment of a higher-level protocol, 
-                  e.g., as part of an <abbr class="dyn-abbr"><a href="#abbr_EAP">EAP</a></abbr> session. 
+                  The connection in <a href="#tls-client-supported-configurations" class="dynref">Test FCS_TLSC_EXT.1:1</a> may be established as part of the establishment of a higher-level protocol, e.g., as part of an <abbr class="dyn-abbr"><a href="#abbr_EAP">EAP</a></abbr> session. 
                   </p><p>
-                  It is sufficient to observe the successful negotiation of a ciphersuite to satisfy the intent of the test; 
-                  it is not necessary to examine the characteristics of the encrypted traffic in an attempt to discern the ciphersuite being used 
-                  (for example, that the cryptographic algorithm is 128-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> and not 256-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>).
+                  It is sufficient to observe the successful negotiation of a ciphersuite to satisfy the intent of the test; it is not necessary to examine the characteristics of the encrypted traffic in an attempt to discern the ciphersuite being used (for example, that the cryptographic algorithm is 128-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> and not 256-bit <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>).
                   </p>
                 </li>
                 
@@ -3143,30 +3139,19 @@ The following sections list Common Criteria and technology terms used in this do
                 <span class="testlist-"><ul>
                   
                     <li class="test-"><a id="tls-client-obsolete-versions" class="defined" href="#tls-client-obsolete-versions">Test FCS_TLSC_EXT.1:2.1</a>:
-      For each of SSL version 2, SSL version 3, <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.0, <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1, and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>
-                      1.2 if it is not supported, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> 
-                    to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that is configured to negotiate the obsolete version and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection.
+      For each of SSL version 2, SSL version 3, <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.0, <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1, and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 if it is not supported, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that is configured to negotiate the obsolete version and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection.
                       <p>
-                    <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., protocol version, insufficient security) in response to this, 
-                    but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
+                    <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., protocol_version, insufficient_security) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
                       </p>
                     </li>
                   
                   <li class="test-"><a id="tls-client-nonstandard-versions" class="defined" href="#tls-client-nonstandard-versions">Test FCS_TLSC_EXT.1:2.2</a>:
       
-                    The evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to
-                  ensure any supported beta <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 versions are disabled, as necessary. The evaluator
-                    shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a ClientHello message indicating the supported version (referred to
-                    as the legacy version in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) with the value '03 04' but without including the
-                    supported_versions extension and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> either
-                    responds with a ServerHello indicating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 or terminates the connection.
+                    The evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to ensure any supported beta <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 versions are disabled, as necessary. The evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a ClientHello message indicating the supported version (referred to as the legacy version in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) with the value '03 04' but without including the supported_versions extension and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> either responds with a ServerHello message indicating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 or terminates the connection.
                     <p>
-                    <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., protocol version) in response to this, 
-                    but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
+                    <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., protocol_version) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
                     </p><p>
-                      <a href="#tls-client-nonstandard-versions" class="dynref">Test FCS_TLSC_EXT.1:2.2</a> is intended to test the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> response to non-standard versions, higher than indicated in the ClientHello's "highest version/legacy version" supported, including early proposals for 'beta <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3' versions. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports such beta versions, the
-                      evaluator shall follow the operational guidance instructions to disable them prior to
-                      conducting <a href="#tls-client-nonstandard-versions" class="dynref">Test FCS_TLSC_EXT.1:2.2</a>.
+                      <a href="#tls-client-nonstandard-versions" class="dynref">Test FCS_TLSC_EXT.1:2.2</a> is intended to test the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> response to non-standard versions, higher than indicated in the ClientHello's "highest version/legacy version" supported, including early proposals for 'beta <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3' versions. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports such beta versions, the evaluator shall follow the operational guidance instructions to disable them prior to conducting <a href="#tls-client-nonstandard-versions" class="dynref">Test FCS_TLSC_EXT.1:2.2</a>.
                     </p>
                   </li>
                 </ul></span>
@@ -3175,52 +3160,42 @@ The following sections list Common Criteria and technology terms used in this do
                 
                 <li class="test-"><a id="_t_138" class="defined" href="#_t_138">Test FCS_TLSC_EXT.1:3</a>:
       
-                  (ciphersuites)  The evaluator shall perform the following tests on handling unexpected ciphersuites using a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server 
-                  sending handshake messages compliant with the negotiated version except as indicated in the test: 
+                  (ciphersuites)  The evaluator shall perform the following tests on handling unexpected ciphersuites using a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server sending handshake messages compliant with the negotiated version except as indicated in the test: 
                   <span class="testlist-"><ul>
                     <li class="test-"><a id="_t_139" class="defined" href="#_t_139">Test FCS_TLSC_EXT.1:3.1</a>:
-      (supported ciphersuite not offered) For each supported version, the evaluator shall attempt to establish a connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate the supported version and a ciphersuite 
-                      not included in the ClientHello and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
+      (supported ciphersuite not offered) For each supported version, the evaluator shall attempt to establish a connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate the supported version and a ciphersuite not included in the ClientHello and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
                     <p>
-                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake failure) in response to this, 
-                      but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
+                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
                     </p><p>
                       This test is intended to test the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>’s generic ability to recognize non-offered ciphersuites. 
-                      If the ciphersuites in the ClientHello are configurable, 
-                      the evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> not to offer a supported ciphersuite and then use that ciphersuite in the test. 
+                      If the ciphersuites in the ClientHello are configurable, the evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> not to offer a supported ciphersuite and then use that ciphersuite in the test. 
                       If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> ciphersuite list is not configurable, it is acceptable to use a named ciphersuite from the IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> protocols associated with the tested version. 
                       Additional special cases of this test for special ciphersuites are performed separately.
                     </p></li>
                     <li class="test-"><a id="tls-client-version-confusion" class="defined" href="#tls-client-version-confusion">Test FCS_TLSC_EXT.1:3.2</a>:
       (version confusion) For each supported version, 
-                      the evaluator shall attempt to establish a connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that is configured to negotiate the supported version 
-                      and a ciphersuite that is not associated with that version and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
+                      the evaluator shall attempt to establish a connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that is configured to negotiate the supported version and a ciphersuite that is not associated with that version and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
                       <p>
-                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake failure) in response to this, 
-                      but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
+                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake failure) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
                       </p><p>
                       If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, the evaluator shall use <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites for a server negotiating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2. If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is supported, the test server negotiating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 should select a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuite consistent with the client's supported groups and signature algorithm indicated by extensions in the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ClientHello. 
                       </p><p>
                       If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is configurable to allow both <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 servers, the evaluator should use this configuration for the test, and configure the test server to use ciphersuites offered by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> in its ClientHello message.
                     </p></li>
                     <li class="test-"><a id="_t_141" class="defined" href="#_t_141">Test FCS_TLSC_EXT.1:3.3</a>:
-      (null ciphersuite) For each supported version, the evaluator shall attempt to establish a connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server 
-                      configured to negotiate the null ciphersuite (TLS_NULL_WITH_NULL_NULL) and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection. 
+      (null ciphersuite) For each supported version, the evaluator shall attempt to establish a connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate the null ciphersuite (TLS_NULL_WITH_NULL_NULL) and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection. 
                       <p>
-                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, 
-                      but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
+                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake_failure, insufficient_security) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
                         </p></li>
                     
                     
                     <li class="test-"><a id="_t_142" class="defined" href="#_t_142">Test FCS_TLSC_EXT.1:3.4</a>:
       The evaluator shall perform one or more of the following tests to demonstrate the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not connect with anonymous servers:
                       <p>
-                        [conditional] (anon ciphersuite) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate a ciphersuite using the anonymous server authentication method 
-                      and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
+                        [conditional] (anon ciphersuite) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate a ciphersuite using the anonymous server authentication method and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
                       </p>
                       <p>
-                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, 
-                      but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
+                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake_failure, insufficient_security) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
                       </p>
                     <p>
                     See IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters for available ciphersuites to be selected by the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server. 
@@ -3228,11 +3203,8 @@ The following sections list Common Criteria and technology terms used in this do
                     For example, if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> only supports the ciphersuite TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test server could select TLS_DH_ANON_WITH_AES_256_GCM_SHA_384.
                     </p>
                     <p>
-                      [conditional] (anon ciphersuite) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server
-                      configured to assert a ‘raw public key’ in the server_certificate_type as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7250, and to send its certificate message including the raw public key indicator
-                      for the public key information field (regardless of the client's support for this extension). The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not send the server_certificate_type
-                      extension indicating support for raw public keys in its ClientHello message and terminates the session when receiving the
-                      server’s certificate message.
+                      [conditional] (anon ciphersuite) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to assert a ‘raw public key’ in the server_certificate_type as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7250, and to send its certificate message including the raw public key indicator for the public key information field (regardless of the client's support for this extension). The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not send the server_certificate_type
+                      extension indicating support for raw public keys in its ClientHello message and terminates the session when receiving the server’s Certificate message.
                     </p><p>
                       <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., bad_certificate, unsupported_certificate) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
                     </p><p>
@@ -3245,22 +3217,18 @@ The following sections list Common Criteria and technology terms used in this do
                         The evaluator shall perform one or more of the following tests to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not accept connections using disallowed ciphersuites:
                       </p>
                       <p>
-                        [conditional] (disallowed encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ClientHello that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151, except that for each 
-                        disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128), the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>
-                        server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
+                        [conditional] (disallowed encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ClientHello that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151, except that for each disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128), the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
                       </p><p>
                         [conditional] (disallowed encryption algorithm) If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, for each <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuite registered in IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters using <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-128 as the encryption algorithm, the evaluator shall attempt to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.   
                       </p><p>
-                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, 
-                      but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
+                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., handshake_failure, insufficient_security) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
                       </p><p>
                       See IANA <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> parameters for available ciphersuites to be tested. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. 
-                      For example, if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> only supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test server could select
-                      TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.  
+                      For example, if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> only supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test server could select TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.  
                       </p>
                    
                       <p>
-                        [conditional] If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is supported, the evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ClientHello that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151, except that the ciphersuites field contains the single ciphersuite TLS_AES_128_GCM_SHA256. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
+                        [conditional] If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is supported, the evaluator shall send the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ClientHello message that is compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9151, except that the ciphersuites field contains the single ciphersuite TLS_AES_128_GCM_SHA256. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> rejects the connection.
                       </p>
                     </li>
                   </ul></span>
@@ -3269,8 +3237,7 @@ The following sections list Common Criteria and technology terms used in this do
                 
                 <li class="test-"><a id="_t_144" class="defined" href="#_t_144">Test FCS_TLSC_EXT.1:4</a>:
       (extensions) For each supported version indicated in the following tests, 
-                  the evaluator shall establish a connection from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> with a test server negotiating the tested version and providing 
-                  server handshake messages as indicated when performing the following tests for validating proper extension handling:
+                  the evaluator shall establish a connection from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> with a test server negotiating the tested version and providing server handshake messages as indicated when performing the following tests for validating proper extension handling:
                 <span class="testlist-"><ul>
                   <li class="test-"><a id="_t_145" class="defined" href="#_t_145">Test FCS_TLSC_EXT.1:4.1</a>:
       
