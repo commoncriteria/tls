@@ -642,22 +642,20 @@ function showTarget(id){
     </span></a><a href="#sel-based-reqs-audit" style="text-indent:10px">B.1<span>
               Auditable Events for Selection-based  Requirements
            </span></a><a href="#fcs-sel-based" style="text-indent:10px">B.2<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCS" style="text-indent:20px">C.2.1<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_TLS_EXT" style="text-indent:30px">C.2.1.1<span>FCS_TLS_EXT TLS Protocol</span></a><a href="#ext-comp-FCS_DTLSC_EXT" style="text-indent:30px">C.2.1.2<span>FCS_DTLSC_EXT DTLS Client Protocol</span></a><a href="#ext-comp-FCS_DTLSS_EXT" style="text-indent:30px">C.2.1.3<span>FCS_DTLSS_EXT DTLS Server Protocol</span></a><a href="#ext-comp-FCS_TLSC_EXT" style="text-indent:30px">C.2.1.4<span>FCS_TLSC_EXT TLS Client Protocol</span></a><a href="#ext-comp-FCS_TLSS_EXT" style="text-indent:30px">C.2.1.5<span>FCS_TLSS_EXT TLS Server Protocol</span></a><a href="#acronyms" style="text-indent:0px">Appendix D - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix E - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
-    <h2 class="indexable" data-level="2" id="Overview">1.1 Overview</h2>
-      <p>      
-	  Transport Layer Security (<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>) and the closely-related Datagram <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> (<abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>) are cryptographic protocols designed to provide communications security over <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> networks.
-    Several versions of the protocol are in widespread use in software that provides functionality such as web browsing, email, instant messaging, and voice-over-IP (VoIP).
-    Major websites use <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> to protect communications to and from their servers.
-    <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> is also used to protect communications between hosts and network infrastructure devices for administration.
-    The underlying platform, such as an operating system, often provides the actual <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> implementation.
-    The primary goal of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> protocol is to provide confidentiality and integrity of data transmitted between two communicating endpoints, as well as authentication of at least the server endpoint.
-    </p><p>
+  <h2 class="indexable" data-level="2" id="Overview">1.1 Overview</h2>
+    <p>      
+	  Transport Layer Security (<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>) and the closely-related Datagram <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> (<abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>) are cryptographic protocols designed to provide communications security over <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> networks. Several versions of the protocol are in widespread use in software that provides functionality such as web browsing, email, instant messaging, and voice-over-IP (VoIP). Major websites use <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> to protect communications to and from their servers. <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> is also used to protect communications between hosts and network infrastructure devices for administration. The underlying platform, such as an operating system, often provides the actual <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> implementation. The primary goal of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> protocol is to provide confidentiality and integrity of data transmitted between two communicating endpoints, as well as authentication of at least the server endpoint.
+    </p>
+    <p>
 	  <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> supports many different methods for exchanging keys, encrypting data, and authenticating message integrity. These methods are dynamically negotiated between the client and server when the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection is established.
     As a result, evaluating the implementation of both endpoints is typically necessary to provide assurance for the operating environment.
-    </p><p>
+    </p>
+    <p>
 	  This "Functional Package for Transport Layer Security" (short name "<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>-PKG") defines functional requirements for the implementation of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> protocols. The requirements are intended to improve the security of products by enabling their evaluation.
-  </p>
-    
-    <div class="no-link"><h2 id="glossary" class="indexable" data-level="2">1.2 Terms</h2>
+    </p>
+  
+
+  <div class="no-link"><h2 id="glossary" class="indexable" data-level="2">1.2 Terms</h2>
 The following sections list Common Criteria and technology terms used in this document.
     <h3 id="cc-terms" class="indexable" data-level="3">1.2.1 Common Criteria Terms</h3><table><tr><td><div id="Assurance">Assurance</div></td><td>Grounds for confidence that a TOE meets the SFRs <a href="#bibCC">[CC]</a>.</td></tr>
 <tr><td><div id="Base_Protection_Profile">Base Protection Profile (Base-PP)</div></td><td>Protection Profile used as a basis to build a PP-Configuration.</td></tr>
@@ -685,46 +683,29 @@ The following sections list Common Criteria and technology terms used in this do
 <tr><td><div id="TOE_Security_Functionality">TOE Security Functionality (TSF)</div></td><td>The security functionality of the product under evaluation.</td></tr>
 <tr><td><div id="TOE_Summary_Specification">TOE Summary Specification (TSS)</div></td><td>A description of how a TOE satisfies the SFRs in an ST.</td></tr>
 </table><h3 id="tech-terms" class="indexable" data-level="3">1.2.2 Technical Terms</h3><table style="width: 100%"><tr><td><div id="Calling_application">Calling application</div></td><td>A TOE application that utilizes functions defined in this package to secure its communications with external entities</td></tr>
-<tr><td><div id="Certificate_Authority">Certificate Authority (CA)</div></td><td>
-	      Issuer of digital certificates.
-      </td></tr>
+<tr><td><div id="Certificate_Authority">Certificate Authority (CA)</div></td><td>Issuer of digital certificates.</td></tr>
 <tr><td><div id="Common_Name">Common Name (CN)</div></td><td>A particular relative distinguished name (DN) that is a component of a DN in accordance with RFC 5280 usage of RFC 4519, interpreted as a string without further normalization. It is common, but not recommended, for TLS and the calling applications to interpret a CN entry using specific formatting. When such formatting is applied for interpreting a CN entry, the resulting name is referred to as an 'embedded CN name'. The various formats supported for interpreting CN entries are referred to as the 'embedded CN name types'.</td></tr>
-<tr><td><div id="Datagram_Transport_Layer_Security">Datagram Transport Layer Security (DTLS)</div></td><td>
-	      Cryptographic network protocol, based on TLS, which provides
-              communications security for datagram protocols.
-	    </td></tr>
+<tr><td><div id="Datagram_Transport_Layer_Security">Datagram Transport Layer Security (DTLS)</div></td><td>Cryptographic network protocol, based on TLS, which provides communications security for datagram protocols.</td></tr>
 <tr><td><div id="Presented_identifier">Presented identifier</div></td><td>A piece of data supplied by an external entity to identify itself to the calling application via an X.509 certificate as part of the (D)TLS handshake. The certificate may include one or more identifiers in the subject field of the certificate or in the Subject Alternative Name (SAN) extension. The presented identifier is compared to the reference identifier to determine the validity of the external entity.</td></tr>
-<tr><td><div id="Reference_identifier">Reference identifier</div></td><td>A piece of data defined by a calling application that is used to specify how an external entity is expected to present itself (such as the DNS name of a server that presents a certificate to the TOE). </td></tr>
-<tr><td><div id="Transport_Layer_Security">Transport Layer Security (TLS)</div></td><td>
-        Cryptographic network protocol for providing communications
-        security over a TCP/IP network.
-      </td></tr>
+<tr><td><div id="Reference_identifier">Reference identifier</div></td><td>A piece of data defined by a calling application that is used to specify how an external entity is expected to present itself (such as the DNS name of a server that presents a certificate to the TOE).</td></tr>
+<tr><td><div id="Transport_Layer_Security">Transport Layer Security (TLS)</div></td><td>Cryptographic network protocol for providing communications security over a TCP/IP network.</td></tr>
 </table></div>
 
-    <h2 class="indexable" data-level="2" id="Compliant_Targets_of_Evaluation">1.3 Compliant Targets of Evaluation</h2>
-      <p>
-      The Target of Evaluation
-      (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>) in this Package is a product that acts as a (D)<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client, a (D)<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server, or both.
-      This Package describes the security functionality of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> in terms of   <a href="#bibCC">[CC]</a>. 
-      </p><p>
-      The contents of this Package must be appropriately combined with a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.
-      When this Package is instantiated by a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, the Package must include selection-based requirements in accordance with the selections or assignments indicated in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.  These may be expanded by the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author.
-      </p>
-      The <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> which instantiates this Package must typically include the following components in order to satisfy dependencies of this Package. It is the responsibility of the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> author who instantiates this Package to ensure that dependence on these components is satisfied:<br/>
-      <table><tr class="header"><th>Component</th><th>Explanation</th></tr><tr><td class="componentneeded" id="FCS_CKM.1"><span class="no-link">FCS_CKM.1</span></td><td>To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> for key establishment, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_CKM.1">FCS_CKM.1</a> and specify the corresponding key generation algorithm.<br/></td></tr><tr><td class="componentneeded" id="FCS_CKM.2"><span class="no-link">FCS_CKM.2</span></td><td>To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> for key establishment, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_CKM.2">FCS_CKM.2</a> and specify the corresponding algorithm.<br/></td></tr><tr><td class="componentneeded" id="FCS_COP.1"><span class="no-link">FCS_COP.1</span></td><td>To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> for encryption and decryption, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_COP.1">FCS_COP.1</a> (iterating as needed) and specify <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> with corresponding key sizes and modes. To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr> for hashing, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_COP.1">FCS_COP.1</a> (iterating as needed) and specify <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr> with corresponding digest sizes.
-        <br/></td></tr><tr><td class="componentneeded" id="FCS_RBG.1"><span class="no-link">FCS_RBG.1</span></td><td>To support random bit generation needed for SSH key generation, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_RBG.1">FCS_RBG.1</a> or an extended <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> that defines comparable functionality.<br/></td></tr><tr><td class="componentneeded" id="FIA_X509_EXT.1"><span class="no-link">FIA_X509_EXT.1</span></td><td>
-          To support validation of certificates needed during <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection setup, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>.
-        <br/></td></tr><tr><td class="componentneeded" id="FIA_X509_EXT.2"><span class="no-link">FIA_X509_EXT.2</span></td><td>To support the use of X509 certificates for authentication in <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection setup, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a>.
-          <br/></td></tr></table>
+  <h2 class="indexable" data-level="2" id="Compliant_Targets_of_Evaluation">1.3 Compliant Targets of Evaluation</h2>
     <p>
-      An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must identify the applicable version of the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> and this Package in its conformance claims.
-      </p>
-      
-    
-
-  <h1 class="indexable" data-level="1" id="Conformance_Claims">2 Conformance Claims</h1>
-    
-    <dl><dt>Conformance Statement</dt><p></p><dd>An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must claim exact conformance 
+    The Target of Evaluation (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>) in this Package is a product that acts as a (D)<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client, a (D)<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server, or both. This Package describes the security functionality of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> in terms of   <a href="#bibCC">[CC]</a>. 
+    </p>
+    <p>
+    The contents of this Package must be appropriately combined with a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>. When this Package is instantiated by a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, the Package must include selection-based requirements in accordance with the selections or assignments indicated in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>. These may be expanded by the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author.
+    </p>
+    The <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> which instantiates this Package must typically include the following components in order to satisfy dependencies of this Package. It is the responsibility of the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> author who instantiates this Package to ensure that dependence on these components is satisfied:<br/>
+    <table><tr class="header"><th>Component</th><th>Explanation</th></tr><tr><td class="componentneeded" id="FCS_CKM.1"><span class="no-link">FCS_CKM.1</span></td><td>To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> for key establishment, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_CKM.1">FCS_CKM.1</a> and specify the corresponding key generation algorithm.<br/></td></tr><tr><td class="componentneeded" id="FCS_CKM.2"><span class="no-link">FCS_CKM.2</span></td><td>To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> for key establishment, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_CKM.2">FCS_CKM.2</a> and specify the corresponding algorithm.<br/></td></tr><tr><td class="componentneeded" id="FCS_COP.1"><span class="no-link">FCS_COP.1</span></td><td>To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> for encryption and decryption, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_COP.1">FCS_COP.1</a> (iterating as needed) and specify <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> with corresponding key sizes and modes. To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr> for hashing, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_COP.1">FCS_COP.1</a> (iterating as needed) and specify <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr> with corresponding digest sizes.<br/></td></tr><tr><td class="componentneeded" id="FCS_RBG.1"><span class="no-link">FCS_RBG.1</span></td><td>To support random bit generation needed for SSH key generation, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_RBG.1">FCS_RBG.1</a> or an extended <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> that defines comparable functionality.<br/></td></tr><tr><td class="componentneeded" id="FIA_X509_EXT.1"><span class="no-link">FIA_X509_EXT.1</span></td><td>To support validation of certificates needed during <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection setup, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>.<br/></td></tr><tr><td class="componentneeded" id="FIA_X509_EXT.2"><span class="no-link">FIA_X509_EXT.2</span></td><td>To support the use of X509 certificates for authentication in <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection setup, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a>.<br/></td></tr></table>
+    <p>
+    An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must identify the applicable version of the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> and this Package in its conformance claims.
+    </p>
+  
+<h1 class="indexable" data-level="1" id="Conformance_Claims">2 Conformance Claims</h1>
+  <dl><dt>Conformance Statement</dt><p></p><dd>An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must claim exact conformance 
 		 to this Functional Package.</dd><p></p><dd>The evaluation methods used for evaluating the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> are a combination of the workunits 
 			defined in <a href="#bibCEM">[CEM]</a> as well as the Evaluation Activities for ensuring that individual <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> 
 			and <abbr class="dyn-abbr"><a href="#abbr_SAR">SARs</a></abbr> have a sufficient level of supporting evidence in the Security Target and guidance 
@@ -742,9 +723,8 @@ The following sections list Common Criteria and technology terms used in this do
 				</dd><p></p><dd>There are no <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules that are allowed in a <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> 
 					with this Functional Package.</dd><dt>Package Claim</dt><p></p><dd>This Functional Package is not conformant to any 
 						Functional or Assurance Packages.</dd></dl>	
-    
-    
-  <h1 class="indexable" data-level="1" id="Security_Functional_Requirements">3 Security Functional Requirements</h1>
+  
+<h1 class="indexable" data-level="1" id="Security_Functional_Requirements">3 Security Functional Requirements</h1>
       This chapter describes the security requirements which have to be fulfilled by the product under evaluation.
       Those requirements comprise functional components from Part 2 of <a href="#bibCC">[CC]</a>.
  
@@ -769,91 +749,79 @@ The following sections list Common Criteria and technology terms used in this do
        </li>
      </ul>
    
- 
-	  
- <h2 class="indexable" data-level="2" id="Auditable_Events_for_Mandatory_SFRs">3.1 Auditable Events for Mandatory SFRs</h2>
-   <p>
-     The auditable events specified in this Functional Package are included in a Security Target if the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> supports audit event reporting through FAU_GEN.1 and all other criteria in the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> are met. 
-     
-     Note that, if "None" is not selected in the "Auditable Events" column, it should not be selected in the "Additional Audit Record Contents" column. 
-     Likewise, if "None" is selected in the "Auditable Events" column, it should also be selected in the "Additional Audit Record Contents" column.
-   </p>
-   <table class="sort_kids_" border="1"><caption data-sortkey="#0"><span class="ctr" data-myid="t-audit-mandatory" data-counter-type="ct-Table" id="t-audit-mandatory">Table <span class="counter">1</span></span>: Auditable Events for Mandatory Requirements</caption><tr data-sortkey="#1"><th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th></tr><tr data-sortkey="FCS_TLS_EXT.1"><td rowspan="2"><a href="#FCS_TLS_EXT.1">FCS_TLS_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLS_EXT.1#"><td></td></tr><tr data-sortkey="FCS_TLS_EXT.1.1"><td>No events specified</td><td>N/A</td></tr></table>
+  
+  <h2 class="indexable" data-level="2" id="Auditable_Events_for_Mandatory_SFRs">3.1 Auditable Events for Mandatory SFRs</h2>
+    <p>
+    The auditable events specified in this Functional Package are included in a Security Target if the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> supports audit event reporting through FAU_GEN.1 and all other criteria in the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> are met. Note that, if "None" is not selected in the "Auditable Events" column, it should not be selected in the "Additional Audit Record Contents" column. Likewise, if "None" is selected in the "Auditable Events" column, it should also be selected in the "Additional Audit Record Contents" column.
+    </p>
+    <table class="sort_kids_" border="1"><caption data-sortkey="#0"><span class="ctr" data-myid="t-audit-mandatory" data-counter-type="ct-Table" id="t-audit-mandatory">Table <span class="counter">1</span></span>: Auditable Events for Mandatory Requirements</caption><tr data-sortkey="#1"><th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th></tr><tr data-sortkey="FCS_TLS_EXT.1"><td rowspan="2"><a href="#FCS_TLS_EXT.1">FCS_TLS_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLS_EXT.1#"><td></td></tr><tr data-sortkey="FCS_TLS_EXT.1.1"><td>No events specified</td><td>N/A</td></tr></table>
+  
 
- 
- <h2 id="fcs" class="indexable" data-level="2">3.2 Cryptographic Support (FCS)</h2>
-
-        
-
-   
-   
-        <div class="comp" id="FCS_TLS_EXT.1"><h4>FCS_TLS_EXT.1 TLS Protocol</h4>
-          
-          
-          
-          
-          
-          
-          <div class="element"><div class="reqid" id="FCS_TLS_EXT.1.1"><a href="#FCS_TLS_EXT.1.1" class="abbr">FCS_TLS_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
-        [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="tlss_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a server</span></li><li style=""><span class="selectable-content" id="dtlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="dtlss_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a server</span></li></ul>].
+  <h2 id="fcs" class="indexable" data-level="2">3.2 Cryptographic Support (FCS)</h2>
+    
+    <div class="comp" id="FCS_TLS_EXT.1"><h4>FCS_TLS_EXT.1 TLS Protocol</h4>
+      
+      
+      
+      
+      <div class="element"><div class="reqid" id="FCS_TLS_EXT.1.1"><a href="#FCS_TLS_EXT.1.1" class="abbr">FCS_TLS_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
+          [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="tlss_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a server</span></li><li style=""><span class="selectable-content" id="dtlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="dtlss_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a server</span></li></ul>].
         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-              If <i><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> and <a href="#FCS_TLSC_EXT.4">FCS_TLSC_EXT.4</a>.
-              <br/>
-              If <i><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a server</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_TLSS_EXT.1">FCS_TLSS_EXT.1</a> and <a href="#FCS_TLSS_EXT.4">FCS_TLSS_EXT.4</a>.
-              <br/><br/>
-              If <i><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_DTLSC_EXT.1">FCS_DTLSC_EXT.1</a> and <a href="#FCS_DTLSC_EXT.4">FCS_DTLSC_EXT.4</a>.
-              <br/>
-              If <i><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a server</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> and <a href="#FCS_DTLSS_EXT.4">FCS_DTLSS_EXT.4</a>.
-            </span></div></div></div>
+          If <i><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> and <a href="#FCS_TLSC_EXT.4">FCS_TLSC_EXT.4</a>.
+          <br/>
+          If <i><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a server</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_TLSS_EXT.1">FCS_TLSS_EXT.1</a> and <a href="#FCS_TLSS_EXT.4">FCS_TLSS_EXT.4</a>.
+          <br/>
+          If <i><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_DTLSC_EXT.1">FCS_DTLSC_EXT.1</a> and <a href="#FCS_DTLSC_EXT.4">FCS_DTLSC_EXT.4</a>.
+          <br/>
+          If <i><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a server</i> is selected, then the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> and <a href="#FCS_DTLSS_EXT.4">FCS_DTLSS_EXT.4</a>.
+        </span></div></div></div>
 	  
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLS_EXT.1">FCS_TLS_EXT.1</a></div>
-              
-	      
-              
-            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
-                <p>
-                The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> claims are consistent with those selected in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> (e.g., if <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a> claims "<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client," the evaluator shall ensure that <a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> is claimed as part of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> at minimum).
-                </p>
-              </div></div><div class="eacategory">Guidance</div><div class="ea">
+    <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLS_EXT.1">FCS_TLS_EXT.1</a></div>
+          
+	        
+            
+        <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
+            <p>
+            The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> claims are consistent with those selected in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> (e.g., if <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a> claims "<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client," the evaluator shall ensure that <a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> is claimed as part of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> at minimum).
+            </p>
+          </div></div><div class="eacategory">Guidance</div><div class="ea">
 			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                <p>
-                There are no test activities for this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>; the following information is provided as an overview of the expected functionality and test environment for all subsequent <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.
-                </p>
-                
-                <p>
-                <b>Test Environment:</b>
-                </p><p>
-                Tests for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 include examination of the handshake messages and behavior of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> when presented with unexpected or invalid messages. 
-                For <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and below, previous versions of this Functional Package only required visibility of network traffic and the ability to modify a valid handshake message sent to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
-                </p><p>
-                <div class="figure" id="figure-Figure2"><img id="Figure2" src="images/figure2.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure2" data-counter-type="ct-figure">Figure <span class="counter">1</span></span>:
+              <p>
+              There are no test activities for this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>; the following information is provided as an overview of the expected functionality and test environment for all subsequent <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.
+              </p>
+              
+              <p>
+              <b>Test Environment:</b>
+              </p>
+              <p>
+              Tests for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 include examination of the handshake messages and behavior of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> when presented with unexpected or invalid messages. For <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and below, previous versions of this Functional Package only required visibility of network traffic and the ability to modify a valid handshake message sent to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
+              </p>
+              <p>
+              <div class="figure" id="figure-Figure2"><img id="Figure2" src="images/figure2.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure2" data-counter-type="ct-figure">Figure <span class="counter">1</span></span>:
       Test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 using network traffic visibility and control tools</div>
-                </p><p>
-                <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 introduces the encryption of handshake messages subsequent to the ServerHello message, which prevents visibility and control using midpoint capabilities. 
-                To achieve equivalent validation of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 requires the ability to modify the traffic underlying the encryption applied after the ServerHello message. 
-                This can be achieved by introducing additional control of the messages sent, and visibility of messages received by the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client, (when validating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server functionality) or the test server (when validating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client functionality).
-                </p><p>
-                <div class="figure" id="figure-Figure3"><img id="Figure3" src="images/figure3.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure3" data-counter-type="ct-figure">Figure <span class="counter">2</span></span>:
+              </p>
+              <p>
+              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 introduces the encryption of handshake messages subsequent to the ServerHello message, which prevents visibility and control using midpoint capabilities. To achieve equivalent validation of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 requires the ability to modify the traffic underlying the encryption applied after the ServerHello message. This can be achieved by introducing additional control of the messages sent, and visibility of messages received by the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client, (when validating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server functionality) or the test server (when validating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client functionality).
+              </p>
+              <p>
+              <div class="figure" id="figure-Figure3"><img id="Figure3" src="images/figure3.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure3" data-counter-type="ct-figure">Figure <span class="counter">2</span></span>:
       Test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 using custom endpoint capabilities for visibility and control</div>
-                </p><p>
-                Typically, a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 library modified to provide visibility and control of the handshake messages prior to encryption suffices for all tests. 
-                Such modification will require the test client, test server, or both to be validated. 
-                </p><p>
-                Since validations of products supporting only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 are still expected under this Package, the test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2-only validations may include network sniffers and man-in-the-middle products that do not require such modifications to a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 library. 
-                For consistency, a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client (or <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server) together with the network sniffers and man-in-the-middle capabilities will also be referred to as a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client (or test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server, respectively) in the following evaluation activities.
-                </p>
-                <div class="figure" id="figure-Figure4"><img id="Figure4" src="images/figure4.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure4" data-counter-type="ct-figure">Figure <span class="counter">3</span></span>:
+              </p>
+              <p>
+              Typically, a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 library modified to provide visibility and control of the handshake messages prior to encryption suffices for all tests. Such modification will require the test client, test server, or both to be validated. 
+              </p>
+              <p>
+              Since validations of products supporting only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 are still expected under this Package, the test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2-only validations may include network sniffers and man-in-the-middle products that do not require such modifications to a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 library. 
+              For consistency, a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client (or <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server) together with the network sniffers and man-in-the-middle capabilities will also be referred to as a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client (or test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server, respectively) in the following evaluation activities.
+              </p>
+              <div class="figure" id="figure-Figure4"><img id="Figure4" src="images/figure4.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure4" data-counter-type="ct-figure">Figure <span class="counter">3</span></span>:
       Combined test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 using both network tools and custom endpoint capabilities</div>
-                 
-              </div></div></div></div></div>
+            </div></div></div></div></div>
 
- 
-   
-   
-   
-  
+    
+    
       
 
   
@@ -962,62 +930,64 @@ The following sections list Common Criteria and technology terms used in this do
       </td></tr><tr data-sortkey="FCS_DTLSC_EXT.2"><td rowspan="2"><a href="#FCS_DTLSC_EXT.2">FCS_DTLSC_EXT.2</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSC_EXT.2#"><td></td></tr><tr data-sortkey="FCS_DTLSC_EXT.2.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_DTLSC_EXT.3"><td rowspan="2"><a href="#FCS_DTLSC_EXT.3">FCS_DTLSC_EXT.3</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSC_EXT.3#"><td></td></tr><tr data-sortkey="FCS_DTLSC_EXT.3.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_DTLSC_EXT.4"><td rowspan="2"><a href="#FCS_DTLSC_EXT.4">FCS_DTLSC_EXT.4</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSC_EXT.4#"><td></td></tr><tr data-sortkey="FCS_DTLSC_EXT.4.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_DTLSC_EXT.5"><td rowspan="2"><a href="#FCS_DTLSC_EXT.5">FCS_DTLSC_EXT.5</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSC_EXT.5#"><td></td></tr><tr data-sortkey="FCS_DTLSC_EXT.5.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_DTLSC_EXT.6"><td rowspan="2"><a href="#FCS_DTLSC_EXT.6">FCS_DTLSC_EXT.6</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSC_EXT.6#"><td></td></tr><tr data-sortkey="FCS_DTLSC_EXT.6.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_DTLSS_EXT.1"><td rowspan="2"><a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSS_EXT.1#"><td></td></tr><tr data-sortkey="FCS_DTLSS_EXT.1.11"><td>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</td><td>Reason for failure</td></tr><tr data-sortkey="FCS_DTLSS_EXT.2"><td rowspan="2"><a href="#FCS_DTLSS_EXT.2">FCS_DTLSS_EXT.2</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSS_EXT.2#"><td></td></tr><tr data-sortkey="FCS_DTLSS_EXT.2.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_DTLSS_EXT.3"><td rowspan="2"><a href="#FCS_DTLSS_EXT.3">FCS_DTLSS_EXT.3</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSS_EXT.3#"><td></td></tr><tr data-sortkey="FCS_DTLSS_EXT.3.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_DTLSS_EXT.4"><td rowspan="2"><a href="#FCS_DTLSS_EXT.4">FCS_DTLSS_EXT.4</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSS_EXT.4#"><td></td></tr><tr data-sortkey="FCS_DTLSS_EXT.4.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_DTLSS_EXT.5"><td rowspan="2"><a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSS_EXT.5#"><td></td></tr><tr data-sortkey="FCS_DTLSS_EXT.5.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_DTLSS_EXT.6"><td rowspan="2"><a href="#FCS_DTLSS_EXT.6">FCS_DTLSS_EXT.6</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSS_EXT.6#"><td></td></tr><tr data-sortkey="FCS_DTLSS_EXT.6.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSC_EXT.1"><td rowspan="4"><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSC_EXT.1#"><td></td></tr><tr data-sortkey="FCS_TLSC_EXT.1.11"><td>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session</td><td>eason for failure</td></tr><tr data-sortkey="FCS_TLSC_EXT.1.12"><td>Failure to verify presented identifier</td><td>Presented identifier and reference identifier</td></tr><tr data-sortkey="FCS_TLSC_EXT.1.13"><td>Establishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session</td><td>Non-TOE endpoint of connection</td></tr><tr data-sortkey="FCS_TLSC_EXT.2"><td rowspan="2"><a href="#FCS_TLSC_EXT.2">FCS_TLSC_EXT.2</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSC_EXT.2#"><td></td></tr><tr data-sortkey="FCS_TLSC_EXT.2.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSC_EXT.3"><td rowspan="2"><a href="#FCS_TLSC_EXT.3">FCS_TLSC_EXT.3</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSC_EXT.3#"><td></td></tr><tr data-sortkey="FCS_TLSC_EXT.3.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSC_EXT.4"><td rowspan="2"><a href="#FCS_TLSC_EXT.4">FCS_TLSC_EXT.4</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSC_EXT.4#"><td></td></tr><tr data-sortkey="FCS_TLSC_EXT.4.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSC_EXT.5"><td rowspan="2"><a href="#FCS_TLSC_EXT.5">FCS_TLSC_EXT.5</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSC_EXT.5#"><td></td></tr><tr data-sortkey="FCS_TLSC_EXT.5.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSC_EXT.6"><td rowspan="2"><a href="#FCS_TLSC_EXT.6">FCS_TLSC_EXT.6</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSC_EXT.6#"><td></td></tr><tr data-sortkey="FCS_TLSC_EXT.6.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.1"><td rowspan="2"><a href="#FCS_TLSS_EXT.1">FCS_TLSS_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.1#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.1.10"><td>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session</td><td>Reason for failure</td></tr><tr data-sortkey="FCS_TLSS_EXT.2"><td rowspan="2"><a href="#FCS_TLSS_EXT.2">FCS_TLSS_EXT.2</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.2#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.2.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.3"><td rowspan="2"><a href="#FCS_TLSS_EXT.3">FCS_TLSS_EXT.3</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.3#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.3.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.4"><td rowspan="2"><a href="#FCS_TLSS_EXT.4">FCS_TLSS_EXT.4</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.4#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.4.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.5"><td rowspan="2"><a href="#FCS_TLSS_EXT.5">FCS_TLSS_EXT.5</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.5#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.5.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.6"><td rowspan="2"><a href="#FCS_TLSS_EXT.6">FCS_TLSS_EXT.6</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.6#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.6.1"><td>No events specified</td><td>N/A</td></tr></table><h2 id="fcs-sel-based" class="indexable" data-level="2">B.2 Cryptographic Support (FCS)</h2><div class="comp" id="FCS_DTLSC_EXT.1"><h4>FCS_DTLSC_EXT.1 DTLS Client Protocol</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
            <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
            </i></b></div>
-    
-    
-    
-    
-    
-     
-    
-    <div class="element"><div class="reqid" id="FCS_DTLSC_EXT.1.1"><a href="#FCS_DTLSC_EXT.1.1" class="abbr">FCS_DTLSC_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
-      [<b>selection</b>: <span class="selectable-content" id="_s_5"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347)</span>, <span class="selectable-content" id="_s_6"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9147)</span>] as a client that supports additional functionality for session renegotiation protection and [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="dtlsc_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="dtlsc_downgrade_protection">supplemental downgrade protection</span></li><li style=""><span class="selectable-content" id="dtlsc_resumption">session resumption</span></li><li style=""><span class="selectable-content" id="_s_10">no optional functionality</span></li></ul>] and shall abort attempts by a server to negotiate any <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version prior to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347).
-      <div class="appnote"><span class="note-header">Application
+      
+      
+      
+      
+       
+      <div class="element"><div class="reqid" id="FCS_DTLSC_EXT.1.1"><a href="#FCS_DTLSC_EXT.1.1" class="abbr">FCS_DTLSC_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
+        [<b>selection</b>: <span class="selectable-content" id="_s_5"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347)</span>, <span class="selectable-content" id="_s_6"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9147)</span>] as a client that supports additional functionality for session renegotiation protection and 
+          [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="dtlsc_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="dtlsc_downgrade_protection">supplemental downgrade protection</span></li><li style=""><span class="selectable-content" id="dtlsc_resumption">session resumption</span></li><li style=""><span class="selectable-content" id="_s_10">no optional functionality</span></li></ul>]
+        and shall abort attempts by a server to negotiate any <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version prior to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347).
+        <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-        <p>
+          <p>
           This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "<abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client" is selected in <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
-        </p><p>
-        The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author will claim supported <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> versions and optional functionality as appropriate for the claimed versions. 
-        </p><p>
-        Session renegotiation protection is required for both <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, and the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> must include the requirements from <a href="#FCS_DTLSC_EXT.4">FCS_DTLSC_EXT.4</a>. 
-        Within <a href="#FCS_DTLSC_EXT.4">FCS_DTLSC_EXT.4</a>, options for implementation of secure session renegotiation in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 or rejecting renegotiation requests
-        required in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and optionally supported in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 are claimed.  
-        </p><p>
-        If "mutual authentication" is selected, then the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> must additionally include the requirements from <a href="#FCS_DTLSC_EXT.2">FCS_DTLSC_EXT.2</a>. 
-        If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> with mutual authentication, this selection must be made.
-        </p><p>
-        If "supplemental downgrade protection" is selected, then the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> must additionally include the requirements from <a href="#FCS_DTLSC_EXT.3">FCS_DTLSC_EXT.3</a>. 
-        This is claimed when both <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 are supported and the client uses the method to reject downgrade. <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade protection in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> is used to notify a client that the server is capable of supporting <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 or <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 when it negotiates a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 session because it received a ClientHello message indicating maximum support for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0. Note that there is no <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version 1.1.
-        Since this Functional Package does not allow negotiation of <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0, it is not necessary to claim such support.
-        </p><p>
-        If "session resumption" is selected, then the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> must additionally include the requirements from <a href="#FCS_DTLSC_EXT.5">FCS_DTLSC_EXT.5</a>. 
-        </p><p>
-        <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version numbers are denoted on the wire as the 1’s complement of the corresponding textual <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> versions as described in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347 Section 4.1. 
-        <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version 1.2 is 0xfefd; <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version 1.3 is 0xfefc. 
-        </p>
-      </span></div></div></div>
-    <div class="element"><div class="reqid" id="FCS_DTLSC_EXT.1.2"><a href="#FCS_DTLSC_EXT.1.2" class="abbr">FCS_DTLSC_EXT.1.2</a></div><div class="reqdesc">
-          The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_11"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_12">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8422</span></li><li style=""><span class="selectable-content" id="_s_13">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8422</span></li><li style=""><span class="selectable-content" id="_s_14">TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_15">TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_16">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8422</span></li><li style=""><span class="selectable-content" id="_s_17">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8422</span></li><li style=""><span class="selectable-content" id="_s_18">ciphersuites using pre-shared secrets:
-            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_19">TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8442</span></li><li style=""><span class="selectable-content" id="_s_20">TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5487</span></li><li style=""><span class="selectable-content" id="_s_21">TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5487</span></li></ul>]</span></li></ul>]
-              and shall not offer other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites,</span></li><li style=""><span class="selectable-content" id="_s_22"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_23">TLS_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446</span></li><li style=""><span class="selectable-content" id="_s_24">[<b>assignment</b>: 
-     <span class="assignable-content">other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites</span>]</span></li></ul>]</span></li></ul>]
+          </p>
+          <p>
+          The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author will claim supported <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> versions and optional functionality as appropriate for the claimed versions. 
+          </p>
+          <p>
+          Session renegotiation protection is required for both <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, and the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> must include the requirements from <a href="#FCS_DTLSC_EXT.4">FCS_DTLSC_EXT.4</a>. Within <a href="#FCS_DTLSC_EXT.4">FCS_DTLSC_EXT.4</a>, options for implementation of secure session renegotiation in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 or rejecting renegotiation requests required in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and optionally supported in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 are claimed.
+          </p>
+          <p>
+          If "mutual authentication" is selected, then the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> must additionally include the requirements from <a href="#FCS_DTLSC_EXT.2">FCS_DTLSC_EXT.2</a>. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> with mutual authentication, this selection must be made.
+          </p>
+          <p>
+          If "supplemental downgrade protection" is selected, then the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> must additionally include the requirements from <a href="#FCS_DTLSC_EXT.3">FCS_DTLSC_EXT.3</a>. This is claimed when both <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 are supported and the client uses the method to reject downgrade. <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade protection in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> is used to notify a client that the server is capable of supporting <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 or <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 when it negotiates a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 session because it received a ClientHello message indicating maximum support for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0. Note that there is no <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version 1.1. Since this Functional Package does not allow negotiation of <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0, it is not necessary to claim such support.
+          </p>
+          <p>
+          If "session resumption" is selected, then the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> must additionally include the requirements from <a href="#FCS_DTLSC_EXT.5">FCS_DTLSC_EXT.5</a>. 
+          </p>
+          <p>
+          <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version numbers are denoted on the wire as the 1’s complement of the corresponding textual <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> versions as described in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347 Section 4.1. <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version 1.2 is 0xfefd; <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version 1.3 is 0xfefc. 
+          </p>
+        </span></div></div></div>
+      <div class="element"><div class="reqid" id="FCS_DTLSC_EXT.1.2"><a href="#FCS_DTLSC_EXT.1.2" class="abbr">FCS_DTLSC_EXT.1.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_11"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_12">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8422</span></li><li style=""><span class="selectable-content" id="_s_13">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8422</span></li><li style=""><span class="selectable-content" id="_s_14">TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_15">TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5288</span></li><li style=""><span class="selectable-content" id="_s_16">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8422</span></li><li style=""><span class="selectable-content" id="_s_17">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5289 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8422</span></li><li style=""><span class="selectable-content" id="_s_18">ciphersuites using pre-shared secrets:
+              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_19">TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8442</span></li><li style=""><span class="selectable-content" id="_s_20">TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5487</span></li><li style=""><span class="selectable-content" id="_s_21">TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5487</span></li></ul>]
+            </span></li></ul>]
+          and shall not offer other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites,
+          </span></li><li style=""><span class="selectable-content" id="_s_22"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_23">TLS_AES_256_GCM_SHA384 as defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446</span></li><li style=""><span class="selectable-content" id="_s_24">[<b>assignment</b>: 
+     <span class="assignable-content">other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites</span>]</span></li></ul>]
+          </span></li></ul>]
           offering the supported ciphersuites in a ClientHello message in preference order:
           [<b>assignment</b>: 
      <span class="assignable-content">list of supported ciphersuites</span>].
         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-        <p>
-        <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> uses <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select the ciphersuites that are supported, and must select at least one ciphersuite for each <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version supported – <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3. Pre-shared secret ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 are only claimed as required by a specific <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
-        </p>
-        <p>
+          <p>
+          <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> uses <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select the ciphersuites that are supported, and must select at least one ciphersuite for each <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version supported – <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3. Pre-shared secret ciphersuites for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 are only claimed as required by a specific <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
+          </p>
+          <p>
           While mandatory for <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446, TLS_AES_128_GCM_SHA256 is disallowed by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> and should not be included in “other <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.” The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may list additional <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites as they are registered.
-        </p>
-        <p>
+          </p>
+          <p>
           In addition to the supported ciphersuites, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author indicates the order of ciphersuites included in the ClientHello message, indicating the preferred ciphersuites for server negotiation. To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is running) the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> uses the assignment to specify a dynamic ordering and the describes in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> the conditions for presenting the ordering. It is recommended, but not required, that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites claimed are listed before <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ciphersuites, and that any other ciphersuites are listed last among the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 ciphersuites.
-        </p>
-      </span></div></div></div>
-    <div class="element"><div class="reqid" id="FCS_DTLSC_EXT.1.3"><a href="#FCS_DTLSC_EXT.1.3" class="abbr">FCS_DTLSC_EXT.1.3</a></div><div class="reqdesc">
+          </p>
+        </span></div></div></div>
+      <div class="element"><div class="reqid" id="FCS_DTLSC_EXT.1.3"><a href="#FCS_DTLSC_EXT.1.3" class="abbr">FCS_DTLSC_EXT.1.3</a></div><div class="reqdesc">
         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not offer ClientHello messages indicating the following: 
         <ul>
           <li>null encryption</li>
@@ -4750,16 +4720,11 @@ The following sections list Common Criteria and technology terms used in this do
 	 FCS class originally defined by <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2:
 	<h3 id="ext-comp-FCS_TLS_EXT" class="indexable" data-level="4">C.2.1.1 FCS_TLS_EXT TLS Protocol</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> claims that can be made by a conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FCS_TLS_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FCS_TLS_EXT.1">FCS_TLS_EXT.1</a>,
              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Protocol,
-              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to specify whether it implements <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client or as a server.
-          </p><h4>Management: FCS_TLS_EXT.1</h4><p>No specific management functions are identified.
-          </p><h4>Audit: FCS_TLS_EXT.1</h4><p>There are no auditable events foreseen.
-          </p><h4>FCS_TLS_EXT.1 TLS Protocol</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No dependencies.
-          </td></tr></table><h4 id="ext-comp-FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
-        [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="tlss_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a server</span></li><li style=""><span class="selectable-content" id="dtlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="dtlss_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a server</span></li></ul>].
+             requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to specify whether it implements <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client or as a server.</p><h4>Management: FCS_TLS_EXT.1</h4><p>No specific management functions are identified.</p><h4>Audit: FCS_TLS_EXT.1</h4><p>There are no auditable events foreseen.</p><h4>FCS_TLS_EXT.1 TLS Protocol</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No dependencies.</td></tr></table><h4 id="ext-comp-FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
+          [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="tlss_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a server</span></li><li style=""><span class="selectable-content" id="dtlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="dtlss_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a server</span></li></ul>].
         </div></div><h3 id="ext-comp-FCS_DTLSC_EXT" class="indexable" data-level="4">C.2.1.2 FCS_DTLSC_EXT DTLS Client Protocol</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for implementation of <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client.</div><h4>Component Leveling</h4><svg style="max-height: 130px;"><text x="4" fill="black" font-size="15" y="84">FCS_DTLSC_EXT</text><rect x="2" y="71" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">2</text><rect x="232" y="31" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="37" stroke="black"></line><text x="234" fill="black" font-size="15" y="64">3</text><rect x="232" y="51" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="57" stroke="black"></line><text x="234" fill="black" font-size="15" y="84">4</text><rect x="232" y="71" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="77" stroke="black"></line><text x="234" fill="black" font-size="15" y="104">5</text><rect x="232" y="91" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="97" stroke="black"></line><text x="234" fill="black" font-size="15" y="124">6</text><rect x="232" y="111" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="117" stroke="black"></line></svg><p><a href="#FCS_DTLSC_EXT.1">FCS_DTLSC_EXT.1</a>,
              <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Client Protocol,
-              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client in the specified manner.
-    </p><p><a href="#FCS_DTLSC_EXT.2">FCS_DTLSC_EXT.2</a>,
+              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client in the specified manner.</p><p><a href="#FCS_DTLSC_EXT.2">FCS_DTLSC_EXT.2</a>,
              <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Client Support for Mutual Authentication,
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support mutually-authenticated <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> client.
     </p><p><a href="#FCS_DTLSC_EXT.3">FCS_DTLSC_EXT.3</a>,
@@ -4774,29 +4739,30 @@ The following sections list Common Criteria and technology terms used in this do
           </p><p><a href="#FCS_DTLSC_EXT.6">FCS_DTLSC_EXT.6</a>,
              <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Client <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 Resumption Refinements,
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption behavior specific to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> client.
-          </p><h4>Management: FCS_DTLSC_EXT.1</h4><p>No specific management functions are identified.
-    </p><h4>Audit: FCS_DTLSC_EXT.1</h4><p>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, Functional Package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:<ul>
+          </p><h4>Management: FCS_DTLSC_EXT.1</h4><p>No specific management functions are identified.</p><h4>Audit: FCS_DTLSC_EXT.1</h4><p>
+      The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, Functional Package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
+      <ul>
         <li>Establishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</li>
         <li>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</li>
         <li>Failure to verify presented identifier</li>
       </ul>
-    </p><h4>FCS_DTLSC_EXT.1 DTLS Client Protocol</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>
-      <a href="#FCS_CKM.1">FCS_CKM.1</a> Cryptographic Key Generation<br/>
-      <a href="#FCS_CKM.2">FCS_CKM.2</a> Cryptographic Key Distribution<br/>
-      <a href="#FCS_COP.1">FCS_COP.1</a> Cryptographic Operation<br/>
-      <a href="#FCS_RBG.1">FCS_RBG.1</a> Random Bit Generation (RBG)<br/>
-      <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> X.509 Certificate Validation<br/>
-      <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a> X.509 Certificate Authentication
-    </td></tr></table><h4 id="ext-comp-FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
-      [<b>selection</b>: <span class="selectable-content" id="_s_5"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347)</span>, <span class="selectable-content" id="_s_6"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9147)</span>] as a client that supports additional functionality for session renegotiation protection and [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="dtlsc_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="dtlsc_downgrade_protection">supplemental downgrade protection</span></li><li style=""><span class="selectable-content" id="dtlsc_resumption">session resumption</span></li><li style=""><span class="selectable-content" id="_s_10">no optional functionality</span></li></ul>] and shall abort attempts by a server to negotiate any <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version prior to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347).
-      <h4 id="ext-comp-FCS_DTLSC_EXT.1.2">FCS_DTLSC_EXT.1.2</h4>
-          The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following
+      </p><h4>FCS_DTLSC_EXT.1 DTLS Client Protocol</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>
+        <a href="#FCS_CKM.1">FCS_CKM.1</a> Cryptographic Key Generation<br/>
+        <a href="#FCS_CKM.2">FCS_CKM.2</a> Cryptographic Key Distribution<br/>
+        <a href="#FCS_COP.1">FCS_COP.1</a> Cryptographic Operation<br/>
+        <a href="#FCS_RBG.1">FCS_RBG.1</a> Random Bit Generation (RBG)<br/>
+        <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> X.509 Certificate Validation<br/>
+        <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a> X.509 Certificate Authentication
+      </td></tr></table><h4 id="ext-comp-FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
+        [<b>selection</b>: <span class="selectable-content" id="_s_5"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347)</span>, <span class="selectable-content" id="_s_6"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9147)</span>] as a client that supports additional functionality for session renegotiation protection and 
+          [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="dtlsc_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="dtlsc_downgrade_protection">supplemental downgrade protection</span></li><li style=""><span class="selectable-content" id="dtlsc_resumption">session resumption</span></li><li style=""><span class="selectable-content" id="_s_10">no optional functionality</span></li></ul>]
+        and shall abort attempts by a server to negotiate any <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version prior to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347).
+        <h4 id="ext-comp-FCS_DTLSC_EXT.1.2">FCS_DTLSC_EXT.1.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following
             [<b>assignment</b>: 
      <span class="assignable-content">list of supported <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites</span>],
-          offering the supported ciphersuites in a ClientHello message in preference order: 
-          [<b>assignment</b>: 
+            offering the supported ciphersuites in a ClientHello message in preference order: [<b>assignment</b>: 
      <span class="assignable-content">list of supported ciphersuites</span>].
-        <h4 id="ext-comp-FCS_DTLSC_EXT.1.3">FCS_DTLSC_EXT.1.3</h4>
+          <h4 id="ext-comp-FCS_DTLSC_EXT.1.3">FCS_DTLSC_EXT.1.3</h4>
         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not offer ClientHello messages indicating the following: 
         <ul>
           <li>null encryption</li>
