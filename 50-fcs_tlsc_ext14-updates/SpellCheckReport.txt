@@ -42,7 +42,6 @@ output/tls-release-linkable.html: iPAddress
 output/tls-release-linkable.html: iana
 output/tls-release-linkable.html: ke
 output/tls-release-linkable.html: messagethat
-output/tls-release-linkable.html: owngrade
 output/tls-release-linkable.html: psk
 output/tls-release-linkable.html: pss
 output/tls-release-linkable.html: rfc
@@ -104,7 +103,6 @@ output/tls-release.html: key’
 output/tls-release.html: messagethat
 output/tls-release.html: methods’
 output/tls-release.html: ordering’
-output/tls-release.html: owngrade
 output/tls-release.html: psk
 output/tls-release.html: pss
 output/tls-release.html: received’
@@ -170,7 +168,6 @@ output/tls.html: key’
 output/tls.html: messagethat
 output/tls.html: methods’
 output/tls.html: ordering’
-output/tls.html: owngrade
 output/tls.html: psk
 output/tls.html: pss
 output/tls.html: received’
