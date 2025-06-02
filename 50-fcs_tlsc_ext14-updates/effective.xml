@@ -354,7 +354,7 @@
         If "supplemental downgrade protection" is selected, then the TSS must additionally include the requirements from FCS_DTLSC_EXT.3. 
         This is claimed when both DTLS 1.3 and DTLS 1.2 are supported and the client uses the method to reject downgrade. Note that TLS 1.1
         or below downgrade protection in DTLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3, when it negotiates a DTLS 1.0 session because it received a ClientHello indicating maximum support for DTLS 1.0 (there is no DTLS version 1.1).
-        Since this FP does not allow negotiation of DTLS 1.0, it is not necessary to claim such support.
+        Since this Functional Package does not allow negotiation of DTLS 1.0, it is not necessary to claim such support.
         </h:p><h:p>
         If "session resumption" is selected, then the TSS must additionally include the requirements from FCS_DTLSC_EXT.5. 
         </h:p><h:p>
@@ -898,7 +898,7 @@
                         </h:p><h:p>
                         <h:b>Note:</h:b> It may be necessary to complete a standard handshake and send a NewSessionTicket message from the test DTLS server to establish a pre-shared key, or it might be possible to configure the pre-shared key manually via out-of-band mechanisms. 
                         This can be performed in conjunction with other testing that is not tested as part of this SFR. 
-                        It is not required at this time to support emerging standards on establishing PSK, but as such standards are finalized, this FP may be updated to require such support.
+                        It is not required at this time to support emerging standards on establishing PSK, but as such standards are finalized, this Functional Package may be updated to require such support.
                         </h:p><h:p>
                         DTLS messages after the handshake are encrypted so it may not be possible to observe the Certificate and CertificateVerify messages sent by the TSF directly. 
                         The evaluator may need to configure the test DTLS server to use an application that requires post-handshake client authentication and terminates the session or otherwise has an observable effect if the certificate is not provided.
@@ -1235,7 +1235,7 @@
                 The TLS_EMPTY_RENEGOTIATION_INFO_SCSV is the preferred mechanism for DTLS 1.2 protection against insecure renegotiation when the client does not renegotiate. The ST author will claim "a HelloRequest message is received" in the second selection to indicate support for this mechanism.
               </h:p>
               <h:p>
-                RFC 5746 allows the client to accept connections with servers that do not support the extension; this FP refines RFC 5746 and requires the client to terminate sessions with such servers. Thus, unexpected ServerHello messages include
+                RFC 5746 allows the client to accept connections with servers that do not support the extension; this Functional Package refines RFC 5746 and requires the client to terminate sessions with such servers. Thus, unexpected ServerHello messages include
                 <h:ul>
                   <h:li>
                     an initial ServerHello negotiating DTLS 1.2 that does not contain a renegotiation_info extension
@@ -2226,7 +2226,7 @@
                 This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSS_EXT.1.1. 
               </h:p>
               <h:p>
-                RFC 8446 requires both the TLS 1.2 downgrade indicator as well as an indicator for TLS 1.1 and below. This FP requires the server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. However, products may still implement both indicators to be compliant with the RFC.              
+                RFC 8446 requires both the TLS 1.2 downgrade indicator as well as an indicator for TLS 1.1 and below. This Functional Package requires the server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. However, products may still implement both indicators to be compliant with the RFC.              
               </h:p>
             </note>
             <aactivity>
@@ -2554,7 +2554,7 @@
                 If the TOE implements TLS with mutual authentication, this selection must be made.
               </h:p><h:p>
                 If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.3.
-                This is claimed when both TLS 1.2 and TLS 1.3 are supported. Note that TLS 1.1 or below downgrade protection in TLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3, when it negotiates a TLS 1.1 session because it received a ClientHello message indicating maximum support for TLS 1.1. Since this FP does not allow negotiation of TLS 1.1 or below, it is not necessary to claim such support.
+                This is claimed when both TLS 1.2 and TLS 1.3 are supported. Note that TLS 1.1 or below downgrade protection in TLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3, when it negotiates a TLS 1.1 session because it received a ClientHello message indicating maximum support for TLS 1.1. Since this Functional Package does not allow negotiation of TLS 1.1 or below, it is not necessary to claim such support.
               </h:p><h:p>
                 If "session resumption" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.5. 
               </h:p>
@@ -3449,7 +3449,7 @@
               The ST author will claim the ‘HelloRequest message is received’ option in the second selection to indicate support for this mechanism.
               </h:p>
               <h:p>
-              RFC 5746 allows the client to accept connections with servers that do not support the extension; this FP refines RFC 5746 and requires the client to terminate sessions with such servers. 
+              RFC 5746 allows the client to accept connections with servers that do not support the extension; this Functional Package refines RFC 5746 and requires the client to terminate sessions with such servers. 
               Thus, unexpected ServerHello messages include an initial ServerHello negotiating TLS 1.2 that does not contain a renegotiation_info extension, an initial ServerHello negotiating TLS 1.2 that has a renegotiation_info extension that is non-empty, a subsequent ServerHello renegotiating TLS 1.2 that does not contain a renegotiation_info extension, a subsequent ServerHello negotiating TLS 1.2 that has a renegotiation_info extension with an incorrect renegotiated_connection value, and a ServerHello request message when renegotiation is not allowed (for TLS 1.3 or when the option is claimed for TLS 1.2). 
               </h:p>
               <h:p>
@@ -4433,7 +4433,7 @@
                 This SFR is claimed if "supplemental downgrade protection" is selected in FCS_TLSS_EXT.1.1. 
               </h:p><h:p>
               RFC 8446 requires both the TLS 1.2 downgrade indicator as well as an indicator for TLS 1.1 and below. 
-              This FP requires the server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. 
+              This Functional Package requires the server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. 
               However, products may still implement both indicators to be compliant with the RFC. 
               </h:p>
 	    </note>
