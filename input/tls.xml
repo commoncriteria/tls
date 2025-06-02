@@ -320,7 +320,7 @@
     </comp-lev>
     <management>No specific management functions are identified.
     </management>
-    <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the PP, PP-Module, functional package, or ST:<h:ul>
+    <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the PP, PP-Module, Functional Package, or ST:<h:ul>
         <h:li>Establishment and termination of a DTLS session</h:li>
         <h:li>Failure to establish a DTLS session</h:li>
         <h:li>Failure to verify presented identifier</h:li>
@@ -523,7 +523,7 @@
           DTLS uses TLS extensions.
         </h:p>
         <h:p>
-          Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
+          Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
         </h:p>
         <h:p>
           If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446. If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.
@@ -1463,7 +1463,7 @@
     <management>No specific management functions are identified.
     </management>
     <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
-      PP, PP-Module, functional package, or ST:<h:ul>
+      PP, PP-Module, Functional Package, or ST:<h:ul>
         <h:li>Failure to establish a DTLS session</h:li>
       </h:ul>
     </audit>
@@ -1649,7 +1649,7 @@
         DTLS uses TLS extensions. 
         </h:p>
         <h:p>
-          Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
+          Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
         </h:p>
         <h:p>
         If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. If DTLS 1.3 is not claimed, supported_versions and key_share are not claimed.
@@ -2522,7 +2522,7 @@
           </comp-lev>
           <management>No specific management functions are identified.
           </management>
-          <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the PP, PP-Module, functional package, or ST:<h:ul>
+          <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the PP, PP-Module, Functional Package, or ST:<h:ul>
               <h:li>Establishment and termination of a TLS session</h:li>
               <h:li>Failure to establish a TLS session</h:li>
               <h:li>Failure to verify presented identifier</h:li>
@@ -2717,7 +2717,7 @@
             </ext-comp-def-title>
          <note role="application">
            <h:p>
-             Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
+             Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
            </h:p>
            <h:p>
            If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446. If TLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed. 
@@ -3659,7 +3659,7 @@
           </comp-lev>
           <management>No specific management functions are identified.
           </management>
-          <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the PP, PP-Module, functional package, or ST:<h:ul>
+          <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the PP, PP-Module, Functional Package, or ST:<h:ul>
               <h:li>Failure to establish a TLS session</h:li>
             </h:ul>
           </audit>
@@ -3843,7 +3843,7 @@
             </ext-comp-def-title>
             <note role="application">
               <h:p>
-                Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
+                Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
               </h:p>
               <h:p>
             If support for TLS 1.3 is claimed in FCS_TLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. 
