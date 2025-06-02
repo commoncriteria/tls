@@ -621,7 +621,7 @@
           <Tests>
             The evaluator shall perform the following tests.
             <testlist>
-              <!-- DTLS Client Supported Configurations -->
+            <!-- DTLS Client Supported Configurations -->
               <test id="dtls-client-supported-configurations">(supported configurations) For each supported version, and for each supported ciphersuite associated with the version:
               <h:p>
               The evaluator shall establish a DTLS connection between the TOE and a test DTLS server that is configured to negotiate the tested version and ciphersuite in accordance with the RFC for the version.
@@ -881,260 +881,236 @@
               </test>
               <!-- DTLS Client Certificate-Based Server Authentication -->
               <test> [conditional] If the TSF supports certificate-based server authentication, then for each supported version, the evaluator shall initiate a DTLS session from the TOE to the compliant test DTLS server configured to negotiate the tested version, and to authenticate using a certificate trusted by the TSF as specified in the following:
-                  <testlist>
-                    <test><h:p>(certificate extended key usage purpose) The evaluator shall send a server certificate that contains the Server Authentication purpose in the ExtendedKeyUsage extension and verify that a connection is established. The evaluator shall repeat this test using a different certificate that is otherwise valid and trusted but lacks the Server Authentication purpose in the ExtendedKeyUsage extension and observe the TSF silently drops the Certificate message or terminates the session.
-                    </h:p><h:p>
-                      <h:b>Note:</h:b>This test is not performed if only DTLS 1.2 with PSK ciphersuites are supported; it is required if DTLS 1.2 is supported and ciphersuites other than PSK ciphersuites are supported, or if DTLS 1.3 is supported.
-                    </h:p><h:p>
-                      Depending on the selections in FCS_DTLSC_EXT.1.5 and FCS_DTLSC_EXT.1.6, this test is performed in conjunction with testing of FIA_X509_EXT.1 or SFRs specific to the supported functions using DTLS.
-                      </h:p><h:p>
-                        If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server Certificate and CertificateVerify messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., bad_certificate, decrypt_error, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
-                      </h:p><h:p>
-                      Ideally, the two certificates should be similar in regards to structure, the types of identifiers used, and the chain of trust.
-                    </h:p></test>
-                    <test>
-                      (certificate identifiers) For each supported method of matching presented identifiers, and for each name type for which the TSF parses the presented identifiers from the server certificate for the method, the evaluator shall establish a valid certificate trusted by the TSF to represent the test server using only the tested name type.
-                      The evaluator shall perform the following sub-tests: 
-                      <testlist>
-                        <test>The evaluator shall prepare the TSF as necessary to use the matching method and establish reference identifiers for the test server for the tested name type. The evaluator shall ensure the test DTLS server sends a certificate with a matching name of the tested name type and observe that the TSF completes the connection.</test>
-                        <test>The evaluator shall prepare the TSF as necessary to use the matching method and establish reference identifiers that do not match the name representing the test server. 
-                          The evaluator shall ensure the test DTLS server sends a certificate with a name of the type tested, and observe the TSF silently drops the message or terminates the session.
-                          <h:p>
-                            <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., bad_certificate, certificate_unknown) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                          </h:p></test>
-                        <test id="dtls-client-valid-wildcard">[conditional] If the TSF supports wildcards for a DNS, URI, or SVR name type, the evaluator shall prepare the TSF as necessary to use the matching method for the name type, and establish a reference identifier. The evaluator shall establish a certificate for the test server that includes a wildcard name for the DNS portion of the appropriate name type which matches the reference identifier. The evaluator shall ensure the DTLS server sends the certificate containing the wildcard name of the type tested, and observe that the TSF completes the connection. </test>
-                        <test id="dtls-client-no-wildcard">[conditional] If the TSF supports a DNS, URI, or SVR name type, but does not support wildcards (in general, or specifically for internationalized names of the specified type), the evaluator shall prepare the TSF as necessary to use the matching method and establish a reference identifier that matches a wildcard name for the DNS portion of the appropriate name type, in accordance with the appropriate RFC, in a certificate representing the server. The evaluator shall ensure the DTLS server sends the certificate containing the wildcard name of the type tested, and observe that the TSF silently drops the message or terminates the connection. 
-                        <h:p>
-                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF times out. If the TSF's ability to support wildcard certificates is configurable, both <xref to="dtls-client-valid-wildcard"/> and <xref to="dtls-client-no-wildcard"/> are performed under the appropriate configuration. This test is required if the TSF supports internationalized names of the specified type – in this case, the reference identifier only includes an internationalized encoding in the leftmost label. The certificate used is intended to match the certificate as if wildcards were supported and if the wildcard extended to internationalized names.
-                        </h:p>
-                        </test>
-                        <test id="dtls-client-invalid-wildcard">
-                          [conditional] If the TSF supports wildcards for a DNS, URI, or SVR name type, the evaluator shall prepare the TSF as necessary to use the matching method. The evaluator shall establish a reference identifier and a certificate for the server as indicated in each of the sub-tests described below. The evaluator shall in turn, ensure the DTLS server sends the certificate associated with the reference identifier and observe that the TSF silently drops the message or terminates the session. 
-                          <testlist>
-                            <test>The reference identifier contains a DNS portion with two labels, and the certificate includes a name whose DNS portion includes a matching rightmost label and a wildcard in the leftmost label (e.g., *.com).</test>
-                            <test>The reference identifier contains a DNS portion with two labels, and the certificate includes a name whose DNS portion includes two rightmost labels matching the reference identifier, and a wildcard in a third (leftmost) label (e.g., *.example.com, which does not match "example.com").</test>
-                            <test>The reference identifier contains a DNS portion with four labels, and the certificate includes a name whose DNS portion includes two rightmost labels matching the reference identifier, and a wildcard in the third label, and a matching identifier in the fourth (leftmost) label (e.g., foo.*.example.com).</test>
-                            <h:p>
-                              <h:b>Note:</h:b> For negative sub-tests, if the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF times out.
-                            </h:p>
-                          </testlist>
-                        </test>
-                        <test>[conditional] If the TSF supports wildcards and supports embedded DNS, URI, or SVR name types in the CN, then for each supported name type, the evaluator shall repeat 
-                          <xref to="dtls-client-valid-wildcard"/>, <xref to="dtls-client-no-wildcard"/>, and <xref to="dtls-client-invalid-wildcard"/>
-                          using certificates with the prescribed name embedded in the CN. 
-                        </test>
-                        <test id="dtls-client-ip-wildcard">[conditional] If the TSF supports IP addresses as an embedded name type in the CN, the evaluator shall establish an IP address as a reference identifier and establish a certificate with a valid DNS name in the subject field, including a CN whose value is the digital formatting of the octets of the reference identifier. The evaluator shall ensure the server sends the certificate and observe that the TSF successfully completes the session.</test>
-                        <test>[conditional] If the TSF supports IP addresses and any embedded name type in the CN, the evaluator shall establish an IP address as a reference identifier and establish a certificate with a valid DNS name in the subject field, including a CN whose value is the digital formatting of the octets of the reference identifier (as in <xref to="dtls-client-ip-wildcard"/>) except that one of the octets is replaced by the ‘*’ character. The evaluator shall ensure the server sends the certificate and observe that the TSF silently drops the message or terminates the session.</test>
-                        <h:p>
-                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server Certificate and CertificateVerify messages until the TSF times out.
-                        </h:p>
-                      </testlist>
-                    </test>                    
-                    <test>(mixed identifiers)[conditional] If the TSF supports a name matching method where the TSF performs matching of both CN-encoded name types and SAN names of the same type, then for each such method, and for each such name type, the evaluator shall establish a valid certificate trusted by the TSF to represent the test server using one name for the CN-encoded name type and a different name for the SAN name type The evaluator shall perform the following tests: 
-                    <testlist>
-                      <test>The evaluator shall follow the operational guidance to configure the TSF to use the name matching method and establish reference identifiers matching only the SAN. 
-                        The evaluator shall ensure that the test server sends the certificate with the matching SAN and non-matching CN-encoded name, and observe that the TSF completes the connection.
-                        <h:p>
-                        <h:b>Note:</h:b> Configuration of the TSF may depend on the application using DTLS.
-                        </h:p></test>
-                      <test>The evaluator shall follow the operational guidance to configure the TSF to use the name matching method and establish reference identifiers matching only the CN-encoded name. 
-                        The evaluator shall ensure that the test server sends the certificate with the matching CN-encoded name and matching SAN name, and observe that the TSF silently drops the message or terminates the session.
-                        <h:p>
-                          If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server Certificate and and CertificateVerify messages until the TSF times out.
-                          It is preferred that the TSF logs a fatal error alert message (e.g., bad_certificate, certificate_unknown) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                        </h:p></test>
-                    </testlist>
-                    </test>
-                    <test>(empty certificate) The evaluator shall configure the test DTLS server to supply an empty Certificate message and verify that the TSF silently drops the message or terminates the session.
-                      <h:p>
-                        <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server Certificate and CertificateVerify messages until the TSF times out.
-                        It is preferred that the TSF logs a fatal error alert message (e.g., bad_certificate, certificate_unknown) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                      </h:p></test>
-                    <test>(invalid certificate) [conditional] If validity exceptions are supported, then for each exception for certificate validity supported, the evaluator shall configure the TSF to allow the exception and ensure the test DTLS server sends a certificate that is valid and trusted, except for the allowed exception. The evaluator shall observe that the TSF completes the session. 
-                      <h:p>
-                      Without modifying the TSF configuration, the evaluator shall initiate a new session with the test DTLS server that includes an additional validation error, and observe that the TSF silently drops the message or terminates the session.
-                      </h:p><h:p>
-                        <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server Certificate and and CertificateVerify messages until the TSF times out.
-                        It is preferred that the TSF logs a fatal error alert message (e.g., decode_error, bad_certificate) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                      </h:p><h:p>
-                      The intent of this test is to verify the scope of the exception processing. If verifying certificate status information is claimed as an exception, then this test will verify that a DTLS session succeeds when all supported methods for obtaining certificate status information is blocked from the TSF, to include removing any status information that might be cached by the TSF. 
-                      If the exception is limited to specific certificates (e.g., only leaf certificates are exempt, or only certain leaf certificates are exempt) the additional validation error could be unavailable revocation information for a non-exempt certificate (e.g., revocation status information from an intermediate CA is blocked for the issuing CA of an exempt leaf certificate, or revocation information from the issuing CA is blocked for a non-exempt leaf certificate). 
-                      If the only option for the exception is for all revocation information for all certificates, another validation error from <no-link>FIA_X509_EXT.1</no-link> (e.g., certificate expiration, extended key usage, etc.) may be used. 
-                    </h:p></test>
-                  </testlist>
-                </test>
-                 <test>
-                   <h:p>
-                     For each version supported, the evaluator shall establish a connection using a compliant handshake negotiating the version. The evaluator shall then cause the test server to send Application Data with at least one byte in a record message modified from what a compliant test server would send, and verify that the client discards the record or terminates the DTLS session as described in the TSS. If multiple behaviors are supported, the evaluator shall repeat the test for each behavior.
+                <testlist>
+                  <test><h:p>(certificate extended key usage purpose) The evaluator shall send a server certificate that contains the Server Authentication purpose in the ExtendedKeyUsage extension and verify that a connection is established. The evaluator shall repeat this test using a different certificate that is otherwise valid and trusted but lacks the Server Authentication purpose in the ExtendedKeyUsage extension and observe the TSF silently drops the Certificate message or terminates the session.
                   </h:p>
-                 </test>
-              </testlist>
-         
-        </Tests>
-      </aactivity>
-    </f-element>
-    <audit-event>
-      <audit-event-descr>Failure to establish a DTLS session</audit-event-descr>
-      <audit-event-info>Reason for failure</audit-event-info>
-    </audit-event>
-    <audit-event>
-      <audit-event-descr>Failure to verify presented identifier</audit-event-descr>
-      <audit-event-info>Presented identifier and reference identifier
-        </audit-event-info>
-    </audit-event>
-    <audit-event>
+                  <h:p>
+                  <h:b>Note:</h:b>This test is not performed if only DTLS 1.2 with PSK ciphersuites are supported; it is required if DTLS 1.2 is supported and ciphersuites other than PSK ciphersuites are supported, or if DTLS 1.3 is supported.
+                  </h:p>
+                  <h:p>
+                  Depending on the selections in FCS_DTLSC_EXT.1.5 and FCS_DTLSC_EXT.1.6, this test is performed in conjunction with testing of FIA_X509_EXT.1 or SFRs specific to the supported functions using DTLS.
+                  </h:p>
+                  <h:p>
+                  If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server Certificate and CertificateVerify messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., bad_certificate, decrypt_error, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
+                  </h:p>
+                  <h:p>
+                  Ideally, the two certificates should be similar in regards to structure, the types of identifiers used, and the chain of trust.
+                  </h:p>
+                  </test>
+                  <test> (certificate identifiers) For each supported method of matching presented identifiers, and for each name type for which the TSF parses the presented identifiers from the server certificate for the method, the evaluator shall establish a valid certificate trusted by the TSF to represent the test server using only the tested name type.
+                  The evaluator shall perform the following sub-tests: 
+                    <testlist>
+                      <test>The evaluator shall prepare the TSF as necessary to use the matching method and establish reference identifiers for the test server for the tested name type. The evaluator shall ensure the test DTLS server sends a certificate with a matching name of the tested name type and observe that the TSF completes the connection.
+                      </test>
+                      <test>The evaluator shall prepare the TSF as necessary to use the matching method and establish reference identifiers that do not match the name representing the test server. The evaluator shall ensure the test DTLS server sends a certificate with a name of the type tested, and observe the TSF silently drops the message or terminates the session.
+                      <h:p>
+                      <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., bad_certificate, certificate_unknown) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
+                      </h:p>
+                      </test>
+                      <test id="dtls-client-valid-wildcard">[conditional] If the TSF supports wildcards for a DNS, URI, or SVR name type, the evaluator shall prepare the TSF as necessary to use the matching method for the name type, and establish a reference identifier. The evaluator shall establish a certificate for the test server that includes a wildcard name for the DNS portion of the appropriate name type which matches the reference identifier. The evaluator shall ensure the DTLS server sends the certificate containing the wildcard name of the type tested, and observe that the TSF completes the connection.
+                      </test>
+                      <test id="dtls-client-no-wildcard">[conditional] If the TSF supports a DNS, URI, or SVR name type, but does not support wildcards (in general, or specifically for internationalized names of the specified type), the evaluator shall prepare the TSF as necessary to use the matching method and establish a reference identifier that matches a wildcard name for the DNS portion of the appropriate name type, in accordance with the appropriate RFC, in a certificate representing the server. The evaluator shall ensure the DTLS server sends the certificate containing the wildcard name of the type tested, and observe that the TSF silently drops the message or terminates the connection. 
+                      <h:p>
+                      <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF times out. If the TSF's ability to support wildcard certificates is configurable, both <xref to="dtls-client-valid-wildcard"/> and <xref to="dtls-client-no-wildcard"/> are performed under the appropriate configuration. This test is required if the TSF supports internationalized names of the specified type – in this case, the reference identifier only includes an internationalized encoding in the leftmost label. The certificate used is intended to match the certificate as if wildcards were supported and if the wildcard extended to internationalized names.
+                      </h:p>
+                      </test>
+                      <test id="dtls-client-invalid-wildcard"> [conditional] If the TSF supports wildcards for a DNS, URI, or SVR name type, the evaluator shall prepare the TSF as necessary to use the matching method. The evaluator shall establish a reference identifier and a certificate for the server as indicated in each of the sub-tests described below. The evaluator shall in turn, ensure the DTLS server sends the certificate associated with the reference identifier and observe that the TSF silently drops the message or terminates the session. 
+                        <testlist>
+                          <test>The reference identifier contains a DNS portion with two labels, and the certificate includes a name whose DNS portion includes a matching rightmost label and a wildcard in the leftmost label (e.g., *.com).
+                          </test>
+                          <test>The reference identifier contains a DNS portion with two labels, and the certificate includes a name whose DNS portion includes two rightmost labels matching the reference identifier, and a wildcard in a third (leftmost) label (e.g., *.example.com, which does not match "example.com").
+                          </test>
+                          <test>The reference identifier contains a DNS portion with four labels, and the certificate includes a name whose DNS portion includes two rightmost labels matching the reference identifier, and a wildcard in the third label, and a matching identifier in the fourth (leftmost) label (e.g., foo.*.example.com).
+                          </test>
+                          <h:p>
+                          <h:b>Note:</h:b> For negative sub-tests, if the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF times out.
+                          </h:p>
+                        </testlist>
+                      </test>
+                      <test>[conditional] If the TSF supports wildcards and supports embedded DNS, URI, or SVR name types in the CN, then for each supported name type, the evaluator shall repeat <xref to="dtls-client-valid-wildcard"/>, <xref to="dtls-client-no-wildcard"/>, and <xref to="dtls-client-invalid-wildcard"/> using certificates with the prescribed name embedded in the CN. 
+                      </test>
+                      <test id="dtls-client-ip-wildcard">[conditional] If the TSF supports IP addresses as an embedded name type in the CN, the evaluator shall establish an IP address as a reference identifier and establish a certificate with a valid DNS name in the subject field, including a CN whose value is the digital formatting of the octets of the reference identifier. The evaluator shall ensure the server sends the certificate and observe that the TSF successfully completes the session.
+                      </test>
+                      <test>[conditional] If the TSF supports IP addresses and any embedded name type in the CN, the evaluator shall establish an IP address as a reference identifier and establish a certificate with a valid DNS name in the subject field, including a CN whose value is the digital formatting of the octets of the reference identifier (as in <xref to="dtls-client-ip-wildcard"/>) except that one of the octets is replaced by the ‘*’ character. The evaluator shall ensure the server sends the certificate and observe that the TSF silently drops the message or terminates the session.
+                      </test>
+                      <h:p>
+                      <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server Certificate and CertificateVerify messages until the TSF times out.
+                      </h:p>
+                    </testlist>
+                  </test>                    
+                  <test>(mixed identifiers)[conditional] If the TSF supports a name matching method where the TSF performs matching of both CN-encoded name types and SAN names of the same type, then for each such method, and for each such name type, the evaluator shall establish a valid certificate trusted by the TSF to represent the test server using one name for the CN-encoded name type and a different name for the SAN name type The evaluator shall perform the following tests: 
+                    <testlist>
+                      <test>The evaluator shall follow the operational guidance to configure the TSF to use the name matching method and establish reference identifiers matching only the SAN. The evaluator shall ensure that the test server sends the certificate with the matching SAN and non-matching CN-encoded name, and observe that the TSF completes the connection.
+                      <h:p>
+                      <h:b>Note:</h:b> Configuration of the TSF may depend on the application using DTLS.
+                      </h:p>
+                      </test>
+                      <test>The evaluator shall follow the operational guidance to configure the TSF to use the name matching method and establish reference identifiers matching only the CN-encoded name. The evaluator shall ensure that the test server sends the certificate with the matching CN-encoded name and matching SAN name, and observe that the TSF silently drops the message or terminates the session.
+                      <h:p>
+                      If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server Certificate and and CertificateVerify messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., bad_certificate, certificate_unknown) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
+                      </h:p>
+                      </test>
+                    </testlist>
+                  </test>
+                  <test>(empty certificate) The evaluator shall configure the test DTLS server to supply an empty Certificate message and verify that the TSF silently drops the message or terminates the session.
+                  <h:p>
+                  <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server Certificate and CertificateVerify messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., bad_certificate, certificate_unknown) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
+                  </h:p>
+                  </test>
+                  <test>(invalid certificate) [conditional] If validity exceptions are supported, then for each exception for certificate validity supported, the evaluator shall configure the TSF to allow the exception and ensure the test DTLS server sends a certificate that is valid and trusted, except for the allowed exception. The evaluator shall observe that the TSF completes the session. 
+                  <h:p>
+                  Without modifying the TSF configuration, the evaluator shall initiate a new session with the test DTLS server that includes an additional validation error, and observe that the TSF silently drops the message or terminates the session.
+                  </h:p>
+                  <h:p>
+                  <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server Certificate and and CertificateVerify messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., decode_error, bad_certificate) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
+                  </h:p>
+                  <h:p>
+                  The intent of this test is to verify the scope of the exception processing. If verifying certificate status information is claimed as an exception, then this test will verify that a DTLS session succeeds when all supported methods for obtaining certificate status information is blocked from the TSF, to include removing any status information that might be cached by the TSF. If the exception is limited to specific certificates (e.g., only leaf certificates are exempt, or only certain leaf certificates are exempt) the additional validation error could be unavailable revocation information for a non-exempt certificate (e.g., revocation status information from an intermediate CA is blocked for the issuing CA of an exempt leaf certificate, or revocation information from the issuing CA is blocked for a non-exempt leaf certificate). If the only option for the exception is for all revocation information for all certificates, another validation error from <no-link>FIA_X509_EXT.1</no-link> (e.g., certificate expiration, extended key usage, etc.) may be used. 
+                  </h:p>
+                  </test>
+                </testlist>
+              </test>
+              <test>
+              <h:p>
+              For each version supported, the evaluator shall establish a connection using a compliant handshake negotiating the version. The evaluator shall then cause the test server to send Application Data with at least one byte in a record message modified from what a compliant test server would send, and verify that the client discards the record or terminates the DTLS session as described in the TSS. If multiple behaviors are supported, the evaluator shall repeat the test for each behavior.
+              </h:p>
+              </test>
+            </testlist>
+          </Tests>
+        </aactivity>
+      </f-element>
+      <audit-event>
+        <audit-event-descr>Failure to establish a DTLS session</audit-event-descr>
+        <audit-event-info>Reason for failure</audit-event-info>
+      </audit-event>
+      <audit-event>
+        <audit-event-descr>Failure to verify presented identifier</audit-event-descr>
+        <audit-event-info>Presented identifier and reference identifier</audit-event-info>
+      </audit-event>
+      <audit-event>
       <audit-event-descr>Establishment and termination of a DTLS session</audit-event-descr>
-      <audit-event-info>Non-TOE endpoint of connection
-      </audit-event-info>
-    </audit-event>
-  </f-component>
-      
-
-  <f-component cc-id="fcs_dtlsc_ext.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
-    <depends on-sel="dtlsc_mutual_auth"/>
-    
-    <comp-lev> requires the TSF to support mutually-authenticated DTLS when acting as a DTLS client.
-    </comp-lev>
-    <management>No specific management functions are identified.
-    </management>
-    <audit>There are no auditable events foreseen.
-    </audit>
-    <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol
-    </dependencies>
-    
-          <f-element id="fel-dtlsc-mut-auth">
-            <title>
-              The TSF shall support mutual DTLS authentication using X.509v3 certificates during the handshake and 
-              <selectables>
-                <selectable>in support of post-handshake authentication requests</selectable>
-                <selectable>at no other time</selectable>
-              </selectables>, in accordance with <selectables>
-                <selectable>RFC 5246 Section 7.4.4</selectable>
-                <selectable>RFC 8446 Section 4.3.2</selectable>
-              </selectables>.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "mutual authentication" is selected in FCS_DTLSC_EXT.1.1.
-              </h:p>
-              <h:p>
-                Clients that support DTLS 1.3 and post-handshake authentication should claim "in support of post-handshake authentication requests" in the first selection. The "at no other time" selection is claimed for clients only supporting DTLS 1.2 or for DTLS 1.3 clients that do not support post-handshake authentication.
-              </h:p>
-              <h:p>
-                The CertificateRequest message sent by the server specifies the signature algorithms and certification authorities supported by the server. If the client does not possess a matching certificate, it sends an empty Certificate message. The structure of the CertificateRequest message is changed (from TLS 1.2) in TLS 1.3 to use the signature_algorithm, signature_algorithms_cert (optional), and certificate_authorities extensions, and RFC 8446 allows for (D)TLS 1.2 implementations to use the new message structure. The "RFC 8446 Section 4.3.2" option is claimed in the second selection if DTLS 1.3 is supported or if DTLS 1.2 is supported and the RFC 8446 method is supported for DTLS 1.2 servers. The "RFC 5246 Section 7.4.4" option is claimed if DTLS 1.2 is supported and the RFC 5246 method is supported for interoperability with DTLS 1.2 servers that do not adopt the RFC 8446 method. When mutual authentication is supported, at least one of these methods must be claimed, per the selection.      
-              </h:p>
-      </note>
-      <aactivity>
-        <TSS>
+      <audit-event-info>Non-TOE endpoint of connection</audit-event-info>
+      </audit-event>
+    </f-component>
+    <f-component cc-id="fcs_dtlsc_ext.2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
+      <depends on-sel="dtlsc_mutual_auth"/>
+      <comp-lev> requires the TSF to support mutually-authenticated DTLS when acting as a DTLS client.</comp-lev>
+      <management>No specific management functions are identified.</management>
+      <audit>There are no auditable events foreseen.</audit>
+      <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol</dependencies>
+      <f-element id="fel-dtlsc-mut-auth">
+        <title>The TSF shall support mutual DTLS authentication using X.509v3 certificates during the handshake and 
+          <selectables>
+            <selectable>in support of post-handshake authentication requests</selectable>
+            <selectable>at no other time</selectable>
+          </selectables>, in accordance with <selectables>
+            <selectable>RFC 5246 Section 7.4.4</selectable>
+            <selectable>RFC 8446 Section 4.3.2</selectable>
+          </selectables>.
+        </title>
+        <note role="application">
           <h:p>
-            The evaluator shall ensure that the TSS description required per <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client certificates for DTLS mutual authentication. 
-            The evaluator shall also ensure that the TSS describes any factors beyond configuration that are necessary in order for the client to engage in mutual authentication using X.509v3 certificates.
+          This SFR is claimed if "mutual authentication" is selected in FCS_DTLSC_EXT.1.1.
           </h:p>
-        </TSS>
-        <Guidance>
           <h:p>
-            The evaluator shall ensure that the operational guidance includes any instructions necessary to configure the TOE to perform mutual authentication. 
-            The evaluator shall also verify that the operational guidance required per <no-link>FIA_X509_EXT.2.1</no-link> includes instructions for configuring the client-side certificates for DTLS mutual authentication.
+          Clients that support DTLS 1.3 and post-handshake authentication should claim "in support of post-handshake authentication requests" in the first selection. The "at no other time" selection is claimed for clients only supporting DTLS 1.2 or for DTLS 1.3 clients that do not support post-handshake authentication.
           </h:p>
-        </Guidance>
-        <Tests>
-          For each supported DTLS version, the evaluator shall perform the following tests:
-          <testlist>
-            <test>The evaluator shall establish a DTLS connection from the TSF to a test DTLS server that negotiates the tested version and which is not configured for mutual authentication (i.e., does not send a server’s CertificateRequest message). The evaluator shall observe negotiation of a DTLS channel and confirm that the TOE did not send a Client’s Certificate message during handshake.</test>
-            <test>The evaluator shall establish a connection to a test DTLS server with a shared trusted root that is configured for mutual authentication (i.e., it sends a server’s CertificateRequest message). The evaluator shall observe negotiation of a DTLS channel and confirm that the TOE responds with a non-empty client’s Certificate message and CertificateVerify message.</test>
-            <test>[conditional] If the TSF supports post-handshake authentication, the evaluator shall establish a pre-shared key between the TSF and a test DTLS 1.3 server. 
-              The evaluator shall initiate a DTLS session using the pre-shared key and confirm the TSF and test DTLS 1.3 server successfully complete the DTLS handshake and both support post-handshake authentication. 
-              After the session is successfully established, the evaluator shall initiate a CertificateRequest message from the test DTLS 1.3 server. 
-              The evaluator shall observe that the TSF receives that authentication request and shall take necessary actions, in accordance with the operational guidance, to complete the authentication request. 
-              The evaluator shall confirm that the test DTLS 1.3 server receives Certificate and CertificateVerify messages from the TSF over the channel that authenticates the client.
+          <h:p>
+          The CertificateRequest message sent by the server specifies the signature algorithms and certification authorities supported by the server. If the client does not possess a matching certificate, it sends an empty Certificate message. The structure of the CertificateRequest message is changed (from TLS 1.2) in TLS 1.3 to use the signature_algorithm, signature_algorithms_cert (optional), and certificate_authorities extensions, and RFC 8446 allows for (D)TLS 1.2 implementations to use the new message structure. The "RFC 8446 Section 4.3.2" option is claimed in the second selection if DTLS 1.3 is supported or if DTLS 1.2 is supported and the RFC 8446 method is supported for DTLS 1.2 servers. The "RFC 5246 Section 7.4.4" option is claimed if DTLS 1.2 is supported and the RFC 5246 method is supported for interoperability with DTLS 1.2 servers that do not adopt the RFC 8446 method. When mutual authentication is supported, at least one of these methods must be claimed, per the selection.      
+          </h:p>
+        </note>
+        <aactivity>
+          <TSS>
+            <h:p>
+            The evaluator shall ensure that the TSS description required per <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client certificates for DTLS mutual authentication. The evaluator shall also ensure that the TSS describes any factors beyond configuration that are necessary in order for the client to engage in mutual authentication using X.509v3 certificates.
+            </h:p>
+          </TSS>
+          <Guidance>
+            <h:p>
+            The evaluator shall ensure that the operational guidance includes any instructions necessary to configure the TOE to perform mutual authentication. The evaluator shall also verify that the operational guidance required per <no-link>FIA_X509_EXT.2.1</no-link> includes instructions for configuring the client-side certificates for DTLS mutual authentication.
+            </h:p>
+          </Guidance>
+          <Tests>
+            For each supported DTLS version, the evaluator shall perform the following tests:
+            <testlist>
+              <test>The evaluator shall establish a DTLS connection from the TSF to a test DTLS server that negotiates the tested version and which is not configured for mutual authentication (i.e., does not send a server’s CertificateRequest message). The evaluator shall observe negotiation of a DTLS channel and confirm that the TOE did not send a Client’s Certificate message during handshake.
+              </test>
+              <test>The evaluator shall establish a connection to a test DTLS server with a shared trusted root that is configured for mutual authentication (i.e., it sends a server’s CertificateRequest message). The evaluator shall observe negotiation of a DTLS channel and confirm that the TOE responds with a non-empty client’s Certificate message and CertificateVerify message.
+              </test>
+              <test>[conditional] If the TSF supports post-handshake authentication, the evaluator shall establish a pre-shared key between the TSF and a test DTLS 1.3 server. The evaluator shall initiate a DTLS session using the pre-shared key and confirm the TSF and test DTLS 1.3 server successfully complete the DTLS handshake and both support post-handshake authentication. After the session is successfully established, the evaluator shall initiate a CertificateRequest message from the test DTLS 1.3 server. The evaluator shall observe that the TSF receives that authentication request and shall take necessary actions, in accordance with the operational guidance, to complete the authentication request. The evaluator shall confirm that the test DTLS 1.3 server receives Certificate and CertificateVerify messages from the TSF over the channel that authenticates the client.
               <h:p>
-                <h:b>Note:</h:b> DTLS 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. 
-                The evaluator shall confirm that the TSF sends the appropriate messages by examining the messages received at the test DTLS 1.3 server and by inspecting any relevant server logs. 
-                The evaluator may also take advantage of the calling application to demonstrate that the TOE receives data configured at the test DTLS server. 
-              </h:p></test>
-          </testlist>
-        </Tests>
-      </aactivity>
-    </f-element>
-	  <audit-event/>
-  </f-component>
-
-
-        <f-component cc-id="fcs_dtlsc_ext.3" name="DTLS Client Downgrade Protection" status="sel-based">
-          <depends on-sel="dtlsc_downgrade_protection"/>
-          
-          <comp-lev> requires the TSF to implement version downgrade protection when acting as a DTLS client.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol
-          </dependencies>
-          
+              <h:b>Note:</h:b> DTLS 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm that the TSF sends the appropriate messages by examining the messages received at the test DTLS 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the TOE receives data configured at the test DTLS server. 
+              </h:p>
+              </test>
+            </testlist>
+          </Tests>
+        </aactivity>
+      </f-element>
+	    <audit-event/>
+    </f-component>
+    <f-component cc-id="fcs_dtlsc_ext.3" name="DTLS Client Downgrade Protection" status="sel-based">
+      <depends on-sel="dtlsc_downgrade_protection"/>
+      <comp-lev> requires the TSF to implement version downgrade protection when acting as a DTLS client.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol</dependencies>
           <f-element>
             <title>The TSF shall not establish a DTLS channel if the ServerHello message includes a
               <selectables>
                 <selectable>TLS 1.2 downgrade indicator</selectable>
                 <selectable>TLS 1.1 or below downgrade indicator</selectable></selectables>
-              in the server random field. </title>
+              in the server random field.
+            </title>
             <note role="application">
               <h:p>
-                This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSC_EXT.1.1.
+              This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSC_EXT.1.1.
               </h:p>
               <h:p>
-                DTLS uses the TLS downgrade indicators. 
+              DTLS uses the TLS downgrade indicators. 
               </h:p>
               <h:p>
-                The ST author claims the “TLS 1.2 downgrade indicator” when FCS_DTLSC_EXT.1 indicates support for both TLS 1.2 and TLS 1.3 and implements supplemental downgrade protection. This option is not claimed if DTLS 1.3 is not supported. The “TLS 1.1 or below downgrade indicator” option may also be claimed if supported, but should only be claimed if the TSF is capable of detecting the indicator. This package requires the TSF to always terminate DTLS 1.0 sessions based on the ServerHello negotiated version field; it is acceptable to ignore any downgrade indicator. However, a TSF that is capable of detecting the TLS 1.1 or below downgrade indicator may claim this option if it takes different actions depending on whether the TLS 1.1 or below downgrade indicator is set.
+              The ST author claims the “TLS 1.2 downgrade indicator” when FCS_DTLSC_EXT.1 indicates support for both TLS 1.2 and TLS 1.3 and implements supplemental downgrade protection. This option is not claimed if DTLS 1.3 is not supported. The “TLS 1.1 or below downgrade indicator” option may also be claimed if supported, but should only be claimed if the TSF is capable of detecting the indicator. This package requires the TSF to always terminate DTLS 1.0 sessions based on the ServerHello negotiated version field; it is acceptable to ignore any downgrade indicator. However, a TSF that is capable of detecting the TLS 1.1 or below downgrade indicator may claim this option if it takes different actions depending on whether the TLS 1.1 or below downgrade indicator is set.
               </h:p>
             </note>
             <aactivity>
               <TSS>
                 <h:p>
-                  The evaluator shall review the TSS and confirm that the description of the DTLS client protocol includes the downgrade protection mechanism in accordance with RFC 9147 and identifies any configurable features of the TSF needed to meet the requirements. 
-                  If the TSS claims that the TLS 1.1 and below indicator is processed in the DTLS 1.2 implementation to prevent downgrade to DTLS 1.0, the evaluator shall confirm that the TSS indicates which configurations allow processing of the downgrade indicator and the specific response of the TSF when it receives the downgrade indicator as opposed to simply terminating the session for the unsupported version.
+                The evaluator shall review the TSS and confirm that the description of the DTLS client protocol includes the downgrade protection mechanism in accordance with RFC 9147 and identifies any configurable features of the TSF needed to meet the requirements. If the TSS claims that the TLS 1.1 and below indicator is processed in the DTLS 1.2 implementation to prevent downgrade to DTLS 1.0, the evaluator shall confirm that the TSS indicates which configurations allow processing of the downgrade indicator and the specific response of the TSF when it receives the downgrade indicator as opposed to simply terminating the session for the unsupported version.
                 </h:p>
               </TSS>
               <Guidance>
                 <h:p>
-                  The evaluator shall review the operational guidance and confirm that any instructions to configure the TSF to meet the requirements are included.
+                The evaluator shall review the operational guidance and confirm that any instructions to configure the TSF to meet the requirements are included.
                 </h:p>
               </Guidance>
               <Tests>
                 The evaluator shall perform the following tests to confirm the response to downgrade indicators from a test DTLS 1.3 server:
                 <testlist>
-                  <test>[conditional] If the TSF supports DTLS 1.3, the evaluator shall initiate a DTLS 1.3 session with a test DTLS 1.3 server configured to send a compliant DTLS 1.2 ServerHello (not including any DTLS 1.3 extensions) but including the DTLS 1.2 downgrade indicator ‘44 4F 57 4E 47 52 44 01’ in the last eight bytes of the server random field. 
-                    The evaluator shall confirm that the TSF silently drops the ServerHello message or terminates the session.
-                    <h:p>  
-                      <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter). However, it also is acceptable for the TSF to terminate the session without logging an error alert.
-                    </h:p></test>
-                  <test>[conditional] If the TSF supports the TLS 1.1 or below downgrade indicator to prevent downgrade to DTLS 1.0, and if the ST indicates a configuration where the indicator is processed, the evaluator shall follow operational guidance instructions to configure the TSF so it parses a DTLS 1.1 ServerHello message to detect and process the TLS downgrade indicator. 
-                    The evaluator shall initiate a DTLS session between the TOE and a test DTLS server that is configured to send a DTLS 1.0 ServerHello message with the downgrade indicator ‘44 4F 57 4E 47 52 44 00’ in the last eight bytes of the server random field, but which is otherwise compliant with RFC 4347. The evaluator shall observe that the TSF silently drops the ServerHello message or terminates the session as described in the ST.
-                    <h:p>
-                      <h:b>Note:</h:b> The TSF is required not to accept a negotiation of DTLS 1.0. This test confirms the TSF is able to distinguish attempts to negotiate DTLS 1.0 when the TLS 1.1 and below downgrade indicator is provided, and is only performed when the indicator is processed resulting in a different behavior than other attempts to negotiate DTLS 1.0. If the TSF terminates the session according to the unique behavior indicated in the ST, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF demonstrates the unique response to the downgrade indicator as described in the ST. It is preferred that the TSF logs a fatal error alert message (illegal_parameter or unsupported_version). However, it is also acceptable for the TSF to terminate the session without logging an error alert. 
-                    </h:p><h:p>
-                      Use of the TLS 1.1 and below indicator as a redundant mechanism where there is no configuration that actually processes the value does not require additional testing, since this would be addressed by <xref to="dtls-client-obsolete-versions"/> for FCS_DTLSC_EXT.1.1. This test is only required if the TSF responds differently (e.g., a different error alert) when the downgrade indicator is present than when DTLS 1.0 or below is negotiated and the downgrade indicator is not present.
-                    </h:p></test>
+                  <test>[conditional] If the TSF supports DTLS 1.3, the evaluator shall initiate a DTLS 1.3 session with a test DTLS 1.3 server configured to send a compliant DTLS 1.2 ServerHello (not including any DTLS 1.3 extensions) but including the DTLS 1.2 downgrade indicator ‘44 4F 57 4E 47 52 44 01’ in the last eight bytes of the server random field. The evaluator shall confirm that the TSF silently drops the ServerHello message or terminates the session.
+                  <h:p>  
+                  <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter). However, it also is acceptable for the TSF to terminate the session without logging an error alert.
+                  </h:p>
+                  </test>
+                  <test>[conditional] If the TSF supports the TLS 1.1 or below downgrade indicator to prevent downgrade to DTLS 1.0, and if the ST indicates a configuration where the indicator is processed, the evaluator shall follow operational guidance instructions to configure the TSF so it parses a DTLS 1.1 ServerHello message to detect and process the TLS downgrade indicator. The evaluator shall initiate a DTLS session between the TOE and a test DTLS server that is configured to send a DTLS 1.0 ServerHello message with the downgrade indicator ‘44 4F 57 4E 47 52 44 00’ in the last eight bytes of the server random field, but which is otherwise compliant with RFC 4347. The evaluator shall observe that the TSF silently drops the ServerHello message or terminates the session as described in the ST.
+                  <h:p>
+                  <h:b>Note:</h:b> The TSF is required not to accept a negotiation of DTLS 1.0. This test confirms the TSF is able to distinguish attempts to negotiate DTLS 1.0 when the TLS 1.1 and below downgrade indicator is provided, and is only performed when the indicator is processed resulting in a different behavior than other attempts to negotiate DTLS 1.0. If the TSF terminates the session according to the unique behavior indicated in the ST, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF demonstrates the unique response to the downgrade indicator as described in the ST. It is preferred that the TSF logs a fatal error alert message (illegal_parameter or unsupported_version). However, it is also acceptable for the TSF to terminate the session without logging an error alert. 
+                  </h:p>
+                  <h:p>
+                  Use of the TLS 1.1 and below indicator as a redundant mechanism where there is no configuration that actually processes the value does not require additional testing, since this would be addressed by <xref to="dtls-client-obsolete-versions"/> for FCS_DTLSC_EXT.1.1. This test is only required if the TSF responds differently (e.g., a different error alert) when the downgrade indicator is present than when DTLS 1.0 or below is negotiated and the downgrade indicator is not present.
+                  </h:p>
+                  </test>
                 </testlist>
               </Tests>
             </aactivity>
           </f-element> 
           <audit-event/>
         </f-component>
-        
         <f-component cc-id="fcs_dtlsc_ext.4" name="DTLS Client Support for Renegotiation" status="sel-based">
           <depends on-sel="tlsc_impl"/>
-          
-          <comp-lev> requires the TSF to support session renegotiation when acting as a DTLS client.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol
-          </dependencies>
-          
+          <comp-lev> requires the TSF to support session renegotiation when acting as a DTLS client.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol</dependencies>
           <f-element id="fel-dtlsc-renego">
             <title>The TSF shall support secure DTLS renegotiation through use of <selectables>
                 <selectable>the “renegotiation_info” TLS extension in accordance with RFC 5746</selectable>
@@ -1154,48 +1130,48 @@
             </title>
             <note role="application">
               <h:p>
-                This SFR is claimed if "DTLS as a client" is selected in FCS_TLS_EXT.1.1.
+              This SFR is claimed if "DTLS as a client" is selected in FCS_TLS_EXT.1.1.
               </h:p>
               <h:p>
-                A client supporting DTLS 1.3 must claim “rejection of all renegotiation attempts.” This option may also be claimed as a method for TLS 1.2 renegotiation protection.
+              A client supporting DTLS 1.3 must claim “rejection of all renegotiation attempts.” This option may also be claimed as a method for TLS 1.2 renegotiation protection.
               </h:p>
               <h:p>
-                The TLS_EMPTY_RENEGOTIATION_INFO_SCSV is the preferred mechanism for DTLS 1.2 protection against insecure renegotiation when the client does not renegotiate. The ST author will claim "a HelloRequest message is received" in the second selection to indicate support for this mechanism.
+              The TLS_EMPTY_RENEGOTIATION_INFO_SCSV is the preferred mechanism for DTLS 1.2 protection against insecure renegotiation when the client does not renegotiate. The ST author will claim "a HelloRequest message is received" in the second selection to indicate support for this mechanism.
               </h:p>
               <h:p>
-                RFC 5746 allows the client to accept connections with servers that do not support the extension; this Functional Package refines RFC 5746 and requires the client to terminate sessions with such servers. Thus, unexpected ServerHello messages include
-                <h:ul>
-                  <h:li>
-                    an initial ServerHello message negotiating DTLS 1.2 that does not contain a renegotiation_info extension
-                  </h:li>
-                  <h:li>
-                    an initial ServerHello message negotiating DTLS 1.2 containing a non-empty renegotiation_info extension
-                  </h:li>
-                  <h:li>
-                    a subsequent ServerHello message renegotiating DTLS 1.2 that does not contain a renegotiation_info extension
-                  </h:li>
-                  <h:li>
-                    a subsequent ServerHello message negotiating DTLS 1.2 containing a renegotiation_info extension with an incorrect renegotiated_connection value
-                  </h:li>
-                 and
-                  <h:li>
-                    a ServerHello request message when renegotiation is not allowed (for DTLS 1.3 or when the option is claimed for TLS 1.2).
-                  </h:li>
+              RFC 5746 allows the client to accept connections with servers that do not support the extension; this Functional Package refines RFC 5746 and requires the client to terminate sessions with such servers. Thus, unexpected ServerHello messages include
+              <h:ul>
+              <h:li>
+              an initial ServerHello message negotiating DTLS 1.2 that does not contain a renegotiation_info extension
+              </h:li>
+              <h:li>
+              an initial ServerHello message negotiating DTLS 1.2 containing a non-empty renegotiation_info extension
+              </h:li>
+              <h:li>
+              a subsequent ServerHello message renegotiating DTLS 1.2 that does not contain a renegotiation_info extension
+              </h:li>
+              <h:li>
+              a subsequent ServerHello message negotiating DTLS 1.2 containing a renegotiation_info extension with an incorrect renegotiated_connection value
+              </h:li>
+              and
+              <h:li>
+              a ServerHello request message when renegotiation is not allowed (for DTLS 1.3 or when the option is claimed for TLS 1.2).
+              </h:li>
               </h:ul>
               </h:p>
               <h:p>
-                DTLS 1.3 provides protection against insecure renegotiation by not allowing renegotiation. If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, the client receives a ServerHello message that attempts to negotiate DTLS 1.3, and the ServerHello message also contains a non-empty renegotiation_info extension; the client will terminate the connection or silently discard the message.
+              DTLS 1.3 provides protection against insecure renegotiation by not allowing renegotiation. If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, the client receives a ServerHello message that attempts to negotiate DTLS 1.3, and the ServerHello message also contains a non-empty renegotiation_info extension; the client will terminate the connection or silently discard the message.
               </h:p>
             </note>
             <aactivity>
               <TSS>
                 <h:p>
-                  The evaluator shall examine the TSS to ensure that DTLS renegotiation protections are described in accordance with the requirements. The evaluator shall ensure that any configurable features of the renegotiation protections are identified.
+                The evaluator shall examine the TSS to ensure that DTLS renegotiation protections are described in accordance with the requirements. The evaluator shall ensure that any configurable features of the renegotiation protections are identified.
                 </h:p>
               </TSS>
               <Guidance>
                 <h:p>
-                  The evaluator shall examine the operational guidance to confirm that instructions for any configurable features of the renegotiation protection mechanisms are included.
+                The evaluator shall examine the operational guidance to confirm that instructions for any configurable features of the renegotiation protection mechanisms are included.
                 </h:p>
               </Guidance>
               <Tests>
@@ -1207,17 +1183,17 @@
                       </test>
                       <test>For each of the following sub-tests, the evaluator shall initiate a new TLS connection with a test DTLS 1.2 server configured to send a renegotiation_info extension as specified, but otherwise complete a compliant DTLS 1.2 session:
                         <testlist>
-                          <test>The evaluator shall configure the test DTLS 1.2 server to send a renegotiation_info extension whose value indicates a non-zero length. 
-                            The evaluator shall confirm that the TSF silently drops the ServerHello message or terminates the connection. 
-                            <h:p>
-                              <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
-                            </h:p>
+                          <test>The evaluator shall configure the test DTLS 1.2 server to send a renegotiation_info extension whose value indicates a non-zero length. The evaluator shall confirm that the TSF silently drops the ServerHello message or terminates the connection. 
+                          <h:p>
+                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
+                          </h:p>
                           </test>
-                          <test>The evaluator shall configure the test DTLS 1.2 server to send a compliant renegotiation_info extension and observe the TSF successfully completes the DTLS 1.2 connection.</test>
+                          <test>The evaluator shall configure the test DTLS 1.2 server to send a compliant renegotiation_info extension and observe the TSF successfully completes the DTLS 1.2 connection.
+                          </test>
                           <test>The evaluator shall initiate a session renegotiation after completing a successful handshake with a test DTLS 1.2 server that completes a successful DTLS 1.2 handshake (as in <xref to="dtls-client-offers-renegotiation"/>) and then sends a HelloRetryRequest from the test DTLS server with a “renegotiation_info” extension that has an unexpected “client_verify_data” or “server_verify_data” value (modify a byte from a compliant response). The evaluator shall verify that the TSF silently drops the ServerHello message or terminates the connection.
-                            <h:p>
-                              <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                            </h:p>
+                          <h:p>
+                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
+                          </h:p>
                           </test>
                         </testlist>
                       </test>
@@ -1225,16 +1201,15 @@
                   </test>
                   <test id="dtls-client-prevents-renegotiation">[conditional] if the TSF supports a configuration that prevents renegotiation, the evaluator shall perform the following tests:
                     <testlist>
-                      <test>[conditional] If the TSF supports DTLS 1.2 and supports a configuration to reject DTLS 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to prevent renegotiation. 
-                        The evaluator shall initiate a DTLS session between the so-configured TSF and a test DTLS 1.2 server that is configured to perform a compliant handshake, followed by a HelloRetryRequest. The evaluator shall confirm that the TSF completes the initial handshake successfully but silently drops the HelloRetryRequest message or terminates the TLS session after receiving the HelloRetryRequest.
-                        <h:p>
-                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the HelloRetryRequest message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
-                        </h:p>
+                      <test>[conditional] If the TSF supports DTLS 1.2 and supports a configuration to reject DTLS 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to prevent renegotiation. The evaluator shall initiate a DTLS session between the so-configured TSF and a test DTLS 1.2 server that is configured to perform a compliant handshake, followed by a HelloRetryRequest. The evaluator shall confirm that the TSF completes the initial handshake successfully but silently drops the HelloRetryRequest message or terminates the TLS session after receiving the HelloRetryRequest.
+                      <h:p>
+                      <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the HelloRetryRequest message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
+                      </h:p>
                       </test>
                       <test>[conditional] If the TSF supports DTLS 1.3, the evaluator shall initiate a TLS session between the TSF and a test DTLS 1.3 server that completes a compliant DTLS 1.3 handshake, followed by a HelloRetryRequest message. The evaluator shall observe that the TSF completes the initial DTLS 1.3 handshake successfully, but silently drops the HelloRetryRequest message or terminates the session on receiving the HelloRetryRequest message.
-                        <h:p>
-                          If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                        </h:p>
+                      <h:p>
+                      If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
+                      </h:p>
                       </test>
                     </testlist>
                   </test>
@@ -1244,61 +1219,54 @@
           </f-element> 
           <audit-event/>
         </f-component>
-        
         <f-component cc-id="fcs_dtlsc_ext.5" name="DTLS Client Support for Session Resumption" status="sel-based">
           <depends on-sel="dtlsc_resumption"/>
-          
-          <comp-lev> requires the TSF to support session resumption when acting as a DTLS client.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol
-          </dependencies>
-          
+          <comp-lev> requires the TSF to support session resumption when acting as a DTLS client.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
+          <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol</dependencies>
           <f-element>
             <title>
               The TSF shall support session resumption as a DTLS client via the use of <selectables>
                 <selectable>session ID in accordance with RFC 5246</selectable>
                 <selectable>tickets in accordance with RFC 5077</selectable>
-                <selectable id="dtlsc_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
+                <selectable id="dtlsc_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable>
+              </selectables>. 
             </title>
             <note role="application">
               <h:p>
-                This SFR is claimed if "session resumption" is selected in FCS_DTLSC_EXT.1.1.
-              </h:p><h:p>
-                The ST author indicates which session resumption mechanisms are supported. One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed if resumption of DTLS 1.2 sessions is supported. If resumption of DTLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_DTLSC_EXT.6 must also be claimed.
-              </h:p><h:p>
-                While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is addressed in FCS_DTLSC_EXT.1. 
+              This SFR is claimed if "session resumption" is selected in FCS_DTLSC_EXT.1.1.
+              </h:p>
+              <h:p>
+              The ST author indicates which session resumption mechanisms are supported. One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed if resumption of DTLS 1.2 sessions is supported. If resumption of DTLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_DTLSC_EXT.6 must also be claimed.
+              </h:p>
+              <h:p>
+              While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is addressed in FCS_DTLSC_EXT.1. 
               </h:p>
             </note>
             <aactivity>
               <TSS>
                 <h:p>
-                  The evaluator shall examine the TSS and confirm that the DTLS client protocol description includes a description of the supported resumption mechanisms.
+                The evaluator shall examine the TSS and confirm that the DTLS client protocol description includes a description of the supported resumption mechanisms.
                 </h:p>
               </TSS>
               <Guidance>
                 <h:p>
-                  The evaluator shall ensure the operational guidance describes instructions for any configurable features of the resumption mechanism.
+                The evaluator shall ensure the operational guidance describes instructions for any configurable features of the resumption mechanism.
                 </h:p>
               </Guidance>
               <Tests>
                 The evaluator shall perform the following tests:
                 <testlist>
-                  <test id="dtls-client-successful-resumption">For each supported DTLS version and for each supported resumption mechanism that is supported for that version, the evaluator shall establish a new DTLS session between the TSF and a compliant test DTLS server that is configured to negotiate the indicated version and perform resumption using the indicated mechanism. 
-                    The evaluator shall confirm that the TSF completes the initial DTLS handshake and shall cause the TSF to close the session normally. 
-                    The evaluator shall then cause the TSF to resume the session with the test DTLS server using the indicated method and observe that the TSF successfully establishes the session.
-                    <h:p>
-                      <h:b>Note:</h:b> For each method, successful establishment refers to proper use of the mechanism, to include compliant extensions and behavior, as indicated in the referenced RFC.
-                    </h:p>
+                  <test id="dtls-client-successful-resumption">For each supported DTLS version and for each supported resumption mechanism that is supported for that version, the evaluator shall establish a new DTLS session between the TSF and a compliant test DTLS server that is configured to negotiate the indicated version and perform resumption using the indicated mechanism. The evaluator shall confirm that the TSF completes the initial DTLS handshake and shall cause the TSF to close the session normally. The evaluator shall then cause the TSF to resume the session with the test DTLS server using the indicated method and observe that the TSF successfully establishes the session.
+                  <h:p>
+                  <h:b>Note:</h:b> For each method, successful establishment refers to proper use of the mechanism, to include compliant extensions and behavior, as indicated in the referenced RFC.
+                  </h:p>
                   </test>
-                  <test>(TLS 1.3 session id echo) [conditional] If the TSF supports DTLS 1.3, the evaluator shall initiate a new DTLS 1.3 session with a test TLS server. 
-                    The evaluator shall cause the test DTLS server to send a DTLS 1.3 ServerHello message (or a HelloRetryRequest request if the TSF does not include the key_share extension) that contains a different value in the legacy_session_id field from the expected 32-byte value, and observe that the TSF silently drops the ServerHello message or terminates the session.
-                    <h:p>
-                      <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
-                    </h:p>
+                  <test>(TLS 1.3 session id echo) [conditional] If the TSF supports DTLS 1.3, the evaluator shall initiate a new DTLS 1.3 session with a test TLS server. The evaluator shall cause the test DTLS server to send a DTLS 1.3 ServerHello message (or a HelloRetryRequest request if the TSF does not include the key_share extension) that contains a different value in the legacy_session_id field from the expected 32-byte value, and observe that the TSF silently drops the ServerHello message or terminates the session.
+                  <h:p>
+                  <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
+                  </h:p>
                   </test>
                 </testlist>
               </Tests>
@@ -1306,20 +1274,14 @@
           </f-element>  
           <audit-event/>
         </f-component>
-        
         <f-component cc-id="fcs_dtlsc_ext.6" name="DTLS Client DTLS 1.3 Resumption Refinements" status="sel-based">
           <depends on-sel="dtlsc_v13_resumption"/> 
-          
-          <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a DTLS client.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
+          <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a DTLS client.</comp-lev>
+          <management>No specific management functions are identified.</management>
+          <audit>There are no auditable events foreseen.</audit>
           <dependencies>FCS_DTLSC_EXT.1 DTLS Client Protocol<h:br/>
             FCS_DTLSC_EXT.5 DTLS Client Support for Session Resumption
           </dependencies>
-          
           <f-element>
             <title>
               The TSF shall send a psk_key_exchange_modes extension with value psk_dhe_ke when DTLS 1.3 session resumption is offered. 
@@ -1331,40 +1293,33 @@
             </title>
             <note role="application">
               <h:p>
-                This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSC_EXT.5.1.
+              This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSC_EXT.5.1.
               </h:p>
               <h:p>
-                This SFR is claimed when session resumption is supported for DTLS 1.3. RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions.
+              This SFR is claimed when session resumption is supported for DTLS 1.3. RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions.
               </h:p>
             </note>
-        <aactivity>
-          <TSS>
-            <h:p>
-              The evaluator shall examine the TSS to verify that the TLS client protocol description indicates that a PSK cannot be used without DHE or ECDHE and prohibits sending early data. 
-              The evaluator shall examine the TSS to verify it lists all applications that can be secured by TLS 1.3 using pre-shared keys and describes how each TLS 1.3 client application ensures data for the application is not sent using early data.
-            </h:p>
-          </TSS>
-          <Guidance>
-            <h:p>
-              The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
-              The evaluator shall ensure the operational guidance includes any instructions required to configure applications so the DTLS 1.3 client implementation does not send early data.
-            </h:p>
-          </Guidance>
-          <Tests>
-            [conditional] For each application that is able to be secured via DTLS 1.3 using PSK, the evaluator shall follow operational guidance to configure the application not to send early data. 
-            The evaluator shall cause the application to initiate a resumed DTLS 1.3 session between the TSF and a compliant test DTLS 1.3 server as in <xref to="dtls-client-successful-resumption"/> in FCS_DTLSC_EXT.5. 
-            The evaluator shall observe that the TSF ClientHello message for DTLS 1.3 includes the psk_mode extension with the value psk_dhe_ke and sends a key share value for a supported group. 
-            The evaluator shall confirm that early data is not received by the test TLS server.
-            <h:p>
-              <h:b>Note:</h:b> If no applications supported by the TOE provide data to DTLS 1.3 that can be sent using PSK, this test is omitted.
-            </h:p>
-          </Tests>      
-        </aactivity>
+            <aactivity>
+              <TSS>
+                <h:p>
+                The evaluator shall examine the TSS to verify that the TLS client protocol description indicates that a PSK cannot be used without DHE or ECDHE and prohibits sending early data. The evaluator shall examine the TSS to verify it lists all applications that can be secured by TLS 1.3 using pre-shared keys and describes how each TLS 1.3 client application ensures data for the application is not sent using early data.
+                </h:p>
+              </TSS>
+              <Guidance>
+                <h:p>
+                 The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. The evaluator shall ensure the operational guidance includes any instructions required to configure applications so the DTLS 1.3 client implementation does not send early data.
+                </h:p>
+              </Guidance>
+              <Tests>
+                [conditional] For each application that is able to be secured via DTLS 1.3 using PSK, the evaluator shall follow operational guidance to configure the application not to send early data. The evaluator shall cause the application to initiate a resumed DTLS 1.3 session between the TSF and a compliant test DTLS 1.3 server as in <xref to="dtls-client-successful-resumption"/> in FCS_DTLSC_EXT.5. The evaluator shall observe that the TSF ClientHello message for DTLS 1.3 includes the psk_mode extension with the value psk_dhe_ke and sends a key share value for a supported group. The evaluator shall confirm that early data is not received by the test TLS server.
+                <h:p>
+                <h:b>Note:</h:b> If no applications supported by the TOE provide data to DTLS 1.3 that can be sent using PSK, this test is omitted.
+                </h:p>
+              </Tests>      
+            </aactivity>
           </f-element>  
           <audit-event/>
         </f-component> 
-        
-        
    <ext-comp-def fam-id="FCS_DTLSS_EXT" title="DTLS Server Protocol">
      <fam-behavior>This family defines requirements for implementation of DTLS as a server.</fam-behavior>
    </ext-comp-def>
