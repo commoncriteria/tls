@@ -4069,90 +4069,75 @@
     </f-element>
 	  <audit-event/>
   </f-component>
- 
-        <f-component cc-id="fcs_tlss_ext.3" name="TLS Server Downgrade Protection" status="sel-based">
-          <depends on-sel="tlss_downgrade_protection"/>
-          
-          <comp-lev> requires the TSF to implement version downgrade protection when acting as a TLS server.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol
-          </dependencies>
-          
-          <f-element>
-            <title>
-              The TSF shall set the ServerHello message to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating TLS 1.2 as indicated in RFC 8446 Section 4.1.3.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "supplemental downgrade protection" is selected in FCS_TLSS_EXT.1.1. 
-              </h:p>
-              <h:p>
-              RFC 8446 requires both the TLS 1.2 downgrade indicator as well as an indicator for TLS 1.1 and below. 
-              This Functional Package requires the server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. However, products may still implement both indicators to be compliant with the RFC. 
-              </h:p>
+  <f-component cc-id="fcs_tlss_ext.3" name="TLS Server Downgrade Protection" status="sel-based">
+    <depends on-sel="tlss_downgrade_protection"/>
+    <comp-lev> requires the TSF to implement version downgrade protection when acting as a TLS server.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol</dependencies>
+    <f-element>
+      <title>
+        The TSF shall set the ServerHello message to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating TLS 1.2 as indicated in RFC 8446 Section 4.1.3.
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "supplemental downgrade protection" is selected in FCS_TLSS_EXT.1.1. 
+        </h:p>
+        <h:p>
+        RFC 8446 requires both the TLS 1.2 downgrade indicator as well as an indicator for TLS 1.1 and below. This Functional Package requires the server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. However, products may still implement both indicators to be compliant with the RFC. 
+        </h:p>
 	    </note>
 	    <aactivity>
         <TSS>
           <h:p>
           The evaluator shall examine the TSS and confirm that the TLS description includes details on the session downgrade protections that are supported.
           </h:p>
-	</TSS>
+	      </TSS>
         <Guidance>
-        <h:p>
+          <h:p>
           The evaluator shall examine the operational guidance to confirm that instructions are included to configure the TSF to support only TLS 1.3 and to provide the associated downgrade indications.
-        </h:p>
-	</Guidance>
+          </h:p>
+	      </Guidance>
 	      <Tests>
 	        The evaluator shall follow the operational guidance as necessary to configure the TSF to negotiate only TLS 1.3 and to provide the associated downgrade indications. The evaluator shall send a TLS ClientHello message to the TOE that indicates support for only TLS 1.2. The evaluator shall observe that the TSF sends a ServerHello message with the last eight bytes of the server random value equal to 44 4F 57 4E 47 52 44 01.
 	      </Tests>
 	    </aactivity>
-	    </f-element>
-	   <audit-event/>
+	  </f-element>
+	  <audit-event/>
 	</f-component>
-
 	<f-component cc-id="fcs_tlss_ext.4" name="TLS Server Support for Renegotiation" status="sel-based">
 	  <depends on-sel="tlss_impl"/>
-	  
-	  <comp-lev> requires the TSF to support session renegotiation when acting as a TLS server.
-	  </comp-lev>
-	  <management>No specific management functions are identified.
-	  </management>
-	  <audit>There are no auditable events foreseen.
-	  </audit>
-	  <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol
-	  </dependencies>
-	  
-          <f-element>
-            <title>The TSF shall support secure TLS renegotiation through the use of <selectables>
-              <selectable>the "renegotiation_info" TLS extension in accordance with RFC 5746</selectable>
-              <selectable>not allowing session renegotiation</selectable></selectables>. 
-            </title>
-          </f-element>
-          <f-element>
-            <title>The TSF shall
-              <selectables>
-                <selectable>indicate support for renegotiating a TLS 1.2 session by including the renegotiation_info extension in the ServerHello message when a ClientHello message with the renegotiation_info extension is received and shall terminate a session if neither of the renegotiation_info or TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuites are indicated in the ClientHello</selectable>
-              <selectable>not allow renegotiation</selectable></selectables>.
-            </title>
-          </f-element>
+	  <comp-lev> requires the TSF to support session renegotiation when acting as a TLS server.</comp-lev>
+	  <management>No specific management functions are identified.</management>
+	  <audit>There are no auditable events foreseen.</audit>
+	  <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol</dependencies>
+	  <f-element>
+      <title>The TSF shall support secure TLS renegotiation through the use of <selectables>
+        <selectable>the "renegotiation_info" TLS extension in accordance with RFC 5746</selectable>
+        <selectable>not allowing session renegotiation</selectable></selectables>. 
+      </title>
+    </f-element>
+    <f-element>
+      <title>The TSF shall
+        <selectables>
+        <selectable>indicate support for renegotiating a TLS 1.2 session by including the renegotiation_info extension in the ServerHello message when a ClientHello message with the renegotiation_info extension is received and shall terminate a session if neither of the renegotiation_info or TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuites are indicated in the ClientHello</selectable>
+        <selectable>not allow renegotiation</selectable></selectables>.
+      </title>
+    </f-element>
 	  <f-element>
 	    <title>
 	      The TSF shall terminate the session if an unexpected ClientHello message is received during an active TLS session.
 	    </title>
-            <note role="application">
-              <h:p>
-              This SFR is claimed if "TLS as a server" is selected in FCS_TLS_EXT.1.1.
-              </h:p>
-              <h:p>
-              If the TSF supports TLS 1.2, the ST author claims either method of protecting against insecure renegotiation attempts. The first selection refines RFC 5746. RFC 5746 defines an extension to TLS 1.2 that binds renegotiation handshakes to the cryptography in the original handshake, but allows interoperability with clients that do not follow RFC 5746. As a refinement of the RFC, servers that support TLS 1.2 renegotiation will terminate a session if neither of the methods described in RFC 5746 are offered by the client. Alternatively, a TLS server supporting TLS 1.2 may negotiate TLS 1.2 without any RFC 5746 client renegotiation indicators if it always terminates an existing session when a new ClientHello message is received, similar to the implementation of TLS 1.3. 
-              </h:p>
-              <h:p>
-              If the TSF supports TLS 1.3, the ST author must claim "does not allow renegotiation." TLS 1.3 does not allow renegotiation. Termination, as indicated in FCS_TLSS_EXT.4.3, covers TLS 1.3 sessions as well as TLS 1.2 sessions where the ClientHello message received does not comply with RFC 5746, or when configured to reject renegotiation (if the product is configurable).
-              </h:p>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "TLS as a server" is selected in FCS_TLS_EXT.1.1.
+        </h:p>
+        <h:p>
+        If the TSF supports TLS 1.2, the ST author claims either method of protecting against insecure renegotiation attempts. The first selection refines RFC 5746. RFC 5746 defines an extension to TLS 1.2 that binds renegotiation handshakes to the cryptography in the original handshake, but allows interoperability with clients that do not follow RFC 5746. As a refinement of the RFC, servers that support TLS 1.2 renegotiation will terminate a session if neither of the methods described in RFC 5746 are offered by the client. Alternatively, a TLS server supporting TLS 1.2 may negotiate TLS 1.2 without any RFC 5746 client renegotiation indicators if it always terminates an existing session when a new ClientHello message is received, similar to the implementation of TLS 1.3. 
+        </h:p>
+        <h:p>
+        If the TSF supports TLS 1.3, the ST author must claim "does not allow renegotiation." TLS 1.3 does not allow renegotiation. Termination, as indicated in FCS_TLSS_EXT.4.3, covers TLS 1.3 sessions as well as TLS 1.2 sessions where the ClientHello message received does not comply with RFC 5746, or when configured to reject renegotiation (if the product is configurable).
+        </h:p>
 	    </note>
 	    <aactivity>
 	      <TSS>
@@ -4168,179 +4153,170 @@
 	      <Tests>
 	        The evaluator shall perform the following tests, as indicated based on supported secure renegotiation methods. The conditions: ‘support for renegotiation’, ‘allowing renegotiation,’ or ‘supporting RFC 5746 methods’ imply that the TSF supports TLS 1.2. TLS 1.3 does not allow renegotiation. For each test, the evaluator shall use a test TLS client able to construct the indicated messages and expose messages received from the TSF.
 	        <testlist>
-	          <test>(RFC 5746 compliant TLS 1.2 initial handshake) [conditional] 
-	            If the TSF supports renegotiation, the evaluator shall follow the operational guidance as necessary to configure the TSF to enforce RFC 5746 methods. The evaluator shall initiate a TLS 1.2 session from a test TLS client for each of the following sub-tests:
+	          <test>(RFC 5746 compliant TLS 1.2 initial handshake) [conditional] If the TSF supports renegotiation, the evaluator shall follow the operational guidance as necessary to configure the TSF to enforce RFC 5746 methods. The evaluator shall initiate a TLS 1.2 session from a test TLS client for each of the following sub-tests:
 	            <testlist>
 	              <test>The evaluator shall send an initial ClientHello message without the renegotiation_info extension and without including the signaling ciphersuite value, TLS_EMPTY_RENEGOTIATION_INFO_SCSV. The evaluator shall observe that the TSF terminates the session.
-	                <h:p>
-	                <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
-	                </h:p>
+	              <h:p>
+	              <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
+	              </h:p>
 	              </test>
-	              <test>
-	                The evaluator shall send an initial ClientHello message with the renegotiation_info extension indicating a renegotiated_connection length greater than zero. The evaluator shall observe that the TSF terminates the session. 
-	                <h:p>
-	                <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
-	                </h:p>
+	              <test> The evaluator shall send an initial ClientHello message with the renegotiation_info extension indicating a renegotiated_connection length greater than zero. The evaluator shall observe that the TSF terminates the session. 
+	              <h:p>
+	              <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
+	              </h:p>
 	              </test>
 	            </testlist>
-	            </test>
-	          <test>
-	            (renegotiation attempt) For each of the following sub-tests, the evaluator shall establish a compliant TLS channel with an initial handshake that uses the indicated secure renegotiation method for the version indicated. Without closing the session, the evaluator shall send a second ClientHello message within the channel specific to the version as indicated:
+	          </test>
+	          <test>(renegotiation attempt) For each of the following sub-tests, the evaluator shall establish a compliant TLS channel with an initial handshake that uses the indicated secure renegotiation method for the version indicated. Without closing the session, the evaluator shall send a second ClientHello message within the channel specific to the version as indicated:
 	            <testlist>
 	              <test>[conditional] If the TSF allows renegotiation, the evaluator shall configure the TSF to support RFC 5746 methods, send an initial handshake with a valid renegotiation extension, send a new TLS 1.2 ClientHello message on the TLS 1.2 channel containing the renegotiation_info extension indicating valid client_verify_data, and observe the TSF successfully completes the handshake.
                 </test>
 	              <test>[conditional] If the TSF allows renegotiation, the evaluator shall send an initial ClientHello message containing a valid renegotiation extension, send a new TLS 1.2 ClientHello message on the TLS 1.2 channel with the signaling ciphersuite value, TLS_EMPTY_RENEGOTIATION_INFO_SCSV, and observe that the TSF terminates the session.
-	                <h:p>
-	                <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
-	                </h:p>
+	              <h:p>
+	              <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
+	              </h:p>
 	              </test>
 	              <test>[conditional] If the TSF allows renegotiation, for each TLS 1.2 renegotiation method claimed in accordance with RFC 5746, the evaluator shall send an initial ClientHello message indicating the method, send a new TLS 1.2 ClientHello message on the TLS 1.2 channel without a renegotiation_info extension, and observe that the TSF terminates the session.
-	                <h:p>
-	                <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
-	                </h:p>
+	              <h:p>
+	              <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
+	              </h:p>
 	              </test>
 	              <test>[conditional]: If the TSF allows renegotiation, for each TLS 1.2 renegotiation method claimed in accordance with RFC 5746, the evaluator shall send an initial ClientHello message indicating the method, send a new TLS 1.2 ClientHello message on the TLS 1.2 channel with a renegotiation_info extension indicating an invalid client_verify_data value (modify a byte of a valid value), and observe that the TSF terminates the session.
-	                <h:p>
-	                <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
-	                </h:p>
-                  </test>
+	              <h:p>
+	              <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
+	              </h:p>
+                </test>
 	              <test>[conditional]  If the TSF rejects renegotiation for TLS 1.2, the evaluator shall follow the operational guidance as necessary to configure the TSF to reject renegotiation. The evaluator shall initiate a valid initial session, send a valid ClientHello message on the non-renegotiable TLS channel, and observe that the TSF does not perform renegotiation of the TLS channel.
 	              </test>
-	              <test>
-	                [conditional]  If the TSF supports TLS 1.3, the evaluator shall follow the operational guidance as necessary to configure the TSF to negotiate the version. The evaluator shall initiate a valid initial session for the specified version, send a valid ClientHello message on the non-renegotiable TLS channel, and observe that the TSF terminates the session.
-	                <h:p>
-	                <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
-	                </h:p></test>
+	              <test> [conditional]  If the TSF supports TLS 1.3, the evaluator shall follow the operational guidance as necessary to configure the TSF to negotiate the version. The evaluator shall initiate a valid initial session for the specified version, send a valid ClientHello message on the non-renegotiable TLS channel, and observe that the TSF terminates the session.
+	              <h:p>
+	              <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
+	              </h:p>
+                </test>
 	            </testlist>
-	            </test>
+	          </test>
 	        </testlist>
 	      </Tests>
 	    </aactivity>
-	    </f-element>
-	<audit-event/>
+	  </f-element>
+	  <audit-event/>
 	</f-component>
-        
-        
-        <f-component cc-id="fcs_tlss_ext.5" name="TLS Server Support for Session Resumption" status="sel-based">
-          <depends on-sel="tlss_resumption"/> 
-          <comp-lev> requires the TSF to support session resumption when acting as a TLS server.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol
-          </dependencies>
-          <f-element>
-            <title>
-              The TSF shall support session resumption as a TLS server via the use of <selectables>
-                <selectable>session ID in accordance with RFC 5246</selectable>
-                <selectable>tickets in accordance with RFC 5077</selectable>
-                <selectable id="tlss_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
-            </title>
-            <note role="application">
-              <h:p>
-              This SFR is claimed if "session resumption" is selected in FCS_TLSS_EXT.1.1.
-              </h:p><h:p>
-              The ST author indicates which session resumption mechanisms are supported. If TLS 1.2 is supported, one or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed. If TLS 1.3 is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_TLSS_EXT.6 must also be claimed.
-              </h:p><h:p>
-              While it is possible to perform session resumption using PSK ciphersuites in TLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_TLSS_EXT.1.
-              </h:p>
-            </note>
-            <aactivity>
-              <TSS>
-                <h:p>
-                The evaluator shall examine the TSS and confirm that the TLS server protocol description includes a description of the supported resumption mechanisms.
-                </h:p>
-              </TSS>
-              <Guidance>
-                <h:p>
-                The evaluator shall ensure the operational guidance describes instructions for any configurable features of the resumption mechanism.
-                </h:p>
-              </Guidance>
-              <Tests>
-                The evaluator shall perform the following tests:
-                <testlist>
-                  <test id="tls-server-successful-resumption">For each supported version, and for each supported resumption method for that version, the evaluator shall establish a compliant initial TLS session with the TOE for the version using the specified method. The evaluator shall close the successful session and initiate resumption using the specified mechanism. The evaluator shall observe that the TSF successfully establishes the resumed session in accordance with the requirements.
-                  </test>
-                  <test>For each supported version and each supported resumption method for that version, the evaluator shall send a compliant ClientHello message supporting only the specific version and indicating support for the resumption method. The evaluator shall allow the TOE and test client to continue with the compliant handshake until resumption information is established, and then cause a fatal error that terminates the session. The evaluator shall then send a new ClientHello message in an attempt to resume the session with the resumption information provided and verify that the TSF does not resume the session, but instead either terminates the session or completes a full handshake, ignoring the resumption information.
-                    <h:p>
-                    <h:b>Note:</h:b> For TLS 1.2, resumption information should be established at the point the TSF sends a ServerHello message, either acknowledging the session-based resumption or acknowledging support for ticket-based resumption and sending a new_ticket message. A TLS 1.2 session can then be terminated by sending a modified Finished message. For TLS 1.3, the NewSessionTicket message is sent after the Finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted Application Data. 
-                    </h:p>
-                  </test>
-                </testlist>
-              </Tests>
-            </aactivity>
-          </f-element>
-          <audit-event/>
-        </f-component>
-        
-        <f-component cc-id="fcs_tlss_ext.6" name="TLS Server TLS 1.3 Resumption Refinements" status="sel-based">
-          <depends on-sel="tlss_v13_resumption"/> 
-          <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a TLS server.</comp-lev>
-          <management>No specific management functions are identified.</management>
-          <audit>There are no auditable events foreseen.</audit>
-          <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol<h:br/>
-            FCS_TLSS_EXT.5 TLS Server Support for Session Resumption
-          </dependencies>
-          <f-element>
-            <title>
-              The TSF shall support TLS 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
-            </title>
-          </f-element>
-          <f-element>
-            <title>
-              The TSF shall ignore early data received in TLS 1.3 sessions.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if TLS 1.3 is supported and "PSK and tickets in accordance with RFC 8446" is selected in FCS_TLSS_EXT.5.1.
-              </h:p><h:p>
-              RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions.
-              </h:p>
-            </note>
-            <aactivity>
-              <TSS>
-                <h:p>
-                The evaluator shall examine the TSS to confirm that the TLS description includes details on session resumption for TLS 1.3, describes each application capable of using TLS 1.3 with PSK, and describes how the TSF and application respond to client attempts to use early data (including via logging or observable responses). The evaluator shall confirm that the TLS description shows that only the psk_dhe_ke psk_key_exchange_modes is supported and that early information is ignored. 
-                </h:p>
-              </TSS>
-              <Guidance>
-                <h:p>
-                The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
-                </h:p>
-              </Guidance>
-              <Tests>
-                The evaluator shall follow the operational guidance to configure the TSF to negotiate TLS 1.3 and shall perform the following tests:
-                <testlist>
-                  <test>The evaluator shall attempt a resumed session (see FCS_TLSS_EXT.5 <xref to="tls-server-successful-resumption"/>) but using psk_ke mode as the value for the psk_key_exchange_modes extension in the resumption ClientHello message. The evaluator shall observe that the TSF refuses to resume the session, either by completing a full TLS 1.3 handshake or by terminating the session.
-                  <h:p>
-                  <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
-                  </h:p>
-                  </test>
-                  <!-- updated per TD0729 -->
-                  <test> The evaluator shall establish a valid TLS 1.3 session with the TOE and send the data as Application Data after the Finished messages have been verified, and observe the response. The evaluator shall then configure the TOE to clear the response and initiate a resumed session (see FCS_TLSS_EXT.5 <xref to="tls-server-successful-resumption"/>) with a test TLS 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the TSF does not react to the early data as it did when presented as application_data after the Finished messages, indicating that the data was ignored.
-                  <h:p>
-                  <h:b>Note:</h:b> The specific early data used may depend on the applications calling the TLS session and should be selected to initiate an observable response in the TSF or calling application as described in the ST. For HTTPS, for example, the early data can be an HTTP POST that updates data at the TOE, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
-                  </h:p>
-                  </test>
-                </testlist>
-              </Tests>
-            </aactivity>
-          </f-element>  
-          <audit-event/>
-        </f-component>
-      </section>
-
-  </sec:Security_Functional_Requirements>
-    <bibliography>
-      <cc-entry/>
-      <entry id="bibCEM">
-        <tag>CEM</tag>
-        <description>
-          <h:a href="https://commoncriteriaportal.org/files/ccfiles/CEM2022R1.pdf">Common
-            Methodology for Information Technology Security - Evaluation Methodology</h:a>,
-          CCMB-2022-11-006, CEM:2022, Revision 1, November 2022. </description>
-      </entry>
-    </bibliography>
+  <f-component cc-id="fcs_tlss_ext.5" name="TLS Server Support for Session Resumption" status="sel-based">
+    <depends on-sel="tlss_resumption"/> 
+    <comp-lev> requires the TSF to support session resumption when acting as a TLS server.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol</dependencies>
+    <f-element>
+      <title>
+        The TSF shall support session resumption as a TLS server via the use of <selectables>
+          <selectable>session ID in accordance with RFC 5246</selectable>
+          <selectable>tickets in accordance with RFC 5077</selectable>
+          <selectable id="tlss_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable>
+        </selectables>. 
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "session resumption" is selected in FCS_TLSS_EXT.1.1.
+        </h:p>
+        <h:p>
+        The ST author indicates which session resumption mechanisms are supported. If TLS 1.2 is supported, one or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed. If TLS 1.3 is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_TLSS_EXT.6 must also be claimed.
+        </h:p>
+        <h:p>
+        While it is possible to perform session resumption using PSK ciphersuites in TLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_TLSS_EXT.1.
+        </h:p>
+      </note>
+      <aactivity>
+        <TSS>
+          <h:p>
+          The evaluator shall examine the TSS and confirm that the TLS server protocol description includes a description of the supported resumption mechanisms.
+          </h:p>
+        </TSS>
+        <Guidance>
+          <h:p>
+          The evaluator shall ensure the operational guidance describes instructions for any configurable features of the resumption mechanism.
+          </h:p>
+        </Guidance>
+        <Tests>
+          The evaluator shall perform the following tests:
+          <testlist>
+            <test id="tls-server-successful-resumption">For each supported version, and for each supported resumption method for that version, the evaluator shall establish a compliant initial TLS session with the TOE for the version using the specified method. The evaluator shall close the successful session and initiate resumption using the specified mechanism. The evaluator shall observe that the TSF successfully establishes the resumed session in accordance with the requirements.
+            </test>
+            <test>For each supported version and each supported resumption method for that version, the evaluator shall send a compliant ClientHello message supporting only the specific version and indicating support for the resumption method. The evaluator shall allow the TOE and test client to continue with the compliant handshake until resumption information is established, and then cause a fatal error that terminates the session. The evaluator shall then send a new ClientHello message in an attempt to resume the session with the resumption information provided and verify that the TSF does not resume the session, but instead either terminates the session or completes a full handshake, ignoring the resumption information.
+            <h:p>
+            <h:b>Note:</h:b> For TLS 1.2, resumption information should be established at the point the TSF sends a ServerHello message, either acknowledging the session-based resumption or acknowledging support for ticket-based resumption and sending a new_ticket message. A TLS 1.2 session can then be terminated by sending a modified Finished message. For TLS 1.3, the NewSessionTicket message is sent after the Finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted Application Data. 
+            </h:p>
+            </test>
+          </testlist>
+        </Tests>
+      </aactivity>
+    </f-element>
+    <audit-event/>
+  </f-component>
+  <f-component cc-id="fcs_tlss_ext.6" name="TLS Server TLS 1.3 Resumption Refinements" status="sel-based">
+    <depends on-sel="tlss_v13_resumption"/> 
+    <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a TLS server.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol<h:br/>
+      FCS_TLSS_EXT.5 TLS Server Support for Session Resumption
+    </dependencies>
+    <f-element>
+      <title>
+        The TSF shall support TLS 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
+      </title>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall ignore early data received in TLS 1.3 sessions.
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if TLS 1.3 is supported and "PSK and tickets in accordance with RFC 8446" is selected in FCS_TLSS_EXT.5.1.
+        </h:p>
+        <h:p>
+        RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions.
+        </h:p>
+      </note>
+      <aactivity>
+        <TSS>
+          <h:p>
+          The evaluator shall examine the TSS to confirm that the TLS description includes details on session resumption for TLS 1.3, describes each application capable of using TLS 1.3 with PSK, and describes how the TSF and application respond to client attempts to use early data (including via logging or observable responses). The evaluator shall confirm that the TLS description shows that only the psk_dhe_ke psk_key_exchange_modes is supported and that early information is ignored. 
+          </h:p>
+        </TSS>
+        <Guidance>
+          <h:p>
+          The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
+          </h:p>
+        </Guidance>
+        <Tests>
+          The evaluator shall follow the operational guidance to configure the TSF to negotiate TLS 1.3 and shall perform the following tests:
+          <testlist>
+            <test>The evaluator shall attempt a resumed session (see FCS_TLSS_EXT.5 <xref to="tls-server-successful-resumption"/>) but using psk_ke mode as the value for the psk_key_exchange_modes extension in the resumption ClientHello message. The evaluator shall observe that the TSF refuses to resume the session, either by completing a full TLS 1.3 handshake or by terminating the session.
+            <h:p>
+            <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
+            </h:p>
+            </test>
+            <!-- updated per TD0729 -->
+            <test> The evaluator shall establish a valid TLS 1.3 session with the TOE and send the data as Application Data after the Finished messages have been verified, and observe the response. The evaluator shall then configure the TOE to clear the response and initiate a resumed session (see FCS_TLSS_EXT.5 <xref to="tls-server-successful-resumption"/>) with a test TLS 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the TSF does not react to the early data as it did when presented as application_data after the Finished messages, indicating that the data was ignored.
+            <h:p>
+            <h:b>Note:</h:b> The specific early data used may depend on the applications calling the TLS session and should be selected to initiate an observable response in the TSF or calling application as described in the ST. For HTTPS, for example, the early data can be an HTTP POST that updates data at the TOE, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
+            </h:p>
+            </test>
+          </testlist>
+        </Tests>
+      </aactivity>
+    </f-element>  
+    <audit-event/>
+  </f-component>
+</section>
+</sec:Security_Functional_Requirements>
+<bibliography>
+  <cc-entry/>
+    <entry id="bibCEM">
+      <tag>CEM</tag>
+      <description>
+        <h:a href="https://commoncriteriaportal.org/files/ccfiles/CEM2022R1.pdf">Common Methodology for Information Technology Security - Evaluation Methodology</h:a>,CCMB-2022-11-006, CEM:2022, Revision 1, November 2022. </description>
+    </entry>
+</bibliography>
 </Package>
