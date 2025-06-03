@@ -3158,110 +3158,98 @@
   </f-component>
 	<f-component cc-id="fcs_tlsc_ext.4" name="TLS Client Support for Renegotiation" status="sel-based">
     <depends on-sel="tlsc_impl"/>
-    <comp-lev> requires the TSF to support session renegotiation when acting as a TLS client.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol
-          </dependencies>
-          
-          <f-element id="fel-tlsc-renego">
-            <title>The TSF shall support secure TLS renegotiation through use of
-              <selectables linebreak="yes">
-                <selectable>the “renegotiation_info” TLS extension</selectable>
-                <selectable>the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value in accordance with RFC 5746</selectable>
-                <selectable>rejection of all renegotiation attempts</selectable>
-           </selectables>
-              and shall terminate the session if an unexpected ServerHello message is received or <selectables>
-             <selectable>hello request message is received</selectable>
-             <selectable>in no other case</selectable></selectables>. 
-            </title>
-
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "TLS as a client" is selected in FCS_TLS_EXT.1.1.
-              </h:p>
-              <h:p>
-                The ST author claims the methods supported.
-              </h:p>
-              <h:p>
-              A client supporting TLS 1.2 renegotiation may present either the "renegotiation_info" extension or the signaling ciphersuite value TLS_EMPTY_RENEGOTIATION_INFO_SCSV in the initial ClientHello message to indicate support for secure renegotiation.
-              </h:p>
-              <h:p>
-                A client supporting TLS 1.3 must claim "rejection of all renegotiation attempts." This option may also be claimed as a method for TLS 1.2 renegotiation protection.
-              </h:p>
-              <h:p>
-              The TLS_EMPTY_RENEGOTIATION_INFO_SCSV is the preferred mechanism for TLS 1.2 protection against insecure renegotiation when the client does not renegotiate. 
-              The ST author will claim the ‘HelloRequest message is received’ option in the second selection to indicate support for this mechanism.
-              </h:p>
-              <h:p>
-              RFC 5746 allows the client to accept connections with servers that do not support the extension; this Functional Package refines RFC 5746 and requires the client to terminate sessions with such servers. 
-              Thus, unexpected ServerHello messages include an initial ServerHello message negotiating TLS 1.2 that does not contain a renegotiation_info extension, an initial ServerHello message negotiating TLS 1.2 containing a non-empty renegotiation_info extension, a subsequent ServerHello message renegotiating TLS 1.2 that does not contain a renegotiation_info extension, a subsequent ServerHello message negotiating TLS 1.2 containing a renegotiation_info extension with an incorrect renegotiated_connection value, and a ServerHello request message when renegotiation is not allowed (for TLS 1.3 or when the option is claimed for TLS 1.2). 
-              </h:p>
-              <h:p>
-              TLS 1.3 provides protection against insecure renegotiation by not allowing renegotiation. 
-              If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, the client receives a ServerHello message that attempts to negotiate TLS 1.3, and the ServerHello message also contains a non-empty renegotiation_info extension; the client will terminate the connection.
-              </h:p>
-            </note>
-            <aactivity>
-              <TSS>
-                <h:p>
-                The evaluator shall examine the TSS to ensure that TLS renegotiation protections are described in accordance with the requirements. 
-                The evaluator shall ensure that any configurable features of the renegotiation protections are identified.
-                </h:p>
-              </TSS>
-              <Guidance>
-              <h:p>
-                The evaluator shall examine the operational guidance to confirm that instructions for any configurable features of the renegotiation protection mechanisms are included.
-              </h:p>
-              </Guidance>
-              <Tests>
-                The evaluator shall perform the following tests as indicated. If TLS 1.2 is supported and one or more of the secure renegotiation methods defined in RFC 5746 is claimed, <xref to="tls-client-accepts-renegotiation"/> is required. If TLS 1.2 is supported and the TSF (has a configuration that) rejects all TLS 1.2 renegotiation attempts, or if TLS 1.3 is supported, <xref to="tls-client-prevents-renegotiation"/> is required.
+    <comp-lev> requires the TSF to support session renegotiation when acting as a TLS client.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol</dependencies>
+    <f-element id="fel-tlsc-renego">
+      <title>The TSF shall support secure TLS renegotiation through use of
+        <selectables linebreak="yes">
+          <selectable>the “renegotiation_info” TLS extension</selectable>
+          <selectable>the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value in accordance with RFC 5746</selectable>
+          <selectable>rejection of all renegotiation attempts</selectable>
+        </selectables>
+        and shall terminate the session if an unexpected ServerHello message is received or <selectables>
+          <selectable>hello request message is received</selectable>
+          <selectable>in no other case</selectable></selectables>. 
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "TLS as a client" is selected in FCS_TLS_EXT.1.1.
+        </h:p>
+        <h:p>
+        The ST author claims the methods supported.
+        </h:p>
+        <h:p>
+        A client supporting TLS 1.2 renegotiation may present either the "renegotiation_info" extension or the signaling ciphersuite value TLS_EMPTY_RENEGOTIATION_INFO_SCSV in the initial ClientHello message to indicate support for secure renegotiation.
+        </h:p>
+        <h:p>
+        A client supporting TLS 1.3 must claim "rejection of all renegotiation attempts." This option may also be claimed as a method for TLS 1.2 renegotiation protection.
+        </h:p>
+        <h:p>
+        The TLS_EMPTY_RENEGOTIATION_INFO_SCSV is the preferred mechanism for TLS 1.2 protection against insecure renegotiation when the client does not renegotiate. The ST author will claim the ‘HelloRequest message is received’ option in the second selection to indicate support for this mechanism.
+        </h:p>
+        <h:p>
+        RFC 5746 allows the client to accept connections with servers that do not support the extension; this Functional Package refines RFC 5746 and requires the client to terminate sessions with such servers. Thus, unexpected ServerHello messages include an initial ServerHello message negotiating TLS 1.2 that does not contain a renegotiation_info extension, an initial ServerHello message negotiating TLS 1.2 containing a non-empty renegotiation_info extension, a subsequent ServerHello message renegotiating TLS 1.2 that does not contain a renegotiation_info extension, a subsequent ServerHello message negotiating TLS 1.2 containing a renegotiation_info extension with an incorrect renegotiated_connection value, and a ServerHello request message when renegotiation is not allowed (for TLS 1.3 or when the option is claimed for TLS 1.2). 
+        </h:p>
+        <h:p>
+        TLS 1.3 provides protection against insecure renegotiation by not allowing renegotiation. If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, the client receives a ServerHello message that attempts to negotiate TLS 1.3, and the ServerHello message also contains a non-empty renegotiation_info extension; the client will terminate the connection.
+        </h:p>
+      </note>
+      <aactivity>
+        <TSS>
+          <h:p>
+          The evaluator shall examine the TSS to ensure that TLS renegotiation protections are described in accordance with the requirements. The evaluator shall ensure that any configurable features of the renegotiation protections are identified.
+          </h:p>
+        </TSS>
+        <Guidance>
+          <h:p>
+          The evaluator shall examine the operational guidance to confirm that instructions for any configurable features of the renegotiation protection mechanisms are included.
+          </h:p>
+        </Guidance>
+        <Tests>
+          The evaluator shall perform the following tests as indicated. If TLS 1.2 is supported and one or more of the secure renegotiation methods defined in RFC 5746 is claimed, <xref to="tls-client-accepts-renegotiation"/> is required. If TLS 1.2 is supported and the TSF (has a configuration that) rejects all TLS 1.2 renegotiation attempts, or if TLS 1.3 is supported, <xref to="tls-client-prevents-renegotiation"/> is required.
+          <testlist>
+            <test id="tls-client-accepts-renegotiation">[conditional] If the TSF supports TLS 1.2 and supports a configuration to accept renegotiation requests for TLS 1.2, the evaluator shall follow any operational guidance to configure the TSF. The evaluator shall perform the following tests:  
               <testlist>
-                <test id="tls-client-accepts-renegotiation">[conditional] If the TSF supports TLS 1.2 and supports a configuration to accept renegotiation requests for TLS 1.2, the evaluator shall follow any operational guidance to configure the TSF. The evaluator shall perform the following tests:  
-                <testlist>
-                  <test id="tls-client-offers-renegotiation">The evaluator shall initiate a TLS connection with a test server configured to negotiate a compliant TLS 1.2 handshake. 
-                    The evaluator shall inspect the messages received by the test TLS 1.2 server. 
-                    The evaluator shall observe that either the “renegotiation_info” field or the SCSV ciphersuite is included in the ClientHello message during the initial handshake.</test>
-                  <test>For each of the following sub-tests, the evaluator shall initiate a new TLS connection with a test TLS 1.2 server configured to send a renegotiation_info extension as specified, but otherwise complete a compliant TLS 1.2 session:
-                  <testlist>
-                    <test>The evaluator shall configure the test TLS 1.2 server to send a renegotiation_info extension whose value indicates a non-zero length. 
-                      The evaluator shall confirm that the TSF terminates the connection. 
-                      <h:p>
-                      <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
-                      </h:p>
-                    </test>
-                    <test>The evaluator shall configure the test TLS 1.2 server to send a compliant renegotiation_info extension and observe the TSF successfully completes the TLS 1.2 connection.</test>
-                    <test>The evaluator shall initiate a session renegotiation after completing a successful handshake with a test TLS 1.2 server that completes a successful TLS 1.2 handshake (as in <xref to="tls-client-offers-renegotiation"/>) and then sends a HelloRetryRequest from the test TLS server with a “renegotiation_info” extension that has an unexpected “client_verify_data” or “server_verify_data” value (modify a byte from a compliant response). The evaluator shall verify that the TSF terminates the connection.
-                      <h:p>
-                      <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., illegal_parameter, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
-                      </h:p>
-                    </test>
-                  </testlist>
-                  </test>
-                </testlist>
+                <test id="tls-client-offers-renegotiation">The evaluator shall initiate a TLS connection with a test server configured to negotiate a compliant TLS 1.2 handshake. The evaluator shall inspect the messages received by the test TLS 1.2 server. The evaluator shall observe that either the “renegotiation_info” field or the SCSV ciphersuite is included in the ClientHello message during the initial handshake.
                 </test>
-                <test id="tls-client-prevents-renegotiation">[conditional] if the TSF supports a configuration that prevents renegotiation, the evaluator shall perform the following tests:
+                <test>For each of the following sub-tests, the evaluator shall initiate a new TLS connection with a test TLS 1.2 server configured to send a renegotiation_info extension as specified, but otherwise complete a compliant TLS 1.2 session:
                   <testlist>
-                    <test>[conditional] If the TSF supports TLS 1.2 and supports a configuration to reject TLS 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to prevent renegotiation.  The evaluator shall initiate a TLS session between the so-configured TSF and a test TLS 1.2 server that is configured to perform a compliant handshake, followed by a HelloRetryRequest. The evaluator shall confirm that the TSF completes the initial handshake successfully but does not initiate renegotiation after receiving the HelloRetryRequest.
+                    <test>The evaluator shall configure the test TLS 1.2 server to send a renegotiation_info extension whose value indicates a non-zero length. The evaluator shall confirm that the TSF terminates the connection. 
+                    <h:p>
+                    <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
+                    </h:p>
                     </test>
-                    <test>[conditional] If the TSF supports TLS 1.3, the evaluator shall initiate a TLS session between the TSF and a test TLS 1.3 server that completes a compliant TLS 1.3 handshake, followed by a HelloRetryRequest message. The evaluator shall observe that the TSF completes the initial TLS 1.3 handshake successfully, but terminates the session on receiving the HelloRetryRequest message.
-                      <h:p>
-                      It is preferred that the TSF sends a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
-                      </h:p>
+                    <test>The evaluator shall configure the test TLS 1.2 server to send a compliant renegotiation_info extension and observe the TSF successfully completes the TLS 1.2 connection.
+                    </test>
+                    <test>The evaluator shall initiate a session renegotiation after completing a successful handshake with a test TLS 1.2 server that completes a successful TLS 1.2 handshake (as in <xref to="tls-client-offers-renegotiation"/>) and then sends a HelloRetryRequest from the test TLS server with a “renegotiation_info” extension that has an unexpected “client_verify_data” or “server_verify_data” value (modify a byte from a compliant response). The evaluator shall verify that the TSF terminates the connection.
+                    <h:p>
+                    <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., illegal_parameter, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
+                    </h:p>
                     </test>
                   </testlist>
                 </test>
               </testlist>
+            </test>
+            <test id="tls-client-prevents-renegotiation">[conditional] if the TSF supports a configuration that prevents renegotiation, the evaluator shall perform the following tests:
+              <testlist>
+                <test>[conditional] If the TSF supports TLS 1.2 and supports a configuration to reject TLS 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to prevent renegotiation.  The evaluator shall initiate a TLS session between the so-configured TSF and a test TLS 1.2 server that is configured to perform a compliant handshake, followed by a HelloRetryRequest. The evaluator shall confirm that the TSF completes the initial handshake successfully but does not initiate renegotiation after receiving the HelloRetryRequest.
+                </test>
+                <test>[conditional] If the TSF supports TLS 1.3, the evaluator shall initiate a TLS session between the TSF and a test TLS 1.3 server that completes a compliant TLS 1.3 handshake, followed by a HelloRetryRequest message. The evaluator shall observe that the TSF completes the initial TLS 1.3 handshake successfully, but terminates the session on receiving the HelloRetryRequest message.
+                <h:p>
+                It is preferred that the TSF sends a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
+                </h:p>
+                </test>
+              </testlist>
+            </test>
+          </testlist>
 	      </Tests>
-            </aactivity>
-          </f-element>
+      </aactivity>
+    </f-element>
 	  <audit-event/>
-        </f-component>
-	      
-        <f-component cc-id="fcs_tlsc_ext.5" name="TLS Client Support for Session Resumption" status="sel-based">
+  </f-component>
+	<f-component cc-id="fcs_tlsc_ext.5" name="TLS Client Support for Session Resumption" status="sel-based">
           <depends on-sel="tlsc_resumption"/> 
           
           

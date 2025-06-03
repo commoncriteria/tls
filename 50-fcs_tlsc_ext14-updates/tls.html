@@ -3411,105 +3411,98 @@ The following sections list Common Criteria and technology terms used in this do
       </i></b></div>
     
     
-          
-          
-          
-          
-          <div class="element"><div class="reqid" id="FCS_TLSC_EXT.4.1"><a href="#FCS_TLSC_EXT.4.1" class="abbr">FCS_TLSC_EXT.4.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support secure <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> renegotiation through use of
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_292">the “renegotiation_info” <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> extension</span></li><li style=""><span class="selectable-content" id="_s_293">the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746</span></li><li style=""><span class="selectable-content" id="_s_294">rejection of all renegotiation attempts</span></li></ul>]
-              and shall terminate the session if an unexpected ServerHello message is received or [<b>selection</b>: <span class="selectable-content" id="_s_295">hello request message is received</span>, <span class="selectable-content" id="_s_296">in no other case</span>]. 
-            <div class="appnote"><span class="note-header">Application
+    
+    
+    
+    <div class="element"><div class="reqid" id="FCS_TLSC_EXT.4.1"><a href="#FCS_TLSC_EXT.4.1" class="abbr">FCS_TLSC_EXT.4.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support secure <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> renegotiation through use of
+        [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_292">the “renegotiation_info” <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> extension</span></li><li style=""><span class="selectable-content" id="_s_293">the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746</span></li><li style=""><span class="selectable-content" id="_s_294">rejection of all renegotiation attempts</span></li></ul>]
+        and shall terminate the session if an unexpected ServerHello message is received or [<b>selection</b>: <span class="selectable-content" id="_s_295">hello request message is received</span>, <span class="selectable-content" id="_s_296">in no other case</span>]. 
+      <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-              <p>
-                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client" is selected in <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
-              </p>
-              <p>
-                The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims the methods supported.
-              </p>
-              <p>
-              A client supporting <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 renegotiation may present either the "renegotiation_info" extension or the signaling ciphersuite value TLS_EMPTY_RENEGOTIATION_INFO_SCSV in the initial ClientHello message to indicate support for secure renegotiation.
-              </p>
-              <p>
-                A client supporting <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 must claim "rejection of all renegotiation attempts." This option may also be claimed as a method for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 renegotiation protection.
-              </p>
-              <p>
-              The TLS_EMPTY_RENEGOTIATION_INFO_SCSV is the preferred mechanism for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 protection against insecure renegotiation when the client does not renegotiate. 
-              The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author will claim the ‘HelloRequest message is received’ option in the second selection to indicate support for this mechanism.
-              </p>
-              <p>
-              <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746 allows the client to accept connections with servers that do not support the extension; this Functional Package refines <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746 and requires the client to terminate sessions with such servers. 
-              Thus, unexpected ServerHello messages include an initial ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 that does not contain a renegotiation_info extension, an initial ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 containing a non-empty renegotiation_info extension, a subsequent ServerHello message renegotiating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 that does not contain a renegotiation_info extension, a subsequent ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 containing a renegotiation_info extension with an incorrect renegotiated_connection value, and a ServerHello request message when renegotiation is not allowed (for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 or when the option is claimed for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2). 
-              </p>
-              <p>
-              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 provides protection against insecure renegotiation by not allowing renegotiation. 
-              If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is claimed in <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>, the client receives a ServerHello message that attempts to negotiate <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, and the ServerHello message also contains a non-empty renegotiation_info extension; the client will terminate the connection.
-              </p>
-            </span></div></div></div>
+        <p>
+        This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client" is selected in <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
+        </p>
+        <p>
+        The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims the methods supported.
+        </p>
+        <p>
+        A client supporting <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 renegotiation may present either the "renegotiation_info" extension or the signaling ciphersuite value TLS_EMPTY_RENEGOTIATION_INFO_SCSV in the initial ClientHello message to indicate support for secure renegotiation.
+        </p>
+        <p>
+        A client supporting <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 must claim "rejection of all renegotiation attempts." This option may also be claimed as a method for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 renegotiation protection.
+        </p>
+        <p>
+        The TLS_EMPTY_RENEGOTIATION_INFO_SCSV is the preferred mechanism for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 protection against insecure renegotiation when the client does not renegotiate. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author will claim the ‘HelloRequest message is received’ option in the second selection to indicate support for this mechanism.
+        </p>
+        <p>
+        <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746 allows the client to accept connections with servers that do not support the extension; this Functional Package refines <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746 and requires the client to terminate sessions with such servers. Thus, unexpected ServerHello messages include an initial ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 that does not contain a renegotiation_info extension, an initial ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 containing a non-empty renegotiation_info extension, a subsequent ServerHello message renegotiating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 that does not contain a renegotiation_info extension, a subsequent ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 containing a renegotiation_info extension with an incorrect renegotiated_connection value, and a ServerHello request message when renegotiation is not allowed (for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 or when the option is claimed for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2). 
+        </p>
+        <p>
+        <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 provides protection against insecure renegotiation by not allowing renegotiation. If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is claimed in <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>, the client receives a ServerHello message that attempts to negotiate <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, and the ServerHello message also contains a non-empty renegotiation_info extension; the client will terminate the connection.
+        </p>
+      </span></div></div></div>
 	  
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLSC_EXT.4">FCS_TLSC_EXT.4</a></div>
-              
-              
-              
-            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
-                <p>
-                The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> renegotiation protections are described in accordance with the requirements. 
-                The evaluator shall ensure that any configurable features of the renegotiation protections are identified.
-                </p>
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
-              <p>
-                The evaluator shall examine the operational guidance to confirm that instructions for any configurable features of the renegotiation protection mechanisms are included.
-              </p>
-              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                The evaluator shall perform the following tests as indicated. If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and one or more of the secure renegotiation methods defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746 is claimed, <a href="#tls-client-accepts-renegotiation" class="dynref">Test FCS_TLSC_EXT.4:1</a> is required. If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> (has a configuration that) rejects all <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 renegotiation attempts, or if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is supported, <a href="#tls-client-prevents-renegotiation" class="dynref">Test FCS_TLSC_EXT.4:2</a> is required.
-              <span class="testlist-"><ul>
-                <li class="test-"><a id="tls-client-accepts-renegotiation" class="defined" href="#tls-client-accepts-renegotiation">Test FCS_TLSC_EXT.4:1</a>:
+  <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLSC_EXT.4">FCS_TLSC_EXT.4</a></div>
+        
+        
+        
+      <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
+          <p>
+          The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> renegotiation protections are described in accordance with the requirements. The evaluator shall ensure that any configurable features of the renegotiation protections are identified.
+          </p>
+        </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+          <p>
+          The evaluator shall examine the operational guidance to confirm that instructions for any configurable features of the renegotiation protection mechanisms are included.
+          </p>
+        </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+          The evaluator shall perform the following tests as indicated. If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and one or more of the secure renegotiation methods defined in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746 is claimed, <a href="#tls-client-accepts-renegotiation" class="dynref">Test FCS_TLSC_EXT.4:1</a> is required. If <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> (has a configuration that) rejects all <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 renegotiation attempts, or if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is supported, <a href="#tls-client-prevents-renegotiation" class="dynref">Test FCS_TLSC_EXT.4:2</a> is required.
+          <span class="testlist-"><ul>
+            <li class="test-"><a id="tls-client-accepts-renegotiation" class="defined" href="#tls-client-accepts-renegotiation">Test FCS_TLSC_EXT.4:1</a>:
       [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and supports a configuration to accept renegotiation requests for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, the evaluator shall follow any operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. The evaluator shall perform the following tests:  
-                <span class="testlist-"><ul>
-                  <li class="test-"><a id="tls-client-offers-renegotiation" class="defined" href="#tls-client-offers-renegotiation">Test FCS_TLSC_EXT.4:1.1</a>:
-      The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection with a test server configured to negotiate a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 handshake. 
-                    The evaluator shall inspect the messages received by the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server. 
-                    The evaluator shall observe that either the “renegotiation_info” field or the <abbr class="dyn-abbr"><a href="#abbr_SCSV">SCSV</a></abbr> ciphersuite is included in the ClientHello message during the initial handshake.</li>
-                  <li class="test-"><a id="_t_204" class="defined" href="#_t_204">Test FCS_TLSC_EXT.4:1.2</a>:
+              <span class="testlist-"><ul>
+                <li class="test-"><a id="tls-client-offers-renegotiation" class="defined" href="#tls-client-offers-renegotiation">Test FCS_TLSC_EXT.4:1.1</a>:
+      The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection with a test server configured to negotiate a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 handshake. The evaluator shall inspect the messages received by the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server. The evaluator shall observe that either the “renegotiation_info” field or the <abbr class="dyn-abbr"><a href="#abbr_SCSV">SCSV</a></abbr> ciphersuite is included in the ClientHello message during the initial handshake.
+                </li>
+                <li class="test-"><a id="_t_204" class="defined" href="#_t_204">Test FCS_TLSC_EXT.4:1.2</a>:
       For each of the following sub-tests, the evaluator shall initiate a new <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server configured to send a renegotiation_info extension as specified, but otherwise complete a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 session:
                   <span class="testlist-"><ul>
                     <li class="test-"><a id="_t_205" class="defined" href="#_t_205">Test FCS_TLSC_EXT.4:1.2.1</a>:
-      The evaluator shall configure the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server to send a renegotiation_info extension whose value indicates a non-zero length. 
-                      The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection. 
-                      <p>
-                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
-                      </p>
+      The evaluator shall configure the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server to send a renegotiation_info extension whose value indicates a non-zero length. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection. 
+                    <p>
+                    <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
+                    </p>
                     </li>
                     <li class="test-"><a id="_t_206" class="defined" href="#_t_206">Test FCS_TLSC_EXT.4:1.2.2</a>:
-      The evaluator shall configure the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server to send a compliant renegotiation_info extension and observe the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully completes the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 connection.</li>
+      The evaluator shall configure the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server to send a compliant renegotiation_info extension and observe the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully completes the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 connection.
+                    </li>
                     <li class="test-"><a id="_t_207" class="defined" href="#_t_207">Test FCS_TLSC_EXT.4:1.2.3</a>:
       The evaluator shall initiate a session renegotiation after completing a successful handshake with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server that completes a successful <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 handshake (as in <a href="#tls-client-offers-renegotiation" class="dynref">Test FCS_TLSC_EXT.4:1.1</a>) and then sends a HelloRetryRequest from the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server with a “renegotiation_info” extension that has an unexpected “client_verify_data” or “server_verify_data” value (modify a byte from a compliant response). The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection.
-                      <p>
-                      <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., illegal_parameter, handshake_failure) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
-                      </p>
-                    </li>
-                  </ul></span>
-                  </li>
-                </ul></span>
-                </li>
-                <li class="test-"><a id="tls-client-prevents-renegotiation" class="defined" href="#tls-client-prevents-renegotiation">Test FCS_TLSC_EXT.4:2</a>:
-      [conditional] if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports a configuration that prevents renegotiation, the evaluator shall perform the following tests:
-                  <span class="testlist-"><ul>
-                    <li class="test-"><a id="_t_209" class="defined" href="#_t_209">Test FCS_TLSC_EXT.4:2.1</a>:
-      [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and supports a configuration to reject <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to prevent renegotiation.  The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session between the so-configured <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server that is configured to perform a compliant handshake, followed by a HelloRetryRequest. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> completes the initial handshake successfully but does not initiate renegotiation after receiving the HelloRetryRequest.
-                    </li>
-                    <li class="test-"><a id="_t_210" class="defined" href="#_t_210">Test FCS_TLSC_EXT.4:2.2</a>:
-      [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session between the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server that completes a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 handshake, followed by a HelloRetryRequest message. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> completes the initial <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 handshake successfully, but terminates the session on receiving the HelloRetryRequest message.
-                      <p>
-                      It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
-                      </p>
+                    <p>
+                    <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., illegal_parameter, handshake_failure) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
+                    </p>
                     </li>
                   </ul></span>
                 </li>
               </ul></span>
+            </li>
+            <li class="test-"><a id="tls-client-prevents-renegotiation" class="defined" href="#tls-client-prevents-renegotiation">Test FCS_TLSC_EXT.4:2</a>:
+      [conditional] if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports a configuration that prevents renegotiation, the evaluator shall perform the following tests:
+              <span class="testlist-"><ul>
+                <li class="test-"><a id="_t_209" class="defined" href="#_t_209">Test FCS_TLSC_EXT.4:2.1</a>:
+      [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and supports a configuration to reject <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to prevent renegotiation.  The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session between the so-configured <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 server that is configured to perform a compliant handshake, followed by a HelloRetryRequest. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> completes the initial handshake successfully but does not initiate renegotiation after receiving the HelloRetryRequest.
+                </li>
+                <li class="test-"><a id="_t_210" class="defined" href="#_t_210">Test FCS_TLSC_EXT.4:2.2</a>:
+      [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session between the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server that completes a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 handshake, followed by a HelloRetryRequest message. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> completes the initial <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 handshake successfully, but terminates the session on receiving the HelloRetryRequest message.
+                <p>
+                It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert).
+                </p>
+                </li>
+              </ul></span>
+            </li>
+          </ul></span>
 	      </div></div></div></div></div>
-	      
-        <div class="comp" id="FCS_TLSC_EXT.5"><h4>FCS_TLSC_EXT.5 TLS Client Support for Session Resumption</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
+	<div class="comp" id="FCS_TLSC_EXT.5"><h4>FCS_TLSC_EXT.5 TLS Client Support for Session Resumption</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
 	  <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>.
       </i></b></div>
            
@@ -4700,8 +4693,7 @@ The following sections list Common Criteria and technology terms used in this do
              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Downgrade Protection,
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement version downgrade protection when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client.</p><p><a href="#FCS_TLSC_EXT.4">FCS_TLSC_EXT.4</a>,
              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Support for Renegotiation,
-              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session renegotiation when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client.
-          </p><p><a href="#FCS_TLSC_EXT.5">FCS_TLSC_EXT.5</a>,
+              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session renegotiation when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client.</p><p><a href="#FCS_TLSC_EXT.5">FCS_TLSC_EXT.5</a>,
              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Support for Session Resumption,
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client.
           </p><p><a href="#FCS_TLSC_EXT.6">FCS_TLSC_EXT.6</a>,
@@ -4769,13 +4761,10 @@ The following sections list Common Criteria and technology terms used in this do
       </div><h4>Management: FCS_TLSC_EXT.3</h4><p>No specific management functions are identified.</p><h4>Audit: FCS_TLSC_EXT.3</h4><p>There are no auditable events foreseen.</p><h4>FCS_TLSC_EXT.3 TLS Client Downgrade Protection</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol</td></tr></table><h4 id="ext-comp-FCS_TLSC_EXT.3.1">FCS_TLSC_EXT.3.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel if the ServerHello message includes 
         [<b>selection</b>: <span class="selectable-content" id="_s_290"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 downgrade indicator</span>, <span class="selectable-content" id="_s_291"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator</span>]
         in the server random field.
-      </div><h4>Management: FCS_TLSC_EXT.4</h4><p>No specific management functions are identified.
-          </p><h4>Audit: FCS_TLSC_EXT.4</h4><p>There are no auditable events foreseen.
-          </p><h4>FCS_TLSC_EXT.4 TLS Client Support for Renegotiation</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol
-          </td></tr></table><h4 id="ext-comp-FCS_TLSC_EXT.4.1">FCS_TLSC_EXT.4.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support secure <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> renegotiation through use of
-              [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_292">the “renegotiation_info” <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> extension</span></li><li style=""><span class="selectable-content" id="_s_293">the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746</span></li><li style=""><span class="selectable-content" id="_s_294">rejection of all renegotiation attempts</span></li></ul>]
-              and shall terminate the session if an unexpected ServerHello message is received or [<b>selection</b>: <span class="selectable-content" id="_s_295">hello request message is received</span>, <span class="selectable-content" id="_s_296">in no other case</span>]. 
-            </div><h4>Management: FCS_TLSC_EXT.5</h4><p>No specific management functions are identified.
+      </div><h4>Management: FCS_TLSC_EXT.4</h4><p>No specific management functions are identified.</p><h4>Audit: FCS_TLSC_EXT.4</h4><p>There are no auditable events foreseen.</p><h4>FCS_TLSC_EXT.4 TLS Client Support for Renegotiation</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol</td></tr></table><h4 id="ext-comp-FCS_TLSC_EXT.4.1">FCS_TLSC_EXT.4.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support secure <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> renegotiation through use of
+        [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_292">the “renegotiation_info” <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> extension</span></li><li style=""><span class="selectable-content" id="_s_293">the TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuite signaling value in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746</span></li><li style=""><span class="selectable-content" id="_s_294">rejection of all renegotiation attempts</span></li></ul>]
+        and shall terminate the session if an unexpected ServerHello message is received or [<b>selection</b>: <span class="selectable-content" id="_s_295">hello request message is received</span>, <span class="selectable-content" id="_s_296">in no other case</span>]. 
+      </div><h4>Management: FCS_TLSC_EXT.5</h4><p>No specific management functions are identified.
           </p><h4>Audit: FCS_TLSC_EXT.5</h4><p>There are no auditable events foreseen.
           </p><h4>FCS_TLSC_EXT.5 TLS Client Support for Session Resumption</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol
           </td></tr></table><h4 id="ext-comp-FCS_TLSC_EXT.5.1">FCS_TLSC_EXT.5.1</h4>
