@@ -2786,11 +2786,9 @@ The following sections list Common Criteria and technology terms used in this do
         </p>
       </span></div></div></div> 
 	  
+    
 	  
-      
-	    
-	 
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a></div>
+	<div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a></div>
         
         
         
@@ -3302,126 +3300,117 @@ The following sections list Common Criteria and technology terms used in this do
             </li>
           </ul></span>
 	      </div></div></div></div></div>
-        <div class="comp" id="FCS_TLSC_EXT.2"><h4>FCS_TLSC_EXT.2 TLS Client Support for Mutual Authentication</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
+  <div class="comp" id="FCS_TLSC_EXT.2"><h4>FCS_TLSC_EXT.2 TLS Client Support for Mutual Authentication</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
 	  <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>.
       </i></b></div>
-		  
-          
-          
-          
-          
-          <div class="element"><div class="reqid" id="FCS_TLSC_EXT.2.1"><a href="#FCS_TLSC_EXT.2.1" class="abbr">FCS_TLSC_EXT.2.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support mutual <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> authentication using X.509v3 certificates during the handshake and [<b>selection</b>: <span class="selectable-content" id="_s_286">in support of post-handshake authentication requests</span>, <span class="selectable-content" id="_s_287">at no other time</span>], in accordance with [<b>selection</b>: <span class="selectable-content" id="_s_288"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 Section 7.4.4</span>, <span class="selectable-content" id="_s_289"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 Section 4.3.2</span>].<div class="appnote"><span class="note-header">Application
+		
+    
+    
+    
+    
+    <div class="element"><div class="reqid" id="FCS_TLSC_EXT.2.1"><a href="#FCS_TLSC_EXT.2.1" class="abbr">FCS_TLSC_EXT.2.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support mutual <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> authentication using X.509v3 certificates during the handshake and [<b>selection</b>: <span class="selectable-content" id="_s_286">in support of post-handshake authentication requests</span>, <span class="selectable-content" id="_s_287">at no other time</span>], in accordance with [<b>selection</b>: <span class="selectable-content" id="_s_288"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 Section 7.4.4</span>, <span class="selectable-content" id="_s_289"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 Section 4.3.2</span>].
+      <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-              <p>
-                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "mutual authentication" is selected in <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>.
-              </p>
-              <p>
-              Clients that support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and post-handshake authentication should claim "in support of post-handshake authentication requests" in the first selection. The "at no other time" selection is claimed for clients only supporting <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 or for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 clients that do not support post-handshake authentication.  
-              </p>
-              <p>
-              The CertificateRequest message sent by the server specifies the signature algorithms and certification authorities supported by the server. If the client does not possess a matching certificate, it sends an empty Certificate message. The structure of the CertificateRequest message is changed in <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 to use the signature_algorithm, signature_algorithms_cert (optional), and certificate_authorities extensions, and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 allows for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 implementations to use the new message structure. The "<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 Section 4.3.2" option is claimed in the second selection if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is supported or if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and the <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 method is supported for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 servers. The "<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 Section 7.4.4" option is claimed if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and the <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 method is supported for interoperability with <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 servers that do not adopt the <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 method. When mutual authentication is supported, at least one of these methods must be claimed, per the selection.
-              </p>
-            </span></div></div></div>
+        <p>
+        This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "mutual authentication" is selected in <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>.
+        </p>
+        <p>
+        Clients that support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and post-handshake authentication should claim "in support of post-handshake authentication requests" in the first selection. The "at no other time" selection is claimed for clients only supporting <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 or for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 clients that do not support post-handshake authentication.  
+        </p>
+        <p>
+        The CertificateRequest message sent by the server specifies the signature algorithms and certification authorities supported by the server. If the client does not possess a matching certificate, it sends an empty Certificate message. The structure of the CertificateRequest message is changed in <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 to use the signature_algorithm, signature_algorithms_cert (optional), and certificate_authorities extensions, and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 allows for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 implementations to use the new message structure. The "<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 Section 4.3.2" option is claimed in the second selection if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is supported or if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and the <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 method is supported for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 servers. The "<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 Section 7.4.4" option is claimed if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and the <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 method is supported for interoperability with <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 servers that do not adopt the <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 method. When mutual authentication is supported, at least one of these methods must be claimed, per the selection.
+        </p>
+      </span></div></div></div>
 	  
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLSC_EXT.2">FCS_TLSC_EXT.2</a></div>
-              
-              
-              
-            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
-                <p>
-                The evaluator shall ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> description required per <span class="no-link">FIA_X509_EXT.2.1</span> includes the use of client certificates for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> mutual authentication. The evaluator shall also ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes any factors beyond configuration that are necessary in order for the client to engage in mutual authentication using X.509v3 certificates.
-                </p>
+  <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLSC_EXT.2">FCS_TLSC_EXT.2</a></div>
+        
+        
+        
+      <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
+          <p>
+          The evaluator shall ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> description required per <span class="no-link">FIA_X509_EXT.2.1</span> includes the use of client certificates for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> mutual authentication. The evaluator shall also ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes any factors beyond configuration that are necessary in order for the client to engage in mutual authentication using X.509v3 certificates.
+          </p>
 	      </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
-                <p>
-                The evaluator shall ensure that the operational guidance includes any instructions necessary to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to perform mutual authentication. The evaluator shall also verify that the operational guidance required per <span class="no-link">FIA_X509_EXT.2.1</span> includes instructions for configuring the client certificates for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> mutual authentication.
-                </p>
+          <p>
+          The evaluator shall ensure that the operational guidance includes any instructions necessary to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to perform mutual authentication. The evaluator shall also verify that the operational guidance required per <span class="no-link">FIA_X509_EXT.2.1</span> includes instructions for configuring the client certificates for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> mutual authentication.
+          </p>
 	      </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                For each supported <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> version, the evaluator shall perform the following tests:
-       <span class="testlist-"><ul>
-         <li class="test-"><a id="_t_197" class="defined" href="#_t_197">Test FCS_TLSC_EXT.2:1</a>:
+          For each supported <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> version, the evaluator shall perform the following tests:
+          <span class="testlist-"><ul>
+            <li class="test-"><a id="_t_197" class="defined" href="#_t_197">Test FCS_TLSC_EXT.2:1</a>:
       The evaluator shall establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection from the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that negotiates the tested version and which is not configured for mutual authentication (i.e., does not send a server’s CertificateRequest message). The evaluator shall observe negotiation of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> did not send a client’s Certificate message during handshake.
-         </li>
-         <li class="test-"><a id="_t_198" class="defined" href="#_t_198">Test FCS_TLSC_EXT.2:2</a>:
+           </li>
+           <li class="test-"><a id="_t_198" class="defined" href="#_t_198">Test FCS_TLSC_EXT.2:2</a>:
       The evaluator shall establish a connection to a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server with a shared trusted root that is configured for mutual authentication (i.e., it sends a server’s CertificateRequest message). The evaluator shall observe negotiation of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> responds with a non-empty client’s Certificate message and CertificateVerify message.
            </li>
-         <li class="test-"><a id="_t_199" class="defined" href="#_t_199">Test FCS_TLSC_EXT.2:3</a>:
+           <li class="test-"><a id="_t_199" class="defined" href="#_t_199">Test FCS_TLSC_EXT.2:3</a>:
       [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports post-handshake authentication, the evaluator shall establish a pre-shared key between the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server. The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session using the pre-shared key and confirm the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server successfully complete the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> handshake and both support post-handshake authentication. After the session is successfully established, the evaluator shall initiate a CertificateRequest message from the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> receives that authentication request and shall take necessary actions, in accordance with the operational guidance, to complete the authentication request. The evaluator shall confirm that the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server receives Certificate and CertificateVerify messages from the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> over the channel that authenticates the client.
            <p>
            <b>Note:</b> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends the appropriate messages by examining the messages received at the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> receives data configured at the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server. 
-           </p></li>
-       </ul></span>
+           </p>
+           </li>
+          </ul></span>
 	      </div></div></div></div></div>
-	      
-        <div class="comp" id="FCS_TLSC_EXT.3"><h4>FCS_TLSC_EXT.3 TLS Client Downgrade Protection</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
+	<div class="comp" id="FCS_TLSC_EXT.3"><h4>FCS_TLSC_EXT.3 TLS Client Downgrade Protection</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
 	  <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>.
       </i></b></div>
-          
-          
-          
-          
-          
-          
-          
-          <div class="element"><div class="reqid" id="FCS_TLSC_EXT.3.1"><a href="#FCS_TLSC_EXT.3.1" class="abbr">FCS_TLSC_EXT.3.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel if the ServerHello message includes 
-              [<b>selection</b>: <span class="selectable-content" id="_s_290"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 downgrade indicator</span>, <span class="selectable-content" id="_s_291"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator</span>]
-              in the server random field. <div class="appnote"><span class="note-header">Application
+    
+    
+    
+    
+    
+    <div class="element"><div class="reqid" id="FCS_TLSC_EXT.3.1"><a href="#FCS_TLSC_EXT.3.1" class="abbr">FCS_TLSC_EXT.3.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel if the ServerHello message includes 
+        [<b>selection</b>: <span class="selectable-content" id="_s_290"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 downgrade indicator</span>, <span class="selectable-content" id="_s_291"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator</span>]
+        in the server random field.
+      <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-              <p>
-                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "supplemental downgrade protection" is selected in <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>.
-              </p><p>
-              The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims the “<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 downgrade indicator” when <a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> indicates support for both <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and implements supplemental downgrade protection. 
-              This option is not claimed if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is not supported. 
-              The “<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator” option may also be claimed if supported, but should only be claimed if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is capable of detecting the indicator. 
-              This package requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to always terminate <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 sessions based on the ServerHello negotiated version field; it is acceptable to ignore any downgrade indicator. 
-              However, a <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> that is capable of detecting the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator may claim this option if it takes different actions depending on whether the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator is set. 
-              </p>
-            </span></div></div></div> 
+        <p>
+        This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "supplemental downgrade protection" is selected in <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>.
+        </p>
+        <p>
+        The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims the “<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 downgrade indicator” when <a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> indicates support for both <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and implements supplemental downgrade protection. This option is not claimed if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is not supported. The “<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator” option may also be claimed if supported, but should only be claimed if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is capable of detecting the indicator. This package requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to always terminate <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 sessions based on the ServerHello negotiated version field; it is acceptable to ignore any downgrade indicator. However, a <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> that is capable of detecting the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator may claim this option if it takes different actions depending on whether the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator is set. 
+        </p>
+      </span></div></div></div> 
 	  
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLSC_EXT.3">FCS_TLSC_EXT.3</a></div>
-              
-              
-              
-            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
-                <p>
-                The evaluator shall review the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and confirm that the description of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client protocol includes the downgrade protection mechanism in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 and identifies any configurable features of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> needed to meet the requirements. 
-                If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> claims that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 and below indicator is processed, the evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> indicates which configurations allow processing of the downgrade indicator and the specific response of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> when it receives the downgrade indicator as opposed to simply terminating the session for the unsupported version.
-                </p>
+  <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLSC_EXT.3">FCS_TLSC_EXT.3</a></div>
+        
+        
+        
+      <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
+          <p>
+          The evaluator shall review the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and confirm that the description of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client protocol includes the downgrade protection mechanism in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 and identifies any configurable features of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> needed to meet the requirements. If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> claims that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 and below indicator is processed, the evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> indicates which configurations allow processing of the downgrade indicator and the specific response of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> when it receives the downgrade indicator as opposed to simply terminating the session for the unsupported version.
+          </p>
 	      </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
-                <p>
-                The evaluator shall review the operational guidance and confirm that any instructions to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to meet the requirements are included.
-                </p>
+          <p>
+          The evaluator shall review the operational guidance and confirm that any instructions to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to meet the requirements are included.
+          </p>
 	      </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                The evaluator shall perform the following tests to confirm the response to downgrade indicators from a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server:
-              <span class="testlist-"><ul>
-                <li class="test-"><a id="_t_200" class="defined" href="#_t_200">Test FCS_TLSC_EXT.3:1</a>:
-      [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 session with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server configured to send a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ServerHello (not including any <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 extensions) 
-                  but including the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 downgrade indicator ‘44 4F 57 4E 47 52 44 01’ in the last eight bytes of the server random field. 
-                  The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
-                  <p>  
-                  <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> send a fatal error alert message (e.g., illegal_parameter). However, it is also acceptable for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to terminate the session without sending an error alert.
-                  </p></li>
-                <li class="test-"><a id="_t_201" class="defined" href="#_t_201">Test FCS_TLSC_EXT.3:2</a>:
-      [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator and if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> indicates a configuration where the indicator is processed, the evaluator shall follow operational guidance instructions to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> so it parses a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 handshake to detect and process the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> downgrade indicator. 
-                  The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that is configured to send a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 ServerHello message with the downgrade indicator ‘44 4F 57 4E 47 52 44 00’ in the last eight bytes of the server random field, but which is otherwise compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session as described in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
-                  <p>
-                  <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> send a fatal error alert message (illegal_parameter, unsupported_version). However, it is also acceptable for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to terminate the session without sending an error alert. 
-                  </p><p>
-                  Use of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 and below indicator as a redundant mechanism 
-                  where there is no configuration that actually processes the value does not require additional testing, since this would be addressed by <a href="#tls-client-obsolete-versions" class="dynref">Test FCS_TLSC_EXT.1:2.1</a> for <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>. 
-                  This test is only required if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds differently (e.g., a different error alert) when the downgrade indicator is present than when <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below is negotiated and the downgrade indicator is not present.
-                  </p></li>
-              </ul></span>
+          The evaluator shall perform the following tests to confirm the response to downgrade indicators from a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server:
+          <span class="testlist-"><ul>
+            <li class="test-"><a id="_t_200" class="defined" href="#_t_200">Test FCS_TLSC_EXT.3:1</a>:
+      [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 session with a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server configured to send a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 ServerHello (not including any <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 extensions) but including the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 downgrade indicator ‘44 4F 57 4E 47 52 44 01’ in the last eight bytes of the server random field. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
+            <p>  
+            <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> send a fatal error alert message (e.g., illegal_parameter). However, it is also acceptable for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to terminate the session without sending an error alert.
+            </p>
+            </li>
+            <li class="test-"><a id="_t_201" class="defined" href="#_t_201">Test FCS_TLSC_EXT.3:2</a>:
+      [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator and if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> indicates a configuration where the indicator is processed, the evaluator shall follow operational guidance instructions to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> so it parses a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 handshake to detect and process the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> downgrade indicator. The evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server that is configured to send a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 ServerHello message with the downgrade indicator ‘44 4F 57 4E 47 52 44 00’ in the last eight bytes of the server random field, but which is otherwise compliant with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 4346. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session as described in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
+            <p>
+            <b>Note:</b> It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> send a fatal error alert message (illegal_parameter, unsupported_version). However, it is also acceptable for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to terminate the session without sending an error alert. 
+            </p>
+            <p>
+            Use of the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 and below indicator as a redundant mechanism where there is no configuration that actually processes the value does not require additional testing, since this would be addressed by <a href="#tls-client-obsolete-versions" class="dynref">Test FCS_TLSC_EXT.1:2.1</a> for <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>. This test is only required if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds differently (e.g., a different error alert) when the downgrade indicator is present than when <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below is negotiated and the downgrade indicator is not present.
+            </p>
+            </li>
+          </ul></span>
 	      </div></div></div></div></div>
-	      
-        <div class="comp" id="FCS_TLSC_EXT.4"><h4>FCS_TLSC_EXT.4 TLS Client Support for Renegotiation</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
+	<div class="comp" id="FCS_TLSC_EXT.4"><h4>FCS_TLSC_EXT.4 TLS Client Support for Renegotiation</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
 	  <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
       </i></b></div>
-          
-          
-          
-          
+    
+    
           
           
           
@@ -4707,11 +4696,9 @@ The following sections list Common Criteria and technology terms used in this do
              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol,
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client in the specified manner.</p><p><a href="#FCS_TLSC_EXT.2">FCS_TLSC_EXT.2</a>,
              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Support for Mutual Authentication,
-              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support mutually-authenticated <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client.
-          </p><p><a href="#FCS_TLSC_EXT.3">FCS_TLSC_EXT.3</a>,
+              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support mutually-authenticated <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client.</p><p><a href="#FCS_TLSC_EXT.3">FCS_TLSC_EXT.3</a>,
              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Downgrade Protection,
-              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement version downgrade protection when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client.
-          </p><p><a href="#FCS_TLSC_EXT.4">FCS_TLSC_EXT.4</a>,
+              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement version downgrade protection when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client.</p><p><a href="#FCS_TLSC_EXT.4">FCS_TLSC_EXT.4</a>,
              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Support for Renegotiation,
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session renegotiation when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client.
           </p><p><a href="#FCS_TLSC_EXT.5">FCS_TLSC_EXT.5</a>,
@@ -4778,15 +4765,11 @@ The following sections list Common Criteria and technology terms used in this do
         [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_282">the server certificate is invalid [<b>selection</b>: <span class="selectable-content" id="s-tlsc-no-excep">with no <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>-specific exceptions</span>, <span class="selectable-content" id="_s_284">except when override is authorized in accordance with [<b>assignment</b>: 
      <span class="assignable-content">override rules</span>] in the case where valid revocation information is not available</span>]
         </span></li><li style=""><span class="selectable-content" id="_s_285">a PSK associated with the server is invalid</span></li></ul>]. 
-      </div><h4>Management: FCS_TLSC_EXT.2</h4><p>No specific management functions are identified.
-          </p><h4>Audit: FCS_TLSC_EXT.2</h4><p>There are no auditable events foreseen.
-          </p><h4>FCS_TLSC_EXT.2 TLS Client Support for Mutual Authentication</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol
-          </td></tr></table><h4 id="ext-comp-FCS_TLSC_EXT.2.1">FCS_TLSC_EXT.2.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support mutual <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> authentication using X.509v3 certificates during the handshake and [<b>selection</b>: <span class="selectable-content" id="_s_286">in support of post-handshake authentication requests</span>, <span class="selectable-content" id="_s_287">at no other time</span>], in accordance with [<b>selection</b>: <span class="selectable-content" id="_s_288"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 Section 7.4.4</span>, <span class="selectable-content" id="_s_289"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 Section 4.3.2</span>].</div><h4>Management: FCS_TLSC_EXT.3</h4><p>No specific management functions are identified.
-          </p><h4>Audit: FCS_TLSC_EXT.3</h4><p>There are no auditable events foreseen.
-          </p><h4>FCS_TLSC_EXT.3 TLS Client Downgrade Protection</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol
-          </td></tr></table><h4 id="ext-comp-FCS_TLSC_EXT.3.1">FCS_TLSC_EXT.3.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel if the ServerHello message includes 
-              [<b>selection</b>: <span class="selectable-content" id="_s_290"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 downgrade indicator</span>, <span class="selectable-content" id="_s_291"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator</span>]
-              in the server random field. </div><h4>Management: FCS_TLSC_EXT.4</h4><p>No specific management functions are identified.
+      </div><h4>Management: FCS_TLSC_EXT.2</h4><p>No specific management functions are identified.</p><h4>Audit: FCS_TLSC_EXT.2</h4><p>There are no auditable events foreseen.</p><h4>FCS_TLSC_EXT.2 TLS Client Support for Mutual Authentication</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol</td></tr></table><h4 id="ext-comp-FCS_TLSC_EXT.2.1">FCS_TLSC_EXT.2.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support mutual <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> authentication using X.509v3 certificates during the handshake and [<b>selection</b>: <span class="selectable-content" id="_s_286">in support of post-handshake authentication requests</span>, <span class="selectable-content" id="_s_287">at no other time</span>], in accordance with [<b>selection</b>: <span class="selectable-content" id="_s_288"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246 Section 7.4.4</span>, <span class="selectable-content" id="_s_289"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 Section 4.3.2</span>].
+      </div><h4>Management: FCS_TLSC_EXT.3</h4><p>No specific management functions are identified.</p><h4>Audit: FCS_TLSC_EXT.3</h4><p>There are no auditable events foreseen.</p><h4>FCS_TLSC_EXT.3 TLS Client Downgrade Protection</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol</td></tr></table><h4 id="ext-comp-FCS_TLSC_EXT.3.1">FCS_TLSC_EXT.3.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel if the ServerHello message includes 
+        [<b>selection</b>: <span class="selectable-content" id="_s_290"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 downgrade indicator</span>, <span class="selectable-content" id="_s_291"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below downgrade indicator</span>]
+        in the server random field.
+      </div><h4>Management: FCS_TLSC_EXT.4</h4><p>No specific management functions are identified.
           </p><h4>Audit: FCS_TLSC_EXT.4</h4><p>There are no auditable events foreseen.
           </p><h4>FCS_TLSC_EXT.4 TLS Client Support for Renegotiation</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol
           </td></tr></table><h4 id="ext-comp-FCS_TLSC_EXT.4.1">FCS_TLSC_EXT.4.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support secure <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> renegotiation through use of
