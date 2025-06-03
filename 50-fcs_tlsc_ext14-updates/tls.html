@@ -2520,123 +2520,110 @@ The following sections list Common Criteria and technology terms used in this do
   <div class="comp" id="FCS_DTLSS_EXT.5"><h4>FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
 	  <a href="#FCS_DTLSS_EXT.1.1">FCS_DTLSS_EXT.1.1</a>.
       </i></b></div>
-           
-          
-          
-          
-          
-          
-          
-          
-          <div class="element"><div class="reqid" id="FCS_DTLSS_EXT.5.1"><a href="#FCS_DTLSS_EXT.5.1" class="abbr">FCS_DTLSS_EXT.5.1</a></div><div class="reqdesc">
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support session resumption as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server via the use of [<b>selection</b>: <span class="selectable-content" id="_s_204">session ID in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span>, <span class="selectable-content" id="_s_205">tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077</span>, <span class="selectable-content" id="dtlss_v13_resumption">PSK and tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446</span>]. 
-            <div class="appnote"><span class="note-header">Application
+     
+    
+    
+    
+    
+    <div class="element"><div class="reqid" id="FCS_DTLSS_EXT.5.1"><a href="#FCS_DTLSS_EXT.5.1" class="abbr">FCS_DTLSS_EXT.5.1</a></div><div class="reqdesc">
+        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support session resumption as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server via the use of [<b>selection</b>: <span class="selectable-content" id="_s_204">session ID in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span>, <span class="selectable-content" id="_s_205">tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077</span>, <span class="selectable-content" id="dtlss_v13_resumption">PSK and tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446</span>]. 
+      <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-              <p>
-                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "session resumption" is selected in <a href="#FCS_DTLSS_EXT.1.1">FCS_DTLSS_EXT.1.1</a>.
-              </p>
-              <p>
-                The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author indicates which session resumption mechanisms are supported. If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 is supported, one or both of the first two options, "session ID in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246" and "tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077" are claimed. If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is supported, "PSK and tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446" is selected, and the selection-based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> <a href="#FCS_DTLSS_EXT.6">FCS_DTLSS_EXT.6</a> must also be claimed.
-              </p>
-              <p>
-                While it is possible to perform session resumption using PSK ciphersuites in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in <a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a>.
-              </p>
-            </span></div></div></div>
-          
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a></div>
-              
-              
-              
-            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
-                <p>
-                  The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and confirm that the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server protocol description includes a description of the supported resumption mechanisms.
-                </p>
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
-                <p>
-                  The evaluator shall ensure the operational guidance describes instructions for any configurable features of the resumption mechanism.
-                </p>
-              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                The evaluator shall perform the following tests:
-                <span class="testlist-"><ul>
-                  <li class="test-"><a id="dtls-server-successful-resumption" class="defined" href="#dtls-server-successful-resumption">Test FCS_DTLSS_EXT.5:1</a>:
-      For each supported version, and for each supported resumption method for that version, the evaluator shall establish a compliant initial <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for the version using the specified method. The evaluator shall close the successful session and initiate resumption using the specified mechanism. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully establishes the resumed session in accordance with the requirements. </li>
-                  <li class="test-"><a id="_t_131" class="defined" href="#_t_131">Test FCS_DTLSS_EXT.5:2</a>:
+        <p>
+        This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "session resumption" is selected in <a href="#FCS_DTLSS_EXT.1.1">FCS_DTLSS_EXT.1.1</a>.
+        </p>
+        <p>
+        The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author indicates which session resumption mechanisms are supported. If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 is supported, one or both of the first two options, "session ID in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246" and "tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077" are claimed. If <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is supported, "PSK and tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446" is selected, and the selection-based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> <a href="#FCS_DTLSS_EXT.6">FCS_DTLSS_EXT.6</a> must also be claimed.
+        </p>
+        <p>
+        While it is possible to perform session resumption using PSK ciphersuites in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in <a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a>.
+        </p>
+      </span></div></div></div>
+    
+  <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a></div>
+        
+        
+        
+      <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
+          <p>
+          The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and confirm that the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server protocol description includes a description of the supported resumption mechanisms.
+          </p>
+        </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+          <p>
+          The evaluator shall ensure the operational guidance describes instructions for any configurable features of the resumption mechanism.
+          </p>
+        </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+          The evaluator shall perform the following tests:
+          <span class="testlist-"><ul>
+            <li class="test-"><a id="dtls-server-successful-resumption" class="defined" href="#dtls-server-successful-resumption">Test FCS_DTLSS_EXT.5:1</a>:
+      For each supported version, and for each supported resumption method for that version, the evaluator shall establish a compliant initial <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for the version using the specified method. The evaluator shall close the successful session and initiate resumption using the specified mechanism. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully establishes the resumed session in accordance with the requirements.
+            </li>
+            <li class="test-"><a id="_t_131" class="defined" href="#_t_131">Test FCS_DTLSS_EXT.5:2</a>:
       For each supported version and each supported resumption method for that version, the evaluator shall send a compliant ClientHello message supporting only the specific version and indicating support for the resumption method. The evaluator shall allow the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and test client to continue with the compliant handshake until resumption information is established, and then cause a fatal error that terminates the session. The evaluator shall then send a new ClientHello message in an attempt to resume the session with the resumption information provided and verify that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not resume the session, but instead silently drops the message, terminates the session, or completes a full handshake, ignoring the resumption information.
-                    <p>
-                      <b>Note:</b> For <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, resumption information should be established at the point the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a ServerHello message, either acknowledging the session-based resumption or acknowledging support for ticket-based resumption and sending a new_ticket message. A <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 session can then be terminated by sending a modified Finished message. For <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, the NewSessionTicket message is sent after the Finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted Application Data. 
-                    </p>
-                    <p>
-                      To terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session, it might be necessary to continue sending the invalid Finished or Application Data message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session or responds with a full handshake ignoring the resumption information, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the ClientHello message containing the resumption information of the failed session, the evaluator shall continue sending the message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out.
-                    </p>
-                  </li>
-                </ul></span>
-              </div></div></div></div></div>
-        
-        
-        <div class="comp" id="FCS_DTLSS_EXT.6"><h4>FCS_DTLSS_EXT.6 DTLS Server DTLS 1.3 Resumption Refinements</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
+            <p>
+            <b>Note:</b> For <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2, resumption information should be established at the point the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a ServerHello message, either acknowledging the session-based resumption or acknowledging support for ticket-based resumption and sending a new_ticket message. A <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 session can then be terminated by sending a modified Finished message. For <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, the NewSessionTicket message is sent after the Finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted Application Data. 
+            </p>
+            <p>
+            To terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session, it might be necessary to continue sending the invalid Finished or Application Data message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session or responds with a full handshake ignoring the resumption information, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the ClientHello message containing the resumption information of the failed session, the evaluator shall continue sending the message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out.
+            </p>
+            </li>
+          </ul></span>
+        </div></div></div></div></div>
+  <div class="comp" id="FCS_DTLSS_EXT.6"><h4>FCS_DTLSS_EXT.6 DTLS Server DTLS 1.3 Resumption Refinements</h4><div class="statustag"><b><i>This is a selection-based component. Its inclusion depends upon selection from
 	  <a href="#FCS_DTLSS_EXT.5.1">FCS_DTLSS_EXT.5.1</a>.
       </i></b></div>
-           
-          
-          
-          
-          
-          
-          
-          
-          
-          <div class="element"><div class="reqid" id="FCS_DTLSS_EXT.6.1"><a href="#FCS_DTLSS_EXT.6.1" class="abbr">FCS_DTLSS_EXT.6.1</a></div><div class="reqdesc">
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
-            </div></div>
-          <div class="element"><div class="reqid" id="FCS_DTLSS_EXT.6.2"><a href="#FCS_DTLSS_EXT.6.2" class="abbr">FCS_DTLSS_EXT.6.2</a></div><div class="reqdesc">
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ignore early data received in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 sessions.
-            <div class="appnote"><span class="note-header">Application
+     
+    
+    
+    
+    
+    <div class="element"><div class="reqid" id="FCS_DTLSS_EXT.6.1"><a href="#FCS_DTLSS_EXT.6.1" class="abbr">FCS_DTLSS_EXT.6.1</a></div><div class="reqdesc">
+        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
+      </div></div>
+    <div class="element"><div class="reqid" id="FCS_DTLSS_EXT.6.2"><a href="#FCS_DTLSS_EXT.6.2" class="abbr">FCS_DTLSS_EXT.6.2</a></div><div class="reqdesc">
+        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ignore early data received in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 sessions.
+      <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-              <p>
-                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is supported and "PSK and tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446" is selected in <a href="#FCS_DTLSS_EXT.5.1">FCS_DTLSS_EXT.5.1</a>.
-              </p>
-              <p>
-                <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> refines the <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> to use PSK only with a supplemental <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> key establishment to ensure perfect forward secrecy for all sessions.
-              </p>
-            </span></div></div></div>  
-          
-        <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_DTLSS_EXT.6">FCS_DTLSS_EXT.6</a></div>
-              
-              
-              
-            <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
-                <p>
-                  The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to confirm that the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> description includes details on session resumption for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, describes each application capable of using <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 with PSK, and describes how the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and application respond to client attempts to use early data (including via logging or observable responses). The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> description shows that only the psk_dhe_ke psk_key_exchange_modes is supported and that early information is ignored. 
-                </p>
-              </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
-                <p>
-                  The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
-                </p>
-              </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                The evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to negotiate <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and shall perform the following tests:
-                <span class="testlist-"><ul>
-                  
-                  
-                  <li class="test-"><a id="_t_132" class="defined" href="#_t_132">Test FCS_DTLSS_EXT.6:1</a>:
-      The evaluator shall attempt a resumed session (see <a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a> <a href="#dtls-server-successful-resumption" class="dynref">Test FCS_DTLSS_EXT.5:1</a>) but using psk_ke mode as the value for the psk_key_exchange_modes extension in the resumption ClientHello message. 
-                    The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> refuses to resume the session, by silently dropping the message, by completing a full <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 handshake, or by terminating the session.
-                    <p>
-                      <b>Note:</b> If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session or completes a full <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 handshake, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message, the evaluator shall continue sending the ClientHello message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> logs a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without logging a fatal error alert). 
-                    </p>
-                  </li>
-                  
-                  <li class="test-"><a id="_t_133" class="defined" href="#_t_133">Test FCS_DTLSS_EXT.6:2</a>:
-      
-                    
-                    The evaluator shall establish a valid <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 session with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and send the data as Application Data after the Finished messages have been verified, and observe the response. The evaluator shall then configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to clear the response and initiate a resumed session (see <a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a> <a href="#dtls-server-successful-resumption" class="dynref">Test FCS_DTLSS_EXT.5:1</a>) with a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not react to the early data as it did when presented as Application Data after the Ginished messages, indicating that the data was ignored.
-                    <p>
-                      <b>Note:</b> The specific early data used may depend on the applications calling the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session and should be selected to initiate an observable response in the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or calling application as described in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. For HTTPS, for example, the early data can be an <abbr class="dyn-abbr"><a href="#abbr_HTTP">HTTP</a></abbr> POST that updates data at the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
-                    </p>
-                  </li>
-                </ul></span>
-              </div></div></div></div></div>   
+        <p>
+        This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is supported and "PSK and tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446" is selected in <a href="#FCS_DTLSS_EXT.5.1">FCS_DTLSS_EXT.5.1</a>.
+        </p>
+        <p>
+        <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> refines the <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> to use PSK only with a supplemental <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> key establishment to ensure perfect forward secrecy for all sessions.
+        </p>
+      </span></div></div></div>  
+    
+  <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_DTLSS_EXT.6">FCS_DTLSS_EXT.6</a></div>
+        
+        
+        
+      <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
+          <p>
+          The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to confirm that the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> description includes details on session resumption for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, describes each application capable of using <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 with PSK, and describes how the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and application respond to client attempts to use early data (including via logging or observable responses). The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> description shows that only the psk_dhe_ke psk_key_exchange_modes is supported and that early information is ignored. 
+          </p>
+        </div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
+          <p>
+          The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
+          </p>
+        </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+          The evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to negotiate <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and shall perform the following tests:
+          <span class="testlist-"><ul>
+            <li class="test-"><a id="_t_132" class="defined" href="#_t_132">Test FCS_DTLSS_EXT.6:1</a>:
+      The evaluator shall attempt a resumed session (see <a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a> <a href="#dtls-server-successful-resumption" class="dynref">Test FCS_DTLSS_EXT.5:1</a>) but using psk_ke mode as the value for the psk_key_exchange_modes extension in the resumption ClientHello message. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> refuses to resume the session, by silently dropping the message, by completing a full <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 handshake, or by terminating the session.
+            <p>
+            <b>Note:</b> If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session or completes a full <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 handshake, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message, the evaluator shall continue sending the ClientHello message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> logs a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without logging a fatal error alert). 
+            </p>
+            </li>
+            
+            <li class="test-"><a id="_t_133" class="defined" href="#_t_133">Test FCS_DTLSS_EXT.6:2</a>:
+      The evaluator shall establish a valid <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 session with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and send the data as Application Data after the Finished messages have been verified, and observe the response. The evaluator shall then configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to clear the response and initiate a resumed session (see <a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a> <a href="#dtls-server-successful-resumption" class="dynref">Test FCS_DTLSS_EXT.5:1</a>) with a test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> does not react to the early data as it did when presented as Application Data after the Ginished messages, indicating that the data was ignored.
+            <p>
+            <b>Note:</b> The specific early data used may depend on the applications calling the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session and should be selected to initiate an observable response in the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or calling application as described in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. For HTTPS, for example, the early data can be an <abbr class="dyn-abbr"><a href="#abbr_HTTP">HTTP</a></abbr> POST that updates data at the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
+            </p>
+            </li>
+          </ul></span>
+        </div></div></div></div></div>   
 
 
    
@@ -4672,11 +4659,9 @@ The following sections list Common Criteria and technology terms used in this do
              <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Support for Renegotiation,
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session renegotiation when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server.</p><p><a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a>,
              <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Support for Session Resumption,
-              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server.
-          </p><p><a href="#FCS_DTLSS_EXT.6">FCS_DTLSS_EXT.6</a>,
+              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server.</p><p><a href="#FCS_DTLSS_EXT.6">FCS_DTLSS_EXT.6</a>,
              <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 Resumption Refinements,
-              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption behavior specific to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server.
-          </p><h4>Management: FCS_DTLSS_EXT.1</h4><p>No specific management functions are identified.</p><h4>Audit: FCS_DTLSS_EXT.1</h4><p>
+              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption behavior specific to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server.</p><h4>Management: FCS_DTLSS_EXT.1</h4><p>No specific management functions are identified.</p><h4>Audit: FCS_DTLSS_EXT.1</h4><p>
       The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, Functional Package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
       <ul>
       <li>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</li>
@@ -4747,20 +4732,15 @@ The following sections list Common Criteria and technology terms used in this do
       <h4 id="ext-comp-FCS_DTLSS_EXT.4.3">FCS_DTLSS_EXT.4.3</h4>
         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_202">terminate the session</span>, <span class="selectable-content" id="_s_203">silently ignore the message</span>]
         if an unexpected ClientHello message is received during an active <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session.
-      </div><h4>Management: FCS_DTLSS_EXT.5</h4><p>No specific management functions are identified.
-          </p><h4>Audit: FCS_DTLSS_EXT.5</h4><p>There are no auditable events foreseen.
-          </p><h4>FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol
-          </td></tr></table><h4 id="ext-comp-FCS_DTLSS_EXT.5.1">FCS_DTLSS_EXT.5.1</h4>
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support session resumption as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server via the use of [<b>selection</b>: <span class="selectable-content" id="_s_204">session ID in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span>, <span class="selectable-content" id="_s_205">tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077</span>, <span class="selectable-content" id="dtlss_v13_resumption">PSK and tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446</span>]. 
-            </div><h4>Management: FCS_DTLSS_EXT.6</h4><p>No specific management functions are identified.
-          </p><h4>Audit: FCS_DTLSS_EXT.6</h4><p>There are no auditable events foreseen.
-          </p><h4>FCS_DTLSS_EXT.6 DTLS Server DTLS 1.3 Resumption Refinements</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol<br/>
-            <a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Support for Session Resumption
-          </td></tr></table><h4 id="ext-comp-FCS_DTLSS_EXT.6.1">FCS_DTLSS_EXT.6.1</h4>
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
-            <h4 id="ext-comp-FCS_DTLSS_EXT.6.2">FCS_DTLSS_EXT.6.2</h4>
-              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ignore early data received in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 sessions.
-            </div></div><h3 id="ext-comp-FCS_TLSC_EXT" class="indexable" data-level="4">B.2.1.4 FCS_TLSC_EXT TLS Client Protocol</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for implementation of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client.</div><h4>Component Leveling</h4><svg style="max-height: 130px;"><text x="4" fill="black" font-size="15" y="84">FCS_TLSC_EXT</text><rect x="2" y="71" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">2</text><rect x="232" y="31" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="37" stroke="black"></line><text x="234" fill="black" font-size="15" y="64">3</text><rect x="232" y="51" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="57" stroke="black"></line><text x="234" fill="black" font-size="15" y="84">4</text><rect x="232" y="71" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="77" stroke="black"></line><text x="234" fill="black" font-size="15" y="104">5</text><rect x="232" y="91" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="97" stroke="black"></line><text x="234" fill="black" font-size="15" y="124">6</text><rect x="232" y="111" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="117" stroke="black"></line></svg><p><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a>,
+      </div><h4>Management: FCS_DTLSS_EXT.5</h4><p>No specific management functions are identified.</p><h4>Audit: FCS_DTLSS_EXT.5</h4><p>There are no auditable events foreseen.</p><h4>FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol</td></tr></table><h4 id="ext-comp-FCS_DTLSS_EXT.5.1">FCS_DTLSS_EXT.5.1</h4>
+        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support session resumption as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server via the use of [<b>selection</b>: <span class="selectable-content" id="_s_204">session ID in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246</span>, <span class="selectable-content" id="_s_205">tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5077</span>, <span class="selectable-content" id="dtlss_v13_resumption">PSK and tickets in accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446</span>]. 
+      </div><h4>Management: FCS_DTLSS_EXT.6</h4><p>No specific management functions are identified.</p><h4>Audit: FCS_DTLSS_EXT.6</h4><p>There are no auditable events foreseen.</p><h4>FCS_DTLSS_EXT.6 DTLS Server DTLS 1.3 Resumption Refinements</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol<br/>
+      <a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Support for Session Resumption
+    </td></tr></table><h4 id="ext-comp-FCS_DTLSS_EXT.6.1">FCS_DTLSS_EXT.6.1</h4>
+        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
+      <h4 id="ext-comp-FCS_DTLSS_EXT.6.2">FCS_DTLSS_EXT.6.2</h4>
+        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ignore early data received in <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 sessions.
+      </div></div><h3 id="ext-comp-FCS_TLSC_EXT" class="indexable" data-level="4">B.2.1.4 FCS_TLSC_EXT TLS Client Protocol</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for implementation of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client.</div><h4>Component Leveling</h4><svg style="max-height: 130px;"><text x="4" fill="black" font-size="15" y="84">FCS_TLSC_EXT</text><rect x="2" y="71" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">2</text><rect x="232" y="31" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="37" stroke="black"></line><text x="234" fill="black" font-size="15" y="64">3</text><rect x="232" y="51" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="57" stroke="black"></line><text x="234" fill="black" font-size="15" y="84">4</text><rect x="232" y="71" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="77" stroke="black"></line><text x="234" fill="black" font-size="15" y="104">5</text><rect x="232" y="91" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="97" stroke="black"></line><text x="234" fill="black" font-size="15" y="124">6</text><rect x="232" y="111" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="77" x2="231" y2="117" stroke="black"></line></svg><p><a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a>,
              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol,
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client in the specified manner.
           </p><p><a href="#FCS_TLSC_EXT.2">FCS_TLSC_EXT.2</a>,

@@ -2179,135 +2179,116 @@
     <audit-event/>
   </f-component>
   <f-component cc-id="fcs_dtlss_ext.5" name="DTLS Server Support for Session Resumption" status="sel-based">
-          <depends on-sel="dtlss_resumption"/> 
-          
-          
-          <comp-lev> requires the TSF to support session resumption when acting as a DTLS server.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol
-          </dependencies>
-          
-          <f-element>
-            <title>
-              The TSF shall support session resumption as a DTLS server via the use of <selectables>
-                <selectable>session ID in accordance with RFC 5246</selectable>
-                <selectable>tickets in accordance with RFC 5077</selectable>
-                <selectable id="dtlss_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "session resumption" is selected in FCS_DTLSS_EXT.1.1.
-              </h:p>
-              <h:p>
-                The ST author indicates which session resumption mechanisms are supported. If DTLS 1.2 is supported, one or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed. If DTLS 1.3 is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_DTLSS_EXT.6 must also be claimed.
-              </h:p>
-              <h:p>
-                While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_DTLSS_EXT.1.
-              </h:p>
-            </note>
-            <aactivity>
-              <TSS>
-                <h:p>
-                  The evaluator shall examine the TSS and confirm that the DTLS server protocol description includes a description of the supported resumption mechanisms.
-                </h:p>
-              </TSS>
-              <Guidance>
-                <h:p>
-                  The evaluator shall ensure the operational guidance describes instructions for any configurable features of the resumption mechanism.
-                </h:p>
-              </Guidance>
-              <Tests>
-                The evaluator shall perform the following tests:
-                <testlist>
-                  <test id="dtls-server-successful-resumption">For each supported version, and for each supported resumption method for that version, the evaluator shall establish a compliant initial DTLS session with the TOE for the version using the specified method. The evaluator shall close the successful session and initiate resumption using the specified mechanism. The evaluator shall observe that the TSF successfully establishes the resumed session in accordance with the requirements. </test>
-                  <test>For each supported version and each supported resumption method for that version, the evaluator shall send a compliant ClientHello message supporting only the specific version and indicating support for the resumption method. The evaluator shall allow the TOE and test client to continue with the compliant handshake until resumption information is established, and then cause a fatal error that terminates the session. The evaluator shall then send a new ClientHello message in an attempt to resume the session with the resumption information provided and verify that the TSF does not resume the session, but instead silently drops the message, terminates the session, or completes a full handshake, ignoring the resumption information.
-                    <h:p>
-                      <h:b>Note:</h:b> For DTLS 1.2, resumption information should be established at the point the TSF sends a ServerHello message, either acknowledging the session-based resumption or acknowledging support for ticket-based resumption and sending a new_ticket message. A DTLS 1.2 session can then be terminated by sending a modified Finished message. For DTLS 1.3, the NewSessionTicket message is sent after the Finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted Application Data. 
-                    </h:p>
-                    <h:p>
-                      To terminate the DTLS session, it might be necessary to continue sending the invalid Finished or Application Data message until the TSF times out. If the TSF terminates the session or responds with a full handshake ignoring the resumption information, the test is successful. If the TSF silently drops the ClientHello message containing the resumption information of the failed session, the evaluator shall continue sending the message until the TSF times out.
-                    </h:p>
-                  </test>
-                </testlist>
-              </Tests>
-            </aactivity>
-          </f-element>
-          <audit-event/>
-        </f-component>
-        
-        
-        <f-component cc-id="fcs_dtlss_ext.6" name="DTLS Server DTLS 1.3 Resumption Refinements" status="sel-based">
-          <depends on-sel="dtlss_v13_resumption"/> 
-          
-          
-          <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a DTLS server.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol<h:br/>
-            FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption
-          </dependencies>
-          
-          
-          <f-element>
-            <title>
-              The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
-            </title>
-          </f-element>
-          <f-element>
-            <title>
-              The TSF shall ignore early data received in DTLS 1.3 sessions.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if DTLS 1.3 is supported and "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSS_EXT.5.1.
-              </h:p>
-              <h:p>
-                RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions.
-              </h:p>
-            </note>
-            <aactivity>
-              <TSS>
-                <h:p>
-                  The evaluator shall examine the TSS to confirm that the DTLS description includes details on session resumption for DTLS 1.3, describes each application capable of using DTLS 1.3 with PSK, and describes how the TSF and application respond to client attempts to use early data (including via logging or observable responses). The evaluator shall confirm that the DTLS description shows that only the psk_dhe_ke psk_key_exchange_modes is supported and that early information is ignored. 
-                </h:p>
-              </TSS>
-              <Guidance>
-                <h:p>
-                  The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
-                </h:p>
-              </Guidance>
-              <Tests>
-                The evaluator shall follow the operational guidance to configure the TSF to negotiate DTLS 1.3 and shall perform the following tests:
-                <testlist>
-                  
-                  
-                  <test>The evaluator shall attempt a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) but using psk_ke mode as the value for the psk_key_exchange_modes extension in the resumption ClientHello message. 
-                    The evaluator shall observe that the TSF refuses to resume the session, by silently dropping the message, by completing a full DTLS 1.3 handshake, or by terminating the session.
-                    <h:p>
-                      <h:b>Note:</h:b> If the TSF terminates the session or completes a full DTLS 1.3 handshake, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
-                    </h:p>
-                  </test>
-                  <!-- updated per TD0729 -->
-                  <test>
-                    
-                    The evaluator shall establish a valid DTLS 1.3 session with the TOE and send the data as Application Data after the Finished messages have been verified, and observe the response. The evaluator shall then configure the TOE to clear the response and initiate a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) with a test DTLS 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the TSF does not react to the early data as it did when presented as Application Data after the Ginished messages, indicating that the data was ignored.
-                    <h:p>
-                      <h:b>Note:</h:b> The specific early data used may depend on the applications calling the DTLS session and should be selected to initiate an observable response in the TSF or calling application as described in the ST. For HTTPS, for example, the early data can be an HTTP POST that updates data at the TOE, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
-                    </h:p>
-                  </test>
-                </testlist>
-              </Tests>
-            </aactivity>
-          </f-element>  
-          <audit-event/>
-        </f-component>   
+    <depends on-sel="dtlss_resumption"/> 
+    <comp-lev> requires the TSF to support session resumption when acting as a DTLS server.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol</dependencies>
+    <f-element>
+      <title>
+        The TSF shall support session resumption as a DTLS server via the use of <selectables>
+          <selectable>session ID in accordance with RFC 5246</selectable>
+          <selectable>tickets in accordance with RFC 5077</selectable>
+          <selectable id="dtlss_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable>
+        </selectables>. 
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "session resumption" is selected in FCS_DTLSS_EXT.1.1.
+        </h:p>
+        <h:p>
+        The ST author indicates which session resumption mechanisms are supported. If DTLS 1.2 is supported, one or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed. If DTLS 1.3 is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_DTLSS_EXT.6 must also be claimed.
+        </h:p>
+        <h:p>
+        While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_DTLSS_EXT.1.
+        </h:p>
+      </note>
+      <aactivity>
+        <TSS>
+          <h:p>
+          The evaluator shall examine the TSS and confirm that the DTLS server protocol description includes a description of the supported resumption mechanisms.
+          </h:p>
+        </TSS>
+        <Guidance>
+          <h:p>
+          The evaluator shall ensure the operational guidance describes instructions for any configurable features of the resumption mechanism.
+          </h:p>
+        </Guidance>
+        <Tests>
+          The evaluator shall perform the following tests:
+          <testlist>
+            <test id="dtls-server-successful-resumption">For each supported version, and for each supported resumption method for that version, the evaluator shall establish a compliant initial DTLS session with the TOE for the version using the specified method. The evaluator shall close the successful session and initiate resumption using the specified mechanism. The evaluator shall observe that the TSF successfully establishes the resumed session in accordance with the requirements.
+            </test>
+            <test>For each supported version and each supported resumption method for that version, the evaluator shall send a compliant ClientHello message supporting only the specific version and indicating support for the resumption method. The evaluator shall allow the TOE and test client to continue with the compliant handshake until resumption information is established, and then cause a fatal error that terminates the session. The evaluator shall then send a new ClientHello message in an attempt to resume the session with the resumption information provided and verify that the TSF does not resume the session, but instead silently drops the message, terminates the session, or completes a full handshake, ignoring the resumption information.
+            <h:p>
+            <h:b>Note:</h:b> For DTLS 1.2, resumption information should be established at the point the TSF sends a ServerHello message, either acknowledging the session-based resumption or acknowledging support for ticket-based resumption and sending a new_ticket message. A DTLS 1.2 session can then be terminated by sending a modified Finished message. For DTLS 1.3, the NewSessionTicket message is sent after the Finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted Application Data. 
+            </h:p>
+            <h:p>
+            To terminate the DTLS session, it might be necessary to continue sending the invalid Finished or Application Data message until the TSF times out. If the TSF terminates the session or responds with a full handshake ignoring the resumption information, the test is successful. If the TSF silently drops the ClientHello message containing the resumption information of the failed session, the evaluator shall continue sending the message until the TSF times out.
+            </h:p>
+            </test>
+          </testlist>
+        </Tests>
+      </aactivity>
+    </f-element>
+    <audit-event/>
+  </f-component>
+  <f-component cc-id="fcs_dtlss_ext.6" name="DTLS Server DTLS 1.3 Resumption Refinements" status="sel-based">
+    <depends on-sel="dtlss_v13_resumption"/> 
+    <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a DTLS server.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol<h:br/>
+      FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption
+    </dependencies>
+    <f-element>
+      <title>
+        The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
+      </title>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall ignore early data received in DTLS 1.3 sessions.
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if DTLS 1.3 is supported and "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSS_EXT.5.1.
+        </h:p>
+        <h:p>
+        RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions.
+        </h:p>
+      </note>
+      <aactivity>
+        <TSS>
+          <h:p>
+          The evaluator shall examine the TSS to confirm that the DTLS description includes details on session resumption for DTLS 1.3, describes each application capable of using DTLS 1.3 with PSK, and describes how the TSF and application respond to client attempts to use early data (including via logging or observable responses). The evaluator shall confirm that the DTLS description shows that only the psk_dhe_ke psk_key_exchange_modes is supported and that early information is ignored. 
+          </h:p>
+        </TSS>
+        <Guidance>
+          <h:p>
+          The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
+          </h:p>
+        </Guidance>
+        <Tests>
+          The evaluator shall follow the operational guidance to configure the TSF to negotiate DTLS 1.3 and shall perform the following tests:
+          <testlist>
+            <test>The evaluator shall attempt a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) but using psk_ke mode as the value for the psk_key_exchange_modes extension in the resumption ClientHello message. The evaluator shall observe that the TSF refuses to resume the session, by silently dropping the message, by completing a full DTLS 1.3 handshake, or by terminating the session.
+            <h:p>
+            <h:b>Note:</h:b> If the TSF terminates the session or completes a full DTLS 1.3 handshake, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
+            </h:p>
+            </test>
+            <!-- updated per TD0729 -->
+            <test>The evaluator shall establish a valid DTLS 1.3 session with the TOE and send the data as Application Data after the Finished messages have been verified, and observe the response. The evaluator shall then configure the TOE to clear the response and initiate a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) with a test DTLS 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the TSF does not react to the early data as it did when presented as Application Data after the Ginished messages, indicating that the data was ignored.
+            <h:p>
+            <h:b>Note:</h:b> The specific early data used may depend on the applications calling the DTLS session and should be selected to initiate an observable response in the TSF or calling application as described in the ST. For HTTPS, for example, the early data can be an HTTP POST that updates data at the TOE, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
+            </h:p>
+            </test>
+          </testlist>
+        </Tests>
+      </aactivity>
+    </f-element>  
+    <audit-event/>
+  </f-component>   
 
 
    <ext-comp-def fam-id="FCS_TLSC_EXT" title="TLS Client Protocol">
