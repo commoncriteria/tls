@@ -3096,7 +3096,7 @@
                                         <a id="_t_124" class="defined" href="#_t_124">Test FCS_DTLSS_EXT.4:2</a>: (renegotiation attempt) For each of the following sub-tests, the evaluator shall establish a compliant <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel with an initial handshake that uses the indicated secure renegotiation method for the version indicated. Without closing the session, the evaluator shall send a second ClientHello message within the channel specific to the version as indicated: <span class="testlist-">
                                             <ul>
                                                 <li class="test-">
-                                                    <a id="_t_125" class="defined" href="#_t_125">Test FCS_DTLSS_EXT.4:2.1</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> allows renegotiation, the evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746 methods, send an initial handshake with a valid renegotiation extension, send a new <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 ClientHello message on the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 channel containing the renegotiation_info extension indicating valid client_verify_data, and observe the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully completes the handshake.
+                                                    <a id="_t_125" class="defined" href="#_t_125">Test FCS_DTLSS_EXT.4:2.1</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> allows renegotiation, the evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746 methods, send an initial handshake with a valid renegotiation extension, send a new <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 ClientHello message on the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 channel containing the renegotiation_info extension indicating valid client_verify_data, and observe the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> successfully completes the handshake. 
                                                 </li>
                                                 <li class="test-">
                                                     <a id="_t_126" class="defined" href="#_t_126">Test FCS_DTLSS_EXT.4:2.2</a>: [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> allows renegotiation, the evaluator shall send an initial ClientHello message containing a valid renegotiation extension, send a new <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 ClientHello message on the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 channel with the signaling ciphersuite value, TLS_ EMPTY_RENEGOTIATION_INFO_SCSV, and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message or terminates the session. 
@@ -6266,10 +6266,10 @@
                         <a href="#FCS_DTLSS_EXT.2">FCS_DTLSS_EXT.2</a>, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Support for Mutual Authentication, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support mutually-authenticated <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server.
                     </p>
                     <p>
-                        <a href="#FCS_DTLSS_EXT.3">FCS_DTLSS_EXT.3</a>, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Downgrade Protection, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement version downgrade protection when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server. 
+                        <a href="#FCS_DTLSS_EXT.3">FCS_DTLSS_EXT.3</a>, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Downgrade Protection, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement version downgrade protection when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server.
                     </p>
                     <p>
-                        <a href="#FCS_DTLSS_EXT.4">FCS_DTLSS_EXT.4</a>, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Support for Renegotiation, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session renegotiation when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server. 
+                        <a href="#FCS_DTLSS_EXT.4">FCS_DTLSS_EXT.4</a>, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Support for Renegotiation, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session renegotiation when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server.
                     </p>
                     <p>
                         <a href="#FCS_DTLSS_EXT.5">FCS_DTLSS_EXT.5</a>, <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Support for Session Resumption, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server. 
@@ -6444,9 +6444,9 @@
                         ]. 
                     </div>
                     <h4>Management: FCS_DTLSS_EXT.3</h4>
-                    <p>No specific management functions are identified. </p>
+                    <p>No specific management functions are identified.</p>
                     <h4>Audit: FCS_DTLSS_EXT.3</h4>
-                    <p>There are no auditable events foreseen. </p>
+                    <p>There are no auditable events foreseen.</p>
                     <h4>FCS_DTLSS_EXT.3 DTLS Server Downgrade Protection</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -6454,16 +6454,16 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td><a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol </td>
+                                <td>Dependencies to:</td><td><a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol</td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FCS_DTLSS_EXT.3.1">FCS_DTLSS_EXT.3.1</h4>
                          The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall set the ServerHello message to a random value concatenated with the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 downgrade indicator when negotiating <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 as indicated in <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446 Section 4.1.3. 
                     </div>
                     <h4>Management: FCS_DTLSS_EXT.4</h4>
-                    <p>No specific management functions are identified. </p>
+                    <p>No specific management functions are identified.</p>
                     <h4>Audit: FCS_DTLSS_EXT.4</h4>
-                    <p>There are no auditable events foreseen. </p>
+                    <p>There are no auditable events foreseen.</p>
                     <h4>FCS_DTLSS_EXT.4 DTLS Server Support for Renegotiation</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -6471,7 +6471,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td><a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol </td>
+                                <td>Dependencies to:</td><td><a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol</td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FCS_DTLSS_EXT.4.1">FCS_DTLSS_EXT.4.1</h4>
