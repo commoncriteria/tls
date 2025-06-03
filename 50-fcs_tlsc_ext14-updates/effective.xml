@@ -2234,299 +2234,278 @@
     <audit-event/>
   </f-component>
   <f-component cc-id="fcs_dtlss_ext.6" name="DTLS Server DTLS 1.3 Resumption Refinements" status="sel-based">
-          <depends on-sel="dtlss_v13_resumption"/> 
-          
-          
-          <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a DTLS server.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol<h:br/>
-            FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption
-          </dependencies>
-          
-          
-          <f-element>
-            <title>
-              The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
-            </title>
-          </f-element>
-          <f-element>
-            <title>
-              The TSF shall ignore early data received in DTLS 1.3 sessions.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if DTLS 1.3 is supported and "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSS_EXT.5.1.
-              </h:p>
-              <h:p>
-                RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions.
-              </h:p>
-            </note>
-            <aactivity>
-              <TSS>
-                <h:p>
-                  The evaluator shall examine the TSS to confirm that the DTLS description includes details on session resumption for DTLS 1.3, describes each application capable of using DTLS 1.3 with PSK, and describes how the TSF and application respond to client attempts to use early data (including via logging or observable responses). The evaluator shall confirm that the DTLS description shows that only the psk_dhe_ke psk_key_exchange_modes is supported and that early information is ignored. 
-                </h:p>
-              </TSS>
-              <Guidance>
-                <h:p>
-                  The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
-                </h:p>
-              </Guidance>
-              <Tests>
-                The evaluator shall follow the operational guidance to configure the TSF to negotiate DTLS 1.3 and shall perform the following tests:
-                <testlist>
-                  
-                  
-                  <test>The evaluator shall attempt a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) but using psk_ke mode as the value for the psk_key_exchange_modes extension in the resumption ClientHello message. 
-                    The evaluator shall observe that the TSF refuses to resume the session, by silently dropping the message, by completing a full DTLS 1.3 handshake, or by terminating the session.
-                    <h:p>
-                      <h:b>Note:</h:b> If the TSF terminates the session or completes a full DTLS 1.3 handshake, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
-                    </h:p>
-                  </test>
-                  <!-- updated per TD0729 -->
-                  <test>
-                    
-                    The evaluator shall establish a valid DTLS 1.3 session with the TOE and send the data as Application Data after the Finished messages have been verified, and observe the response. The evaluator shall then configure the TOE to clear the response and initiate a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) with a test DTLS 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the TSF does not react to the early data as it did when presented as Application Data after the Ginished messages, indicating that the data was ignored.
-                    <h:p>
-                      <h:b>Note:</h:b> The specific early data used may depend on the applications calling the DTLS session and should be selected to initiate an observable response in the TSF or calling application as described in the ST. For HTTPS, for example, the early data can be an HTTP POST that updates data at the TOE, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
-                    </h:p>
-                  </test>
-                </testlist>
-              </Tests>
-            </aactivity>
-          </f-element>  
-          <audit-event/>
-        </f-component>   
-
-
-   <ext-comp-def fam-id="FCS_TLSC_EXT" title="TLS Client Protocol">
-     <fam-behavior>This family defines requirements for implementation of TLS as a client.</fam-behavior>
-   </ext-comp-def>
-
-        <f-component cc-id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
-		  <depends on-sel="tlsc_impl"/>
-          
-          
-          <comp-lev> requires the TSF to implement TLS as a client in the specified manner.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the PP, PP-Module, Functional Package, or ST:<h:ul>
-              <h:li>Establishment and termination of a TLS session</h:li>
-              <h:li>Failure to establish a TLS session</h:li>
-              <h:li>Failure to verify presented identifier</h:li>
-            </h:ul>
-          </audit>
-          <dependencies>
-            FCS_CKM.1 Cryptographic Key Generation<h:br/>
-            FCS_CKM.2 Cryptographic Key Distribution<h:br/>
-            FCS_COP.1 Cryptographic Operation<h:br/>
-            FCS_RBG.1 Random Bit Generation (RBG)<h:br/>
-            FIA_X509_EXT.1 X.509 Certificate Validation<h:br/>
-            FIA_X509_EXT.2 X.509 Certificate Authentication
-          </dependencies> 
-          
-          <f-element id="fel-client">
-            <title> The TSF shall implement
-              <selectables>
-                <selectable>TLS 1.2 (RFC 5246)</selectable>
-                <selectable>TLS 1.3 (RFC 8446)</selectable>
-              </selectables> as a client that supports additional functionality for session renegotiation protection and
-              <selectables linebreak="yes">
-                <selectable id="tlsc_mutual_auth">mutual authentication</selectable>
-                <selectable id="tlsc_downgrade_protection">supplemental downgrade protection</selectable>
-                <selectable id="tlsc_resumption">session resumption</selectable>
-                <selectable>no optional functionality</selectable></selectables>
-              and shall abort attempts by a server to negotiate any TLS or SSL version prior to TLS 1.2 (RFC 5246).
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "TLS as a client" is selected in FCS_TLS_EXT.1.1.
-              </h:p>
-              <h:p>
-              Session renegotiation protection is required for both TLS 1.2 and TLS 1.3, and the ST must include the requirements from FCS_TLSC_EXT.4. Within FCS_TLSC_EXT.4, options for implementation of secure session renegotiation for TLS 1.2, or rejecting renegotiation requests are claimed.  
-              </h:p>
-              <h:p>
-              The ST author will claim supported TLS versions and optional functionality as appropriate for the claimed versions. 
-              </h:p>
-              <h:p>
-                If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.2. If the TOE implements TLS with mutual authentication, this selection must be made.
-              </h:p>
-              <h:p>
-                If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.3. This is claimed when both TLS 1.2 and TLS 1.3 are supported. Note that TLS 1.1 or below downgrade protection in TLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3, when it negotiates a TLS 1.1 session because it received a ClientHello message indicating maximum support for TLS 1.1. Since this Functional Package does not allow negotiation of TLS 1.1 or below, it is not necessary to claim such support.
-              </h:p>
-              <h:p>
-                If "session resumption" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.5. 
-              </h:p>
-            </note>
-          </f-element>
-          <f-element id="fel-tlsc-ciphers">
-            <title>
-              The TSF shall be able to support the following
+    <depends on-sel="dtlss_v13_resumption"/> 
+    <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a DTLS server.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol<h:br/>
+      FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption
+    </dependencies>
+    <f-element>
+      <title>
+        The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
+      </title>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall ignore early data received in DTLS 1.3 sessions.
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if DTLS 1.3 is supported and "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSS_EXT.5.1.
+        </h:p>
+        <h:p>
+        RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions.
+        </h:p>
+      </note>
+      <aactivity>
+        <TSS>
+          <h:p>
+          The evaluator shall examine the TSS to confirm that the DTLS description includes details on session resumption for DTLS 1.3, describes each application capable of using DTLS 1.3 with PSK, and describes how the TSF and application respond to client attempts to use early data (including via logging or observable responses). The evaluator shall confirm that the DTLS description shows that only the psk_dhe_ke psk_key_exchange_modes is supported and that early information is ignored. 
+          </h:p>
+        </TSS>
+        <Guidance>
+          <h:p>
+          The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
+          </h:p>
+        </Guidance>
+        <Tests>
+          The evaluator shall follow the operational guidance to configure the TSF to negotiate DTLS 1.3 and shall perform the following tests:
+          <testlist>
+            <test>The evaluator shall attempt a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) but using psk_ke mode as the value for the psk_key_exchange_modes extension in the resumption ClientHello message. The evaluator shall observe that the TSF refuses to resume the session, by silently dropping the message, by completing a full DTLS 1.3 handshake, or by terminating the session.
+            <h:p>
+            <h:b>Note:</h:b> If the TSF terminates the session or completes a full DTLS 1.3 handshake, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
+            </h:p>
+            </test>
+            <!-- updated per TD0729 -->
+            <test>The evaluator shall establish a valid DTLS 1.3 session with the TOE and send the data as Application Data after the Finished messages have been verified, and observe the response. The evaluator shall then configure the TOE to clear the response and initiate a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) with a test DTLS 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the TSF does not react to the early data as it did when presented as Application Data after the Ginished messages, indicating that the data was ignored.
+            <h:p>
+            <h:b>Note:</h:b> The specific early data used may depend on the applications calling the DTLS session and should be selected to initiate an observable response in the TSF or calling application as described in the ST. For HTTPS, for example, the early data can be an HTTP POST that updates data at the TOE, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
+            </h:p>
+            </test>
+          </testlist>
+        </Tests>
+      </aactivity>
+    </f-element>  
+    <audit-event/>
+  </f-component>   
+  <ext-comp-def fam-id="FCS_TLSC_EXT" title="TLS Client Protocol">
+    <fam-behavior>This family defines requirements for implementation of TLS as a client.</fam-behavior>
+  </ext-comp-def>
+  <f-component cc-id="fcs_tlsc_ext.1" name="TLS Client Protocol" status="sel-based">
+		<depends on-sel="tlsc_impl"/>
+    <comp-lev> requires the TSF to implement TLS as a client in the specified manner.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the PP, PP-Module, Functional Package, or ST:
+      <h:ul>
+      <h:li>Establishment and termination of a TLS session</h:li>
+      <h:li>Failure to establish a TLS session</h:li>
+      <h:li>Failure to verify presented identifier</h:li>
+      </h:ul>
+    </audit>
+    <dependencies>
+      FCS_CKM.1 Cryptographic Key Generation<h:br/>
+      FCS_CKM.2 Cryptographic Key Distribution<h:br/>
+      FCS_COP.1 Cryptographic Operation<h:br/>
+      FCS_RBG.1 Random Bit Generation (RBG)<h:br/>
+      FIA_X509_EXT.1 X.509 Certificate Validation<h:br/>
+      FIA_X509_EXT.2 X.509 Certificate Authentication
+    </dependencies> 
+    <f-element id="fel-client">
+      <title> The TSF shall implement
+        <selectables>
+          <selectable>TLS 1.2 (RFC 5246)</selectable>
+          <selectable>TLS 1.3 (RFC 8446)</selectable>
+        </selectables> as a client that supports additional functionality for session renegotiation protection and
+        <selectables linebreak="yes">
+          <selectable id="tlsc_mutual_auth">mutual authentication</selectable>
+          <selectable id="tlsc_downgrade_protection">supplemental downgrade protection</selectable>
+          <selectable id="tlsc_resumption">session resumption</selectable>
+          <selectable>no optional functionality</selectable></selectables>
+        and shall abort attempts by a server to negotiate any TLS or SSL version prior to TLS 1.2 (RFC 5246).
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "TLS as a client" is selected in FCS_TLS_EXT.1.1.
+        </h:p>
+        <h:p>
+        Session renegotiation protection is required for both TLS 1.2 and TLS 1.3, and the ST must include the requirements from FCS_TLSC_EXT.4. Within FCS_TLSC_EXT.4, options for implementation of secure session renegotiation for TLS 1.2, or rejecting renegotiation requests are claimed.  
+        </h:p>
+        <h:p>
+        The ST author will claim supported TLS versions and optional functionality as appropriate for the claimed versions. 
+        </h:p>
+        <h:p>
+        If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.2. If the TOE implements TLS with mutual authentication, this selection must be made.
+        </h:p>
+        <h:p>
+        If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.3. This is claimed when both TLS 1.2 and TLS 1.3 are supported. Note that TLS 1.1 or below downgrade protection in TLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3, when it negotiates a TLS 1.1 session because it received a ClientHello message indicating maximum support for TLS 1.1. Since this Functional Package does not allow negotiation of TLS 1.1 or below, it is not necessary to claim such support.
+        </h:p>
+        <h:p>
+        If "session resumption" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.5. 
+        </h:p>
+      </note>
+    </f-element>
+    <f-element id="fel-tlsc-ciphers">
+      <title>
+        The TSF shall be able to support the following
+        <selectables linebreak="yes">
+        <selectable>TLS 1.2 ciphersuites:
+        <selectables linebreak="yes">
+          <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+          <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+          <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+          <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+          <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+          <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+          <selectable>ciphersuites using pre-shared secrets:
           <selectables linebreak="yes">
-            <selectable>TLS 1.2 ciphersuites:
+            <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
+            <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+            <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+          </selectables></selectable></selectables>
+          and shall not offer other TLS 1.2 ciphersuites,</selectable>
+        <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
+          <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
+          <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
+          </selectables></selectable>
+        </selectables>
+            offering the supported ciphersuites in a ClientHello message in preference order: 
+            <assignable>list of supported ciphersuites</assignable>.
+      </title>
+      <ext-comp-def-title>
+        <title>
+          The TSF shall be able to support the following <assignable>list of supported TLS ciphersuites</assignable>,
+          offering the supported ciphersuites in a ClientHello message in preference order: 
+          <assignable>list of supported ciphersuites</assignable>.
+        </title>
+      </ext-comp-def-title>
+      <note role="application">
+        <h:p>
+        The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite for each TLS version supported. Pre-shared secret ciphersuites for TLS 1.2 are only claimed as required by a specific PP. The ciphersuites to be tested in the evaluated configuration are limited by this requirement. However, this requirement does not restrict the TOE's ability to propose additional ciphersuites beyond the ones listed in this requirement in its ClientHello message as indicated in the ST. That is, the TOE may propose any ciphersuite not excluded by this element, but the evaluation will only test ciphersuites from the above list. It is necessary to limit the ciphersuites that can be used administratively in an evaluated configuration on the server in the test environment. 
+        </h:p>
+        <h:p>
+        TLS 1.3 ciphersuites are claimed if support for TLS 1.3 is claimed in FCS_TLSC_EXT.1.1. The assignment of preference order provides an ordered list of all supported ciphersuites with the most preferred ciphersuites listed first. 
+        </h:p>
+        <h:p>
+        While mandatory for RFC 8446 compliance, TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be included in “other TLS 1.3 ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+        </h:p>
+        <h:p>
+        In addition to the supported ciphersuites, the ST author indicates the order of ciphersuites included in the ClientHello message, indicating the preferred ciphersuites for server negotiation.  To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the TOE is running) the ST uses the assignment to specify a dynamic ordering and the describes in the TSS the conditions for presenting the ordering. It is recommended, but not required, that the TLS 1.3 ciphersuites claimed are listed before TLS 1.2 ciphersuites, and that any other ciphersuites are listed last among the TLS 1.3 ciphersuites.
+        </h:p>
+      </note>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall not offer ClientHello messages indicating the following: 
+        <h:ul>
+          <h:li>null encryption</h:li>
+          <h:li>support for anonymous servers</h:li>
+          <h:li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</h:li>
+          <h:li>use of MD5 or SHA-1 for key derivation</h:li>
+        </h:ul> and shall abort sessions where a server attempts to negotiate ciphersuites not enumerated in the ClientHello message.
+      </title>
+      <note role="application">
+        <h:p>
+        This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports TLS 1.2 (as the only supported version, or as a fallback version for TLS 1.3 clients negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when TLS 1.3 is supported. In addition, this requirement prohibits Using Raw Public Keys in Transport Layer Security and Datagram Transport Layer Security (RFC 7250) for server certificates.
+        </h:p>
+        <h:p>
+        Ciphersuites for TLS 1.2 are of the form TLS_(key establishment algorithm)_WITH_(encryption algorithm)_(message digest algorithm), and are listed in the TLS parameters section of the internet assignments at iana.org. This requirement constrains the value of (encryption algorithm) and (message digest algorithm).
+        </h:p>
+        <h:p>
+        Ciphersuites for TLS 1.3 are of the form TLS_(AEAD)_(HASH), where (AEAD) is of the form (encryption algorithm)_(symmetric key length)_(mode) for an authenticated encryption with associated data specification (RFC 5116). This requirement constrains the value of the (encryption algorithm) component of (AEAD) and the value of (HASH). 
+        </h:p> 
+      </note>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall be able to support the following TLS ClientHello message extensions: 
+        <h:ul>
+          <h:li>signature_algorithms extension (RFC 8446) indicating support for 
           <selectables linebreak="yes">
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-            <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-            <selectable>ciphersuites using pre-shared secrets:
-              <selectables linebreak="yes">
-                <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
-                <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-                <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-              </selectables></selectable></selectables>
-              and shall not offer other TLS 1.2 ciphersuites,</selectable>
-            <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
-              <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-              <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
-            </selectables></selectable>
-          </selectables>
-              offering the supported ciphersuites in a ClientHello message in preference order: 
-              <assignable>list of supported ciphersuites</assignable>.
-          </title>
-            <ext-comp-def-title>
-              <title>
-                The TSF shall be able to support the following <assignable>list of supported TLS ciphersuites</assignable>,
-                offering the supported ciphersuites in a ClientHello message in preference order: 
-                <assignable>list of supported ciphersuites</assignable>.
-              </title>
-            </ext-comp-def-title>
-            <note role="application">
-              <h:p>
-              The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite for each TLS version supported. Pre-shared secret ciphersuites for TLS 1.2 are only claimed as required by a specific PP. The ciphersuites to be tested in the evaluated configuration are limited by this requirement. However, this requirement does not restrict the TOE's ability to propose additional ciphersuites beyond the ones listed in this requirement in its ClientHello message as indicated in the ST. That is, the TOE may propose any ciphersuite not excluded by this element, but the evaluation will only test ciphersuites from the above list. It is necessary to limit the ciphersuites that can be used administratively in an evaluated configuration on the server in the test environment. 
-              </h:p>
-              <h:p>
-              TLS 1.3 ciphersuites are claimed if support for TLS 1.3 is claimed in FCS_TLSC_EXT.1.1. 
-              The assignment of preference order provides an ordered list of all supported ciphersuites with the most preferred ciphersuites listed first. 
-              </h:p>
-              <h:p>
-              While mandatory for RFC 8446 compliance, TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be included in “other TLS 1.3 ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
-              </h:p>
-              <h:p>
-              In addition to the supported ciphersuites, the ST author indicates the order of ciphersuites included in the ClientHello message, indicating the preferred ciphersuites for server negotiation.  To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the TOE is running) the ST uses the assignment to specify a dynamic ordering and the describes in the TSS the conditions for presenting the ordering. It is recommended, but not required, that the TLS 1.3 ciphersuites claimed are listed before TLS 1.2 ciphersuites, and that any other ciphersuites are listed last among the TLS 1.3 ciphersuites.
-              </h:p>
-            </note>
-          </f-element>
-          <f-element>
-          <title>
-            The TSF shall not offer ClientHello messages indicating the following: 
-            <h:ul>
-              <h:li>null encryption</h:li>
-              <h:li>support for anonymous servers</h:li>
-              <h:li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</h:li>
-              <h:li>use of MD5 or SHA-1 for key derivation</h:li>
-            </h:ul> and shall abort sessions where a server attempts to negotiate ciphersuites not enumerated in the ClientHello message.
-          </title>
-            <note role="application">
-              <h:p>
-                This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports TLS 1.2 (as the only supported version, or as a fallback version for TLS 1.3 clients negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when TLS 1.3 is supported. In addition, this requirement prohibits Using Raw Public Keys in Transport Layer Security and Datagram Transport Layer Security (RFC 7250) for server certificates.
-              </h:p>
-              <h:p>
-                Ciphersuites for TLS 1.2 are of the form TLS_(key establishment algorithm)_WITH_(encryption algorithm)_(message digest algorithm), and are listed in the TLS parameters section of the internet assignments at iana.org. This requirement constrains the value of (encryption algorithm) and (message digest algorithm).
-              </h:p>
-              <h:p>
-                Ciphersuites for TLS 1.3 are of the form TLS_(AEAD)_(HASH), where (AEAD) is of the form (encryption algorithm)_(symmetric key length)_(mode) for an authenticated encryption with associated data specification (RFC 5116). This requirement constrains the value of the (encryption algorithm) component of (AEAD) and the value of (HASH). 
-              </h:p> 
-            </note>
-          </f-element>
-          <f-element>
-         <title>
-           The TSF shall be able to support the following TLS ClientHello message extensions: 
-           <h:ul>
-             <h:li>signature_algorithms extension (RFC 8446) indicating support for 
-               <selectables linebreak="yes">
-                 <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
-                 <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                   <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
-                   <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
-                   <selectable>no other signature algorithms</selectable></selectables>
-               and
-             </h:li>
-           </h:ul>
-               <selectables linebreak="yes">
-                 <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
-                   <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
-                   <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                     <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
-                     <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
-                     <selectable>no other signature algorithms</selectable>
-                   </selectables></selectable>
-                 <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3 and <selectables>
-                   <selectable>TLS 1.2</selectable>
-                   <selectable>no other versions</selectable>
-                 </selectables></selectable>
-                 <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
-                   <selectable>secp384r1 (RFC 8446)</selectable>
-                   <selectable>ffdhe3072 (RFC 7919)</selectable>
-                   <selectable>ffdhe4096 (RFC 7919)</selectable>
-                 </selectables> and <selectables linebreak="yes">
-                   <selectable>secp521r1 (RFC 8446)</selectable>
-                   <selectable>ffdhe6144 (RFC 7919)</selectable>
-                   <selectable>ffdhe8192 (RFC 7919)</selectable>
-                   <selectable>no other supported groups</selectable></selectables></selectable>
-                 <selectable>key_share extension (RFC 8446)</selectable>
-                 <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke
-                   (DHE or ECDHE) mode</selectable>
-                 <selectable>extended_master_secret extension (RFC 7627) enforcing server support, and
-                   <selectables>
-                     <selectable>allowing legacy servers</selectable>
-                     <selectable>no other enforcement mode</selectable>
-                   </selectables></selectable>
-                 <selectable>no other extensions</selectable></selectables>
-               and shall not send the following extensions: <h:ul>
-                 <h:li>early_data</h:li>
-                 <h:li>psk_key_exchange_modes indicating PSK only mode.</h:li>
-               </h:ul>
-         </title>
-            <ext-comp-def-title>
-              <title>
-                The TSF shall be able to support the following TLS ClientHello message extensions: 
-                <h:ul>
-                  <h:li>signature_algorithms extension (RFC 8446) indicating support for 
-                    <selectables linebreak="yes">
-                      <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
-                      <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
-                        <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
-                        <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
-                        <selectable>no other signature algorithms</selectable></selectables>
-                    and
-                  </h:li>
-                  <assignable>other supported TLS extensions</assignable><h:br/>
-                    and shall not send the following extensions: <h:ul>
-                      <h:li>early_data</h:li>
-                      <h:li>psk_key_exchange_modes indicating PSK only mode.</h:li>
-                    </h:ul>
-                </h:ul>
-              </title>
-            </ext-comp-def-title>
-         <note role="application">
-           <h:p>
-             Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
-           </h:p>
-           <h:p>
-           If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446. If TLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed. 
-           </h:p>
-           <h:p>
-           If TLS 1.2 is claimed, extended_master_secret extension is claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers.
-           </h:p>
-           <h:p>
-             If TLS 1.2 is claimed and if DHE or ECDHE ciphersuites are claimed in FCS_TLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp or ffdhe groups claimed.
-           </h:p>
-           <h:p>
-             Other extensions may be supported; certain extensions and values may need to be claimed for SFRs defined outside of this package related to the calling applications.
-           </h:p>
-         </note>
-          </f-element>
-          <f-element id="fel-present-identifier">
-            <title>
-              The TSF shall be able to <selectables linebreak="yes">
+            <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
+            <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+            <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+            <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
+            <selectable>no other signature algorithms</selectable></selectables>
+          and
+          </h:li>
+        </h:ul>
+        <selectables linebreak="yes">
+          <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
+            <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
+            <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+            <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+            <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
+            <selectable>no other signature algorithms</selectable>
+          </selectables></selectable>
+          <selectable>supported_versions extension (RFC 8446) indicating support for TLS 1.3 and <selectables>
+            <selectable>TLS 1.2</selectable>
+            <selectable>no other versions</selectable>
+          </selectables></selectable>
+          <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
+            <selectable>secp384r1 (RFC 8446)</selectable>
+            <selectable>ffdhe3072 (RFC 7919)</selectable>
+            <selectable>ffdhe4096 (RFC 7919)</selectable>
+            </selectables> and <selectables linebreak="yes">
+            <selectable>secp521r1 (RFC 8446)</selectable>
+            <selectable>ffdhe6144 (RFC 7919)</selectable>
+            <selectable>ffdhe8192 (RFC 7919)</selectable>
+            <selectable>no other supported groups</selectable></selectables></selectable>
+          <selectable>key_share extension (RFC 8446)</selectable>
+          <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable>
+          <selectable>extended_master_secret extension (RFC 7627) enforcing server support, and
+          <selectables>
+            <selectable>allowing legacy servers</selectable>
+            <selectable>no other enforcement mode</selectable>
+          </selectables></selectable>
+          <selectable>no other extensions</selectable></selectables>
+          and shall not send the following extensions: <h:ul>
+            <h:li>early_data</h:li>
+            <h:li>psk_key_exchange_modes indicating PSK only mode.</h:li>
+        </h:ul>
+      </title>
+      <ext-comp-def-title>
+        <title>
+          The TSF shall be able to support the following TLS ClientHello message extensions: 
+          <h:ul>
+            <h:li>signature_algorithms extension (RFC 8446) indicating support for 
+            <selectables linebreak="yes">
+              <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
+              <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
+                <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
+                <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
+                <selectable>no other signature algorithms</selectable></selectables>
+              and
+            </h:li>
+            <assignable>other supported TLS extensions</assignable><h:br/>
+              and shall not send the following extensions: <h:ul>
+                <h:li>early_data</h:li>
+                <h:li>psk_key_exchange_modes indicating PSK only mode.</h:li>
+              </h:ul>
+          </h:ul>
+        </title>
+      </ext-comp-def-title>
+      <note role="application">
+        <h:p>
+        Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
+        </h:p>
+        <h:p>
+        If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446. If TLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed. 
+        </h:p>
+        <h:p>
+        If TLS 1.2 is claimed, extended_master_secret extension is claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers.
+        </h:p>
+        <h:p>
+        If TLS 1.2 is claimed and if DHE or ECDHE ciphersuites are claimed in FCS_TLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp or ffdhe groups claimed.
+        </h:p>
+        <h:p>
+        Other extensions may be supported; certain extensions and values may need to be claimed for SFRs defined outside of this package related to the calling applications.
+        </h:p>
+      </note>
+    </f-element>
+    <f-element id="fel-present-identifier">
+      <title>
+        The TSF shall be able to <selectables linebreak="yes">
               <selectable>verify that a presented identifier of name type: <selectables linebreak="yes">
                 <selectable>dNSName according to RFC 6125</selectable>
                 <selectable>uniformResourceIdentifier according to RFC 6125</selectable> 
