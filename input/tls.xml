@@ -3898,109 +3898,101 @@
     </audit-event>
   </f-component>
   <f-component cc-id="fcs_tlss_ext.2" name="TLS Server Support for Mutual Authentication" status="sel-based">
-         <depends on-sel="tlss_mutual_auth"/>
-         
-         
-         <comp-lev> requires the TSF to support mutually-authenticated TLS when acting as a TLS server.
-         </comp-lev>
-         <management>No specific management functions are identified.
-         </management>
-         <audit>There are no auditable events foreseen.
-         </audit>
-         <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol
-         </dependencies>
-         
-          <f-element id="fel-tlss-auth">
-            <title>The TSF shall support authentication of TLS clients using X.509v3 certificates during the TLS handshake and <selectables>
-              <selectable>during post-handshake requests</selectable>
-              <selectable>at no other time</selectable></selectables> 
-              using the certificate types indicated in the client’s signature_algorithms and <selectables>
-                <selectable>signature_algorithms_cert</selectable>
-                <selectable>no other</selectable></selectables> extension.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "mutual authentication" is selected in FCS_TLSS_EXT.1.1.
-              </h:p>
-              <h:p>
-              TLS 1.3 supports authentication after completing the abbreviated handshake with pre-shared keys. A server may send a client a CertificateRequest message after the Finished message whenever the client includes the post-handshake authentication extension. The ST author claims ‘during post-handshake request’ if this feature is supported. If TLS 1.3 is not supported, or if the TLS post-handshake request extension is not recognized in a TLS 1.3 handshake, the ST author selects ‘at no other time’.
-              </h:p>
-            </note>
-          </f-element>
-         <f-element id="fel-tlss-x509-auth">
-           <title>The TSF shall support authentication of TLS clients using X.509v3 certificates in accordance with <no-link>FIA_X509_EXT.1</no-link>.</title>
-         </f-element>
-         <f-element id="fel-tlss-invalid-client-cert">
-             <title>
-             The TSF shall be able to reject the establishment of a trusted channel if the requested client certificate is invalid and <selectables linebreak="yes">
-               <selectable>continue establishment of a server-only authenticated TLS channel in accordance with FCS_TLSS_EXT.1 in support of <selectables>
-                 <selectable>all applications</selectable>
-                 <selectable><assignable>list of calling applications that accept both authenticated and unauthenticated client sessions</assignable></selectable></selectables> 
-                 when an empty Certificate message is provided by the client</selectable>
-               <selectable>continue establishment of a mutually authenticated TLS channel when revocation status information for the <selectables linebreak="yes">
-                 <selectable>client's leaf certificate</selectable>
-                 <selectable><assignable>specific intermediate CA certificates</assignable></selectable>
-                 <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
-                 is not available in support of <selectables linebreak="yes">
-                   <selectable>all supported functions</selectable>
-                   <selectable><assignable>list of calling supported functions configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables linebreak="yes">
-                   <selectable>configured by an administrator</selectable>
-                   <selectable>confirmed by the supported function user</selectable>
-                   <selectable>a TLS-specific default for <assignable>subset of supported functions</assignable></selectable></selectables>
-               </selectable>
-               <selectable>no other processing options for missing or invalid client certificates</selectable></selectables>. 
-           </title>
-           <note role="application">
-             <h:p>
-             The ST author claims any certificate processing exceptions that are allowed for specific calling applications. 
-             The "continue establishment of a server-only authenticated TLS channel" selection is claimed if the TLS product supports applications that can provide services to unauthenticated users if the user does not possess an appropriate certificate. Within this selection, the ST author indicates which applications are able to support both authenticated and unauthenticated users.
-             </h:p>
-             <h:p>
-             The ST author claims "continue establishment of a mutually authenticated TLS channel" if there is an administrator configuration or user confirmation that revocation status information is not available for one or more of the certificates in the client’s certificate chain. If claimed, the ST author will describe in the assignment for intermediate values which CA certificates are included in the exception (for example, “all intermediates but the issuing CA” or “specific end-entity certificates as configured”). Within this selection, the ST author specifies which applications are impacted and which authorized user is allowed to approve continuing with the session when revocation information is not available.
-             </h:p>
-             <h:p> 
-             If an administrator configures whether a user may accept a certificate without status information, both selections are claimed. The "a TLS-specific default" selection should only be chosen for applications that do not have access to revocation information. This is not claimed when alternate revocation methods are claimed in FIA_X509_EXT.1 that apply to TLS client certificates. Methods for obtaining revocation information are included in <no-link>FIA_X509_EXT.1</no-link>.
-             </h:p>
-           </note>
-         </f-element>
-         <f-element>
-           <title>The TSF shall be able to <selectables linebreak="yes">
-             <selectable>not establish a TLS session if an entry of the Distinguished Name or a <selectables>
-               <selectable>rfc822_name</selectable>
-               <selectable>dns_name</selectable>
-               <selectable><assignable>supported name types</assignable></selectable></selectables>
-               in the Subject Alternate Name extension contained in the client certificate does not match one of the expected identifiers for the client in accordance with <selectables>
-                 <selectable>RFC 2822</selectable>
-                 <selectable>RFC 6125</selectable>
-                 <selectable>RFC 5280</selectable>
-                 <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
-               matching rules</selectable>
-             <selectable>pass the <selectables>
-               <selectable>validated certificate</selectable>
-               <selectable>RFC 2822 name normalized according to RFC 2822</selectable>
-               <selectable>DNS name normalized according to RFC 6125</selectable>
-               <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
-               <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
-               to <assignable>list of calling applications capable of making access decisions</assignable></selectable> 
-             <selectable>pass initial name constraints of type <selectables>
-               <selectable>directory name</selectable>
-               <selectable>rfc_822_name</selectable>
-               <selectable>dns_name</selectable>
-               <selectable><assignable>supported name types</assignable></selectable></selectables>
-               to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier matches
-               an expected client identifier</selectable>
-           <selectable>associate a PSK to a specific reference identifier</selectable>
-           </selectables>.
-           </title>
-           <note role="application">
-             <h:p>
-             Authorization for services provided by the applications that are protected by the TLS session is determined by the supported function establishing a set of reference identifiers, by passing the received identifiers to the supported function, or by passing initial name constraints to the certification path validation function. 
-             The ST author indicates the methods supported and, for each method supported, indicates all name types supported; if name types are processed by the TSF, at least one name type is required. In the assignment of the first option, the ST author indicates all name types and the corresponding method for matching in the sub-selections. In the second method option, the ST author indicates which name type normalizations the product supports. If the product passes the entire validated certificate to the application, no normalization of the names contained in the certificate is expected. If the third method is claimed, the ST author indicates which name types are supported for formulating initial name constraints.
-             </h:p>
-             <h:p>
-             If name normalization is claimed, care should be taken regarding wildcards and IP addresses. IP addresses embedded in DNS host names and in Directory Name CN components have been observed to include non-standard wildcard designations including the ‘*’ character. Any embedded IP addresses should use standard CIDR notation and should not include nonstandard encoding. 
-             </h:p>
-           </note>
+    <depends on-sel="tlss_mutual_auth"/>
+    <comp-lev> requires the TSF to support mutually-authenticated TLS when acting as a TLS server.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol</dependencies>
+    <f-element id="fel-tlss-auth">
+      <title>The TSF shall support authentication of TLS clients using X.509v3 certificates during the TLS handshake and <selectables>
+        <selectable>during post-handshake requests</selectable>
+        <selectable>at no other time</selectable></selectables> 
+        using the certificate types indicated in the client’s signature_algorithms and <selectables>
+          <selectable>signature_algorithms_cert</selectable>
+          <selectable>no other</selectable></selectables> extension.
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "mutual authentication" is selected in FCS_TLSS_EXT.1.1.
+        </h:p>
+        <h:p>
+        TLS 1.3 supports authentication after completing the abbreviated handshake with pre-shared keys. A server may send a client a CertificateRequest message after the Finished message whenever the client includes the post-handshake authentication extension. The ST author claims ‘during post-handshake request’ if this feature is supported. If TLS 1.3 is not supported, or if the TLS post-handshake request extension is not recognized in a TLS 1.3 handshake, the ST author selects ‘at no other time’.
+        </h:p>
+      </note>
+    </f-element>
+    <f-element id="fel-tlss-x509-auth">
+      <title>The TSF shall support authentication of TLS clients using X.509v3 certificates in accordance with <no-link>FIA_X509_EXT.1</no-link>.
+      </title>
+    </f-element>
+    <f-element id="fel-tlss-invalid-client-cert">
+      <title>
+        The TSF shall be able to reject the establishment of a trusted channel if the requested client certificate is invalid and <selectables linebreak="yes">
+          <selectable>continue establishment of a server-only authenticated TLS channel in accordance with FCS_TLSS_EXT.1 in support of <selectables>
+          <selectable>all applications</selectable>
+          <selectable><assignable>list of calling applications that accept both authenticated and unauthenticated client sessions</assignable></selectable></selectables> 
+          when an empty Certificate message is provided by the client</selectable>
+          <selectable>continue establishment of a mutually authenticated TLS channel when revocation status information for the <selectables linebreak="yes">
+          <selectable>client's leaf certificate</selectable>
+          <selectable><assignable>specific intermediate CA certificates</assignable></selectable>
+          <selectable>any non-trust store certificate in the certificate chain</selectable></selectables>  
+          is not available in support of <selectables linebreak="yes">
+            <selectable>all supported functions</selectable>
+            <selectable><assignable>list of calling supported functions configurable to perform certificate status information bypass processing</assignable></selectable></selectables> as <selectables linebreak="yes">
+            <selectable>configured by an administrator</selectable>
+            <selectable>confirmed by the supported function user</selectable>
+            <selectable>a TLS-specific default for <assignable>subset of supported functions</assignable></selectable></selectables>
+        </selectable>
+        <selectable>no other processing options for missing or invalid client certificates</selectable></selectables>. 
+      </title>
+      <note role="application">
+        <h:p>
+        The ST author claims any certificate processing exceptions that are allowed for specific calling applications. The "continue establishment of a server-only authenticated TLS channel" selection is claimed if the TLS product supports applications that can provide services to unauthenticated users if the user does not possess an appropriate certificate. Within this selection, the ST author indicates which applications are able to support both authenticated and unauthenticated users.
+        </h:p>
+        <h:p>
+        The ST author claims "continue establishment of a mutually authenticated TLS channel" if there is an administrator configuration or user confirmation that revocation status information is not available for one or more of the certificates in the client’s certificate chain. If claimed, the ST author will describe in the assignment for intermediate values which CA certificates are included in the exception (for example, “all intermediates but the issuing CA” or “specific end-entity certificates as configured”). Within this selection, the ST author specifies which applications are impacted and which authorized user is allowed to approve continuing with the session when revocation information is not available.
+        </h:p>
+        <h:p> 
+        If an administrator configures whether a user may accept a certificate without status information, both selections are claimed. The "a TLS-specific default" selection should only be chosen for applications that do not have access to revocation information. This is not claimed when alternate revocation methods are claimed in FIA_X509_EXT.1 that apply to TLS client certificates. Methods for obtaining revocation information are included in <no-link>FIA_X509_EXT.1</no-link>.
+        </h:p>
+      </note>
+    </f-element>
+    <f-element>
+      <title>The TSF shall be able to <selectables linebreak="yes">
+        <selectable>not establish a TLS session if an entry of the Distinguished Name or a <selectables>
+          <selectable>rfc822_name</selectable>
+          <selectable>dns_name</selectable>
+          <selectable><assignable>supported name types</assignable></selectable></selectables>
+          in the Subject Alternate Name extension contained in the client certificate does not match one of the expected identifiers for the client in accordance with <selectables>
+            <selectable>RFC 2822</selectable>
+            <selectable>RFC 6125</selectable>
+            <selectable>RFC 5280</selectable>
+            <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
+          matching rules</selectable>
+        <selectable>pass the <selectables>
+          <selectable>validated certificate</selectable>
+          <selectable>RFC 2822 name normalized according to RFC 2822</selectable>
+          <selectable>DNS name normalized according to RFC 6125</selectable>
+          <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
+          <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
+          to <assignable>list of calling applications capable of making access decisions</assignable></selectable> 
+        <selectable>pass initial name constraints of type <selectables>
+          <selectable>directory name</selectable>
+          <selectable>rfc_822_name</selectable>
+          <selectable>dns_name</selectable>
+          <selectable><assignable>supported name types</assignable></selectable></selectables>
+          to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier matches
+          an expected client identifier</selectable>
+        <selectable>associate a PSK to a specific reference identifier</selectable>
+        </selectables>.
+      </title>
+      <note role="application">
+        <h:p>
+        Authorization for services provided by the applications that are protected by the TLS session is determined by the supported function establishing a set of reference identifiers, by passing the received identifiers to the supported function, or by passing initial name constraints to the certification path validation function. The ST author indicates the methods supported and, for each method supported, indicates all name types supported; if name types are processed by the TSF, at least one name type is required. In the assignment of the first option, the ST author indicates all name types and the corresponding method for matching in the sub-selections. In the second method option, the ST author indicates which name type normalizations the product supports. If the product passes the entire validated certificate to the application, no normalization of the names contained in the certificate is expected. If the third method is claimed, the ST author indicates which name types are supported for formulating initial name constraints.
+        </h:p>
+        <h:p>
+        If name normalization is claimed, care should be taken regarding wildcards and IP addresses. IP addresses embedded in DNS host names and in Directory Name CN components have been observed to include non-standard wildcard designations including the ‘*’ character. Any embedded IP addresses should use standard CIDR notation and should not include nonstandard encoding. 
+        </h:p>
+      </note>
 	    <aactivity>
 	      <TSS>
 	        <h:p>
@@ -4022,71 +4014,70 @@
 	        </h:p>
 	        <testlist>
 	          <test>
-	            For each supported version, the evaluator shall follow the operational guidance to configure the TOE to require valid client authentication with no exceptions in support of a function (configured, as necessary) that does not allow unauthenticated sessions, and initiate a TLS session from a compliant TLS test client supporting that version. The evaluator shall ensure that the test client sends a certificate_list structure which has a length of zero. The evaluator shall verify the TSF terminates the session and no application data flows. 
-	            <h:p>
-	            <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake_failure, bad_certificate, certificate_unknown, unknown_CA) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
-	            </h:p>
+	          For each supported version, the evaluator shall follow the operational guidance to configure the TOE to require valid client authentication with no exceptions in support of a function (configured, as necessary) that does not allow unauthenticated sessions, and initiate a TLS session from a compliant TLS test client supporting that version. The evaluator shall ensure that the test client sends a certificate_list structure which has a length of zero. The evaluator shall verify the TSF terminates the session and no application data flows. 
+	          <h:p>
+	          <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake_failure, bad_certificate, certificate_unknown, unknown_CA) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
+	          </h:p>
 	          </test>
 	          <test>[conditional] If the ST indicates that the TSF supports establishment of a TLS session for missing or invalid certificates, then for each supported version, and for each supported response option for a missing or invalid certificate indicated in FCS_TLSS_EXT.2.3, the evaluator shall configure the TSF according to the operational guidance to respond as indicated for the calling application. The evaluator shall send client handshake messages from a test TLS client as indicated for each sub-test. The evaluator shall perform the following sub-tests:
 	            <testlist>
 	              <test>[conditional]: If the TSF supports non-authenticated session establishment when receiving an empty Certificate message, the evaluator shall initiate a TLS handshake from a compliant test TLS client supporting the version and providing a Certificate message containing a certificate_list structure of length zero. The evaluator shall confirm that the TSF notifies the calling application that the user is unauthenticated.
-	                <h:p>
-	                <h:b>Note:</h:b> Specific procedures for determining that the calling application is notified will vary based on the application. If an API to the calling application is not available, the evaluator may attempt to configure the calling application to provide a different response (e.g., require authentication for flagged data) for authenticated and non-authenticated users and make a request at the test client that results in a response indicating the application is treating the client as non-authenticated.
-	                </h:p>
-                  </test>
-	              <test>[conditional] If the TSF supports exceptions for when revocation status information is unavailable, then the evaluator shall follow the operational guidance to attempt to establish a narrowly defined exception for which both exempt and non-exempt certificates can be established. 
-	                The evaluator shall establish a primary certificate chain for the test client that only exhibits the allowed exception and one or more alternate certificate chains for the test client that do not pass the exception rule, as necessary to test the boundaries of the exception rules. 
-	                <h:p>
-	                The evaluator shall follow the operational guidance to remove any cached revocation status information for the test client’s primary certificate chain. The evaluator shall initiate a valid TLS session from the test client that presents the primary certificate for the test client, provide any feedback requested by the TSF to confirm the exception, and observe that the TSF allows the certificate and completes the TLS handshake successfully. 
-	                </h:p>
-                  <h:p>
-	                For each alternate certificate chain, the evaluator shall repeat the session initiation from the test client but present the alternate certificate chain and observe that the TSF terminates the session.
-	                </h:p>
-                  <h:p>
-	                <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., bad_certificate, certificate_unknown, access_denied, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
-	                </h:p>
-                  <h:p>
-	                The alternate certificate chains are intended to test the boundaries of the exception rules. 
-	                For example, if the exception rule indicates that only leaf certificates are exempt, the evaluator shall include an alternate certificate chain for which the revocation information for a CA certificate is advertised but is not available; if the exception can be configured for an explicit leaf certificate, or particular subjects, an alternate chain will be included that does not include an excepted certificate or subject. If the exception rules can be configured for all certificates having advertised revocation information, an alternate certificate chain can include an expired certificate - only one additional validity failure (e.g., certificate_expired) is required in this case. More comprehensive validity failure handling is addressed by testing for <no-link>FIA_X509_EXT.1</no-link>.
-	                </h:p>
-                  </test>
+	              <h:p>
+	              <h:b>Note:</h:b> Specific procedures for determining that the calling application is notified will vary based on the application. If an API to the calling application is not available, the evaluator may attempt to configure the calling application to provide a different response (e.g., require authentication for flagged data) for authenticated and non-authenticated users and make a request at the test client that results in a response indicating the application is treating the client as non-authenticated.
+	              </h:p>
+                </test>
+	              <test>[conditional] If the TSF supports exceptions for when revocation status information is unavailable, then the evaluator shall follow the operational guidance to attempt to establish a narrowly defined exception for which both exempt and non-exempt certificates can be established. The evaluator shall establish a primary certificate chain for the test client that only exhibits the allowed exception and one or more alternate certificate chains for the test client that do not pass the exception rule, as necessary to test the boundaries of the exception rules. 
+	              <h:p>
+	              The evaluator shall follow the operational guidance to remove any cached revocation status information for the test client’s primary certificate chain. The evaluator shall initiate a valid TLS session from the test client that presents the primary certificate for the test client, provide any feedback requested by the TSF to confirm the exception, and observe that the TSF allows the certificate and completes the TLS handshake successfully. 
+	              </h:p>
+                <h:p>
+	              For each alternate certificate chain, the evaluator shall repeat the session initiation from the test client but present the alternate certificate chain and observe that the TSF terminates the session.
+	              </h:p>
+                <h:p>
+	              <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., bad_certificate, certificate_unknown, access_denied, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
+	              </h:p>
+                <h:p>
+	              The alternate certificate chains are intended to test the boundaries of the exception rules. For example, if the exception rule indicates that only leaf certificates are exempt, the evaluator shall include an alternate certificate chain for which the revocation information for a CA certificate is advertised but is not available; if the exception can be configured for an explicit leaf certificate, or particular subjects, an alternate chain will be included that does not include an excepted certificate or subject. If the exception rules can be configured for all certificates having advertised revocation information, an alternate certificate chain can include an expired certificate - only one additional validity failure (e.g., certificate_expired) is required in this case. More comprehensive validity failure handling is addressed by testing for <no-link>FIA_X509_EXT.1</no-link>.
+	              </h:p>
+                </test>
 	            </testlist>
-	            </test>
-	          <test>For each supported version, the evaluator shall configure the TSF to negotiate the version and require client authentication and perform the following steps: <h:ul>
-	            <h:li>For each supported name matching method indicated in FCS_TLSS_EXT.2.4, and for each name type supported by the matching method, the evaluator shall establish a valid primary certificate chain with a leaf certificate containing a single name of the supported type matching a reference ID and a valid alternate certificate chain with a leaf certificate containing a single name indicating a different name of the same type not matching a reference ID. </h:li>
-	            <h:li>[conditional] If any of the supported name types include CN encoding of a name type also supported as a SAN entry, the evaluator shall establish additional certificate chains:
+	          </test>
+	          <test>For each supported version, the evaluator shall configure the TSF to negotiate the version and require client authentication and perform the following steps:
+            <h:ul>
+	          <h:li>For each supported name matching method indicated in FCS_TLSS_EXT.2.4, and for each name type supported by the matching method, the evaluator shall establish a valid primary certificate chain with a leaf certificate containing a single name of the supported type matching a reference ID and a valid alternate certificate chain with a leaf certificate containing a single name indicating a different name of the same type not matching a reference ID. </h:li>
+	          <h:li>[conditional] If any of the supported name types include CN encoding of a name type also supported as a SAN entry, the evaluator shall establish additional certificate chains:
+	            <h:ul>
+	              <h:li>The evaluator shall establish a primary certificate chain with multiple names, to include a leaf certificate with: 
 	              <h:ul>
-	                <h:li>The evaluator shall establish a primary certificate chain with multiple names, to include a leaf certificate with: 
-	                <h:ul>
-	                  <h:li>a SAN entry that matches the name in the primary certificate chain with single names, of the same SAN name type; and </h:li>
-	                  <h:li>a CN entry encoding the same SAN type which matches the name in the alternate certificate chain with single names of the CN encoding of the same SAN name type;</h:li>
-	                </h:ul></h:li>
-	                <h:li>The evaluator shall establish an alternate certificate chain with multiple names, to include a leaf certificate with:
-	                <h:ul>
-	                  <h:li>a SAN entry that matches the name in the alternate certificate chain with single names, of the same SAN name type; and</h:li> 
-	                  <h:li>a CN entry encoding the same SAN type which matches the name in the primary certificate chain with single names, of the CN encoding of the same SAN name type.</h:li>
-	                </h:ul></h:li>
+	                <h:li>a SAN entry that matches the name in the primary certificate chain with single names, of the same SAN name type; and </h:li>
+	                <h:li>a CN entry encoding the same SAN type which matches the name in the alternate certificate chain with single names of the CN encoding of the same SAN name type;</h:li>
 	              </h:ul></h:li>
+	              <h:li>The evaluator shall establish an alternate certificate chain with multiple names, to include a leaf certificate with:
+	              <h:ul>
+	                <h:li>a SAN entry that matches the name in the alternate certificate chain with single names, of the same SAN name type; and</h:li> 
+	                <h:li>a CN entry encoding the same SAN type which matches the name in the primary certificate chain with single names, of the CN encoding of the same SAN name type.</h:li>
+	              </h:ul></h:li>
+	            </h:ul></h:li>
 	            <h:li>[conditional] If any of the supported name types include CN encoding, the evaluator shall follow the operational guidance to configure the TSF, establishing trust in the root CA for all primary and alternate certificate chains. The evaluator shall configure the TSF and any relevant TOE applications that use TLS for client authentication as necessary to establish reference identifiers that match the names in the client’s primary certificate chains with single names, but not matching any of the names in the alternate certificate chains with single names.</h:li>
 	            <h:li>For each primary certificate chain (with single or multiple names), the evaluator shall initiate a TLS session from the test TLS client that is configured to present the primary certificate chain in a Certificate message and a valid and CertificateVerify message in response to the server’s CertificateRequest message. The evaluator shall confirm that the TSF accepts the certificate and completes the authenticated TLS session successfully.</h:li>
 	            <h:li>For each alternate certificate chain (with single or multiple names), the evaluator shall initiate a TLS session from the test TLS client that is configured to present the alternate certificate chain in a Certificate message and a valid and CertificateVerify message in response to the server’s CertificateRequest message. The evaluator shall confirm that the TSF terminates the session.</h:li>
 	          </h:ul>
-	            <h:p>
-	            <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., access_denied) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
-	            </h:p>
-              <h:p>
-	            The intent of this test is to confirm that for each method that the TSF uses to match name types presented in validated certificates, it is able to recognize both matching and non-matching names. Names of special types implicitly encoded in the CN entry of the certificate subject name are especially prone to error since they may only be validated by the issuing CA as a directory name (RDN) type, especially if the issuing CA is unaware of the intended encoding as a different name type. It is a best practice that when the CN is interpreted as an embedded name type other than RDN, an explicitly encoded SAN entry should take precedence.
-	            </h:p>
 	          <h:p>
-	            TLS 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm that the TSF sends the appropriate messages by examining the messages received at the test TLS 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the TOE receives data configured at the test TLS server.
+	          <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., access_denied) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
+	          </h:p>
+            <h:p>
+	          The intent of this test is to confirm that for each method that the TSF uses to match name types presented in validated certificates, it is able to recognize both matching and non-matching names. Names of special types implicitly encoded in the CN entry of the certificate subject name are especially prone to error since they may only be validated by the issuing CA as a directory name (RDN) type, especially if the issuing CA is unaware of the intended encoding as a different name type. It is a best practice that when the CN is interpreted as an embedded name type other than RDN, an explicitly encoded SAN entry should take precedence.
+	          </h:p>
+	          <h:p>
+	          TLS 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm that the TSF sends the appropriate messages by examining the messages received at the test TLS 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the TOE receives data configured at the test TLS server.
 	          </h:p>
 	          </test>
 	        </testlist>
 	      </Tests>
 	    </aactivity>
-          </f-element>
+    </f-element>
 	  <audit-event/>
-        </f-component>
+  </f-component>
  
         <f-component cc-id="fcs_tlss_ext.3" name="TLS Server Downgrade Protection" status="sel-based">
           <depends on-sel="tlss_downgrade_protection"/>
