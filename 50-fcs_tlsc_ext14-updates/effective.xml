@@ -3250,128 +3250,106 @@
 	  <audit-event/>
   </f-component>
 	<f-component cc-id="fcs_tlsc_ext.5" name="TLS Client Support for Session Resumption" status="sel-based">
-          <depends on-sel="tlsc_resumption"/> 
-          
-          
-          <comp-lev> requires the TSF to support session resumption when acting as a TLS client.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol
-          </dependencies>
-          
-          <f-element>
-          <title>
-            The TSF shall support session resumption as a TLS client via the use of <selectables>
-              <selectable>session ID in accordance with RFC 5246</selectable>
-              <selectable>tickets in accordance with RFC 5077</selectable>
-              <selectable id="tlsc_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable></selectables>. 
-            </title>
-            <note role="application">
-              <h:p>
-              This SFR is claimed if "session resumption" is selected in FCS_TLSC_EXT.1.1.
-              </h:p><h:p>
-              The ST author indicates which session resumption mechanisms are supported. 
-              One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed if resumption of TLS 1.2 sessions is supported. 
-              If resumption of TLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_TLSC_EXT.6 must also be claimed.
-              </h:p><h:p>
-              While it is possible to perform session resumption using PSK ciphersuites in TLS 1.2, this is uncommon. 
-              Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_TLSC_EXT.1. 
-              </h:p>
-            </note>
-            <aactivity>
-              <TSS>
-              <h:p>
-                The evaluator shall examine the TSS and confirm that the TLS client protocol description includes a description of the supported resumption mechanisms.
-              </h:p>
+    <depends on-sel="tlsc_resumption"/> 
+    <comp-lev> requires the TSF to support session resumption when acting as a TLS client.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol</dependencies>
+    <f-element>
+      <title>
+        The TSF shall support session resumption as a TLS client via the use of <selectables>
+          <selectable>session ID in accordance with RFC 5246</selectable>
+          <selectable>tickets in accordance with RFC 5077</selectable>
+          <selectable id="tlsc_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable>
+        </selectables>. 
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "session resumption" is selected in FCS_TLSC_EXT.1.1.
+        </h:p>
+        <h:p>
+        The ST author indicates which session resumption mechanisms are supported. One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed if resumption of TLS 1.2 sessions is supported. If resumption of TLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_TLSC_EXT.6 must also be claimed.
+        </h:p>
+        <h:p>
+        While it is possible to perform session resumption using PSK ciphersuites in TLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_TLSC_EXT.1. 
+        </h:p>
+      </note>
+      <aactivity>
+        <TSS>
+          <h:p>
+          The evaluator shall examine the TSS and confirm that the TLS client protocol description includes a description of the supported resumption mechanisms.
+          </h:p>
 	      </TSS>
-              <Guidance>
-              <h:p>
-                The evaluator shall ensure the operational guidance describes instructions for any configurable features of the resumption mechanism.
-              </h:p>
-              </Guidance>
-              <Tests>
-              The evaluator shall perform the following tests:
-              <testlist>
-                <test id="tls-client-successful-resumption">For each supported TLS version and for each supported resumption mechanism that is supported for that version, the evaluator shall establish a new TLS session between the TSF and a compliant test TLS server that is configured to negotiate the indicated version and perform resumption using the indicated mechanism. 
-                  The evaluator shall confirm that the TSF completes the initial TLS handshake and shall cause the TSF to close the session normally. 
-                  The evaluator shall then cause the TSF to resume the session with the test TLS server using the indicated method and observe that the TSF successfully establishes the session.
-                  <h:p>
-                  <h:b>Note:</h:b> For each method, successful establishment refers to proper use of the mechanism, to include compliant extensions and behavior, as indicated in the referenced RFC.
-                  </h:p>
-                </test>
-                <test>(TLS 1.3 session id echo) [conditional] If the TSF supports TLS 1.3, the evaluator shall initiate a new TLS 1.3 session with a test TLS server. 
-                  The evaluator shall cause the test TLS server to send a TLS 1.3 ServerHello message (or a HelloRetryRequest if the TSF does not include the key_share extension) that contains a different value in the legacy_session_id field from the expected 32-byte value, and observe that the TSF terminates the session.
-                  <h:p>
-                  <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
-                  </h:p>
-                </test>
-              </testlist>
-	      </Tests>
-            </aactivity>
-          </f-element>  
-	  <audit-event/>
-        </f-component>
-
-        <f-component cc-id="fcs_tlsc_ext.6" name="TLS Client TLS 1.3 Resumption Refinements" status="sel-based">
-          <depends on-sel="tlsc_v13_resumption"/> 
-          
-          <comp-lev> requires the TSF to support session resumption behavior specific to TLS 1.3 when acting as a TLS client.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol<h:br/>
-            FCS_TLSC_EXT.5 TLS Client Support for Session Resumption
-          </dependencies>
-          
-          <f-element>
-            <title>
-              The TSF shall send a psk_key_exchange_modes extension with the value psk_dhe_ke when TLS 1.3 session resumption is offered. 
-            </title>
-          </f-element>
-          <f-element>
-            <title>
-                The TSF shall not send early data in TLS 1.3 sessions. 
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_TLSC_EXT.5.1.
-              </h:p>
-              <h:p>
-              This SFR is claimed when session resumption is supported for TLS 1.3. RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions. 
+        <Guidance>
+          <h:p>
+          The evaluator shall ensure the operational guidance describes instructions for any configurable features of the resumption mechanism.
+          </h:p>
+        </Guidance>
+        <Tests>
+          The evaluator shall perform the following tests:
+          <testlist>
+            <test id="tls-client-successful-resumption">For each supported TLS version and for each supported resumption mechanism that is supported for that version, the evaluator shall establish a new TLS session between the TSF and a compliant test TLS server that is configured to negotiate the indicated version and perform resumption using the indicated mechanism. The evaluator shall confirm that the TSF completes the initial TLS handshake and shall cause the TSF to close the session normally. The evaluator shall then cause the TSF to resume the session with the test TLS server using the indicated method and observe that the TSF successfully establishes the session.
+            <h:p>
+            <h:b>Note:</h:b> For each method, successful establishment refers to proper use of the mechanism, to include compliant extensions and behavior, as indicated in the referenced RFC.
             </h:p>
-            </note>
-            <aactivity>
-              <TSS>
-                <h:p>
-                The evaluator shall examine the TSS to verify that the TLS client protocol description indicates that a PSK cannot be used without DHE or ECDHE and prohibits sending early data.
-                The evaluator shall examine the TSS to verify it lists all applications that can be secured by TLS 1.3 using pre-shared keys and describes how each TLS 1.3 client application ensures data for the application is not sent using early data.
-                </h:p>
-              </TSS>
-              <Guidance>
-                <h:p>
-                The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
-                The evaluator shall ensure the operational guidance includes any instructions required to configure applications so the TLS 1.3 client implementation does not send early data.
-                </h:p>
-              </Guidance>
-              <Tests>
-                [conditional] For each application that is able to be secured via TLS 1.3 using PSK, 
-                the evaluator shall follow operational guidance to configure the application not to send early data. 
-                The evaluator shall cause the application to initiate a resumed TLS 1.3 session between the TSF and a compliant test TLS 1.3 server as in <xref to="tls-client-successful-resumption"/> in FCS_TLSC_EXT.5. 
-                The evaluator shall observe that the TSF ClientHello message for TLS 1.3 includes the psk_mode extension with the value psk_dhe_ke and sends a key share value for a supported group. 
-                The evaluator shall confirm that early data is not received by the test TLS server.
-                <h:p>
-                <h:b>Note:</h:b> If no applications supported by the TOE provide data to TLS 1.3 that can be sent using PSK, this test is omitted.
-                </h:p>
-              </Tests>
-            </aactivity>
-          </f-element>  
-          <audit-event/>
-        </f-component>
+            </test>
+            <test>(TLS 1.3 session id echo) [conditional] If the TSF supports TLS 1.3, the evaluator shall initiate a new TLS 1.3 session with a test TLS server. The evaluator shall cause the test TLS server to send a TLS 1.3 ServerHello message (or a HelloRetryRequest if the TSF does not include the key_share extension) that contains a different value in the legacy_session_id field from the expected 32-byte value, and observe that the TSF terminates the session.
+            <h:p>
+            <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
+            </h:p>
+            </test>
+          </testlist>
+	      </Tests>
+      </aactivity>
+    </f-element>  
+	  <audit-event/>
+  </f-component>
+  <f-component cc-id="fcs_tlsc_ext.6" name="TLS Client TLS 1.3 Resumption Refinements" status="sel-based">
+    <depends on-sel="tlsc_v13_resumption"/> 
+    <comp-lev> requires the TSF to support session resumption behavior specific to TLS 1.3 when acting as a TLS client.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol<h:br/>
+      FCS_TLSC_EXT.5 TLS Client Support for Session Resumption
+    </dependencies>
+    <f-element>
+      <title>
+        The TSF shall send a psk_key_exchange_modes extension with the value psk_dhe_ke when TLS 1.3 session resumption is offered. 
+      </title>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall not send early data in TLS 1.3 sessions. 
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_TLSC_EXT.5.1.
+        </h:p>
+        <h:p>
+        This SFR is claimed when session resumption is supported for TLS 1.3. RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions. 
+        </h:p>
+      </note>
+      <aactivity>
+        <TSS>
+          <h:p>
+          The evaluator shall examine the TSS to verify that the TLS client protocol description indicates that a PSK cannot be used without DHE or ECDHE and prohibits sending early data. The evaluator shall examine the TSS to verify it lists all applications that can be secured by TLS 1.3 using pre-shared keys and describes how each TLS 1.3 client application ensures data for the application is not sent using early data.
+          </h:p>
+        </TSS>
+        <Guidance>
+          <h:p>
+          The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. The evaluator shall ensure the operational guidance includes any instructions required to configure applications so the TLS 1.3 client implementation does not send early data.
+          </h:p>
+        </Guidance>
+        <Tests>
+          [conditional] For each application that is able to be secured via TLS 1.3 using PSK, the evaluator shall follow operational guidance to configure the application not to send early data. The evaluator shall cause the application to initiate a resumed TLS 1.3 session between the TSF and a compliant test TLS 1.3 server as in <xref to="tls-client-successful-resumption"/> in FCS_TLSC_EXT.5. The evaluator shall observe that the TSF ClientHello message for TLS 1.3 includes the psk_mode extension with the value psk_dhe_ke and sends a key share value for a supported group. The evaluator shall confirm that early data is not received by the test TLS server.
+          <h:p>
+          <h:b>Note:</h:b> If no applications supported by the TOE provide data to TLS 1.3 that can be sent using PSK, this test is omitted.
+          </h:p>
+        </Tests>
+      </aactivity>
+    </f-element>  
+    <audit-event/>
+  </f-component>
 
 
    <ext-comp-def fam-id="FCS_TLSS_EXT" title="TLS Server Protocol">
