@@ -1923,288 +1923,271 @@
         </selectables>. 
       </title>
       <note role="application">
+        <h:p>
+        The ST author claims any certificate processing exceptions that are allowed for specific calling applications. The "continue establishment of a server-only authenticated DTLS channel…" selection is claimed if the DTLS product supports applications that can provide services to unauthenticated users if the user does not possess an appropriate certificate. Within this selection, the ST author indicates which applications are able to support both authenticated and unauthenticated users.
+        </h:p>
+        <h:p>
+        The ST author claims "continue establishment of a mutually authenticated DTLS channel…" if there is an administrator configuration or user confirmation that revocation status information is not available for one or more of the certificates in the client’s certificate chain. If claimed, the ST author will describe in the assignment for intermediate values which CA certificates are included in the exception (for example, “all intermediates but the issuing CA” or “specific end-entity certificates as configured”). Within this selection, the ST author specifies which applications are impacted and which supported function or authorized user is allowed to approve continuing with the session when revocation information is not available. If an administrator configures that a user may accept a certificate without status information, both selections are claimed. The "as a DTLS-specific default..." should only be selected for applications that do not have access to revocation information. This is not claimed when alternate revocation methods are claimed in FIA_X509_EXT.1 that apply to TLS client certificates. Methods for obtaining revocation information are included in FIA_X509_EXT.1.
+        </h:p>
+      </note>
+    </f-element>
+    <f-element>
+      <title>The TSF shall be able to <selectables linebreak="yes">
+        <selectable>not establish a DTLS session if an entry of the Distinguished Name or a <selectables>
+          <selectable>rfc822_name</selectable>
+          <selectable>dns_name</selectable>
+          <selectable><assignable>supported name types</assignable></selectable></selectables>
+          in the Subject Alternate Name extension contained in the client certificate does not match one of the expected identifiers for the client in accordance with <selectables>
+            <selectable>RFC 2822</selectable>
+            <selectable>RFC 6125</selectable>
+            <selectable>RFC 5280</selectable>
+            <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
+          matching rules</selectable>
+        <selectable>pass the <selectables>
+          <selectable>validated certificate</selectable>
+          <selectable>RFC 2822 name normalized according to RFC 2822</selectable>
+          <selectable>DNS name normalized according to RFC 6125</selectable>
+          <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
+          <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
+          to <assignable>list of calling applications capable of making access decisions</assignable></selectable>
+        <selectable>pass initial name constraints of type <selectables>
+          <selectable>directory name</selectable>
+          <selectable>rfc_822_name</selectable>
+          <selectable>dns_name</selectable>
+          <selectable><assignable>supported name types</assignable></selectable>
+        </selectables>
+          to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier matches an expected client identifier
+        </selectable></selectables>.     
+      </title>
+      <note role="application">
+        <h:p>
+        Authorization for services provided by the applications that are protected by the DTLS session is determined by the supported function establishing a set of reference identifiers, by passing the received identifiers to the supported function, or by passing initial name constraints to the certification path validation function. The ST author indicates the methods supported, and for each method supported, indicates all name types supported; if name types are processed by the TSF, at least one name type is required. In the assignment of the first option, the ST author indicates all name types and the corresponding method for matching in the sub-selections. In the second method option, the ST author indicates which name type normalizations the product supports. If the product passes the entire validated certificate to the application, no normalization of the names contained in the certificate is expected. If the third method is claimed, the ST author indicates which name types are supported for formulating initial name constraints.
+        </h:p>
+        <h:p>
+        If name normalization is claimed, care should be taken regarding wildcards and IP addresses. IP addresses embedded in DNS host names and in Directory Name CN components have been observed to include non-standard wildcard designations including the asterisk (*). Any embedded IP addresses should use standard CIDR notation and should not include nonstandard encoding.
+        </h:p>
+      </note>        
+      <aactivity>
+        <TSS>
           <h:p>
-          The ST author claims any certificate processing exceptions that are allowed for specific calling applications. The "continue establishment of a server-only authenticated DTLS channel…" selection is claimed if the DTLS product supports applications that can provide services to unauthenticated users if the user does not possess an appropriate certificate. Within this selection, the ST author indicates which applications are able to support both authenticated and unauthenticated users.
+          The evaluator shall ensure that the TSS description required per <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client certificates for DTLS mutual authentication, and that the description includes any certificate validation exception rules and the name types supported for matching to reference identifiers for all applications that use DTLS. The evaluator shall examine the TSS to ensure that any CN-embedded name types that are used include a description of the encoding and matching rules.
           </h:p>
           <h:p>
-          The ST author claims "continue establishment of a mutually authenticated DTLS channel…" if there is an administrator configuration or user confirmation that revocation status information is not available for one or more of the certificates in the client’s certificate chain. If claimed, the ST author will describe in the assignment for intermediate values which CA certificates are included in the exception (for example, “all intermediates but the issuing CA” or “specific end-entity certificates as configured”). Within this selection, the ST author specifies which applications are impacted and which supported function or authorized user is allowed to approve continuing with the session when revocation information is not available. If an administrator configures that a user may accept a certificate without status information, both selections are claimed. The "as a DTLS-specific default..." should only be selected for applications that do not have access to revocation information. This is not claimed when alternate revocation methods are claimed in FIA_X509_EXT.1 that apply to TLS client certificates. Methods for obtaining revocation information are included in FIA_X509_EXT.1.
+          The evaluator shall ensure that the TSS includes a description of each response option claimed in FCS_DTLSS_EXT.2.3, to include the supporting functions using the option, and the behavior of functions exercising a non-authenticated option or exception processing (if claimed).
           </h:p>
-        </note>
-      </f-element>
-      <f-element>
-        <title>The TSF shall be able to <selectables linebreak="yes">
-          <selectable>not establish a DTLS session if an entry of the Distinguished Name or a <selectables>
-            <selectable>rfc822_name</selectable>
-            <selectable>dns_name</selectable>
-            <selectable><assignable>supported name types</assignable></selectable></selectables>
-            in the Subject Alternate Name extension contained in the client certificate does not match one of the expected identifiers for the client in accordance with <selectables>
-              <selectable>RFC 2822</selectable>
-              <selectable>RFC 6125</selectable>
-              <selectable>RFC 5280</selectable>
-              <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
-            matching rules</selectable>
-          <selectable>pass the <selectables>
-            <selectable>validated certificate</selectable>
-            <selectable>RFC 2822 name normalized according to RFC 2822</selectable>
-            <selectable>DNS name normalized according to RFC 6125</selectable>
-            <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
-            <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
-            to <assignable>list of calling applications capable of making access decisions</assignable></selectable>
-          <selectable>pass initial name constraints of type <selectables>
-            <selectable>directory name</selectable>
-            <selectable>rfc_822_name</selectable>
-            <selectable>dns_name</selectable>
-            <selectable><assignable>supported name types</assignable></selectable>
-          </selectables>
-            to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier matches an expected client identifier
-          </selectable></selectables>.     
-        </title>
-        <note role="application">
+        </TSS>
+        <Guidance>
           <h:p>
-          Authorization for services provided by the applications that are protected by the DTLS session is determined by the supported function establishing a set of reference identifiers, by passing the received identifiers to the supported function, or by passing initial name constraints to the certification path validation function. The ST author indicates the methods supported, and for each method supported, indicates all name types supported; if name types are processed by the TSF, at least one name type is required. In the assignment of the first option, the ST author indicates all name types and the corresponding method for matching in the sub-selections. In the second method option, the ST author indicates which name type normalizations the product supports. If the product passes the entire validated certificate to the application, no normalization of the names contained in the certificate is expected. If the third method is claimed, the ST author indicates which name types are supported for formulating initial name constraints.
+          The evaluator shall verify that the operational guidance includes instructions for configuring trust stores for client certificates used in DTLS mutual authentication. The evaluator shall ensure that the operational guidance includes instructions for configuring the server to require mutual authentication of clients using these certificates and for configuring any certificate validation exception rules. The evaluator shall ensure that the operational guidance includes instructions for configuring reference identifiers normalized or matched by the TSF and matching rules for the supported name types.
           </h:p>
-          <h:p>
-          If name normalization is claimed, care should be taken regarding wildcards and IP addresses. IP addresses embedded in DNS host names and in Directory Name CN components have been observed to include non-standard wildcard designations including the asterisk (*). Any embedded IP addresses should use standard CIDR notation and should not include nonstandard encoding.
-          </h:p>
-        </note>        
-        <aactivity>
-          <TSS>
+        </Guidance>
+        <Tests>
+          The evaluator shall use DTLS as a function to verify that the validation rules in <no-link>FIA_X509_EXT.1</no-link> are adhered to and shall perform the tests listed below in conjunction with testing for <no-link>FIA_X509_EXT.1</no-link>. The evaluator shall apply the operational guidance to configure the server to require DTLS mutual authentication of clients for these tests unless overridden by instructions in the test activity.
             <h:p>
-            The evaluator shall ensure that the TSS description required per <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client certificates for DTLS mutual authentication, and that the description includes any certificate validation exception rules and the name types supported for matching to reference identifiers for all applications that use DTLS. The evaluator shall examine the TSS to ensure that any CN-embedded name types that are used include a description of the encoding and matching rules.
+            <h:b>Note:</h:b> DTLS 1.3 is a fundamentally different protocol than DTLS 1.2, so even though the certificate validation and name checking tests are identical for both versions, it is likely that early deployments of DTLS 1.3 may use a different code-base that warrants independent testing. If both DTLS 1.2 and DTLS 1.3 are supported and the evaluator can verify that the TSF uses the same code-base for certificate validation and name checking for both DTLS 1.3 and DTLS 1.2, it is acceptable that testing be performed for only one version for these tests.
             </h:p>
-            <h:p>
-            The evaluator shall ensure that the TSS includes a description of each response option claimed in FCS_DTLSS_EXT.2.3, to include the supporting functions using the option, and the behavior of functions exercising a non-authenticated option or exception processing (if claimed).
-            </h:p>
-          </TSS>
-          <Guidance>
-            <h:p>
-            The evaluator shall verify that the operational guidance includes instructions for configuring trust stores for client certificates used in DTLS mutual authentication. The evaluator shall ensure that the operational guidance includes instructions for configuring the server to require mutual authentication of clients using these certificates and for configuring any certificate validation exception rules. The evaluator shall ensure that the operational guidance includes instructions for configuring reference identifiers normalized or matched by the TSF and matching rules for the supported name types.
-            </h:p>
-          </Guidance>
-          <Tests>
-            The evaluator shall use DTLS as a function to verify that the validation rules in <no-link>FIA_X509_EXT.1</no-link> are adhered to and shall perform the tests listed below in conjunction with testing for <no-link>FIA_X509_EXT.1</no-link>. The evaluator shall apply the operational guidance to configure the server to require DTLS mutual authentication of clients for these tests unless overridden by instructions in the test activity.
+            <testlist>
+              <test> For each supported version, the evaluator shall follow the operational guidance to configure the TOE to require valid client authentication with no exceptions in support of a function (configured, as necessary) that does not allow unauthenticated sessions, and initiate a DTLS session from a compliant DTLS test client supporting that version. The evaluator shall ensure that the test client sends a certificate_list structure which has a length of zero. The evaluator shall verify the TSF silently drops the message or terminates the session, and that no Application Data is sent.
               <h:p>
-              <h:b>Note:</h:b> DTLS 1.3 is a fundamentally different protocol than DTLS 1.2, so even though the certificate validation and name checking tests are identical for both versions, it is likely that early deployments of DTLS 1.3 may use a different code-base that warrants independent testing. If both DTLS 1.2 and DTLS 1.3 are supported and the evaluator can verify that the TSF uses the same code-base for certificate validation and name checking for both DTLS 1.3 and DTLS 1.2, it is acceptable that testing be performed for only one version for these tests.
+              <h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client Certificate message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake_failure, bad_certificate, certificate_unknown, unknown_CA) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
               </h:p>
-              <testlist>
-                <test> For each supported version, the evaluator shall follow the operational guidance to configure the TOE to require valid client authentication with no exceptions in support of a function (configured, as necessary) that does not allow unauthenticated sessions, and initiate a DTLS session from a compliant DTLS test client supporting that version. The evaluator shall ensure that the test client sends a certificate_list structure which has a length of zero. The evaluator shall verify the TSF silently drops the message or terminates the session, and that no Application Data is sent.
-                <h:p>
-                <h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client Certificate message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake_failure, bad_certificate, certificate_unknown, unknown_CA) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
-                </h:p>
-                </test>
-                <test>[conditional] If the ST indicates that the TSF supports establishment of a DTLS session for missing or invalid certificates, then for each supported version, and for each supported response option for a missing or invalid certificate indicated in FCS_DTLSS_EXT.2.3, the evaluator shall configure the TSF according to the operational guidance to respond as indicated for the calling application. The evaluator shall send client handshake messages from a test DTLS client as indicated for each sub-test. The evaluator shall perform the following sub-tests:
-                  <testlist>
-                    <test>[conditional]: If the TSF supports non-authenticated session establishment when receiving an empty Certificate message, the evaluator shall initiate a DTLS handshake from a compliant test DTLS client supporting the version and providing a Certificate message containing a certificate_list structure of length zero. The evaluator shall confirm that the TSF notifies the calling application that the user is unauthenticated.
-                    <h:p>
-                    <h:b>Note:</h:b> Specific procedures for determining that the calling application is notified will vary based on the application. If an API to the calling application is not available, the evaluator may attempt to configure the calling application to provide a different response (e.g., require authentication for flagged data) for authenticated and non-authenticated users and make a request at the test client that results in a response indicating the application is treating the client as non-authenticated.
-                    </h:p>
-                    </test>
-                    <test>[conditional] If the TSF supports exceptions for when revocation status information is unavailable, then the evaluator shall follow the operational guidance to attempt to establish a narrowly defined exception for which both exempt and non-exempt certificates can be established. The evaluator shall establish a primary certificate chain for the test client that only exhibits the allowed exception and one or more alternate certificate chains for the test client that do not pass the exception rule, as necessary to test the boundaries of the exception rules. 
-                    <h:p>
-                    The evaluator shall follow the operational guidance to remove any cached revocation status information for the test client’s primary certificate chain. The evaluator shall initiate a valid TLS session from the test client that presents the primary certificate for the test client, provide any feedback requested by the TSF to confirm the exception, and observe that the TSF allows the certificate and completes the DTLS handshake successfully. 
-                    </h:p>
-                    <h:p>
-                    For each alternate certificate chain, the evaluator shall repeat the session initiation from the test client but present the alternate certificate chain and observe that the TSF silently drops the message or terminates the session.
-                    </h:p>
-                    <h:p>
-                    <h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client Certificate and and CertificateVerify messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., bad_certificate, certificate_unknown, access_denied, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
-                    </h:p>
-                    <h:p>
-                    The alternate certificate chains are intended to test the boundaries of the exception rules. For example, if the exception rule indicates that only leaf certificates are exempt, the evaluator shall include an alternate certificate chain for which a CA certificate’s revocation information is advertised but is not available; if the exception can be configured for an explicit leaf certificate, or particular subjects, an alternate chain will be included that does not include an excepted certificate or subject. If the exception rules can be configured for all certificates having advertised revocation information, an alternate certificate chain can include an expired certificate – only one additional validity failure (e.g., expired certificate) is required in this case. More comprehensive validity failure handling is addressed by testing for <no-link>FIA_X509_EXT.1</no-link>.
-                    </h:p>
-                    </test>
-                  </testlist>
-                </test>
-                <test>For each supported version, the evaluator shall configure the TSF to negotiate the version and require client authentication and perform the following steps: <h:ul>
-                <h:li>For each supported name matching method indicated in FCS_DTLSS_EXT.2.4, and for each name type supported by the matching method, the evaluator shall establish a valid primary certificate chain with a leaf certificate containing a single name of the supported type matching a reference ID and a valid alternate certificate chain with a leaf certificate containing a single name indicating a different name of the same type not matching a reference ID.</h:li>
-                <h:li>[conditional] If any of the supported name types include CN encoding of a name type also supported as a SAN entry, the evaluator shall establish additional certificate chains:
-                <h:ul>
-                <h:li>The evaluator shall establish a primary certificate chain with multiple names, to include a leaf certificate with: 
-                <h:ul>
-                <h:li>a SAN entry that matches the name in the primary certificate chain with single names, of the same SAN name type; and </h:li>
-                <h:li>a CN entry encoding the same SAN type which matches the name in the alternate certificate chain with single names of the CN encoding of the same SAN name type;</h:li>
-                </h:ul>
-                </h:li>
-                <h:li>The evaluator shall establish an alternate certificate chain with multiple names, to include a leaf certificate with:
-                <h:ul>
-                <h:li>a SAN entry that matches the name in the alternate certificate chain with single names, of the same SAN name type; and</h:li> 
+              </test>
+              <test>[conditional] If the ST indicates that the TSF supports establishment of a DTLS session for missing or invalid certificates, then for each supported version, and for each supported response option for a missing or invalid certificate indicated in FCS_DTLSS_EXT.2.3, the evaluator shall configure the TSF according to the operational guidance to respond as indicated for the calling application. The evaluator shall send client handshake messages from a test DTLS client as indicated for each sub-test. The evaluator shall perform the following sub-tests:
+                <testlist>
+                  <test>[conditional]: If the TSF supports non-authenticated session establishment when receiving an empty Certificate message, the evaluator shall initiate a DTLS handshake from a compliant test DTLS client supporting the version and providing a Certificate message containing a certificate_list structure of length zero. The evaluator shall confirm that the TSF notifies the calling application that the user is unauthenticated.
+                  <h:p>
+                  <h:b>Note:</h:b> Specific procedures for determining that the calling application is notified will vary based on the application. If an API to the calling application is not available, the evaluator may attempt to configure the calling application to provide a different response (e.g., require authentication for flagged data) for authenticated and non-authenticated users and make a request at the test client that results in a response indicating the application is treating the client as non-authenticated.
+                  </h:p>
+                  </test>
+                  <test>[conditional] If the TSF supports exceptions for when revocation status information is unavailable, then the evaluator shall follow the operational guidance to attempt to establish a narrowly defined exception for which both exempt and non-exempt certificates can be established. The evaluator shall establish a primary certificate chain for the test client that only exhibits the allowed exception and one or more alternate certificate chains for the test client that do not pass the exception rule, as necessary to test the boundaries of the exception rules. 
+                  <h:p>
+                  The evaluator shall follow the operational guidance to remove any cached revocation status information for the test client’s primary certificate chain. The evaluator shall initiate a valid TLS session from the test client that presents the primary certificate for the test client, provide any feedback requested by the TSF to confirm the exception, and observe that the TSF allows the certificate and completes the DTLS handshake successfully. 
+                  </h:p>
+                  <h:p>
+                  For each alternate certificate chain, the evaluator shall repeat the session initiation from the test client but present the alternate certificate chain and observe that the TSF silently drops the message or terminates the session.
+                  </h:p>
+                  <h:p>
+                  <h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client Certificate and and CertificateVerify messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., bad_certificate, certificate_unknown, access_denied, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
+                  </h:p>
+                  <h:p>
+                  The alternate certificate chains are intended to test the boundaries of the exception rules. For example, if the exception rule indicates that only leaf certificates are exempt, the evaluator shall include an alternate certificate chain for which a CA certificate’s revocation information is advertised but is not available; if the exception can be configured for an explicit leaf certificate, or particular subjects, an alternate chain will be included that does not include an excepted certificate or subject. If the exception rules can be configured for all certificates having advertised revocation information, an alternate certificate chain can include an expired certificate – only one additional validity failure (e.g., expired certificate) is required in this case. More comprehensive validity failure handling is addressed by testing for <no-link>FIA_X509_EXT.1</no-link>.
+                  </h:p>
+                  </test>
+                </testlist>
+              </test>
+              <test>For each supported version, the evaluator shall configure the TSF to negotiate the version and require client authentication and perform the following steps: <h:ul>
+              <h:li>For each supported name matching method indicated in FCS_DTLSS_EXT.2.4, and for each name type supported by the matching method, the evaluator shall establish a valid primary certificate chain with a leaf certificate containing a single name of the supported type matching a reference ID and a valid alternate certificate chain with a leaf certificate containing a single name indicating a different name of the same type not matching a reference ID.</h:li>
+              <h:li>[conditional] If any of the supported name types include CN encoding of a name type also supported as a SAN entry, the evaluator shall establish additional certificate chains:
+              <h:ul>
+              <h:li>The evaluator shall establish a primary certificate chain with multiple names, to include a leaf certificate with: 
+              <h:ul>
+              <h:li>a SAN entry that matches the name in the primary certificate chain with single names, of the same SAN name type; and </h:li>
+              <h:li>a CN entry encoding the same SAN type which matches the name in the alternate certificate chain with single names of the CN encoding of the same SAN name type;</h:li>
+              </h:ul>
+              </h:li>
+              <h:li>The evaluator shall establish an alternate certificate chain with multiple names, to include a leaf certificate with:
+              <h:ul>
+              <h:li>a SAN entry that matches the name in the alternate certificate chain with single names, of the same SAN name type; and</h:li> 
                 <h:li>a CN entry encoding the same SAN type which matches the name in the primary certificate chain with single names, of the CN encoding of the same SAN name type.</h:li>
-                </h:ul>
-                </h:li>
-                </h:ul></h:li>
-                <h:li>[conditional] If any of the supported name types include CN encoding, the evaluator shall follow the operational guidance to configure the TSF, establishing trust in the root CA for all primary and alternate certificate chains. The evaluator shall configure the TSF and any relevant TOE applications that use DTLS for client authentication as necessary to establish reference identifiers that match the names in the client’s primary certificate chains with single names, but not matching any of the names in the alternate certificate chains with single names.</h:li>
-                <h:li>For each primary certificate chain (with single or multiple names), the evaluator shall initiate a DTLS session from the test DTLS client that is configured to present the primary certificate chain in a Certificate message and a valid CertificateVerify message in response to the server’s CertificateRequest message. The evaluator shall confirm that the TSF accepts the certificate and completes the authenticated TLS session successfully.</h:li>
-                <h:li>For each alternate certificate chain (with single or multiple names), the evaluator shall initiate a DTLS session from the test DTLS client that is configured to present the alternate certificate chain in a Certificate message and a valid CertificateVerify message in response to the server’s CertificateRequest message. The evaluator shall confirm that the TSF silently drops the message or terminates the session.</h:li>
-                </h:ul>
+              </h:ul>
+              </h:li>
+              </h:ul></h:li>
+              <h:li>[conditional] If any of the supported name types include CN encoding, the evaluator shall follow the operational guidance to configure the TSF, establishing trust in the root CA for all primary and alternate certificate chains. The evaluator shall configure the TSF and any relevant TOE applications that use DTLS for client authentication as necessary to establish reference identifiers that match the names in the client’s primary certificate chains with single names, but not matching any of the names in the alternate certificate chains with single names.</h:li>
+              <h:li>For each primary certificate chain (with single or multiple names), the evaluator shall initiate a DTLS session from the test DTLS client that is configured to present the primary certificate chain in a Certificate message and a valid CertificateVerify message in response to the server’s CertificateRequest message. The evaluator shall confirm that the TSF accepts the certificate and completes the authenticated TLS session successfully.</h:li>
+              <h:li>For each alternate certificate chain (with single or multiple names), the evaluator shall initiate a DTLS session from the test DTLS client that is configured to present the alternate certificate chain in a Certificate message and a valid CertificateVerify message in response to the server’s CertificateRequest message. The evaluator shall confirm that the TSF silently drops the message or terminates the session.</h:li>
+              </h:ul>
+              <h:p>
+              <h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client Certificate and CertificateVerify messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., access_denied) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
+              </h:p>
+              <h:p>
+              The intent of this test is to confirm that for each method that the TSF uses to match name types presented in validated certificates, it is able to recognize both matching and non-matching names. Names of special types implicitly encoded in the CN entry of the certificate subject name are especially prone to error since they may only be validated by the issuing CA as a directory name (RDN) type, especially if the issuing CA is unaware of the intended encoding as a different name type. It is a best practice that when the CN is interpreted as an embedded name type other than RDN, an explicitly encoded SAN entry should take precedence.
+              </h:p>
+              </test>
+            </testlist>
+        </Tests>
+      </aactivity>        
+    </f-element>
+	  <audit-event/>
+  </f-component>
+  <f-component cc-id="fcs_dtlss_ext.3" name="DTLS Server Downgrade Protection" status="sel-based">
+    <depends on-sel="dtlss_downgrade_protection"/>
+    <comp-lev> requires the TSF to implement version downgrade protection when acting as a DTLS server.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol</dependencies>
+    <f-element>
+      <title>
+        The TSF shall set the ServerHello message to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating DTLS 1.2 as indicated in RFC 8446 Section 4.1.3.
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSS_EXT.1.1. 
+        </h:p>
+        <h:p>
+        RFC 8446 requires both the TLS 1.2 downgrade indicator as well as an indicator for TLS 1.1 and below. This Functional Package requires the server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. However, products may still implement both indicators to be compliant with the RFC.
+        </h:p>
+      </note>
+      <aactivity>
+        <TSS>
+          <h:p>
+          The evaluator shall examine the TSS and confirm that the DTLS description includes details on the session downgrade protections that are supported.
+          </h:p>
+        </TSS>
+        <Guidance>
+          <h:p>
+          The evaluator shall examine the operational guidance to confirm that instructions are included to configure the TSF to support only DTLS 1.3 and to provide the associated downgrade indications.
+          </h:p>
+        </Guidance>
+        <Tests>
+          The evaluator shall follow the operational guidance as necessary to configure the TSF to negotiate only DTLS 1.3 and to provide the associated downgrade indications. The evaluator shall send a DTLS ClientHello message to the TOE that indicates support for only DTLS 1.2. The evaluator shall observe that the TSF sends a ServerHello message with the last eight bytes of the server random value equal to 44 4F 57 4E 47 52 44 01.
+        </Tests>
+      </aactivity>
+    </f-element>
+    <audit-event />
+  </f-component>
+  <f-component cc-id="fcs_dtlss_ext.4" name="DTLS Server Support for Renegotiation" status="sel-based">
+    <depends on-sel="dtlss_impl"/>
+    <comp-lev> requires the TSF to support session renegotiation when acting as a DTLS server.</comp-lev>
+    <management>No specific management functions are identified.</management>
+    <audit>There are no auditable events foreseen.</audit>
+    <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol</dependencies>
+    <f-element>
+      <title>The TSF shall support secure DTLS renegotiation through the use of <selectables>
+        <selectable>the "renegotiation_info" TLS extension in accordance with RFC 5746</selectable>
+        <selectable>not allowing session renegotiation</selectable></selectables>.
+      </title>
+    </f-element>
+    <f-element>
+      <title>The TSF shall
+        <selectables linebreak="yes">
+          <selectable>indicate support for renegotiating a DTLS 1.2 session by including the renegotiation_info extension in the ServerHello message and shall terminate a DTLS 1.2 session if neither of the renegotiation_info or TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuites are indicated in the ClientHello message</selectable>
+          <selectable>not allow renegotiation</selectable>
+        </selectables>.
+      </title>
+    </f-element>
+    <f-element>
+      <title>
+        The TSF shall <selectables>
+          <selectable>terminate the session</selectable>
+          <selectable>silently ignore the message</selectable>
+        </selectables>
+        if an unexpected ClientHello message is received during an active DTLS session.
+      </title>
+      <note role="application">
+        <h:p>
+        This SFR is claimed if "DTLS as a server" is selected in FCS_TLS_EXT.1.1.
+        </h:p>
+        <h:p>
+        If the TSF supports DTLS 1.2, the ST author claims either method of protecting against insecure renegotiation attempts. The first selection refines RFC 5746, which defines an extension to (D)TLS 1.2 that binds renegotiation handshakes to the cryptography in the original handshake, but allows interoperability with clients that do not follow RFC 5746. As a refinement of the RFC, servers that support DTLS 1.2 renegotiation will terminate a session if neither of the methods described in RFC 5746 are offered by the client. Alternatively, a DTLS server supporting DTLS 1.2 may negotiate DTLS 1.2 without any RFC 5746 client renegotiation indicators if it always terminates an existing session when a new ClientHello message is received or silently ignores unexpected ClientHello messages, similar to the implementation of DTLS 1.3.
+        </h:p>
+        <h:p>
+        If the TSF supports DTLS 1.3, the ST author must claim “does not allow renegotiation.” DTLS 1.3 does not allow renegotiation. 
+        </h:p>
+        <h:p>
+        Termination of the session or silently ignoring the unexpected message, as indicated in FCS_DTLSS_EXT.4.3, covers DTLS 1.3 sessions as well as DTLS 1.2 sessions where the ClientHello message received does not comply with RFC 5746 or when configured to reject renegotiation (if the product is configurable).
+        </h:p>
+      </note>
+      <aactivity>
+        <TSS>
+          <h:p>
+          The evaluator shall examine the TSS to confirm that the DTLS description includes details on session renegotiation protection methods supported, to include when renegotiation is prohibited.
+          </h:p>
+        </TSS>
+        <Guidance>
+          <h:p>
+          The evaluator shall examine the operational guidance to confirm that any instructions that are needed to meet the requirements are included. If DTLS 1.2 is supported, and the TSF is configurable to use RFC 5746 methods or to deny renegotiation, the evaluator shall ensure that the operational guidance includes instructions for configuring the TSF in this manner.
+          </h:p>
+        </Guidance>
+        <Tests>
+          The evaluator shall perform the following tests, as indicated based on supported secure renegotiation methods. The conditions: ‘support for renegotiation’, ‘allowing renegotiation,’ or ‘supporting RFC 5746 methods’ imply that the TSF supports DTLS 1.2. DTLS 1.3 does not allow renegotiation. For each test, the evaluator shall use a test DTLS client able to construct the indicated messages and expose messages received from the TSF.
+          <testlist>
+            <test>(RFC 5746 compliant DTLS 1.2 initial handshake) [conditional] If the TSF supports RFC 5746 compliant DTLS 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to configure the TSF to enforce RFC 5746 methods. The evaluator shall initiate a DTLS 1.2 session from a test DTLS client for each of the following sub-tests:
+              <testlist>
+                <test>The evaluator shall send an initial ClientHello message without the renegotiation_info extension and without including the signaling ciphersuite value, TLS_EMPTY_RENEGOTIATION_INFO_SCSV. The evaluator shall observe that the TSF silently drops the message or terminates the session.
                 <h:p>
-                <h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client Certificate and CertificateVerify messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., access_denied) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
+                <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                 </h:p>
+                </test>
+                <test>The evaluator shall send an initial ClientHello message with the renegotiation_info extension indicating a renegotiated_connection length greater than zero. The evaluator shall observe that the TSF silently drops the message or terminates the session. 
                 <h:p>
-                The intent of this test is to confirm that for each method that the TSF uses to match name types presented in validated certificates, it is able to recognize both matching and non-matching names. Names of special types implicitly encoded in the CN entry of the certificate subject name are especially prone to error since they may only be validated by the issuing CA as a directory name (RDN) type, especially if the issuing CA is unaware of the intended encoding as a different name type. It is a best practice that when the CN is interpreted as an embedded name type other than RDN, an explicitly encoded SAN entry should take precedence.
+                <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                 </h:p>
                 </test>
               </testlist>
-          </Tests>
-        </aactivity>        
-      </f-element>
-	    <audit-event/>
-    </f-component>
-        
-        <f-component cc-id="fcs_dtlss_ext.3" name="DTLS Server Downgrade Protection" status="sel-based">
-          <depends on-sel="dtlss_downgrade_protection"/>
-          
-          <comp-lev> requires the TSF to implement version downgrade protection when acting as a DTLS server.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol
-          </dependencies>
-          
-          <f-element>
-            <title>
-              The TSF shall set the ServerHello message to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating DTLS 1.2 as indicated in RFC 8446 Section 4.1.3.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSS_EXT.1.1. 
-              </h:p>
-              <h:p>
-                RFC 8446 requires both the TLS 1.2 downgrade indicator as well as an indicator for TLS 1.1 and below. This Functional Package requires the server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. However, products may still implement both indicators to be compliant with the RFC.
-              </h:p>
-            </note>
-            <aactivity>
-              <TSS>
+            </test>
+            <test>(renegotiation attempt) For each of the following sub-tests, the evaluator shall establish a compliant DTLS channel with an initial handshake that uses the indicated secure renegotiation method for the version indicated. Without closing the session, the evaluator shall send a second ClientHello message within the channel specific to the version as indicated:
+              <testlist>
+                <test>[conditional] If the TSF allows renegotiation, the evaluator shall configure the TSF to support RFC 5746 methods, send an initial handshake with a valid renegotiation extension, send a new DTLS 1.2 ClientHello message on the DTLS 1.2 channel containing the renegotiation_info extension indicating valid client_verify_data, and observe the TSF successfully completes the handshake.
+                </test>
+                <test>[conditional] If the TSF allows renegotiation, the evaluator shall send an initial ClientHello message containing a valid renegotiation extension, send a new DTLS 1.2 ClientHello message on the DTLS 1.2 channel with the signaling ciphersuite value, TLS_ EMPTY_RENEGOTIATION_INFO_SCSV, and observe that the TSF silently drops the message or terminates the session.
                 <h:p>
-                  The evaluator shall examine the TSS and confirm that the DTLS description includes details on the session downgrade protections that are supported.
+                <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                 </h:p>
-              </TSS>
-              <Guidance>
+                </test>
+                <test>[conditional] If the TSF allows renegotiation, for each DTLS 1.2 renegotiation method claimed in accordance with RFC 5746, the evaluator shall send an initial ClientHello message indicating the method, send a new DTLS 1.2 ClientHello message on the DTLS 1.2 channel without a renegotiation_info extension, and observe that the TSF silently drops the message or terminates the session.
                 <h:p>
-                  The evaluator shall examine the operational guidance to confirm that instructions are included to configure the TSF to support only DTLS 1.3 and to provide the associated downgrade indications.
+                <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                 </h:p>
-              </Guidance>
-              <Tests>
-                The evaluator shall follow the operational guidance as necessary to configure the TSF to negotiate only DTLS 1.3 and to provide the associated downgrade indications. The evaluator shall send a DTLS ClientHello message to the TOE that indicates support for only DTLS 1.2. The evaluator shall observe that the TSF sends a ServerHello message with the last eight bytes of the server random value equal to 44 4F 57 4E 47 52 44 01.
-              </Tests>
-            </aactivity>
-          </f-element>
-          <audit-event />
-        </f-component>
-        
-        <f-component cc-id="fcs_dtlss_ext.4" name="DTLS Server Support for Renegotiation" status="sel-based">
-          <depends on-sel="dtlss_impl"/>
-          
-          <comp-lev> requires the TSF to support session renegotiation when acting as a DTLS server.
-          </comp-lev>
-          <management>No specific management functions are identified.
-          </management>
-          <audit>There are no auditable events foreseen.
-          </audit>
-          <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol
-          </dependencies>
-          
-          <f-element>
-            <title>The TSF shall support secure DTLS renegotiation through the use of <selectables>
-              <selectable>the "renegotiation_info" TLS extension in accordance with RFC 5746</selectable>
-              <selectable>not allowing session renegotiation</selectable></selectables>.
-            </title>
-          </f-element>
-          <f-element>
-            <title>The TSF shall
-              <selectables linebreak="yes">
-               <selectable>indicate support for renegotiating a DTLS 1.2 session by including the renegotiation_info extension in the ServerHello message and shall terminate a DTLS 1.2 session if neither of the renegotiation_info or TLS_EMPTY_RENEGOTIATION_INFO_SCSV signaling ciphersuites are indicated in the ClientHello message</selectable>
-              <selectable>not allow renegotiation</selectable></selectables>.
-            </title>
-          </f-element>
-          <f-element>
-            <title>
-              The TSF shall <selectables>
-                <selectable>terminate the session</selectable>
-                <selectable>silently ignore the message</selectable>
-              </selectables> if an unexpected ClientHello message is received during an active DTLS session.
-            </title>
-            <note role="application">
-              <h:p>
-                This SFR is claimed if "DTLS as a server" is selected in FCS_TLS_EXT.1.1.
-              </h:p>
-              <h:p>
-                If the TSF supports DTLS 1.2, the ST author claims either method of protecting against insecure renegotiation attempts. The first selection refines RFC 5746, which defines an extension to (D)TLS 1.2 that binds renegotiation handshakes to the cryptography in the original handshake, but allows interoperability with clients that do not follow RFC 5746. As a refinement of the RFC, servers that support DTLS 1.2 renegotiation will terminate a session if neither of the methods described in RFC 5746 are offered by the client. Alternatively, a DTLS server supporting DTLS 1.2 may negotiate DTLS 1.2 without any RFC 5746 client renegotiation indicators if it always terminates an existing session when a new ClientHello message is received or silently ignores unexpected ClientHello messages, similar to the implementation of DTLS 1.3.
-              </h:p>
-              <h:p>
-                If the TSF supports DTLS 1.3, the ST author must claim “does not allow renegotiation.” DTLS 1.3 does not allow renegotiation. 
-              </h:p>
-              <h:p>
-                Termination of the session or silently ignoring the unexpected message, as indicated in FCS_DTLSS_EXT.4.3, covers DTLS 1.3 sessions as well as DTLS 1.2 sessions where the ClientHello message received does not comply with RFC 5746 or when configured to reject renegotiation (if the product is configurable).
-              </h:p>
-            </note>
-            <aactivity>
-              <TSS>
+                </test>
+                <test>[conditional]: If the TSF allows renegotiation, for each DTLS 1.2 renegotiation method claimed in accordance with RFC 5746, the evaluator shall send an initial ClientHello message indicating the method, send a new DTLS 1.2 ClientHello message on the DTLS 1.2 channel with a renegotiation_info extension indicating an invalid client_verify_data value (modify a byte of a valid value), and observe that the TSF silently drops the message or terminates the session.
                 <h:p>
-                  The evaluator shall examine the TSS to confirm that the DTLS description includes details on session renegotiation protection methods supported, to include when renegotiation is prohibited.
+                <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                 </h:p>
-              </TSS>
-              <Guidance>
+                </test>
+                <test>[conditional] If the TSF supports DTLS 1.3, or if the TSF rejects renegotiation for DTLS 1.2, then for each such version, the evaluator shall follow the operational guidance as necessary to configure the TSF to negotiate the version and reject renegotiation. The evaluator shall initiate a valid initial session for the specified version, send a valid ClientHello message on the non-renegotiable DTLS channel, and observe that the TSF silently drops the message or terminates the session.
                 <h:p>
-                  The evaluator shall examine the operational guidance to confirm that any instructions that are needed to meet the requirements are included. If DTLS 1.2 is supported, and the TSF is configurable to use RFC 5746 methods or to deny renegotiation, the evaluator shall ensure that the operational guidance includes instructions for configuring the TSF in this manner.
+                <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                 </h:p>
-              </Guidance>
-              <Tests>
-                The evaluator shall perform the following tests, as indicated based on supported secure renegotiation methods. The conditions: ‘support for renegotiation’, ‘allowing renegotiation,’ or ‘supporting RFC 5746 methods’ imply that the TSF supports DTLS 1.2. DTLS 1.3 does not allow renegotiation. For each test, the evaluator shall use a test DTLS client able to construct the indicated messages and expose messages received from the TSF.
-                <testlist>
-                  <test>(RFC 5746 compliant DTLS 1.2 initial handshake) [conditional] 
-                    If the TSF supports RFC 5746 compliant DTLS 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to configure the TSF to enforce RFC 5746 methods. The evaluator shall initiate a DTLS 1.2 session from a test DTLS client for each of the following sub-tests:
-                    <testlist>
-                      <test>The evaluator shall send an initial ClientHello message without the renegotiation_info extension and without including the signaling ciphersuite value, TLS_EMPTY_RENEGOTIATION_INFO_SCSV. The evaluator shall observe that the TSF silently drops the message or terminates the session.
-                        <h:p>
-                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                        </h:p>
-                      </test>
-                      <test>
-                        The evaluator shall send an initial ClientHello message with the renegotiation_info extension indicating a renegotiated_connection length greater than zero. The evaluator shall observe that the TSF silently drops the message or terminates the session. 
-                        <h:p>
-                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                        </h:p>
-                      </test>
-                    </testlist>
-                  </test>
-                  <test>
-                    (renegotiation attempt) For each of the following sub-tests, the evaluator shall establish a compliant DTLS channel with an initial handshake that uses the indicated secure renegotiation method for the version indicated. 
-                    Without closing the session, the evaluator shall send a second ClientHello message within the channel specific to the version as indicated:
-                    <testlist>
-                      <test>[conditional] If the TSF allows renegotiation, the evaluator shall configure the TSF to support RFC 5746 methods, send an initial handshake with a valid renegotiation extension, send a new DTLS 1.2 ClientHello message on the DTLS 1.2 channel containing the renegotiation_info extension indicating valid client_verify_data, and observe the TSF successfully completes the handshake.</test>
-                      <test>[conditional] If the TSF allows renegotiation, the evaluator shall send an initial ClientHello message containing a valid renegotiation extension, send a new DTLS 1.2 ClientHello message on the DTLS 1.2 channel with the signaling ciphersuite value, TLS_ EMPTY_RENEGOTIATION_INFO_SCSV, and observe that the TSF silently drops the message or terminates the session.
-                        <h:p>
-                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
-                        </h:p>
-                      </test>
-                      <test>[conditional] If the TSF allows renegotiation, for each DTLS 1.2 renegotiation method claimed in accordance with RFC 5746, the evaluator shall send an initial ClientHello message indicating the method, send a new DTLS 1.2 ClientHello message on the DTLS 1.2 channel without a renegotiation_info extension, and observe that the TSF silently drops the message or terminates the session.
-                        <h:p>
-                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                        </h:p>
-                      </test>
-                      <test>[conditional]: If the TSF allows renegotiation, for each DTLS 1.2 renegotiation method claimed in accordance with RFC 5746, the evaluator shall send an initial ClientHello message indicating the method, send a new DTLS 1.2 ClientHello message on the DTLS 1.2 channel with a renegotiation_info extension indicating an invalid client_verify_data value (modify a byte of a valid value), and observe that the TSF silently drops the message or terminates the session.
-                        <h:p>
-                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                        </h:p>
-                        </test>
-                      <test>[conditional] If the TSF supports DTLS 1.3, or if the TSF rejects renegotiation for DTLS 1.2, then for each such version, the evaluator shall follow the operational guidance as necessary to configure the TSF to negotiate the version and reject renegotiation. The evaluator shall initiate a valid initial session for the specified version, send a valid ClientHello message on the non-renegotiable DTLS channel, and observe that the TSF silently drops the message or terminates the session.
-                        <h:p>
-                          <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unexpected_message) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
-                        </h:p>
-                        </test>
-                    </testlist>
-                  </test>
-                </testlist>
-              </Tests>
-            </aactivity>
-          </f-element>
-          <audit-event/>
-        </f-component>
-        
-        
-        <f-component cc-id="fcs_dtlss_ext.5" name="DTLS Server Support for Session Resumption" status="sel-based">
+                </test>
+              </testlist>
+            </test>
+          </testlist>
+        </Tests>
+      </aactivity>
+    </f-element>
+    <audit-event/>
+  </f-component>
+  <f-component cc-id="fcs_dtlss_ext.5" name="DTLS Server Support for Session Resumption" status="sel-based">
           <depends on-sel="dtlss_resumption"/> 
           
           
