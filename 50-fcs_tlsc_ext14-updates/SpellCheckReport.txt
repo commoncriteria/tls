@@ -28,7 +28,6 @@ output/tls-release-linkable.html: TDES
 output/tls-release-linkable.html: TLSCipherText
 output/tls-release-linkable.html: URIs
 output/tls-release-linkable.html: andcompute
-output/tls-release-linkable.html: dData
 output/tls-release-linkable.html: dNSName
 output/tls-release-linkable.html: dhe
 output/tls-release-linkable.html: directoryName
@@ -83,7 +82,6 @@ output/tls-release.html: TLSCipherText
 output/tls-release.html: URIs
 output/tls-release.html: andcompute
 output/tls-release.html: any’
-output/tls-release.html: dData
 output/tls-release.html: dNSName
 output/tls-release.html: data’
 output/tls-release.html: dhe
@@ -149,7 +147,6 @@ output/tls.html: TLSCipherText
 output/tls.html: URIs
 output/tls.html: andcompute
 output/tls.html: any’
-output/tls.html: dData
 output/tls.html: dNSName
 output/tls.html: data’
 output/tls.html: dhe
