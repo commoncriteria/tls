@@ -559,7 +559,7 @@
           <selectable>terminate the DTLS session</selectable>
           <selectable>silently discard the record</selectable>
         </selectables>
-        if a message received contains an invalid MAC or if decryption fails in the case of GCM and other AEAD ciphersuites.
+        if a message received contains an invalid MAC or if decryption fails in the case of any AEAD algorithm, such as AES-GCM.
         </title>
         <note role="application">
           <h:p>

@@ -1069,7 +1069,7 @@
                     <a href="#FCS_DTLSC_EXT.1.7" class="abbr">FCS_DTLSC_EXT.1.7</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_74">terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</span>, <span class="selectable-content" id="_s_75">silently discard the record</span>] if a message received contains an invalid MAC or if decryption fails in the case of <abbr class="dyn-abbr"><a href="#abbr_GCM">GCM</a></abbr> and other AEAD ciphersuites. 
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_74">terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</span>, <span class="selectable-content" id="_s_75">silently discard the record</span>] if a message received contains an invalid MAC or if decryption fails in the case of any AEAD algorithm, such as <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">
                             <p> All supported responses are claimed; at least one option is claimed. </p>
@@ -6135,7 +6135,7 @@
                         <h4 id="ext-comp-FCS_DTLSC_EXT.1.6">FCS_DTLSC_EXT.1.6</h4>
                          The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish a trusted channel if the server certificate is invalid [<b>selection</b>: <span class="selectable-content" id="s-dtlsc-no-excep">with no <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>-specific exceptions</span>, <span class="selectable-content" id="_s_73">except when override is authorized in accordance with [<b>assignment</b>: <span class="assignable-content">override rules</span>]in the case where valid revocation information is not available</span>]. 
                         <h4 id="ext-comp-FCS_DTLSC_EXT.1.7">FCS_DTLSC_EXT.1.7</h4>
-                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_74">terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</span>, <span class="selectable-content" id="_s_75">silently discard the record</span>] if a message received contains an invalid MAC or if decryption fails in the case of <abbr class="dyn-abbr"><a href="#abbr_GCM">GCM</a></abbr> and other AEAD ciphersuites. 
+                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_74">terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</span>, <span class="selectable-content" id="_s_75">silently discard the record</span>] if a message received contains an invalid MAC or if decryption fails in the case of any AEAD algorithm, such as <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM. 
                     </div>
                     <h4>Management: FCS_DTLSC_EXT.2</h4>
                     <p>No specific management functions are identified.</p>
