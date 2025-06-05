@@ -384,7 +384,7 @@
         </title>
         <note role="application">
           <h:p>
-          This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports DTLS 1.2 (as the only supported version, or as a fallback version for DTLS 1.3 clients negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when DTLS 1.3 is supported. In addition, this requirement prohibits Using Raw Public Keys in Transport Layer Security and Datagram Transport Layer Security (RFC 7250) for server certificates.
+          This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports DTLS 1.2 (as the only supported version, or as a fallback version for DTLS 1.3 clients negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when DTLS 1.3 is supported. In addition, the requirement not to support anonymous servers is facilitated by prohibiting the use of the server_certificate_type extension (RFC 7250), which enables the server's use of raw public keys.
           </h:p>
           <h:p>
           Ciphersuites for TLS 1.2 are of the form TLS_(key establishment algorithm)_WITH_(encryption algorithm)_(message digest algorithm), and are listed in the TLS parameters section of the internet assignments at iana.org. This requirement constrains the value of (encryption algorithm) and (message digest algorithm).
@@ -2406,7 +2406,7 @@
       </title>
       <note role="application">
         <h:p>
-        This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports TLS 1.2 (as the only supported version, or as a fallback version for TLS 1.3 clients negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when TLS 1.3 is supported. In addition, this requirement prohibits Using Raw Public Keys in Transport Layer Security and Datagram Transport Layer Security (RFC 7250) for server certificates.
+        This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports TLS 1.2 (as the only supported version, or as a fallback version for TLS 1.3 clients negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when TLS 1.3 is supported. In addition, the requirement not to support anonymous servers is facilitated by prohibiting the use of the server_certificate_type extension (RFC 7250), which enables the server's use of raw public keys.
         </h:p>
         <h:p>
         Ciphersuites for TLS 1.2 are of the form TLS_(key establishment algorithm)_WITH_(encryption algorithm)_(message digest algorithm), and are listed in the TLS parameters section of the internet assignments at iana.org. This requirement constrains the value of (encryption algorithm) and (message digest algorithm).
