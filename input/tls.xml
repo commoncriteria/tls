@@ -372,7 +372,7 @@
         </ext-comp-def-title>
         <note role="application">
           <h:p>
-          DTLS uses TLS ciphersuites. The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite for each DTLS version supported – TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. Pre-shared secret ciphersuites for DTLS 1.2 are only claimed as required by a specific PP.
+          DTLS supports ciphersuites specified for TLS. The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite for each DTLS version supported – TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. Pre-shared secret ciphersuites for DTLS 1.2 are only claimed as required by a specific PP.
           </h:p>
           <h:p>
           While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be included in “other TLS 1.3 ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
@@ -480,16 +480,16 @@
         </ext-comp-def-title>
         <note role="application">
           <h:p>
-          DTLS uses TLS extensions.
+          DTLS supports many extensions specified for TLS.
           </h:p>
           <h:p>
-          Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
+          Support for the signature_algorithms extension is optional in RFC 5246 and RFC 6347 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and RFC 9147 and remains so in this Functional Package (also in alignment with RFC 9151). Whether the TOE's implementation conforms to RFC 5246 and RFC 6347, RFC 8446 and RFC 9147, or all is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
           </h:p>
           <h:p>
           If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446. If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.
           </h:p>
           <h:p>
-          If DTLS 1.2 is claimed, extended_master_secret extension is claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers. 
+          If DTLS 1.2 is claimed, "extended_master_secret extension (RFC 7627) enforcing server support" is claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers. This selection is not claimed when TLS 1.3 is claimed.
           </h:p>
           <h:p>
           If DTLS 1.2 is supported and if ECDHE or DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed.
@@ -1075,7 +1075,7 @@
               This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSC_EXT.1.1.
               </h:p>
               <h:p>
-              DTLS uses the TLS downgrade indicators. 
+              DTLS supports the downgrade indicators specified for TLS. 
               </h:p>
               <h:p>
               The ST author claims the “TLS 1.2 downgrade indicator” when FCS_DTLSC_EXT.1 indicates support for both TLS 1.2 and TLS 1.3 and implements supplemental downgrade protection. This option is not claimed if DTLS 1.3 is not supported. The “TLS 1.1 or below downgrade indicator” option may also be claimed if supported, but should only be claimed if the TSF is capable of detecting the indicator. This package requires the TSF to always terminate DTLS 1.0 sessions based on the ServerHello negotiated version field; it is acceptable to ignore any downgrade indicator. However, a TSF that is capable of detecting the TLS 1.1 or below downgrade indicator may claim this option if it takes different actions depending on whether the TLS 1.1 or below downgrade indicator is set.
@@ -1441,7 +1441,7 @@
       </title>
       <note role="application">
         <h:p>
-        DTLS uses TLS cryptographic parameters. In DTLS 1.2 handshakes, the cryptographic parameters are determined by the TLS 1.2 ciphersuite components passed in the ClientHello message. In DTLS 1.3, the cryptographic parameters are determined by the ciphersuite components and the supported group extension. When both DTLS 1.2 and DTLS 1.3 are supported, cryptographic parameters are determined by the highest version supported by the client.
+        DTLS uses the same cryptographic parameters as TLS. In DTLS 1.2 handshakes, the cryptographic parameters are determined by the TLS 1.2 ciphersuite components passed in the ClientHello message. In DTLS 1.3, the cryptographic parameters are determined by the ciphersuite components and the supported group extension. When both DTLS 1.2 and DTLS 1.3 are supported, cryptographic parameters are determined by the highest version supported by the client.
         </h:p>
         <h:p>
         Ciphersuites for TLS 1.2 are of the form TLS_(key establishment algorithm)_WITH_(encryption algorithm)_(message digest algorithm) and are listed in the TLS parameters section of the internet assignments at iana.org.
@@ -1514,10 +1514,10 @@
       </ext-comp-def-title>
       <note role="application">
         <h:p>
-        DTLS uses TLS extensions. 
+        DTLS supports the above extensions specified for TLS. 
         </h:p>
         <h:p>
-        Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
+        Support for the signature_algorithms extension is optional in RFC 5246 and RFC 6347 but is mandated for this Functional Package in accordance with RFC 9151 (also in alignment with RFC 9151). Support for the signature_algorithms extension is mandatory in RFC 8446 and RFC 9147 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246 and RFC 6347, RFC 8446 and RFC 9147, or all is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
         </h:p>
         <h:p>
         If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. If DTLS 1.3 is not claimed, supported_versions and key_share are not claimed.
@@ -1558,7 +1558,7 @@
       </ext-comp-def-title>
       <note role="application">
         <h:p>
-        DTLS uses key establishment mechanisms from the equivalent TLS version.
+        DTLS supports key establishment mechanisms specified for the equivalent version of TLS.
         </h:p>
         <h:p>
         If DTLS 1.2 RSA ciphersuites are supported, the ST author claims the “RSA with key size …” option and the key sizes supported. The requirements apply to the RSA key size when RSA is used for key establishment and digital signature.
@@ -1766,7 +1766,7 @@
                     </test>
                   </testlist>
                 </test>
-                <test>(extended master secret) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a DTLS 1.2 session with the TSF from a test DTLS client for which the ClientHello message does not include the extended_master_secret extension and observe that the TSF terminates the session.
+                <test>(extended master secret for DTLS 1.2) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a DTLS 1.2 session with the TSF from a test DTLS client for which the ClientHello message does not include the extended_master_secret extension and observe that the TSF terminates the session.
                 <h:p>
                 <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                 </h:p>
@@ -2496,7 +2496,7 @@
       </ext-comp-def-title>
       <note role="application">
         <h:p>
-        Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
+        Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package (also in alignment with RFC 9151). Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
         </h:p>
         <h:p>
         If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446. If TLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed. 
@@ -3543,7 +3543,7 @@
       </ext-comp-def-title>
       <note role="application">
         <h:p>
-        Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
+        Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this Functional Package (also in alignment with RFC 9151). Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.
         </h:p>
         <h:p>
         If support for TLS 1.3 is claimed in FCS_TLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. If support for TLS 1.3 is not claimed, supported_versions and key_share are not claimed.
@@ -3802,12 +3802,10 @@
                     </test>
                   </testlist>
                 </test>
-                <test>(extended master secret) [conditional] If TLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for the extended_master_secret extension. The evaluator shall initiate a TLS 1.2 session with the TSF from a test TLS client for which the ClientHello message does not include the extended_master_secret extension and observe that the TSF terminates the session.
+                <test>(extended master secret for TLS 1.2) [conditional] If TLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for the extended_master_secret extension. The evaluator shall initiate a TLS 1.2 session with the TSF from a test TLS client for which the ClientHello message does not include the extended_master_secret extension and observe that the TSF terminates the session.
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                 </h:p>
-                </test>
-                <test>(supported_groups for TLS 1.2) [conditional] If the TSF supports TLS 1.2, and supports ECDHE or DHE ciphersuites, the evaluator shall perform the following tests.
                 </test>
               </testlist>
             </test>
