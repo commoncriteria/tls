@@ -355,9 +355,9 @@
           <selectable>TLS 1.3 ciphersuites:
             <assignable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</assignable>
           </selectable>
-          </selectables>
           offering the supported ciphersuites in a ClientHello message in preference order:
           <assignable>list of supported ciphersuites</assignable>.
+          </selectables>
         </title>
         <ext-comp-def-title>
           <title>The TSF shall be able to support the following
