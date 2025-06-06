@@ -1390,7 +1390,6 @@
               </selectables></selectable></selectables></selectable>
           <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
             <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-            <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
           </selectables></selectable>
         </selectables>
         using a preference order based on <selectables>
@@ -3401,7 +3400,6 @@
           <selectable>TLS 1.3 ciphersuites:
           <selectables linebreak="yes">
             <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-            <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
             </selectables></selectable>
           </selectables>
           using a preference order based on <selectables>

@@ -1,2 +1,4 @@
 /home/runner/work/tls/tls/input/tls.xml:357:25: error: element "selectables" incomplete; missing required element "selectable"
-/home/runner/work/tls/tls/input/tls.xml:2357:25: error: element "selectables" incomplete; missing required element "selectable"
+/home/runner/work/tls/tls/input/tls.xml:1402:25: error: element "selectables" incomplete; missing required element "selectable"
+/home/runner/work/tls/tls/input/tls.xml:2356:25: error: element "selectables" incomplete; missing required element "selectable"
+/home/runner/work/tls/tls/input/tls.xml:3412:27: error: element "selectables" incomplete; missing required element "selectable"
