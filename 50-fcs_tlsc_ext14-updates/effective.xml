@@ -333,8 +333,6 @@
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>ciphersuites using pre-shared secrets:
               <selectables linebreak="yes">
               <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
@@ -1385,8 +1383,6 @@
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>ciphersuites using pre-shared secrets:
               <selectables linebreak="yes">
                 <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
@@ -2341,8 +2337,6 @@
           <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
           <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
           <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-          <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-          <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
           <selectable>ciphersuites using pre-shared secrets:
           <selectables linebreak="yes">
             <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
@@ -3399,8 +3393,6 @@
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-            <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-            <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>ciphersuites using pre-shared secrets:
             <selectables linebreak="yes">
               <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
