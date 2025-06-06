@@ -2037,7 +2037,7 @@
     <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol</dependencies>
     <f-element>
       <title>
-        The TSF shall set the ServerHello message to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating DTLS 1.2 as indicated in RFC 8446 Section 4.1.3.
+        The TSF shall set the random field of the ServerHello message to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating DTLS 1.2 as indicated in RFC 8446 Section 4.1.3.
       </title>
       <note role="application">
         <h:p>
@@ -4042,7 +4042,7 @@
     <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol</dependencies>
     <f-element>
       <title>
-        The TSF shall set the ServerHello message to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating TLS 1.2 as indicated in RFC 8446 Section 4.1.3.
+        The TSF shall set the random value of the ServerHello message to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating TLS 1.2 as indicated in RFC 8446 Section 4.1.3.
       </title>
       <note role="application">
         <h:p>
