@@ -1386,7 +1386,8 @@
       </note>
     </f-element>
     <f-element>
-              The TSF shall be able to support the following <selectables linebreak="yes">
+      <title>
+        The TSF shall be able to support the following <selectables linebreak="yes">
           <selectable>TLS 1.2 ciphersuites: <selectables linebreak="yes">
             <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
             <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
