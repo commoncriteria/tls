@@ -592,7 +592,7 @@
             <h:li>DNS names: The ‘*’ character used in the complete leftmost label of a DNS name represents any valid name that has the same number of labels, and that matches all remaining labels. The ‘*’ character must only be used in the leftmost complete label of a properly formatted DNS name. The ‘*’ must not be used to represent a public suffix, or in the leftmost label immediately following a public suffix. </h:li>
             <h:li>URI or SRV names: The ‘*’ character can only occur in the domain name portion of the name represented as a DNS name. All restrictions for wildcards in DNS names apply to the DNS portion of the name. URI host names presented as an IP address are matched according to IP address matching rules – see best practices for IP addresses below. In accordance with RFC 6125, it is preferred that such URIs are presented a matching name of type IP address in the SAN.</h:li>
             <h:li>IP addresses: RFC 5280 does not support IP address ranges as presented names, but indicates that presented names may be compared to IP address ranges present in name constraints. If the TSF supports IP address ranges as reference identifiers, the reference identifier matches if the presented name is in the range. IP ranges in name constraints (including reference identifiers) should be presented in CIDR format. </h:li>
-            <h:li>RFC 2822 names: RFC 5280 and updates RFC 8398 and RFC 8399 do not support special indicators representing more that a a single mailbox as a presented name, but indicates that presented names may be compared to a single mailbox, ‘any’ email address at a host, or ‘any’ email address on a domain (e.g., “example.com” matches any email address on the host example.com and “.example.com” matches any email address in the domain example.com, but does not match email addresses at the host “example.com”). Such matching is prohibited for internationalized RFC 2822 names.</h:li>
+            <h:li>RFC 5322 names: RFC 5280 and updates RFC 8398 and RFC 8399 do not support special indicators representing more that a a single mailbox as a presented name, but indicates that presented names may be compared to a single mailbox, ‘any’ email address at a host, or ‘any’ email address on a domain (e.g., “example.com” matches any email address on the host example.com and “.example.com” matches any email address in the domain example.com, but does not match email addresses at the host “example.com”). Such matching is prohibited for internationalized RFC 5322 names.</h:li>
             <h:li>Embedded CN name types: The CN relative distinguished name of a DNS name type included in the subject field is not strongly typed. Attempts to match both the name type and wildcard specifications can result in matches not intended, and therefore, not authoritatively asserted by a certification authority. It is preferred that no matching of CN embedded names be supported, but if necessary for backward compatibility, the description should clearly indicate how different name types are interpreted in the matching algorithm. If an embedded CN is present, the DN structure containing the CN as an RDN is matched, and the CN component is further matched according to the specific rules for the implied name type. In particular, the ‘*’ character in a CN is not to be interpreted as representing more than a single entity unless the entirety of the RDN is properly formatted as a DNS, URI, or SVR name, and represents a wildcard meeting best practices as described above.</h:li>
             </h:ul>
             </h:p>
@@ -1921,14 +1921,14 @@
           <selectable>dns_name</selectable>
           <selectable><assignable>supported name types</assignable></selectable></selectables>
           in the Subject Alternate Name extension contained in the client certificate does not match one of the expected identifiers for the client in accordance with <selectables>
-            <selectable>RFC 2822</selectable>
+            <selectable>RFC 5322</selectable>
             <selectable>RFC 6125</selectable>
             <selectable>RFC 5280</selectable>
             <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
           matching rules</selectable>
         <selectable>pass the <selectables>
           <selectable>validated certificate</selectable>
-          <selectable>RFC 2822 name normalized according to RFC 2822</selectable>
+          <selectable>RFC 5322 name normalized according to RFC 5322</selectable>
           <selectable>DNS name normalized according to RFC 6125</selectable>
           <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
           <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
@@ -2593,7 +2593,7 @@
           <h:li>DNS names: The ‘*’ character used in the complete leftmost label of a DNS name represents any valid name that has the same number of labels, and that matches all remaining labels. The ‘*’ character must only be used in the leftmost complete label of a properly formatted DNS name. The ‘*’ must not be used to represent a public suffix, or in the leftmost label immediately following a public suffix. </h:li>
           <h:li>URI or SRV names: The ‘*’ character can only occur in the domain name portion of the name represented as a DNS name. All restrictions for wildcards in DNS names apply to the DNS portion of the name. URI host names presented as an IP address are matched according to IP address matching rules – see best practices for IP addresses below. In accordance with RFC 6125, it is preferred that such URIs are presented a matching name of type IP address in the SAN.</h:li>
           <h:li>IP addresses: RFC 5280 does not support IP address ranges as presented names, but indicates that presented names may be compared to IP address ranges present in name constraints. If the TSF supports IP address ranges as reference identifiers, the reference identifier matches if the presented name is in the range. IP ranges in name constraints (including reference identifiers) should be presented in CIDR format. </h:li>
-          <h:li>RFC 2822 names: RFC 5280 and updates RFC 8398 and RFC 8399 do not support special indicators representing more than a single mailbox as a presented name, but indicates that presented names may be compared to a single mailbox, ‘any’ email address at a host, or ‘any’ email address on a domain (e.g., “example.com” matches any email address on the host example.com and “.example.com” matches any email address in the domain example.com, but does not match email addresses at the host “example.com”). Such matching is prohibited for internationalized RFC 2822 names.</h:li>
+          <h:li>RFC 5322 names: RFC 5280 and updates RFC 8398 and RFC 8399 do not support special indicators representing more than a single mailbox as a presented name, but indicates that presented names may be compared to a single mailbox, ‘any’ email address at a host, or ‘any’ email address on a domain (e.g., “example.com” matches any email address on the host example.com and “.example.com” matches any email address in the domain example.com, but does not match email addresses at the host “example.com”). Such matching is prohibited for internationalized RFC 5322 names.</h:li>
           <h:li>Embedded CN name types: The CN relative distinguished name of a DNS name type included in the subject field is not strongly typed. Attempts to match both the name type and wildcard specifications can result in matches not intended, and therefore, not authoritatively asserted by a certification authority. It is preferred that no matching of CN embedded names be supported, but if necessary for backward compatibility, the description should clearly indicate how different name types are interpreted in the matching algorithm. If an embedded CN is present, the DN structure containing the CN as an RDN is matched, and the CN component is further matched according to the specific rules for the implied name type. In particular, the ‘*’ character in a CN is not to be interpreted as representing more than a single entity unless the entirety of the RDN is properly formatted as a DNS, URI, or SVR name, and represents a wildcard meeting best practices as described above.</h:li>
           </h:ul>
           </h:p>
@@ -3924,14 +3924,14 @@
           <selectable>dns_name</selectable>
           <selectable><assignable>supported name types</assignable></selectable></selectables>
           in the Subject Alternate Name extension contained in the client certificate does not match one of the expected identifiers for the client in accordance with <selectables>
-            <selectable>RFC 2822</selectable>
+            <selectable>RFC 5322</selectable>
             <selectable>RFC 6125</selectable>
             <selectable>RFC 5280</selectable>
             <selectable><assignable>RFC for the supported name type</assignable></selectable></selectables>
           matching rules</selectable>
         <selectable>pass the <selectables>
           <selectable>validated certificate</selectable>
-          <selectable>RFC 2822 name normalized according to RFC 2822</selectable>
+          <selectable>RFC 5322 name normalized according to RFC 5322</selectable>
           <selectable>DNS name normalized according to RFC 6125</selectable>
           <selectable><assignable>list of RFC 5280 name types and normalization rules</assignable></selectable>
           <selectable><assignable>list of 'other' name types and standard normalization rules</assignable></selectable></selectables> 
