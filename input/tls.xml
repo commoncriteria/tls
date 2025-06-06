@@ -366,11 +366,6 @@
             <assignable>list of supported TLS ciphersuites</assignable>,
             offering the supported ciphersuites in a ClientHello message in preference order: <assignable>list of supported ciphersuites</assignable>.
           </title>
-        <ext-comp-def-title>
-          <title>The TSF shall be able to support the following
-            <assignable>list of supported TLS ciphersuites</assignable>,
-            offering the supported ciphersuites in a ClientHello message in preference order: <assignable>list of supported ciphersuites</assignable>.
-          </title>
         </ext-comp-def-title>
         <note role="application">
           <h:p>
