@@ -354,7 +354,6 @@
           </selectable>
           <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
             <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-            <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
           </selectables>
           </selectable>
           </selectables>
@@ -2355,7 +2354,6 @@
           and shall not offer other TLS 1.2 ciphersuites,</selectable>
         <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
           <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-          <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
           </selectables></selectable>
         </selectables>
             offering the supported ciphersuites in a ClientHello message in preference order: 
