@@ -1,3 +1,6 @@
+/home/runner/work/tls/tls/output/effective.xml:349:92: error: text not allowed here; expected the element end-tag or element "not-selectable" or "selectable"
+/home/runner/work/tls/tls/output/effective.xml:350:23: error: element "assignable" not allowed here; expected the element end-tag or element "not-selectable" or "selectable"
+/home/runner/work/tls/tls/output/effective.xml:350:67: error: text not allowed here; expected the element end-tag or element "not-selectable" or "selectable"
 /home/runner/work/tls/tls/output/effective.xml:1392:25: error: element "selectables" incomplete; missing required element "selectable"
 /home/runner/work/tls/tls/output/effective.xml:2345:25: error: element "selectables" incomplete; missing required element "selectable"
 /home/runner/work/tls/tls/output/effective.xml:3401:27: error: element "selectables" incomplete; missing required element "selectable"
