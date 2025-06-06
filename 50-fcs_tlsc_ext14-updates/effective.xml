@@ -785,7 +785,7 @@
                     <testlist>
                       <test>For each supported group, the evaluator shall initiate a DTLS session with a compliant test DTLS 1.2 server supporting RFC 7919. The evaluator shall ensure that the test DTLS server is configured to select DTLS 1.2 and  a ciphersuite using the supported group. The evaluator shall observe that the TSF’s ClientHello message lists the supported groups as indicated in the ST, and that the TSF successfully establishes the DTLS session.
                       </test>
-                      <test>[conditional on DTLS 1.2 support for ECDHE ciphersuites] The evaluator shall initiate a DTLS session with a test DTLS server that is configured to negotiate DTLS 1.2 and use an explicit version of a named EC group supported by the client. The evaluator shall ensure that the test DTLS ServerKeyExchange message includes the explicit formulation of the group in its key exchange message as indicated in RFC 4492 Section 5.4. The evaluator shall confirm that the TSF silently drops the message or terminates the session.
+                      <test>[conditional on DTLS 1.2 support for ECDHE ciphersuites] The evaluator shall initiate a DTLS session with a test DTLS server that is configured to negotiate DTLS 1.2 and use an explicit version of a named EC group supported by the client. The evaluator shall ensure that the test DTLS ServerKeyExchange message includes the explicit formulation of the group as indicated in RFC 8422. The evaluator shall confirm that the TSF silently drops the message or terminates the session.
                       <h:p>
                       <h:b>Note:</h:b>: If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                       </h:p>
@@ -865,7 +865,7 @@
               <!-- DTLS Client Invalid Handshake Signatures -->
               <test>(unexpected/corrupt signatures within handshake) The evaluator shall perform the following tests, according to the versions supported.
                 <testlist>
-                  <test>[conditional] If the TSF supports DTLS 1.2 and if the ST indicates support for ECDSA or DSA ciphersuites, the evaluator shall initiate a DTLS session with a compliant test DTLS server and modify the signature in the ServerKeyExchange message. The evaluator shall observe that the TSF silently drops the key exchange message or terminates the session.
+                  <test>[conditional] If the TSF supports DTLS 1.2 and if the ST indicates support for ECDSA or DSA ciphersuites, the evaluator shall initiate a DTLS session with a compliant test DTLS server and modify the signature in the ServerKeyExchange message. The evaluator shall observe that the TSF silently drops the ServerKeyExchange message or terminates the session.
                   </test>
                   <test>[conditional] If the ST indicates support for DTLS 1.3, the evaluator shall initiate a DTLS session between the TOE and a test DTLS server that is configured to send a compliant ServerHello message, EncryptedExtensions message, and Certificate message, but will send a CertificateVerify message with an invalid signature (e.g., by modifying a byte from a valid signature). The evaluator shall confirm that the TSF silently drops the message or terminates the session.
                   </test>
@@ -1727,10 +1727,10 @@
                     The evaluator shall observe that the TSF sends a Certificate message containing the provisioned certificate consistent with the specific signature_algorithm value (and signed using the signature_algorithms_cert extension value) and a CertificateVerify message using the signature_algorithms extension value.
                     </h:p>
                     <h:p>
-                    <h:b>Note:</h:b> For DTLS 1.3, the Certificate message and and CertificateVerify is encrypted. The evaluator shall confirm the values of these messages as received at the test DTLS client, using logs, or using a test DTLS client designed to expose the certificates after they are decrypted. 
+                    <h:b>Note:</h:b> In DTLS 1.3, the Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm the values of these messages as received at the test DTLS client, using logs, or using a test DTLS client designed to expose the certificates after they are decrypted. 
                     </h:p>
                     <h:p>
-                    It is not necessary to manually verify the signature used in the key exchange message (DTLS 1.2) or and CertificateVerify message (DTLS 1.3). 
+                    It is not necessary to manually verify the signature used in the CertificateVerify message. 
                     </h:p>
                     </test>
                     <test> [conditional] If the ST indicates that the TSF supports provisioning of multiple certificates, the evaluator shall conduct the following sub-tests:
@@ -1783,18 +1783,18 @@
                     <test>
                     The evaluator shall send a ClientHello message to the TOE as in the previous two tests including the same ciphersuite, but now instead indicating a group not supported by the TSF in the supported_groups extension. The evaluator shall observe that the TSF silently drops the message or terminates the session.
                     <h:p>
-                    <h:b>Note:</h:b> If the TSF terminates the sessions for the second and third handshake, the test is successful. If the TSF silently drops the key exchange message (second handshake) and ClientHello message (third handshake), the evaluator shall continue sending the respective messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
+                    <h:b>Note:</h:b> If the TSF terminates the sessions for the second and third handshake, the test is successful. If the TSF silently drops the ClientKeyExchange message (second handshake) and ClientHello message (third handshake), the evaluator shall continue sending the respective messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                     </h:p>
                     </test>  
                     <test>[conditional] If the TSF supports ECDHE ciphersuites (and therefore supports ECDHE groups in the supported_groups extension), the evaluator shall send a ClientHello message indicating a single supported ECDHE ciphersuite and including the supported ECDHE group in the supported_groups extension. The evaluator shall observe that the TSF sends a ServerKeyExchange message with a valid point of the specified group. The evaluator shall send the TSF a ClientKeyExchange message to the TSF consisting of a valid element in the supported group and observe that the TSF successfully completes the session.
                     </test>
                     <test>
-                    The evaluator shall send a ClientHello message to the TOE as in the previous test with identical ciphersuite and supported group extension values. After the TSF sends the valid key exchange message, the evaluator shall send a ClientKeyExchange message consisting of an invalid element of the supported group and observe that the TSF silently drops the key exchange message or terminates the handshake.
+                    The evaluator shall send a ClientHello message to the TOE as in the previous test with identical ciphersuite and supported_groups extension values. After the TSF sends the valid ServerKeyExchange message, the evaluator shall send a ClientKeyExchange message consisting of an invalid element of the supported group and observe that the TSF silently drops the ClientKeyExchange message or terminates the handshake.
                     </test>
                     <test>
                     The evaluator shall send a third ClientHello message to the TOE as in the previous two tests indicating the same supported ECDHE ciphersuite, but now instead including an ECDHE group that is not supported. The evaluator shall observe that the TSF silently drops the ClientHello message or terminates the session. 
                     <h:p>
-                    <h:b>Note:</h:b> Note: If the TSF terminates the sessions for the second and third handshake, the test is successful. If the TSF silently drops the key exchange message (second handshake) and ClientHello message (third handshake), the evaluator shall continue sending the respective messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
+                    <h:b>Note:</h:b> Note: If the TSF terminates the sessions for the second and third handshake, the test is successful. If the TSF silently drops the ClientKeyExchange message (second handshake) and ClientHello message (third handshake), the evaluator shall continue sending the respective messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                     </h:p>
                     <h:p>
                     An invalid ECDSA point consists of properly formatted x and y components, but for which the equation of the curve is not satisfied. To obtain an invalid point, the evaluator shall modify a byte of the y coordinate value of a valid point and confirm that the point is not on the curve. 
@@ -2846,7 +2846,7 @@
                     For each supported group, the evaluator shall initiate a TLS session with a compliant test TLS 1.2 server supporting RFC 7919. The evaluator shall ensure that the test TLS server is configured to select TLS 1.2 and a ciphersuite using the supported group. The evaluator shall observe that the TSF’s ClientHello message lists the supported groups as indicated in the ST, and that the TSF successfully establishes the TLS session.
                     </test>
                     <test>
-                    [conditional on TLS 1.2 support for ECDHE ciphersuites]  The evaluator shall initiate a TLS session with a test TLS server that is configured to use an explicit version of a named EC group supported by the client. The evaluator shall ensure that the test TLS ServerKeyExchange message includes the explicit formulation of the group as indicated in RFC 4492 Section 5.4. The evaluator shall confirm that the TSF terminates the session.
+                    [conditional on TLS 1.2 support for ECDHE ciphersuites]  The evaluator shall initiate a TLS session with a test TLS server that is configured to use an explicit version of a named EC group supported by the client. The evaluator shall ensure that the test TLS ServerKeyExchange message includes the explicit formulation of the group as indicated in RFC 8422. The evaluator shall confirm that the TSF terminates the session.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                     </h:p>
@@ -3743,10 +3743,10 @@
                     The evaluator shall observe that the TSF sends a Certificate message containing the provisioned certificate consistent with the specific signature_algorithm value (and signed using the signature_algorithms_cert extension value) and a CertificateVerify message using the signature_algorithms extension value.
                     </h:p>
                     <h:p>
-                    <h:b>Note:</h:b> For TLS 1.3, the Certificate message and and CertificateVerify message are encrypted. The evaluator shall confirm the values of these messages as received at the test TLS client, using logs, or using a test TLS client designed to expose the certificates after they are decrypted. 
+                    <h:b>Note:</h:b> In TLS 1.3, the Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm the values of these messages as received at the test TLS client, using logs, or using a test TLS client designed to expose the certificates after they are decrypted. 
                     </h:p>
                     <h:p>
-                    It is not necessary to manually verify the signature used in the key exchange message (TLS 1.2) or CertificateVerify message (TLS 1.3). 
+                    It is not necessary to manually verify the signature used in the CertificateVerify message.
                     </h:p>
                     </test>
                     <test>
@@ -3792,16 +3792,16 @@
                   <testlist>                          
                     <test>[conditional] If the TSF supports DHE ciphersuites and supports DHE groups in the supported_groups extension, then for each supported DHE group, the evaluator shall send the TSF a compliant TLS 1.2 ClientHello message indicating a single ciphersuite that is compatible with the group and indicating the group in the supported_groups extension. The evaluator shall observe that the TSF negotiates TLS 1.2 using the indicated ciphersuite and that the ServerKeyExchange message indicates the specific group. The evaluator shall send the TOE a ClientKeyExchange message with a valid point in the group and observe that the TSF successfully completes the session.
                     </test>
-                    <test>The evaluator shall send a ClientHello message to the TOE as in the previous test with identical ciphersuite and supported_groups extension values. After the TSF responds with a valid key exchange message, the evaluator shall send the TSF a ClientKeyExchange message with the public key value '0.' The evaluator shall observe that the TSF terminates the session.
+                    <test>The evaluator shall send a ClientHello message to the TOE as in the previous test with identical ciphersuite and supported_groups extension values. After the TSF responds with a valid ServerKeyExchange message, the evaluator shall send the TSF a ClientKeyExchange message with the public key value '0.' The evaluator shall observe that the TSF terminates the session.
                     </test>
                     <test>The evaluator shall send a ClientHello message to the TOE as in the previous two tests including the same ciphersuite, but now instead indicating a group not supported by the TSF in the supported_groups extension. The evaluator shall observe that the TSF terminates the session.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                     </h:p>
                     </test>
-                    <test>[conditional] If the TSF supports ECDHE ciphersuites (and therefore supports ECDHE groups in the supported_groups extension), the evaluator shall send a ClientHello message indicating a single supported ECDHE ciphersuite and including the supported ECDHE group in the supported_groups extension. The evaluator shall observe that the TSF sends a key exchange message with a valid point of the specified group. The evaluator shall send the TSF a ClientKeyExchange message to the TSF consisting of a valid element in the supported group and observe that the TSF successfully completes the session.
+                    <test>[conditional] If the TSF supports ECDHE ciphersuites (and therefore supports ECDHE groups in the supported_groups extension), the evaluator shall send a ClientHello message indicating a single supported ECDHE ciphersuite and including the supported ECDHE group in the supported_groups extension. The evaluator shall observe that the TSF sends a ServerKeyExchange message with a valid point of the specified group. The evaluator shall send the TSF a ClientKeyExchange message to the TSF consisting of a valid element in the supported group and observe that the TSF successfully completes the session.
                     </test>
-                    <test>The evaluator shall send a ClientHello message to the TOE as in the previous test with identical ciphersuite and supported group extension values. After the TSF sends the valid key exchange message, the evaluator shall send a ClientHello message consisting of an invalid element of the supported group and observe that the TSF terminates the handshake.
+                    <test>The evaluator shall send a ClientHello message to the TOE as in the previous test with identical ciphersuite and supported group extension values. After the TSF sends a valid ServerKeyExchange message, the evaluator shall send a ClientHello message consisting of an invalid element of the supported group and observe that the TSF terminates the handshake.
                     </test>
                     <test>The evaluator shall send a ClientHello message to the TOE as in the previous two tests indicating the supported ECDHE ciphersuite, but now including an ECDHE group that is not supported. The evaluator shall observe that the TSF terminates the session. 
                     <h:p>
