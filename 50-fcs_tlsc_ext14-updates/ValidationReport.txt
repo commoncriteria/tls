@@ -1,6 +1,0 @@
-/home/runner/work/tls/tls/input/tls.xml:358:92: error: text not allowed here; expected the element end-tag or element "not-selectable" or "selectable"
-/home/runner/work/tls/tls/input/tls.xml:359:23: error: element "assignable" not allowed here; expected the element end-tag or element "not-selectable" or "selectable"
-/home/runner/work/tls/tls/input/tls.xml:359:67: error: text not allowed here; expected the element end-tag or element "not-selectable" or "selectable"
-/home/runner/work/tls/tls/input/tls.xml:1401:25: error: element "selectables" incomplete; missing required element "selectable"
-/home/runner/work/tls/tls/input/tls.xml:2354:25: error: element "selectables" incomplete; missing required element "selectable"
-/home/runner/work/tls/tls/input/tls.xml:3410:27: error: element "selectables" incomplete; missing required element "selectable"

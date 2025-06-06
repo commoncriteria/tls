@@ -343,12 +343,14 @@
           </selectables>
           and shall not offer other TLS 1.2 ciphersuites,
           </selectable>
-          <selectable>TLS 1.3 ciphersuites:
-            <assignable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</assignable>
+          <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
+            <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
+            <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
+          </selectables>
           </selectable>
+          </selectables>
           offering the supported ciphersuites in a ClientHello message in preference order:
           <assignable>list of supported ciphersuites</assignable>.
-          </selectables>
         </title>
         <ext-comp-def-title>
           <title>The TSF shall be able to support the following
@@ -1389,6 +1391,7 @@
               </selectables></selectable></selectables></selectable>
           <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
             <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
+            <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
           </selectables></selectable>
         </selectables>
         using a preference order based on <selectables>
@@ -2342,6 +2345,7 @@
           and shall not offer other TLS 1.2 ciphersuites,</selectable>
         <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
           <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
+          <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
           </selectables></selectable>
         </selectables>
             offering the supported ciphersuites in a ClientHello message in preference order: 
@@ -3380,7 +3384,7 @@
       </note>
     </f-element>
     <f-element>
-      <title>
+            <title>
         The TSF shall be able to support the following:
         <selectables>
           <selectable>TLS 1.2 ciphersuites:
@@ -3398,6 +3402,7 @@
           <selectable>TLS 1.3 ciphersuites:
           <selectables linebreak="yes">
             <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
+            <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
             </selectables></selectable>
           </selectables>
           using a preference order based on <selectables>
