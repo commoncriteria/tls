@@ -1760,7 +1760,7 @@
               <testlist>
                 <test id="dtls-server-rejects-bad-client-finished">For each supported version, the evaluator shall initiate a compliant handshake up through the (implied for DTLS 1.3) ChangeCipherSpec message. The evaluator shall then send a (non-compliant) client Finished handshake message with an invalid ‘verify_data’ value and verify that the server silently drops the message or terminates the session and does not send Application Data.
                 <h:p>
-                <h:b>Note:</h:b> DTLS 1.2 handshakes include explicit ChangeCipherSpec messages, but DTLS 1.3 omits the ChangeCipherSpec message. If DTLS 1.3 is supported, the modified Finished message is sent as the final message from the client after receiving the server’s second flight of handshake messages [EncryptedExtensions, (NewSessionTicket), (Certificate, CertificateVerify), (CertificateRequest)].
+                <h:b>Note:</h:b> DTLS 1.2 handshakes include explicit ChangeCipherSpec messages, but DTLS 1.3 omits the ChangeCipherSpec message. If DTLS 1.3 is supported, the modified Finished message is sent as the final message from the client after receiving the server’s handshake messages.
                 </h:p>
                 <h:p>
                 <h:b>Note:</h:b>
@@ -3774,7 +3774,7 @@
               <testlist>
                 <test id="tls-server-rejects-bad-client-finished">For each supported version, the evaluator shall initiate a compliant handshake up through the (implied for TLS 1.3) ChangeCipherSpec message. The evaluator shall then send a (non-compliant) client finished handshake message with an invalid ‘verify data’ value and verify that the server terminates the session and does not send Application Data.
                 <h:p>
-                <h:b>Note:</h:b> TLS 1.2 handshakes include explicit ChangeCipherSpec messages, but TLS 1.3 omits the ChangeCipherSpec message. If TLS 1.3 is supported, the modified Finished message is sent as the final message from the client after receiving the server’s second flight of handshake messages [EncryptedExtensions, (NewSessionTicket), (Certificate, CertificateVerify), (CertificateRequest)].
+                <h:b>Note:</h:b> TLS 1.2 handshakes include explicit ChangeCipherSpec messages, but TLS 1.3 omits the ChangeCipherSpec message. If TLS 1.3 is supported, the modified Finished message is sent as the final message from the client after receiving the server’s handshake messages.
                 </h:p>
                 <h:p>
                 It is preferred that the TSF send a fatal decryption_failed error alert. However, it is also acceptable for the TSF to terminate the session using another error alert or without sending an error alert.
