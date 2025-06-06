@@ -437,13 +437,13 @@
             <selectable>ffdhe4096 (RFC 7919)</selectable>
             </selectables> and <selectables linebreak="yes">
             <selectable>secp521r1 (RFC 8446)</selectable>
-            <selectable>ffdhe6144(RFC 7919)</selectable>
+            <selectable>ffdhe6144 (RFC 7919)</selectable>
             <selectable>ffdhe8192 (RFC 7919)</selectable>
             <selectable>no other supported groups</selectable>
             </selectables>
             </selectable>
           <selectable>key_share extension (RFC 8446)</selectable>
-          <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable>
+          <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable>
           <selectable>extended_master_secret extension (RFC 7627) enforcing server support, and
           <selectables>
             <selectable>allowing legacy servers</selectable>
@@ -451,6 +451,7 @@
             </selectables>
           </selectable>
           <selectable>no other extensions</selectable></selectables>
+
           and shall not send the following extensions: <h:ul>
           <h:li>early_data</h:li>
           <h:li>psk_key_exchange_modes indicating PSK only mode.</h:li>
@@ -483,13 +484,13 @@
           DTLS supports many extensions specified for TLS.
           </h:p>
           <h:p>
-          Support for the signature_algorithms extension is optional in RFC 5246 and RFC 6347 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and RFC 9147 and remains so in this Functional Package (also in alignment with RFC 9151). Whether the TOE's implementation conforms to RFC 5246 and RFC 6347, RFC 8446 and RFC 9147, or all is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
+          Support for the signature_algorithms extension in DTLS 1.2 is optional by RFC 5246 and RFC 6347 but is mandated for this Functional Package in accordance with RFC 9151. Support for the signature_algorithms extension in DTLS 1.3 is mandatory by RFC 8446 and RFC 9147 and remains so in this Functional Package (also in alignment with RFC 9151).
           </h:p>
           <h:p>
-          If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446. If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.
+          If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446, and tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. If DTLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151. If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.
           </h:p>
           <h:p>
-          If DTLS 1.2 is claimed, "extended_master_secret extension (RFC 7627) enforcing server support" is claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers. This selection is not claimed when TLS 1.3 is claimed.
+          If DTLS 1.2 is claimed, "extended_master_secret extension (RFC 7627) enforcing server support" is claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers. The "extended_master_secret extension (RFC 7627) enforcing server support" selection is not claimed when TLS 1.3 is claimed.
           </h:p>
           <h:p>
           If DTLS 1.2 is supported and if ECDHE or DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed.
@@ -771,21 +772,21 @@
                       </test>
                     </testlist>
                   </test>
-                  <test id="dtls-client-signature-algs-cert">(signature_algorithms_cert) [conditional] If signature_algorithms_cert is supported, then for each version that uses the signature_algorithms_cert extension, the evaluator shall ensure that the test DTLS server sends a compliant ServerHello message selecting the tested version and indicating certificate-based server authentication.
+                  <test id="dtls-client-signature-algs-cert">(signature_algorithms_cert) [conditional] If the signature_algorithms_cert extension is supported, then for each version that uses the signature_algorithms_cert extension, the evaluator shall ensure that the test DTLS server sends a compliant ServerHello message selecting the tested version and indicating certificate-based server authentication.
                   <h:p>
                   The evaluator shall ensure that the test DTLS server forwards a Certificate message containing a valid certificate that represents the test DTLS server, but which is signed by a valid Certification Authority using a signature and hash combination not included in the TSF’s signature_algorithms_cert extension (e.g., a certificate signed using RSA and SHA-1). The evaluator shall confirm the TSF silently drops the message or terminates the session.
                   </h:p>
                   <h:p>
-                  <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert is supported. For DTLS 1.2, a non-PSK ciphersuite, or one of TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 or TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487 is used to indicate certificate-based server authentication. For DTLS 1.3, the test server completes a full handshake, even if a PSK is offered to indicate certificate-based server authentication. If the TSF only supports shared PSK authentication, <xref to="dtls-client-signature-algs-cert"/> is not performed.
+                  <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert extension is supported. For DTLS 1.2, a non-PSK ciphersuite, or one of TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 or TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487, is used to indicate certificate-based server authentication. For DTLS 1.3, the test server completes a full handshake, even if a PSK is offered to indicate certificate-based server authentication. If the TSF only supports shared PSK authentication, <xref to="dtls-client-signature-algs-cert"/> is not performed.
                   </h:p>
                   <h:p>
-                  For DTLS 1.3, the server Certificate message is encrypted. The evaluator shall configure the test DTLS server with the indicated certificate and ensure that the certificate is indeed sent by observing the buffer of messages to be encrypted, or by inspecting one or both sets of logs from the TSF and test DTLS server.
+                  In DTLS 1.3, the server Certificate message is encrypted. The evaluator shall configure the test DTLS server with the indicated certificate and ensure that the certificate is indeed sent by observing the buffer of messages to be encrypted, or by inspecting one or both sets of logs from the TSF and test DTLS server.
                   </h:p>
                   <h:p>
                   If the TSF terminates the handshake, the test is successful. If the TSF silently drops the server Certificate message, the evaluator shall continue sending the message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., unsupported_certificate, bad_certificate, decrypt_error, handshake_failure) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                   </h:p>
                   </test>
-                  <test>(extended_master_secret) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation and initiate a DTLS 1.2 session with a test DTLS server configured to compute a master secret according to RFC 5246 Section 8.
+                  <test>(extended_master_secret for DTLS 1.2) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation and initiate a DTLS 1.2 session with a test DTLS server configured to compute an extended master secret according to RFC 5246 Section 8.
                   <h:p>
                   The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627, and ensures that the test DTLS server does not include the extended_master_secret extension in its  ServerHello message. The evaluator shall observe that the TSF silently drops the ServerHello message or terminates the session.
                   </h:p>
@@ -1488,6 +1489,8 @@
                 <selectable>ffdhe8192 (RFC 7919)</selectable>
                 <selectable>no other supported groups</selectable></selectables></selectable>
               <selectable>key_share extension (RFC 8446)</selectable>
+              <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), 
+                and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable>
               <selectable>extended_master_secret extension (RFC 7627) enforcing client support and
                 <selectables>
                   <selectable>allowing legacy clients</selectable>
@@ -1520,10 +1523,14 @@
         Support for the signature_algorithms extension is optional in RFC 5246 and RFC 6347 but is mandated for this Functional Package in accordance with RFC 9151 (also in alignment with RFC 9151). Support for the signature_algorithms extension is mandatory in RFC 8446 and RFC 9147 and remains so in this Functional Package. Whether the TOE's implementation conforms to RFC 5246 and RFC 6347, RFC 8446 and RFC 9147, or all is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.
         </h:p>
         <h:p>
-        If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed. If DTLS 1.3 is not claimed, supported_versions and key_share are not claimed.
+        If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed in accordance with RFC 8446 and the 
+        tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. 
+        If DTLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151.
+        If DTLS 1.3 is not claimed, supported_versions and key_share are not claimed.
         </h:p>
         <h:p>
-        If DTLS 1.2 is claimed, extended_master_secret extension is claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. 
+        If DTLS 1.2 is claimed, the extended_master_secret extension is claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. The extended_master_secret extension (RFC 7627) selection cannot be claimed when TLS 1.3 is claimed.
+
         </h:p>
         <h:p>
         If DTLS 1.2 is supported and DHE or ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable. For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
@@ -1763,6 +1770,7 @@
                     <h:p>
                     <h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake_failure, illegal_parameter) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                     </h:p>
+
                     </test>
                   </testlist>
                 </test>
@@ -3644,6 +3652,7 @@
                 </h:p>
                 </test>
                 <test>(TLS 1.2 support for TLS 1.3 clients) [conditional] If TLS 1.2 is supported and the TSF is configurable to support only TLS 1.2 (or if TLS 1.3 is not supported), and if the TSF supports DHE or ECDHE ciphersuites, the evaluator shall follow any operational guidance instructions necessary to configure the TSF to only support TLS 1.2. For each supported TLS 1.2 ciphersuite with DHE or ECDHE indicated as the key establishment method, the evaluator shall send a ClientHello message with the highest version or legacy version of 1.2 (value '03 03'), a list of ciphersuites consisting of one or more TLS 1.3 ciphersuites followed by the specific TLS 1.2 ciphersuite and no other TLS 1.2 ciphersuites in the ciphersuites field, and including a TLS 1.3 supported_groups and key_share extension with consistent values. The evaluator shall observe that the TSF’s ServerHello message indicates TLS 1.2 in the highest version or legacy version field, does not include a supported_versions or key_share extension, and indicates the specific TLS 1.2 ciphersuite in the ciphersuite field. The evaluator shall observe that the TSF completes the TLS 1.2 handshake successfully.
+
                 <h:p>
                 <h:b>Note:</h:b> Supported ciphersuites using RSA for key establishment should not be included in this test. The supported_groups extension sent by the test TLS client should be consistent with the TLS 1.2 ciphersuite (e.g., it should be an EC group if the ciphersuite is ECDHE).
                 </h:p>
@@ -3876,7 +3885,7 @@
                     </test>
                   </testlist>
                 </test>
-                <test id="tls-server-no-finished-msg">For each supported version, the evaluator shall initiate a TLS handshake from a test TLS client with compliant handshake messages negotiating the version and supported parameters to include the ChangeCipherSpec message (implied for TLS 1.3), but which omits the Finished message and instead sends an application message containing random data. The evaluator shall observe that the TSF terminates the connection.
+                <test id="tls-server-no-finished-msg">For each supported version, the evaluator shall initiate a TLS handshake from a test TLS client with compliant handshake messages negotiating the version and supported parameters to include the ChangeCipherSpec message (implied for TLS 1.3), but which omits the Finished message and instead sends an application message containing random data. The evaluator shall observe that the TSF terminates the connection.               
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., decryption_failed) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                 </h:p>
