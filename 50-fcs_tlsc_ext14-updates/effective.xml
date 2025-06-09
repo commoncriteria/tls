@@ -1178,7 +1178,7 @@
                     <testlist>
                       <test id="dtls-client-offers-renegotiation">The evaluator shall initiate a DTLS connection with a test server configured to negotiate a compliant DTLS 1.2 handshake. The evaluator shall inspect the messages received by the test DTLS 1.2 server. The evaluator shall observe that either the “renegotiation_info” field or the SCSV ciphersuite is included in the ClientHello message during the initial handshake.
                       </test>
-                      <test>For each of the following sub-tests, the evaluator shall initiate a new TLS connection with a test DTLS 1.2 server configured to send a renegotiation_info extension as specified, but otherwise complete a compliant DTLS 1.2 session:
+                      <test>For each of the following sub-tests, the evaluator shall initiate a new DTLS connection with a test DTLS 1.2 server configured to send a renegotiation_info extension as specified, but otherwise complete a compliant DTLS 1.2 session:
                         <testlist>
                           <test>The evaluator shall configure the test DTLS 1.2 server to send a renegotiation_info extension whose value indicates a non-zero length. The evaluator shall confirm that the TSF silently drops the ServerHello message or terminates the connection. 
                           <h:p>
@@ -1203,7 +1203,7 @@
                       <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the HelloRetryRequest message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                       </h:p>
                       </test>
-                      <test>[conditional] If the TSF supports DTLS 1.3, the evaluator shall initiate a TLS session between the TSF and a test DTLS 1.3 server that completes a compliant DTLS 1.3 handshake, followed by a HelloRetryRequest message. The evaluator shall observe that the TSF completes the initial DTLS 1.3 handshake successfully, but silently drops the HelloRetryRequest message or terminates the session on receiving the HelloRetryRequest message.
+                      <test>[conditional] If the TSF supports DTLS 1.3, the evaluator shall initiate a DTLS session between the TSF and a test DTLS 1.3 server that completes a compliant DTLS 1.3 handshake, followed by a HelloRetryRequest message. The evaluator shall observe that the TSF completes the initial DTLS 1.3 handshake successfully, but silently drops the HelloRetryRequest message or terminates the session on receiving the HelloRetryRequest message.
                       <h:p>
                       If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF times out. It is preferred that the TSF logs a fatal error alert message  in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                       </h:p>
@@ -1227,7 +1227,7 @@
               The TSF shall support session resumption as a DTLS client via the use of <selectables>
                 <selectable>session ID in accordance with RFC 5246</selectable>
                 <selectable>tickets in accordance with RFC 5077</selectable>
-                <selectable id="dtlsc_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable>
+                <selectable id="dtlsc_v13_resumption">PSK and tickets in accordance with RFC 8446 and RFC 9147</selectable>
               </selectables>. 
             </title>
             <note role="application">
@@ -1235,7 +1235,7 @@
               This SFR is claimed if "session resumption" is selected in FCS_DTLSC_EXT.1.1.
               </h:p>
               <h:p>
-              The ST author indicates which session resumption mechanisms are supported. One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed if resumption of DTLS 1.2 sessions is supported. If resumption of DTLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_DTLSC_EXT.6 must also be claimed.
+              The ST author indicates which session resumption mechanisms are supported. One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed if resumption of DTLS 1.2 sessions is supported. If resumption of DTLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446 and RFC 9147" is selected, and the selection-based SFR FCS_DTLSC_EXT.6 must also be claimed.
               </h:p>
               <h:p>
               While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is addressed in FCS_DTLSC_EXT.1. 
@@ -1260,7 +1260,7 @@
                   <h:b>Note:</h:b> For each method, successful establishment refers to proper use of the mechanism, to include compliant extensions and behavior, as indicated in the referenced RFC.
                   </h:p>
                   </test>
-                  <test>(TLS 1.3 session id echo) [conditional] If the TSF supports DTLS 1.3, the evaluator shall initiate a new DTLS 1.3 session with a test TLS server. The evaluator shall cause the test DTLS server to send a DTLS 1.3 ServerHello message (or a HelloRetryRequest request if the TSF does not include the key_share extension) that contains a different value in the legacy_session_id field from the expected 32-byte value, and observe that the TSF silently drops the ServerHello message or terminates the session.
+                  <test>(TLS 1.3 session id echo) [conditional] If the TSF supports DTLS 1.3, the evaluator shall initiate a new DTLS 1.3 session with a test DTLS server. The evaluator shall cause the test DTLS server to send a DTLS 1.3 ServerHello message (or a HelloRetryRequest request if the TSF does not include the key_share extension) that contains a different value in the legacy_session_id field from the expected 32-byte value, and observe that the TSF silently drops the ServerHello message or terminates the session.
                   <h:p>
                   <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                   </h:p>
@@ -1290,7 +1290,7 @@
             </title>
             <note role="application">
               <h:p>
-              This SFR is claimed if "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSC_EXT.5.1.
+              This SFR is claimed if "PSK and tickets in accordance with RFC 8446 and RFC 9147" is selected in FCS_DTLSC_EXT.5.1.
               </h:p>
               <h:p>
               This SFR is claimed when session resumption is supported for DTLS 1.3. RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions.
@@ -1299,7 +1299,7 @@
             <aactivity>
               <TSS>
                 <h:p>
-                The evaluator shall examine the TSS to verify that the TLS client protocol description indicates that a PSK cannot be used without DHE or ECDHE and prohibits sending early data. The evaluator shall examine the TSS to verify it lists all applications that can be secured by TLS 1.3 using pre-shared keys and describes how each TLS 1.3 client application ensures data for the application is not sent using early data.
+                The evaluator shall examine the TSS to verify that the TLS client protocol description indicates that a PSK cannot be used without DHE or ECDHE and prohibits sending early data. The evaluator shall examine the TSS to verify it lists all applications that can be secured by DTLS 1.3 using pre-shared keys and describes how each DTLS 1.3 client application ensures data for the application is not sent using early data.
                 </h:p>
               </TSS>
               <Guidance>
@@ -1562,12 +1562,12 @@
         The TSF shall not proceed with a connection handshake attempt if the DTLS client fails validation.
       </title>
       <note role="application">
-        The process to validate the IP address of a DTLS client is specified in RFC 6347 Section 4.2.1 (DTLS 1.2) and in RFC 9147 Section 5.1 (DTLS 1.3). The server validates the DTLS client during connection establishment (handshaking) and prior to sending a ServerHello message. After receiving a ClientHello message, a DTLS 1.2 server sends a HelloVerifyRequest along with a cookie, whereas a DTLS 1.3 server sends a HelloRetryRequest message along with a cookie. In both TLS 1.2 and TLS 1.3, the cookie is a signed message using a keyed hash function. The DTLS client then sends another ClientHello message with the cookie attached. If the DTLS server successfully verifies the signed cookie, the client is not using a spoofed IP address.
+        The process to validate the IP address of a DTLS client is specified in RFC 6347 Section 4.2.1 (DTLS 1.2) and in RFC 9147 Section 5.1 (DTLS 1.3). The server validates the DTLS client during connection establishment and prior to sending a ServerHello message. After receiving a ClientHello message, a DTLS 1.2 server sends a HelloVerifyRequest along with a cookie, whereas a DTLS 1.3 server sends a HelloRetryRequest message along with a cookie. In both DTLS 1.2 and DTLS 1.3, the cookie is a signed message using a keyed hash function. The DTLS client then sends another ClientHello message with the cookie attached. If the DTLS server successfully verifies the signed cookie, the client is not using a spoofed IP address.
       </note>
       <aactivity>
         <TSS>
           <h:p>
-          The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported TLS versions, features, ciphersuites, and extensions, are specified in accordance with RFC 6347 (DTLS 1.2) and RFC 9147 (DTLS 1.3 and updates to DTLS 1.2) as appropriate. The evaluator shall check the description to see if beta DTLS 1.3 versions are supported.
+          The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported TLS versions, features, ciphersuites, and extensions, are specified in accordance with RFC 6347 (DTLS 1.2) and RFC 9147 (DTLS 1.3) as appropriate. The evaluator shall check the description to see if beta DTLS 1.3 versions are supported.
           </h:p>       
           <h:p>
           The evaluator shall verify that ciphersuites indicated in FCS_DTLSS_EXT.1.2 are included in the description, and that none of the following ciphersuites are supported: ciphersuites indicating NULL, RC2, RC4, DES, IDEA, TDES, or AES-128 in the encryption algorithm component, indicating 'anon,' or indicating MD5 or SHA-1 in the message digest algorithm component.
@@ -1581,7 +1581,7 @@
         </TSS>
         <Guidance>
           <h:p>
-          The evaluator shall check the operational guidance to ensure that it contains instructions on configuring the product so that the TSF conforms to the requirements. If the ST indicates that beta versions of TLS 1.3 are supported for backward compatibility, the evaluator shall ensure that the operational guidance provides instructions for disabling these versions.
+          The evaluator shall check the operational guidance to ensure that it contains instructions on configuring the product so that the TSF conforms to the requirements. If the ST indicates that beta versions of DTLS 1.3 are supported for backward compatibility, the evaluator shall ensure that the operational guidance provides instructions for disabling these versions.
           </h:p>
           <h:p>
           The evaluator shall review the operational guidance to ensure instructions on installing certificates representing the TOE are provided.
@@ -1659,7 +1659,7 @@
                 </test>
                 <test> (anonymous connection request) The evaluator shall perform one or more of the following tests according to the supported DTLS versions:
                 <h:p>
-                [conditional] If DTLS 1.2 is supported, the evaluator shall send the TSF a DTLS 1.2 handshake that is compliant, except that the ciphersuites field includes a ciphersuite list consisting only of ciphersuites using the anonymous server authentication method and observe that the TOE silently drops the message or rejects the connection.
+                [conditional] If DTLS 1.2 is supported, the evaluator shall send the TSF a DTLS 1.2 ClientHello message that is compliant, except that the ciphersuites field includes a ciphersuite list consisting only of ciphersuites using the anonymous server authentication method and observe that the TOE silently drops the message or rejects the connection.
                 </h:p>
                 <h:p>
                 <h:b>Note:</h:b> If the TSF rejects the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
@@ -2030,14 +2030,14 @@
     <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol</dependencies>
     <f-element>
       <title>
-        The TSF shall set the random field of the ServerHello message to a random value concatenated with the TLS 1.2 downgrade indicator when negotiating DTLS 1.2 as indicated in RFC 8446 Section 4.1.3.
+        The TSF shall set the random field of the ServerHello message to a random value concatenated with the DTLS 1.2 downgrade indicator when negotiating DTLS 1.2 as indicated in RFC 9147.
       </title>
       <note role="application">
         <h:p>
         This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSS_EXT.1.1. 
         </h:p>
         <h:p>
-        RFC 8446 requires both the TLS 1.2 downgrade indicator as well as an indicator for TLS 1.1 and below. This Functional Package requires the server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. However, products may still implement both indicators to be compliant with the RFC.
+        RFC 9147 requires both DTLS 1.2 and 1.0 downgrade indicators. This Functional Package requires the server to reject attempts to establish connections using DTLS versions below 1.2, making the latter indicator unnecessary. However, products may still implement both indicators to be compliant with the RFC.
         </h:p>
       </note>
       <aactivity>
@@ -2066,7 +2066,7 @@
     <dependencies>FCS_DTLSS_EXT.1 DTLS Server Protocol</dependencies>
     <f-element>
       <title>The TSF shall support secure DTLS renegotiation through the use of <selectables>
-        <selectable>the "renegotiation_info" TLS extension in accordance with RFC 5746</selectable>
+        <selectable>the "renegotiation_info" extension in accordance with RFC 5746</selectable>
         <selectable>not allowing session renegotiation</selectable></selectables>.
       </title>
     </f-element>
@@ -2091,10 +2091,10 @@
         This SFR is claimed if "DTLS as a server" is selected in FCS_TLS_EXT.1.1.
         </h:p>
         <h:p>
-        If the TSF supports DTLS 1.2, the ST author claims either method of protecting against insecure renegotiation attempts. The first selection refines RFC 5746, which defines an extension to (D)TLS 1.2 that binds renegotiation handshakes to the cryptography in the original handshake, but allows interoperability with clients that do not follow RFC 5746. As a refinement of the RFC, servers that support DTLS 1.2 renegotiation will terminate a session if neither of the methods described in RFC 5746 are offered by the client. Alternatively, a DTLS server supporting DTLS 1.2 may negotiate DTLS 1.2 without any RFC 5746 client renegotiation indicators if it always terminates an existing session when a new ClientHello message is received or silently ignores unexpected ClientHello messages, similar to the implementation of DTLS 1.3.
+        If the TSF supports DTLS 1.2, the ST author claims either method of protecting against insecure renegotiation attempts. The first selection refines RFC 5746, which defines an extension to that binds renegotiation handshakes to the cryptography in the original handshake, but allows interoperability with clients that do not follow RFC 5746. As a refinement of the RFC, servers that support DTLS 1.2 renegotiation will terminate a session if neither of the methods described in RFC 5746 are offered by the client. Alternatively, a DTLS server supporting DTLS 1.2 may negotiate DTLS 1.2 without any RFC 5746 client renegotiation indicators if it always terminates an existing session when a new ClientHello message is received or silently ignores unexpected ClientHello messages.
         </h:p>
         <h:p>
-        If the TSF supports DTLS 1.3, the ST author must claim “does not allow renegotiation.” DTLS 1.3 does not allow renegotiation. 
+        If the TSF supports DTLS 1.3, the ST author must claim “not allow renegotiation.”
         </h:p>
         <h:p>
         Termination of the session or silently ignoring the unexpected message, as indicated in FCS_DTLSS_EXT.4.3, covers DTLS 1.3 sessions as well as DTLS 1.2 sessions where the ClientHello message received does not comply with RFC 5746 or when configured to reject renegotiation (if the product is configurable).
@@ -2112,7 +2112,7 @@
           </h:p>
         </Guidance>
         <Tests>
-          The evaluator shall perform the following tests, as indicated based on supported secure renegotiation methods. The conditions: ‘support for renegotiation’, ‘allowing renegotiation,’ or ‘supporting RFC 5746 methods’ imply that the TSF supports DTLS 1.2. DTLS 1.3 does not allow renegotiation. For each test, the evaluator shall use a test DTLS client able to construct the indicated messages and expose messages received from the TSF.
+          The evaluator shall perform the following tests, as indicated based on supported secure renegotiation methods. The conditions: ‘support for renegotiation’, ‘allowing renegotiation,’ or ‘supporting RFC 5746 methods’ imply that the TSF supports DTLS 1.2. Renegotiation is unspecified for DTLS 1.3. For each test, the evaluator shall use a test DTLS client able to construct the indicated messages and expose messages received from the TSF.
           <testlist>
             <test>(RFC 5746 compliant DTLS 1.2 initial handshake) [conditional] If the TSF supports RFC 5746 compliant DTLS 1.2 renegotiation, the evaluator shall follow the operational guidance as necessary to configure the TSF to enforce RFC 5746 methods. The evaluator shall initiate a DTLS 1.2 session from a test DTLS client for each of the following sub-tests:
               <testlist>
@@ -2171,7 +2171,7 @@
         The TSF shall support session resumption as a DTLS server via the use of <selectables>
           <selectable>session ID in accordance with RFC 5246</selectable>
           <selectable>tickets in accordance with RFC 5077</selectable>
-          <selectable id="dtlss_v13_resumption">PSK and tickets in accordance with RFC 8446</selectable>
+          <selectable id="dtlss_v13_resumption">PSK and tickets in accordance with RFC 8446 and RFC 9147</selectable>
         </selectables>. 
       </title>
       <note role="application">
@@ -2179,7 +2179,7 @@
         This SFR is claimed if "session resumption" is selected in FCS_DTLSS_EXT.1.1.
         </h:p>
         <h:p>
-        The ST author indicates which session resumption mechanisms are supported. If DTLS 1.2 is supported, one or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed. If DTLS 1.3 is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_DTLSS_EXT.6 must also be claimed.
+        The ST author indicates which session resumption mechanisms are supported. If DTLS 1.2 is supported, one or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed. If DTLS 1.3 is supported, "PSK and tickets in accordance with RFC 8446 and RFC 9147" is selected, and the selection-based SFR FCS_DTLSS_EXT.6 must also be claimed.
         </h:p>
         <h:p>
         While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_DTLSS_EXT.1.
@@ -2234,7 +2234,7 @@
       </title>
       <note role="application">
         <h:p>
-        This SFR is claimed if DTLS 1.3 is supported and "PSK and tickets in accordance with RFC 8446" is selected in FCS_DTLSS_EXT.5.1.
+        This SFR is claimed if DTLS 1.3 is supported and "PSK and tickets in accordance with RFC 8446 and RFC 9147" is selected in FCS_DTLSS_EXT.5.1.
         </h:p>
         <h:p>
         RFC 8446 allows pre-shared keys to be used directly and also allows early data to be protected using only the pre-shared key. This SFR refines the RFC to use PSK only with a supplemental DHE or ECDHE key establishment to ensure perfect forward secrecy for all sessions.
@@ -2320,7 +2320,7 @@
         If "mutual authentication" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.2. If the TOE implements TLS with mutual authentication, this selection must be made.
         </h:p>
         <h:p>
-        If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.3. This is claimed when both TLS 1.2 and TLS 1.3 are supported. Note that TLS 1.1 or below downgrade protection in TLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3, when it negotiates a TLS 1.1 session because it received a ClientHello message indicating maximum support for TLS 1.1. Since this Functional Package does not allow negotiation of TLS 1.1 or below, it is not necessary to claim such support.
+        If "supplemental downgrade protection" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.3. This is claimed when both TLS 1.2 and TLS 1.3 are supported. Note that TLS 1.1 or below downgrade protection exists in order to notify a client that the server is capable of supporting TLS 1.2 or TLS 1.3 in the case that the server negotiates a TLS 1.1 session because it received a ClientHello message indicating maximum support for TLS 1.1. Since this Functional Package does not allow negotiation of TLS 1.1 or below, it is not necessary to claim such support.
         </h:p>
         <h:p>
         If "session resumption" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.5. 
@@ -2385,7 +2385,7 @@
       </title>
       <note role="application">
         <h:p>
-        This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports TLS 1.2 (as the only supported version, or as a fallback version for TLS 1.3 clients negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when TLS 1.3 is supported. In addition, the requirement not to support anonymous servers is facilitated by prohibiting the use of the server_certificate_type extension (RFC 7250), which enables the server's use of raw public keys.
+        This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports TLS 1.2 (as the only supported version, or as a fallback version for TLS 1.3 clients negotiating with potential TLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when TLS 1.3 is supported. In addition, the requirement not to support anonymous servers is facilitated by prohibiting the use of the server_certificate_type extension (RFC 7250), which enables the server's use of raw public keys.
         </h:p>
         <h:p>
         Ciphersuites for TLS 1.2 are of the form TLS_(key establishment algorithm)_WITH_(encryption algorithm)_(message digest algorithm), and are listed in the TLS parameters section of the internet assignments at iana.org. This requirement constrains the value of (encryption algorithm) and (message digest algorithm).
@@ -3028,7 +3028,7 @@
 	</f-component>
   <f-component cc-id="fcs_tlsc_ext.2" name="TLS Client Support for Mutual Authentication" status="sel-based">
 		<depends on-sel="tlsc_mutual_auth"/>
-    <comp-lev> requires the TSF to support mutually-authenticated DTLS when acting as a TLS client.</comp-lev>
+    <comp-lev> requires the TSF to support mutually-authenticated TLS when acting as a TLS client.</comp-lev>
     <management>No specific management functions are identified.</management>
     <audit>There are no auditable events foreseen.</audit>
     <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol</dependencies>
@@ -4215,7 +4215,7 @@
   </f-component>
   <f-component cc-id="fcs_tlss_ext.6" name="TLS Server TLS 1.3 Resumption Refinements" status="sel-based">
     <depends on-sel="tlss_v13_resumption"/> 
-    <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a TLS server.</comp-lev>
+    <comp-lev> requires the TSF to support session resumption behavior specific to TLS 1.3 when acting as a TLS server.</comp-lev>
     <management>No specific management functions are identified.</management>
     <audit>There are no auditable events foreseen.</audit>
     <dependencies>FCS_TLSS_EXT.1 TLS Server Protocol<h:br/>
