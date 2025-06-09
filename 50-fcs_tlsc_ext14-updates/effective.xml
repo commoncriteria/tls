@@ -1750,7 +1750,7 @@
                     </test>
                   </testlist>
                 </test>
-                <test>(extended master secret for DTLS 1.2) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a DTLS 1.2 session with the TSF from a test DTLS client for which the ClientHello message does not include the extended_master_secret extension and observe that the TSF terminates the session.
+                <test>(extended_master_secret for DTLS 1.2) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a DTLS 1.2 session with the TSF from a test DTLS client for which the ClientHello message does not include the extended_master_secret extension and observe that the TSF terminates the session.
                 <h:p>
                 <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                 </h:p>
@@ -2768,7 +2768,7 @@
                 It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                 </h:p>
                 </test>
-                <test>(extended_master_secret) [conditional] If the TSF supports TLS 1.2 and the extended_master_secret extension is supported the evaluator shall establish a connection from the TOE with a test TLS server configured as described in the following test and observe the behavior.
+                <test>(extended_master_secret for TLS 1.2) [conditional] If the TSF supports TLS 1.2 and the extended_master_secret extension is supported, the evaluator shall establish a connection from the TOE with a test TLS server configured as described in the following test and observe the behavior.
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to terminating a session, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                 </h:p>
@@ -3766,7 +3766,7 @@
                     </test>
                   </testlist>
                 </test>
-                <test>(extended master secret for TLS 1.2) [conditional] If TLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for the extended_master_secret extension. The evaluator shall initiate a TLS 1.2 session with the TSF from a test TLS client for which the ClientHello message does not include the extended_master_secret extension and observe that the TSF terminates the session.
+                <test>(extended_master_secret for TLS 1.2) [conditional] If TLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for the extended_master_secret extension. The evaluator shall initiate a TLS 1.2 session with the TSF from a test TLS client for which the ClientHello message does not include the extended_master_secret extension and observe that the TSF terminates the session.
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                 </h:p>
