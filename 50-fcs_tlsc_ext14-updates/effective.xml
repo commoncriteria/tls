@@ -317,7 +317,7 @@
           If "mutual authentication" is selected, then the TSS must additionally include the requirements from FCS_DTLSC_EXT.2. If the TOE implements DTLS with mutual authentication, this selection must be made.
           </h:p>
           <h:p>
-          If "supplemental downgrade protection" is selected, then the TSS must additionally include the requirements from FCS_DTLSC_EXT.3. This is claimed when both DTLS 1.3 and DTLS 1.2 are supported and the client uses the method to reject downgrade. TLS 1.1 or below downgrade protection in DTLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3 when it negotiates a DTLS 1.0 session because it received a ClientHello message indicating maximum support for DTLS 1.0. Note that there is no DTLS version 1.1. Since this Functional Package does not allow negotiation of DTLS 1.0, it is not necessary to claim such support.
+          If "supplemental downgrade protection" is selected, then the TSS must additionally include the requirements from FCS_DTLSC_EXT.3. This is claimed when both DTLS 1.3 and DTLS 1.2 are supported and the client uses the method to reject downgrade. DTLS 1.0 or below downgrade protection in DTLS is used to notify a client that the server is capable of supporting DTLS 1.2 or DTLS 1.3 when it negotiates a DTLS 1.0 session because it received a ClientHello message indicating maximum support for DTLS 1.0. Note that there is no DTLS version 1.1. Since this Functional Package does not allow negotiation of DTLS 1.0, it is not necessary to claim such support.
           </h:p>
           <h:p>
           If "session resumption" is selected, then the TSS must additionally include the requirements from FCS_DTLSC_EXT.5. 
@@ -566,7 +566,7 @@
         <aactivity>
           <TSS>
             <h:p>
-            The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported DTLS versions, features, ciphersuites, and extensions are specified in accordance with RFC 6347 (DTLS 1.2) and RFC 9147 (DTLS 1.3 and updates to DTLS 1.2) and as refined in FCS_DTLSC_EXT.1 as appropriate. 
+            The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported DTLS versions, features, ciphersuites, and extensions are specified in accordance with RFC 6347 (DTLS 1.2) and RFC 9147 (DTLS 1.3) and as refined in FCS_DTLSC_EXT.1 as appropriate. 
             </h:p>
             <h:p>
             The evaluator shall verify that ciphersuites indicated in FCS_DTLSC_EXT.1.2 are included in the description, and that none of the following ciphersuites are supported: ciphersuites indicating NULL, RC2, RC4, DES, IDEA, TDES, or AES-128 in the encryption algorithm component, indicating 'anon,' or indicating MD5 or SHA-1 in the message digest algorithm component.
@@ -659,7 +659,7 @@
                   The evaluator shall follow the operational guidance to configure the TSF to ensure any supported beta DTLS 1.3 versions are disabled, as necessary. The evaluator shall send the TSF a ClientHello message indicating the supported version (referred to as the legacy version in RFC 9147) with the value 'fe fc' but without including the supported_versions extension and observe that the TSF responds with a ServerHello message indicating DTLS 1.2, silently drops the message, or terminates the connection.
                   </h:p>
                   <h:p>
-                  <h:b>Note:</h:b> If the TSF responds with a ServerHello message indicating DTLS 1.2 in the highest version or legacy version,  the test is successful. If the TSF silently drops the message, the evaluator shall repeat sending the message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this response, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
+                  <h:b>Note:</h:b> If the TSF responds with a ServerHello message indicating DTLS 1.2 in the highest version or legacy version, the test is successful. If the TSF silently drops the message, the evaluator shall repeat sending the message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this response, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                   </h:p>
                   <h:p>
                   <xref to="dtls-client-nonstandard-versions"/> is intended to test the TSF response to non-standard versions, higher than indicated in the ClientHello's "highest version or legacy version" supported, including early proposals for 'beta DTLS 1.3' versions. If the TSF supports such beta versions, the evaluator shall follow the operational guidance instructions to disable them prior to conducting <xref to="dtls-client-nonstandard-versions"/>.
@@ -1054,8 +1054,8 @@
           <f-element>
             <title>The TSF shall not establish a DTLS channel if the ServerHello message includes a
               <selectables>
-                <selectable>TLS 1.2 downgrade indicator</selectable>
-                <selectable>TLS 1.1 or below downgrade indicator</selectable></selectables>
+                <selectable>DTLS 1.2 downgrade indicator</selectable>
+                <selectable>DTLS 1.0 or below downgrade indicator</selectable></selectables>
               in the server random field.
             </title>
             <note role="application">
@@ -1066,13 +1066,13 @@
               DTLS supports the downgrade indicators specified for TLS. 
               </h:p>
               <h:p>
-              The ST author claims the “TLS 1.2 downgrade indicator” when FCS_DTLSC_EXT.1 indicates support for both TLS 1.2 and TLS 1.3 and implements supplemental downgrade protection. This option is not claimed if DTLS 1.3 is not supported. The “TLS 1.1 or below downgrade indicator” option may also be claimed if supported, but should only be claimed if the TSF is capable of detecting the indicator. This package requires the TSF to always terminate DTLS 1.0 sessions based on the ServerHello negotiated version field; it is acceptable to ignore any downgrade indicator. However, a TSF that is capable of detecting the TLS 1.1 or below downgrade indicator may claim this option if it takes different actions depending on whether the TLS 1.1 or below downgrade indicator is set.
+              The ST author claims the “DTLS 1.2 downgrade indicator” when FCS_DTLSC_EXT.1 indicates support for both DTLS 1.2 and DTLS 1.3 and implements supplemental downgrade protection. This option is not claimed if DTLS 1.3 is not supported. The “DTLS 1.0 or below downgrade indicator” option may also be claimed if supported, but should only be claimed if the TSF is capable of detecting the indicator. This package requires the TSF to always terminate DTLS 1.0 sessions based on the ServerHello negotiated version field; it is acceptable to ignore any downgrade indicator. However, a TSF that is capable of detecting the DTLS 1.0 or below downgrade indicator may claim this option if it takes different actions depending on whether the DTLS 1.0 or below downgrade indicator is set.
               </h:p>
             </note>
             <aactivity>
               <TSS>
                 <h:p>
-                The evaluator shall review the TSS and confirm that the description of the DTLS client protocol includes the downgrade protection mechanism in accordance with RFC 9147 and identifies any configurable features of the TSF needed to meet the requirements. If the TSS claims that the TLS 1.1 and below indicator is processed in the DTLS 1.2 implementation to prevent downgrade to DTLS 1.0, the evaluator shall confirm that the TSS indicates which configurations allow processing of the downgrade indicator and the specific response of the TSF when it receives the downgrade indicator as opposed to simply terminating the session for the unsupported version.
+                The evaluator shall review the TSS and confirm that the description of the DTLS client protocol includes the downgrade protection mechanism in accordance with RFC 9147 and identifies any configurable features of the TSF needed to meet the requirements. If the TSS claims that the DTLS 1.0 and below indicator is processed in the DTLS 1.2 implementation to prevent downgrade to DTLS 1.0, the evaluator shall confirm that the TSS indicates which configurations allow processing of the downgrade indicator and the specific response of the TSF when it receives the downgrade indicator as opposed to simply terminating the session for the unsupported version.
                 </h:p>
               </TSS>
               <Guidance>
@@ -1088,12 +1088,12 @@
                   <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server message until the TSF times out. It is preferred that the TSF logs a fatal error alert message. However, it also is acceptable for the TSF to terminate the session without logging an error alert.
                   </h:p>
                   </test>
-                  <test>[conditional] If the TSF supports the TLS 1.1 or below downgrade indicator to prevent downgrade to DTLS 1.0, and if the ST indicates a configuration where the indicator is processed, the evaluator shall follow operational guidance instructions to configure the TSF so it parses a DTLS 1.1 ServerHello message to detect and process the TLS downgrade indicator. The evaluator shall initiate a DTLS session between the TOE and a test DTLS server that is configured to send a DTLS 1.0 ServerHello message with the downgrade indicator ‘44 4F 57 4E 47 52 44 00’ in the last eight bytes of the server random field, but which is otherwise compliant with RFC 4347. The evaluator shall observe that the TSF silently drops the ServerHello message or terminates the session as described in the ST.
+                  <test>[conditional] If the TSF supports the DTLS 1.0 or below downgrade indicator to prevent downgrade to DTLS 1.0, and if the ST indicates a configuration where the indicator is processed, the evaluator shall follow operational guidance instructions to configure the TSF so it parses a DTLS 1.0 ServerHello message to detect and process the TLS downgrade indicator. The evaluator shall initiate a DTLS session between the TOE and a test DTLS server that is configured to send a DTLS 1.0 ServerHello message with the downgrade indicator ‘44 4F 57 4E 47 52 44 00’ in the last eight bytes of the server random field, but which is otherwise compliant with RFC 4347. The evaluator shall observe that the TSF silently drops the ServerHello message or terminates the session as described in the ST.
                   <h:p>
-                  <h:b>Note:</h:b> The TSF is required not to accept a negotiation of DTLS 1.0. This test confirms the TSF is able to distinguish attempts to negotiate DTLS 1.0 when the TLS 1.1 and below downgrade indicator is provided, and is only performed when the indicator is processed resulting in a different behavior than other attempts to negotiate DTLS 1.0. If the TSF terminates the session according to the unique behavior indicated in the ST, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF demonstrates the unique response to the downgrade indicator as described in the ST. It is preferred that the TSF logs a fatal error alert message. However, it is also acceptable for the TSF to terminate the session without logging an error alert. 
+                  <h:b>Note:</h:b> The TSF is required not to accept a negotiation of DTLS 1.0. This test confirms the TSF is able to distinguish attempts to negotiate DTLS 1.0 when the DTLS 1.0 and below downgrade indicator is provided, and is only performed when the indicator is processed resulting in a different behavior than other attempts to negotiate DTLS 1.0. If the TSF terminates the session according to the unique behavior indicated in the ST, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the server finished until the TSF demonstrates the unique response to the downgrade indicator as described in the ST. It is preferred that the TSF logs a fatal error alert message. However, it is also acceptable for the TSF to terminate the session without logging an error alert. 
                   </h:p>
                   <h:p>
-                  Use of the TLS 1.1 and below indicator as a redundant mechanism where there is no configuration that actually processes the value does not require additional testing, since this would be addressed by <xref to="dtls-client-obsolete-versions"/> for FCS_DTLSC_EXT.1.1. This test is only required if the TSF responds differently (e.g., a different error alert) when the downgrade indicator is present than when DTLS 1.0 or below is negotiated and the downgrade indicator is not present.
+                  Use of the DTLS 1.0 and below indicator as a redundant mechanism where there is no configuration that actually processes the value does not require additional testing, since this would be addressed by <xref to="dtls-client-obsolete-versions"/> for FCS_DTLSC_EXT.1.1. This test is only required if the TSF responds differently (e.g., a different error alert) when the downgrade indicator is present than when DTLS 1.0 or below is negotiated and the downgrade indicator is not present.
                   </h:p>
                   </test>
                 </testlist>
@@ -1130,7 +1130,7 @@
               This SFR is claimed if "DTLS as a client" is selected in FCS_TLS_EXT.1.1.
               </h:p>
               <h:p>
-              A client supporting DTLS 1.3 must claim “rejection of all renegotiation attempts.” This option may also be claimed as a method for TLS 1.2 renegotiation protection.
+              A client supporting DTLS 1.3 must claim “rejection of all renegotiation attempts.” This option may also be claimed as a method for DTLS 1.2 renegotiation protection.
               </h:p>
               <h:p>
               The TLS_EMPTY_RENEGOTIATION_INFO_SCSV is the preferred mechanism for DTLS 1.2 protection against insecure renegotiation when the client does not renegotiate. The ST author will claim "a HelloRequest message is received" in the second selection to indicate support for this mechanism.
@@ -1152,7 +1152,7 @@
               </h:li>
               and
               <h:li>
-              a ServerHello request message when renegotiation is not allowed (for DTLS 1.3 or when the option is claimed for TLS 1.2).
+              a ServerHello request message when renegotiation is not allowed (for DTLS 1.3 or when the option is claimed for DTLS 1.2).
               </h:li>
               </h:ul>
               </h:p>
@@ -2037,7 +2037,7 @@
         This SFR is claimed if "supplemental downgrade protection" is selected in FCS_DTLSS_EXT.1.1. 
         </h:p>
         <h:p>
-        RFC 9147 requires both DTLS 1.2 and 1.0 downgrade indicators. This Functional Package requires the server to reject attempts to establish connections using DTLS versions below 1.2, making the latter indicator unnecessary. However, products may still implement both indicators to be compliant with the RFC.
+        RFC 9147 requires use of both DTLS 1.2 and 1.0 downgrade indicators. This Functional Package requires the server to reject attempts to establish connections using DTLS versions below 1.2, making the latter indicator unnecessary. However, products may still implement both indicators to be compliant with the RFC.
         </h:p>
       </note>
       <aactivity>
