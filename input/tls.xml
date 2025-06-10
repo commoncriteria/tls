@@ -851,10 +851,10 @@
                 </test>
                 
                 <!-- DTLS Client Obsolete Versions -->
-            <test id="dtls-client-obsolete-versions">(obsolete versions) The evaluator shall perform the following tests:
+            <test>(obsolete versions) The evaluator shall perform the following tests:
                 
                 <testlist>                  
-                    <test id="dtls-client-obsolete-versions">For each supported DTLS version, the evaluator shall
+                    <test id="dtls-client-obsolete-versions">For each obsolete DTLS version (i.e., DTLS 1.0 is always obsolete, and DTLS 1.2 is obsolete if only DTLS 1.3 is supported), the evaluator shall
                       initiate a DTLS connection from the TOE to a test DTLS server that is configured to negotiate the obsolete version and
                       observe that the TSF silently drops the message or terminates the connection.
                       <h:p>
