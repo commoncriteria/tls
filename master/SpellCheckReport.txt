@@ -25,7 +25,6 @@ output/tls-release-linkable.html: dNSName
 output/tls-release-linkable.html: dhe
 output/tls-release-linkable.html: directoryName
 output/tls-release-linkable.html: dns
-output/tls-release-linkable.html: eason
 output/tls-release-linkable.html: fc
 output/tls-release-linkable.html: fd
 output/tls-release-linkable.html: fe
@@ -73,7 +72,6 @@ output/tls-release.html: data’
 output/tls-release.html: dhe
 output/tls-release.html: directoryName
 output/tls-release.html: dns
-output/tls-release.html: eason
 output/tls-release.html: fc
 output/tls-release.html: fc’
 output/tls-release.html: fd
