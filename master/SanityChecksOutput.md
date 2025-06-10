@@ -1,5 +1,3 @@
-* Error: Detected multiple elements with an id of 'dtls-client-obsolete-versions'.
-* Error: Detected multiple elements with an id of 'dtls-client-obsolete-versions'.
 * Error: Detected multiple elements with an id of 'tls-server-no-finished-msg'.
 * Error: Detected multiple elements with an id of 'tls-server-no-finished-msg'.
 * Warning: Since FCS_TLS_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
