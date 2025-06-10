@@ -80,6 +80,9 @@
     and DTLS protocols. The requirements are
     intended to improve the security of products by enabling their evaluation.
   </h:p>
+      <h:p>
+        Note that this package frequently references the use of alert messages in the context of TLS and DTLS communications. Valid alerts are specified by IANA, referenced against applicable RFCs, at <xref to="bibIANA"/>. This documentation should be consulted when determining whether an observed alert is consistent with expectations based on the test being performed when the alert is observed.  
+      </h:p>
     </sec:Overview>
     <tech-terms>
       <term abbr="AES" full="Advanced Encryption Standard"/>
@@ -449,10 +452,7 @@
               <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
             </selectables></selectable></selectables>
               and shall not offer other TLS 1.2 ciphersuites,</selectable>
-            <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
-              <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-              <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
-            </selectables></selectable>
+            <selectable>TLS 1.3 ciphersuite TLS_AES_256_GCM_SHA384 as defined in RFC 8446, and shall not offer other TLS 1.3 ciphersuites</selectable>
           </selectables>
           offering the supported ciphersuites in a ClientHello message in preference order:
           <assignable>list of supported ciphersuites</assignable>.
@@ -472,8 +472,7 @@
         DTLS 1.2 are only claimed as required by a specific PP.
         </h:p>
         <h:p>
-          While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be included in “other TLS 1.3 
-          ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+          While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is disallowed by this SFR.
         </h:p>
         <h:p>
           In addition to the supported ciphersuites, the ST author indicates the order of ciphersuites included in the ClientHello, 
@@ -497,8 +496,7 @@
         <h:p>
           This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the 
           ClientHello from a TSF that supports DTLS 1.2 (as the only supported version, or as a fallback version for DTLS 1.3 clients 
-          negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when
-          DTLS 1.3 is supported. In addition, this requirement prohibits Using Raw Public Keys in Transport Layer Security and Datagram
+          negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of DTLS 1.3 ciphersuites to the single TLS_AES_GCM_SHA384 ciphersuite specified in RFC 8446. In addition, this requirement prohibits Using Raw Public Keys in Transport Layer Security and Datagram
           Transport Layer Security (RFC 7250) for server certificates.
         </h:p>
         <h:p>
@@ -606,7 +604,7 @@
         <h:p>
           If DTLS 1.2 is
           claimed, extended_master_secret extension must be claimed, with the ability to enforce server support, and optionally, the ability to 
-          support legacy servers. The extended_master_secret extension (RFC 7627) selection cannot be claimed when TLS 1.3 is claimed.
+          support legacy servers. The extended_master_secret extension (RFC 7627) selection cannot be claimed when DTLS 1.3 is claimed.
         </h:p><h:p>
           If DTLS 1.2 is supported and if ECDHE or DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed.
         </h:p>
@@ -856,7 +854,7 @@
             <test id="dtls-client-obsolete-versions">(obsolete versions) The evaluator shall perform the following tests:
                 
                 <testlist>                  
-                    <test id="dtls-client-obsolete-versions">For each of DTLS 1.0 and DTLS 1.2 if it is not supported, the evaluator shall
+                    <test id="dtls-client-obsolete-versions">For each supported DTLS version, the evaluator shall
                       initiate a DTLS connection from the TOE to a test DTLS server that is configured to negotiate the obsolete version and
                       observe that the TSF silently drops the message or terminates the connection.
                       <h:p>
@@ -1066,12 +1064,7 @@
                           handshake failure) in response to this, but it is acceptable that the TSF terminates the connection silently
                           (i.e., without logging a fatal error alert).  
                         </h:p><h:p>
-                        Certificate-based server authentication is required unless the TSF only supports DTLS with shared PSK. 
-                        For DTLS 1.2, this is the case if only TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442,
-                        TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487,
-                        TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442, or
-                        TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487, are supported. For DTLS 1.3, certificate-based server
-                        authentication is required.
+                          Certificate-based server authentication is required unless the TSF only supports DTLS with PSK authentication. DTLS 1.3 always requires certificate-based server authentication (even if a PSK is also supported for key exchange), so the only circumstance where this would apply is if DTLS 1.2 is claimed and the only supported ciphersuites are the TLS_*_PSK ciphersuites defined in RFCs 5487 and 8442. 
                         </h:p></test>
                     </testlist>
                   </test>
@@ -1085,12 +1078,7 @@
                     hash combination not included in the TSF’s signature_algorithms_cert extension (e.g., a certificate signed using RSA
                     and SHA-1). The evaluator shall confirm the TSF silently drops the message or terminates the session.
                     </h:p><h:p>
-                    <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert is supported. 
-                    For DTLS 1.2, a non-PSK ciphersuite, or one of TLS_RSA_PSK_WITH_AES_256_GCM_SHA384  
-                    or TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487 is used to indicate certificate-based server authentication. 
-                    For DTLS 1.3, the test server completes a full handshake, even if a PSK is offered to indicate certificate-based server
-                    authentication. If the TSF only supports shared PSK authentication, <xref to="dtls-client-signature-algs-cert"/> is not
-                    performed.
+                      <h:b>Note:</h:b> Certificate-based server authentication is required unless the TSF only supports DTLS with PSK authentication. DTLS 1.3 always requires certificate-based server authentication (even if a PSK is also supported for key exchange), so the only circumstance where this would apply is if DTLS 1.2 is claimed and the only supported ciphersuites are the TLS_*_PSK ciphersuites defined in RFCs 5487 and 8442. If the TSF only supports PSK authentication, <xref to="dtls-client-signature-algs-cert"/> is not performed.
                     </h:p><h:p>
                     For DTLS 1.3, the server certificate message is encrypted. 
                     The evaluator shall configure the test DTLS server with the indicated certificate and ensure that the certificate is 
@@ -2053,10 +2041,7 @@
                 <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
                 <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
               </selectables></selectable></selectables></selectable>
-          <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
-            <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-            <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
-          </selectables></selectable>
+          <selectable>TLS 1.3 ciphersuite TLS_AES_256_GCM_SHA384 as defined in RFC 8446, and shall not offer other TLS 1.3 ciphersuites</selectable>
         </selectables>
         using a preference order based on <selectables>
           <selectable>RFC 9151 priority</selectable>
@@ -2081,8 +2066,7 @@
             requirement, then the appropriate instructions need to be contained in the guidance.
           </h:P>
           <h:p>
-            While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be
-            included in “other TLS 1.3 ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+            While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is disallowed by this SFR.
           </h:p>
           <h:p>
             The final selection indicates the TOE’s preference for negotiating a ciphersuite. RFC 9151 indicates the required ciphersuites for
@@ -2200,7 +2184,7 @@
         If DTLS 1.3 is not claimed, supported_versions and key_share are not claimed.
         </h:p>
         <h:p>
-          If DTLS 1.2 is claimed, extended_master_secret extension must be claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. The extended_master_secret extension (RFC 7627) selection cannot be claimed when TLS 1.3 is claimed.
+          If DTLS 1.2 is claimed, extended_master_secret extension must be claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. The extended_master_secret extension (RFC 7627) selection cannot be claimed when DTLS 1.3 is claimed.
         </h:p>
         <h:p>
           If DTLS 1.2 is supported and DHE or ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable. For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
@@ -2328,7 +2312,7 @@
                 <!-- DTLS Server Obsolete Version -->
         <test>(obsolete versions) The evaluator shall perform the following tests:
         <testlist> 
-          <test id="dtls-server-obsolete-versions">For each of DTLS 1.0 and DTLS 1.2 if it is not supported, the evaluator shall send a ClientHello to the TSF indicating the selected version as the highest version. The evaluator shall observe the TSF silently drops the ClientHello message or terminates the connection.
+          <test id="dtls-server-obsolete-versions">For each supported DTLS version, the evaluator shall send a ClientHello to the TSF indicating the selected version as the highest version. The evaluator shall observe the TSF silently drops the ClientHello message or terminates the connection.
             <h:p>
               <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., protocol version, insufficient security) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
             </h:p></test>
@@ -2585,7 +2569,7 @@
                     <test>(DTLS 1.3 key establishment) [conditional] If the TSF supports DTLS 1.3, then for each supported group the evaluator shall perform the following sub-tests: 
                       <testlist>
                         <test>The evaluator shall send the TSF a compliant DTLS 1.3 ClientHello indicating a single key share value from the supported group and shall observe that the ServerHello 
-                          includes valid elements of the supported group.</test>
+                          includes valid key exchange parameters of the supported group, as specified by RFC 8446 section 4.2.8</test>
                         <test>The evaluator shall send the TSF a DTLS 1.3 ClientHello indicating a supported_groups value supported by the TSF 
                           but containing a key_share extension indicating an element claiming to be in the supported group that does not represent a 
                           valid element of the group. The evaluator shall observe that the TSF silently drops the message or terminates the session.
@@ -3112,9 +3096,9 @@
                     and verify that the TSF does not resume the session, but instead silently drops the message, terminates the session, or completes a full handshake, ignoring the resumption information.
                     <h:p>
                       <h:b>Note:</h:b> For DTLS 1.2, resumption information should be established at the point the TSF sends a ServerHello, either acknowledging the session-based resumption 
-                      or acknowledging support for ticket-based resumption and sending a new_ticket message. 
+                      or acknowledging support for ticket-based resumption and sending a NewSessionTicket handshake message. 
                       A DTLS 1.2 session can then be terminated by sending a modified finished message. 
-                      For DTLS 1.3, the new_ticket message is sent after the finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted application data. 
+                      For DTLS 1.3, the NewSessionTicket message is sent after the finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted application data. 
                     </h:p>
                     <h:p>
                       To terminate the DTLS session, it might be necessary to continue sending the invalid finished or application message until the TSF times out. If the TSF terminates the session or responds with a full handshake ignoring the resumption information, the test is successful. If the TSF silently drops the ClientHello containing the resumption information of the failed session, the evaluator shall continue sending the message until the TSF times out.
@@ -3293,10 +3277,7 @@
                 <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
               </selectables></selectable></selectables>
               and shall not offer other TLS 1.2 ciphersuites,</selectable>
-            <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
-              <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-              <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
-            </selectables></selectable>
+            <selectable>TLS 1.3 ciphersuite TLS_AES_256_GCM_SHA384 as defined in RFC 8446, and shall not offer other TLS 1.3 ciphersuites</selectable>
           </selectables>
               offering the supported ciphersuites in a ClientHello message in preference order: 
               <assignable>list of supported ciphersuites</assignable>.
@@ -3324,8 +3305,7 @@
               listed first. 
               </h:p>
               <h:p>
-              While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be included in “other TLS 1.3
-              ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+              While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is disallowed by this SFR.
               </h:p>
               <h:p>
               In addition to the supported ciphersuites, the ST author indicates the order of ciphersuites included in the ClientHello,
@@ -3348,8 +3328,7 @@
               <h:p>
                 This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the 
                 ClientHello from a TSF that supports TLS 1.2 (as the only supported version, or as a fallback version for TLS 1.3 clients 
-                negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when
-                TLS 1.3 is supported. In addition, this requirement prohibits Using Raw Public Keys in Transport Layer Security and Datagram
+                negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of TLS 1.3 ciphersuites to the single TLS_AES_GCM_SHA384 ciphersuite specified in RFC 8446. In addition, this requirement prohibits Using Raw Public Keys in Transport Layer Security and Datagram
                 Transport Layer Security (RFC 7250) for server certificates.
               </h:p>
               <h:p>
@@ -3819,11 +3798,7 @@
                         <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., unsupported certificate, bad certificate, decryption error, handshake failure) in response to this, 
                         but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).  
                         </h:p><h:p>
-                        Certificate-based server authentication is required unless the TSF only supports TLS with shared PSK. 
-                        For TLS 1.2, this is the case if only TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442,
-                        TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487,
-                        TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442, or
-                        TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487, are supported. For TLS 1.3, certificate-based server authentication is required.
+                          Certificate-based server authentication is required unless the TSF only supports TLS with PSK authentication. TLS 1.3 always requires certificate-based server authentication (even if a PSK is also supported for key exchange), so the only circumstance where this would apply is if TLS 1.2 is claimed and the only supported ciphersuites are the TLS_*_PSK ciphersuites defined in RFCs 5487 and 8442.
                         </h:p></test>
                     </testlist>
                   </test>
@@ -3835,11 +3810,7 @@
                     but which is signed by a valid Certification Authority using a signature and hash combination not included in the TSF’s signature_algorithms_cert extension 
                     (e.g., a certificate signed using RSA and SHA-1). The evaluator shall confirm the TSF terminates the session.
                     </h:p><h:p>
-                    <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert is supported. 
-                    For TLS 1.2, a non-PSK ciphersuite, or one of TLS_RSA_PSK_WITH_AES_256_GCM_SHA384  
-                    or TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487 is used to indicate certificate-based server authentication. 
-                    For TLS 1.3, the test server completes a full handshake, even if a PSK is offered to indicate certificate-based server authentication. 
-                    If the TSF only supports shared PSK authentication, <xref to="tls-client-signature-algs-cert"/> is not performed.
+                      <h:b>Note:</h:b> Certificate-based server authentication is required unless the TSF only supports TLS with PSK authentication. TLS 1.3 always requires certificate-based server authentication (even if a PSK is also supported for key exchange), so the only circumstance where this would apply is if TLS 1.2 is claimed and the only supported ciphersuites are the TLS_*_PSK ciphersuites defined in RFCs 5487 and 8442. If the TSF only supports PSK authentication, <xref to="tls-client-signature-algs-cert"/> is not performed.
                     </h:p><h:p>
                     For TLS 1.3, the server certificate message is encrypted. 
                     The evaluator shall configure the test TLS server with the indicated certificate and ensure that the certificate is 
@@ -4673,11 +4644,7 @@
                       <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
                       <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
                     </selectables></selectable></selectables></selectable>
-              <selectable>TLS 1.3 ciphersuites:
-            <selectables linebreak="yes">
-                <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
-                <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
-            </selectables></selectable></selectables>
+                <selectable>TLS 1.3 ciphersuite TLS_AES_256_GCM_SHA384 as defined in RFC 8446, and shall not offer other TLS 1.3 ciphersuites</selectable></selectables>
               using a preference order based on <selectables>
                 <selectable>RFC 9151 priority</selectable>
                 <selectable>ClientHello ordering</selectable>
@@ -4705,8 +4672,7 @@
               with either of the other options.               
               </h:p>
               <h:p>
-              While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is disallowed by this SFR and should not be
-              included in “other TLS 1.3 ciphersuites.” The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+              While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is disallowed by this SFR.
               </h:p>
               <h:p>
               The ‘ClientHello ordering’ option is claimed if client priority is considered; 
@@ -5224,7 +5190,7 @@
                       <test>(TLS 1.3 key establishment) [conditional] If the TSF supports TLS 1.3, then for each supported group the evaluator shall perform the following sub-tests: 
                         <testlist>
                           <test>The evaluator shall send the TSF a compliant TLS 1.3 ClientHello indicating a single key share value from the supported group and shall observe that the ServerHello 
-                            includes valid elements of the supported group.</test>
+                            includes valid key exchange parameters of the supported group, as specified by RFC 8446 section 4.2.8.</test>
                           <test>The evaluator shall send the TSF a TLS 1.3 ClientHello indicating a supported_groups value supported by the TSF 
                             but containing a key_share extension indicating an element claiming to be in the supported group that does not represent a valid element of the group. The evaluator shall observe that the TSF terminates the session.
                             <h:p>
@@ -5736,9 +5702,9 @@
                     and verify that the TSF does not resume the session, but instead either terminates the session or completes a full handshake, ignoring the resumption information.
                     <h:p>
                     <h:b>Note:</h:b> For TLS 1.2, resumption information should be established at the point the TSF sends a ServerHello, either acknowledging the session-based resumption 
-                    or acknowledging support for ticket-based resumption and sending a new_ticket message. 
+                      or acknowledging support for ticket-based resumption and sending a NewSessionTicket handshake message. 
                     A TLS 1.2 session can then be terminated by sending a modified finished message. 
-                    For TLS 1.3, the new_ticket message is sent after the finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted application data. 
+                    For TLS 1.3, the NewSessionTicket message is sent after the finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted application data. 
                     </h:p>
                   </test>
                 </testlist>
@@ -5838,6 +5804,10 @@
           <h:a href="https://commoncriteriaportal.org/files/ccfiles/CEM2022R1.pdf">Common
             Methodology for Information Technology Security - Evaluation Methodology</h:a>,
           CCMB-2022-11-006, CEM:2022, Revision 1, November 2022. </description>
+      </entry>
+      <entry id="bibIANA">
+        <tag>IANA TLS Parameters</tag>
+        <description><h:a href="https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-6">IANA TLS Parameters - TLS Alerts</h:a></description>
       </entry>
     </bibliography>
 </Package>
