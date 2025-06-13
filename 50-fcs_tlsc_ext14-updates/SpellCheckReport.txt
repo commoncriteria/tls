@@ -18,6 +18,7 @@ output/tls-release-linkable.html: HelloRetryRequest
 output/tls-release-linkable.html: NSS
 output/tls-release-linkable.html: OCSP
 output/tls-release-linkable.html: PSK
+output/tls-release-linkable.html: PSKs
 output/tls-release-linkable.html: RC2
 output/tls-release-linkable.html: RC4
 output/tls-release-linkable.html: RDN
@@ -70,6 +71,7 @@ output/tls-release.html: HelloRetryRequest
 output/tls-release.html: NSS
 output/tls-release.html: OCSP
 output/tls-release.html: PSK
+output/tls-release.html: PSKs
 output/tls-release.html: RC2
 output/tls-release.html: RC4
 output/tls-release.html: RDN
@@ -132,6 +134,7 @@ output/tls.html: HelloRetryRequest
 output/tls.html: NSS
 output/tls.html: OCSP
 output/tls.html: PSK
+output/tls.html: PSKs
 output/tls.html: RC2
 output/tls.html: RC4
 output/tls.html: RDN

@@ -365,7 +365,7 @@
           DTLS supports ciphersuites specified for TLS. The ST author should select the ciphersuites that are supported, and must select at least one ciphersuite for each DTLS version supported – TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. Pre-shared secret ciphersuites for DTLS 1.2 are only claimed as required by a specific PP.
           </h:p>
           <h:p>
-          Note that while TLS_AES_128_GCM_SHA256 is mandatory for RFC 8446 compliance, it is disallowed by this SFR and not listed as a selection for approved TLS 1.3 ciphersuites. The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+          Note that while TLS_AES_128_GCM_SHA256 is mandatory for RFC 8446 compliance, it is disallowed by this SFR and not listed as a selection for approved TLS 1.3 ciphersuites.
           </h:p>
           <h:p>
           In addition to the supported ciphersuites, the ST author indicates the order of ciphersuites included in the ClientHello message, indicating the preferred ciphersuites for server negotiation. To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the TOE is running) the ST uses the assignment to specify a dynamic ordering and the describes in the TSS the conditions for presenting the ordering. It is recommended, but not required, that the TLS 1.3 ciphersuites claimed are listed before TLS 1.2 ciphersuites, and that any other ciphersuites are listed last among the TLS 1.3 ciphersuites.
@@ -383,7 +383,7 @@
         </title>
         <note role="application">
           <h:p>
-          This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports DTLS 1.2 (as the only supported version, or as a fallback version for DTLS 1.3 clients negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when DTLS 1.3 is supported. In addition, the requirement not to support anonymous servers is facilitated by prohibiting the use of the server_certificate_type extension (RFC 7250), which enables the server's use of raw public keys.
+          This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports DTLS 1.2 (as the only supported version, or as a fallback version for DTLS 1.3 clients negotiating with potential DTLS 1.2 servers). The requirement also constrains the choice of DTLS 1.3 ciphersuites to a single ciphersuite. In addition, the requirement not to support anonymous servers is facilitated by prohibiting the use of the server_certificate_type extension (RFC 7250), which enables the server's use of raw public keys.
           </h:p>
           <h:p>
           Ciphersuites for TLS 1.2 are of the form TLS_(key establishment algorithm)_WITH_(encryption algorithm)_(message digest algorithm), and are listed in the TLS parameters section of the internet assignments at iana.org. This requirement constrains the value of (encryption algorithm) and (message digest algorithm).
@@ -756,7 +756,7 @@
                       <h:b>Note:</h:b> If the TSF terminates the handshake, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                       </h:p>
                       <h:p>
-                      Certificate-based server authentication is required unless the TSF only supports DTLS with shared PSK. For DTLS 1.2, this is the case if only TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442, TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487, TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442, or TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487, are supported. For DTLS 1.3, certificate-based server authentication is required.
+                      Certificate-based server authentication is required unless the TSF only supports DTLS 1.2 with using TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) or TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487). DTLS 1.3 always required certificate-based server authentication (even if PSKs are also supported for key establishment).
                       </h:p>
                       </test>
                     </testlist>
@@ -1412,7 +1412,7 @@
         DTLS supports TLS ciphersuites. The ST author selects the ciphersuites that are supported and must select at least one ciphersuite suitable for each supported DTLS version - TLS 1.2 ciphersuites for DTLS 1.2 and TLS 1.3 ciphersuites for DTLS 1.3. It is necessary to limit the ciphersuites that can be used administratively in an evaluated configuration on the server in the test environment. If administrative steps need to be taken so that the ciphersuites negotiated by the implementation are limited to those in this requirement, then the appropriate instructions need to be contained in the guidance.
         </h:p>
         <h:p>
-        Note that while TLS_AES_128_GCM_SHA256 is mandatory for RFC 8446 compliance, it is disallowed by this SFR and not listed as a selection for approved TLS 1.3 ciphersuites. The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+        Note that while TLS_AES_128_GCM_SHA256 is mandatory for RFC 8446 compliance, it is disallowed by this SFR and not listed as a selection for approved TLS 1.3 ciphersuites.
         </h:p>
         <h:p>
         The final selection indicates the TOE’s preference for negotiating a ciphersuite. RFC 9151 indicates the required ciphersuites for NSS systems and "RFC 9151 priority" is claimed if those ciphersuites are selected whenever offered by the client.
@@ -1597,7 +1597,7 @@
               <testlist>
                 <test id="dtls-server-supported-configurations"> [conditional] If DTLS 1.2 is supported, for each ciphersuite, the evaluator shall send a compliant DTLS 1.2 ClientHello message with client_version 0xfefd (signifying DTLS 1.2), a single entry in the ciphersuites field consisting of the specific ciphersuite, and no supported_versions extension or key_share extension (in accordance with RFC 6347). The evaluator shall observe that the TSF’s ServerHello message indicates DTLS 1.2 in the server_version  field, similarly does not include a supported_versions or key_share extension (in accordance with RFC 6347), and indicates the specific ciphersuite in the ciphersuite field. If the ciphersuite requires certificate-based authentication, the evaluator shall observe that the TSF sends a valid certificate representing the TOE and successfully completes the DTLS handshake.
                 <h:p>
-                <h:b>Note:</h:b> The ciphersuites TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442, TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487, TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442, and TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487, if supported, do not involve certificate-based server authentication.
+                <h:b>Note:</h:b> The ciphersuites TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) and TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487) do not involve certificate-based server authentication.
                 </h:p>
                 </test>
                 <test>(DTLS 1.2 support for DTLS 1.3 clients) [conditional] If DTLS 1.2 is supported and the TSF is configurable to support only DTLS 1.2 (or if DTLS 1.3 is not supported), and if the TSF supports DHE or ECDHE ciphersuites, the evaluator shall follow any operational guidance instructions necessary to configure the TSF to only support DTLS 1.2. For each supported DTLS 1.2 ciphersuite with DHE or ECDHE indicated as the key establishment method, the evaluator shall send a ClientHello message with the client_version field set to 0xfefd (signifying DTLS 1.2), a list of ciphersuites consisting of one or more TLS 1.3 ciphersuites followed by the specific TLS 1.2 ciphersuite and no other TLS 1.2 ciphersuites in the ciphersuites field, and including DTLS 1.3 supported_groups and key_share extensions with consistent values. The evaluator shall observe that the TSF’s ServerHello message indicates DTLS 1.2 in the server_version field, does not include a supported_versions or key_share extension, and indicates the specific TLS 1.2 ciphersuite in the ciphersuite field. The evaluator shall observe that the TSF completes the DTLS 1.2 handshake successfully.
@@ -1703,7 +1703,7 @@
                 If the TSF also supports the signature_algorithms_cert extension, then for each value of the signature_algorithms_cert extension, the evaluator shall repeat the sub-tests using a certificate representing the TOE and using a key pair consistent with the signature algorithm, but signed by a certification authority using the signature algorithm specified in the signature_algorithms_cert extension. 
                 </h:p>
                 <h:p>
-                <h:b>Note:</h:b> If DTLS 1.2 is supported, the TSF supports certificate-based server authentication if the DTLS 1.2 supported ciphersuites include ciphersuites other than TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442, TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487, TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442, and TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487. If these are the only supported ciphersuites, this test is omitted. If DTLS 1.3 is supported, certificate-based server authentication is required, and the DTLS 1.3 ClientHello message for the test should not include the PSK extension.
+                <h:b>Note:</h:b> If DTLS 1.2 is supported, the TSF supports certificate-based server authentication if the DTLS 1.2 supported ciphersuites include ciphersuites other than TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442), TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487, TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442, and TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487. If these are the only supported ciphersuites, this test is omitted. If DTLS 1.3 is supported, certificate-based server authentication is required, and the DTLS 1.3 ClientHello message for the test should not include the PSK extension.
                 </h:p>
                 <h:p>
                 The evaluator shall follow operational guidance instructions to provision the TSF with one or more of these certificates as indicated in the following sub-tests:
@@ -2365,7 +2365,7 @@
         TLS 1.3 ciphersuites are claimed if support for TLS 1.3 is claimed in FCS_TLSC_EXT.1.1. The assignment of preference order provides an ordered list of all supported ciphersuites with the most preferred ciphersuites listed first. 
         </h:p>
         <h:p>
-        Note that while TLS_AES_128_GCM_SHA256 is mandatory for RFC 8446 compliance, it is disallowed by this SFR and not listed as a selection for approved TLS 1.3 ciphersuites. The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+        Note that while TLS_AES_128_GCM_SHA256 is mandatory for RFC 8446 compliance, it is disallowed by this SFR and not listed as a selection for approved TLS 1.3 ciphersuites.
         </h:p>
         <h:p>
         In addition to the supported ciphersuites, the ST author includes the order of ciphersuites included in the ClientHello message, indicating the preferred ciphersuites for server negotiation. To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the TOE is running) the ST uses the assignment to specify a dynamic ordering and the describes in the TSS the conditions for presenting the ordering. It is recommended, but not required, that the TLS 1.3 ciphersuites claimed are listed before TLS 1.2 ciphersuites, and that any other ciphersuites are listed last among the TLS 1.3 ciphersuites.
@@ -2384,7 +2384,7 @@
       </title>
       <note role="application">
         <h:p>
-        This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports TLS 1.2 (as the only supported version, or as a fallback version for TLS 1.3 clients negotiating with potential TLS 1.2 servers). The requirement also constrains the choice of "other TLS 1.3 ciphersuites" when TLS 1.3 is supported. In addition, the requirement not to support anonymous servers is facilitated by prohibiting the use of the server_certificate_type extension (RFC 7250), which enables the server's use of raw public keys.
+        This element explicitly excludes ciphersuites defined for TLS 1.2 and previous TLS or SSL versions that might be included in the ClientHello message from a TSF that supports TLS 1.2 (as the only supported version, or as a fallback version for TLS 1.3 clients negotiating with potential TLS 1.2 servers). The requirement also constrains the choice of TLS 1.3 ciphersuites to a single ciphersuite. In addition, the requirement not to support anonymous servers is facilitated by prohibiting the use of the server_certificate_type extension (RFC 7250), which enables the server's use of raw public keys.
         </h:p>
         <h:p>
         Ciphersuites for TLS 1.2 are of the form TLS_(key establishment algorithm)_WITH_(encryption algorithm)_(message digest algorithm), and are listed in the TLS parameters section of the internet assignments at iana.org. This requirement constrains the value of (encryption algorithm) and (message digest algorithm).
@@ -2748,7 +2748,7 @@
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                     </h:p>
                     <h:p>
-                    Certificate-based server authentication is required unless the TSF only supports TLS with shared PSK. For TLS 1.2, this is the case if only TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442, TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487,TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442, or TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487, are supported. For TLS 1.3, certificate-based server authentication is required.
+                    Certificate-based server authentication is required unless the TSF only supports DTLS with PSK-based authentication using TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) or TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487). DTLS 1.3 always required certificate-based server authentication (even if PSKs are also supported for key establishment).
                     </h:p>
                     </test>
                   </testlist>
@@ -3426,7 +3426,7 @@
         The final selection indicates the TOE’s preference for negotiating a ciphersuite. RFC 9151 indicates the required ciphersuites for NSS systems and "RFC 9151 priority" is claimed if those ciphersuites are selected whenever offered by the client. The final option is used to provide a specific preference ordering that does not agree with either of the other options.
         </h:p>
         <h:p>
-        Note that while TLS_AES_128_GCM_SHA256 is mandatory for RFC 8446 compliance, it is disallowed by this SFR and not listed as a selection for approved TLS 1.3 ciphersuites. The ST author may list additional TLS 1.3 ciphersuites as they are registered.
+        Note that while TLS_AES_128_GCM_SHA256 is mandatory for RFC 8446 compliance, it is disallowed by this SFR and not listed as a selection for approved TLS 1.3 ciphersuites.
         </h:p>
         <h:p>
         The ‘ClientHello ordering’ option is claimed if client priority is considered; if both are claimed, the ST author should indicate which is primary and which is secondary, and whether the priority scheme is configurable. If other priority schemes or if tertiary priority is used, the ST author will claim the third option and describe the scheme in the ST.
