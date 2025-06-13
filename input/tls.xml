@@ -355,7 +355,7 @@
           </selectables>
           and shall not offer other TLS 1.2 ciphersuites,
           </selectable>
-          <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">Add commentMore actions
+          <selectable>TLS 1.3 ciphersuites: <selectables linebreak="yes">
               <selectable>TLS_AES_256_GCM_SHA384 as defined in RFC 8446</selectable>
               <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
             </selectables></selectable>
