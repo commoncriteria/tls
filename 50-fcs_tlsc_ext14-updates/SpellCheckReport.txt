@@ -11,10 +11,8 @@ output/tls-release-linkable.html: CNSA
 output/tls-release-linkable.html: CertificateRequest
 output/tls-release-linkable.html: CertificateVerify
 output/tls-release-linkable.html: ClientKeyExchange
-output/tls-release-linkable.html: ContentType
 output/tls-release-linkable.html: EncryptedExtensions
 output/tls-release-linkable.html: ExtendedKeyUsage
-output/tls-release-linkable.html: Ginished
 output/tls-release-linkable.html: HelloRequest
 output/tls-release-linkable.html: HelloRetryRequest
 output/tls-release-linkable.html: NSS
@@ -65,10 +63,8 @@ output/tls-release.html: CNSA
 output/tls-release.html: CertificateRequest
 output/tls-release.html: CertificateVerify
 output/tls-release.html: ClientKeyExchange
-output/tls-release.html: ContentType
 output/tls-release.html: EncryptedExtensions
 output/tls-release.html: ExtendedKeyUsage
-output/tls-release.html: Ginished
 output/tls-release.html: HelloRequest
 output/tls-release.html: HelloRetryRequest
 output/tls-release.html: NSS
@@ -129,10 +125,8 @@ output/tls.html: CNSA
 output/tls.html: CertificateRequest
 output/tls.html: CertificateVerify
 output/tls.html: ClientKeyExchange
-output/tls.html: ContentType
 output/tls.html: EncryptedExtensions
 output/tls.html: ExtendedKeyUsage
-output/tls.html: Ginished
 output/tls.html: HelloRequest
 output/tls.html: HelloRetryRequest
 output/tls.html: NSS

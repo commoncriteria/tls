@@ -53,6 +53,9 @@
     <h:p>
 	  This "Functional Package for Transport Layer Security" (short name "TLS-PKG") defines functional requirements for the implementation of the TLS and DTLS protocols. The requirements are intended to improve the security of products by enabling their evaluation.
     </h:p>
+    <h:p>
+    Note that this package frequently references the use of alert messages in the context of TLS and DTLS communications. Valid alerts and the appropriate versions in which to use these alerts are listed the IANA registry for TLS at <xref to="bibIANA"/>. The documentation referenced by the IANA registry should be consulted when determining whether an observed alert is consistent with expectations based on the test being performed when the alert is observed.
+    </h:p>
   </sec:Overview>
 
   <tech-terms>
@@ -477,7 +480,7 @@
           If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446, and tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. If DTLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151. If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.
           </h:p>
           <h:p>
-          If DTLS 1.2 is claimed, "extended_master_secret extension (RFC 7627) enforcing server support" is claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers. The "extended_master_secret extension (RFC 7627) enforcing server support" selection is not claimed when TLS 1.3 is claimed.
+          If DTLS 1.2 is claimed, "extended_master_secret extension (RFC 7627) enforcing server support" is claimed, and optionally the ability to allow legacy servers. The "extended_master_secret extension (RFC 7627) enforcing server support" selection is not claimed when TLS 1.3 is claimed.
           </h:p>
           <h:p>
           If DTLS 1.2 is supported and if ECDHE or DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed.
@@ -633,7 +636,7 @@
               The evaluator shall observe that the TOE successfully completes the DTLS handshake.
               </h:p>
               <h:p>
-              <h:b>Note:</h:b> DTLS 1.3 renames DTLS 1.2's client_version and server_version fields to legacy_version. Regardless which of the two versions is being negotiated or in use, this field is required to indicate DTLS 1.2. If the TOE supports both DTLS 1.2 and DTLS 1.3, the ClientHello message indicates all ciphersuites and all extensions as required for both versions. DTLS 1.3 requires the use of the supported_versions extension, it must include the DTLS 1.3 value (0xfefc), and it may also include the DTLS 1.2 value (0xfefd).
+              <h:b>Note:</h:b> DTLS 1.3 renames DTLS 1.2's client_version and server_version fields to legacy_version. Regardless which of the two versions is being negotiated or in use, this field is required to indicate DTLS 1.2. If the TOE supports both DTLS 1.2 and DTLS 1.3, the ClientHello message indicates all ciphersuites and all extensions as required for both versions. DTLS 1.3 requires the use of the supported_versions extension which must include the DTLS 1.3 value (0xfefc) and may include the DTLS 1.2 value (0xfefd).
               </h:p>
               <h:p>
               If the TOE is configurable to support only DTLS 1.2, only DTLS 1.3, or both DTLS 1.2 and DTLS 1.3, <xref to="dtls-client-supported-configurations"/> should be performed in each configuration, with ciphersuites and extensions appropriate for the configured version.
@@ -648,7 +651,7 @@
               <!-- DTLS Client Obsolete Versions -->
               <test id="dtls-client-obsolete-versions">(obsolete versions) The evaluator shall perform the following tests:
                 <testlist>                  
-                  <test id="dtls-client-obsolete-versions">For each of DTLS 1.0 and DTLS 1.2 if it is not supported, the evaluator shall initiate a DTLS connection from the TOE to a test DTLS server that is configured to negotiate the obsolete version and observe that the TSF silently drops the message or terminates the connection.
+                  <test id="dtls-client-obsolete-versions">For DTLS 1.0 (and for DTLS 1.2 if only DTLS 1.3 is supported), the evaluator shall initiate a DTLS connection from the TOE to a test DTLS server that is configured to negotiate the obsolete version and observe that the TSF silently drops the message or terminates the connection.
                   <h:p>
                   <h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message, the evaluator shall repeat sending the message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                   </h:p>
@@ -1509,7 +1512,7 @@
         If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed in accordance with RFC 8446 and the tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. If DTLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151. If DTLS 1.3 is not claimed, supported_versions, key_share, and tls_cert_with_extern_psk are not claimed.
         </h:p>
         <h:p>
-        If DTLS 1.2 is claimed, the extended_master_secret extension is claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. If DTLS 1.2 is not claimed, the extended_master_secret extension (RFC 7627) is not claimed.
+        If DTLS 1.2 is claimed, "extended_master_secret extension (RFC 7627) enforcing client support" is claimed, and optionally the ability to allow legacy servers. If DTLS 1.2 is not claimed, the extended_master_secret extension (RFC 7627) is not claimed.
         </h:p>
         <h:p>
         If DTLS 1.2 is supported and DHE or ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the selection for the supported_groups extension is claimed. Support for additional extensions is acceptable. For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
@@ -1619,7 +1622,7 @@
             <!-- DTLS Server Obsolete Version -->
             <test>(obsolete versions) The evaluator shall perform the following tests:
               <testlist> 
-                <test id="dtls-server-obsolete-versions">For each of DTLS 1.0 and DTLS 1.2 if it is not supported, the evaluator shall send a ClientHello message to the TSF indicating the selected version as the highest version. The evaluator shall observe the TSF silently drops the ClientHello message or terminates the connection.
+                <test id="dtls-server-obsolete-versions">For DTLS 1.0 (and for DTLS 1.2 if only DTLS 1.3 is supported), the evaluator shall send a ClientHello message to the TSF indicating the selected version as the highest version. The evaluator shall observe the TSF silently drops the ClientHello message or terminates the connection.
                 <h:p>
                 <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                 </h:p>
@@ -1766,7 +1769,7 @@
                 </h:p>
                 <h:p>
                 <h:b>Note:</h:b>
-                 If the TSF rejects the connection, and no Application Data is sent, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client Finished message until the TSF times out, noting that no Application Data is sent. It is preferred that the TSF logs a fatal decryption_failed error alert. However, it is also acceptable for the TSF to terminate the session using another error alert or without logging an error alert.
+                 If the TSF rejects the connection and no Application Data is sent, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client Finished message until the TSF times out, noting that no Application Data is sent. It is preferred that the TSF logs a fatal decryption_failed error alert. However, it is also acceptable for the TSF to terminate the session using another error alert or without logging an error alert.
                 </h:p>
                 <h:p>
                 The Finished message is encrypted. The invalid 'verify_data' can be constructed by modifying a byte of a compliant Finished message payload.
@@ -1774,24 +1777,24 @@
                  </test>
                 <test> (DTLS 1.2 DHE or ECDHE key establishment) [conditional] If the TSF supports DTLS 1.2 and supports DHE or ECDHE ciphersuites for DTLS 1.2, then the evaluator shall perform the following sub-tests:
                   <testlist>
-                    <test>[conditional] If the TSF supports DTLS 1.2, supports DHE ciphersuites, and supports DHE groups in the supported groups extension, then for each supported DHE group, the evaluator shall send the TSF a compliant DTLS 1.2 ClientHello message indicating a single ciphersuite that is compatible with the group and indicating the group in the supported_groups extension. The evaluator shall observe that the TSF negotiates DTLS 1.2 using the indicated ciphersuite and that the ServerKeyExchange message indicates the specific group. The evaluator shall send the TOE a ClientKeyExchange message with a valid point in the group and observe that the TSF successfully completes the session.
+                    <test>[conditional] If the TSF supports DHE groups via the supported_groups extension, then for each supported DHE group, the evaluator shall send the TSF a compliant DTLS 1.2 ClientHello message listing a single ciphersuite that includes the DHE group and indicating that group in the supported_groups extension. The evaluator shall observe that the TSF negotiates DTLS 1.2 using the indicated ciphersuite and that the ServerKeyExchange message indicates the specific group. The evaluator shall send the TOE a ClientKeyExchange message with a valid point in the group and observe that the TSF successfully completes the session.
                     </test>
                     <test>
                     The evaluator shall send a ClientHello message to the TOE as in the previous test with identical ciphersuite and supported_groups extension values. After the TSF responds with a valid ServerKeyExchange message, the evaluator shall send the TSF a ClientKeyExchange message with the public key value '0.' The evaluator shall observe that the TSF silently drops the message or terminates the session.
                     </test>
                     <test>
-                    The evaluator shall send a ClientHello message to the TOE as in the previous two tests including the same ciphersuite, but now instead indicating a group not supported by the TSF in the supported_groups extension. The evaluator shall observe that the TSF silently drops the message or terminates the session.
+                    The evaluator shall send a ClientHello message to the TOE as in the previous two tests using the same ciphersuite, but indicating a group in the supported_groups extension that is not supported by the TSF. The evaluator shall observe that the TSF silently drops the message or terminates the session.
                     <h:p>
                     <h:b>Note:</h:b> If the TSF terminates the sessions for the second and third handshake, the test is successful. If the TSF silently drops the ClientKeyExchange message (second handshake) and ClientHello message (third handshake), the evaluator shall continue sending the respective messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                     </h:p>
                     </test>  
-                    <test>[conditional] If the TSF supports ECDHE ciphersuites (and therefore supports ECDHE groups in the supported_groups extension), the evaluator shall send a ClientHello message indicating a single supported ECDHE ciphersuite and including the supported ECDHE group in the supported_groups extension. The evaluator shall observe that the TSF sends a ServerKeyExchange message with a valid point of the specified group. The evaluator shall send the TSF a ClientKeyExchange message to the TSF consisting of a valid element in the supported group and observe that the TSF successfully completes the session.
+                    <test>[conditional] If the TSF supports ECDHE ciphersuites via the supported_groups extension, the evaluator shall send a ClientHello message indicating a single supported ECDHE ciphersuite and including the supported ECDHE group in the supported_groups extension. The evaluator shall observe that the TSF sends a ServerKeyExchange message with a valid point of the specified group. The evaluator shall send the TSF a ClientKeyExchange message to the TSF consisting of a valid element in the supported group and observe that the TSF successfully completes the session.
                     </test>
                     <test>
-                    The evaluator shall send a ClientHello message to the TOE as in the previous test with identical ciphersuite and supported_groups extension values. After the TSF sends the valid ServerKeyExchange message, the evaluator shall send a ClientKeyExchange message consisting of an invalid element of the supported group and observe that the TSF silently drops the ClientKeyExchange message or terminates the handshake.
+                    The evaluator shall send a ClientHello message to the TOE as in the previous test with identical ciphersuite and supported_groups extension values. After the TSF sends the valid ServerKeyExchange message, the evaluator shall send a ClientKeyExchange message consisting of an invalid element of the negotiated supported group and observe that the TSF silently drops the ClientKeyExchange message or terminates the handshake.
                     </test>
                     <test>
-                    The evaluator shall send a third ClientHello message to the TOE as in the previous two tests indicating the same supported ECDHE ciphersuite, but now instead including an ECDHE group that is not supported. The evaluator shall observe that the TSF silently drops the ClientHello message or terminates the session. 
+                    The evaluator shall send a ClientHello message to the TOE as indicating the same supported ECDHE ciphersuite as the previous two tests, but indicating a group in the supported_groups extension that is not supported by the TSF. The evaluator shall observe that the TSF silently drops the ClientHello message or terminates the session. 
                     <h:p>
                     <h:b>Note:</h:b> Note: If the TSF terminates the sessions for the second and third handshake, the test is successful. If the TSF silently drops the ClientKeyExchange message (second handshake) and ClientHello message (third handshake), the evaluator shall continue sending the respective messages until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                     </h:p>
@@ -1799,36 +1802,33 @@
                     An invalid ECDSA point consists of properly formatted x and y components, but for which the equation of the curve is not satisfied. To obtain an invalid point, the evaluator shall modify a byte of the y coordinate value of a valid point and confirm that the point is not on the curve. 
                     </h:p>
                     <h:p>
-                    The IANA TLS parameters website lists registered ECDHE groups for use in selecting a non-supported group. If the TSF supports all registered ECDHE groups, it is acceptable to send the ClientHello message without a supported_groups extension. The TSF should reject such a ClientHello message, but it is acceptable for the TSF to default to a supported group. In this case, the TSF passes the test.
+                    The IANA registry for TLS lists all ECDHE groups registered for use with TLS; the groups not permitted by this Functional Package can be used for testing of non-supported groups. If the TSF supports all registered ECDHE groups, it is acceptable to send the ClientHello message without a supported_groups extension. The TSF should reject such a ClientHello message, but it is acceptable for the TSF to default to a supported group. In this case, the TSF passes the test.
                     </h:p>
                     </test>
                   </testlist>
                 </test>  
-                <test>(DTLS 1.3 key establishment) [conditional] If the TSF supports DTLS 1.3, then for each supported group the evaluator shall perform the following sub-tests: 
+                <test>(DTLS 1.3 key establishment) [conditional] If the TSF supports DTLS 1.3, then for each supported group, the evaluator shall perform the following sub-tests: 
                   <testlist>
                     <test>The evaluator shall send the TSF a compliant DTLS 1.3 ClientHello message indicating a single key_share value from the supported_groups extension and shall observe that the ServerHello message includes valid elements of the supported group.
                     </test>
-                    <test>The evaluator shall send the TSF a DTLS 1.3 ClientHello message indicating a supported_groups value supported by the TSF but containing a key_share extension indicating an element claiming to be in the supported group that does not represent a valid element of the group. The evaluator shall observe that the TSF silently drops the message or terminates the session.
+                    <test>The evaluator shall send the TSF a DTLS 1.3 ClientHello message that indicates a single supported_groups value supported by the TSF and a single element in the key_share extension that claims to be in the supported group, but is not a valid element of that group. The evaluator shall observe that the TSF silently drops the message or terminates the session.
                     <h:p>
                     <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                     </h:p>
                     <h:p>
-                    For DHE groups, the invalid element may be of the wrong length; for ECDHE groups, the invalid element has coordinates (x and y) that do not satisfy the equation of the elliptic curve. To obtain an invalid ECDHE point, the evaluator shall modify a byte of the y coordinate value of a valid point and confirm that the point is not on the curve.
+                    For DHE groups, the invalid element may be the wrong length; for ECDHE groups, the invalid element has coordinates (x and y) that do not satisfy the equation of the elliptic curve. To obtain an invalid ECDHE point, the evaluator shall modify a byte of the y coordinate value of a valid point and confirm that the point is not on the curve.
                     </h:p>
                     </test>
                   </testlist>
                 </test>
-                <test id="tls-server-no-finished-msg">For each supported version, the evaluator shall initiate a DTLS handshake from a test DTLS client with compliant handshake messages negotiating the version and supported parameters to include the ChangeCipherSpec message (implied for DTLS 1.3), but which omits the Finished message and instead sends an Application Message containing random data. The evaluator shall observe that the TSF silently drops the message or terminates the connection.
+                <test id="tls-server-no-finished-msg">For each supported version, the evaluator shall initiate a DTLS handshake from a test DTLS client with compliant handshake messages negotiating the version and supported parameters to include the ChangeCipherSpec message (implied for DTLS 1.3), but which omits the Finished message and instead sends an Application Data message containing random data. The evaluator shall observe that the TSF silently drops the message or terminates the connection.
                 <h:p>
                 <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the application message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
-                </h:p>
-                <h:p>
-                The application_data type is indicated by the TLSCipherText ContentType field having value 23. The legacy record version 0x0303 and length fields should match a valid TLSCipherText message of the same size.
                 </h:p>
                 </test>
               </testlist> 
             </test>
-            <test> [conditional] If the TSF supports DTLS 1.2, the evaluator shall send a DTLS 1.2 ClientHello message from a test client and observe that the TSF sends a HelloVerifyRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloVerifyRequest message and include the modified value as a cookie in the test client’s second ClientHello message. The evaluator shall verify that the server rejects the client's handshake message.
+            <test> [conditional] If the TSF supports DTLS 1.2, the evaluator shall send a DTLS 1.2 ClientHello message from a test client and observe that the TSF sends a HelloVerifyRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloVerifyRequest message and include the modified value as a cookie in the test client’s second ClientHello message. The evaluator shall verify that the server rejects the client's message.
             </test>
             <test>
             [conditional] If the TSF supports DTLS 1.3, the evaluator shall send a DTLS 1.3 ClientHello message from a test client and observe that the TSF sends a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloRetryRequest message and include the modified value as a cookie in the test client’s second ClientHello message. The evaluator shall verify that the server rejects the client's handshake message.
@@ -1960,7 +1960,7 @@
             <h:b>Note:</h:b> DTLS 1.3 is a fundamentally different protocol than DTLS 1.2, so even though the certificate validation and name checking tests are identical for both versions, it is likely that early deployments of DTLS 1.3 may use a different code-base that warrants independent testing. If both DTLS 1.2 and DTLS 1.3 are supported and the evaluator can verify that the TSF uses the same code-base for certificate validation and name checking for both DTLS 1.3 and DTLS 1.2, it is acceptable that testing be performed for only one version for these tests.
             </h:p>
             <testlist>
-              <test> For each supported version, the evaluator shall follow the operational guidance to configure the TOE to require valid client authentication with no exceptions in support of a function (configured, as necessary) that does not allow unauthenticated sessions, and initiate a DTLS session from a compliant DTLS test client supporting that version. The evaluator shall ensure that the test client sends a certificate_list structure which has a length of zero. The evaluator shall verify the TSF silently drops the message or terminates the session, and that no Application Data is sent.
+              <test> For each supported version, the evaluator shall follow the operational guidance to configure the TOE to require valid client authentication with no exceptions in support of a function (configured, as necessary) that does not allow unauthenticated sessions, and initiate a DTLS session from a compliant DTLS test client. The evaluator shall ensure that the test client sends a certificate_list structure which has a length of zero. The evaluator shall verify the TSF silently drops the message or terminates the session, and that no Application Data is sent.
               <h:p>
               <h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the client Certificate message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
               </h:p>
@@ -1988,7 +1988,7 @@
                   </test>
                 </testlist>
               </test>
-              <test>For each supported version, the evaluator shall configure the TSF to negotiate the version and require client authentication and perform the following steps: <h:ul>
+              <test>For each supported version, the evaluator shall configure the TSF to negotiate the version, require client authentication, and perform the following steps: <h:ul>
               <h:li>For each supported name matching method indicated in FCS_DTLSS_EXT.2.4, and for each name type supported by the matching method, the evaluator shall establish a valid primary certificate chain with a leaf certificate containing a single name of the supported type matching a reference ID and a valid alternate certificate chain with a leaf certificate containing a single name indicating a different name of the same type not matching a reference ID.</h:li>
               <h:li>[conditional] If any of the supported name types include CN encoding of a name type also supported as a SAN entry, the evaluator shall establish additional certificate chains:
               <h:ul>
@@ -2254,13 +2254,13 @@
         <Tests>
           The evaluator shall follow the operational guidance to configure the TSF to negotiate DTLS 1.3 and shall perform the following tests:
           <testlist>
-            <test>The evaluator shall attempt a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) but using psk_ke mode as the value for the psk_key_exchange_modes extension in the resumption ClientHello message. The evaluator shall observe that the TSF refuses to resume the session, by silently dropping the message, by completing a full DTLS 1.3 handshake, or by terminating the session.
+            <test>The evaluator shall attempt a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) using psk_ke mode as the value for the psk_key_exchange_modes extension in the resumption ClientHello message. The evaluator shall observe that the TSF refuses to resume the session by silently dropping the message, completing a full DTLS 1.3 handshake, or terminating the session.
             <h:p>
             <h:b>Note:</h:b> If the TSF terminates the session or completes a full DTLS 1.3 handshake, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
             </h:p>
             </test>
             <!-- updated per TD0729 -->
-            <test>The evaluator shall establish a valid DTLS 1.3 session with the TOE and send the data as Application Data after the Finished messages have been verified, and observe the response. The evaluator shall then configure the TOE to clear the response and initiate a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) with a test DTLS 1.3 client attempting to provide the same data in early data. The evaluator shall observe that the TSF does not react to the early data as it did when presented as Application Data after the Ginished messages, indicating that the data was ignored.
+            <test>The evaluator shall establish a valid DTLS 1.3 session with the TOE and send the data as Application Data after the Finished messages have been verified, and observe the response. The evaluator shall then configure the TOE to clear the response and initiate a resumed session (see FCS_DTLSS_EXT.5 <xref to="dtls-server-successful-resumption"/>) with a test DTLS 1.3 client attempting to provide the same data in the early_data extension. The evaluator shall observe that the TSF ignores the early_data extension.
             <h:p>
             <h:b>Note:</h:b> The specific early data used may depend on the applications calling the DTLS session and should be selected to initiate an observable response in the TSF or calling application as described in the ST. For HTTPS, for example, the early data can be an HTTP POST that updates data at the TOE, which can then be observed via a user interface for the application if the data was posted or via application logging indicating that the operation failed.
             </h:p>
@@ -2369,7 +2369,7 @@
         Note that while TLS_AES_128_GCM_SHA256 is mandatory for RFC 8446 compliance, it is disallowed by this SFR and not listed as a selection for approved TLS 1.3 ciphersuites. The ST author may list additional TLS 1.3 ciphersuites as they are registered.
         </h:p>
         <h:p>
-        In addition to the supported ciphersuites, the ST author indicates the order of ciphersuites included in the ClientHello message, indicating the preferred ciphersuites for server negotiation. To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the TOE is running) the ST uses the assignment to specify a dynamic ordering and the describes in the TSS the conditions for presenting the ordering. It is recommended, but not required, that the TLS 1.3 ciphersuites claimed are listed before TLS 1.2 ciphersuites, and that any other ciphersuites are listed last among the TLS 1.3 ciphersuites.
+        In addition to the supported ciphersuites, the ST author includes the order of ciphersuites included in the ClientHello message, indicating the preferred ciphersuites for server negotiation. To eliminate the need to produce duplicate lists, it is recommended to complete the selected list of ciphersuites in the order that they are presented and then complete the following assignment by saying that the presentation order is the same as in the previous list. If more than one ordering is possible (e.g., the order is constructed dynamically based on some property of the system on which the TOE is running) the ST uses the assignment to specify a dynamic ordering and the describes in the TSS the conditions for presenting the ordering. It is recommended, but not required, that the TLS 1.3 ciphersuites claimed are listed before TLS 1.2 ciphersuites, and that any other ciphersuites are listed last among the TLS 1.3 ciphersuites.
         </h:p>
       </note>
     </f-element>
@@ -2475,7 +2475,7 @@
         If TLS 1.2 is claimed, extended_master_secret extension is claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers.
         </h:p>
         <h:p>
-        If TLS 1.2 is claimed and if DHE or ECDHE ciphersuites are claimed in FCS_TLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp or ffdhe groups claimed.
+        If TLS 1.2 is claimed and if DHE or ECDHE ciphersuites are claimed in FCS_TLSC_EXT.1.2, the supported_groups extension is claimed here with the appropriate secp or ffdhe groups also claimed.
         </h:p>
         <h:p>
         Other extensions may be supported; certain extensions and values may need to be claimed for SFRs defined outside of this package related to the calling applications.
@@ -2528,7 +2528,7 @@
         </h:p>
         <h:br/><h:br/>
         <h:p>
-        If the TSF matches names, the rules for verification of identity are described in RFC 6125 Section 6 and RFC 5280 Section 7. If "Common name conversion..." is claimed, both the subject field and the converted common name are matched. The reference identifier is established by the user (e.g., entering a URL into a web browser or clicking a link), by configuration (e.g., configuring the name of a mail or authentication server), or by an application (e.g., a parameter of an API) depending on the supported function. The client establishes all acceptable reference identifiers for matching against the presented identifiers as validated in the server’s certificate. If the TSF performs matching of the reference identifiers to the identifiers provided in the server’s certificate,  the first option is claimed and all supported name types are claimed. If the TSF presents the certificate or the presented identifiers from the certificate to the supported function, the second option is claimed. If the TSF constructs initial name constraints derived from the reference identifiers for validation during certification path validation, the third option is claimed.
+        If the TSF matches names, the rules for identity verification are described in RFC 6125 Section 6 and RFC 5280 Section 7. If "Common name conversion..." is claimed, the subject field and the converted common name match. The reference identifier is established by the user (e.g., entering a URL into a web browser or clicking a link), by a configuration (e.g., configuring the name of a mail or authentication server) or an application (e.g., a parameter of an API), depending on the supported function. The client establishes all acceptable reference identifiers for matching against the presented identifiers as validated in the server’s certificate. If the TSF performs matching of the reference identifiers to the identifiers provided in the server’s certificate, the first option is claimed and all supported name types are claimed. If the TSF presents the certificate or the presented identifiers from the certificate to the supported function, the second option is claimed. If the TSF constructs initial name constraints derived from the reference identifiers for validation during certification path validation, the third option is claimed.
         </h:p>
         <h:p>
         In most cases where TLS servers are represented by DNS-type names, the preferred method for verification is the Subject Alternative Name using DNS, URI, or Service Names. Verification using a conversion of the Common Name relative distinguished name from a DNS name type in the subject field is allowed for the purposes of backward compatibility. 
@@ -2554,19 +2554,19 @@
       </title>
       <note role="application">
         <h:p>
-        The option “the server certificate…” is claimed if certificate-based server authentication is performed (if non-PSK ciphersuites are supported in TLS 1.2, or if TLS 1.3 is claimed). Within this selection, the option “except when…” is claimed if TLS specific exception rules are implemented to allow server certificates with no valid revocation status information to be accepted. This is claimed only when FIA_X509_EXT.2.2 includes the option “supported function determines acceptance via…”. The assignment for when override is authorized describes the TLS-specific processing to include the privileged users authorized to configure an override, and the duration of an override. It is preferred that overrides are minimized in scope and time. Otherwise, “with no TLS-specific exceptions” is claimed.
+        The option “the server certificate is invalid” is claimed if certificate-based server authentication is performed (if non-PSK ciphersuites are supported in TLS 1.2, or if TLS 1.3 is claimed). Within this selection, the option “except when…” is claimed if TLS specific exception rules are implemented to allow server certificates with no valid revocation status information to be accepted. This is claimed only when FIA_X509_EXT.2.2 includes the option “supported function determines acceptance via…”. The assignment for when override is authorized describes the TLS-specific processing to include the privileged users authorized to configure an override, and the duration of an override. It is preferred that overrides are minimized in scope and time. Otherwise, “with no TLS-specific exceptions” is claimed.
         </h:p>
         <h:p>
         The option “a PSK associated with the server is invalid” is claimed if TLS 1.2 is supported and PSK ciphersuites are supported, or TLS 1.3 is supported and if PSK handshakes are supported.
         </h:p>
         <h:p>
-        Note that FIA_X509_EXT.1 may allow methods other than CRL or OCSP to validate the revocation status of a certificate. A certificate that exclusively uses these alternate methods may not advertise revocation status information locations. Thus, a certificate that is valid according to FIA_X509_EXT.1 and does not advertise revocation status information in a CRL_DP or AIA extension is considered to be not revoked. TLS-specific override mechanisms are for use with certificates with published revocation status information that is not accessible, whether temporarily or because the information cannot be accessed during the state of the TOE (e.g., for verifying signatures on boot code). The circumstances should be described by the ST author, who should indicate the override mechanism and conditions that apply to the override, including system state, user or admin actions, etc. 
+        Note that FIA_X509_EXT.1 may allow methods other than CRL or OCSP to validate the revocation status of a certificate. A certificate that exclusively uses these alternate methods may not advertise revocation status information locations. Thus, a certificate that is valid according to FIA_X509_EXT.1 and does not advertise revocation status information in a CRL_DP or AIA extension is considered to be not revoked. TLS-specific override mechanisms are for use with certificates with published revocation status information that is not accessible, whether temporarily or because the information cannot be accessed during the state of the TOE (e.g., for verifying signatures on boot code). The ST author should describe these circumstances, including a description of the override mechanism and the conditions that apply to the override (e.g. system state, user or admin actions, etc.). 
         </h:p>
       </note>
       <aactivity>
         <TSS>
           <h:p>
-          The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported TLS versions, features, ciphersuites, and extensions are specified in accordance with RFC 5246 (TLS 1.2) and RFC 8446 (TLS 1.3 and updates to TLS 1.2) and as refined in FCS_TLSC_EXT.1 as appropriate. 
+          The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported TLS versions, features, ciphersuites, and extensions are specified in accordance with RFC 5246 (TLS 1.2) and RFC 8446 (TLS 1.3) and as refined in FCS_TLSC_EXT.1 as appropriate. 
           </h:p>
           <h:p>
           The evaluator shall verify that ciphersuites indicated in FCS_TLSC_EXT.1.2 are included in the description, and that none of the following ciphersuites are supported: ciphersuites indicating NULL, RC2, RC4, DES, IDEA, TDES, or AES-128 in the encryption algorithm component, indicating 'anon,' or indicating MD5 or SHA-1 in the message digest algorithm component.
@@ -2583,7 +2583,7 @@
           <h:li>DNS names: The ‘*’ character used in the complete leftmost label of a DNS name represents any valid name that has the same number of labels, and that matches all remaining labels. The ‘*’ character must only be used in the leftmost complete label of a properly formatted DNS name. The ‘*’ must not be used to represent a public suffix, or in the leftmost label immediately following a public suffix. </h:li>
           <h:li>URI or SRV names: The ‘*’ character can only occur in the domain name portion of the name represented as a DNS name. All restrictions for wildcards in DNS names apply to the DNS portion of the name. URI host names presented as an IP address are matched according to IP address matching rules – see best practices for IP addresses below. In accordance with RFC 6125, it is preferred that such URIs are presented a matching name of type IP address in the SAN.</h:li>
           <h:li>IP addresses: RFC 5280 does not support IP address ranges as presented names, but indicates that presented names may be compared to IP address ranges present in name constraints. If the TSF supports IP address ranges as reference identifiers, the reference identifier matches if the presented name is in the range. IP ranges in name constraints (including reference identifiers) should be presented in CIDR format. </h:li>
-          <h:li>RFC 5322 names: RFC 5280 and updates RFC 8398 and RFC 8399 do not support special indicators representing more than a single mailbox as a presented name, but indicates that presented names may be compared to a single mailbox, ‘any’ email address at a host, or ‘any’ email address on a domain (e.g., “example.com” matches any email address on the host example.com and “.example.com” matches any email address in the domain example.com, but does not match email addresses at the host “example.com”). Such matching is prohibited for internationalized RFC 5322 names.</h:li>
+          <h:li>RFC 5322 names: RFC 5280, RFC 8398, and RFC 8399 do not support special indicators representing more than a single mailbox as a presented name, but indicate that presented names may be compared to a single mailbox, ‘any’ email address at a host, or ‘any’ email address on a domain (e.g., “example.com” matches any email address on the host example.com and “.example.com” matches any email address in the domain example.com, but does not match email addresses at the host “example.com”). Such matching is prohibited for internationalized RFC 5322 names.</h:li>
           <h:li>Embedded CN name types: The CN relative distinguished name of a DNS name type included in the subject field is not strongly typed. Attempts to match both the name type and wildcard specifications can result in matches not intended, and therefore, not authoritatively asserted by a certification authority. It is preferred that no matching of CN embedded names be supported, but if necessary for backward compatibility, the description should clearly indicate how different name types are interpreted in the matching algorithm. If an embedded CN is present, the DN structure containing the CN as an RDN is matched, and the CN component is further matched according to the specific rules for the implied name type. In particular, the ‘*’ character in a CN is not to be interpreted as representing more than a single entity unless the entirety of the RDN is properly formatted as a DNS, URI, or SVR name, and represents a wildcard meeting best practices as described above.</h:li>
           </h:ul>
           </h:p>
@@ -2612,21 +2612,21 @@
 		      The evaluator shall perform the following tests:
           <testlist>
           <!-- TLS Client Supported Configurations -->
-            <test id="tls-client-supported-configurations">(supported configurations) For each supported version, and for each supported ciphersuite associated with the version:
+            <test id="tls-client-supported-configurations">(supported configurations) For each supported version, and for each supported ciphersuite associated with that version:
             <h:p>
-            The evaluator shall establish a TLS connection between the TOE and a test TLS server that is configured to negotiate the tested version and ciphersuite in accordance with the RFC for the version.
+            The evaluator shall establish a TLS connection between the TOE and a test TLS server that is configured to negotiate the tested version and ciphersuite in accordance with the the appropriate TLS RFC specification (RFC 5246 or RFC 8446).
             </h:p>
             <h:p>
-            The evaluator shall observe that the TSF presents a ClientHello message indicating TLS 1.2 (value 0x0303) in the highest or legacy version field and, if TLS 1.3 is supported, the supported_versions extension is present and contains the value 0x0304 for TLS 1.3.
+            The evaluator shall observe that the TSF presents a ClientHello message indicating TLS 1.2 (value 0x0303) in the client_version field (called legacy_version in a DTLS 1.3 ClientHello message). If TLS 1.3 is supported, the supported_versions extension is present and contains the value 0x0304 (signifying TLS 1.3).
             </h:p>
             <h:p>
-            The evaluator shall observe that the ClientHello message indicates the supported ciphersuites in the order indicated,  and that it includes only the extensions supported, with appropriate values, for that version in accordance with the requirement.
+            The evaluator shall observe that the ClientHello message indicates the supported ciphersuites in the order indicated, and that it includes only the extensions supported, with appropriate values, for that version in accordance with the requirement.
             </h:p>
             <h:p>
             The evaluator shall observe that the TOE successfully completes the TLS handshake.
             </h:p>
             <h:p>
-            <h:b>Note:</h:b> TLS 1.3 renames TLS 1.2's client_version and server_version fields to legacy_version. Regardless which of the two versions is being negotiated or in use, the field is required to indicate TLS 1.2. If the TOE supports both TLS 1.2 and TLS 1.3, the ClientHello message should indicate all ciphersuites and all extensions as required for both versions. TLS 1.3 requires the use of the supported_versions extension, it must include the TLS 1.3 value (0x0304), and it may also include the TLS 1.2 indicator (0x0303).
+            <h:b>Note:</h:b> TLS 1.3 renames TLS 1.2's client_version and server_version fields to legacy_version. Regardless which of the two versions is being negotiated or in use, the field is required to indicate TLS 1.2. If the TOE supports both TLS 1.2 and TLS 1.3, the ClientHello message should include all ciphersuites and extensions required for both versions. TLS 1.3 requires the use of the supported_versions extension which must include the TLS 1.3 value (0x0304) and may include the TLS 1.2 indicator (0x0303).
             </h:p>
             <h:p>
             If the TOE is configurable to support only TLS 1.2, only TLS 1.3, or both TLS 1.2 and TLS 1.3, <xref to="tls-client-supported-configurations"/> should be performed in each configuration, with ciphersuites and extensions appropriate for the configured version.
@@ -2659,14 +2659,14 @@
               </testlist>
             </test>
             <!-- TLS Client Ciphersuites -->
-            <test>(ciphersuites)  The evaluator shall perform the following tests on handling unexpected ciphersuites using a test TLS server sending handshake messages compliant with the negotiated version except as indicated in the test: 
+            <test>(ciphersuites)  The evaluator shall perform the following tests on handling unexpected ciphersuites from a test TLS server that sends handshake messages compliant with the negotiated version except as indicated in each test: 
               <testlist>
                 <test>(supported ciphersuite not offered) For each supported version, the evaluator shall attempt to establish a connection with a test TLS server configured to negotiate the supported version and a ciphersuite not included in the ClientHello message and observe that the TOE rejects the connection.
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                 </h:p>
                 <h:p>
-                This test is intended to test the TSF’s generic ability to recognize non-offered ciphersuites. If the ciphersuites in the ClientHello message are configurable, the evaluator shall configure the TSF not to offer a supported ciphersuite and then use that ciphersuite in the test. If the TSF ciphersuite list is not configurable, it is acceptable to use a named ciphersuite from the IANA TLS protocols associated with the tested version. Additional special cases of this test for special ciphersuites are performed separately.
+                This test is intended to test the TSF’s generic ability to recognize non-offered ciphersuites. If the ciphersuites in the ClientHello message are configurable, the evaluator shall configure the TSF not to offer a supported ciphersuite and then use that ciphersuite in the test. If the TSF ciphersuite list is not configurable, it is acceptable to use a ciphersuite for the appropriate TLS version listed in the IANA TLS registry. Additional cases of this test for special ciphersuites are performed separately.
                 </h:p>
                 </test>
                 <test id="tls-client-version-confusion">(version confusion) For each supported version, the evaluator shall attempt to establish a connection with a test TLS server that is configured to negotiate the supported version and a ciphersuite that is not associated with that version and observe that the TOE rejects the connection.
@@ -2693,16 +2693,16 @@
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                 </h:p>
                 <h:p>
-                See IANA TLS parameters for available ciphersuites to be selected by the test TLS server. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the TSF only supports the ciphersuite TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test server could select TLS_DH_ANON_WITH_AES_256_GCM_SHA_384.
+                See the IANA registry for TLS for ciphersuites that can be selected by the test TLS server. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the TSF only supports the ciphersuite TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test server could select TLS_DH_ANON_WITH_AES_256_GCM_SHA_384.
                 </h:p>
                 <h:p>
-                [conditional] (anon ciphersuite) If the TSF supports TLS 1.3, the evaluator shall attempt to establish a TLS 1.3 connection with a test TLS server configured to assert a ‘raw public key’ in the server_certificate_type as defined in RFC 7250, and to send its Certificate message including the raw public key indicator for the public key information field (regardless of the client's support for this extension). The evaluator shall observe that the TSF does not send the server_certificate_type extension indicating support for raw public keys in its ClientHello message and terminates the session when receiving the server’s Certificate message.
+                [conditional] (anon ciphersuite) If the TSF supports TLS 1.3, the evaluator shall attempt to establish a TLS 1.3 connection with a test TLS server configured to be authenticated using a raw public key as defined in RFC 7250, and have the test server send its Certificate message including the raw public key type. The evaluator shall observe that the TSF does not send the server_certificate_type extension indicating support for raw public keys in its ClientHello message and terminates the session when receiving the server’s Certificate message.
                 </h:p>
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                 </h:p>
                 <h:p>
-                It is acceptable for the TSF to support the extensions defined in RFC 7250. If so, it must not include the value indicating support for raw public keys in the server_certificate_type extension.
+                It is acceptable for the TSF to support the server_certificate_type and client_certificate_type extensions defined in RFC 7250. If so, it must not include the value indicating support for raw public keys in the server_certificate_type extension.
                 </h:p>
                 </test>
                 <test id="tls-client-deprecated-encryption">
@@ -2713,7 +2713,7 @@
                 [conditional] (disallowed encryption algorithm) If the TSF supports TLS 1.2, send the TSF a TLS 1.2 ClientHello message that is compliant with RFC 9151, except that for each disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and AES-128), the evaluator shall attempt to establish a TLS 1.2 connection with a test TLS server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the TOE rejects the connection.
                 </h:p>
                 <h:p>
-                [conditional] (disallowed encryption algorithm) If the TSF supports TLS 1.3, for each TLS 1.3 ciphersuite registered in IANA TLS parameters using AES-128 as the encryption algorithm, the evaluator shall attempt to establish a TLS 1.3 connection with a test TLS server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the TOE rejects the connection.
+                [conditional] (disallowed encryption algorithm) If the TSF supports TLS 1.3, for each TLS 1.3 ciphersuite in IANA TLS registry using AES-128 as the encryption algorithm, the evaluator shall attempt to establish a TLS 1.3 connection with a test TLS server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the TOE rejects the connection.
                 </h:p>
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
@@ -3965,7 +3965,7 @@
 	        </h:p>
 	        <testlist>
 	          <test>
-	          For each supported version, the evaluator shall follow the operational guidance to configure the TOE to require valid client authentication with no exceptions in support of a function (configured, as necessary) that does not allow unauthenticated sessions, and initiate a TLS session from a compliant TLS test client supporting that version. The evaluator shall ensure that the test client sends a certificate_list structure which has a length of zero. The evaluator shall verify the TSF terminates the session and no application data flows. 
+	          For each supported version, the evaluator shall follow the operational guidance to configure the TOE to require valid client authentication with no exceptions in support of a function (configured, as necessary) that does not allow unauthenticated sessions, and initiate a TLS session from a compliant TLS test client. The evaluator shall ensure that the test client sends a certificate_list structure which has a length of zero. The evaluator shall verify the TSF terminates the session and no application data flows. 
 	          <h:p>
 	          <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
 	          </h:p>
@@ -4279,5 +4279,9 @@
       <description>
         <h:a href="https://commoncriteriaportal.org/files/ccfiles/CEM2022R1.pdf">Common Methodology for Information Technology Security - Evaluation Methodology</h:a>,CCMB-2022-11-006, CEM:2022, Revision 1, November 2022. </description>
     </entry>
+    <entry id="bibIANA">
+        <tag>IANA TLS Parameters</tag>
+        <description><h:a href="https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-6">IANA TLS Parameters - TLS Alerts</h:a></description>Add commentMore actions
+      </entry>
 </bibliography>
 </Package>
