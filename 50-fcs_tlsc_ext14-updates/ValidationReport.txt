@@ -1,1 +1,2 @@
-/home/runner/work/tls/tls/input/tls.xml:4289:195: error: text not allowed here; expected the element end-tag
+/home/runner/work/tls/tls/input/tls.xml:358:97: error: text not allowed here; expected element "not-selectable" or "selectable"
+/home/runner/work/tls/tls/input/tls.xml:4292:195: error: text not allowed here; expected the element end-tag
