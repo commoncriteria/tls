@@ -133,7 +133,7 @@
       </componentneeded>
       <componentneeded>
         <componentid>FIA_X509_EXT.2</componentid>
-        <notes>To support the use of X509 certificates for authentication in TLS connection setup, the PP or PP-Module must include FIA_X509_EXT.2.</notes>
+        <notes>To support the use of X.509 certificates for authentication in TLS connection setup, the PP or PP-Module must include FIA_X509_EXT.2.</notes>
       </componentneeded>
     </componentsneeded>
     <h:p>
@@ -2895,7 +2895,7 @@
                     </test>
                   </testlist>
                 </test>
-                <test> (PSK support) [conditional] If the TSF supports pre-shared keys, the evaluator shall follow the operational guidance to use pre-shared keys, shall establish a pre-shared key between the TSF and the test TLS server, and initiate TLS 1.3 sessions in turn between the TSF and the test TLS server configured as indicated in the following sub-test:
+                <test> (PSK support) [conditional] If the TSF supports pre-shared keys, the evaluator shall follow the operational guidance to use pre-shared keys, shall establish a pre-shared key between the TSF and the test TLS server, and initiate TLS 1.3 sessions between the TSF and the test TLS server configured as indicated in the following sub-test:
                   <testlist>
                     <test>The evaluator shall attempt to configure the TSF to send early data. If there is no indication from the TSF that this is blocked, the evaluator shall repeat test 5.3.1 with the TSF so configured and observe that the TSF does not send Application Data prior to receiving the ServerHello message. 
                     <h:p>
@@ -2907,25 +2907,22 @@
               </testlist>
             </test>
             <!-- TLS Client Corrupt Finished Message -->
-            <test>(corrupt Finished message) For each supported version, the evaluator shall initiate a TLS session from the TOE to a test TLS server that sends a compliant set of server handshake messages, except for sending a modified Finished message (modify a byte of the Finished message that would have been sent by a compliant server). The evaluator shall observe that the TSF terminates the session and does not complete the handshake by observing that the TSF does not send Application Data provided to the TLS channel.
+            <test>(corrupt Finished message) For each supported version, the evaluator shall initiate a TLS session from the TOE to a test TLS server that sends a compliant set of handshake messages, except for a modified Finished message (modify a byte of the Finished message that would have been sent by a compliant server). The evaluator shall observe that the TSF terminates the session and does not complete the handshake by observing that the TSF does not send Application Data provided to the TLS channel.
             </test>
             <!-- TLS Client Missing Finished Message -->
-            <test id="tls-client-missing-finished">(missing Finished message) For each supported version, the evaluator shall initiate a session from the TOE to a test TLS server providing a compliant handshake, except for sending a random TLS message (where the five byte header indicates a correct TLS message for the negotiated version other than a Finished message) as the final message. The evaluator shall observe that the TSF terminates the session and does not send Application Data.
+            <test id="tls-client-missing-finished">(missing Finished message) For each supported version, the evaluator shall initiate a session from the TOE to a test TLS server that sends a compliant set of handshake messages, except for a modified Finished message (the five byte header indicates a correct TLS message for the negotiated version and not a Finished message). The evaluator shall observe that the TSF terminates the session and does not send Application Data.
             <h:p>
             <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
             </h:p>
-            <h:p>
-            For TLS 1.2, the modified message is sent after the ChangeCipherSpec message. For TLS 1.3, the modified message is sent as the last message of the server’s second flight of messages.
-            </h:p>
             </test>
             <!-- TLS Client Invalid Handshake Signatures -->
-            <test>(unexpected/corrupt signatures within handshake) The evaluator shall perform the following tests, according to the versions supported.
+            <test>(unexpected or corrupt signatures within handshake) The evaluator shall perform the following tests, according to the versions supported.
               <testlist>
                 <test>[conditional] If the TSF supports TLS 1.2 and if the ST indicates support for ECDSA or DSA ciphersuites, the evaluator shall initiate a TLS session with a compliant test TLS server and modify the signature in the ServerKeyExchange message. The evaluator shall observe that the TSF silently drops the ServerKeyExchange message or terminates the session.
                 </test>
-                <test>[conditional] If the ST indicates support for TLS 1.3, the evaluator shall initiate a TLS session between the TOE and a test TLS server that is configured to send a compliant ServerHello message, EncryptedExtensions message, and Certificate message, but will send a CertificateVerify message with an invalid signature (e.g., by modifying a byte from a valid signature). The evaluator shall confirm that the TSF terminates the session.
+                <test>[conditional] If the ST indicates support for TLS 1.3, the evaluator shall initiate a TLS session between the TOE and a test TLS server that is configured to send compliant handshake messages, but will send a CertificateVerify message with an invalid signature (e.g., by modifying a byte from a valid signature). The evaluator shall confirm that the TSF terminates the session.
                 </test>
-                <test>[conditional] If the TSF supports TLS 1.2 and if the ST indicates support for both RSA and ECDSA methods in the signature_algorithms (or, if supported, the signature_algorithms_cert) extension, and if the ST indicates one or more TLS 1.2 ciphersuites indicating each of the RSA and ECDSA methods in its signature components, the evaluator shall choose two ciphersuites: one indicating an RSA signature (cipher 1) and one indicating an ECDSA signature (cipher 2). The evaluator shall then establish two certificates that are trusted by the TOE: one representing the test TLS 1.2 server using an RSA signature (cert 1) and one representing the test TLS 1.2 server using an ECDSA signature (cert 2). The evaluator shall initiate a TLS session between the TOE and the test TLS 1.2 server that is configured to select cipher 1 and to send cert 2. The evaluator shall verify that the TSF terminates this TLS session. The evaluator shall then initiate a TLS session between the TOE and the test TLS 1.2 server that is configured to select cipher 2 and to send cert 1. The evaluator shall verify that the TSF also terminates this TLS session. 
+                <test>[conditional] If the TSF supports TLS 1.2 and if the ST indicates support for both RSA and ECDSA methods in the signature_algorithms (or, if supported, the signature_algorithms_cert) extension, and if the ST indicates one or more TLS 1.2 ciphersuites indicating each of the RSA and ECDSA methods in its signature components, the evaluator shall choselectose two ciphersuites to use for testing: one indicating an RSA signature (cipher 1) and one indicating an ECDSA signature (cipher 2). The evaluator shall then establish two certificates that are trusted by the TOE: one representing the test TLS 1.2 server using an RSA signature (cert 1) and one representing the test TLS 1.2 server using an ECDSA signature (cert 2). The evaluator shall initiate a TLS session between the TOE and the test TLS 1.2 server that is configured to select cipher 1 but to send cert 2. The evaluator shall verify that the TSF terminates this TLS session. The evaluator shall then initiate a TLS session between the TOE and the test TLS 1.2 server that is configured to select cipher 2 and to send cert 1. The evaluator shall verify that the TSF also terminates this TLS session. 
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to these tests, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                 </h:p>
@@ -2933,7 +2930,7 @@
               </testlist>
             </test>
             <!-- TLS Client Certificate-Based Server Authentication -->
-            <test> [conditional] If the TSF supports certificate-based server authentication, then for each supported version, the evaluator shall initiate a TLS session from the TOE to the compliant test TLS server configured to negotiate the tested version, and to authenticate using a certificate trusted by the TSF as specified in the following:
+            <test> [conditional] If the TSF supports certificate-based server authentication, then for each supported version, the evaluator shall initiate a TLS session from the TOE to the test TLS server configured to negotiate the tested version, and to authenticate using a certificate trusted by the TSF as specified in the following:
               <testlist>
                 <test>
                 <h:p>(certificate extended key usage purpose) The evaluator shall send a server certificate that contains the Server Authentication purpose in the ExtendedKeyUsage extension and verify that a connection is established. The evaluator shall repeat this test using a different certificate that is otherwise valid and trusted but lacks the Server Authentication purpose in the ExtendedKeyUsage extension and observe the TSF terminates the session.
@@ -2999,7 +2996,7 @@
                     </test>
                   </testlist>
                 </test>
-                <test>(empty certificate) The evaluator shall configure the test TLS server to supply an empty Certificate message and verify that the TSF terminates the session.
+                <test>(empty certificate) The evaluator shall configure the test TLS server to send an empty Certificate message and verify that the TSF terminates the session.
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                 </h:p>
@@ -3053,10 +3050,10 @@
         This SFR is claimed if "mutual authentication" is selected in FCS_TLSC_EXT.1.1.
         </h:p>
         <h:p>
-        Clients that support TLS 1.3 and post-handshake authentication should claim "in support of post-handshake authentication requests" in the first selection. The "at no other time" selection is claimed for clients only supporting TLS 1.2 or for TLS 1.3 clients that do not support post-handshake authentication.
+        Clients that support TLS 1.3 and post-handshake authentication should claim "in support of post-handshake authentication requests" in the first selection. The "at no other time" selection is claimed for clients that do not support post-handshake authentication.
         </h:p>
         <h:p>
-        The CertificateRequest message sent by the server specifies the signature algorithms and certification authorities supported by the server. If the client does not possess a matching certificate, it sends an empty Certificate message. The structure of the CertificateRequest message is changed in TLS 1.3 to use the signature_algorithms, signature_algorithms_cert (optional), and certificate_authorities extensions, and RFC 8446 allows for TLS 1.2 implementations to use the new message structure. The "RFC 8446 Section 4.3.2" option is claimed in the second selection if TLS 1.3 is supported or if TLS 1.2 is supported and the RFC 8446 method is supported for TLS 1.2 servers. The "RFC 5246 Section 7.4.4" option is claimed if TLS 1.2 is supported and the RFC 5246 method is supported for interoperability with TLS 1.2 servers that do not adopt the RFC 8446 method. When mutual authentication is supported, at least one of these methods must be claimed, per the selection.
+        The CertificateRequest message sent by the server specifies the signature algorithms and certification authorities supported by the server. If the client does not possess a certificate that satisfies these parameters, it sends an empty Certificate message. The "RFC 8446 Section 4.3.2" option is claimed in the second selection if TLS 1.3 is supported or if TLS 1.2 is supported and the RFC 8446 method is supported for TLS 1.2 servers. The "RFC 5246 Section 7.4.4" option is claimed if TLS 1.2 is supported and the RFC 5246 method is supported for interoperability with TLS 1.2 servers that do not adopt the RFC 8446 method. When mutual authentication is supported, at least one of these methods must be claimed, per the selection.
         </h:p>
       </note>
       <aactivity>
@@ -3073,9 +3070,9 @@
         <Tests>
           For each supported TLS version, the evaluator shall perform the following tests:
           <testlist>
-            <test>The evaluator shall establish a TLS connection from the TSF to a test TLS server that negotiates the tested version and which is not configured for mutual authentication (i.e., does not send a server’s CertificateRequest message). The evaluator shall observe negotiation of a TLS channel and confirm that the TOE did not send a client’s Certificate message during handshake.
+            <test>The evaluator shall establish a TLS connection from the TSF to a test TLS server that negotiates the tested version and is not configured for mutual authentication (i.e., does not send a CertificateRequest message). The evaluator shall observe negotiation of a TLS channel and confirm that the TOE did not send a Certificate message during handshake.
            </test>
-           <test>The evaluator shall establish a connection to a test TLS server with a shared trusted root that is configured for mutual authentication (i.e., it sends a server’s CertificateRequest message). The evaluator shall observe negotiation of a TLS channel and confirm that the TOE responds with a non-empty client’s Certificate message and CertificateVerify message.
+           <test>The evaluator shall establish a connection to a test TLS server with a shared trusted root that is configured for mutual authentication (i.e., it sends a CertificateRequest message). The evaluator shall observe negotiation of a TLS channel and confirm that the TOE responds with a non-empty Certificate message and a CertificateVerify message.
            </test>
            <test>[conditional] If the TSF supports post-handshake authentication, the evaluator shall establish a pre-shared key between the TSF and a test TLS 1.3 server. The evaluator shall initiate a TLS session using the pre-shared key and confirm the TSF and test TLS 1.3 server successfully complete the TLS handshake and both support post-handshake authentication. After the session is successfully established, the evaluator shall initiate a CertificateRequest message from the test TLS 1.3 server. The evaluator shall observe that the TSF receives that authentication request and shall take necessary actions, in accordance with the operational guidance, to complete the authentication request. The evaluator shall confirm that the test TLS 1.3 server receives Certificate and CertificateVerify messages from the TSF over the channel that authenticates the client.
            <h:p>
@@ -3124,7 +3121,7 @@
         <Tests>
           The evaluator shall perform the following tests to confirm the response to downgrade indicators from a test TLS 1.3 server:
           <testlist>
-            <test>[conditional] If the TSF supports TLS 1.3, the evaluator shall initiate a TLS 1.3 session with a test TLS 1.3 server configured to send a compliant TLS 1.2 ServerHello (not including any TLS 1.3 extensions) but including the TLS 1.2 downgrade indicator ‘44 4F 57 4E 47 52 44 01’ in the last eight bytes of the server random field. The evaluator shall confirm that the TSF terminates the session.
+            <test>[conditional] If the TSF supports TLS 1.3, the evaluator shall initiate a TLS 1.3 session with a test server configured to send a compliant TLS 1.2 ServerHello (not including any TLS 1.3 extensions) but including the TLS 1.2 downgrade indicator ‘44 4F 57 4E 47 52 44 01’ in the last eight bytes of the server random field. The evaluator shall confirm that the TSF terminates the session.
             <h:p>  
             <h:b>Note:</h:b> It is preferred that the TSF send a fatal error alert message. However, it is also acceptable for the TSF to terminate the session without sending an error alert.
             </h:p>
@@ -3168,10 +3165,10 @@
         The ST author claims the methods supported.
         </h:p>
         <h:p>
-        A client supporting TLS 1.2 renegotiation may present either the "renegotiation_info" extension or the signaling ciphersuite value TLS_EMPTY_RENEGOTIATION_INFO_SCSV in the initial ClientHello message to indicate support for secure renegotiation.
+        A client supporting renegotiation may present either the "renegotiation_info" extension or the signaling ciphersuite value TLS_EMPTY_RENEGOTIATION_INFO_SCSV in the initial ClientHello message to indicate support for secure renegotiation.
         </h:p>
         <h:p>
-        A client supporting TLS 1.3 must claim "rejection of all renegotiation attempts." This option may also be claimed as a method for TLS 1.2 renegotiation protection.
+        A client supporting TLS 1.3 must claim "rejection of all renegotiation attempts." This option may also be claimed to prevent renegotiation in TLS 1.2.
         </h:p>
         <h:p>
         The TLS_EMPTY_RENEGOTIATION_INFO_SCSV is the preferred mechanism for TLS 1.2 protection against insecure renegotiation when the client does not renegotiate. The ST author will claim the ‘HelloRequest message is received’ option in the second selection to indicate support for this mechanism.
@@ -3255,7 +3252,7 @@
         This SFR is claimed if "session resumption" is selected in FCS_TLSC_EXT.1.1.
         </h:p>
         <h:p>
-        The ST author indicates which session resumption mechanisms are supported. One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed if resumption of TLS 1.2 sessions is supported. If resumption of TLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_TLSC_EXT.6 must also be claimed.
+        The ST author indicates which session resumption mechanisms are supported. One or both of the first two options, "session ID in accordance with RFC 5246" and "tickets in accordance with RFC 5077" are claimed if resumption of TLS 1.2 sessions is supported. If resumption of TLS 1.3 sessions is supported, "PSK and tickets in accordance with RFC 8446" is selected, and the selection-based SFR FCS_TLSC_EXT.6 is also claimed.
         </h:p>
         <h:p>
         While it is possible to perform session resumption using PSK ciphersuites in TLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_TLSC_EXT.1. 
