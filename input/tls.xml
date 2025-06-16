@@ -750,7 +750,7 @@
                   <test>(signature_algorithms) [conditional] If the TSF supports certificate-based server authentication, the evaluator shall perform the following tests:
                     <testlist>
                       <test>For each supported version, the evaluator shall initiate a DTLS session with a DTLS test server and observe that the TSF’s ClientHello message includes the signature_algorithms extension with values in conformance with the ST.</test>
-                      <test>[conditional] If the TSF supports DTLS 1.2 and supports any ECDHE or DHE ciphersuite, the evaluator shall ensure the test DTLS server sends a compliant ServerHello message indicating DTLS version 1.2, one of the supported ECDHE or DHE ciphersuites, a compliant server Certificate message, and a ServerKeyExchange message signed using a signature algorithm and hash combination not included in the ClientHello message (e.g., RSA with SHA-1). The evaluator shall observe that the TSF silently drops the message or terminates the handshake.
+                      <test>[conditional] If the TSF supports DTLS 1.2 and supports any (EC)DHE ciphersuite, the evaluator shall ensure the test DTLS server sends a compliant ServerHello message indicating DTLS version 1.2, one of the supported (EC)DHE ciphersuites, a compliant server Certificate message, and a ServerKeyExchange message signed using a signature algorithm and hash combination not included in the ClientHello message (e.g., RSA with SHA-1). The evaluator shall observe that the TSF silently drops the message or terminates the handshake.
                       <h:p>
                       <h:b>Note:</h:b> If the TSF terminates the handshake, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                       </h:p>
@@ -775,7 +775,7 @@
                   The evaluator shall ensure that the test DTLS server forwards a Certificate message containing a valid certificate that represents the test DTLS server, but which is signed by a valid Certification Authority using a signature and hash combination not included in the TSF’s signature_algorithms_cert extension (e.g., a certificate signed using RSA and SHA-1). The evaluator shall confirm the TSF silently drops the message or terminates the session.
                   </h:p>
                   <h:p>
-                  <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert extension is supported. In DTLS 1.2, all ciphersuites other than TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) and TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487) require certificate-based authentication. DTLS 1.3 always requires certificate-based server authentication (even if PSKs are supported for key establishment).
+                  <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert extension is used. In DTLS 1.2, all ciphersuites other than TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) and TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487) require certificate-based authentication. DTLS 1.3 always requires certificate-based server authentication (even if PSKs are supported for key establishment).
                   </h:p>
                   <h:p>
                   In DTLS 1.3, the server Certificate message is encrypted. The evaluator shall configure the test DTLS server with the indicated certificate and ensure that the certificate is indeed sent by observing the buffer of messages to be encrypted, or by inspecting one or both sets of logs from the TSF and test DTLS server.
@@ -784,15 +784,15 @@
                   If the TSF terminates the handshake, the test is successful. If the TSF silently drops the server Certificate message, the evaluator shall continue sending the message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                   </h:p>
                   </test>
-                  <test>(extended_master_secret for DTLS 1.2) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation and initiate a DTLS 1.2 session with a test DTLS server configured to compute an extended master secret according to RFC 5246 Section 8.
+                  <test>(extended_master_secret for DTLS 1.2) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF (if so configurable) to enforce server support of the extended master secret computation and initiate a DTLS 1.2 session with a test DTLS server configured to compute an extended master secret according to RFC 5246 Section 8.
                   <h:p>
-                  The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627, and ensures that the test DTLS server does not include the extended_master_secret extension in its  ServerHello message. The evaluator shall observe that the TSF silently drops the ServerHello message or terminates the session.
+                  The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627, and ensure that the test DTLS server does not include the extended_master_secret extension in its  ServerHello message. The evaluator shall observe that the TSF silently drops the ServerHello message or terminates the session.
                   </h:p>
                   <h:p>
                   <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ServerHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                   </h:p>
                   </test>
-                  <test>(supported_groups for DTLS 1.2) [conditional] If the TSF supports DTLS 1.2, and supports ECDHE or DHE ciphersuites, the evaluator shall perform the following tests.
+                  <test>(supported_groups for DTLS 1.2) [conditional] If the TSF supports DTLS 1.2, and supports (EC)DHE ciphersuites, the evaluator shall perform the following tests.
                     <testlist>
                       <test>For each supported group, the evaluator shall initiate a DTLS session with a compliant test DTLS 1.2 server supporting RFC 7919. The evaluator shall ensure that the test DTLS server is configured to select DTLS 1.2 and  a ciphersuite using the supported group. The evaluator shall observe that the TSF’s ClientHello message lists the supported groups as indicated in the ST, and that the TSF successfully establishes the DTLS session.
                       </test>
@@ -1561,7 +1561,7 @@
         If DTLS 1.2 RSA ciphersuites are supported, the ST author claims the “RSA with key size …” option and the key sizes supported. The requirements apply to the RSA key size when RSA is used for key establishment and digital signature.
         </h:p>
         <h:p>
-        If DTLS 1.2 and the supported_groups extension are supported (for ECDHE or DHE groups), the ST author claims either the “Diffie-Hellman groups…” or “ECDHE parameters...” option according to the supported ciphersuites and supported_groups extension values. This is required when ECDHE ciphersuites are supported and recommended when DHE ciphersuites are supported.
+        If DTLS 1.2 and the supported_groups extension are supported, the ST author claims either the “Diffie-Hellman groups…” or “ECDHE parameters...” option according to the supported ciphersuites and supported_groups extension values. This is required when ECDHE ciphersuites are supported and recommended when DHE ciphersuites are supported.
         </h:p>
         <h:p>
         If DTLS 1.3 is supported, the ST author claims one or both of “Diffie-Hellman groups…” or ECDHE parameters…” options and the “key_share” options in the sub-selections. The requirements apply to the values of the supported_groups extension and the key_share extension contained in the ServerHello messages.
@@ -1712,7 +1712,7 @@
                 If the TSF also supports the signature_algorithms_cert extension, then for each value of the signature_algorithms_cert extension, the evaluator shall repeat the sub-tests using a certificate representing the TOE and using a key pair consistent with the signature algorithm, but signed by a certification authority using the signature algorithm specified in the signature_algorithms_cert extension. 
                 </h:p>
                 <h:p>
-                <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert extension is supported. In DTLS 1.2, all ciphersuites other than TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) and TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487) require certificate-based authentication. DTLS 1.3 always requires certificate-based server authentication (even if PSKs are supported for key establishment).
+                <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert extension is used. In DTLS 1.2, all ciphersuites other than TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) and TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487) require certificate-based authentication. DTLS 1.3 always requires certificate-based server authentication (even if PSKs are supported for key establishment).
                 </h:p>
                 <h:p>
                 The evaluator shall follow operational guidance instructions to provision the TSF with one or more of these certificates as indicated in the following sub-tests:
@@ -2727,7 +2727,7 @@
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                 </h:p>
                 <h:p>
-                See IANA TLS parameters for available ciphersuites to be tested. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the TSF only supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test server could select TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.
+                
                 </h:p>
                 <h:p>
                 [conditional] If TLS 1.3 is supported, the evaluator shall send the TSF a TLS 1.3 ClientHello message that is compliant with RFC 9151, except that the ciphersuites field contains the single ciphersuite TLS_AES_128_GCM_SHA256. The evaluator shall observe that the TOE rejects the connection.
@@ -2742,22 +2742,22 @@
                   <testlist>
                     <test>For each supported version, the evaluator shall initiate a TLS session with a TLS test server and observe that the TSF’s ClientHello message includes the signature_algorithms extension with values in conformance with the ST.
                     </test>
-                    <test>[conditional] If the TSF supports TLS 1.2 and supports an ECDHE or DHE ciphersuite, the evaluator shall ensure the test TLS server sends a compliant ServerHello message selecting TLS 1.2 and one of the supported ECDHE or DHE ciphersuites, a compliant server Certificate message, and a ServerKeyExchange message signed using a signature algorithm and hash combination not included in the ClientHello message (e.g., RSA with SHA-1). The evaluator shall observe that the TSF terminates the handshake.
+                    <test>[conditional] If the TSF supports TLS 1.2 and supports an (EC)DHE ciphersuite, the evaluator shall ensure the test TLS server sends a compliant ServerHello message selecting TLS 1.2 and one of the supported (EC)DHE ciphersuites, a compliant server Certificate message, and a ServerKeyExchange message signed using a signature algorithm and hash combination not included in the ClientHello message (e.g., RSA with SHA-1). The evaluator shall observe that the TSF terminates the handshake.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                     </h:p>
                     </test>
-                    <test>[conditional] If TLS 1.3 is supported, the evaluator shall configure the test TLS server to respond to the TOE with a compliant ServerHello message selecting TLS 1.3 and a server Certificate message, but then also send a CertificateVerify message that uses a signature algorithm method not included in the signature_algorithms extension. The evaluator shall observe that the TSF only includes supported signature algorithms in the signature_algorithms extension in its ClientHello message and terminates the TLS handshake after receiving the server Certificate message.
+                    <test>[conditional] If TLS 1.3 is supported, the evaluator shall configure the test TLS server to respond to the TOE with a compliant TLS 1.3 ServerHello message and Certificate message, but a CertificateVerify message that uses a signature algorithm method not included in the signature_algorithms extension. The evaluator shall observe that the TSF only includes supported signature algorithms in the signature_algorithms extension in its ClientHello message and terminates the TLS handshake after receiving the server Certificate message.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                     </h:p>
                     </test>
-                    <test> [conditional] If certificate-based authentication is supported, and for all supported versions for which signature_algorithms_cert is not supported, the evaluator shall ensure the test TLS server sends a compliant ServerHello message for the tested version and a server Certificate message containing a valid certificate that represents the test TLS server, but which is signed using a signature and hash combination not included in the TSF’s signature_algorithms extension (e.g., a certificate signed using RSA and SHA-1). The evaluator shall observe that the TSF terminates the TLS session.
+                    <test> [conditional] If certificate-based authentication is supported, and for all supported TLS versions for which signature_algorithms_cert is not supported, the evaluator shall ensure the test TLS server sends a compliant ServerHello message for the tested version and a server Certificate message containing a valid certificate that represents the test TLS server, but which is signed using a signature and hash combination not included in the TSF’s signature_algorithms extension (e.g., a certificate signed using RSA and SHA-1). The evaluator shall observe that the TSF terminates the TLS session.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                     </h:p>
                     <h:p>
-                    Certificate-based server authentication is required unless the TSF only supports DTLS 1.2 with TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) or TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487). DTLS 1.3 always requires certificate-based server authentication (even if PSKs are supported for key establishment)..
+                    TLS 1.3 always requires certificate-based server authentication (even if PSKs are supported for key establishment).Certificate-based server authentication is required for TLS 1.2 unless the TSF only supports TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) or TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487). 
                     </h:p>
                     </test>
                   </testlist>
@@ -2767,7 +2767,7 @@
                 The evaluator shall ensure that the test TLS server forwards a Certificate message containing a valid certificate that represents the test TLS server, but which is signed by a valid Certification Authority using a signature and hash combination not included in the TSF’s signature_algorithms_cert extension (e.g., a certificate signed using RSA and SHA-1). The evaluator shall confirm the TSF terminates the session.
                 </h:p>
                 <h:p>
-                <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert extension is supported. In TLS 1.2, all ciphersuites other than TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) and TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487) require certificate-based authentication. TLS 1.3 always requires certificate-based server authentication (even if PSKs are supported for key establishment).
+                <h:b>Note:</h:b> Support for certificate-based authentication is assumed if the signature_algorithms_cert extension is used. In TLS 1.2, all ciphersuites other than TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) and TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487) require certificate-based authentication. TLS 1.3 always requires certificate-based server authentication (even if PSKs are supported for key establishment).
                 </h:p>
                 <h:p>
                 In TLS 1.3, the server Certificate message is encrypted. The evaluator shall configure the test TLS server with the indicated certificate and ensure that the certificate is indeed sent by observing the buffer of messages to be encrypted, or by inspecting one or both sets of logs from the TSF and test TLS server.
@@ -2776,12 +2776,12 @@
                 It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                 </h:p>
                 </test>
-                <test>(extended_master_secret for TLS 1.2) [conditional] If the TSF supports TLS 1.2 and the extended_master_secret extension is supported, the evaluator shall establish a connection from the TOE with a test TLS server configured as described in the following test and observe the behavior.
+                <test>(extended_master_secret for TLS 1.2) [conditional] If the TSF supports TLS 1.2 and the extended_master_secret extension, the evaluator shall establish a connection from the TOE with a test TLS server configured as described in the following test and observe the behavior.
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to terminating a session, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                 </h:p>
                 <h:p>
-                If the TOE supports Legacy Servers, perform test 3.
+                If the TOE supports legacy servers, perform test 3.
                 </h:p>
                 <h:p>
                 If the TOE supports session resumption, perform tests 6-7.
@@ -2792,68 +2792,68 @@
                   <testlist>
                     <test>
                     <h:p>
-                    The evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and initiate a TLS 1.2 session with a test TLS server configured to use the extended_master_secret extension and compute a master secret according to RFC 7627 Section 4.
+                    The evaluator shall configure the TSF (if so configurable) to enforce server support of the extended master secret computation (no other enforcement mode), initiate a TLS 1.2 session with a test TLS server configured to use the extended_master_secret extension, and compute a master secret according to RFC 7627 Section 4.
                     </h:p>
                     <h:p>
-                    The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627, and ensures that the test TLS server includes the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TLS session between the TOE and TLS Server is established successfully.
+                    The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627, and ensure that the test TLS server includes the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TLS session between the TOE and TLS Server is established successfully.
                     </h:p>
                     </test>
                     <test>
-                    <h:p>The evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and initiate a TLS 1.2 session with a test TLS server configured to omit the extended_master_secret extension and compute a master secret according to RFC 5246 Section 8.
+                    <h:p>The evaluator shall configure the TSF (if so configurable) to enforce server support of the extended master secret computation (no other enforcement mode) and initiate a TLS 1.2 session with a test TLS server configured to omit the extended_master_secret extension and compute a master secret according to RFC 5246 Section 8.
                     </h:p>
                     <h:p>
-                    The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627 and ensure that the test TLS server does not include the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TSF terminates the connection in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS Server fails.
-                    </h:p>
-                    </test>
-                    <test>
-                    <h:p>
-                    [conditional] If the TOE supports allowing legacy servers the evaluator shall configure the TSF (if so configurable) to allow legacy servers and initiate a TLS 1.2 session with a test TLS server configured to omit the extended_master_secret extension and compute a master secret according to RFC 5246 Section 8.
-                    </h:p>
-                    <h:p>
-                    The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627 and ensures that the test TLS server does not include the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TLS session between the TOE and TLS Server is established successfully.
+                    The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627 and ensure that the test TLS server does not include the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TSF terminates the connection in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS server fails.
                     </h:p>
                     </test>
                     <test>
                     <h:p>
-                    [conditional] If the TOE supports allowing legacy servers, and the TOE supports TLS session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy servers and resume a TLS 1.2 session that previously computed the master secret in accordance with RFC 5246 Section 8 (did not use the extended_master_secret extension in accordance with RFC 7627) with a test TLS server configured to include the extended_master_secret extension andcompute a master secret according to RFC 7627 Section 4.
+                    [conditional] If the TOE supports communication with legacy servers, the evaluator shall configure the TSF (if so configurable) to allow legacy servers and initiate a TLS 1.2 session with a test TLS server configured to omit the extended_master_secret extension and instead compute a master secret according to RFC 5246 Section 8.
                     </h:p>
                     <h:p>
-                    The evaluator shall observe that the TSF’s ClientHello message omits the extended_master_secret extension and ensures that the test TLS server includes the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TSF terminates the connection (RFC 7627 Section 5.3) in accordance with the behavior documented in the ST and the TLS session  between the TOE and TLS Server fails.
-                    </h:p>
-                    </test>
-                    <test>
-                    <h:p>
-                    [conditional] If the TOE supports allowing legacy servers, and the TOE supports TLS session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy servers and resume a TLS 1.2 session that previously used the extended_master_secret extension in accordance with RFC 7627 with a test TLS server configured to omit the extended_master_secret extension.
-                    </h:p>
-                    <h:p>
-                    The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627 and ensures that the test TLS server does not include the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS Server fails.
+                    The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627 and ensure that the test TLS server does not include the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TLS session between the TOE and TLS Server is established successfully.
                     </h:p>
                     </test>
                     <test>
                     <h:p>
-                    [conditional] If the TOE supports TLS session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and resume a TLS 1.2 session that previously computed the master secret in accordance with RFC 5246 Section 8 (did not use the extended_master_secret extension in accordance with RFC 7627) with a test TLS server configured to include the extended_master_secret extension and compute a master secret according to RFC 7627 Section 4.
+                    [conditional] If the TOE supports communication with legacy servers and session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy servers and resume a TLS 1.2 session that previously computed the master secret in accordance with RFC 5246 Section 8 (and not in accordance with the extended_master_secret extension specified in RFC 7627) with a test TLS server configured to include the extended_master_secret extension and compute a master secret according to RFC 7627 Section 4.
                     </h:p>
                     <h:p>
-                    The evaluator shall observe that the TSF’s ClientHello message omits the extended_master_secret extension and ensures that the test TLS server includes the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TSF terminates the connection (RFC 7627 Section 5.3) in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS Server fails.
+                    The evaluator shall observe that the TSF’s ClientHello message omits the extended_master_secret extension and ensure that the test TLS server includes the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TSF terminates the connection (RFC 7627 Section 5.3) in accordance with the behavior documented in the ST and the TLS session  between the TOE and TLS server fails.
                     </h:p>
                     </test>
                     <test>
                     <h:p>
-                    [conditional] If the TOE supports TLS session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of extended master secret computation (no other enforcement mode) and resume a TLS 1.2 session that previously used the extended_master_secret extension in accordance with RFC 7627 with a test TLS server configured to omit the extended_master_secret extension.
+                    [conditional] If the TOE supports communication with legacy servers and session resumption, the evaluator shall configure the TSF (if so configurable) to allow legacy servers and resume a TLS 1.2 session that previously used the extended_master_secret extension in accordance with RFC 7627 with a test TLS server configured to omit the extended_master_secret extension.
                     </h:p>
                     <h:p>
-                    The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627 and ensures that the test TLS server does not include the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS Server fails.
+                    The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627 and ensure that the test TLS server does not include the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS server fails.
+                    </h:p>
+                    </test>
+                    <test>
+                    <h:p>
+                    [conditional] If the TOE supports session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of the extended master secret computation (no other enforcement mode) and resume a TLS 1.2 session that previously computed the master secret in accordance with RFC 5246 Section 8 (and not in accordance with the extended_master_secret extension specified in RFC 7627) with a test TLS server configured to include the extended_master_secret extension and compute a master secret according to RFC 7627 Section 4.
+                    </h:p>
+                    <h:p>
+                    The evaluator shall observe that the TSF’s ClientHello message omits the extended_master_secret extension and ensure that the test TLS server includes the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TSF terminates the connection (RFC 7627 Section 5.3) in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS server fails.
+                    </h:p>
+                    </test>
+                    <test>
+                    <h:p>
+                    [conditional] If the TOE supports session resumption, the evaluator shall configure the TSF (if so configurable) to enforce server support of the extended master secret computation (no other enforcement mode) and resume a TLS 1.2 session that previously used the extended_master_secret extension in accordance with RFC 7627 with a test TLS server configured to omit the extended_master_secret extension.
+                    </h:p>
+                    <h:p>
+                    The evaluator shall observe that the TSF’s ClientHello message includes the extended_master_secret extension in accordance with RFC 7627 and ensure that the test TLS server does not include the extended_master_secret extension in its ServerHello message. The evaluator shall observe that the TSF terminates the connection (Section 5.3 of RFC 7627) in accordance with the behavior documented in the ST and the TLS session between the TOE and TLS server fails.
                     </h:p>
                     </test>
                   </testlist>
                 </test>
-                <test>(supported_groups for TLS 1.2) [conditional] If the TSF supports TLS 1.2, and supports ECDHE or DHE ciphersuites, the evaluator shall perform the following tests.
+                <test>(supported_groups for TLS 1.2) [conditional] If the TSF supports TLS 1.2 and supports (EC)DHE ciphersuites, the evaluator shall perform the applicable following tests.
                   <testlist>
                     <test>
-                    For each supported group, the evaluator shall initiate a TLS session with a compliant test TLS 1.2 server supporting RFC 7919. The evaluator shall ensure that the test TLS server is configured to select TLS 1.2 and a ciphersuite using the supported group. The evaluator shall observe that the TSF’s ClientHello message lists the supported groups as indicated in the ST, and that the TSF successfully establishes the TLS session.
+                    [conditional on TLS 1.2 support for DHE ciphersuite] If the TSF supports TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 with supported_groups extension value ffdhe3072 or ffdhe4096, the evaluator shall initiate a TLS 1.2 session with a test server with the same cryptographic support. The evaluator shall observe that the TSF’s ClientHello message lists the indicated ciphersuite and supported_groups extension value(s), and that the TSF successfully establishes the TLS session.
                     </test>
                     <test>
-                    [conditional on TLS 1.2 support for ECDHE ciphersuites]  The evaluator shall initiate a TLS session with a test TLS server that is configured to use an explicit version of a named EC group supported by the client. The evaluator shall ensure that the test TLS ServerKeyExchange message includes the explicit formulation of the group as indicated in RFC 8422. The evaluator shall confirm that the TSF terminates the session.
+                    [conditional on TLS 1.2 support for ECDHE ciphersuites] If the evaluator supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 or TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 with supported_groups extension value secp384r1. The evaluator shall ensure that the test TLS ServerKeyExchange message includes the explicit formulation of the group as specified in RFC 8422. The evaluator shall confirm that the TSF terminates the session.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                     </h:p>
@@ -2863,29 +2863,29 @@
               </testlist>
             </test>
             <!-- TLS 1.3 Client Extensions -->  
-            <test>(TLS 1.3 extensions) [conditional] If the TSF supports TLS 1.3, the evaluator shall perform the following tests. For each test, the evaluator shall observe that the TSF’s ClientHello message includes the supported_versions extension with the value 0x0304 indicating TLS 1.3:
+            <test>(Support for TLS 1.3) [conditional] If the TSF supports TLS 1.3, the evaluator shall perform the following tests. For each test, the evaluator shall observe that the TSF’s ClientHello message includes the supported_versions extension with the value 0x0304 indicating TLS 1.3.
               <testlist>
-                <test>(supported versions) The evaluator shall initiate TLS 1.3 sessions in turn from the TOE to a test TLS server configured as indicated in the sub-tests below: 
+                <test>(supported versions) The evaluator shall initiate TLS 1.3 sessions from the TOE to a test TLS server configured as indicated in the sub-tests below: 
                   <testlist>
-                    <test>The evaluator shall configure the test TLS server to include the supported_versions extension in the ServerHello message only containing the value 0x0303. The evaluator shall observe that the TSF terminates the TLS session.
+                    <test>The evaluator shall configure the test TLS server to include the supported_versions extension in the ServerHello message to only contain the value 0x0303. The evaluator shall observe that the TSF terminates the TLS session.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                     </h:p>
                     </test>
-                    <test>The evaluator shall configure the test TLS server to include the supported_versions extension in the ServerHello message containing the value 0x0304 and complete a compliant TLS 1.3 handshake. The evaluator shall observe that the TSF completes the TLS 1.3 handshake successfully.
+                    <test>The evaluator shall configure the test TLS server to send a compliant ServerHello message with the value 0x0304 in the supported_versions extension. The evaluator shall observe that the TSF completes the TLS 1.3 handshake successfully.
                     </test>
-                    <test>[conditional] If the TSF is configurable to support both TLS 1.2 and TLS 1.3, the evaluator shall follow operational guidance to configure this behavior. The evaluator shall ensure that the test TLS server sends a TLS 1.2 compliant server handshake and observe that the server random does not incidentally include any downgrade messaging. The evaluator shall observe that the TSF completes the TLS 1.2 handshake successfully.
+                    <test>[conditional] If the TSF is configurable to support both TLS 1.2 and TLS 1.3, the evaluator shall follow operational guidance to configure this behavior. The evaluator shall ensure that the test TLS server sends a TLS 1.2 compliant ServerHello message handshake and observe that the server random does not incidentally include any downgrade messaging. The evaluator shall observe that the TSF completes the TLS 1.2 handshake successfully.
                     <h:p>
                     <h:b>Note:</h:b> Enhanced downgrade protection defined in RFC 8446 is optional, and if supported, is tested separately. The evaluator may configure the test server’s random, or may repeat the test until the server’s random does not match a downgrade indicator.
                     </h:p>
                     </test>
                   </testlist>
                 </test>
-                <test>(supported groups, key shares) The evaluator shall initiate TLS 1.3 sessions in turn with a test TLS server configured as indicated in the following sub-tests:
+                <test>(supported groups, key shares) The evaluator shall initiate TLS 1.3 sessions with a test TLS server configured as indicated in the following sub-tests:
                   <testlist>
-                    <test>For each supported group, the evaluator shall configure the compliant test TLS 1.3 server to select a ciphersuite using the group. The evaluator shall observe that the TSF sends an element of the group in its ClientHello key_share extension (after a HelloRetryRequest message from the test server, if the key share for the group is not included in the initial ClientHello). The evaluator shall ensure the test TLS server sends an element of the group in its ServerHello message and observes that the TSF completes the TLS handshake successfully.
+                    <test>For each value listed in the ClientHello message's supported_groups extension, the evaluator shall configure the test TLS 1.3 server to select a ciphersuite compatible with the given value. The evaluator shall observe that the TOE correctly configures the key_share extension to include the KeyShareEntry value corresponding to the supported_groups value selected by the server (sent after receiving a HelloRetryRequest from the test server if this KeyShareEntry value was not included in the initial ClientHello). The evaluator shall ensure the test TLS server agrees on a ciphersuite using the appropriate supported_groups and key_share extension values and observe that the TSF completes the TLS handshake successfully.
                     </test>
-                    <test>For each supported group, the evaluator shall modify the ServerHello message sent by the test TLS server to include an invalid value in the key_share extension claiming to be an element the group indicated in the supported_groups extension. The evaluator shall observe that the TSF terminates the TLS session.
+                    <test>For each value listed in the ClientHello message's supported_groups extension, the evaluator shall modify the ServerHello message sent by the test TLS server to list a single invalid value in the key_share extension claiming to be an element the group indicated in the supported_groups extension. The evaluator shall observe that the TSF terminates the TLS session.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                     </h:p>
@@ -3551,14 +3551,14 @@
             <selectable>ffdhe4096</selectable>
             <selectable>ffdhe6144</selectable>
             <selectable>ffdhe8192</selectable></selectables> and no other groups, consistent with the client's supported_groups extension and <selectables>
-            <selectable>key share</selectable>
+            <selectable>key_share</selectable>
             <selectable>no other</selectable></selectables> extension
             </selectable>
           <selectable>ECDHE parameters using elliptic curves <selectables>
             <selectable>secp256r1</selectable>
             <selectable id="s-tls-secp384">secp384r1</selectable>
             <selectable>secp521r1</selectable></selectables> and no other curves, consistent with the client's supported_groups extension and <selectables>
-            <selectable>key share</selectable>
+            <selectable>key_share</selectable>
             <selectable>no other</selectable></selectables> extension and using non-compressed formatting for points
           </selectable>
         </selectables>.
@@ -3578,10 +3578,10 @@
         If TLS 1.2 and DHE are supported, the ST author may claim the "Diffie-Hellman groups..." The requirements apply to the ServerKeyExchange messages sent by the TSF. 
         </h:p>
         <h:p>
-        If TLS 1.2 and supported_groups extension are supported (for ECDHE or DHE groups), the ST author claims the “Diffie-Hellman groups…” or “ECDHE parameters...” according to the supported ciphersuites and supported_groups extension values. This is required when ECDHE ciphersuites are supported and recommended when DHE ciphersuites are supported.
+        If TLS 1.2 and the supported_groups extension are supported, the ST author claims the “Diffie-Hellman groups…” or “ECDHE parameters...” according to the supported ciphersuites and supported_groups extension values. This is required when ECDHE ciphersuites are supported and recommended when DHE ciphersuites are supported.
         </h:p>
         <h:p>
-        If TLS 1.3 is supported, the ST author claims one or both of "Diffie-Hellman groups..." or "ECDHE parameters..." options, and claims the "key share" options in the sub-selections. The requirements apply to the values of the supported_groups extension and the key_share extension contained in the ServerHello message.
+        If TLS 1.3 is supported, the ST author claims one or both of "Diffie-Hellman groups..." or "ECDHE parameters..." options, and claims the "key_share" options in the sub-selections. The requirements apply to the values of the supported_groups extension and the key_share extension contained in the ServerHello message.
         </h:p>
       </note>
       <aactivity>
@@ -3670,7 +3670,7 @@
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                 </h:p>
                 <h:p>
-                If TLS 1.2 is supported, <xref to="tls-server-version-confusion"/> sends a TLS 1.3 ciphersuite to the TSF as a server negotiating TLS 1.2, using a supported TLS 1.3 ciphersuite if the TSF supports TLS 1.3. If TLS 1.3 is supported, <xref to="tls-server-version-confusion"/> sends a TLS 1.2 ciphersuite with compatible supported_group, signature_algorithms, and key share to the TSF as a server negotiating TLS 1.3, using a supported TLS 1.2 ciphersuite if TLS 1.2 is supported. 
+                If TLS 1.2 is supported, <xref to="tls-server-version-confusion"/> sends a TLS 1.3 ciphersuite to the TSF as a server negotiating TLS 1.2, using a supported TLS 1.3 ciphersuite if the TSF supports TLS 1.3. If TLS 1.3 is supported, <xref to="tls-server-version-confusion"/> sends a TLS 1.2 ciphersuite with compatible supported_group, signature_algorithms, and key_share to the TSF as a server negotiating TLS 1.3, using a supported TLS 1.2 ciphersuite if TLS 1.2 is supported. 
                 </h:p>
                 </test>
                 <test>(null ciphersuite) For each supported version, the evaluator shall send a ClientHello message indicating support for the version and include a ciphersuite list consisting of only the null ciphersuite (TLS_NULL_WITH_NULL_NULL, with the value '00 00') and observe that the TOE rejects the connection.
