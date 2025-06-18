@@ -1183,7 +1183,7 @@
                 </h:p>
               </Guidance>
               <Tests>
-                The evaluator shall perform the following tests as indicated. If the TOE supports DTLS 1.2 and one or more of the secure renegotiation methods defined in RFC 5746 are claimed, <xref to="dtls-client-accepts-renegotiation"/> is required. If DTLS 1.2 is supported and the TSF (has a configuration that) rejects all DTLS 1.2 renegotiation attempts, or if DTLS 1.3 is supported, <xref to="dtls-client-prevents-renegotiation"/> is required.
+                The evaluator shall perform the following tests as indicated. If the TOE supports DTLS 1.2 and one or more of the secure renegotiation methods defined in RFC 5746 are claimed, <xref to="dtls-client-accepts-renegotiation"/> is required. If the TOE supports a configuration of DTLS 1.2 that rejects renegotiation attempts, or if the TOE supports DTLS 1.3,  <xref to="dtls-client-prevents-renegotiation"/> is required.
                 <testlist>
                   <test id="dtls-client-accepts-renegotiation">[conditional] If the TSF supports DTLS 1.2 and supports a configuration to accept renegotiation requests for DTLS 1.2, the evaluator shall follow any operational guidance to configure the TSF. The evaluator shall perform the following tests:  
                     <testlist>
@@ -1523,7 +1523,7 @@
         If DTLS 1.2 is claimed, "extended_master_secret extension (RFC 7627) enforcing client support" is claimed, and optionally the ability to allow legacy servers. If DTLS 1.2 is not claimed, the extended_master_secret extension (RFC 7627) is not claimed.
         </h:p>
         <h:p>
-        If DTLS 1.2 is claimed and DHE or ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the selection for the supported_groups extension is claimed. Support for additional extensions is acceptable. For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
+        If DTLS 1.2 is claimed and DHE or ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the selection for the supported_groups extension is claimed. Support for additional extensions is acceptable. If the signature_algorithms extension or the signature_algorithms_certs extension are claimed, at least one sub-selection under each selection is claimed.
         </h:p>
       </note>
     </f-element>
@@ -1604,12 +1604,12 @@
           <!-- DTLS Server Supported Configurations -->
             <test> (supported configurations) The evaluator shall perform the following tests:
               <testlist>
-                <test id= "dtls-server-supported-configurations"> [conditional] If DTLS 1.2 is supported, for each ciphersuite, the evaluator shall send a compliant DTLS 1.2 ClientHello message with client_version 0xfefd (signifying DTLS 1.2), a single entry in the ciphersuites field consisting of the specific ciphersuite, and no supported_versions extension or key_share extension (in accordance with RFC 6347). The evaluator shall observe that the TSF’s ServerHello message indicates DTLS 1.2 in the server_version  field, similarly does not include a supported_versions or key_share extension (in accordance with RFC 6347), and indicates the specific ciphersuite in the ciphersuite field. If the ciphersuite requires certificate-based authentication, the evaluator shall observe that the TSF sends a valid certificate representing the TOE and successfully completes the DTLS handshake.
+                <test id= "dtls-server-supported-configurations"> [conditional] If the TOE supports DTLS 1.2, for each ciphersuite, the evaluator shall send a compliant DTLS 1.2 ClientHello message with client_version 0xfefd (signifying DTLS 1.2) and a single entry in the ciphersuites field consisting of the given ciphersuite. Note that the ClientHello does not contain the supported_versions extension nor key_share extension in accordance with RFC 6347. The evaluator shall observe that the TSF’s ServerHello message indicates DTLS 1.2 in the server_version field, indicates the specific ciphersuite in the ciphersuite field, and similarly does not include a supported_versions or key_share extension (in accordance with RFC 6347). If the ciphersuite requires certificate-based authentication, the evaluator shall observe that the TSF sends a valid certificate representing the TOE and successfully completes the DTLS handshake.
                 <h:p>
                 <h:b>Note:</h:b> The ciphersuites TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 8442) and TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 (RFC 5487) do not involve certificate-based server authentication.
                 </h:p>
                 </test>
-                <test>(DTLS 1.2 support for DTLS 1.3 clients) [conditional] If DTLS 1.2 is supported and the TSF is configurable to support only DTLS 1.2 (or if DTLS 1.3 is not supported), and if the TSF supports DHE or ECDHE ciphersuites, the evaluator shall follow any operational guidance instructions necessary to configure the TSF to only support DTLS 1.2. For each supported DTLS 1.2 ciphersuite with DHE or ECDHE indicated as the key establishment method, the evaluator shall send a ClientHello message with the client_version field set to 0xfefd (signifying DTLS 1.2), a list of ciphersuites consisting of one or more TLS 1.3 ciphersuites followed by the specific TLS 1.2 ciphersuite and no other TLS 1.2 ciphersuites in the ciphersuites field, and including DTLS 1.3 supported_groups and key_share extensions with consistent values. The evaluator shall observe that the TSF’s ServerHello message indicates DTLS 1.2 in the server_version field, does not include a supported_versions or key_share extension, and indicates the specific TLS 1.2 ciphersuite in the ciphersuite field. The evaluator shall observe that the TSF completes the DTLS 1.2 handshake successfully.
+                <test> [conditional] If the TOE supports only DTLS 1.2, or if the TOE supports DTLS 1.3 as well but is configurable to only express support for DTLS 1.2, and if the TSF supports DHE or ECDHE ciphersuites, the evaluator shall follow any operational guidance instructions necessary to configure the TSF to only support DTLS 1.2. For each supported DTLS 1.2 ciphersuite with DHE or ECDHE indicated as the key establishment method, the evaluator shall send a ClientHello message with the client_version field set to 0xfefd (signifying DTLS 1.2), a list of ciphersuites consisting of one or more TLS 1.3 ciphersuites followed by the specific TLS 1.2 ciphersuite and no other TLS 1.2 ciphersuites in the ciphersuites field, and including DTLS 1.3 supported_groups and key_share extensions with consistent values. The evaluator shall observe that the TSF’s ServerHello message indicates DTLS 1.2 in the server_version field, does not include a supported_versions or key_share extension, and indicates the specific TLS 1.2 ciphersuite in the ciphersuite field. The evaluator shall observe that the TSF completes the DTLS 1.2 handshake successfully.
                 </test>
                 <test>(DTLS 1.3 support) [conditional] If the TSF supports DTLS 1.3, then for each supported TLS 1.3 ciphersuite and supported_groups extension element, the evaluator shall send a compliant DTLS 1.3 ClientHello message indicating a list of one or more TLS 1.2 ciphersuites followed by the specific TLS 1.3 ciphersuite and no other ciphersuites in the ciphersuites field, a supported_versions extension indicating DTLS 1.3 only (value 0xfefc), a supported_groups extension indicating the selected group, and a key_share extension containing a value representing an element of the specific group. The evaluator shall observe the TSF’s ServerHello message contains the supported_versions extension indicating DTLS 1.3, the specific ciphersuite in the selected ciphersuite field, and a key_share extension containing an element of the specific supported group. The evaluator shall observe that the TSF completes the DTLS 1.3 handshake successfully.
                 <h:p>
@@ -1660,7 +1660,7 @@
                 <h:p>
                 <h:b>Note:</h:b> If the TSF rejects the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                 </h:p>
-                <h:p>If DTLS 1.2 is supported, Test <xref to="dtls-server-version-confusion"/> sends a TLS 1.3 ciphersuite to the TSF as a server negotiating DTLS 1.2, using a supported TLS 1.3 ciphersuite if the TSF supports DTLS 1.3. If DTLS 1.3 is supported, Test <xref to="dtls-server-version-confusion"/> sends a TLS 1.2 ciphersuites with compatible supported_groups, signature_algorithms, and key_share extensions to the TSF as a server negotiating DTLS 1.3, using a supported TLS 1.2 ciphersuite if the TSF supports DTLS 1.2.
+                <h:p>If the TOE supports DTLS 1.2, Test <xref to="dtls-server-version-confusion"/> sends a TLS 1.3 ciphersuite to the TSF as a server negotiating DTLS 1.2, using a supported TLS 1.3 ciphersuite if the TSF supports DTLS 1.3. If DTLS 1.3 is supported, Test <xref to="dtls-server-version-confusion"/> sends a TLS 1.2 ciphersuites with compatible supported_groups, signature_algorithms, and key_share extensions to the TSF as a server negotiating DTLS 1.3, using a supported TLS 1.2 ciphersuite if the TSF supports DTLS 1.2.
                 </h:p>
                 </test>
                 <test>(null ciphersuite) For each version of TLS supported by the TOE, the evaluator shall send a ClientHello message indicating support for the version and including a ciphersuite list that contains only the null ciphersuite (TLS_NULL_WITH_NULL_NULL) and observe that the TOE silently drops the message or rejects the connection.
@@ -1670,7 +1670,7 @@
                 </test>
                 <test> (anonymous connection request) The evaluator shall perform one or more of the following tests according to the supported DTLS versions:
                 <h:p>
-                [conditional] If DTLS 1.2 is supported, the evaluator shall send the TSF a DTLS 1.2 ClientHello message that is compliant, except that the ciphersuites field includes a ciphersuite list consisting only of ciphersuites using the anonymous server authentication method and observe that the TOE silently drops the message or rejects the connection.
+                [conditional] If the TOE supports DTLS 1.2, the evaluator shall send the TSF a DTLS 1.2 ClientHello message that is valid except that the ciphersuites field includes a ciphersuite list consisting only of ciphersuites using the anonymous server authentication method and observe that the TOE silently drops the message or rejects the connection.
                 </h:p>
                 <h:p>
                 <h:b>Note:</h:b> If the TSF rejects the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
@@ -1687,7 +1687,7 @@
                 </test>
                 <test id="dtls-server-deprecated-encryption"> (disallowed encryption algorithm) The evaluator shall perform the following tests in accordance with the versions of DTLS supported:
                 <h:p>
-                [conditional] If DTLS 1.2 is supported, the evaluator shall send the TSF a DTLS 1.2 ClientHello message that is compliant with RFC 9151, except that the ciphersuites field is a list consisting only of ciphersuites indicating a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and AES-128. The evaluator shall observe that the TOE silently drops the message or rejects the connection.
+                [conditional] If the TOE supports DTLS 1.2, the evaluator shall send the TSF a DTLS 1.2 ClientHello message that is compliant with RFC 9151, except that the ciphersuites field is a list consisting only of ciphersuites that include a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and AES-128. The evaluator shall observe that the TOE silently drops the message or rejects the connection.
                 </h:p>
                 <h:p>
                 <h:b>Note:</h:b> See IANA TLS parameters for available TLS 1.2 ciphersuites to be included. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the TSF supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test could include TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.
@@ -1718,9 +1718,9 @@
                 The evaluator shall follow operational guidance instructions to provision the TSF with one or more of these certificates as indicated in the following sub-tests:
                 </h:p>
                   <testlist>
-                    <test id="dtls-server-correct-signature">[conditional] If DTLS 1.2 is supported, then for each supported value of the signature_algorithms extension, the evaluator shall provision a certificate with a key pair compatible with the specific signature_algorithms extension value and send the TSF a DTLS 1.2 ClientHello message that indicates all supported ciphersuites and has a signature_algorithms extension consisting of a single value matching the specific signature algorithm.
+                    <test id="dtls-server-correct-signature">[conditional] If the TOE supports DTLS 1.2, for each supported value of the signature_algorithms extension, the evaluator shall provision a certificate with a key pair compatible with the specific signature_algorithms extension value and send the TSF a DTLS 1.2 ClientHello message that indicates all supported ciphersuites and has a signature_algorithms extension consisting of a single value matching the specific signature algorithm.
                     <h:p>
-                    If the TSF supports the signature_algorithms_cert extension, the ClientHello message also contains the value consistent with the provisioned certificate.
+                    If the TSF supports the use of the signature_algorithms_cert extension in DTLS 1.2, the ClientHello message also contains the value consistent with the provisioned certificate.
                     </h:p>
                     <h:p>
                     The evaluator shall observe that the TSF negotiates DTLS 1.2 with a DTLS 1.2 ciphersuite that is compatible with the signature algorithm, and that it sends a Certificate message containing the provisioned certificate with a key pair that is consistent with the specific signature_algorithms extension value (and signed using the signature_algorithms_cert extension value, if supported). 
@@ -1749,11 +1749,11 @@
                         </test>
                         <test id="dtls-server-mismatch-1-3-signature">[conditional] If TSF supports DTLS 1.3, the evaluator shall similarly repeat <xref to="dtls-server-correct-1-3-signature"/> with both the provisioned certificate indicated for <xref to="dtls-server-correct-1-3-signature"/> and a provisioned certificate with public keys that are not consistent with the signature_algorithms extension value but which are signed by a CA using the signature_algorithms extension value specified in the ClientHello message, and observe that the Certificate message sent by the TSF does not include the certificate that does not match the value of the signature_algorithms extension in the ClientHello message.
                         </test>
-                        <test>[conditional] If the ST also indicates support for the signature_algorithms_cert extension, the evaluator shall repeat <xref to="dtls-server-mismatch-signature"/> (if DTLS 1.2 is supported) and <xref to="dtls-server-mismatch-1-3-signature"/> (if DTLS 1.3 is supported) using additional provisioned certificates representing the TOE that use public keys consistent with the signature_algorithms extension value, but which are signed by CAs using signature algorithms that do not match the value of the signature_algorithms_cert in the ClientHello message and observe that the TSF’s Certificate message does not include the certificate that does not match the signature_algorithms_cert values in the ClientHello message.
+                        <test>[conditional] If the ST also indicates support for the signature_algorithms_cert extension, the evaluator shall repeat <xref to="dtls-server-mismatch-signature"/> (if supported in DTLS 1.2) and <xref to="dtls-server-mismatch-1-3-signature"/> (if supported in DTLS 1.3) using additional provisioned certificates representing the TOE that use public keys consistent with the signature_algorithms extension value, but which are signed by CAs using signature algorithms that do not match the value of the signature_algorithms_cert in the ClientHello message and observe that the TSF’s Certificate message does not include the certificate that does not match the signature_algorithms_cert values in the ClientHello message.
                         </test>
                       </testlist>  
                     </test>
-                    <test>[conditional] If DTLS 1.2 is supported, the evaluator shall provision a certificate as in <xref to="dtls-server-correct-signature"/>, but shall send a ClientHello message that only offers ciphersuites whose signature component does not match the value of the signature_algorithms extension. The evaluator shall observe that the TSF silently drops the message or terminates the handshake.
+                    <test>[conditional] If the TOE supports DTLS 1.2, the evaluator shall provision a certificate as in <xref to="dtls-server-correct-signature"/>, but shall send a ClientHello message that only offers ciphersuites whose signature component does not match the value of the signature_algorithms extension. The evaluator shall observe that the TSF silently drops the message or terminates the handshake.
                     <h:p>
                     <h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert). 
                     </h:p>
@@ -1761,7 +1761,7 @@
                     </test>
                   </testlist>
                 </test>
-                <test>(extended_master_secret for DTLS 1.2) [conditional] If DTLS 1.2 is supported, the evaluator shall configure the TSF as necessary to enforce client support for extended master secret. The evaluator shall initiate a DTLS 1.2 session with the TSF from a test DTLS client for which the ClientHello message does not include the extended_master_secret extension and observe that the TSF terminates the session.
+                <test>(extended_master_secret for DTLS 1.2) [conditional] If the TOE supports DTLS 1.2, the evaluator shall configure the TSF as necessary to enforce client support for the extended_master_secret extension. The evaluator shall initiate a DTLS 1.2 session with the TSF from a test DTLS client for which the ClientHello message does not include the extended_master_secret extension and observe that the TSF terminates the session.
                 <h:p>
                 <h:b>Note:</h:b> If the TSF terminates the session, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                 </h:p>
@@ -2116,7 +2116,7 @@
         </TSS>
         <Guidance>
           <h:p>
-          The evaluator shall examine the operational guidance to confirm that any instructions that are needed to meet the requirements are included. If DTLS 1.2 is supported, and the TSF is configurable to use RFC 5746 methods or to deny renegotiation, the evaluator shall ensure that the operational guidance includes instructions for configuring the TSF in this manner.
+          The evaluator shall examine the operational guidance to confirm that any instructions that are needed to meet the requirements are included. If DTLS 1.2 is supported and the TSF is configurable to use or deny renegotiation, the evaluator shall ensure that the operational guidance includes instructions for configuring the TSF in this manner.
           </h:p>
         </Guidance>
         <Tests>
@@ -2936,7 +2936,7 @@
                 <h:p>(certificate extended key usage purpose) The evaluator shall send a server certificate that contains the Server Authentication purpose in the ExtendedKeyUsage extension and verify that a connection is established. The evaluator shall repeat this test using a different certificate that is otherwise valid and trusted but lacks the Server Authentication purpose in the ExtendedKeyUsage extension and observe the TSF terminates the session.
                 </h:p>
                 <h:p>
-                <h:b>Note:</h:b>This test is not performed if only TLS 1.2 with PSK ciphersuites are supported; it is required if TLS 1.2 is supported and ciphersuites other than PSK ciphersuites are supported, or if TLS 1.3 is supported.
+                <h:b>Note:</h:b>This test is not performed if the TOE supports TLS 1.2 with only PSK ciphersuites; it is required if the TOE supports the use of other ciphersuites in TLS 1.2, or if the TOE supports TLS 1.3 with any ciphersuites.
                 </h:p>
                 <h:p>
                 Depending on the selections in FCS_TLSC_EXT.1.5 and FCS_TLSC_EXT.1.6, this test is performed in conjunction with testing of FIA_X509_EXT.1 or SFRs specific to the supported functions using TLS.
@@ -3192,7 +3192,7 @@
           </h:p>
         </Guidance>
         <Tests>
-          The evaluator shall perform the following tests as indicated. If TLS 1.2 is supported and one or more of the secure renegotiation methods defined in RFC 5746 are claimed, <xref to="tls-client-accepts-renegotiation"/> is required. If TLS 1.2 is supported and the TSF (has a configuration that) rejects all TLS 1.2 renegotiation attempts, or if TLS 1.3 is supported, <xref to="tls-client-prevents-renegotiation"/> is required.
+          The evaluator shall perform the following tests as indicated. If TLS 1.2 is supported and one or more of the secure renegotiation methods defined in RFC 5746 are claimed, <xref to="tls-client-accepts-renegotiation"/> is required. If the TOE supports a configuration of TLS 1.2 that rejects all renegotiation attempts, or if the TOE supports TLS 1.3, <xref to="tls-client-prevents-renegotiation"/> is required.
           <testlist>
             <test id="tls-client-accepts-renegotiation">[conditional] If the TSF supports TLS 1.2 and supports a configuration to accept renegotiation requests for TLS 1.2, the evaluator shall follow any operational guidance to configure the TSF. The evaluator shall perform the following tests:  
               <testlist>
@@ -3521,7 +3521,7 @@
         If TLS 1.2 is claimed, extended_master_secret extension is claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients.
         </h:p>
         <h:p>
-        If TLS 1.2 is supported and DHE or ECDHE ciphersuites are claimed in FCS_TLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable. For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.
+        If TLS 1.2 is claimed and DHE or ECDHE ciphersuites are claimed in FCS_TLSS_EXT.1.2, the supported_groups extension is claimed. Support for additional extensions is acceptable. If the signature_algorithms extension or the signature_algorithms_certs extension are claimed, at least one sub-selection under each selection is claimed.
         </h:p>
         <h:p>
         For compatibility purposes, TLS clients may offer additional supported_groups values beyond what is specified in the selection.
@@ -3697,7 +3697,7 @@
                 (disallowed encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions: 
                 </h:p>
                 <h:p>
-                [conditional] If TLS 1.2 is supported, the evaluator shall send the TSF a TLS 1.2 ClientHello message that is compliant with RFC 9591, except that the ciphersuites field is a list consisting only of ciphersuites indicating a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and AES-128. The evaluator shall observe that the TOE rejects the connection.
+                [conditional] If TLS 1.2 is supported, the evaluator shall send the TSF a TLS 1.2 ClientHello message that is compliant with RFC 9591, except that the ciphersuites field is a list consisting only of ciphersuites that include a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and AES-128. The evaluator shall observe that the TOE rejects the connection.
                 </h:p>
                 <h:p>
                 <h:b>Note:</h:b> See IANA TLS parameters for available TLS 1.2 ciphersuites to be included. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the TSF supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test could include TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.
@@ -3727,7 +3727,7 @@
                   <testlist>
                     <test id="tls-server-correct-signature">[conditional] If TLS 1.2 is supported, then for each supported value of the signature_algorithms extension, the evaluator shall provision a certificate with a key pair compatible with the specific signature_algorithms extension value and send the TSF a TLS 1.2 ClientHello message that indicates all supported ciphersuites and has a signature_algorithms extension consisting of a single value matching the specific signature algorithm.
                     <h:p>
-                    If the TSF supports the signature_algorithms_cert extension, the ClientHello message also contains the value consistent with the provisioned certificate.
+                    If the TSF supports the use of the signature_algorithms_cert extension in TLS 1.2, the ClientHello message also contains the value consistent with the provisioned certificate.
                     </h:p>
                     <h:p>
                     The evaluator shall observe that the TSF negotiates TLS 1.2 with a TLS 1.2 ciphersuite that is compatible with the signature algorithm, and that it sends a Certificate message containing the provisioned certificate with a key pair that is consistent with the specific signature_algorithms extension value (and signed using the signature_algorithms_cert extension value, if supported). 
@@ -4109,7 +4109,7 @@
 	      </TSS>
 	      <Guidance>
 	        <h:p>
-	        The evaluator shall examine the operational guidance to confirm that any instructions that are needed to meet the requirements are included. If TLS 1.2 is supported, and the TSF is configurable to use RFC 5746 methods or to deny renegotiation, the evaluator shall ensure that the operational guidance includes instructions for configuring the TSF in this manner.
+	        The evaluator shall examine the operational guidance to confirm that any instructions that are needed to meet the requirements are included. If TLS 1.2 is supported, and the TSF is configurable to use or deny renegotiation, the evaluator shall ensure that the operational guidance includes instructions for configuring the TSF in this manner.
 	        </h:p>
 	      </Guidance>
 	      <Tests>
