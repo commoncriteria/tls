@@ -40,7 +40,6 @@ output/tls-release-linkable.html: ffdhe
 output/tls-release-linkable.html: iPAddress
 output/tls-release-linkable.html: iana
 output/tls-release-linkable.html: ke
-output/tls-release-linkable.html: messagethat
 output/tls-release-linkable.html: psk
 output/tls-release-linkable.html: pss
 output/tls-release-linkable.html: rfc
@@ -97,7 +96,6 @@ output/tls-release.html: iPAddress
 output/tls-release.html: iana
 output/tls-release.html: ke
 output/tls-release.html: key’
-output/tls-release.html: messagethat
 output/tls-release.html: methods’
 output/tls-release.html: ordering’
 output/tls-release.html: psk
@@ -160,7 +158,6 @@ output/tls.html: iPAddress
 output/tls.html: iana
 output/tls.html: ke
 output/tls.html: key’
-output/tls.html: messagethat
 output/tls.html: methods’
 output/tls.html: ordering’
 output/tls.html: psk
