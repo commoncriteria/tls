@@ -1038,7 +1038,7 @@
               </test>
               <test>[conditional] If the TSF supports post-handshake authentication, the evaluator shall establish a pre-shared key between the TSF and a test DTLS 1.3 server. The evaluator shall initiate a DTLS session using the pre-shared key and confirm the TSF and test DTLS 1.3 server successfully complete the DTLS handshake and both support post-handshake authentication. After the session is successfully established, the evaluator shall initiate a CertificateRequest message from the test DTLS 1.3 server. The evaluator shall observe that the TSF receives that authentication request and shall take necessary actions, in accordance with the operational guidance, to complete the authentication request. The evaluator shall confirm that the test DTLS 1.3 server receives Certificate and CertificateVerify messages from the TSF over the channel that authenticates the client.
               <h:p>
-              <h:b>Note:</h:b> DTLS 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm that the TSF sends the appropriate messages by examining the messages received at the test DTLS 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the TOE receives data configured at the test DTLS server. 
+              <h:b>Note:</h:b> DTLS 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm that the TSF sends the appropriate messages by examining the messages received at the test DTLS 1.3 server and by inspecting any relevant server logs. The evaluator may also leverage the calling application to demonstrate that the TOE receives data configured at the test DTLS server. 
               </h:p>
               </test>
             </testlist>
@@ -3067,7 +3067,7 @@
            </test>
            <test>[conditional] If the TSF supports post-handshake authentication, the evaluator shall establish a pre-shared key between the TSF and a test TLS 1.3 server. The evaluator shall initiate a TLS session using the pre-shared key and confirm the TSF and test TLS 1.3 server successfully complete the TLS handshake and both support post-handshake authentication. After the session is successfully established, the evaluator shall initiate a CertificateRequest message from the test TLS 1.3 server. The evaluator shall observe that the TSF receives that authentication request and shall take necessary actions, in accordance with the operational guidance, to complete the authentication request. The evaluator shall confirm that the test TLS 1.3 server receives Certificate and CertificateVerify messages from the TSF over the channel that authenticates the client.
            <h:p>
-           <h:b>Note:</h:b> TLS 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm that the TSF sends the appropriate messages by examining the messages received at the test TLS 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the TOE receives data configured at the test TLS server. 
+           <h:b>Note:</h:b> TLS 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm that the TSF sends the appropriate messages by examining the messages received at the test TLS 1.3 server and by inspecting any relevant server logs. The evaluator may also leverage of the calling application to demonstrate that the TOE receives data configured at the test TLS server. 
            </h:p>
            </test>
           </testlist>
@@ -3812,7 +3812,7 @@
                   <testlist>
                     <test>The evaluator shall send the TSF a compliant TLS 1.3 ClientHello message indicating a single key_share value from the supported_groups extension and shall observe that the ServerHello message includes valid elements of the supported group.
                     </test>
-                    <test>The evaluator shall send the TSF a TLS 1.3 ClientHello message indicating a supported_groups value supported by the TSF but containing a key_share extension indicating an element claiming to be in the supported group that does not represent a valid element of the group. The evaluator shall observe that the TSF terminates the session.
+                    <test>The evaluator shall send the TSF a DTLS 1.3 ClientHello message that indicates a single supported_groups value supported by the TSF and a single element in the key_share extension that claims to be in the supported group, but is not a valid element of that group.  The evaluator shall observe that the TSF terminates the session.
                     <h:p>
                     <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                     </h:p>
@@ -3822,7 +3822,7 @@
                     </test>
                   </testlist>
                 </test>
-                <test id="tls-server-no-finished-msg">For each version of TLS supported by the TOE, the evaluator shall initiate a TLS handshake from a test TLS client with compliant handshake messages negotiating the version and supported parameters to include the ChangeCipherSpec message (implied for TLS 1.3), but which omits the Finished message and instead sends an application message containing random data. The evaluator shall observe that the TSF terminates the connection.
+                <test id="tls-server-no-finished-msg">For each version of TLS supported by the TOE, the evaluator shall initiate a TLS handshake from a test TLS client with compliant handshake messages negotiating the version and supported parameters to include the ChangeCipherSpec message (implied for TLS 1.3), but which omits the Finished message and instead sends an Application Data message containing random data. The evaluator shall observe that the TSF terminates the connection.
                 <h:p>
                 <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
                 </h:p>
@@ -3963,7 +3963,7 @@
 	          <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
 	          </h:p>
 	          </test>
-	          <test>[conditional] If the ST indicates that the TSF supports establishment of a TLS session for missing or invalid certificates, then For each version of TLS supported by the TOE, and for each supported response option for a missing or invalid certificate indicated in FCS_TLSS_EXT.2.3, the evaluator shall configure the TSF according to the operational guidance to respond as indicated for the calling application. The evaluator shall send client handshake messages from a test TLS client as indicated for each sub-test. The evaluator shall perform the following sub-tests:
+	          <test>[conditional] If the ST indicates that the TSF supports establishment of a TLS session for missing or invalid certificates, then for each version of TLS supported by the TOE, and for each supported response option for a missing or invalid certificate indicated in FCS_TLSS_EXT.2.3, the evaluator shall configure the TSF according to the operational guidance to respond as indicated for the calling application. The evaluator shall send client handshake messages from a test TLS client as indicated for each sub-test. The evaluator shall perform the following sub-tests:
 	            <testlist>
 	              <test>[conditional]: If the TSF supports non-authenticated session establishment when receiving an empty Certificate message, the evaluator shall initiate a TLS handshake from a compliant test TLS client supporting the version and providing a Certificate message containing a certificate_list structure of length zero. The evaluator shall confirm that the TSF notifies the calling application that the user is unauthenticated.
 	              <h:p>
@@ -4013,7 +4013,7 @@
 	          The intent of this test is to confirm that for each method that the TSF uses to match name types presented in validated certificates, it is able to recognize both matching and non-matching names. Names of special types implicitly encoded in the CN entry of the certificate subject name are especially prone to error since they may only be validated by the issuing CA as a directory name (RDN) type, especially if the issuing CA is unaware of the intended encoding as a different name type. It is a best practice that when the CN is interpreted as an embedded name type other than RDN, an explicitly encoded SAN entry should take precedence.
 	          </h:p>
 	          <h:p>
-	          TLS 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm that the TSF sends the appropriate messages by examining the messages received at the test TLS 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the TOE receives data configured at the test TLS server.
+	          TLS 1.3 CertificateRequest messages from the test server and client Certificate and CertificateVerify messages are encrypted. The evaluator shall confirm that the TSF sends the appropriate messages by examining the messages received at the test TLS 1.3 server and by inspecting any relevant server logs. The evaluator may also leverage the calling application to demonstrate that the TOE receives data configured at the test TLS server.
 	          </h:p>
 	          </test>
 	        </testlist>
