@@ -83,6 +83,7 @@ output/tls-release.html: ServerKeyExchange
 output/tls-release.html: TDES
 output/tls-release.html: TLSCipherText
 output/tls-release.html: URIs
+output/tls-release.html: ame
 output/tls-release.html: amily
 output/tls-release.html: any’
 output/tls-release.html: choselectose
@@ -109,7 +110,6 @@ output/tls-release.html: rfc822
 output/tls-release.html: rfc822Name
 output/tls-release.html: rsae
 output/tls-release.html: secp
-output/tls-release.html: suppor
 output/tls-release.html: time’
 output/tls-release.html: tls
 output/tls-release.html: uniformResourceIdentifier
@@ -148,6 +148,7 @@ output/tls.html: ServerKeyExchange
 output/tls.html: TDES
 output/tls.html: TLSCipherText
 output/tls.html: URIs
+output/tls.html: ame
 output/tls.html: amily
 output/tls.html: any’
 output/tls.html: choselectose
@@ -173,7 +174,6 @@ output/tls.html: rfc822
 output/tls.html: rfc822Name
 output/tls.html: rsae
 output/tls.html: secp
-output/tls.html: suppor
 output/tls.html: time’
 output/tls.html: tls
 output/tls.html: uniformResourceIdentifier

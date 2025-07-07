@@ -815,11 +815,11 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not offer ClientHello messages indicating the following: 
                     <ul>
-                        <li>null encryption</li>
-                        <li>support for anonymous servers</li>
-                        <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</li>
+                        <li>null encryption </li>
+                        <li>support for anonymous servers </li>
+                        <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA </li>
                         <li>
-                            use of MD5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation
+                            use of MD5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation 
                         </li>
                     </ul>
                      and shall abort sessions where a server attempts to negotiate cryptographic options not enumerated in the ClientHello message.
@@ -843,107 +843,109 @@
                     <a href="#FCS_DTLSC_EXT.1.4" class="abbr">FCS_DTLSC_EXT.1.4</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> ClientHello message extensions: signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> ClientHello message extensions: 
                     <ul>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_1">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                        <li>
+                            signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            <ul>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_18">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_19">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                            </ul>
+                            ] , and [<b>selection</b>: 
+                            <ul>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_20">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_21">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_22">no other signature algorithms </span>
+                                </li>
+                            </ul>
+                            ] and 
                         </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_2">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                    </ul>
-                    ] , and [<b>selection</b>: 
-                    <ul>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_3">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_4">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_5">no other signature algorithms</span>
-                        </li>
-                    </ul>
-                    ] 
-                    <ul>
-                        <li>and</li>
                     </ul>
                      [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_6">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_1">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_7">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_2">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_8">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_3">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                 </ul>
                                 ] , and [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_9">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_4">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_10">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_5">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_11">no other signature algorithms</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_6">no other signature algorithms</span>
                                     </li>
                                 </ul>
                                 ] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_12">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="fcs_dtlsc_ext.1.4_13"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2</span>, <span class="selectable-content" id="fcs_dtlsc_ext.1.4_14">no other versions</span>] </span>
+                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_7">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="fcs_dtlsc_ext.1.4_8"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2</span>, <span class="selectable-content" id="fcs_dtlsc_ext.1.4_9">no other versions</span>] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_15">supported_groups extension indicating support for [<b>selection</b>: 
+                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_10">supported_groups extension indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_16">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_11">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_17">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_12">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_18">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_13">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                 </ul>
                                 ] and [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_19">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_14">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_20">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_15">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_21">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_16">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_22">no other supported groups</span>
+                                        <span class="selectable-content" id="fcs_dtlsc_ext.1.4_17">no other supported groups</span>
                                     </li>
                                 </ul>
                                 ] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_23">key_share extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_18">key_share extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_24">post_handshake_auth (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), pre_shared_key (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), tls_cert_with_extern_psk (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8773), and psk_key_exchange_modes (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating psk_dhe_ke (<abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr>) mode</span>
+                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_19">post_handshake_auth (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), pre_shared_key (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), tls_cert_with_extern_psk (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8773), and psk_key_exchange_modes (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating psk_dhe_ke (<abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr>) mode</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_25">extended_master_secret extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7627) enforcing server support, and [<b>selection</b>: <span class="selectable-content" id="fcs_dtlsc_ext.1.4_26">allowing legacy servers</span>, <span class="selectable-content" id="fcs_dtlsc_ext.1.4_27">no other enforcement mode</span>] </span>
+                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_20">extended_master_secret extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7627) enforcing server support, and [<b>selection</b>: <span class="selectable-content" id="fcs_dtlsc_ext.1.4_21">allowing legacy servers</span>, <span class="selectable-content" id="fcs_dtlsc_ext.1.4_22">no other enforcement mode</span>] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_28">no other extensions</span>
+                            <span class="selectable-content" id="fcs_dtlsc_ext.1.4_23">no other extensions</span>
                         </li>
                     </ul>
                     ] and shall not send the following extensions: 
                     <ul>
-                        <li>early_data</li>
-                        <li>psk_key_exchange_modes indicating PSK only mode.</li>
+                        <li>early_data </li>
+                        <li>psk_key_exchange_modes indicating PSK only mode. </li>
                     </ul>
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">
@@ -1099,19 +1101,19 @@
                                 If name matching is supported, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> includes a description of matching methods used for each supported name type to the supported application defined reference identifiers. The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> includes a description of wildcards recognized for each name type claimed in <a href="#FCS_DTLSC_EXT.1.5">FCS_DTLSC_EXT.1.5</a>, if any, and shall verify that the matching rules meet or exceed best practices. In particular, the evaluator shall ensure that the matching rules are as restrictive as, or more restrictive than the following:
                                 <ul>
                                     <li>
-                                        <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> names: The &lsquo;*&rsquo; character used in the complete leftmost label of a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name represents any valid name that has the same number of labels, and that matches all remaining labels. The &lsquo;*&rsquo; character must only be used in the leftmost complete label of a properly formatted <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name. The &lsquo;*&rsquo; must not be used to represent a public suffix, or in the leftmost label immediately following a public suffix.
+                                        <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> names: The &lsquo;*&rsquo; character used in the complete leftmost label of a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name represents any valid name that has the same number of labels, and that matches all remaining labels. The &lsquo;*&rsquo; character must only be used in the leftmost complete label of a properly formatted <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name. The &lsquo;*&rsquo; must not be used to represent a public suffix, or in the leftmost label immediately following a public suffix. 
                                     </li>
                                     <li>
-                                        <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr> or SRV names: The &lsquo;*&rsquo; character can only occur in the domain name portion of the name represented as a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name. All restrictions for wildcards in <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> names apply to the <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion of the name. <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr> host names presented as an <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address are matched according to <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address matching rules &ndash; see best practices for <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> addresses below. In accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6125, it is preferred that such URIs are presented a matching name of type <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address in the <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr>.
+                                        <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr> or SRV names: The &lsquo;*&rsquo; character can only occur in the domain name portion of the name represented as a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name. All restrictions for wildcards in <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> names apply to the <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion of the name. <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr> host names presented as an <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address are matched according to <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address matching rules &ndash; see best practices for <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> addresses below. In accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6125, it is preferred that such URIs are presented a matching name of type <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address in the <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr>. 
                                     </li>
                                     <li>
-                                        <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> addresses: <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 does not support <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges as presented names, but indicates that presented names may be compared to <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges present in name constraints. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges as reference identifiers, the reference identifier matches if the presented name is in the range. <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> ranges in name constraints (including reference identifiers) should be presented in CIDR format.
+                                        <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> addresses: <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 does not support <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges as presented names, but indicates that presented names may be compared to <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges present in name constraints. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges as reference identifiers, the reference identifier matches if the presented name is in the range. <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> ranges in name constraints (including reference identifiers) should be presented in CIDR format. 
                                     </li>
                                     <li>
-                                        <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5322 names: <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 and updates <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8398 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8399 do not support special indicators representing more that a a single mailbox as a presented name, but indicates that presented names may be compared to a single mailbox, &lsquo;any&rsquo; email address at a host, or &lsquo;any&rsquo; email address on a domain (e.g., &ldquo;example.com&rdquo; matches any email address on the host example.com and &ldquo;.example.com&rdquo; matches any email address in the domain example.com, but does not match email addresses at the host &ldquo;example.com&rdquo;). Such matching is prohibited for internationalized <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5322 names.
+                                        <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5322 names: <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 and updates <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8398 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8399 do not support special indicators representing more that a a single mailbox as a presented name, but indicates that presented names may be compared to a single mailbox, &lsquo;any&rsquo; email address at a host, or &lsquo;any&rsquo; email address on a domain (e.g., &ldquo;example.com&rdquo; matches any email address on the host example.com and &ldquo;.example.com&rdquo; matches any email address in the domain example.com, but does not match email addresses at the host &ldquo;example.com&rdquo;). Such matching is prohibited for internationalized <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5322 names. 
                                     </li>
                                     <li>
-                                        Embedded <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> name types: The <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> relative distinguished name of a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name type included in the subject field is not strongly typed. Attempts to match both the name type and wildcard specifications can result in matches not intended, and therefore, not authoritatively asserted by a certification authority. It is preferred that no matching of <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> embedded names be supported, but if necessary for backward compatibility, the description should clearly indicate how different name types are interpreted in the matching algorithm. If an embedded <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> is present, the <abbr class="dyn-abbr"><a href="#abbr_DN">DN</a></abbr> structure containing the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> as an RDN is matched, and the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> component is further matched according to the specific rules for the implied name type. In particular, the &lsquo;*&rsquo; character in a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> is not to be interpreted as representing more than a single entity unless the entirety of the RDN is properly formatted as a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr>, or SVR name, and represents a wildcard meeting best practices as described above.
+                                        Embedded <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> name types: The <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> relative distinguished name of a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name type included in the subject field is not strongly typed. Attempts to match both the name type and wildcard specifications can result in matches not intended, and therefore, not authoritatively asserted by a certification authority. It is preferred that no matching of <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> embedded names be supported, but if necessary for backward compatibility, the description should clearly indicate how different name types are interpreted in the matching algorithm. If an embedded <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> is present, the <abbr class="dyn-abbr"><a href="#abbr_DN">DN</a></abbr> structure containing the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> as an RDN is matched, and the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> component is further matched according to the specific rules for the implied name type. In particular, the &lsquo;*&rsquo; character in a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> is not to be interpreted as representing more than a single entity unless the entirety of the RDN is properly formatted as a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr>, or SVR name, and represents a wildcard meeting best practices as described above. 
                                     </li>
                                 </ul>
                             </p>
@@ -1756,20 +1758,20 @@
                                 <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746 allows the client to accept connections with servers that do not support the extension; this Functional Package refines <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5746 and requires the client to terminate sessions with such servers. Thus, unexpected ServerHello messages include 
                                 <ul>
                                     <li>
-                                        an initial ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 that does not contain a renegotiation_info extension
+                                        an initial ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 that does not contain a renegotiation_info extension 
                                     </li>
                                     <li>
-                                        an initial ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 containing a non-empty renegotiation_info extension
+                                        an initial ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 containing a non-empty renegotiation_info extension 
                                     </li>
                                     <li>
-                                        a subsequent ServerHello message renegotiating <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 that does not contain a renegotiation_info extension
+                                        a subsequent ServerHello message renegotiating <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 that does not contain a renegotiation_info extension 
                                     </li>
                                     <li>
-                                        a subsequent ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 containing a renegotiation_info extension with an incorrect renegotiated_connection value
+                                        a subsequent ServerHello message negotiating <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 containing a renegotiation_info extension with an incorrect renegotiated_connection value 
                                     </li>
                                      and 
                                     <li>
-                                        a ServerHello request message when renegotiation is not allowed (for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 or when the option is claimed for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2).
+                                        a ServerHello request message when renegotiation is not allowed (for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 or when the option is claimed for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2). 
                                     </li>
                                 </ul>
                             </p>
@@ -2155,101 +2157,103 @@
                     <a href="#FCS_DTLSS_EXT.1.4" class="abbr">FCS_DTLSS_EXT.1.4</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to process the following <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> ClientHello message extensions: signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to process the following <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> ClientHello message extensions: 
                     <ul>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_1">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                        <li>
+                            signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            <ul>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_105">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_106">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                            </ul>
+                            ] , and [<b>selection</b>: 
+                            <ul>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_107">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_108">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_109">no other signature algorithms </span>
+                                </li>
+                            </ul>
+                            ] 
                         </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_2">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                    </ul>
-                    ] , and [<b>selection</b>: 
-                    <ul>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_3">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_4">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_5">no other signature algorithms</span>
-                        </li>
-                    </ul>
-                    ] 
-                    <ul>
-                        <li></li>
                     </ul>
                      and the following other extensions: [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_6">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_1">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_7">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_2">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_8">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_3">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                 </ul>
                                 ] , and [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_9">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_4">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_10">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_5">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_11">no other signature algorithms</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_6">no other signature algorithms</span>
                                     </li>
                                 </ul>
                                 ] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_12">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="fcs_dtlss_ext.1.4_13"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2</span>, <span class="selectable-content" id="fcs_dtlss_ext.1.4_14">no other versions</span>] </span>
+                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_7">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="fcs_dtlss_ext.1.4_8"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2</span>, <span class="selectable-content" id="fcs_dtlss_ext.1.4_9">no other versions</span>] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_15">supported_groups extension indicating support for [<b>selection</b>: 
+                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_10">supported_groups extension indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_16">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_11">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_17">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_12">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_18">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_13">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                 </ul>
                                 ] and [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_19">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_14">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_20">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_15">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_21">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_16">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_22">no other supported groups</span>
+                                        <span class="selectable-content" id="fcs_dtlss_ext.1.4_17">no other supported groups</span>
                                     </li>
                                 </ul>
                                 ] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_23">key_share extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_18">key_share extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_24">post_handshake_auth (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), pre_shared_key (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), tls_cert_with_extern_psk (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8773), and psk_key_exchange_modes (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating psk_dhe_ke (<abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr>) mode</span>
+                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_19">post_handshake_auth (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), pre_shared_key (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), tls_cert_with_extern_psk (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8773), and psk_key_exchange_modes (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating psk_dhe_ke (<abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr>) mode</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_25">extended_master_secret extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7627) enforcing client support and [<b>selection</b>: <span class="selectable-content" id="fcs_dtlss_ext.1.4_26">allowing legacy clients</span>, <span class="selectable-content" id="fcs_dtlss_ext.1.4_27">no other enforcement mode</span>] </span>
+                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_20">extended_master_secret extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7627) enforcing client support and [<b>selection</b>: <span class="selectable-content" id="fcs_dtlss_ext.1.4_21">allowing legacy clients</span>, <span class="selectable-content" id="fcs_dtlss_ext.1.4_22">no other enforcement mode</span>] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_28">no other extensions</span>
+                            <span class="selectable-content" id="fcs_dtlss_ext.1.4_23">no other extensions</span>
                         </li>
                     </ul>
                     ].
@@ -2841,43 +2845,43 @@
                                         <a id="_t_117" class="defined" href="#_t_117">Test FCS_DTLSS_EXT.2:3</a>: For each version of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to negotiate the version, require client authentication, and perform the following steps:
                                         <ul>
                                             <li>
-                                                For each supported name matching method indicated in <a href="#FCS_DTLSS_EXT.2.4">FCS_DTLSS_EXT.2.4</a>, and for each name type supported by the matching method, the evaluator shall establish a valid primary certificate chain with a leaf certificate containing a single name of the supported type matching a reference ID and a valid alternate certificate chain with a leaf certificate containing a single name indicating a different name of the same type not matching a reference ID.
+                                                For each supported name matching method indicated in <a href="#FCS_DTLSS_EXT.2.4">FCS_DTLSS_EXT.2.4</a>, and for each name type supported by the matching method, the evaluator shall establish a valid primary certificate chain with a leaf certificate containing a single name of the supported type matching a reference ID and a valid alternate certificate chain with a leaf certificate containing a single name indicating a different name of the same type not matching a reference ID. 
                                             </li>
                                             <li>
-                                                [conditional] If any of the supported name types include <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of a name type also supported as a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry, the evaluator shall establish additional certificate chains:
+                                                [conditional] If any of the supported name types include <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of a name type also supported as a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry, the evaluator shall establish additional certificate chains: 
                                                 <ul>
                                                     <li>
-                                                        The evaluator shall establish a primary certificate chain with multiple names, to include a leaf certificate with:
+                                                        The evaluator shall establish a primary certificate chain with multiple names, to include a leaf certificate with: 
                                                         <ul>
                                                             <li>
-                                                                a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry that matches the name in the primary certificate chain with single names, of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type; and
+                                                                a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry that matches the name in the primary certificate chain with single names, of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type; and 
                                                             </li>
                                                             <li>
-                                                                a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> entry encoding the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> type which matches the name in the alternate certificate chain with single names of the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type;
+                                                                a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> entry encoding the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> type which matches the name in the alternate certificate chain with single names of the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type; 
                                                             </li>
                                                         </ul>
                                                     </li>
                                                     <li>
-                                                        The evaluator shall establish an alternate certificate chain with multiple names, to include a leaf certificate with:
+                                                        The evaluator shall establish an alternate certificate chain with multiple names, to include a leaf certificate with: 
                                                         <ul>
                                                             <li>
-                                                                a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry that matches the name in the alternate certificate chain with single names, of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type; and
+                                                                a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry that matches the name in the alternate certificate chain with single names, of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type; and 
                                                             </li>
                                                             <li>
-                                                                a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> entry encoding the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> type which matches the name in the primary certificate chain with single names, of the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type.
+                                                                a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> entry encoding the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> type which matches the name in the primary certificate chain with single names, of the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type. 
                                                             </li>
                                                         </ul>
                                                     </li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                [conditional] If any of the supported name types include <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding, the evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>, establishing trust in the root <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr> for all primary and alternate certificate chains. The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and any relevant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> applications that use <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> for client authentication as necessary to establish reference identifiers that match the names in the client&rsquo;s primary certificate chains with single names, but not matching any of the names in the alternate certificate chains with single names.
+                                                [conditional] If any of the supported name types include <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding, the evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>, establishing trust in the root <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr> for all primary and alternate certificate chains. The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and any relevant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> applications that use <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> for client authentication as necessary to establish reference identifiers that match the names in the client&rsquo;s primary certificate chains with single names, but not matching any of the names in the alternate certificate chains with single names. 
                                             </li>
                                             <li>
-                                                For each primary certificate chain (with single or multiple names), the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session from the test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> client that is configured to present the primary certificate chain in a Certificate message and a valid CertificateVerify message in response to the server&rsquo;s CertificateRequest message. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> accepts the certificate and completes the authenticated <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session successfully.
+                                                For each primary certificate chain (with single or multiple names), the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session from the test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> client that is configured to present the primary certificate chain in a Certificate message and a valid CertificateVerify message in response to the server&rsquo;s CertificateRequest message. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> accepts the certificate and completes the authenticated <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session successfully. 
                                             </li>
                                             <li>
-                                                For each alternate certificate chain (with single or multiple names), the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session from the test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> client that is configured to present the alternate certificate chain in a Certificate message and a valid CertificateVerify message in response to the server&rsquo;s CertificateRequest message. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message or terminates the session.
+                                                For each alternate certificate chain (with single or multiple names), the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session from the test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> client that is configured to present the alternate certificate chain in a Certificate message and a valid CertificateVerify message in response to the server&rsquo;s CertificateRequest message. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message or terminates the session. 
                                             </li>
                                         </ul>
                                         <p>
@@ -3374,11 +3378,11 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not offer ClientHello messages indicating the following: 
                     <ul>
-                        <li>null encryption</li>
-                        <li>support for anonymous servers</li>
-                        <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</li>
+                        <li>null encryption </li>
+                        <li>support for anonymous servers </li>
+                        <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA </li>
                         <li>
-                            use of MD5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation
+                            use of MD5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation 
                         </li>
                     </ul>
                      and shall abort sessions where a server attempts to negotiate ciphersuites not enumerated in the ClientHello message.
@@ -3402,107 +3406,109 @@
                     <a href="#FCS_TLSC_EXT.1.4" class="abbr">FCS_TLSC_EXT.1.4</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ClientHello message extensions: signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ClientHello message extensions: 
                     <ul>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_1">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                        <li>
+                            signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            <ul>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_215">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_216">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                            </ul>
+                            ] , and [<b>selection</b>: 
+                            <ul>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_217">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_218">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_219">no other signature algorithms </span>
+                                </li>
+                            </ul>
+                            ] and 
                         </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_2">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                    </ul>
-                    ] , and [<b>selection</b>: 
-                    <ul>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_3">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_4">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_5">no other signature algorithms</span>
-                        </li>
-                    </ul>
-                    ] 
-                    <ul>
-                        <li>and</li>
                     </ul>
                      [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_6">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_1">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_7">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_2">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_8">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_3">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                 </ul>
                                 ] , and [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_9">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_4">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_10">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_5">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_11">no other signature algorithms</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_6">no other signature algorithms</span>
                                     </li>
                                 </ul>
                                 ] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_12">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="fcs_tlsc_ext.1.4_13"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2</span>, <span class="selectable-content" id="fcs_tlsc_ext.1.4_14">no other versions</span>] </span>
+                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_7">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="fcs_tlsc_ext.1.4_8"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2</span>, <span class="selectable-content" id="fcs_tlsc_ext.1.4_9">no other versions</span>] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_15">supported_groups extension indicating support for [<b>selection</b>: 
+                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_10">supported_groups extension indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_16">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_11">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_17">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_12">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_18">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_13">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                 </ul>
                                 ] and [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_19">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_14">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_20">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_15">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_21">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_16">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_22">no other supported groups</span>
+                                        <span class="selectable-content" id="fcs_tlsc_ext.1.4_17">no other supported groups</span>
                                     </li>
                                 </ul>
                                 ] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_23">key_share extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_18">key_share extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_24">post_handshake_auth (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), pre_shared_key (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), and psk_key_exchange_modes (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating psk_dhe_ke (<abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr>) mode</span>
+                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_19">post_handshake_auth (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), pre_shared_key (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446), and psk_key_exchange_modes (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating psk_dhe_ke (<abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr>) mode</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_25">extended_master_secret extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7627) enforcing server support, and [<b>selection</b>: <span class="selectable-content" id="fcs_tlsc_ext.1.4_26">allowing legacy servers</span>, <span class="selectable-content" id="fcs_tlsc_ext.1.4_27">no other enforcement mode</span>] </span>
+                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_20">extended_master_secret extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7627) enforcing server support, and [<b>selection</b>: <span class="selectable-content" id="fcs_tlsc_ext.1.4_21">allowing legacy servers</span>, <span class="selectable-content" id="fcs_tlsc_ext.1.4_22">no other enforcement mode</span>] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_28">no other extensions</span>
+                            <span class="selectable-content" id="fcs_tlsc_ext.1.4_23">no other extensions</span>
                         </li>
                     </ul>
                     ] and shall not send the following extensions: 
                     <ul>
-                        <li>early_data</li>
-                        <li>psk_key_exchange_modes indicating PSK only mode.</li>
+                        <li>early_data </li>
+                        <li>psk_key_exchange_modes indicating PSK only mode. </li>
                     </ul>
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">
@@ -3655,19 +3661,19 @@
                                 If name matching is supported, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> includes a description of matching methods used for each supported name type to the supported application defined reference identifiers. The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> includes a description of wildcards recognized for each name type claimed in <a href="#FCS_TLSC_EXT.1.5">FCS_TLSC_EXT.1.5</a>, if any, and shall verify that the matching rules meet or exceed best practices. In particular, the evaluator shall ensure that the matching rules are as restrictive as, or more restrictive than the following:
                                 <ul>
                                     <li>
-                                        <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> names: The &lsquo;*&rsquo; character used in the complete leftmost label of a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name represents any valid name that has the same number of labels, and that matches all remaining labels. The &lsquo;*&rsquo; character must only be used in the leftmost complete label of a properly formatted <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name. The &lsquo;*&rsquo; must not be used to represent a public suffix, or in the leftmost label immediately following a public suffix.
+                                        <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> names: The &lsquo;*&rsquo; character used in the complete leftmost label of a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name represents any valid name that has the same number of labels, and that matches all remaining labels. The &lsquo;*&rsquo; character must only be used in the leftmost complete label of a properly formatted <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name. The &lsquo;*&rsquo; must not be used to represent a public suffix, or in the leftmost label immediately following a public suffix. 
                                     </li>
                                     <li>
-                                        <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr> or SRV names: The &lsquo;*&rsquo; character can only occur in the domain name portion of the name represented as a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name. All restrictions for wildcards in <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> names apply to the <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion of the name. <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr> host names presented as an <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address are matched according to <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address matching rules &ndash; see best practices for <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> addresses below. In accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6125, it is preferred that such URIs are presented a matching name of type <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address in the <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr>.
+                                        <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr> or SRV names: The &lsquo;*&rsquo; character can only occur in the domain name portion of the name represented as a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name. All restrictions for wildcards in <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> names apply to the <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> portion of the name. <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr> host names presented as an <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address are matched according to <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address matching rules &ndash; see best practices for <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> addresses below. In accordance with <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6125, it is preferred that such URIs are presented a matching name of type <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address in the <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr>. 
                                     </li>
                                     <li>
-                                        <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> addresses: <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 does not support <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges as presented names, but indicates that presented names may be compared to <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges present in name constraints. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges as reference identifiers, the reference identifier matches if the presented name is in the range. <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> ranges in name constraints (including reference identifiers) should be presented in CIDR format.
+                                        <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> addresses: <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 does not support <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges as presented names, but indicates that presented names may be compared to <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges present in name constraints. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address ranges as reference identifiers, the reference identifier matches if the presented name is in the range. <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> ranges in name constraints (including reference identifiers) should be presented in CIDR format. 
                                     </li>
                                     <li>
-                                        <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5322 names: <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8398, and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8399 do not support special indicators representing more than a single mailbox as a presented name, but indicate that presented names may be compared to a single mailbox, &lsquo;any&rsquo; email address at a host, or &lsquo;any&rsquo; email address on a domain (e.g., &ldquo;example.com&rdquo; matches any email address on the host example.com and &ldquo;.example.com&rdquo; matches any email address in the domain example.com, but does not match email addresses at the host &ldquo;example.com&rdquo;). Such matching is prohibited for internationalized <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5322 names.
+                                        <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5322 names: <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280, <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8398, and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8399 do not support special indicators representing more than a single mailbox as a presented name, but indicate that presented names may be compared to a single mailbox, &lsquo;any&rsquo; email address at a host, or &lsquo;any&rsquo; email address on a domain (e.g., &ldquo;example.com&rdquo; matches any email address on the host example.com and &ldquo;.example.com&rdquo; matches any email address in the domain example.com, but does not match email addresses at the host &ldquo;example.com&rdquo;). Such matching is prohibited for internationalized <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5322 names. 
                                     </li>
                                     <li>
-                                        Embedded <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> name types: The <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> relative distinguished name of a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name type included in the subject field is not strongly typed. Attempts to match both the name type and wildcard specifications can result in matches not intended, and therefore, not authoritatively asserted by a certification authority. It is preferred that no matching of <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> embedded names be supported, but if necessary for backward compatibility, the description should clearly indicate how different name types are interpreted in the matching algorithm. If an embedded <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> is present, the <abbr class="dyn-abbr"><a href="#abbr_DN">DN</a></abbr> structure containing the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> as an RDN is matched, and the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> component is further matched according to the specific rules for the implied name type. In particular, the &lsquo;*&rsquo; character in a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> is not to be interpreted as representing more than a single entity unless the entirety of the RDN is properly formatted as a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr>, or SVR name, and represents a wildcard meeting best practices as described above.
+                                        Embedded <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> name types: The <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> relative distinguished name of a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr> name type included in the subject field is not strongly typed. Attempts to match both the name type and wildcard specifications can result in matches not intended, and therefore, not authoritatively asserted by a certification authority. It is preferred that no matching of <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> embedded names be supported, but if necessary for backward compatibility, the description should clearly indicate how different name types are interpreted in the matching algorithm. If an embedded <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> is present, the <abbr class="dyn-abbr"><a href="#abbr_DN">DN</a></abbr> structure containing the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> as an RDN is matched, and the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> component is further matched according to the specific rules for the implied name type. In particular, the &lsquo;*&rsquo; character in a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> is not to be interpreted as representing more than a single entity unless the entirety of the RDN is properly formatted as a <abbr class="dyn-abbr"><a href="#abbr_DNS">DNS</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr>, or SVR name, and represents a wildcard meeting best practices as described above. 
                                     </li>
                                 </ul>
                             </p>
@@ -4730,92 +4736,94 @@
                     <a href="#FCS_TLSS_EXT.1.4" class="abbr">FCS_TLSS_EXT.1.4</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to process the following <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ClientHello message extensions: signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to process the following <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ClientHello message extensions: 
                     <ul>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_1">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                        <li>
+                            signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            <ul>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_308">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_309">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                            </ul>
+                            ] , and [<b>selection</b>: 
+                            <ul>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_310">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_311">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) </span>
+                                </li>
+                                <li style="">
+                                    <span class="selectable-content" id="_s_312">no other signature algorithms </span>
+                                </li>
+                            </ul>
+                            ] and 
                         </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_2">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                    </ul>
-                    ] , and [<b>selection</b>: 
-                    <ul>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_3">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_4">rsa_pss_rsae_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
-                        </li>
-                        <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_5">no other signature algorithms</span>
-                        </li>
-                    </ul>
-                    ] 
-                    <ul>
-                        <li>and</li>
                     </ul>
                      [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_6">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
+                            <span class="selectable-content" id="fcs_tlss_ext.1.4_1">signature_algorithms_cert extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_7">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_2">ecdsa_secp384r1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_8">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_3">rsa_pkcs1_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                 </ul>
                                 ] , and [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_9">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_4">rsa_pss_pss_sha384 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_10">no other signature algorithms</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_5">no other signature algorithms</span>
                                     </li>
                                 </ul>
                                 ] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_11">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="fcs_tlss_ext.1.4_12"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2</span>, <span class="selectable-content" id="fcs_tlss_ext.1.4_13">no other versions</span>] </span>
+                            <span class="selectable-content" id="fcs_tlss_ext.1.4_6">supported_versions extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and [<b>selection</b>: <span class="selectable-content" id="fcs_tlss_ext.1.4_7"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2</span>, <span class="selectable-content" id="fcs_tlss_ext.1.4_8">no other versions</span>] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_14">supported_groups extension indicating support for [<b>selection</b>: 
+                            <span class="selectable-content" id="fcs_tlss_ext.1.4_9">supported_groups extension indicating support for [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_15">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_10">secp384r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_16">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_11">ffdhe3072 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_17">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_12">ffdhe4096 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                 </ul>
                                 ] and [<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_18">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_13">secp521r1 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_19">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_14">ffdhe6144 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_20">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
+                                        <span class="selectable-content" id="fcs_tlss_ext.1.4_15">ffdhe8192 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7919)</span>
                                     </li>
                                 </ul>
                                 ] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_21">key_share extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
+                            <span class="selectable-content" id="fcs_tlss_ext.1.4_16">key_share extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_22">extended_master_secret extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7627) enforcing client support and [<b>selection</b>: <span class="selectable-content" id="fcs_tlss_ext.1.4_23">allowing legacy clients</span>, <span class="selectable-content" id="fcs_tlss_ext.1.4_24">no other enforcement mode</span>] </span>
+                            <span class="selectable-content" id="fcs_tlss_ext.1.4_17">extended_master_secret extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 7627) enforcing client support and [<b>selection</b>: <span class="selectable-content" id="fcs_tlss_ext.1.4_18">allowing legacy clients</span>, <span class="selectable-content" id="fcs_tlss_ext.1.4_19">no other enforcement mode</span>] </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="fcs_tlss_ext.1.4_25">no other extensions</span>
+                            <span class="selectable-content" id="fcs_tlss_ext.1.4_20">no other extensions</span>
                         </li>
                     </ul>
                     ].
@@ -5404,43 +5412,43 @@
                                         <a id="_t_250" class="defined" href="#_t_250">Test FCS_TLSS_EXT.2:3</a>: For each version of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to negotiate the version and require client authentication and perform the following steps:
                                         <ul>
                                             <li>
-                                                For each supported name matching method indicated in <a href="#FCS_TLSS_EXT.2.4">FCS_TLSS_EXT.2.4</a>, and for each name type supported by the matching method, the evaluator shall establish a valid primary certificate chain with a leaf certificate containing a single name of the supported type matching a reference ID and a valid alternate certificate chain with a leaf certificate containing a single name indicating a different name of the same type not matching a reference ID.
+                                                For each supported name matching method indicated in <a href="#FCS_TLSS_EXT.2.4">FCS_TLSS_EXT.2.4</a>, and for each name type supported by the matching method, the evaluator shall establish a valid primary certificate chain with a leaf certificate containing a single name of the supported type matching a reference ID and a valid alternate certificate chain with a leaf certificate containing a single name indicating a different name of the same type not matching a reference ID. 
                                             </li>
                                             <li>
-                                                [conditional] If any of the supported name types include <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of a name type also supported as a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry, the evaluator shall establish additional certificate chains:
+                                                [conditional] If any of the supported name types include <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of a name type also supported as a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry, the evaluator shall establish additional certificate chains: 
                                                 <ul>
                                                     <li>
-                                                        The evaluator shall establish a primary certificate chain with multiple names, to include a leaf certificate with:
+                                                        The evaluator shall establish a primary certificate chain with multiple names, to include a leaf certificate with: 
                                                         <ul>
                                                             <li>
-                                                                a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry that matches the name in the primary certificate chain with single names, of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type; and
+                                                                a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry that matches the name in the primary certificate chain with single names, of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type; and 
                                                             </li>
                                                             <li>
-                                                                a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> entry encoding the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> type which matches the name in the alternate certificate chain with single names of the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type;
+                                                                a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> entry encoding the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> type which matches the name in the alternate certificate chain with single names of the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type; 
                                                             </li>
                                                         </ul>
                                                     </li>
                                                     <li>
-                                                        The evaluator shall establish an alternate certificate chain with multiple names, to include a leaf certificate with:
+                                                        The evaluator shall establish an alternate certificate chain with multiple names, to include a leaf certificate with: 
                                                         <ul>
                                                             <li>
-                                                                a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry that matches the name in the alternate certificate chain with single names, of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type; and
+                                                                a <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry that matches the name in the alternate certificate chain with single names, of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type; and 
                                                             </li>
                                                             <li>
-                                                                a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> entry encoding the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> type which matches the name in the primary certificate chain with single names, of the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type.
+                                                                a <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> entry encoding the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> type which matches the name in the primary certificate chain with single names, of the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding of the same <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> name type. 
                                                             </li>
                                                         </ul>
                                                     </li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                [conditional] If any of the supported name types include <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding, the evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>, establishing trust in the root <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr> for all primary and alternate certificate chains. The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and any relevant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> applications that use <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> for client authentication as necessary to establish reference identifiers that match the names in the client&rsquo;s primary certificate chains with single names, but not matching any of the names in the alternate certificate chains with single names.
+                                                [conditional] If any of the supported name types include <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> encoding, the evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>, establishing trust in the root <abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr> for all primary and alternate certificate chains. The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and any relevant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> applications that use <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> for client authentication as necessary to establish reference identifiers that match the names in the client&rsquo;s primary certificate chains with single names, but not matching any of the names in the alternate certificate chains with single names. 
                                             </li>
                                             <li>
-                                                For each primary certificate chain (with single or multiple names), the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session from the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client that is configured to present the primary certificate chain in a Certificate message and a valid and CertificateVerify message in response to the server&rsquo;s CertificateRequest message. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> accepts the certificate and completes the authenticated <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session successfully.
+                                                For each primary certificate chain (with single or multiple names), the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session from the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client that is configured to present the primary certificate chain in a Certificate message and a valid and CertificateVerify message in response to the server&rsquo;s CertificateRequest message. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> accepts the certificate and completes the authenticated <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session successfully. 
                                             </li>
                                             <li>
-                                                For each alternate certificate chain (with single or multiple names), the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session from the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client that is configured to present the alternate certificate chain in a Certificate message and a valid and CertificateVerify message in response to the server&rsquo;s CertificateRequest message. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
+                                                For each alternate certificate chain (with single or multiple names), the evaluator shall initiate a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session from the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client that is configured to present the alternate certificate chain in a Certificate message and a valid and CertificateVerify message in response to the server&rsquo;s CertificateRequest message. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session. 
                                             </li>
                                         </ul>
                                         <p>
@@ -5935,12 +5943,12 @@
                         The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, Functional Package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
                         <ul>
                             <li>
-                                Establishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session
+                                Establishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session 
                             </li>
                             <li>
-                                Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session
+                                Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session 
                             </li>
-                            <li>Failure to verify presented identifier</li>
+                            <li>Failure to verify presented identifier </li>
                         </ul>
                     </p>
                     <h4>FCS_DTLSC_EXT.1 DTLS Client Protocol</h4>
@@ -5985,11 +5993,11 @@
                         <h4 id="ext-comp-FCS_DTLSC_EXT.1.3">FCS_DTLSC_EXT.1.3</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not offer ClientHello messages indicating the following: 
                         <ul>
-                            <li>null encryption</li>
-                            <li>support for anonymous servers</li>
-                            <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</li>
+                            <li>null encryption </li>
+                            <li>support for anonymous servers </li>
+                            <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA </li>
                             <li>
-                                use of MD5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation
+                                use of MD5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation 
                             </li>
                         </ul>
                          and shall abort sessions where a server attempts to negotiate cryptographic options not enumerated in the ClientHello message.
@@ -6191,7 +6199,7 @@
                         The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, Functional Package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
                         <ul>
                             <li>
-                                Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session
+                                Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session 
                             </li>
                         </ul>
                     </p>
@@ -6490,12 +6498,12 @@
                         The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, Functional Package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
                         <ul>
                             <li>
-                                Establishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session
+                                Establishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session 
                             </li>
                             <li>
-                                Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session
+                                Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session 
                             </li>
-                            <li>Failure to verify presented identifier</li>
+                            <li>Failure to verify presented identifier </li>
                         </ul>
                     </p>
                     <h4>FCS_TLSC_EXT.1 TLS Client Protocol</h4>
@@ -6540,11 +6548,11 @@
                         <h4 id="ext-comp-FCS_TLSC_EXT.1.3">FCS_TLSC_EXT.1.3</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not offer ClientHello messages indicating the following: 
                         <ul>
-                            <li>null encryption</li>
-                            <li>support for anonymous servers</li>
-                            <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA</li>
+                            <li>null encryption </li>
+                            <li>support for anonymous servers </li>
+                            <li>use of cryptography that is deprecated, export-grade, or otherwise disallowed for encryption, including DES, 3DES, RC2, RC4, or IDEA </li>
                             <li>
-                                use of MD5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation
+                                use of MD5 or <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr>-1 for key derivation 
                             </li>
                         </ul>
                          and shall abort sessions where a server attempts to negotiate ciphersuites not enumerated in the ClientHello message.
@@ -6768,7 +6776,7 @@
                         The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, Functional Package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
                         <ul>
                             <li>
-                                Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session
+                                Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session 
                             </li>
                         </ul>
                     </p>
