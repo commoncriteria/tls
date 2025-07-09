@@ -99,6 +99,7 @@ output/tls-release.html: ke
 output/tls-release.html: key’
 output/tls-release.html: methods’
 output/tls-release.html: ordering’
+output/tls-release.html: orted
 output/tls-release.html: psk
 output/tls-release.html: pss
 output/tls-release.html: received’
@@ -109,10 +110,10 @@ output/tls-release.html: rfc822
 output/tls-release.html: rfc822Name
 output/tls-release.html: rsae
 output/tls-release.html: secp
-output/tls-release.html: suppor
 output/tls-release.html: time’
 output/tls-release.html: tls
 output/tls-release.html: uniformResourceIdentifier
+output/tls-release.html: valida
 output/tls-release.html: ’
 output/tls.html: 00’
 output/tls.html: 01’
@@ -163,6 +164,7 @@ output/tls.html: ke
 output/tls.html: key’
 output/tls.html: methods’
 output/tls.html: ordering’
+output/tls.html: orted
 output/tls.html: psk
 output/tls.html: pss
 output/tls.html: received’
@@ -173,8 +175,8 @@ output/tls.html: rfc822
 output/tls.html: rfc822Name
 output/tls.html: rsae
 output/tls.html: secp
-output/tls.html: suppor
 output/tls.html: time’
 output/tls.html: tls
 output/tls.html: uniformResourceIdentifier
+output/tls.html: valida
 output/tls.html: ’
