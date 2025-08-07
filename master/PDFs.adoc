@@ -1,3 +1,0 @@
-* https://commoncriteria.github.io/tls/master/tls-release.html.pdf[tls-release.html.pdf]
-* https://commoncriteria.github.io/tls/master/tls-release-linkable.html.pdf[tls-release-linkable.html.pdf]
-* https://commoncriteria.github.io/tls/master/tls.html.pdf[tls.html.pdf]
