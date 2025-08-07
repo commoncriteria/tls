@@ -759,7 +759,7 @@
           </h:p>
           <h:p>
             The evaluator shall verify that ciphersuites indicated in FCS_DTLSC_EXT.1.2 are included in the description, and that none of the
-            following ciphersuites are supported: ciphersuites indicating NULL, RC2, RC4, DES, IDEA, TDES, or AES-128 in the encryption
+            following ciphersuites are supported: ciphersuites indicating NULL, RC2, RC4, DES, IDEA, or TDES in the encryption
             algorithm component, indicating 'anon,' or indicating MD5 or SHA in the message digest algorithm component.
           </h:p>
           <h:p>
@@ -1020,16 +1020,15 @@
                       </h:p>
                       <h:p>
                         [conditional] (disallowed encryption algorithm) If the TSF supports DTLS 1.2, for each
-                        disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and AES-128), 
+                        disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, and TDES), 
                         the evaluator shall attempt to establish a DTLS 1.2 connection with a test DTLS server 
                         configured to negotiate a ciphersuite using the disallowed encryption algorithm 
                         and observe that the TOE silently drops the message or rejects the connection.
                       </h:p>
                       <h:p>
-                        [conditional] (disallowed encryption algorithm) If the TSF supports DTLS 1.3, for each DTLS 1.3 ciphersuite
-                        registered in IANA TLS parameters using AES-128 as the encryption algorithm, the evaluator shall attempt to
+                        [conditional] (disallowed encryption algorithm) If the TSF supports DTLS 1.3, the evaluator shall ensure that any DTLS 1.3 ciphersuite registered in IANA TLS parameters that the TSF does not claim support for cannot be used to establish a DTLS 1.3 connection. For any such ciphersuites, the evaluator shall attempt to
                         establish a DTLS 1.3 connection with a test DTLS server configured to negotiate a ciphersuite using the
-                        disallowed encryption algorithm and observe that the TOE silently drops the message or rejects the connection.   
+                        disallowed ciphersuite and observe that the TOE silently drops the message or rejects the connection.   
                       </h:p>
                       <h:p>
                         <h:b>Note:</h:b> If the TSF rejects the connection, the test is successful. If the TSF silently drops the message,
@@ -2129,7 +2128,7 @@
             requirement, then the appropriate instructions need to be contained in the guidance.
           </h:P>
           <h:p>
-            While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is disallowed by this SFR.
+            While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is selectable by this SFR because it is expressly disallowed if the TSF intends to conform to CNSA restrictions on the supported algorithms.
           </h:p>
           <h:p>
             The final selection indicates the TOE’s preference for negotiating a ciphersuite. RFC 9151 indicates the required ciphersuites for
@@ -2337,7 +2336,7 @@
             The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported TLS versions, features, ciphersuites, and extensions, are specified in accordance with RFC 6347 (DTLS 1.2) and RFC 9147 (DTLS 1.3 and updates to DTLS 1.2) as appropriate. The evaluator shall check the description to see if beta DTLS 1.3 versions are supported.
           </h:p>       
           <h:p>
-            The evaluator shall verify that ciphersuites indicated in FCS_DTLSS_EXT.1.2 are included in the description, and that none of the following ciphersuites are supported: ciphersuites indicating NULL, RC2, RC4, DES, IDEA, TDES, or AES-128 in the encryption algorithm component, indicating 'anon,' or indicating MD5 or SHA in the message digest algorithm component.
+            The evaluator shall verify that ciphersuites indicated in FCS_DTLSS_EXT.1.2 are included in the description, and that none of the following ciphersuites are supported: ciphersuites indicating NULL, RC2, RC4, DES, IDEA, or TDES in the encryption algorithm component, indicating 'anon,' or indicating MD5 or SHA in the message digest algorithm component.
           </h:p>        
           <h:p>
             The evaluator shall verify that the TLS implementation description includes the extensions as required in FCS_DTLSS_EXT.1.4.
@@ -2451,7 +2450,7 @@
                     (disallowed encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions:
                   </h:p>
                     <h:p>
-                    [conditional] If DTLS 1.2 is supported, the evaluator shall send the TSF a DTLS 1.2 ClientHello that is compliant with RFC 9151, except that the ciphersuites field is a list consisting only of ciphersuites indicating a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and AES-128. The evaluator shall observe that the TOE silently drops the message or rejects the connection.
+                    [conditional] If DTLS 1.2 is supported, the evaluator shall send the TSF a DTLS 1.2 ClientHello that is compliant with RFC 9151, except that the ciphersuites field is a list consisting only of ciphersuites indicating a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, and TDES. The evaluator shall observe that the TOE silently drops the message or rejects the connection.
                   </h:p>
                   <h:p>
                     <h:b>Note:</h:b> See IANA TLS parameters for available TLS 1.2 ciphersuites to be included. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the TSF supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test could include TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.
@@ -2460,7 +2459,7 @@
                       If the TSF rejects the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
                     </h:p>        
                   <h:p>
-                    [conditional] If DTLS 1.3 is supported, the evaluator shall send the TSF a DTLS 1.3 ClientHello that is compliant with RFC 9151, except that the ciphersuites field contains the single ciphersuite TLS_AES_128_GCM_SHA256. The evaluator shall observe that the TOE silently drops the message or rejects the connection. 
+                    [conditional] If DTLS 1.3 is supported and the TSF only supports a subset of the DTLS 1.3 ciphersuites registered in the IANA TLS parameters, the evaluator shall send the TSF a DTLS 1.3 ClientHello that is compliant with RFC 9151, except that the ciphersuites field contains exclusively the full subset of ciphersuites for which the TSF does not claim to support. The evaluator shall observe that the TOE silently drops the message or rejects the connection. 
                   </h:p>
               <h:p>
                 <h:b>Note:</h:b> If the TSF rejects the connection, the test is successful. If the TSF silently drops the message, the evaluator shall continue sending the ClientHello message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).
@@ -3409,7 +3408,7 @@
               listed first. 
               </h:p>
               <h:p>
-              While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is disallowed by this SFR.
+                While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is selectable by this SFR because it is expressly disallowed if the TSF intends to conform to CNSA restrictions on the supported algorithms.
               </h:p>
               <h:p>
               In addition to the supported ciphersuites, the ST author indicates the order of ciphersuites included in the ClientHello,
@@ -3670,7 +3669,7 @@
                 </h:p>
                 <h:p>
                 The evaluator shall verify that ciphersuites indicated in FCS_TLSC_EXT.1.2 are included in the description, and that none of the following ciphersuites are supported: ciphersuites indicating 
-                NULL, RC2, RC4, DES, IDEA, TDES, or AES-128 in the encryption algorithm component, indicating 'anon,' or indicating MD5 or SHA in the message digest algorithm component.
+                NULL, RC2, RC4, DES, IDEA, or TDES in the encryption algorithm component, indicating 'anon,' or indicating MD5 or SHA in the message digest algorithm component.
                 </h:p>
                 <h:p>
                 The evaluator shall verify that the TLS implementation description includes the extensions as required in FCS_TLSC_EXT.1.4.
@@ -3856,10 +3855,11 @@
                       </h:p>
                       <h:p>
                         [conditional] (disallowed encryption algorithm) If the TSF supports TLS 1.2, send the TSF a TLS 1.2 ClientHello that is compliant with RFC 9151, except that for each 
-                        disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, TDES, and AES-128), the evaluator shall attempt to establish a TLS 1.2 connection with a test TLS
+                        disallowed encryption algorithm (NULL, RC2, RC4, DES, IDEA, and TDES), the evaluator shall attempt to establish a TLS 1.2 connection with a test TLS
                         server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the TOE rejects the connection.
                       </h:p><h:p>
-                        [conditional] (disallowed encryption algorithm) If the TSF supports TLS 1.3, for each TLS 1.3 ciphersuite registered in IANA TLS parameters using AES-128 as the encryption algorithm, the evaluator shall attempt to establish a TLS 1.3 connection with a test TLS server configured to negotiate a ciphersuite using the disallowed encryption algorithm and observe that the TOE rejects the connection.   
+                        [conditional] (disallowed encryption algorithm) If the TSF supports DTLS 1.3, the evaluator shall ensure that any DTLS 1.3 ciphersuite registered in IANA TLS parameters that the TSF does not claim support for cannot be used to establish a DTLS 1.3 connection. For any such ciphersuites, the evaluator shall attempt to establish a TLS 1.3 connection with a test TLS server configured to negotiate a ciphersuite using the
+                        disallowed ciphersuite and observe that the TOE silently drops the message or rejects the connection.   
                       </h:p><h:p>
                       <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, 
                       but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
@@ -3868,10 +3868,7 @@
                       For example, if the TSF only supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test server could select
                       TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.  
                       </h:p>
-                   
-                      <h:p>
-                        [conditional] If TLS 1.3 is supported, the evaluator shall send the TSF a TLS 1.3 ClientHello that is compliant with RFC 9151, except that the ciphersuites field contains the single ciphersuite TLS_AES_128_GCM_SHA256. The evaluator shall observe that the TOE rejects the connection.
-                      </h:p>
+
                     </test>
                   </testlist>
                 </test>
@@ -4813,7 +4810,7 @@
               with either of the other options.               
               </h:p>
               <h:p>
-              While indicated as mandatory in RFC 8446, the ciphersuite TLS_AES_128_GCM_SHA256 is disallowed by this SFR.
+                While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is selectable by this SFR because it is expressly disallowed if the TSF intends to conform to CNSA restrictions on the supported algorithms.
               </h:p>
               <h:p>
               The ‘ClientHello ordering’ option is claimed if client priority is considered; 
@@ -5007,7 +5004,7 @@
                 The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported TLS versions, features, ciphersuites, and extensions, 
                 are specified in accordance with RFC 5246 (TLS 1.2) and RFC 8446 (TLS 1.3 and updates to TLS 1.2) as appropriate. The evaluator shall check the description to see if beta TLS 1.3 versions are supported.
                 </h:p><h:p>
-                  The evaluator shall verify that ciphersuites indicated in FCS_TLSS_EXT.1.2 are included in the description, and that none of the following ciphersuites are supported: ciphersuites indicating NULL, RC2, RC4, DES, IDEA, TDES, or AES-128 in the encryption algorithm component, indicating 'anon,' or indicating MD5 or SHA in the message digest algorithm component.
+                  The evaluator shall verify that ciphersuites indicated in FCS_TLSS_EXT.1.2 are included in the description, and that none of the following ciphersuites are supported: ciphersuites indicating NULL, RC2, RC4, DES, IDEA, or TDES in the encryption algorithm component, indicating 'anon,' or indicating MD5 or SHA in the message digest algorithm component.
                 </h:p><h:p>
                 The evaluator shall verify that the TLS implementation description includes the extensions as required in FCS_TLSS_EXT.1.4.
                 </h:p><h:p>
@@ -5156,11 +5153,11 @@
                         <h:p>
                         (disallowed encryption algorithm) The evaluator shall perform one or more of the following, depending on the supported versions: 
                         </h:p><h:p>
-                          [conditional] If TLS 1.2 is supported, the evaluator shall send the TSF a TLS 1.2 ClientHello that is compliant with RFC 9591, except that the ciphersuites field is a list consisting only of ciphersuites indicating a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, TDES, and AES-128. The evaluator shall observe that the TOE rejects the connection.
+                          [conditional] If TLS 1.2 is supported, the evaluator shall send the TSF a TLS 1.2 ClientHello that is compliant with RFC 9591, except that the ciphersuites field is a list consisting only of ciphersuites indicating a disallowed encryption algorithm, including at least one each of NULL, RC2, RC4, DES, IDEA, and TDES. The evaluator shall observe that the TOE rejects the connection.
                         </h:p><h:p>
                           <h:b>Note:</h:b> See IANA TLS parameters for available TLS 1.2 ciphersuites to be included. The test ciphersuite should use supported cryptographic algorithms for as many of the other components as possible. For example, if the TSF supports TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, the test could include TLS_ECDHE_PSK_WITH_NULL_SHA_384, TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_DHE_DSS_WITH_DES_CBC_SHA, TLS_RSA_WITH_IDEA_CBC_SHA, and TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA.
                         </h:p><h:p>
-                          [conditional] If TLS 1.3 is supported, the evaluator shall send the TSF a TLS 1.3 ClientHello that is compliant with RFC 9591, except that the ciphersuites field contains the single ciphersuite TLS_AES_128_GCM_SHA256. The evaluator shall observe that the TOE rejects the connection.
+                          [conditional] If TLS 1.3 is supported and the TSF only supports a subset of the TLS 1.3 ciphersuites registered in the IANA TLS parameters, the evaluator shall send the TSF a TLS 1.3 ClientHello that is compliant with RFC 9151, except that the ciphersuites field contains exclusively the full subset of ciphersuites for which the TSF does not claim to support. The evaluator shall observe that the TOE silently drops the message or rejects the connection. 
                         </h:p><h:p>
                           <h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., handshake failure, insufficient security) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).
                         </h:p>
