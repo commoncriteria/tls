@@ -470,7 +470,7 @@
                     <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487]</selectable>
                   </selectables></selectable>
               </selectables></selectable></selectables> 
-              and shall not offer other TLS 1.2 ciphersuites,</selectable>
+              and no other TLS 1.2 ciphersuites,</selectable>
             <selectable>TLS 1.3 ciphersuites <selectables linebreak="yes">
               <selectable>CNSA 2.0 compliant TLS_AES_256_GCM_SHA384 as defined in RFC 8446 and no other TLS 1.3 ciphersuites</selectable>
               <selectable>non-CNSA compliant <selectables linebreak="yes">
@@ -2093,7 +2093,7 @@
                   <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487]</selectable>
                 </selectables></selectable>
             </selectables></selectable></selectables> 
-            and shall not offer other TLS 1.2 ciphersuites,</selectable>
+            and no other TLS 1.2 ciphersuites,</selectable>
           <selectable>TLS 1.3 ciphersuites <selectables linebreak="yes">
             <selectable>CNSA 2.0 compliant TLS_AES_256_GCM_SHA384 as defined in RFC 8446 and no other TLS 1.3 ciphersuites</selectable>
             <selectable>non-CNSA compliant <selectables linebreak="yes">
@@ -3370,7 +3370,7 @@
                         <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487]</selectable>
                       </selectables></selectable>
                   </selectables></selectable></selectables> 
-                  and shall not offer other TLS 1.2 ciphersuites,</selectable>
+                  and no other TLS 1.2 ciphersuites,</selectable>
                 <selectable>TLS 1.3 ciphersuites <selectables linebreak="yes">
                   <selectable>CNSA 2.0 compliant TLS_AES_256_GCM_SHA384 as defined in RFC 8446 and no other TLS 1.3 ciphersuites</selectable>
                   <selectable>non-CNSA compliant <selectables linebreak="yes">
@@ -4771,7 +4771,7 @@
                         <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487]</selectable>
                       </selectables></selectable>
                   </selectables></selectable></selectables> 
-                  and shall not offer other TLS 1.2 ciphersuites,</selectable>
+                  and no other TLS 1.2 ciphersuites,</selectable>
                 <selectable>TLS 1.3 ciphersuites <selectables linebreak="yes">
                   <selectable>CNSA 2.0 compliant TLS_AES_256_GCM_SHA384 as defined in RFC 8446 and no other TLS 1.3 ciphersuites</selectable>
                   <selectable>non-CNSA compliant <selectables linebreak="yes">
