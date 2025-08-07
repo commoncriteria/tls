@@ -15,7 +15,7 @@
       <PPTitle>Functional Package for Transport Layer Security (TLS)</PPTitle>
       <PPVersion>2.1</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
-      <PPPubDate>2025-03-05</PPPubDate>
+      <PPPubDate>2025-08-05</PPPubDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -40,7 +40,7 @@
     </entry>
     <entry>
       <version>2.1</version>
-      <date>2025-03-05</date>
+      <date>2025-08-05</date>
       <subject>Updated for CC:2022 conformance, incorporated applicable errata.</subject>
     </entry>
 	  
@@ -438,23 +438,51 @@
         <title>
           The TSF shall be able to support the following <selectables linebreak="yes">
             <selectable>TLS 1.2 ciphersuites: <selectables linebreak="yes">
-              <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-              <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-              <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-              <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
-              <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-              <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
-    
-         <selectable>ciphersuites using pre-shared secrets:
-            <selectables linebreak="yes">
-              <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
-              <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-              <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
-            </selectables></selectable></selectables>
+              <selectable>CNSA 1.0 compliant <selectables>
+                <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+                <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+                <selectable>TLS_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+                <selectable>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5288</selectable>
+                <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+                <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 and RFC 8422</selectable>
+                <selectable>ciphersuites using pre-shared secrets:
+                  <selectables linebreak="yes">
+                    <selectable>TLS_ECDHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 8442</selectable>
+                    <selectable>TLS_DHE_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+                    <selectable>TLS_RSA_PSK_WITH_AES_256_GCM_SHA384 as defined in RFC 5487</selectable>
+                  </selectables></selectable>
+              </selectables>
+              </selectable>
+              <selectable>non-CNSA compliant <selectables>
+                <selectable>TLS_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+                <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 as defined in RFC 5246</selectable>
+                <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+                <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289</selectable>
+                <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+                <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289</selectable>
+                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+                <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246</selectable>
+                <selectable>TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 5246]</selectable>
+                <selectable>ciphersuites using pre-shared secrets:
+                  <selectables linebreak="yes">
+                    <selectable>TLS_ECDHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 8442</selectable>
+                    <selectable>TLS_DHE_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487</selectable>
+                    <selectable>TLS_RSA_PSK_WITH_AES_128_GCM_SHA256 as defined in RFC 5487]</selectable>
+                  </selectables></selectable>
+              </selectables></selectable></selectables> 
               and shall not offer other TLS 1.2 ciphersuites,</selectable>
-            <selectable>TLS 1.3 ciphersuite TLS_AES_256_GCM_SHA384 as defined in RFC 8446, and shall not offer other TLS 1.3 ciphersuites</selectable>
+            <selectable>TLS 1.3 ciphersuites <selectables linebreak="yes">
+              <selectable>CNSA 2.0 compliant TLS_AES_256_GCM_SHA384 as defined in RFC 8446 and no other TLS 1.3 ciphersuites</selectable>
+              <selectable>non-CNSA compliant <selectables linebreak="yes">
+                <selectable>TLS_AES_128_GCM_SHA256 as defined in RFC 8446</selectable>
+                <selectable><assignable>other TLS 1.3 ciphersuites</assignable></selectable>
+              </selectables>
+              </selectable>
+              
+            </selectables>
+            </selectable>
           </selectables>
-          offering the supported ciphersuites in a ClientHello message in preference order:
+             offering the supported ciphersuites in a ClientHello message in preference order:
           <assignable>list of supported ciphersuites</assignable>.
         </title>
       <ext-comp-def-title>
@@ -472,7 +500,7 @@
         DTLS 1.2 are only claimed as required by a specific PP.
         </h:p>
         <h:p>
-          While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is disallowed by this SFR.
+          While mandatory for RFC 8446, TLS_AES_128_GCM_SHA256 is selectable by this SFR because it is expressly disallowed if the TSF intends to conform to CNSA restrictions on the supported algorithms.
         </h:p>
         <h:p>
           In addition to the supported ciphersuites, the ST author indicates the order of ciphersuites included in the ClientHello, 
@@ -515,41 +543,53 @@
     <title>
       The TSF shall be able to support the following DTLS ClientHello message extensions: 
       <h:ul>
-        <h:li>signature_algorithms extension (RFC 8446) indicating support for 
+        <h:li>signature_algorithms extension (RFC 8446) indicating support for CNSA 1.0 compliant
           <selectables linebreak="yes">
             <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
             <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
           </selectables>, and <selectables linebreak="yes">
+            <selectable> CNSA 1.0 compliant <selectables linebreak="yes">
               <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
               <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
-
-              <selectable>no other signature algorithms</selectable>
-          </selectables> and
+            </selectables></selectable>
+<selectable><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable>
+            </selectables> and no other signature algorithms, and
         </h:li>
       </h:ul>
           <selectables linebreak="yes">
-            <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for <selectables linebreak="yes">
+            <selectable>signature_algorithms_cert extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes">
               <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
               <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable>
             </selectables>, and <selectables linebreak="yes">
+              <selectable>CNSA 1.0-compliant <selectables linebreak="yes">
                 <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                 <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
-            
-                <selectable>no other signature algorithms</selectable>
-              </selectables></selectable>
+              </selectables>
+              </selectable>
+              <selectable>non-CNSA compliant <selectables linebreak="yes">
+                <selectable>rsa_pkcs1_sha256 (RFC 8446)</selectable>
+                <selectable>rsa_pss_rsae_sha256 (RFC 8446)</selectable>
+              </selectables>
+              </selectable>
+              <selectable><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable>
+            </selectables> and no other signature algorithms </selectable> 
             <selectable>supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables>
                 <selectable>DTLS 1.2</selectable>
                 <selectable>no other versions</selectable>
               </selectables></selectable>
             <selectable>supported_groups extension indicating support for <selectables linebreak="yes">
+              <selectable>CNSA 1.0 compliant <selectables linebreak="yes">
               <selectable>secp384r1 (RFC 8446)</selectable>
               <selectable>ffdhe3072 (RFC 7919)</selectable>
-              <selectable>ffdhe4096 (RFC 7919)</selectable>
-            </selectables> and <selectables linebreak="yes">
+                <selectable>ffdhe4096 (RFC 7919)</selectable></selectables></selectable>
+              <selectable>non-CNSA compliant <selectables linebreak="yes">
+                <selectable>secp256r1 (RFC 8446)</selectable>
+                <selectable>ffdhe2048 (RFC7919)</selectable>
+            </selectables></selectable><selectable> and <selectables linebreak="yes">
               <selectable>secp521r1 (RFC 8446)</selectable>
               <selectable>ffdhe6144(RFC 7919)</selectable>
               <selectable>ffdhe8192 (RFC 7919)</selectable>
-              <selectable>no other supported groups</selectable></selectables></selectable>
+              <selectable>no other supported groups</selectable></selectables></selectable></selectables></selectable>
             <selectable>key_share extension (RFC 8446)</selectable>
             <selectable>post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), 
               and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable>
@@ -2107,7 +2147,7 @@
         <h:ul>
           <h:li>signature_algorithms extension (RFC 8446) indicating support for 
             <selectables linebreak="yes">
-              <selectable>_secp384r1_sha384 (RFC 8446)</selectable>
+              <selectable>ecdsa_secp384r1_sha384 (RFC 8446)</selectable>
               <selectable>rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes">
                 <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                 <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
@@ -2194,21 +2234,28 @@
     <f-element>
       <title>
         The TSF shall perform key establishment for DTLS using <selectables linebreak="yes">
-          <selectable>RSA with size <selectables>
+          <selectable>RSA with <selectables><selectable>CNSA 1.0 compliant size <selectables>
             <selectable>3072</selectable>
-            <selectable>4096</selectable></selectables> bits and no other sizes</selectable>
-          <selectable>Diffie-Hellman groups <selectables>
+            <selectable>4096</selectable></selectables></selectable>
+            <selectable>non-CNSA compliant size 2048</selectable></selectables> bits and no other sizes</selectable>
+          <selectable><selectables><selectable>CNSA 1.0 compliant Diffie-Hellman groups <selectables>
             <selectable>ffdhe3072</selectable>
             <selectable>ffdhe4096</selectable>
             <selectable>ffdhe6144</selectable>
-            <selectable>ffdhe8192</selectable></selectables> and no other groups,
+            <selectable>ffdhe8192</selectable></selectables></selectable>
+            <selectable>non-CNSA compliant Diffie-Hellman group ffdhe2048</selectable></selectables>
+            and no other groups,
             consistent with the client's supported_groups extension and <selectables>
               <selectable>key_share extension</selectable>
               <selectable>no other</selectable></selectables> extension
           </selectable>
-          <selectable>ECDHE parameters using elliptic curves <selectables>
+          <selectable>ECDHE parameters using <selectables>
+            <selectable>CNSA 1.0 compliant elliptic curves
+            <selectables>
             <selectable>secp384r1</selectable>
-            <selectable>secp521r1</selectable></selectables> and no other curves,  
+            <selectable>secp521r1</selectable></selectables></selectable>
+            <selectable>non-CNSA compliant elliptic curve secp256r1</selectable>          
+          </selectables> and no other curves,  
             consistent with the client's supported_groups extension and <selectables>
               <selectable>key_share extension</selectable>
               <selectable>no other</selectable></selectables> extension and using non-compressed formatting for points
