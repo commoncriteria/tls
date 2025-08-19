@@ -1551,7 +1551,7 @@
       </audit-event-descr>
       <audit-event-info>
         <selectables>
-          <selectable>Non-TOE endpoint of connection></selectable>
+          <selectable>Non-TOE endpoint of connection</selectable>
           <selectable>None</selectable>
         </selectables>
       </audit-event-info>
@@ -4320,7 +4320,7 @@
             </audit-event-descr>
             <audit-event-info>
               <selectables>
-                <selectable>Non-TOE endpoint of connection></selectable>
+                <selectable>Non-TOE endpoint of connection</selectable>
                 <selectable>None</selectable>
               </selectables>
             </audit-event-info>
