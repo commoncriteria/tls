@@ -638,7 +638,9 @@ function showTarget(id){
     </span></a><a href="#objective-reqs" style="text-indent:10px">A.2<span>Objective  Requirements
     </span></a><a href="#feat-based-reqs" style="text-indent:10px">A.3<span>Implementation-dependent  Requirements
     </span></a><a href="#sel-based-reqs" style="text-indent:0px">Appendix B - <span>Selection-based  Requirements
-    </span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCS" style="text-indent:20px">C.2.1<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_TLS_EXT" style="text-indent:30px">C.2.1.1<span>FCS_TLS_EXT TLS Protocol</span></a><a href="#ext-comp-FCS_DTLSC_EXT" style="text-indent:30px">C.2.1.2<span>FCS_DTLSC_EXT DTLS Client Protocol</span></a><a href="#ext-comp-FCS_DTLSS_EXT" style="text-indent:30px">C.2.1.3<span>FCS_DTLSS_EXT DTLS Server Protocol</span></a><a href="#ext-comp-FCS_TLSC_EXT" style="text-indent:30px">C.2.1.4<span>FCS_TLSC_EXT TLS Client Protocol</span></a><a href="#ext-comp-FCS_TLSS_EXT" style="text-indent:30px">C.2.1.5<span>FCS_TLSS_EXT TLS Server Protocol</span></a><a href="#acronyms" style="text-indent:0px">Appendix D - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix E - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
+    </span></a><a href="#sel-based-reqs-audit" style="text-indent:10px">B.1<span>
+              Auditable Events for Selection-based  Requirements
+           </span></a><a href="#fcs-sel-based" style="text-indent:10px">B.2<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCS" style="text-indent:20px">C.2.1<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_TLS_EXT" style="text-indent:30px">C.2.1.1<span>FCS_TLS_EXT TLS Protocol</span></a><a href="#ext-comp-FCS_DTLSC_EXT" style="text-indent:30px">C.2.1.2<span>FCS_DTLSC_EXT DTLS Client Protocol</span></a><a href="#ext-comp-FCS_DTLSS_EXT" style="text-indent:30px">C.2.1.3<span>FCS_DTLSS_EXT DTLS Server Protocol</span></a><a href="#ext-comp-FCS_TLSC_EXT" style="text-indent:30px">C.2.1.4<span>FCS_TLSC_EXT TLS Client Protocol</span></a><a href="#ext-comp-FCS_TLSS_EXT" style="text-indent:30px">C.2.1.5<span>FCS_TLSS_EXT TLS Server Protocol</span></a><a href="#acronyms" style="text-indent:0px">Appendix D - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix E - <span>Bibliography</span></a></div><h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
     <h2 class="indexable" data-level="2" id="Overview">1.1 Overview</h2><p>      
 	  Transport Layer Security (<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>) and the closely-related Datagram <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> (<abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>) are
     cryptographic protocols designed to provide communications security over <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> networks.
@@ -711,7 +713,23 @@ The following sections list Common Criteria and technology terms used in this do
       </td></tr>
 </table></div>
     <h2 class="indexable" data-level="2" id="Compliant_Targets_of_Evaluation">1.3 Compliant Targets of Evaluation</h2>
-      <table><tr class="header"><th>Component</th><th>Explanation</th></tr></table>
+      
+      The Target of Evaluation
+      (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>) in this Package is a product that acts as a (D)<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client, a (D)<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server, or both.
+      This Package describes the security functionality of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> in terms of   <a href="#bibCC">[CC]</a>. 
+      <br/><br/>
+      The contents of this Package must be appropriately
+      combined with a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.
+      When this Package is instantiated by a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, the Package must
+      include selection-based requirements in accordance with the
+      selections or assignments indicated in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.  These may be expanded by the
+      <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author.
+      <br/><br/>The <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> which instantiates this Package must typically include the following components in order to satisfy dependencies of this Package. It is the responsibility of the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> author who instantiates this Package to ensure that dependence on these components is satisfied:<br/><br/>
+      <table><tr class="header"><th>Component</th><th>Explanation</th></tr><tr><td class="componentneeded" id="FCS_CKM.1"><span class="no-link">FCS_CKM.1</span></td><td>To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> for key establishment, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_CKM.1">FCS_CKM.1</a> and specify the corresponding key generation algorithm.<br/></td></tr><tr><td class="componentneeded" id="FCS_CKM.2"><span class="no-link">FCS_CKM.2</span></td><td>To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_DHE">DHE</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_ECDHE">ECDHE</a></abbr> for key establishment, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_CKM.2">FCS_CKM.2</a> and specify the corresponding algorithm.<br/></td></tr><tr><td class="componentneeded" id="FCS_COP.1"><span class="no-link">FCS_COP.1</span></td><td>To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> for encryption and decryption, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_COP.1">FCS_COP.1</a> (iterating as needed) and specify <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> with corresponding key sizes and modes. To support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ciphersuites that use <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr> for hashing, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_COP.1">FCS_COP.1</a> (iterating as needed) and specify <abbr class="dyn-abbr"><a href="#abbr_SHA">SHA</a></abbr> with corresponding digest sizes.<br/></td></tr><tr><td class="componentneeded" id="FCS_RBG.1"><span class="no-link">FCS_RBG.1</span></td><td>To support random bit generation needed for SSH key generation, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FCS_RBG.1">FCS_RBG.1</a> or an extended <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> that defines comparable functionality.<br/></td></tr><tr><td class="componentneeded" id="FIA_X509_EXT.1"><span class="no-link">FIA_X509_EXT.1</span></td><td>To support validation of certificates needed during <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection setup, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>.<br/></td></tr><tr><td class="componentneeded" id="FIA_X509_EXT.2"><span class="no-link">FIA_X509_EXT.2</span></td><td>To support the use of X509 certificates for authentication in <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> connection setup, the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> must include <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a>.<br/></td></tr></table>
+      
+      An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must identify the applicable version of the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or
+      <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> and this Package in its conformance claims.
+      
     
   <h1 class="indexable" data-level="1" id="Conformance_Claims">2 Conformance Claims</h1>
     <dl><dt>Conformance Statement</dt><p></p><dd>An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must claim exact conformance 
@@ -757,7 +775,156 @@ The following sections list Common Criteria and technology terms used in this do
        </li>
      </ul>
    
-    <h2 class="indexable" data-level="2" id="Auditable_Events_for_Mandatory_SFRs">3.1 Auditable Events for Mandatory SFRs</h2><p>The auditable events specified in this Functional Package are included in a Security Target if the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> supports audit event reporting through FAU_GEN.1 and all other criteria in the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> are met. Note that, if "None" is not selected in the "Auditable Events" column, it should not be selected in the "Additional Audit Record Contents" column. Likewise, if "None" is selected in the "Auditable Events" column, it should also be selected in the "Additional Audit Record Contents" column. </p> <table class="sort_kids_" border="1"><caption data-sortkey="#0"><span class="ctr" data-myid="t-audit-mandatory" data-counter-type="ct-Table" id="t-audit-mandatory">Table <span class="counter">1</span></span>: Auditable Events for Mandatory Requirements</caption><tr data-sortkey="#1"><th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th></tr><tr data-sortkey="FCS_DTLSC_EXT.1"><td rowspan="4"><a href="#FCS_DTLSC_EXT.1">FCS_DTLSC_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSC_EXT.1#"><td></td></tr><tr data-sortkey="FCS_DTLSC_EXT.1.12"><td>
+    <h2 class="indexable" data-level="2" id="Auditable_Events_for_Mandatory_SFRs">3.1 Auditable Events for Mandatory SFRs</h2><p>The auditable events specified in this Functional Package are included in a Security Target if the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> supports audit event reporting through FAU_GEN.1 and all other criteria in the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> are met. Note that, if "None" is not selected in the "Auditable Events" column, it should not be selected in the "Additional Audit Record Contents" column. Likewise, if "None" is selected in the "Auditable Events" column, it should also be selected in the "Additional Audit Record Contents" column. </p> <table class="sort_kids_" border="1"><caption data-sortkey="#0"><span class="ctr" data-myid="t-audit-mandatory" data-counter-type="ct-Table" id="t-audit-mandatory">Table <span class="counter">1</span></span>: Auditable Events for Mandatory Requirements</caption><tr data-sortkey="#1"><th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th></tr><tr data-sortkey="FCS_TLS_EXT.1"><td rowspan="2"><a href="#FCS_TLS_EXT.1">FCS_TLS_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLS_EXT.1#"><td></td></tr><tr data-sortkey="FCS_TLS_EXT.1.1"><td>No events specified</td><td>N/A</td></tr></table> 
+    
+    <h2 id="fcs" class="indexable" data-level="2">3.2 Cryptographic Support (FCS)</h2>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="comp" id="FCS_TLS_EXT.1"><h4>FCS_TLS_EXT.1 TLS Protocol</h4>
+        
+        
+        
+        
+        <div class="element"><div class="reqid" id="FCS_TLS_EXT.1.1"><a href="#FCS_TLS_EXT.1.1" class="abbr">FCS_TLS_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
+         [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="tlss_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a server</span></li><li style=""><span class="selectable-content" id="dtlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="dtlss_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a server</span></li></ul>].
+        <div class="appnote"><span class="note-header">Application
+      Note:
+    </span><span class="note">
+              If <i><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client</i> is selected, then the
+              <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> and <a href="#FCS_TLSC_EXT.4">FCS_TLSC_EXT.4</a>.
+              <br/>
+              If <i><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a server</i> is selected, then the
+              <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_TLSS_EXT.1">FCS_TLSS_EXT.1</a> and <a href="#FCS_TLSS_EXT.4">FCS_TLSS_EXT.4</a>.
+              <br/><br/>
+              If <i><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client</i> is selected, then the
+              <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_DTLSC_EXT.1">FCS_DTLSC_EXT.1</a> and <a href="#FCS_DTLSC_EXT.4">FCS_DTLSC_EXT.4</a>.
+              <br/>
+              If <i><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a server</i> is selected, then the
+              <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> and <a href="#FCS_DTLSS_EXT.4">FCS_DTLSS_EXT.4</a>.
+            </span></div></div></div>
+        
+      <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLS_EXT.1">FCS_TLS_EXT.1</a></div>
+            
+            
+            
+          <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea"><p>
+                The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> claims are consistent with those selected in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> (e.g., if <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a> claims "<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client," the evaluator shall ensure that <a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> is claimed as part of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> at minimum).
+                </p></div></div><div class="eacategory">Guidance</div><div class="ea">
+			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> <p>
+                There are no test activities for this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>; the following information is provided as an overview of the expected functionality and test environment for all subsequent <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.
+                </p> <p><b>Test Environment:</b></p> <p>
+                Tests for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 include examination of the handshake messages and behavior of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> when presented with unexpected or invalid messages. 
+                For <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and below, previous versions of this Functional Package only required visibility of network traffic and the ability to modify a valid handshake message sent to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
+                </p> <p><div class="figure" id="figure-Figure2"><img id="Figure2" src="images/figure2.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure2" data-counter-type="ct-figure">Figure <span class="counter">1</span></span>:
+      Test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 using network traffic visibility and control tools</div></p> <p>
+                <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 introduces the encryption of handshake messages subsequent to the ServerHello exchange which prevents visibility and control using midpoint capabilities. 
+                To achieve equivalent validation of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 requires the ability to modify the traffic underlying the encryption applied after the ServerHello message. 
+                This can be achieved by introducing additional control of the messages sent, and visibility of messages received by the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client, 
+                (when validating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server functionality) or the test server (when validating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client functionality).
+                </p> <p><div class="figure" id="figure-Figure3"><img id="Figure3" src="images/figure3.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure3" data-counter-type="ct-figure">Figure <span class="counter">2</span></span>:
+      Test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 using custom endpoint capabilities for visibility and control</div></p> <p>
+                Typically, a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 library modified to provide visibility and control of the handshake messages prior to encryption suffices for all tests. 
+                Such modification will require the test client, test server, or both to be validated. 
+                </p> <p>
+                Since validations of products supporting only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 are still expected under this Package, 
+                the test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2-only validations may include network sniffers and man-in-the-middle products that do not require such 
+                modifications to a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 library. 
+                For consistency, a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client (or <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server) together with the network sniffers and man-in-the-middle capabilities 
+                will also be referred to as a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client (or test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server, respectively) in the following evaluation activities.
+                </p> <div class="figure" id="figure-Figure4"><img id="Figure4" src="images/figure4.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure4" data-counter-type="ct-figure">Figure <span class="counter">3</span></span>:
+      Combined test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 using both network tools and custom endpoint capabilities</div> </div></div></div></div></div>
+    
+  <h1 id="opt-app" class="indexable" data-level="A">Appendix A -  Optional Requirements</h1>
+    As indicated in the introduction to this Functional Package, the baseline requirements (those that must be
+	  performed by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>) are contained in the body of this Functional Package.
+    This appendix contains three other types of optional requirements:<br/><br/>
+
+   The first type, defined in Appendix <a href="#optional-reqs" class="dynref">A.1 Strictly Optional  Requirements</a>, are strictly optional requirements.
+   If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> meets any of these requirements the vendor is encouraged to claim the associated <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>
+	  in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>, but doing so is not required in order to conform to this Functional Package.<br/><br/>
+
+  The second type, defined in Appendix <a href="#objective-reqs" class="dynref">A.2 Objective  Requirements</a>, are objective requirements. These describe security functionality that is not yet 
+	  widely available in commercial technology. 
+   Objective requirements are not currently mandated by this Functional Package, but will be mandated in
+	  the future. Adoption by vendors is encouraged, but claiming these <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> is not required in order to conform to this
+	  Functional Package.<br/><br/>
+
+  The third type, defined in Appendix <a href="#feat-based-reqs" class="dynref">A.3 Implementation-dependent  Requirements</a>, are Implementation-dependent requirements.
+	If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements the product features associated with the listed <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>, either the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> must be claimed
+	or the product features must be disabled in the evaluated configuration. 
+  <h2 id="optional-reqs" class="indexable" data-level="2">A.1 Strictly Optional  Requirements
+    </h2><p>This Functional Package does not define any 
+            Strictly Optional requirements.</p><h2 id="objective-reqs" class="indexable" data-level="2">A.2 Objective  Requirements
+    </h2><p>This Functional Package does not define any 
+            Objective requirements.</p><h2 id="feat-based-reqs" class="indexable" data-level="2">A.3 Implementation-dependent  Requirements
+    </h2><p>This Functional Package does not define any 
+            Implementation-dependent requirements.</p><h1 id="sel-based-reqs" class="indexable" data-level="A">Appendix B -  Selection-based  Requirements
+    </h1><span class="description">
+	<p>As indicated in the introduction to this Functional Package,
+        the baseline requirements
+        (those that must be performed by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or its underlying platform)
+        are contained in the body of this Functional Package.
+        There are additional requirements based on selections in the body of 
+        the Functional Package:
+        if certain selections are made, then additional requirements below must be included.
+ 	</p>
+		 </span><h2 id="sel-based-reqs-audit" class="indexable" data-level="2">B.1 
+              Auditable Events for Selection-based  Requirements
+           </h2>
+         <p>The auditable events in the table below are included in a Security Target if both the associated requirement is included and the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> supports audit event reporting through FAU_GEN.1 and any other criteria in the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> are met.</p>
+         <table class="sort_kids_" border="1"><caption data-sortkey="#0"><span class="ctr" data-myid="t-audit-sel-based" data-counter-type="ct-Table" id="t-audit-sel-based">Table <span class="counter">2</span></span>: Auditable Events for Selection-based Requirements</caption><tr data-sortkey="#1"><th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th></tr><tr data-sortkey="FCS_DTLSC_EXT.1"><td rowspan="4"><a href="#FCS_DTLSC_EXT.1">FCS_DTLSC_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_DTLSC_EXT.1#"><td></td></tr><tr data-sortkey="FCS_DTLSC_EXT.1.12"><td>
             [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="_s_94">Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session</span>, <span class="selectable-content" id="_s_95">none</span>]
           </td><td>
             [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="_s_96">Reason for failure</span>, <span class="selectable-content" id="_s_97">No additional information</span>]
@@ -789,16 +956,9 @@ The following sections list Common Criteria and technology terms used in this do
             [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="_s_496">Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session</span>, <span class="selectable-content" id="_s_497">none</span>]
           </td><td>
             [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="_s_498">Reason for failure</span>, <span class="selectable-content" id="_s_499">No additional information</span>]
-          </td></tr><tr data-sortkey="FCS_TLSS_EXT.2"><td rowspan="2"><a href="#FCS_TLSS_EXT.2">FCS_TLSS_EXT.2</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.2#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.2.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.3"><td rowspan="2"><a href="#FCS_TLSS_EXT.3">FCS_TLSS_EXT.3</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.3#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.3.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.4"><td rowspan="2"><a href="#FCS_TLSS_EXT.4">FCS_TLSS_EXT.4</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.4#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.4.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.5"><td rowspan="2"><a href="#FCS_TLSS_EXT.5">FCS_TLSS_EXT.5</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.5#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.5.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.6"><td rowspan="2"><a href="#FCS_TLSS_EXT.6">FCS_TLSS_EXT.6</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.6#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.6.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLS_EXT.1"><td rowspan="2"><a href="#FCS_TLS_EXT.1">FCS_TLS_EXT.1</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLS_EXT.1#"><td></td></tr><tr data-sortkey="FCS_TLS_EXT.1.1"><td>No events specified</td><td>N/A</td></tr></table> 
-    
-    <h2 id="fcs" class="indexable" data-level="2">3.2 Cryptographic Support (FCS)</h2>
-      
-      
-      
-      
-      
-      
-      <div class="comp" id="FCS_DTLSC_EXT.1"><h4>FCS_DTLSC_EXT.1 DTLS Client Protocol</h4>
+          </td></tr><tr data-sortkey="FCS_TLSS_EXT.2"><td rowspan="2"><a href="#FCS_TLSS_EXT.2">FCS_TLSS_EXT.2</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.2#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.2.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.3"><td rowspan="2"><a href="#FCS_TLSS_EXT.3">FCS_TLSS_EXT.3</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.3#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.3.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.4"><td rowspan="2"><a href="#FCS_TLSS_EXT.4">FCS_TLSS_EXT.4</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.4#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.4.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.5"><td rowspan="2"><a href="#FCS_TLSS_EXT.5">FCS_TLSS_EXT.5</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.5#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.5.1"><td>No events specified</td><td>N/A</td></tr><tr data-sortkey="FCS_TLSS_EXT.6"><td rowspan="2"><a href="#FCS_TLSS_EXT.6">FCS_TLSS_EXT.6</a></td><td style="display:none"></td></tr><tr style="display:none;" data-sortkey="FCS_TLSS_EXT.6#"><td></td></tr><tr data-sortkey="FCS_TLSS_EXT.6.1"><td>No events specified</td><td>N/A</td></tr></table><h2 id="fcs-sel-based" class="indexable" data-level="2">B.2 Cryptographic Support (FCS)</h2><div class="comp" id="FCS_DTLSC_EXT.1"><h4>FCS_DTLSC_EXT.1 DTLS Client Protocol</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -901,7 +1061,7 @@ The following sections list Common Criteria and technology terms used in this do
         <div class="element"><div class="reqid" id="FCS_DTLSC_EXT.1.5"><a href="#FCS_DTLSC_EXT.1.5" class="abbr">FCS_DTLSC_EXT.1.5</a></div><div class="reqdesc">
         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_1">verify that a presented identifier of name type: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_2">dNSName according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6125</span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_3">uniformResourceIdentifier according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6125</span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_4">SRVname according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6125</span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_5">Common Name conversion to dNSName according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 and <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6125</span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_6">directoryName according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280</span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_7">iPAddress according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280</span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_8">rfc822Name according to <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280</span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_9"> [<b>assignment</b>: 
      <span class="assignable-content">other name type</span>] according to [<b>assignment</b>: 
-     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> number</span>] </span></li></ul>] </span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_12">interface with a supported function requesting the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel to verify that a presented identifier</span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_13">pass initial name constraints to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier</span></li></ul>]  
+     <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> number</span>] </span></li></ul>] </span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_12">interface with a supported function requesting the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel to verify that a presented identifier</span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.5_13">pass initial name constraints to the certification path processing function to verify, in accordance with <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>, that the presented identifier</span></li></ul>]  
         matches a reference identifier for the requested <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server and shall abort the session if no match is found.
       <div class="appnote"><span class="note-header">Application
       Note:
@@ -937,13 +1097,13 @@ The following sections list Common Criteria and technology terms used in this do
       Note:
     </span><span class="note"><p>
           The option “except when…” is claimed if <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> specific exception rules are implemented to allow server certificates with no valid
-          revocation status information to be accepted. This is claimed only when FIA_X509_EXT.2.2 includes the option “supported function
+          revocation status information to be accepted. This is claimed only when <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a>.2 includes the option “supported function
           determines acceptance via…”. The assignment for when override is authorized describes the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>-specific processing to include the privileged users authorized to configure an override, and the duration of an override. It is preferred that overrides are minimized in scope and time. Otherwise, “with no
           <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>-specific exceptions” is claimed.
         </p> <p>
-          Note that FIA_X509_EXT.1 may allow methods other than CRL or OCSP to validate the revocation status of a certificate. A
+          Note that <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> may allow methods other than CRL or OCSP to validate the revocation status of a certificate. A
           certificate that exclusively uses these alternate methods may not advertise revocation status information locations. Thus, a
-          certificate that is valid according to FIA_X509_EXT.1 and does not advertise revocation status information in a CRL_DP or AIA
+          certificate that is valid according to <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> and does not advertise revocation status information in a CRL_DP or AIA
           extension is considered to be not revoked. <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>-specific override mechanisms are for use with certificates with published
           revocation status information that is not accessible, whether temporarily or because the information cannot be accessed during the
           state of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (e.g., for verifying signatures on boot code). The circumstances should be described by the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author, who should
@@ -1519,7 +1679,7 @@ The following sections list Common Criteria and technology terms used in this do
                       message or terminates the session.
                     </p> <p><b>Note:</b>This test is not performed if only <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 with PSK ciphersuites are supported; it is required if <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 is supported and ciphersuites other than PSK ciphersuites are supported, or if <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 is supported.
                     </p> <p>
-                      Depending on the selections in <a href="#FCS_DTLSC_EXT.1.5">FCS_DTLSC_EXT.1.5</a> and <a href="#FCS_DTLSC_EXT.1.6">FCS_DTLSC_EXT.1.6</a>, this test is performed in conjunction with testing of FIA_X509_EXT.1 or <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> specific to the supported functions using <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>.
+                      Depending on the selections in <a href="#FCS_DTLSC_EXT.1.5">FCS_DTLSC_EXT.1.5</a> and <a href="#FCS_DTLSC_EXT.1.6">FCS_DTLSC_EXT.1.6</a>, this test is performed in conjunction with testing of <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> or <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> specific to the supported functions using <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>.
                       </p> <p>
                         If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the message, the evaluator shall
                         continue sending the server certificate and certificate verify messages until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. It is preferred
@@ -1683,9 +1843,9 @@ The following sections list Common Criteria and technology terms used in this do
                      the test for each behavior.
                   </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSC_EXT.2"><h4>FCS_DTLSC_EXT.2 DTLS Client Support for Mutual Authentication</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_DTLSC_EXT.2"><h4>FCS_DTLSC_EXT.2 DTLS Client Support for Mutual Authentication</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -1743,9 +1903,9 @@ The following sections list Common Criteria and technology terms used in this do
                 The evaluator may also take advantage of the calling application to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> receives data configured at the test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server. 
               </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSC_EXT.3"><h4>FCS_DTLSC_EXT.3 DTLS Client Downgrade Protection</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_DTLSC_EXT.3"><h4>FCS_DTLSC_EXT.3 DTLS Client Downgrade Protection</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -1816,9 +1976,9 @@ The following sections list Common Criteria and technology terms used in this do
                       This test is only required if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds differently (e.g., a different error alert) when the downgrade indicator is present than when <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.0 or below is negotiated and the downgrade indicator is not present.
                     </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSC_EXT.4"><h4>FCS_DTLSC_EXT.4 DTLS Client Support for Renegotiation</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_DTLSC_EXT.4"><h4>FCS_DTLSC_EXT.4 DTLS Client Support for Renegotiation</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -1942,9 +2102,9 @@ The following sections list Common Criteria and technology terms used in this do
                   </ul></span>
                 </li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSC_EXT.5"><h4>FCS_DTLSC_EXT.5 DTLS Client Support for Session Resumption</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_DTLSC_EXT.5"><h4>FCS_DTLSC_EXT.5 DTLS Client Support for Session Resumption</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -1995,9 +2155,9 @@ The following sections list Common Criteria and technology terms used in this do
                       <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without logging a fatal error alert). 
                     </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSC_EXT.6"><h4>FCS_DTLSC_EXT.6 DTLS Client DTLS 1.3 Resumption Refinements</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_DTLSC_EXT.6"><h4>FCS_DTLSC_EXT.6 DTLS Client DTLS 1.3 Resumption Refinements</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_DTLSC_EXT.5.1">FCS_DTLSC_EXT.5.1</a>.
+           </i></b></div>
         
         
         
@@ -2030,9 +2190,9 @@ The following sections list Common Criteria and technology terms used in this do
               The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
               The evaluator shall ensure the operational guidance includes any instructions required to configure applications so the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 client implementation does not send early data.
             </p></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">[conditional] For each application that is able to be secured via <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 using PSK, the evaluator shall follow operational guidance to configure the application not to send early data. The evaluator shall cause the application to initiate a resumed <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 session between the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a compliant test <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 server as in <a href="#dtls-client-successful-resumption" class="dynref">Test FCS_DTLSC_EXT.5:1</a> in <a href="#FCS_DTLSC_EXT.5">FCS_DTLSC_EXT.5</a>. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> ClientHello for <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 includes the psk_mode extension with the value psk_dhe_ke and sends a key share value for a supported group. The evaluator shall confirm that early data is not received by the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server. <p><b>Note:</b> If no applications supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> provide data to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 that can be sent using PSK, this test is omitted.
-            </p></div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSS_EXT.1"><h4>FCS_DTLSS_EXT.1 DTLS Server Protocol</h4>
+            </p></div></div></div></div></div><div class="comp" id="FCS_DTLSS_EXT.1"><h4>FCS_DTLSS_EXT.1 DTLS Server Protocol</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -2502,9 +2662,9 @@ The following sections list Common Criteria and technology terms used in this do
                   [conditional] If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3, the evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 ClientHello message from a test client and observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a HelloRetryRequest message. The evaluator shall modify at least one byte in the cookie from the server's HelloRetryRequest message and include the modified value as a cookie in the test client’s second ClientHello message. The evaluator shall verify that the server rejects the client's handshake message.
                 </li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSS_EXT.2"><h4>FCS_DTLSS_EXT.2 DTLS Server Support for Mutual Authentication</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_DTLSS_EXT.2"><h4>FCS_DTLSS_EXT.2 DTLS Server Support for Mutual Authentication</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_DTLSS_EXT.1.1">FCS_DTLSS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -2543,8 +2703,8 @@ The following sections list Common Criteria and technology terms used in this do
                   supported function or authorized user is allowed to approve continuing with the session when revocation information is not
                   available. If an administrator configures that a user may accept a certificate without status information, both selections
                   are claimed. The "as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>-specific default..." should only be selected for applications that do not have access to revocation
-                  information. This is not claimed when alternate revocation methods are claimed in FIA_X509_EXT.1 that apply to <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client
-                  certificates. Methods for obtaining revocation information are included in FIA_X509_EXT.1.
+                  information. This is not claimed when alternate revocation methods are claimed in <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> that apply to <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client
+                  certificates. Methods for obtaining revocation information are included in <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>.
                 </p></span></div></div></div>
         <div class="element"><div class="reqid" id="FCS_DTLSS_EXT.2.4"><a href="#FCS_DTLSS_EXT.2.4" class="abbr">FCS_DTLSS_EXT.2.4</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fcs_dtlss_ext.2.4_1">not establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session if an entry of the Distinguished Name or a [<b>selection</b>: <span class="selectable-content" id="fcs_dtlss_ext.2.4_2">rfc822_name</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_3">dns_name</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_5">[<b>assignment</b>: 
      <span class="assignable-content">supported name types</span>]</span>] in the Subject Alternate Name extension contained in the client certificate does not match one of the expected identifiers for the client in accordance with [<b>selection</b>: <span class="selectable-content" id="fcs_dtlss_ext.2.4_6"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5322</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_7"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6125</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_8"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_10">[<b>assignment</b>: 
@@ -2552,7 +2712,7 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">list of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 name types and normalization rules</span>]</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_18">[<b>assignment</b>: 
      <span class="assignable-content">list of 'other' name types and standard normalization rules</span>]</span>] to [<b>assignment</b>: 
      <span class="assignable-content">list of calling applications capable of making access decisions</span>] </span></li><li style=""><span class="selectable-content" id="fcs_dtlss_ext.2.4_20">pass initial name constraints of type [<b>selection</b>: <span class="selectable-content" id="fcs_dtlss_ext.2.4_21">directory name</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_22">rfc_822_name</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_23">dns_name</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_25">[<b>assignment</b>: 
-     <span class="assignable-content">supported name types</span>]</span>] to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier matches an expected client identifier</span></li></ul>].     
+     <span class="assignable-content">supported name types</span>]</span>] to the certification path processing function to verify, in accordance with <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>, that the presented identifier matches an expected client identifier</span></li></ul>].     
       <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note"><p>
@@ -2653,9 +2813,9 @@ The following sections list Common Criteria and technology terms used in this do
                 It is a best practice that when the <abbr class="dyn-abbr"><a href="#abbr_CN">CN</a></abbr> is interpreted as an embedded name type other than RDN, an explicitly encoded <abbr class="dyn-abbr"><a href="#abbr_SAN">SAN</a></abbr> entry should take precedence.
               </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSS_EXT.3"><h4>FCS_DTLSS_EXT.3 DTLS Server Downgrade Protection</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_DTLSS_EXT.3"><h4>FCS_DTLSS_EXT.3 DTLS Server Downgrade Protection</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_DTLSS_EXT.1.1">FCS_DTLSS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -2682,9 +2842,9 @@ The following sections list Common Criteria and technology terms used in this do
                   The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and confirm that the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> description includes details on the session downgrade protections that are supported.
                 </p></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"><p>
                   The evaluator shall examine the operational guidance to confirm that instructions are included to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support only <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and to provide the associated downgrade indications.
-                </p></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall follow the operational guidance as necessary to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to negotiate only <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and to provide the associated downgrade indications. The evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> ClientHello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that indicates support for only <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a ServerHello with the last eight bytes of the server random value equal to 44 4F 57 4E 47 52 44 01.</div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSS_EXT.4"><h4>FCS_DTLSS_EXT.4 DTLS Server Support for Renegotiation</h4>
+                </p></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall follow the operational guidance as necessary to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to negotiate only <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 and to provide the associated downgrade indications. The evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> ClientHello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that indicates support for only <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a ServerHello with the last eight bytes of the server random value equal to 44 4F 57 4E 47 52 44 01.</div></div></div></div></div><div class="comp" id="FCS_DTLSS_EXT.4"><h4>FCS_DTLSS_EXT.4 DTLS Server Support for Renegotiation</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -2790,9 +2950,9 @@ The following sections list Common Criteria and technology terms used in this do
                   </ul></span>
                 </li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSS_EXT.5"><h4>FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_DTLSS_EXT.5"><h4>FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_DTLSS_EXT.1.1">FCS_DTLSS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -2844,9 +3004,9 @@ The following sections list Common Criteria and technology terms used in this do
                       To terminate the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session, it might be necessary to continue sending the invalid finished or application message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session or responds with a full handshake ignoring the resumption information, the test is successful. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> silently drops the ClientHello containing the resumption information of the failed session, the evaluator shall continue sending the message until the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> times out.
                     </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_DTLSS_EXT.6"><h4>FCS_DTLSS_EXT.6 DTLS Server DTLS 1.3 Resumption Refinements</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_DTLSS_EXT.6"><h4>FCS_DTLSS_EXT.6 DTLS Server DTLS 1.3 Resumption Refinements</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_DTLSS_EXT.5.1">FCS_DTLSS_EXT.5.1</a>.
+           </i></b></div>
         
         
         
@@ -2899,9 +3059,9 @@ The following sections list Common Criteria and technology terms used in this do
                       posted or via application logging indicating that the operation failed.
                     </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSC_EXT.1"><h4>FCS_TLSC_EXT.1 TLS Client Protocol</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_TLSC_EXT.1"><h4>FCS_TLSC_EXT.1 TLS Client Protocol</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -3008,7 +3168,7 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">other name type</span>] according to [<b>assignment</b>: 
      <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> number</span>] </span></li></ul>] </span></li><li style=""><span class="selectable-content" id="fcs_tlsc_ext.1.5_12">interface with a supported function requesting the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel to pass [<b>selection</b>: <span class="selectable-content" id="fcs_tlsc_ext.1.5_13">the validated certification path</span>, <span class="selectable-content" id="fcs_tlsc_ext.1.5_14">names of [<b>assignment</b>: 
      <span class="assignable-content">specified types</span>] extracted from the leaf certificate of a validated certification path</span>, <span class="selectable-content" id="fcs_tlsc_ext.1.5_16">normalized representations of names of [<b>assignment</b>: 
-     <span class="assignable-content">specified types</span>] extracted from the leaf certificate of a validated certification path</span>] for verification that a presented identifier</span></li><li style=""><span class="selectable-content" id="fcs_tlsc_ext.1.5_18">pass initial name constraints to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier</span></li><li style=""><span class="selectable-content" id="fcs_tlsc_ext.1.5_19">associate a PSK with a valid server with an identifier that</span></li></ul>]  
+     <span class="assignable-content">specified types</span>] extracted from the leaf certificate of a validated certification path</span>] for verification that a presented identifier</span></li><li style=""><span class="selectable-content" id="fcs_tlsc_ext.1.5_18">pass initial name constraints to the certification path processing function to verify, in accordance with <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>, that the presented identifier</span></li><li style=""><span class="selectable-content" id="fcs_tlsc_ext.1.5_19">associate a PSK with a valid server with an identifier that</span></li></ul>]  
               matches a reference identifier for the requested <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server and shall abort the session if no match is found.
             <div class="appnote"><span class="note-header">Application
       Note:
@@ -3049,15 +3209,15 @@ The following sections list Common Criteria and technology terms used in this do
       Note:
     </span><span class="note"><p>
                 The option “the server certificate…” is claimed if certificate-based server authentication is performed (if non-PSK ciphersuites are supported in <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2, or if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is claimed). Within this selection, the option “except when…” is claimed if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> specific exception rules are implemented to allow server certificates with no
-                valid revocation status information to be accepted. This is claimed only when FIA_X509_EXT.2.2 includes the option
+                valid revocation status information to be accepted. This is claimed only when <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a>.2 includes the option
                 “supported function determines acceptance via…”. The assignment for when override is authorized describes the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>-specific processing to include the privileged users authorized to configure an override, and the duration of an override. It is preferred that overrides are minimized in scope and time.
                 Otherwise, “with no <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>-specific exceptions” is claimed.
               </p> <p>
                 The option “a PSK associated with the server is invalid” is claimed if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and PSK ciphersuites are supported, or <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is supported and if PSK handshakes are supported.
               </p> <p>
-              Note that FIA_X509_EXT.1 may allow methods other than CRL or OCSP to validate the revocation status of a certificate. A
+              Note that <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> may allow methods other than CRL or OCSP to validate the revocation status of a certificate. A
               certificate that exclusively uses these alternate methods may not advertise revocation status information locations. 
-              Thus, a certificate that is valid according to FIA_X509_EXT.1 and does not advertise revocation status information in a CRL_DP
+              Thus, a certificate that is valid according to <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> and does not advertise revocation status information in a CRL_DP
               or AIA extension is considered to be not revoked. <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>-specific override mechanisms are for use with certificates with published
               revocation status information that is not accessible, whether temporarily or because the information cannot be accessed during
               the state of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (e.g., for verifying signatures on boot code). The circumstances should be described by the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author, who
@@ -3496,7 +3656,7 @@ The following sections list Common Criteria and technology terms used in this do
                       Server Authentication purpose in the ExtendedKeyUsage extension and observe the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the session.
                     </p> <p><b>Note:</b>This test is not performed if only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 with PSK ciphersuites are supported; it is required if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 is supported and ciphersuites other than PSK ciphersuites are supported, or if <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 is supported.
                     </p> <p>
-                      Depending on the selections in <a href="#FCS_TLSC_EXT.1.5">FCS_TLSC_EXT.1.5</a> and <a href="#FCS_TLSC_EXT.1.6">FCS_TLSC_EXT.1.6</a>, this test is performed in conjunction with testing of FIA_X509_EXT.1 or <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> specific to the supported functions using <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>.
+                      Depending on the selections in <a href="#FCS_TLSC_EXT.1.5">FCS_TLSC_EXT.1.5</a> and <a href="#FCS_TLSC_EXT.1.6">FCS_TLSC_EXT.1.6</a>, this test is performed in conjunction with testing of <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> or <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> specific to the supported functions using <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>.
                       </p> <p>
                       It is preferred that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a fatal error alert message (e.g., bad certificate, decryption error, handshake failure) in response to this, 
                       but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
@@ -3631,9 +3791,9 @@ The following sections list Common Criteria and technology terms used in this do
                   </ul></span>
                 </li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSC_EXT.2"><h4>FCS_TLSC_EXT.2 TLS Client Support for Mutual Authentication</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_TLSC_EXT.2"><h4>FCS_TLSC_EXT.2 TLS Client Support for Mutual Authentication</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -3691,9 +3851,9 @@ The following sections list Common Criteria and technology terms used in this do
            The evaluator may also take advantage of the calling application to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> receives data configured at the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server. 
            </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSC_EXT.3"><h4>FCS_TLSC_EXT.3 TLS Client Downgrade Protection</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_TLSC_EXT.3"><h4>FCS_TLSC_EXT.3 TLS Client Downgrade Protection</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -3753,9 +3913,9 @@ The following sections list Common Criteria and technology terms used in this do
                   This test is only required if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> responds differently (e.g., a different error alert) when the downgrade indicator is present than when <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.1 or below is negotiated and the downgrade indicator is not present.
                   </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSC_EXT.4"><h4>FCS_TLSC_EXT.4 TLS Client Support for Renegotiation</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_TLSC_EXT.4"><h4>FCS_TLSC_EXT.4 TLS Client Support for Renegotiation</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -3863,9 +4023,9 @@ The following sections list Common Criteria and technology terms used in this do
                   </ul></span>
                 </li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSC_EXT.5"><h4>FCS_TLSC_EXT.5 TLS Client Support for Session Resumption</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_TLSC_EXT.5"><h4>FCS_TLSC_EXT.5 TLS Client Support for Session Resumption</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -3914,9 +4074,9 @@ The following sections list Common Criteria and technology terms used in this do
                   but it is acceptable that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> terminates the connection silently (i.e., without sending a fatal error alert). 
                   </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSC_EXT.6"><h4>FCS_TLSC_EXT.6 TLS Client TLS 1.3 Resumption Refinements</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_TLSC_EXT.6"><h4>FCS_TLSC_EXT.6 TLS Client TLS 1.3 Resumption Refinements</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLSC_EXT.5.1">FCS_TLSC_EXT.5.1</a>.
+           </i></b></div>
         
         
         
@@ -3948,9 +4108,9 @@ The following sections list Common Criteria and technology terms used in this do
                 The evaluator shall examine the operational guidance to verify that instructions for any configurable features that are required to meet the requirement are included. 
                 The evaluator shall ensure the operational guidance includes any instructions required to configure applications so the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 client implementation does not send early data.
                 </p></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">[conditional] For each application that is able to be secured via <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 using PSK, the evaluator shall follow operational guidance to configure the application not to send early data. The evaluator shall cause the application to initiate a resumed <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 session between the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and a compliant test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server as in <a href="#tls-client-successful-resumption" class="dynref">Test FCS_TLSC_EXT.5:1</a> in <a href="#FCS_TLSC_EXT.5">FCS_TLSC_EXT.5</a>. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> ClientHello for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 includes the psk_mode extension with the value psk_dhe_ke and sends a key share value for a supported group. The evaluator shall confirm that early data is not received by the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server. <p><b>Note:</b> If no applications supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> provide data to <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 that can be sent using PSK, this test is omitted.
-                </p></div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSS_EXT.1"><h4>FCS_TLSS_EXT.1 TLS Server Protocol</h4>
+                </p></div></div></div></div></div><div class="comp" id="FCS_TLSS_EXT.1"><h4>FCS_TLSS_EXT.1 TLS Server Protocol</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -4436,9 +4596,9 @@ The following sections list Common Criteria and technology terms used in this do
                   </ul></span>
                 </li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSS_EXT.2"><h4>FCS_TLSS_EXT.2 TLS Server Support for Mutual Authentication</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_TLSS_EXT.2"><h4>FCS_TLSS_EXT.2 TLS Server Support for Mutual Authentication</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLSS_EXT.1.1">FCS_TLSS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -4479,7 +4639,7 @@ The following sections list Common Criteria and technology terms used in this do
              when revocation information is not available.</p> <p> 
              If an administrator configures whether a user may accept a certificate without status information, both selections are claimed. 
              The "a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>-specific default" selection should only be chosen for applications that do not have access to revocation information. This
-             is not claimed when alternate revocation methods are claimed in FIA_X509_EXT.1 that apply to <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client certificates.
+             is not claimed when alternate revocation methods are claimed in <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> that apply to <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client certificates.
              Methods for obtaining revocation information are included in <span class="no-link">FIA_X509_EXT.1 </span> .
              </p></span></div></div></div>
         <div class="element"><div class="reqid" id="FCS_TLSS_EXT.2.4"><a href="#FCS_TLSS_EXT.2.4" class="abbr">FCS_TLSS_EXT.2.4</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fcs_tlss_ext.2.4_1">not establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session if an entry of the Distinguished Name or a [<b>selection</b>: <span class="selectable-content" id="fcs_tlss_ext.2.4_2">rfc822_name</span>, <span class="selectable-content" id="fcs_tlss_ext.2.4_3">dns_name</span>, <span class="selectable-content" id="fcs_tlss_ext.2.4_5">[<b>assignment</b>: 
@@ -4488,7 +4648,7 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">list of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 name types and normalization rules</span>]</span>, <span class="selectable-content" id="fcs_tlss_ext.2.4_18">[<b>assignment</b>: 
      <span class="assignable-content">list of 'other' name types and standard normalization rules</span>]</span>] to [<b>assignment</b>: 
      <span class="assignable-content">list of calling applications capable of making access decisions</span>] </span></li><li style=""><span class="selectable-content" id="fcs_tlss_ext.2.4_20">pass initial name constraints of type [<b>selection</b>: <span class="selectable-content" id="fcs_tlss_ext.2.4_21">directory name</span>, <span class="selectable-content" id="fcs_tlss_ext.2.4_22">rfc_822_name</span>, <span class="selectable-content" id="fcs_tlss_ext.2.4_23">dns_name</span>, <span class="selectable-content" id="fcs_tlss_ext.2.4_25">[<b>assignment</b>: 
-     <span class="assignable-content">supported name types</span>]</span>] to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier matches an expected client identifier</span></li><li style=""><span class="selectable-content" id="fcs_tlss_ext.2.4_26">associate a PSK to a specific reference identifier</span></li></ul>].
+     <span class="assignable-content">supported name types</span>]</span>] to the certification path processing function to verify, in accordance with <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>, that the presented identifier matches an expected client identifier</span></li><li style=""><span class="selectable-content" id="fcs_tlss_ext.2.4_26">associate a PSK to a specific reference identifier</span></li></ul>].
            <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note"><p>
@@ -4595,9 +4755,9 @@ The following sections list Common Criteria and technology terms used in this do
 	            <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 certificate requests from the test server and client certificate and certificate verify messages are encrypted. The evaluator shall confirm that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends the appropriate messages by examining the messages received at the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 server and by inspecting any relevant server logs. The evaluator may also take advantage of the calling application to demonstrate that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> receives data configured at the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server.
 	          </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSS_EXT.3"><h4>FCS_TLSS_EXT.3 TLS Server Downgrade Protection</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_TLSS_EXT.3"><h4>FCS_TLSS_EXT.3 TLS Server Downgrade Protection</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLSS_EXT.1.1">FCS_TLSS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -4623,9 +4783,9 @@ The following sections list Common Criteria and technology terms used in this do
           The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and confirm that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> description includes details on the session downgrade protections that are supported.
           </p></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea"><p>
           The evaluator shall examine the operational guidance to confirm that instructions are included to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and to provide the associated downgrade indications.
-        </p></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall follow the operational guidance as necessary to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to negotiate only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and to provide the associated downgrade indications. The evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ClientHello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that indicates support for only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a ServerHello with the last eight bytes of the server random value equal to 44 4F 57 4E 47 52 44 01.</div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSS_EXT.4"><h4>FCS_TLSS_EXT.4 TLS Server Support for Renegotiation</h4>
+        </p></div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">The evaluator shall follow the operational guidance as necessary to configure the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to negotiate only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 and to provide the associated downgrade indications. The evaluator shall send a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> ClientHello to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that indicates support for only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2. The evaluator shall observe that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> sends a ServerHello with the last eight bytes of the server random value equal to 44 4F 57 4E 47 52 44 01.</div></div></div></div></div><div class="comp" id="FCS_TLSS_EXT.4"><h4>FCS_TLSS_EXT.4 TLS Server Support for Renegotiation</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -4734,9 +4894,9 @@ The following sections list Common Criteria and technology terms used in this do
                   </ul></span>
                 </li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSS_EXT.5"><h4>FCS_TLSS_EXT.5 TLS Server Support for Session Resumption</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_TLSS_EXT.5"><h4>FCS_TLSS_EXT.5 TLS Server Support for Session Resumption</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLSS_EXT.1.1">FCS_TLSS_EXT.1.1</a>.
+           </i></b></div>
         
         
         
@@ -4786,9 +4946,9 @@ The following sections list Common Criteria and technology terms used in this do
                     For <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3, the NewSessionTicket message is sent after the finished message; once received by the client, the session can be terminated by modifying a byte of the encrypted application data. 
                     </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLSS_EXT.6"><h4>FCS_TLSS_EXT.6 TLS Server TLS 1.3 Resumption Refinements</h4>
+            </div></div></div></div></div><div class="comp" id="FCS_TLSS_EXT.6"><h4>FCS_TLSS_EXT.6 TLS Server TLS 1.3 Resumption Refinements</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in
+           <a href="#FCS_TLSS_EXT.5.1">FCS_TLSS_EXT.5.1</a>.
+           </i></b></div>
         
         
         
@@ -4840,105 +5000,14 @@ The following sections list Common Criteria and technology terms used in this do
                     posted or via application logging indicating that the operation failed.
                     </p></li>
               </ul></span>
-            </div></div></div></div></div>
-      
-      <div class="comp" id="FCS_TLS_EXT.1"><h4>FCS_TLS_EXT.1 TLS Protocol</h4>
-        
-        
-        
-        
-        <div class="element"><div class="reqid" id="FCS_TLS_EXT.1.1"><a href="#FCS_TLS_EXT.1.1" class="abbr">FCS_TLS_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
-         [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="tlss_impl"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a server</span></li><li style=""><span class="selectable-content" id="dtlsc_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client</span></li><li style=""><span class="selectable-content" id="dtlss_impl"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a server</span></li></ul>].
-        <div class="appnote"><span class="note-header">Application
-      Note:
-    </span><span class="note">
-              If <i><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client</i> is selected, then the
-              <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> and <a href="#FCS_TLSC_EXT.4">FCS_TLSC_EXT.4</a>.
-              <br/>
-              If <i><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a server</i> is selected, then the
-              <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_TLSS_EXT.1">FCS_TLSS_EXT.1</a> and <a href="#FCS_TLSS_EXT.4">FCS_TLSS_EXT.4</a>.
-              <br/><br/>
-              If <i><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a client</i> is selected, then the
-              <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_DTLSC_EXT.1">FCS_DTLSC_EXT.1</a> and <a href="#FCS_DTLSC_EXT.4">FCS_DTLSC_EXT.4</a>.
-              <br/>
-              If <i><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> as a server</i> is selected, then the
-              <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include the requirements from <a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> and <a href="#FCS_DTLSS_EXT.4">FCS_DTLSS_EXT.4</a>.
-            </span></div></div></div>
-        
-      <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_TLS_EXT.1">FCS_TLS_EXT.1</a></div>
-            
-            
-            
-          <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea"><p>
-                The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> claims are consistent with those selected in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> (e.g., if <a href="#FCS_TLS_EXT.1.1">FCS_TLS_EXT.1.1</a> claims "<abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> as a client," the evaluator shall ensure that <a href="#FCS_TLSC_EXT.1">FCS_TLSC_EXT.1</a> is claimed as part of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> at minimum).
-                </p></div></div><div class="eacategory">Guidance</div><div class="ea">
-			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea"> <p>
-                There are no test activities for this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>; the following information is provided as an overview of the expected functionality and test environment for all subsequent <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.
-                </p> <p><b>Test Environment:</b></p> <p>
-                Tests for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 include examination of the handshake messages and behavior of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> when presented with unexpected or invalid messages. 
-                For <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and below, previous versions of this Functional Package only required visibility of network traffic and the ability to modify a valid handshake message sent to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
-                </p> <p><div class="figure" id="figure-Figure2"><img id="Figure2" src="images/figure2.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure2" data-counter-type="ct-figure">Figure <span class="counter">1</span></span>:
-      Test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 using network traffic visibility and control tools</div></p> <p>
-                <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 introduces the encryption of handshake messages subsequent to the ServerHello exchange which prevents visibility and control using midpoint capabilities. 
-                To achieve equivalent validation of <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 requires the ability to modify the traffic underlying the encryption applied after the ServerHello message. 
-                This can be achieved by introducing additional control of the messages sent, and visibility of messages received by the test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client, 
-                (when validating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server functionality) or the test server (when validating <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client functionality).
-                </p> <p><div class="figure" id="figure-Figure3"><img id="Figure3" src="images/figure3.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure3" data-counter-type="ct-figure">Figure <span class="counter">2</span></span>:
-      Test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 using custom endpoint capabilities for visibility and control</div></p> <p>
-                Typically, a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 library modified to provide visibility and control of the handshake messages prior to encryption suffices for all tests. 
-                Such modification will require the test client, test server, or both to be validated. 
-                </p> <p>
-                Since validations of products supporting only <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 are still expected under this Package, 
-                the test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2-only validations may include network sniffers and man-in-the-middle products that do not require such 
-                modifications to a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 library. 
-                For consistency, a compliant <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client (or <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server) together with the network sniffers and man-in-the-middle capabilities 
-                will also be referred to as a test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client (or test <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server, respectively) in the following evaluation activities.
-                </p> <div class="figure" id="figure-Figure4"><img id="Figure4" src="images/figure4.png" width="" height=""></img><br/><span class="ctr" data-myid="Figure4" data-counter-type="ct-figure">Figure <span class="counter">3</span></span>:
-      Combined test environment for <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 and <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 using both network tools and custom endpoint capabilities</div> </div></div></div></div></div>
-    
-  <h1 id="opt-app" class="indexable" data-level="A">Appendix A -  Optional Requirements</h1>
-    As indicated in the introduction to this Functional Package, the baseline requirements (those that must be
-	  performed by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>) are contained in the body of this Functional Package.
-    This appendix contains three other types of optional requirements:<br/><br/>
-
-   The first type, defined in Appendix <a href="#optional-reqs" class="dynref">A.1 Strictly Optional  Requirements</a>, are strictly optional requirements.
-   If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> meets any of these requirements the vendor is encouraged to claim the associated <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>
-	  in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>, but doing so is not required in order to conform to this Functional Package.<br/><br/>
-
-  The second type, defined in Appendix <a href="#objective-reqs" class="dynref">A.2 Objective  Requirements</a>, are objective requirements. These describe security functionality that is not yet 
-	  widely available in commercial technology. 
-   Objective requirements are not currently mandated by this Functional Package, but will be mandated in
-	  the future. Adoption by vendors is encouraged, but claiming these <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> is not required in order to conform to this
-	  Functional Package.<br/><br/>
-
-  The third type, defined in Appendix <a href="#feat-based-reqs" class="dynref">A.3 Implementation-dependent  Requirements</a>, are Implementation-dependent requirements.
-	If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements the product features associated with the listed <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>, either the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> must be claimed
-	or the product features must be disabled in the evaluated configuration. 
-  <h2 id="optional-reqs" class="indexable" data-level="2">A.1 Strictly Optional  Requirements
-    </h2><p>This Functional Package does not define any 
-            Strictly Optional requirements.</p><h2 id="objective-reqs" class="indexable" data-level="2">A.2 Objective  Requirements
-    </h2><p>This Functional Package does not define any 
-            Objective requirements.</p><h2 id="feat-based-reqs" class="indexable" data-level="2">A.3 Implementation-dependent  Requirements
-    </h2><p>This Functional Package does not define any 
-            Implementation-dependent requirements.</p><h1 id="sel-based-reqs" class="indexable" data-level="A">Appendix B -  Selection-based  Requirements
-    </h1><span class="description">
-	<p>As indicated in the introduction to this Functional Package,
-        the baseline requirements
-        (those that must be performed by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or its underlying platform)
-        are contained in the body of this Functional Package.
-        There are additional requirements based on selections in the body of 
-        the Functional Package:
-        if certain selections are made, then additional requirements below must be included.
- 	</p>
-		 </span><p>This Functional Package does not define any 
-            Selection-based requirements.</p><h1 id="ext-comp-defs" class="indexable" data-level="A">Appendix C -  Extended Component Definitions</h1>
+            </div></div></div></div></div><h1 id="ext-comp-defs" class="indexable" data-level="A">Appendix C -  Extended Component Definitions</h1>
 	This appendix contains the definitions for all extended requirements specified in the Functional Package.
 
     <h2 id="ext-comp-defs-bg" class="indexable" data-level="2">C.1 Extended Components Table</h2>
 
 	All extended components specified in the Functional Package are listed in this table:
 
-<table class="sort_kids_"><caption data-sortkey="#0"><b><span class="ctr" data-myid="" data-counter-type="ct-Table" id="">Table <span class="counter">2</span></span>: Extended Component Definitions</b></caption><tr data-sortkey="#1"><th>Functional Class</th><th>Functional Components</th></tr><tr data-sortkey="Cryptographic Support (FCS)"><td>Cryptographic Support (FCS)</td><td>FCS_DTLSC_EXT <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Client Protocol<br/>FCS_DTLSS_EXT <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol<br/>FCS_TLSC_EXT <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol<br/>FCS_TLSS_EXT <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Server Protocol<br/>FCS_TLS_EXT <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Protocol<br/></td></tr></table><h2 id="ext-comp-defs-bg" class="indexable" data-level="2">C.2 Extended Component Definitions</h2><span class="sort_kids_"><span data-sortkey="Cryptographic Support (FCS)"><h3 id="ext-comp-FCS" class="indexable" data-level="3">C.2.1 Cryptographic Support (FCS)</h3>This Functional Package defines the following extended components as part of the
+<table class="sort_kids_"><caption data-sortkey="#0"><b><span class="ctr" data-myid="" data-counter-type="ct-Table" id="">Table <span class="counter">3</span></span>: Extended Component Definitions</b></caption><tr data-sortkey="#1"><th>Functional Class</th><th>Functional Components</th></tr><tr data-sortkey="Cryptographic Support (FCS)"><td>Cryptographic Support (FCS)</td><td>FCS_DTLSC_EXT <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Client Protocol<br/>FCS_DTLSS_EXT <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol<br/>FCS_TLSC_EXT <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Client Protocol<br/>FCS_TLSS_EXT <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Server Protocol<br/>FCS_TLS_EXT <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Protocol<br/></td></tr></table><h2 id="ext-comp-defs-bg" class="indexable" data-level="2">C.2 Extended Component Definitions</h2><span class="sort_kids_"><span data-sortkey="Cryptographic Support (FCS)"><h3 id="ext-comp-FCS" class="indexable" data-level="3">C.2.1 Cryptographic Support (FCS)</h3>This Functional Package defines the following extended components as part of the
 	 FCS class originally defined by <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2:
 	<h3 id="ext-comp-FCS_TLS_EXT" class="indexable" data-level="4">C.2.1.1 FCS_TLS_EXT TLS Protocol</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> claims that can be made by a conformant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FCS_TLS_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FCS_TLS_EXT.1">FCS_TLS_EXT.1</a>,
              <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Protocol,
@@ -4967,12 +5036,12 @@ The following sections list Common Criteria and technology terms used in this do
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption behavior specific to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> client.
           </p><h4>Management: FCS_DTLSC_EXT.1</h4><p>No specific management functions are identified.
     </p><h4>Audit: FCS_DTLSC_EXT.1</h4><p>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, functional package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: <ul><li>Establishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session </li> <li>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session </li> <li>Failure to verify presented identifier </li> </ul> </p><h4>FCS_DTLSC_EXT.1 DTLS Client Protocol</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>
-      FCS_CKM.1 Cryptographic Key Generation<br/>
-      FCS_CKM.2 Cryptographic Key Distribution<br/>
-      FCS_COP.1 Cryptographic Operation<br/>
-      FCS_RBG.1 Random Bit Generation (RBG)<br/>
-      FIA_X509_EXT.1 X.509 Certificate Validation<br/>
-      FIA_X509_EXT.2 X.509 Certificate Authentication
+      <a href="#FCS_CKM.1">FCS_CKM.1</a> Cryptographic Key Generation<br/>
+      <a href="#FCS_CKM.2">FCS_CKM.2</a> Cryptographic Key Distribution<br/>
+      <a href="#FCS_COP.1">FCS_COP.1</a> Cryptographic Operation<br/>
+      <a href="#FCS_RBG.1">FCS_RBG.1</a> Random Bit Generation (RBG)<br/>
+      <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> X.509 Certificate Validation<br/>
+      <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a> X.509 Certificate Authentication
     </td></tr></table><h4 id="ext-comp-FCS_DTLSC_EXT.1.1">FCS_DTLSC_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
        [<b>selection</b>: <span class="selectable-content" id="fcs_dtlsc_ext.1.1_1"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347)</span>, <span class="selectable-content" id="fcs_dtlsc_ext.1.1_2"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9147)</span>]  as a client that supports additional functionality for session renegotiation protection and  [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="dtlsc_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="dtlsc_downgrade_protection">supplemental downgrade protection</span></li><li style=""><span class="selectable-content" id="dtlsc_resumption">session resumption</span></li><li style=""><span class="selectable-content" id="fcs_dtlsc_ext.1.1_3">no optional functionality</span></li></ul>]  and shall abort attempts by a server to negotiate any <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> version prior to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347).
       <h4 id="ext-comp-FCS_DTLSC_EXT.1.2">FCS_DTLSC_EXT.1.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following [<b>assignment</b>: 
@@ -4984,7 +5053,7 @@ The following sections list Common Criteria and technology terms used in this do
       <h4 id="ext-comp-FCS_DTLSC_EXT.1.4">FCS_DTLSC_EXT.1.4</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to support the following <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> ClientHello message extensions: <ul><li>signature_algorithms extension (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446) indicating support for [<b>assignment</b>: 
      <span class="assignable-content">supported signature_algorithm values</span>] and </li> [<b>assignment</b>: 
      <span class="assignable-content">other supported <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> extensions</span>] <br/>and shall not send the following extensions: <ul><li>early_data </li> <li>psk_key_exchange_modes indicating PSK only mode. </li> </ul> </ul> <h4 id="ext-comp-FCS_DTLSC_EXT.1.5">FCS_DTLSC_EXT.1.5</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_87">verify that a presented identifier of name type: [<b>assignment</b>: 
-     <span class="assignable-content">supported name types</span>]</span></li><li style=""><span class="selectable-content" id="_s_88">interface with a supported function requesting the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel to verify that a presented identifier</span></li><li style=""><span class="selectable-content" id="_s_89">pass initial name constraints to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier</span></li></ul>] matches a reference identifier for the requested <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server and shall abort the session if no match is found. <h4 id="ext-comp-FCS_DTLSC_EXT.1.6">FCS_DTLSC_EXT.1.6</h4>
+     <span class="assignable-content">supported name types</span>]</span></li><li style=""><span class="selectable-content" id="_s_88">interface with a supported function requesting the <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> channel to verify that a presented identifier</span></li><li style=""><span class="selectable-content" id="_s_89">pass initial name constraints to the certification path processing function to verify, in accordance with <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>, that the presented identifier</span></li></ul>] matches a reference identifier for the requested <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server and shall abort the session if no match is found. <h4 id="ext-comp-FCS_DTLSC_EXT.1.6">FCS_DTLSC_EXT.1.6</h4>
         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish a trusted channel if the server certificate is invalid  [<b>selection</b>: <span class="selectable-content" id="s-dtlsc-no-excep">with no <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr>-specific exceptions</span>, <span class="selectable-content" id="fcs_dtlsc_ext.1.6_1">except when override is authorized in accordance with [<b>assignment</b>: 
      <span class="assignable-content">override rules</span>] in the case where valid revocation information is not available</span>]. 
       <h4 id="ext-comp-FCS_DTLSC_EXT.1.7">FCS_DTLSC_EXT.1.7</h4>
@@ -5037,12 +5106,12 @@ The following sections list Common Criteria and technology terms used in this do
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption behavior specific to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 when acting as a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> server.
           </p><h4>Management: FCS_DTLSS_EXT.1</h4><p>No specific management functions are identified.
     </p><h4>Audit: FCS_DTLSS_EXT.1</h4><p>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, functional package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: <ul><li>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> session </li> </ul> </p><h4>FCS_DTLSS_EXT.1 DTLS Server Protocol</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>
-      FCS_CKM.1 Cryptographic Key Generation<br/>
-      FCS_CKM.2 Cryptographic Key Distribution<br/>
-      FCS_COP.1 Cryptographic Operation<br/>
-      FCS_RBG.1 Random Bit Generation (RBG)<br/>
-      FIA_X509_EXT.1 X.509 Certificate Validation<br/>
-      FIA_X509_EXT.2 X.509 Certificate Authentication
+      <a href="#FCS_CKM.1">FCS_CKM.1</a> Cryptographic Key Generation<br/>
+      <a href="#FCS_CKM.2">FCS_CKM.2</a> Cryptographic Key Distribution<br/>
+      <a href="#FCS_COP.1">FCS_COP.1</a> Cryptographic Operation<br/>
+      <a href="#FCS_RBG.1">FCS_RBG.1</a> Random Bit Generation (RBG)<br/>
+      <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> X.509 Certificate Validation<br/>
+      <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a> X.509 Certificate Authentication
     </td></tr></table><h4 id="ext-comp-FCS_DTLSS_EXT.1.1">FCS_DTLSS_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement 
        [<b>selection</b>: <span class="selectable-content" id="fcs_dtlss_ext.1.1_1"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 6347)</span>, <span class="selectable-content" id="fcs_dtlss_ext.1.1_2"><abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 9147)</span>]  as a server that supports additional functionality for session renegotiation protection and
          [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="dtlss_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="dtlss_downgrade_protection">supplemental downgrade protection</span></li><li style=""><span class="selectable-content" id="dtlss_resumption">session resumption</span></li><li style=""><span class="selectable-content" id="fcs_dtlss_ext.1.1_3">no optional functionality</span></li></ul>] 
@@ -5073,7 +5142,7 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">list of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 name types and normalization rules</span>]</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_18">[<b>assignment</b>: 
      <span class="assignable-content">list of 'other' name types and standard normalization rules</span>]</span>] to [<b>assignment</b>: 
      <span class="assignable-content">list of calling applications capable of making access decisions</span>] </span></li><li style=""><span class="selectable-content" id="fcs_dtlss_ext.2.4_20">pass initial name constraints of type [<b>selection</b>: <span class="selectable-content" id="fcs_dtlss_ext.2.4_21">directory name</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_22">rfc_822_name</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_23">dns_name</span>, <span class="selectable-content" id="fcs_dtlss_ext.2.4_25">[<b>assignment</b>: 
-     <span class="assignable-content">supported name types</span>]</span>] to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier matches an expected client identifier</span></li></ul>].     
+     <span class="assignable-content">supported name types</span>]</span>] to the certification path processing function to verify, in accordance with <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>, that the presented identifier matches an expected client identifier</span></li></ul>].     
       </div><h4>Management: FCS_DTLSS_EXT.3</h4><p>No specific management functions are identified.
           </p><h4>Audit: FCS_DTLSS_EXT.3</h4><p>There are no auditable events foreseen. </p><h4>FCS_DTLSS_EXT.3 DTLS Server Downgrade Protection</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_DTLSS_EXT.1">FCS_DTLSS_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> Server Protocol
           </td></tr></table><h4 id="ext-comp-FCS_DTLSS_EXT.3.1">FCS_DTLSS_EXT.3.1</h4>
@@ -5117,12 +5186,12 @@ The following sections list Common Criteria and technology terms used in this do
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption behavior specific to <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> client.
           </p><h4>Management: FCS_TLSC_EXT.1</h4><p>No specific management functions are identified.
           </p><h4>Audit: FCS_TLSC_EXT.1</h4><p>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, functional package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: <ul><li>Establishment and termination of a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session </li> <li>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session </li> <li>Failure to verify presented identifier </li> </ul> </p><h4>FCS_TLSC_EXT.1 TLS Client Protocol</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>
-            FCS_CKM.1 Cryptographic Key Generation<br/>
-            FCS_CKM.2 Cryptographic Key Distribution<br/>
-            FCS_COP.1 Cryptographic Operation<br/>
-            FCS_RBG.1 Random Bit Generation (RBG)<br/>
-            FIA_X509_EXT.1 X.509 Certificate Validation<br/>
-            FIA_X509_EXT.2 X.509 Certificate Authentication
+            <a href="#FCS_CKM.1">FCS_CKM.1</a> Cryptographic Key Generation<br/>
+            <a href="#FCS_CKM.2">FCS_CKM.2</a> Cryptographic Key Distribution<br/>
+            <a href="#FCS_COP.1">FCS_COP.1</a> Cryptographic Operation<br/>
+            <a href="#FCS_RBG.1">FCS_RBG.1</a> Random Bit Generation (RBG)<br/>
+            <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> X.509 Certificate Validation<br/>
+            <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a> X.509 Certificate Authentication
           </td></tr></table><h4 id="ext-comp-FCS_TLSC_EXT.1.1">FCS_TLSC_EXT.1.1</h4> The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
                [<b>selection</b>: <span class="selectable-content" id="fcs_tlsc_ext.1.1_1"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246)</span>, <span class="selectable-content" id="fcs_tlsc_ext.1.1_2"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>]  as a client that supports additional functionality for session renegotiation protection and
                [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlsc_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="tlsc_downgrade_protection">supplemental downgrade protection</span></li><li style=""><span class="selectable-content" id="tlsc_resumption">session resumption</span></li><li style=""><span class="selectable-content" id="fcs_tlsc_ext.1.1_3">no optional functionality</span></li></ul>] 
@@ -5137,7 +5206,7 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">other supported <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> extensions</span>] <br/>and shall not send the following extensions: <ul><li>early_data </li> <li>psk_key_exchange_modes indicating PSK only mode. </li> </ul> </ul> <h4 id="ext-comp-FCS_TLSC_EXT.1.5">FCS_TLSC_EXT.1.5</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_360">verify that a presented identifier of name type: [<b>assignment</b>: 
      <span class="assignable-content">supported name types</span>]</span></li><li style=""><span class="selectable-content" id="_s_361">interface with a supported function requesting the <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> channel to pass [<b>selection</b>: <span class="selectable-content" id="_s_362">the validated certification path</span>, <span class="selectable-content" id="_s_363">names of [<b>assignment</b>: 
      <span class="assignable-content">specified types</span>] extracted from the leaf certificate of a validated certification path</span>, <span class="selectable-content" id="_s_364">normalized representations of names of [<b>assignment</b>: 
-     <span class="assignable-content">specified types</span>] extracted from the leaf certificate of a validated certification path</span>] for verification that a presented identifier</span></li><li style=""><span class="selectable-content" id="_s_365">pass initial name constraints to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier</span></li><li style=""><span class="selectable-content" id="_s_366">associate a PSK with a valid server with an identifier that</span></li></ul>] matches a reference identifier for the requested <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server and shall abort the session if no match is found. <h4 id="ext-comp-FCS_TLSC_EXT.1.6">FCS_TLSC_EXT.1.6</h4>
+     <span class="assignable-content">specified types</span>] extracted from the leaf certificate of a validated certification path</span>] for verification that a presented identifier</span></li><li style=""><span class="selectable-content" id="_s_365">pass initial name constraints to the certification path processing function to verify, in accordance with <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>, that the presented identifier</span></li><li style=""><span class="selectable-content" id="_s_366">associate a PSK with a valid server with an identifier that</span></li></ul>] matches a reference identifier for the requested <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server and shall abort the session if no match is found. <h4 id="ext-comp-FCS_TLSC_EXT.1.6">FCS_TLSC_EXT.1.6</h4>
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish a trusted channel if 
                [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="fcs_tlsc_ext.1.6_1">the server certificate is invalid [<b>selection</b>: <span class="selectable-content" id="s-tlsc-no-excep">with no <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr>-specific exceptions</span>, <span class="selectable-content" id="fcs_tlsc_ext.1.6_2">except when override is authorized in accordance with [<b>assignment</b>: 
      <span class="assignable-content">override rules</span>] in the case where valid revocation information is not available</span>] </span></li><li style=""><span class="selectable-content" id="fcs_tlsc_ext.1.6_4">a PSK associated with the server is invalid</span></li></ul>]. 
@@ -5183,12 +5252,12 @@ The following sections list Common Criteria and technology terms used in this do
               requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support session resumption behavior specific to <abbr class="dyn-abbr"><a href="#abbr_DTLS">DTLS</a></abbr> 1.3 when acting as a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> server.
           </p><h4>Management: FCS_TLSS_EXT.1</h4><p>No specific management functions are identified.
           </p><h4>Audit: FCS_TLSS_EXT.1</h4><p>The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>, functional package, or <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: <ul><li>Failure to establish a <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> session </li> </ul> </p><h4>FCS_TLSS_EXT.1 TLS Server Protocol</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>
-            FCS_CKM.1 Cryptographic Key Generation<br/>
-            FCS_CKM.2 Cryptographic Key Distribution<br/>
-            FCS_COP.1 Cryptographic Operation<br/>
-            FCS_RBG.1 Random Bit Generation (RBG)<br/>
-            FIA_X509_EXT.1 X.509 Certificate Validation<br/>
-            FIA_X509_EXT.2 X.509 Certificate Authentication
+            <a href="#FCS_CKM.1">FCS_CKM.1</a> Cryptographic Key Generation<br/>
+            <a href="#FCS_CKM.2">FCS_CKM.2</a> Cryptographic Key Distribution<br/>
+            <a href="#FCS_COP.1">FCS_COP.1</a> Cryptographic Operation<br/>
+            <a href="#FCS_RBG.1">FCS_RBG.1</a> Random Bit Generation (RBG)<br/>
+            <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a> X.509 Certificate Validation<br/>
+            <a href="#FIA_X509_EXT.2">FIA_X509_EXT.2</a> X.509 Certificate Authentication
           </td></tr></table><h4 id="ext-comp-FCS_TLSS_EXT.1.1">FCS_TLSS_EXT.1.1</h4> The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement
                [<b>selection</b>: <span class="selectable-content" id="fcs_tlss_ext.1.1_1"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.2 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5246)</span>, <span class="selectable-content" id="fcs_tlss_ext.1.1_2"><abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 (<abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 8446)</span>]  as a server that supports additional functionality for session renegotiation protection and
                [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="tlss_mutual_auth">mutual authentication</span></li><li style=""><span class="selectable-content" id="tlss_downgrade_protection">supplemental downgrade protection</span></li><li style=""><span class="selectable-content" id="tlss_resumption">session resumption</span></li><li style=""><span class="selectable-content" id="fcs_tlss_ext.1.1_3">no optional functionality</span></li></ul>] 
@@ -5217,7 +5286,7 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">list of <abbr class="dyn-abbr"><a href="#abbr_RFC">RFC</a></abbr> 5280 name types and normalization rules</span>]</span>, <span class="selectable-content" id="fcs_tlss_ext.2.4_18">[<b>assignment</b>: 
      <span class="assignable-content">list of 'other' name types and standard normalization rules</span>]</span>] to [<b>assignment</b>: 
      <span class="assignable-content">list of calling applications capable of making access decisions</span>] </span></li><li style=""><span class="selectable-content" id="fcs_tlss_ext.2.4_20">pass initial name constraints of type [<b>selection</b>: <span class="selectable-content" id="fcs_tlss_ext.2.4_21">directory name</span>, <span class="selectable-content" id="fcs_tlss_ext.2.4_22">rfc_822_name</span>, <span class="selectable-content" id="fcs_tlss_ext.2.4_23">dns_name</span>, <span class="selectable-content" id="fcs_tlss_ext.2.4_25">[<b>assignment</b>: 
-     <span class="assignable-content">supported name types</span>]</span>] to the certification path processing function to verify, in accordance with FIA_X509_EXT.1, that the presented identifier matches an expected client identifier</span></li><li style=""><span class="selectable-content" id="fcs_tlss_ext.2.4_26">associate a PSK to a specific reference identifier</span></li></ul>].
+     <span class="assignable-content">supported name types</span>]</span>] to the certification path processing function to verify, in accordance with <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>, that the presented identifier matches an expected client identifier</span></li><li style=""><span class="selectable-content" id="fcs_tlss_ext.2.4_26">associate a PSK to a specific reference identifier</span></li></ul>].
            </div><h4>Management: FCS_TLSS_EXT.3</h4><p>No specific management functions are identified.
           </p><h4>Audit: FCS_TLSS_EXT.3</h4><p>There are no auditable events foreseen. </p><h4>FCS_TLSS_EXT.3 TLS Server Downgrade Protection</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FCS_TLSS_EXT.1">FCS_TLSS_EXT.1</a> <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> Server Protocol
           </td></tr></table><h4 id="ext-comp-FCS_TLSS_EXT.3.1">FCS_TLSS_EXT.3.1</h4>
@@ -5240,7 +5309,7 @@ The following sections list Common Criteria and technology terms used in this do
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
             <h4 id="ext-comp-FCS_TLSS_EXT.6.2">FCS_TLSS_EXT.6.2</h4>
               The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ignore early data received in <abbr class="dyn-abbr"><a href="#abbr_TLS">TLS</a></abbr> 1.3 sessions.
-            </div></div></span></span><h1 id="acronyms" class="indexable" data-level="A">Appendix D -  Acronyms</h1><table><caption><span class="ctr" data-myid="t-acronyms" data-counter-type="ct-Table" id="t-acronyms">Table <span class="counter">3</span></span>: Acronyms
+            </div></div></span></span><h1 id="acronyms" class="indexable" data-level="A">Appendix D -  Acronyms</h1><table><caption><span class="ctr" data-myid="t-acronyms" data-counter-type="ct-Table" id="t-acronyms">Table <span class="counter">4</span></span>: Acronyms
 		</caption><tr class="header"><th>Acronym</th><th>Meaning</th></tr><tr><td><span class="term" id="abbr_AES"><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr></span></td><td><span id="long_abbr_AES">Advanced Encryption Standard</span></td></tr>
 <tr><td><span class="term" id="abbr_Base-PP" data-plural="Base-PPs"><abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr></span></td><td><span id="long_abbr_Base-PP">Base Protection Profile</span></td></tr>
 <tr><td><span class="term" id="abbr_CA"><abbr class="dyn-abbr"><a href="#abbr_CA">CA</a></abbr></span></td><td><span id="long_abbr_CA">Certificate Authority</span></td></tr>
@@ -5284,7 +5353,7 @@ The following sections list Common Criteria and technology terms used in this do
 <tr><td><span class="term" id="abbr_UDP"><abbr class="dyn-abbr"><a href="#abbr_UDP">UDP</a></abbr></span></td><td><span id="long_abbr_UDP">User Datagram Protocol</span></td></tr>
 <tr><td><span class="term" id="abbr_URI"><abbr class="dyn-abbr"><a href="#abbr_URI">URI</a></abbr></span></td><td><span id="long_abbr_URI">Uniform Resource Identifier</span></td></tr>
 <tr><td><span class="term" id="abbr_URL"><abbr class="dyn-abbr"><a href="#abbr_URL">URL</a></abbr></span></td><td><span id="long_abbr_URL">Uniform Resource Locator</span></td></tr>
-</table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix E -  Bibliography</h1><table><caption><span class="ctr" data-myid="t-biblio" data-counter-type="ct-Table" id="t-biblio">Table <span class="counter">4</span></span>: Bibliography</caption><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation - <ul>
+</table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix E -  Bibliography</h1><table><caption><span class="ctr" data-myid="t-biblio" data-counter-type="ct-Table" id="t-biblio">Table <span class="counter">5</span></span>: Bibliography</caption><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation - <ul>
             <li><a href="https://www.commoncriteriaportal.org/files/ccfiles/CC2022PART1R1.pdf">Part 1: 
 				Introduction and general model</a>, CCMB-2022-11-001, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022.</li>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART2R1.pdf">Part 2: 

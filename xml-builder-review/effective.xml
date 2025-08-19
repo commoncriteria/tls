@@ -100,7 +100,48 @@
       <term full="Uniform Resource Locator" abbr="URL"/>
     </tech-terms>
     <sec:Compliant_Targets_of_Evaluation>
-      <componentsneeded/>
+      
+      The Target of Evaluation
+      (TOE) in this Package is a product that acts as a (D)TLS client, a (D)TLS server, or both.
+      This Package describes the security functionality of TLS and DTLS in terms of   <xref g="CC"/>. 
+      <h:br/><h:br/>
+      The contents of this Package must be appropriately
+      combined with a PP or PP-Module.
+      When this Package is instantiated by a PP or PP-Module, the Package must
+      include selection-based requirements in accordance with the
+      selections or assignments indicated in the PP or PP-Module.  These may be expanded by the
+      ST author.
+      <h:br/><h:br/>The PP or PP-Module which instantiates this Package must typically include the following components in order to satisfy dependencies of this Package. It is the responsibility of the PP or PP-Module author who instantiates this Package to ensure that dependence on these components is satisfied:<h:br/><h:br/>
+      <componentsneeded>
+        <componentneeded>
+          <componentid>FCS_CKM.1</componentid>
+          <notes>To support TLS ciphersuites that use RSA, DHE or ECDHE for key establishment, the PP or PP-Module must include FCS_CKM.1 and specify the corresponding key generation algorithm.</notes>
+        </componentneeded>
+        <componentneeded>
+          <componentid>FCS_CKM.2</componentid>
+          <notes>To support TLS ciphersuites that use RSA, DHE or ECDHE for key establishment, the PP or PP-Module must include FCS_CKM.2 and specify the corresponding algorithm.</notes>
+        </componentneeded>
+        <componentneeded>
+          <componentid>FCS_COP.1</componentid>
+          <notes>To support TLS ciphersuites that use AES for encryption and decryption, the PP or PP-Module must include FCS_COP.1 (iterating as needed) and specify AES with corresponding key sizes and modes. To support TLS ciphersuites that use SHA for hashing, the PP or PP-Module must include FCS_COP.1 (iterating as needed) and specify SHA with corresponding digest sizes.</notes>
+        </componentneeded>
+        <componentneeded>
+          <componentid>FCS_RBG.1</componentid>
+          <notes>To support random bit generation needed for SSH key generation, the PP or PP-Module must include FCS_RBG.1 or an extended SFR that defines comparable functionality.</notes>
+        </componentneeded>
+        <componentneeded>
+          <componentid>FIA_X509_EXT.1</componentid>
+          <notes>To support validation of certificates needed during TLS connection setup, the PP or PP-Module must include FIA_X509_EXT.1.</notes>
+        </componentneeded>
+        <componentneeded>
+          <componentid>FIA_X509_EXT.2</componentid>
+          <notes>To support the use of X509 certificates for authentication in TLS connection setup, the PP or PP-Module must include FIA_X509_EXT.2.</notes>
+        </componentneeded>
+      </componentsneeded>
+      
+      An ST must identify the applicable version of the PP or
+      PP-Module and this Package in its conformance claims.
+      
     </sec:Compliant_Targets_of_Evaluation>
   </sec:Introduction>
   <sec:Conformance_Claims boilerplate="no">
@@ -136,7 +177,7 @@
         <fam-behavior>This family defines requirements for implementation of TLS as a server.</fam-behavior>
       </ext-comp-def>
       <!-- FCS_DTLSC_EXT.1 DTLS Client Protocol -->
-      <f-component cc-id="fcs_dtlsc_ext.1" id="fcs-dtlsc-ext-1" name="DTLS Client Protocol">
+      <f-component cc-id="fcs_dtlsc_ext.1" id="fcs-dtlsc-ext-1" name="DTLS Client Protocol" status="sel-based">
         <depends on-sel="dtlsc_impl"/>
         <comp-lev> requires the TSF to implement DTLS as a client in the specified manner.
     </comp-lev>
@@ -1010,7 +1051,7 @@
         </audit-event>
       </f-component>
       <!-- FCS_DTLSC_EXT.2 DTLS Client Support for Mutual Authentication -->
-      <f-component cc-id="fcs_dtlsc_ext.2" id="fcs-dtlsc-ext-2" name="DTLS Client Support for Mutual Authentication">
+      <f-component cc-id="fcs_dtlsc_ext.2" id="fcs-dtlsc-ext-2" name="DTLS Client Support for Mutual Authentication" status="sel-based">
         <depends on-sel="dtlsc_mutual_auth"/>
         <comp-lev> requires the TSF to support mutually-authenticated DTLS when acting as a DTLS client.
     </comp-lev>
@@ -1072,7 +1113,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_DTLSC_EXT.3 DTLS Client Downgrade Protection -->
-      <f-component cc-id="fcs_dtlsc_ext.3" id="fcs-dtlsc-ext-3" name="DTLS Client Downgrade Protection">
+      <f-component cc-id="fcs_dtlsc_ext.3" id="fcs-dtlsc-ext-3" name="DTLS Client Downgrade Protection" status="sel-based">
         <depends on-sel="dtlsc_downgrade_protection"/>
         <comp-lev> requires the TSF to implement version downgrade protection when acting as a DTLS client.
           </comp-lev>
@@ -1148,7 +1189,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_DTLSC_EXT.4 DTLS Client Support for Renegotiation -->
-      <f-component cc-id="fcs_dtlsc_ext.4" id="fcs-dtlsc-ext-4" name="DTLS Client Support for Renegotiation">
+      <f-component cc-id="fcs_dtlsc_ext.4" id="fcs-dtlsc-ext-4" name="DTLS Client Support for Renegotiation" status="sel-based">
         <depends on-sel="tlsc_impl"/>
         <comp-lev> requires the TSF to support session renegotiation when acting as a DTLS client.
           </comp-lev>
@@ -1270,7 +1311,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_DTLSC_EXT.5 DTLS Client Support for Session Resumption -->
-      <f-component cc-id="fcs_dtlsc_ext.5" id="fcs-dtlsc-ext-5" name="DTLS Client Support for Session Resumption">
+      <f-component cc-id="fcs_dtlsc_ext.5" id="fcs-dtlsc-ext-5" name="DTLS Client Support for Session Resumption" status="sel-based">
         <depends on-sel="dtlsc_resumption"/>
         <comp-lev> requires the TSF to support session resumption when acting as a DTLS client.
           </comp-lev>
@@ -1326,7 +1367,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_DTLSC_EXT.6 DTLS Client DTLS 1.3 Resumption Refinements -->
-      <f-component cc-id="fcs_dtlsc_ext.6" id="fcs-dtlsc-ext-6" name="DTLS Client DTLS 1.3 Resumption Refinements">
+      <f-component cc-id="fcs_dtlsc_ext.6" id="fcs-dtlsc-ext-6" name="DTLS Client DTLS 1.3 Resumption Refinements" status="sel-based">
         <depends on-sel="dtlsc_v13_resumption"/>
         <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a DTLS client.
           </comp-lev>
@@ -1369,7 +1410,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_DTLSS_EXT.1 DTLS Server Protocol -->
-      <f-component cc-id="fcs_dtlss_ext.1" id="fcs-dtlss-ext-1" name="DTLS Server Protocol">
+      <f-component cc-id="fcs_dtlss_ext.1" id="fcs-dtlss-ext-1" name="DTLS Server Protocol" status="sel-based">
         <depends on-sel="dtlss_impl"/>
         <comp-lev> requires the TSF to implement DTLS as a server in the specified manner.
     </comp-lev>
@@ -1828,7 +1869,7 @@
         </audit-event>
       </f-component>
       <!-- FCS_DTLSS_EXT.2 DTLS Server Support for Mutual Authentication -->
-      <f-component cc-id="fcs_dtlss_ext.2" id="fcs-dtlss-ext-2" name="DTLS Server Support for Mutual Authentication">
+      <f-component cc-id="fcs_dtlss_ext.2" id="fcs-dtlss-ext-2" name="DTLS Server Support for Mutual Authentication" status="sel-based">
         <depends on-sel="dtlss_mutual_auth"/>
         <comp-lev> requires the TSF to support mutually-authenticated DTLS when acting as a DTLS server.
     </comp-lev>
@@ -1973,7 +2014,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_DTLSS_EXT.3 DTLS Server Downgrade Protection -->
-      <f-component cc-id="fcs_dtlss_ext.3" id="fcs-dtlss-ext-3" name="DTLS Server Downgrade Protection">
+      <f-component cc-id="fcs_dtlss_ext.3" id="fcs-dtlss-ext-3" name="DTLS Server Downgrade Protection" status="sel-based">
         <depends on-sel="dtlss_downgrade_protection"/>
         <comp-lev> requires the TSF to implement version downgrade protection when acting as a DTLS server.
           </comp-lev>
@@ -2007,7 +2048,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_DTLSS_EXT.4 DTLS Server Support for Renegotiation -->
-      <f-component cc-id="fcs_dtlss_ext.4" id="fcs-dtlss-ext-4" name="DTLS Server Support for Renegotiation">
+      <f-component cc-id="fcs_dtlss_ext.4" id="fcs-dtlss-ext-4" name="DTLS Server Support for Renegotiation" status="sel-based">
         <depends on-sel="dtlss_impl"/>
         <comp-lev> requires the TSF to support session renegotiation when acting as a DTLS server.
           </comp-lev>
@@ -2115,7 +2156,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_DTLSS_EXT.5 DTLS Server Support for Session Resumption -->
-      <f-component cc-id="fcs_dtlss_ext.5" id="fcs-dtlss-ext-5" name="DTLS Server Support for Session Resumption">
+      <f-component cc-id="fcs_dtlss_ext.5" id="fcs-dtlss-ext-5" name="DTLS Server Support for Session Resumption" status="sel-based">
         <depends on-sel="dtlss_resumption"/>
         <comp-lev> requires the TSF to support session resumption when acting as a DTLS server.
           </comp-lev>
@@ -2172,7 +2213,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_DTLSS_EXT.6 DTLS Server DTLS 1.3 Resumption Refinements -->
-      <f-component cc-id="fcs_dtlss_ext.6" id="fcs-dtlss-ext-6" name="DTLS Server DTLS 1.3 Resumption Refinements">
+      <f-component cc-id="fcs_dtlss_ext.6" id="fcs-dtlss-ext-6" name="DTLS Server DTLS 1.3 Resumption Refinements" status="sel-based">
         <depends on-sel="dtlss_v13_resumption"/>
         <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a DTLS server.
           </comp-lev>
@@ -2233,7 +2274,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_TLSC_EXT.1 TLS Client Protocol -->
-      <f-component cc-id="fcs_tlsc_ext.1" id="fcs-tlsc-ext-1" name="TLS Client Protocol">
+      <f-component cc-id="fcs_tlsc_ext.1" id="fcs-tlsc-ext-1" name="TLS Client Protocol" status="sel-based">
         <depends on-sel="tlsc_impl"/>
         <comp-lev> requires the TSF to implement TLS as a client in the specified manner.
           </comp-lev>
@@ -2951,7 +2992,7 @@
         </audit-event>
       </f-component>
       <!-- FCS_TLSC_EXT.2 TLS Client Support for Mutual Authentication -->
-      <f-component cc-id="fcs_tlsc_ext.2" id="fcs-tlsc-ext-2" name="TLS Client Support for Mutual Authentication">
+      <f-component cc-id="fcs_tlsc_ext.2" id="fcs-tlsc-ext-2" name="TLS Client Support for Mutual Authentication" status="sel-based">
         <depends on-sel="tlsc_mutual_auth"/>
         <comp-lev> requires the TSF to support mutually-authenticated DTLS when acting as a TLS client.
           </comp-lev>
@@ -3013,7 +3054,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_TLSC_EXT.3 TLS Client Downgrade Protection -->
-      <f-component cc-id="fcs_tlsc_ext.3" id="fcs-tlsc-ext-3" name="TLS Client Downgrade Protection">
+      <f-component cc-id="fcs_tlsc_ext.3" id="fcs-tlsc-ext-3" name="TLS Client Downgrade Protection" status="sel-based">
         <depends on-sel="tlsc_downgrade_protection"/>
         <comp-lev> requires the TSF to implement version downgrade protection when acting as a TLS client.
           </comp-lev>
@@ -3078,7 +3119,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_TLSC_EXT.4 TLS Client Support for Renegotiation -->
-      <f-component cc-id="fcs_tlsc_ext.4" id="fcs-tlsc-ext-4" name="TLS Client Support for Renegotiation">
+      <f-component cc-id="fcs_tlsc_ext.4" id="fcs-tlsc-ext-4" name="TLS Client Support for Renegotiation" status="sel-based">
         <depends on-sel="tlsc_impl"/>
         <comp-lev> requires the TSF to support session renegotiation when acting as a TLS client.
           </comp-lev>
@@ -3184,7 +3225,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_TLSC_EXT.5 TLS Client Support for Session Resumption -->
-      <f-component cc-id="fcs_tlsc_ext.5" id="fcs-tlsc-ext-5" name="TLS Client Support for Session Resumption">
+      <f-component cc-id="fcs_tlsc_ext.5" id="fcs-tlsc-ext-5" name="TLS Client Support for Session Resumption" status="sel-based">
         <depends on-sel="tlsc_resumption"/>
         <comp-lev> requires the TSF to support session resumption when acting as a TLS client.
           </comp-lev>
@@ -3238,7 +3279,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_TLSC_EXT.6 TLS Client TLS 1.3 Resumption Refinements -->
-      <f-component cc-id="fcs_tlsc_ext.6" id="fcs-tlsc-ext-6" name="TLS Client TLS 1.3 Resumption Refinements">
+      <f-component cc-id="fcs_tlsc_ext.6" id="fcs-tlsc-ext-6" name="TLS Client TLS 1.3 Resumption Refinements" status="sel-based">
         <depends on-sel="tlsc_v13_resumption"/>
         <comp-lev> requires the TSF to support session resumption behavior specific to TLS 1.3 when acting as a TLS client.
           </comp-lev>
@@ -3280,7 +3321,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_TLSS_EXT.1 TLS Server Protocol -->
-      <f-component cc-id="fcs_tlss_ext.1" id="fcs-tlss-ext-1" name="TLS Server Protocol">
+      <f-component cc-id="fcs_tlss_ext.1" id="fcs-tlss-ext-1" name="TLS Server Protocol" status="sel-based">
         <depends on-sel="tlss_impl"/>
         <comp-lev> requires the TSF to implement TLS as a server in the specified manner.
           </comp-lev>
@@ -3756,7 +3797,7 @@
         </audit-event>
       </f-component>
       <!-- FCS_TLSS_EXT.2 TLS Server Support for Mutual Authentication -->
-      <f-component cc-id="fcs_tlss_ext.2" id="fcs-tlss-ext-2" name="TLS Server Support for Mutual Authentication">
+      <f-component cc-id="fcs_tlss_ext.2" id="fcs-tlss-ext-2" name="TLS Server Support for Mutual Authentication" status="sel-based">
         <depends on-sel="tlss_mutual_auth"/>
         <comp-lev> requires the TSF to support mutually-authenticated TLS when acting as a TLS server.
          </comp-lev>
@@ -3909,7 +3950,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_TLSS_EXT.3 TLS Server Downgrade Protection -->
-      <f-component cc-id="fcs_tlss_ext.3" id="fcs-tlss-ext-3" name="TLS Server Downgrade Protection">
+      <f-component cc-id="fcs_tlss_ext.3" id="fcs-tlss-ext-3" name="TLS Server Downgrade Protection" status="sel-based">
         <depends on-sel="tlss_downgrade_protection"/>
         <comp-lev> requires the TSF to implement version downgrade protection when acting as a TLS server.
           </comp-lev>
@@ -3942,7 +3983,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_TLSS_EXT.4 TLS Server Support for Renegotiation -->
-      <f-component cc-id="fcs_tlss_ext.4" id="fcs-tlss-ext-4" name="TLS Server Support for Renegotiation">
+      <f-component cc-id="fcs_tlss_ext.4" id="fcs-tlss-ext-4" name="TLS Server Support for Renegotiation" status="sel-based">
         <depends on-sel="tlss_impl"/>
         <comp-lev> requires the TSF to support session renegotiation when acting as a TLS server.
 	  </comp-lev>
@@ -4052,7 +4093,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_TLSS_EXT.5 TLS Server Support for Session Resumption -->
-      <f-component cc-id="fcs_tlss_ext.5" id="fcs-tlss-ext-5" name="TLS Server Support for Session Resumption">
+      <f-component cc-id="fcs_tlss_ext.5" id="fcs-tlss-ext-5" name="TLS Server Support for Session Resumption" status="sel-based">
         <depends on-sel="tlss_resumption"/>
         <comp-lev> requires the TSF to support session resumption when acting as a TLS server.
           </comp-lev>
@@ -4107,7 +4148,7 @@
         <audit-event/>
       </f-component>
       <!-- FCS_TLSS_EXT.6 TLS Server TLS 1.3 Resumption Refinements -->
-      <f-component cc-id="fcs_tlss_ext.6" id="fcs-tlss-ext-6" name="TLS Server TLS 1.3 Resumption Refinements">
+      <f-component cc-id="fcs_tlss_ext.6" id="fcs-tlss-ext-6" name="TLS Server TLS 1.3 Resumption Refinements" status="sel-based">
         <depends on-sel="tlss_v13_resumption"/>
         <comp-lev> requires the TSF to support session resumption behavior specific to DTLS 1.3 when acting as a TLS server.
           </comp-lev>
