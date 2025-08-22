@@ -105,6 +105,11 @@
                 </tr>
                 <tr>
                     <td>
+                        <div id="Direct_Rationale">Direct Rationale</div>
+                    </td><td> A type of Protection Profile, PP-Module, or Security Target in which the security problem definition (SPD) elements are mapped directly to the SFRs and possibly to the security objectives for the operational environment. There are no security objectives for the TOE. </td>
+                </tr>
+                <tr>
+                    <td>
                         <div id="Distributed_TOE">Distributed TOE</div>
                     </td><td>A TOE composed of multiple components operating as a logical whole.</td>
                 </tr>
@@ -449,8 +454,9 @@
         </span>
         <h2 id="sel-based-reqs-audit" class="indexable" data-level="2">B.1 Auditable Events for Selection-based Requirements </h2>
         <p>
-            The auditable events in the table below are included in a Security Target if both the associated requirement is included and the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> supports audit event reporting through FAU_GEN.1 and any other criteria in the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> are met.
+             The auditable events in the table below are included in a Security Target if both the associated requirement is included and the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> supports audit event reporting through FAU_GEN.1 and any other criteria in the incorporating <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> are met.
         </p>
+        <p>Note that, if "None" is not selected in the "Auditable Events" column, it should not be selected in the "Additional Audit Record Contents" column. Likewise, if "None" is selected in the "Auditable Events" column, it should also be selected in the "Additional Audit Record Contents" column.</p>
         <table class="sort_kids_" border="1">
             <caption data-sortkey="#0">
                 <span class="ctr" data-myid="t-audit-sel-based" data-counter-type="ct-Table" id="t-audit-sel-based">Table <span class="counter">2</span></span>: Auditable Events for Selection-based Requirements
