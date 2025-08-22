@@ -876,7 +876,7 @@
           <audit-event-info>
             <selectables onlyone="yes">
               <selectable>Reason for failure</selectable>
-              <selectable>No additional information</selectable>
+              <selectable>None</selectable>
             </selectables>
           </audit-event-info>
         </audit-event>
@@ -890,7 +890,7 @@
           <audit-event-info>
             <selectables onlyone="yes">
               <selectable>Presented identifier and reference identifier</selectable>
-              <selectable>No additional information</selectable>
+              <selectable>None</selectable>
             </selectables>
           </audit-event-info>
         </audit-event>
@@ -904,7 +904,7 @@
           <audit-event-info>
             <selectables onlyone="yes">
               <selectable>Non-TOE endpoint of connection</selectable>
-              <selectable>No additional information</selectable>
+              <selectable>None</selectable>
             </selectables>
           </audit-event-info>
         </audit-event>
@@ -1594,7 +1594,7 @@
           <audit-event-info>
             <selectables onlyone="yes">
               <selectable>Reason for failure</selectable>
-              <selectable>No additional information</selectable>
+              <selectable>None</selectable>
             </selectables>
           </audit-event-info>
         </audit-event>
@@ -2500,7 +2500,7 @@
           <audit-event-info>
             <selectables onlyone="yes">
               <selectable>Reason for failure</selectable>
-              <selectable>No additional information</selectable>
+              <selectable>None</selectable>
             </selectables>
           </audit-event-info>
         </audit-event>
@@ -2514,7 +2514,7 @@
           <audit-event-info>
             <selectables onlyone="yes">
               <selectable>Presented identifier and reference identifier</selectable>
-              <selectable>No additional information</selectable>
+              <selectable>None</selectable>
             </selectables>
           </audit-event-info>
         </audit-event>
@@ -2528,7 +2528,7 @@
           <audit-event-info>
             <selectables onlyone="yes">
               <selectable>Non-TOE endpoint of connection</selectable>
-              <selectable>No additional information</selectable>
+              <selectable>None</selectable>
             </selectables>
           </audit-event-info>
         </audit-event>
@@ -3194,7 +3194,7 @@
           <audit-event-info>
             <selectables onlyone="yes">
               <selectable>Reason for failure</selectable>
-              <selectable>No additional information</selectable>
+              <selectable>None</selectable>
             </selectables>
           </audit-event-info>
         </audit-event>
