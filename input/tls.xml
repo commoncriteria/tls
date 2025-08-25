@@ -552,7 +552,7 @@
               <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
               <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
             </selectables></selectable>
-<selectable><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable>
+<selectable><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable>
             </selectables> and no other signature algorithms, and
         </h:li>
       </h:ul>
@@ -584,7 +584,7 @@
                 <selectable>ffdhe4096 (RFC 7919)</selectable></selectables></selectable>
               <selectable>non-CNSA compliant <selectables linebreak="yes">
                 <selectable>secp256r1 (RFC 8446)</selectable>
-                <selectable>ffdhe2048 (RFC7919)</selectable>
+                <selectable>ffdhe2048 (RFC 7919)</selectable>
             </selectables></selectable><selectable> and <selectables linebreak="yes">
               <selectable>secp521r1 (RFC 8446)</selectable>
               <selectable>ffdhe6144(RFC 7919)</selectable>
@@ -659,7 +659,7 @@
             <selectable>SRVname according to RFC 6125</selectable>
             <selectable>Common Name conversion to dNSName according to RFC 5280 and RFC 6125</selectable>
             <selectable>directoryName according to RFC 5280</selectable>
-            <selectable>iPAddress according to RFC 5280</selectable>
+            <selectable>IPAddress according to RFC 5280</selectable>
             <selectable>rfc822Name according to RFC 5280</selectable>
             <selectable><assignable>other name type</assignable> according to <assignable>RFC number</assignable></selectable></selectables></selectable>  
           <selectable>interface with a supported function requesting the DTLS channel to verify that a presented identifier</selectable>
@@ -2204,7 +2204,7 @@
                 <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                 <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
               </selectables></selectable>
-              <selectable><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable>
+              <selectable><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable>
             </selectables> and no other signature algorithms, and
           </h:li>
         </h:ul>
@@ -2236,7 +2236,7 @@
               <selectable>ffdhe4096 (RFC 7919)</selectable></selectables></selectable>
             <selectable>non-CNSA compliant <selectables linebreak="yes">
               <selectable>secp256r1 (RFC 8446)</selectable>
-              <selectable>ffdhe2048 (RFC7919)</selectable>
+              <selectable>ffdhe2048 (RFC 7919)</selectable>
             </selectables></selectable><selectable> and <selectables linebreak="yes">
               <selectable>secp521r1 (RFC 8446)</selectable>
               <selectable>ffdhe6144(RFC 7919)</selectable>
@@ -3497,7 +3497,7 @@
                    <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                    <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
                  </selectables></selectable>
-                 <selectable><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable>
+                 <selectable><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable>
                </selectables> and no other signature algorithms, and
              </h:li>
            </h:ul>
@@ -3529,7 +3529,7 @@
                  <selectable>ffdhe4096 (RFC 7919)</selectable></selectables></selectable>
                <selectable>non-CNSA compliant <selectables linebreak="yes">
                  <selectable>secp256r1 (RFC 8446)</selectable>
-                 <selectable>ffdhe2048 (RFC7919)</selectable>
+                 <selectable>ffdhe2048 (RFC 7919)</selectable>
                </selectables></selectable><selectable> and <selectables linebreak="yes">
                  <selectable>secp521r1 (RFC 8446)</selectable>
                  <selectable>ffdhe6144(RFC 7919)</selectable>
@@ -3597,7 +3597,7 @@
                 <selectable>SRVname according to RFC 6125</selectable>
                 <selectable>Common Name conversion to dNSName according to RFC 5280 and RFC 6125</selectable>
                 <selectable>directoryName according to RFC 5280</selectable>
-                <selectable>iPAddress according to RFC 5280</selectable>
+                <selectable>IPAddress according to RFC 5280</selectable>
                 <selectable>rfc822Name according to RFC 5280</selectable>
                 <selectable><assignable>other name type</assignable> according to <assignable>RFC number</assignable></selectable></selectables></selectable>  
                
@@ -4921,7 +4921,7 @@
                     <selectable>rsa_pss_pss_sha384 (RFC 8446)</selectable>
                     <selectable>rsa_pss_rsae_sha384 (RFC 8446)</selectable>
                   </selectables></selectable>
-                  <selectable><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable>
+                  <selectable><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable>
                 </selectables> and no other signature algorithms, and
               </h:li>
             </h:ul>
@@ -4953,7 +4953,7 @@
                   <selectable>ffdhe4096 (RFC 7919)</selectable></selectables></selectable>
                 <selectable>non-CNSA compliant <selectables linebreak="yes">
                   <selectable>secp256r1 (RFC 8446)</selectable>
-                  <selectable>ffdhe2048 (RFC7919)</selectable>
+                  <selectable>ffdhe2048 (RFC 7919)</selectable>
                 </selectables></selectable><selectable> and <selectables linebreak="yes">
                   <selectable>secp521r1 (RFC 8446)</selectable>
                   <selectable>ffdhe6144(RFC 7919)</selectable>
