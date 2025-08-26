@@ -16,6 +16,7 @@ output/tls-release-linkable.html: PSK
 output/tls-release-linkable.html: RC2
 output/tls-release-linkable.html: RC4
 output/tls-release-linkable.html: RDN
+output/tls-release-linkable.html: SPD
 output/tls-release-linkable.html: SRV
 output/tls-release-linkable.html: SRVname
 output/tls-release-linkable.html: SVR
@@ -61,6 +62,7 @@ output/tls-release.html: PSK
 output/tls-release.html: RC2
 output/tls-release.html: RC4
 output/tls-release.html: RDN
+output/tls-release.html: SPD
 output/tls-release.html: SRV
 output/tls-release.html: SRVname
 output/tls-release.html: SVR
@@ -118,6 +120,7 @@ output/tls.html: PSK
 output/tls.html: RC2
 output/tls.html: RC4
 output/tls.html: RDN
+output/tls.html: SPD
 output/tls.html: SRV
 output/tls.html: SRVname
 output/tls.html: SVR
