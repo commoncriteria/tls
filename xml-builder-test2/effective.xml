@@ -32,7 +32,7 @@
   </RevisionHistory>
   <release-notes><h:h3>TDs Applied</h:h3></release-notes><pp-preferences><!--          <pp-pref name="display-audit-with-sfrs">0</pp-pref>   --><audit-events-in-sfrs/></pp-preferences>
   <sec:Introduction>
-    <sec:Overview><h:p>      
+    <sec:Overview title="Overview"><h:p>      
 	  Transport Layer Security (TLS) and the closely-related Datagram TLS (DTLS) are
     cryptographic protocols designed to provide communications security over IP networks.
     Several versions of the protocol are in widespread use in software that provides functionality
@@ -227,7 +227,7 @@
         DTLS version numbers are denoted on the wire as the 1’s complement of the corresponding textual DTLS versions as described in RFC 6347, Section 4.1. 
         DTLS version 1.2 is 0xfefd; DTLS version 1.3 is 0xfefc. 
         </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
             The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported DTLS versions,
             features, ciphersuites, and extensions are specified in accordance with RFC 6347 (DTLS 1.2) and RFC 9147 (DTLS 1.3 and updates to
@@ -767,8 +767,9 @@
         <f-element id="fcs_dtlsc_ext-1-4">
           <title>
       The TSF shall be able to support the following DTLS ClientHello message extensions: 
-       <h:ul><h:li>signature_algorithms extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_1">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_2">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_3">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_4">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_5">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_7"><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables>  and no other signature algorithms, and
-        </h:li></h:ul> <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_8">signature_algorithms_cert extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_9">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_10">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_11">CNSA 1.0-compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_12">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_13">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_14">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_15">rsa_pkcs1_sha256 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_16">rsa_pss_rsae_sha256 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_18"><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables> and no other signature algorithms</selectable><selectable id="fcs_dtlsc_ext.1.4_19">supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables><selectable id="fcs_dtlsc_ext.1.4_20">DTLS 1.2</selectable><selectable id="fcs_dtlsc_ext.1.4_21">no other versions</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_22">supported_groups extension indicating support for <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_23">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_24">secp384r1 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_25">ffdhe3072 (RFC 7919)</selectable><selectable id="fcs_dtlsc_ext.1.4_26">ffdhe4096 (RFC 7919)</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_27">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_28">secp256r1 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_29">ffdhe2048 (RFC7919)</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_30">and <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_31">secp521r1 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_32">ffdhe6144(RFC 7919)</selectable><selectable id="fcs_dtlsc_ext.1.4_33">ffdhe8192 (RFC 7919)</selectable><selectable id="fcs_dtlsc_ext.1.4_34">no other supported groups</selectable></selectables> </selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_35">key_share extension (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_36">post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable><selectable id="fcs_dtlsc_ext.1.4_37">extended_master_secret extension (RFC 7627) enforcing server support, and <selectables><selectable id="fcs_dtlsc_ext.1.4_38">allowing legacy servers</selectable><selectable id="fcs_dtlsc_ext.1.4_39">no other enforcement mode</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_40">no other extensions</selectable></selectables> 
+      <h:ul><h:li>signature_algorithms extension (RFC 8446) indicating support for CNSA 1.0 compliant
+           <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_1">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_2">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and  <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_3">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_4">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_5">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_7"><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables>  and no other signature algorithms, and
+        </h:li></h:ul><selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_8">signature_algorithms_cert extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_9">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_10">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_11">CNSA 1.0-compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_12">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_13">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_14">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_15">rsa_pkcs1_sha256 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_16">rsa_pss_rsae_sha256 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_18"><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables> and no other signature algorithms</selectable><selectable id="fcs_dtlsc_ext.1.4_19">supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables><selectable id="fcs_dtlsc_ext.1.4_20">DTLS 1.2</selectable><selectable id="fcs_dtlsc_ext.1.4_21">no other versions</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_22">supported_groups extension indicating support for <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_23">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_24">secp384r1 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_25">ffdhe3072 (RFC 7919)</selectable><selectable id="fcs_dtlsc_ext.1.4_26">ffdhe4096 (RFC 7919)</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_27">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_28">secp256r1 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_29">ffdhe2048 (RFC7919)</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_30">and <selectables linebreak="yes"><selectable id="fcs_dtlsc_ext.1.4_31">secp521r1 (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_32">ffdhe6144(RFC 7919)</selectable><selectable id="fcs_dtlsc_ext.1.4_33">ffdhe8192 (RFC 7919)</selectable><selectable id="fcs_dtlsc_ext.1.4_34">no other supported groups</selectable></selectables> </selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_35">key_share extension (RFC 8446)</selectable><selectable id="fcs_dtlsc_ext.1.4_36">post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable><selectable id="fcs_dtlsc_ext.1.4_37">extended_master_secret extension (RFC 7627) enforcing server support, and <selectables><selectable id="fcs_dtlsc_ext.1.4_38">allowing legacy servers</selectable><selectable id="fcs_dtlsc_ext.1.4_39">no other enforcement mode</selectable></selectables> </selectable><selectable id="fcs_dtlsc_ext.1.4_40">no other extensions</selectable></selectables> 
           and shall not send the following extensions: <h:ul><h:li>early_data</h:li> <h:li>psk_key_exchange_modes indicating PSK only mode.</h:li></h:ul></title>
           <ext-comp-def-title><title>
             The TSF shall be able to support the following DTLS ClientHello message extensions: 
@@ -934,7 +935,7 @@
                 the certificate request message is changed in TLS 1.3 to use the signature_algorithm, signature_algorithms_cert (optional), 
                 and certificate_authorities extensions, and RFC 8446 allows for (D)TLS 1.2 implementations to use the new message structure. The "RFC 8446, section 4.3.2" option is claimed in the second selection if DTLS 1.3 is supported or if DTLS 1.2 is supported and the RFC 8446 method is supported for DTLS 1.2 servers. The "RFC 5246, section 7.4.4" option is claimed if DTLS 1.2 is supported and the RFC 5246 method is supported for interoperability with DTLS 1.2 servers that do not adopt the RFC 8446 method. When mutual authentication is supported, at least one of these methods must be claimed, per the selection.      
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
             The evaluator shall ensure that the TSS description required per <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client-side certificates for DTLS mutual authentication. 
             The evaluator shall also ensure that the TSS describes any factors beyond configuration that are necessary in order for the client to engage in mutual authentication using X.509v3 certificates.
@@ -986,7 +987,7 @@
                 the TLS 1.1 or below downgrade indicator may claim this option if it takes different actions depending on whether the TLS 1.1
                 or below downgrade indicator is set.
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                   The evaluator shall review the TSS and confirm that the description of the DTLS client protocol includes the downgrade protection mechanism in accordance with RFC 9147 
                   and identifies any configurable features of the TSF needed to meet the requirements. 
@@ -1072,7 +1073,7 @@
                 FCS_DTLSC_EXT.1.1, the client receives a ServerHello that attempts to negotiate DTLS 1.3, and the ServerHello also contains
                 a non-empty renegotiation_info extension; the client will terminate the connection or silently discard the message.
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                   The evaluator shall examine the TSS to ensure that DTLS renegotiation protections are described in accordance with the requirements. 
                   The evaluator shall ensure that any configurable features of the renegotiation protections are identified.
@@ -1153,7 +1154,7 @@
                 While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. 
                 Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is addressed in FCS_DTLSC_EXT.1. 
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                   The evaluator shall examine the TSS and confirm that the DTLS client protocol description includes a description of the supported resumption mechanisms.
                 </h:p></TSS>
@@ -1192,7 +1193,7 @@
           <title>
               The TSF shall send a psk_key_exchange_modes extension with value psk_dhe_ke when DTLS 1.3 session resumption is offered. 
             </title>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
               The evaluator shall examine the TSS to verify that the TLS client protocol description indicates that a PSK cannot be used without DHE or ECDHE and prohibits sending early data. 
               The evaluator shall examine the TSS to verify it lists all applications that can be secured by TLS 1.3 using pre-shared keys and 
@@ -1263,7 +1264,7 @@
           DTLS version numbers are denoted on the wire as the 1’s complement of the corresponding textual DTLS versions as described in RFC 6347, Section 4.1. 
           DTLS version 1.2 is 0xfefd; DTLS version 1.3 is 0xfefc. 
         </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
             The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported TLS versions, features, ciphersuites, and extensions, are specified in accordance with RFC 6347 (DTLS 1.2) and RFC 9147 (DTLS 1.3 and updates to DTLS 1.2) as appropriate. The evaluator shall check the description to see if beta DTLS 1.3 versions are supported.
           </h:p> <h:p>
@@ -1517,8 +1518,9 @@
         <f-element id="fcs_dtlss_ext-1-4">
           <title>
         The TSF shall be able to process the following DTLS ClientHello message extensions: 
-         <h:ul><h:li>signature_algorithms extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_1">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_2">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_3">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_4">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_5">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_7"><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables>  and no other signature algorithms, and
-          </h:li></h:ul> <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_8">signature_algorithms_cert extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_9">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_10">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_11">CNSA 1.0-compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_12">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_13">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_14">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_15">rsa_pkcs1_sha256 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_16">rsa_pss_rsae_sha256 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_18"><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables> and no other signature algorithms</selectable><selectable id="fcs_dtlss_ext.1.4_19">supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables><selectable id="fcs_dtlss_ext.1.4_20">DTLS 1.2</selectable><selectable id="fcs_dtlss_ext.1.4_21">no other versions</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_22">supported_groups extension indicating support for <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_23">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_24">secp384r1 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_25">ffdhe3072 (RFC 7919)</selectable><selectable id="fcs_dtlss_ext.1.4_26">ffdhe4096 (RFC 7919)</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_27">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_28">secp256r1 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_29">ffdhe2048 (RFC7919)</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_30">and <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_31">secp521r1 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_32">ffdhe6144(RFC 7919)</selectable><selectable id="fcs_dtlss_ext.1.4_33">ffdhe8192 (RFC 7919)</selectable><selectable id="fcs_dtlss_ext.1.4_34">no other supported groups</selectable></selectables> </selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_35">key_share extension (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_36">post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable><selectable id="fcs_dtlss_ext.1.4_37">extended_master_secret extension (RFC 7627) enforcing client support and <selectables><selectable id="fcs_dtlss_ext.1.4_38">allowing legacy clients</selectable><selectable id="fcs_dtlss_ext.1.4_39">no other enforcement mode</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_40">no other extensions</selectable></selectables>.
+        <h:ul><h:li>signature_algorithms extension (RFC 8446) indicating support for CNSA 1.0 compliant
+             <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_1">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_2">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and  <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_3">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_4">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_5">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_7"><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables>  and no other signature algorithms, and
+          </h:li></h:ul><selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_8">signature_algorithms_cert extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_9">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_10">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_11">CNSA 1.0-compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_12">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_13">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_14">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_15">rsa_pkcs1_sha256 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_16">rsa_pss_rsae_sha256 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_18"><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables> and no other signature algorithms</selectable><selectable id="fcs_dtlss_ext.1.4_19">supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables><selectable id="fcs_dtlss_ext.1.4_20">DTLS 1.2</selectable><selectable id="fcs_dtlss_ext.1.4_21">no other versions</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_22">supported_groups extension indicating support for <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_23">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_24">secp384r1 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_25">ffdhe3072 (RFC 7919)</selectable><selectable id="fcs_dtlss_ext.1.4_26">ffdhe4096 (RFC 7919)</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_27">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_28">secp256r1 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_29">ffdhe2048 (RFC7919)</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_30">and <selectables linebreak="yes"><selectable id="fcs_dtlss_ext.1.4_31">secp521r1 (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_32">ffdhe6144(RFC 7919)</selectable><selectable id="fcs_dtlss_ext.1.4_33">ffdhe8192 (RFC 7919)</selectable><selectable id="fcs_dtlss_ext.1.4_34">no other supported groups</selectable></selectables> </selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_35">key_share extension (RFC 8446)</selectable><selectable id="fcs_dtlss_ext.1.4_36">post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable><selectable id="fcs_dtlss_ext.1.4_37">extended_master_secret extension (RFC 7627) enforcing client support and <selectables><selectable id="fcs_dtlss_ext.1.4_38">allowing legacy clients</selectable><selectable id="fcs_dtlss_ext.1.4_39">no other enforcement mode</selectable></selectables> </selectable><selectable id="fcs_dtlss_ext.1.4_40">no other extensions</selectable></selectables>.
          
       </title>
           <ext-comp-def-title><title>
@@ -1616,7 +1618,7 @@
               </h:p> <h:p>
               All application notes for FCS_TLSS_EXT.2.1 apply to this requirement, with references to TLS replaced by the equivalent reference to DTLS.
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
             The evaluator shall ensure that the TSS description required per <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client-side certificates for DTLS mutual authentication, 
             and that the description includes any certificate validation exception rules and the name types supported for matching to reference identifiers for all applications that use DTLS. 
@@ -1752,7 +1754,7 @@
                 server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. However, products may still
                 implement both indicators to be compliant with the RFC.              
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                   The evaluator shall examine the TSS and confirm that the DTLS description includes details on the session downgrade protections that are supported.
                 </h:p></TSS>
@@ -1778,7 +1780,7 @@
         <f-element id="fcs_dtlss_ext-4-1">
           <title>The TSF shall support secure DTLS renegotiation through the use of  <selectables><selectable id="fcs_dtlss_ext.4.1_1">the "renegotiation_info" TLS extension in accordance with RFC 5746</selectable><selectable id="fcs_dtlss_ext.4.1_2">not allowing session renegotiation</selectable></selectables>.
             </title>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                   The evaluator shall examine the TSS to confirm that the DTLS description includes details on session renegotiation protection methods supported, 
                   to include when renegotiation is prohibited.
@@ -1873,7 +1875,7 @@
                 While it is possible to perform session resumption using PSK ciphersuites in DTLS 1.2, this is uncommon. Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered
                 in FCS_DTLSS_EXT.1.
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                   The evaluator shall examine the TSS and confirm that the DTLS server protocol description includes a description of the supported resumption mechanisms.
                 </h:p></TSS>
@@ -1913,7 +1915,7 @@
           <title>
               The TSF shall support DTLS 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
             </title>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                   The evaluator shall examine the TSS to confirm that the DTLS description includes details on session resumption for DTLS 1.3, 
                   describes each application capable of using DTLS 1.3 with PSK, and describes how the TSF and application respond to client attempts to use early data (including via logging or observable responses). 
@@ -1992,7 +1994,7 @@
               </h:p> <h:p>
                 If "session resumption" is selected, then the ST must additionally include the requirements from FCS_TLSC_EXT.5. 
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                 The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported TLS versions, features, ciphersuites, and extensions 
                 are specified in accordance with RFC 5246 (TLS 1.2) and RFC 8446 (TLS 1.3 and updates to TLS 1.2) and as refined in FCS_TLSC_EXT.1 as appropriate. 
@@ -2396,8 +2398,9 @@
         <f-element id="fcs_tlsc_ext-1-4">
           <title>
            The TSF shall be able to support the following TLS ClientHello message extensions: 
-            <h:ul><h:li>signature_algorithms extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_1">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_2">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_3">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_4">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_5">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_7"><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables>  and no other signature algorithms, and
-             </h:li></h:ul> <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_8">signature_algorithms_cert extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_9">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_10">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_11">CNSA 1.0-compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_12">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_13">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_14">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_15">rsa_pkcs1_sha256 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_16">rsa_pss_rsae_sha256 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_18"><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables> and no other signature algorithms</selectable><selectable id="fcs_tlsc_ext.1.4_19">supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables><selectable id="fcs_tlsc_ext.1.4_20">DTLS 1.2</selectable><selectable id="fcs_tlsc_ext.1.4_21">no other versions</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_22">supported_groups extension indicating support for <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_23">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_24">secp384r1 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_25">ffdhe3072 (RFC 7919)</selectable><selectable id="fcs_tlsc_ext.1.4_26">ffdhe4096 (RFC 7919)</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_27">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_28">secp256r1 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_29">ffdhe2048 (RFC7919)</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_30">and <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_31">secp521r1 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_32">ffdhe6144(RFC 7919)</selectable><selectable id="fcs_tlsc_ext.1.4_33">ffdhe8192 (RFC 7919)</selectable><selectable id="fcs_tlsc_ext.1.4_34">no other supported groups</selectable></selectables> </selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_35">key_share extension (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_36">post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable><selectable id="fcs_tlsc_ext.1.4_37">extended_master_secret extension (RFC 7627) enforcing server support, and <selectables><selectable id="fcs_tlsc_ext.1.4_38">allowing legacy servers</selectable><selectable id="fcs_tlsc_ext.1.4_39">no other enforcement mode</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_40">no other extensions</selectable></selectables> 
+           <h:ul><h:li>signature_algorithms extension (RFC 8446) indicating support for CNSA 1.0 compliant
+                <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_1">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_2">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and  <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_3">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_4">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_5">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_7"><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables>  and no other signature algorithms, and
+             </h:li></h:ul><selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_8">signature_algorithms_cert extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_9">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_10">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_11">CNSA 1.0-compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_12">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_13">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_14">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_15">rsa_pkcs1_sha256 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_16">rsa_pss_rsae_sha256 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_18"><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables> and no other signature algorithms</selectable><selectable id="fcs_tlsc_ext.1.4_19">supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables><selectable id="fcs_tlsc_ext.1.4_20">DTLS 1.2</selectable><selectable id="fcs_tlsc_ext.1.4_21">no other versions</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_22">supported_groups extension indicating support for <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_23">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_24">secp384r1 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_25">ffdhe3072 (RFC 7919)</selectable><selectable id="fcs_tlsc_ext.1.4_26">ffdhe4096 (RFC 7919)</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_27">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_28">secp256r1 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_29">ffdhe2048 (RFC7919)</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_30">and <selectables linebreak="yes"><selectable id="fcs_tlsc_ext.1.4_31">secp521r1 (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_32">ffdhe6144(RFC 7919)</selectable><selectable id="fcs_tlsc_ext.1.4_33">ffdhe8192 (RFC 7919)</selectable><selectable id="fcs_tlsc_ext.1.4_34">no other supported groups</selectable></selectables> </selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_35">key_share extension (RFC 8446)</selectable><selectable id="fcs_tlsc_ext.1.4_36">post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable><selectable id="fcs_tlsc_ext.1.4_37">extended_master_secret extension (RFC 7627) enforcing server support, and <selectables><selectable id="fcs_tlsc_ext.1.4_38">allowing legacy servers</selectable><selectable id="fcs_tlsc_ext.1.4_39">no other enforcement mode</selectable></selectables> </selectable><selectable id="fcs_tlsc_ext.1.4_40">no other extensions</selectable></selectables> 
                and shall not send the following extensions: <h:ul><h:li>early_data</h:li> <h:li>psk_key_exchange_modes indicating PSK only mode.</h:li></h:ul></title>
           <ext-comp-def-title><title>
                 The TSF shall be able to support the following TLS ClientHello message extensions: 
@@ -2558,7 +2561,7 @@
               The "RFC 5246, Section 7.4.4" option is claimed if TLS 1.2 is supported and the RFC 5246 method is supported for interoperability with TLS 1.2 servers that do not adopt the RFC 8446 method. 
               When mutual authentication is supported, at least one of these methods must be claimed, per the selection.
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                 The evaluator shall ensure that the TSS description required per <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client-side certificates for TLS mutual authentication. 
                 The evaluator shall also ensure that the TSS describes any factors beyond configuration that are necessary in order for the client to engage in mutual authentication using X.509v3 certificates.
@@ -2610,7 +2613,7 @@
               However, a TSF that is capable of detecting the TLS 1.1 or below downgrade indicator may claim this option if it takes
               different actions depending on whether the TLS 1.1 or below downgrade indicator is set. 
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                 The evaluator shall review the TSS and confirm that the description of the TLS client protocol includes the downgrade protection mechanism in accordance with RFC 8446 
                 and identifies any configurable features of the TSF needed to meet the requirements. 
@@ -2685,7 +2688,7 @@
               If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, the client receives a ServerHello that attempts to negotiate TLS 1.3, and the ServerHello
               also contains a non-empty renegotiation_info extension; the client will terminate the connection.
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                 The evaluator shall examine the TSS to ensure that TLS renegotiation protections are described in accordance with the requirements. 
                 The evaluator shall ensure that any configurable features of the renegotiation protections are identified.
@@ -2756,7 +2759,7 @@
               While it is possible to perform session resumption using PSK ciphersuites in TLS 1.2, this is uncommon. 
               Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_TLSC_EXT.1. 
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                 The evaluator shall examine the TSS and confirm that the TLS client protocol description includes a description of the supported resumption mechanisms.
               </h:p></TSS>
@@ -2793,7 +2796,7 @@
           <title>
               The TSF shall send a psk_key_exchange_modes extension with the value psk_dhe_ke when TLS 1.3 session resumption is offered. 
             </title>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                 The evaluator shall examine the TSS to verify that the TLS client protocol description indicates that a PSK cannot be used without DHE or ECDHE and prohibits sending early data.
                 The evaluator shall examine the TSS to verify it lists all applications that can be secured by TLS 1.3 using pre-shared keys and 
@@ -2858,7 +2861,7 @@
               </h:p> <h:p>
               If "session resumption" is selected, then the ST must additionally include the requirements from FCS_TLSS_EXT.5.
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                 The evaluator shall check the description of the implementation of this protocol in the TSS to ensure the supported TLS versions, features, ciphersuites, and extensions, 
                 are specified in accordance with RFC 5246 (TLS 1.2) and RFC 8446 (TLS 1.3 and updates to TLS 1.2) as appropriate. The evaluator shall check the description to see if beta TLS 1.3 versions are supported.
@@ -3130,8 +3133,9 @@
         <f-element id="fcs_tlss_ext-1-4">
           <title>
             The TSF shall be able to process the following TLS ClientHello message extensions: 
-             <h:ul><h:li>signature_algorithms extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_1">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_2">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_3">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_4">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_5">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_7"><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables>  and no other signature algorithms, and
-              </h:li></h:ul> <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_8">signature_algorithms_cert extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_9">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_10">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_11">CNSA 1.0-compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_12">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_13">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_14">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_15">rsa_pkcs1_sha256 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_16">rsa_pss_rsae_sha256 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_18"><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables> and no other signature algorithms</selectable><selectable id="fcs_tlss_ext.1.4_19">supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables><selectable id="fcs_tlss_ext.1.4_20">DTLS 1.2</selectable><selectable id="fcs_tlss_ext.1.4_21">no other versions</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_22">supported_groups extension indicating support for <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_23">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_24">secp384r1 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_25">ffdhe3072 (RFC 7919)</selectable><selectable id="fcs_tlss_ext.1.4_26">ffdhe4096 (RFC 7919)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_27">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_28">secp256r1 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_29">ffdhe2048 (RFC7919)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_30">and <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_31">secp521r1 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_32">ffdhe6144(RFC 7919)</selectable><selectable id="fcs_tlss_ext.1.4_33">ffdhe8192 (RFC 7919)</selectable><selectable id="fcs_tlss_ext.1.4_34">no other supported groups</selectable></selectables> </selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_35">key_share extension (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_36">post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable><selectable id="fcs_tlss_ext.1.4_37">extended_master_secret extension (RFC 7627) enforcing client support and <selectables><selectable id="fcs_tlss_ext.1.4_38">allowing legacy clients</selectable><selectable id="fcs_tlss_ext.1.4_39">no other enforcement mode</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_40">no other extensions</selectable></selectables>.
+            <h:ul><h:li>signature_algorithms extension (RFC 8446) indicating support for CNSA 1.0 compliant
+                 <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_1">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_2">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and  <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_3">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_4">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_5">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_7"><assignable>other non-degrecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables>  and no other signature algorithms, and
+              </h:li></h:ul><selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_8">signature_algorithms_cert extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_9">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_10">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_11">CNSA 1.0-compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_12">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_13">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_14">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_15">rsa_pkcs1_sha256 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_16">rsa_pss_rsae_sha256 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_18"><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable></selectables> and no other signature algorithms</selectable><selectable id="fcs_tlss_ext.1.4_19">supported_versions extension (RFC 8446) indicating support for DTLS 1.3 and <selectables><selectable id="fcs_tlss_ext.1.4_20">DTLS 1.2</selectable><selectable id="fcs_tlss_ext.1.4_21">no other versions</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_22">supported_groups extension indicating support for <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_23">CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_24">secp384r1 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_25">ffdhe3072 (RFC 7919)</selectable><selectable id="fcs_tlss_ext.1.4_26">ffdhe4096 (RFC 7919)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_27">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_28">secp256r1 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_29">ffdhe2048 (RFC7919)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_30">and <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_31">secp521r1 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_32">ffdhe6144(RFC 7919)</selectable><selectable id="fcs_tlss_ext.1.4_33">ffdhe8192 (RFC 7919)</selectable><selectable id="fcs_tlss_ext.1.4_34">no other supported groups</selectable></selectables> </selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_35">key_share extension (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_36">post_handshake_auth (RFC 8446), pre_shared_key (RFC 8446), tls_cert_with_extern_psk (RFC 8773), and psk_key_exchange_modes (RFC 8446) indicating psk_dhe_ke (DHE or ECDHE) mode</selectable><selectable id="fcs_tlss_ext.1.4_37">extended_master_secret extension (RFC 7627) enforcing client support and <selectables><selectable id="fcs_tlss_ext.1.4_38">allowing legacy clients</selectable><selectable id="fcs_tlss_ext.1.4_39">no other enforcement mode</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_40">no other extensions</selectable></selectables>.
               
           </title>
           <ext-comp-def-title><title>
@@ -3219,7 +3223,7 @@
               The ST author claims ‘during post-handshake request’ if this feature is supported. 
               If TLS 1.3 is not supported, or if the TLS post-handshake request extension is not recognized in a TLS 1.3 handshake, the ST author selects ‘at no other time’.
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
 	          The evaluator shall ensure that the TSS description required per <no-link>FIA_X509_EXT.2.1</no-link> includes the use of client-side certificates for TLS mutual authentication, 
 	        and that the description includes any certificate validation exception rules and the name types supported for matching to reference identifiers for all applications that use TLS. 
@@ -3359,7 +3363,7 @@
               This FP requires the server to reject attempts to establish TLS 1.1 and below, making this mechanism redundant. 
               However, products may still implement both indicators to be compliant with the RFC. 
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
           The evaluator shall examine the TSS and confirm that the TLS description includes details on the session downgrade protections that are supported.
           </h:p></TSS>
@@ -3385,7 +3389,7 @@
         <f-element id="fcs_tlss_ext-4-1">
           <title>The TSF shall support secure TLS renegotiation through the use of  <selectables><selectable id="fcs_tlss_ext.4.1_1">the "renegotiation_info" TLS extension in accordance with RFC 5746</selectable><selectable id="fcs_tlss_ext.4.1_2">not allowing session renegotiation</selectable></selectables>. 
             </title>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
 	        The evaluator shall examine the TSS to confirm that the TLS description includes details on session renegotiation protection methods supported, 
 	        to include when renegotiation is prohibited.
@@ -3486,7 +3490,7 @@
               While it is possible to perform session resumption using PSK ciphersuites in TLS 1.2, this is uncommon. 
               Validation of key establishment and session negotiation rules for PSK ciphersuites is independent of the source of the pre-shared key and is covered in FCS_TLSS_EXT.1.
               </h:p></note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                 The evaluator shall examine the TSS and confirm that the TLS server protocol description includes a description of the supported resumption mechanisms.
                 </h:p></TSS>
@@ -3524,7 +3528,7 @@
           <title>
               The TSF shall support TLS 1.3 resumption using PSK with psk_key_exchange_modes extension with the value psk_dhe_ke.  
             </title>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                 The evaluator shall examine the TSS to confirm that the TLS description includes details on session resumption for TLS 1.3, 
                 describes each application capable of using TLS 1.3 with PSK, and describes how the TSF and application respond to client attempts to use early data (including via logging or observable responses). 
@@ -3587,7 +3591,7 @@
               If <h:i>DTLS as a server</h:i> is selected, then the
               ST must include the requirements from FCS_DTLSS_EXT.1 and FCS_DTLSS_EXT.4.
             </note>
-          <aactivity level="component">
+          <aactivity level="element">
             <TSS><h:p>
                 The evaluator shall examine the TSS to verify that the TLS and DTLS claims are consistent with those selected in the SFR (e.g., if FCS_TLS_EXT.1.1 claims "TLS as a client," the evaluator shall ensure that FCS_TLSC_EXT.1 is claimed as part of the TSF at minimum).
                 </h:p></TSS>
