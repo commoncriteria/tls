@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="..\transformspp2html.xsl"?>
-<?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCPackage.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <Package name="TLS" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section">
   <PPReference>
     <ReferenceTable>
@@ -170,7 +170,7 @@
      Likewise, if "None" is selected in the "Auditable Events" column, it should also be selected in the "Additional Audit Record Contents" column.
    </h:p><audit-table table="mandatory" id="t-audit-mandatory"/></sec:Auditable_Events_for_Mandatory_SFRs>
     <!-- 5.1.1 Cryptographic Support (FCS) -->
-    <section id="fcs" title="Cryptographic Support (FCS)">
+    <section id="fcs" title="Class FCS: Cryptographic Support">
       <ext-comp-def title="TLS Protocol" fam-id="FCS_TLS_EXT">
         <fam-behavior>This family defines the TLS claims that can be made by a conformant TOE.</fam-behavior>
       </ext-comp-def>
