@@ -59,6 +59,12 @@
         <url>https://www.niap-ccevs.org/technical-decisions/TD0980</url>
   </TD>
     <TD>
+	<number>TD0981</number>
+	<date>2026-02-18</date>
+	<subject>Correction to Test FCS_TLSS_EXT.1.1:5.3.5</subject>
+        <url>https://www.niap-ccevs.org/technical-decisions/TD0981</url>
+  </TD>
+	  <TD>
 	<number>TD0989</number>
 	<date>2026-02-11</date>
 	<subject>Correction to FCS_TLSC_EXT.1.1:8.1 in PKG_TLS_V2.1</subject>
