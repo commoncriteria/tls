@@ -26,6 +26,7 @@ output/tls-release-linkable.html: TD0956
 output/tls-release-linkable.html: TD0969
 output/tls-release-linkable.html: TD0979
 output/tls-release-linkable.html: TD0980
+output/tls-release-linkable.html: TD0981
 output/tls-release-linkable.html: TD0989
 output/tls-release-linkable.html: TDES
 output/tls-release-linkable.html: TLSCipherText
@@ -77,6 +78,7 @@ output/tls-release.html: TD0956
 output/tls-release.html: TD0969
 output/tls-release.html: TD0979
 output/tls-release.html: TD0980
+output/tls-release.html: TD0981
 output/tls-release.html: TD0989
 output/tls-release.html: TDES
 output/tls-release.html: TLSCipherText
@@ -140,6 +142,7 @@ output/tls.html: TD0956
 output/tls.html: TD0969
 output/tls.html: TD0979
 output/tls.html: TD0980
+output/tls.html: TD0981
 output/tls.html: TD0989
 output/tls.html: TDES
 output/tls.html: TLSCipherText
