@@ -3456,8 +3456,7 @@
                   <selectable id="fcs_tlss_ext.1.4_1">
                     <assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable>
                   <selectable id="fcs_tlss_ext.1.4_41">no other signature algorithms</selectable>
-                </selectables>
-                <h:p style="text-align: left;">, and</h:p>
+                </selectables>, and
                 <selectables linebreak="yes">
                   <selectable id="fcs_tlss_ext.1.4_8">signature_algorithms_cert extension (RFC 8446) indicating support for CNSA 1.0 compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_9">ecdsa_secp384r1_sha384 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_10">rsa_pkcs1_sha384 (RFC 8446)</selectable></selectables>, and <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_11">CNSA 1.0-compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_12">rsa_pss_pss_sha384 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_13">rsa_pss_rsae_sha384 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_14">non-CNSA compliant <selectables linebreak="yes"><selectable id="fcs_tlss_ext.1.4_15">rsa_pkcs1_sha256 (RFC 8446)</selectable><selectable id="fcs_tlss_ext.1.4_16">rsa_pss_rsae_sha256 (RFC 8446)</selectable></selectables> </selectable><selectable id="fcs_tlss_ext.1.4_2"><assignable>other non-deprecated, non-CNSA compliant signature algorithms</assignable></selectable><selectable id="fcs_tlss_ext.1.4_42">no other signature algorithms</selectable></selectables></selectable>
                 </selectables></h:li>
