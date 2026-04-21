@@ -1,3 +1,5 @@
+* https://commoncriteria.github.io/tls/xml-builder-review/Master-Diff.html[Master-Diff.html]
+* https://commoncriteria.github.io/tls/xml-builder-review/Release2_1-Diff.html[Release2_1-Diff.html]
 * https://commoncriteria.github.io/tls/xml-builder-review/diff-release-1.1.html[diff-release-1.1.html]
 * https://commoncriteria.github.io/tls/xml-builder-review/tls-release-linkable.html[tls-release-linkable.html]
 * https://commoncriteria.github.io/tls/xml-builder-review/tls-release.html[tls-release.html]
