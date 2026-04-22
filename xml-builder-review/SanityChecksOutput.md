@@ -24,10 +24,6 @@
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[7]""/f-element[6]""
 * Error: f-element FCS_DTLSS_EXT.2.2  appears not to have an associated evaluation activity.:
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[2]""
-* Error: f-element FCS_DTLSS_EXT.2.3  appears not to have an associated evaluation activity.:
-        /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[3]""
-* Error: f-element FCS_DTLSS_EXT.2.4  appears not to have an associated evaluation activity.:
-        /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[8]""/f-element[4]""
 * Error: f-element FCS_DTLSS_EXT.4.2  appears not to have an associated evaluation activity.:
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[10]""/f-element[2]""
 * Error: f-element FCS_DTLSS_EXT.4.3  appears not to have an associated evaluation activity.:
@@ -56,10 +52,6 @@
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[19]""/f-element[5]""
 * Error: f-element FCS_TLSS_EXT.2.2  appears not to have an associated evaluation activity.:
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[20]""/f-element[2]""
-* Error: f-element FCS_TLSS_EXT.2.3  appears not to have an associated evaluation activity.:
-        /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[20]""/f-element[3]""
-* Error: f-element FCS_TLSS_EXT.2.4  appears not to have an associated evaluation activity.:
-        /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[20]""/f-element[4]""
 * Error: f-element FCS_TLSS_EXT.4.2  appears not to have an associated evaluation activity.:
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[22]""/f-element[2]""
 * Error: f-element FCS_TLSS_EXT.4.3  appears not to have an associated evaluation activity.:
@@ -67,7 +59,57 @@
 * Error: f-element FCS_TLSS_EXT.6.2  appears not to have an associated evaluation activity.:
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[24]""/f-element[2]""
 * Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_1'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_3'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_4'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_5'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_6'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_7'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_8'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_9'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_10'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_11'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_12'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_13'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_14'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_15'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_16'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_17'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_18'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_19'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_20'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_21'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_22'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_23'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_24'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_25'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_26'.
 * Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_1'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_3'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_4'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_5'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_6'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_7'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_8'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_9'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_10'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_11'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_12'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_13'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_14'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_15'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_16'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_17'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_18'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_19'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_20'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_21'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_22'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_23'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_24'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_25'.
+* Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.2_26'.
 * Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.4_1'.
 * Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.4_2'.
 * Error: Detected multiple elements with an id of 'fcs_dtlsc_ext.1.4_1'.
@@ -75,26 +117,124 @@
 * Error: Detected multiple elements with an id of 'tls-server-no-finished-msg'.
 * Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_1'.
 * Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_3'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_4'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_5'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_6'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_7'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_8'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_9'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_10'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_11'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_12'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_13'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_14'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_15'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_16'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_17'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_18'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_19'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_20'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_21'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_22'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_23'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_24'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_25'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_26'.
 * Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_1'.
 * Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_3'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_4'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_5'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_6'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_7'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_8'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_9'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_10'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_11'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_12'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_13'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_14'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_15'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_16'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_17'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_18'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_19'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_20'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_21'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_22'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_23'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_24'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_25'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_26'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_3'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_4'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_5'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_6'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_7'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_8'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_9'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_10'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_11'.
+* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.2_12'.
 * Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.4_1'.
 * Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.4_2'.
 * Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.4_1'.
 * Error: Detected multiple elements with an id of 'fcs_dtlss_ext.1.4_2'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.3_1'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.3_2'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.3_1'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.3_2'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.4_1'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.4_2'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.4_3'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.4_1'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.4_6'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.4_2'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.4_3'.
-* Error: Detected multiple elements with an id of 'fcs_dtlss_ext.2.4_6'.
 * Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_1'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_3'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_4'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_5'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_6'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_7'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_8'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_9'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_10'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_11'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_12'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_13'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_14'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_15'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_16'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_17'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_18'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_19'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_20'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_21'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_22'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_23'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_24'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_25'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_26'.
 * Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_1'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_3'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_4'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_5'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_6'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_7'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_8'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_9'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_10'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_11'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_12'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_13'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_14'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_15'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_16'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_17'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_18'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_19'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_20'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_21'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_22'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_23'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_24'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_25'.
+* Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.2_26'.
 * Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.4_1'.
 * Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.4_2'.
 * Error: Detected multiple elements with an id of 'fcs_tlsc_ext.1.4_1'.
@@ -102,24 +242,73 @@
 * Error: Detected multiple elements with an id of 'tls-server-no-finished-msg'.
 * Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_1'.
 * Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_3'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_4'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_5'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_6'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_7'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_8'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_9'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_10'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_11'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_12'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_13'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_14'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_15'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_16'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_17'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_18'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_19'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_20'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_21'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_22'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_23'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_24'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_25'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_26'.
 * Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_1'.
 * Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_3'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_4'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_5'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_6'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_7'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_8'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_9'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_10'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_11'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_12'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_13'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_14'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_15'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_16'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_17'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_18'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_19'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_20'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_21'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_22'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_23'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_24'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_25'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_26'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_2'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_3'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_4'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_5'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_6'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_7'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_8'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_9'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_10'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_11'.
+* Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.2_12'.
 * Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.4_1'.
 * Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.4_2'.
 * Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.4_1'.
 * Error: Detected multiple elements with an id of 'fcs_tlss_ext.1.4_2'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.3_1'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.3_2'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.3_1'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.3_2'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.4_1'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.4_2'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.4_3'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.4_1'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.4_6'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.4_2'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.4_3'.
-* Error: Detected multiple elements with an id of 'fcs_tlss_ext.2.4_6'.
+ Failed to find a reference to fel-tlss-invalid-client-cert.
 * Warning: Since FCS_TLS_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_DTLSC_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
@@ -139,10 +328,6 @@
 * Warning: Since FCS_DTLSS_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_DTLSS_EXT.2.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FCS_DTLSS_EXT.2.3 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FCS_DTLSS_EXT.2.4 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_DTLSS_EXT.4.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
@@ -167,10 +352,6 @@
 * Warning: Since FCS_TLSS_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_TLSS_EXT.2.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FCS_TLSS_EXT.2.3 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FCS_TLSS_EXT.2.4 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_TLSS_EXT.4.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
