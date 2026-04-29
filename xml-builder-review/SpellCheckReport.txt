@@ -5,6 +5,7 @@ output/tls-release-linkable.html: 4F
 output/tls-release-linkable.html: AIA
 output/tls-release-linkable.html: CIDR
 output/tls-release-linkable.html: CNSA
+output/tls-release-linkable.html: ClientKeyExchange
 output/tls-release-linkable.html: ContentType
 output/tls-release-linkable.html: ExtendedKeyUsage
 output/tls-release-linkable.html: HelloRequest
@@ -22,6 +23,7 @@ output/tls-release-linkable.html: SRVname
 output/tls-release-linkable.html: SVR
 output/tls-release-linkable.html: TD0969
 output/tls-release-linkable.html: TD0979
+output/tls-release-linkable.html: TD0981
 output/tls-release-linkable.html: TD0989
 output/tls-release-linkable.html: TDES
 output/tls-release-linkable.html: TLSCipherText
@@ -55,6 +57,7 @@ output/tls-release.html: 4F
 output/tls-release.html: AIA
 output/tls-release.html: CIDR
 output/tls-release.html: CNSA
+output/tls-release.html: ClientKeyExchange
 output/tls-release.html: ContentType
 output/tls-release.html: ExtendedKeyUsage
 output/tls-release.html: HelloRequest
@@ -72,6 +75,7 @@ output/tls-release.html: SRVname
 output/tls-release.html: SVR
 output/tls-release.html: TD0969
 output/tls-release.html: TD0979
+output/tls-release.html: TD0981
 output/tls-release.html: TD0989
 output/tls-release.html: TDES
 output/tls-release.html: TLSCipherText
@@ -117,6 +121,7 @@ output/tls.html: 4F
 output/tls.html: AIA
 output/tls.html: CIDR
 output/tls.html: CNSA
+output/tls.html: ClientKeyExchange
 output/tls.html: ContentType
 output/tls.html: ExtendedKeyUsage
 output/tls.html: HelloRequest
@@ -134,6 +139,7 @@ output/tls.html: SRVname
 output/tls.html: SVR
 output/tls.html: TD0969
 output/tls.html: TD0979
+output/tls.html: TD0981
 output/tls.html: TD0989
 output/tls.html: TDES
 output/tls.html: TLSCipherText
