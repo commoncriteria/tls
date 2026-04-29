@@ -33,16 +33,28 @@
       <subject>Updated for CC:2022 conformance, incorporated applicable errata.</subject>
     </entry>
   </RevisionHistory>
-      <TechnicalDecisionHistory>
+  <TechnicalDecisionHistory>
     <TD>
 	<number>TD0969</number>
 	<date>2026-01-07</date>
 	<subject>Correction to Session Resumption Test</subject>
         <url>https://www.niap-ccevs.org/technical-decisions/TD0969</url>
 	</TD>
+	<TD>
+	<number>TD0979</number>
+	<date>2026-02-11</date>
+	<subject>Correction to Section 1.3 FCS_RBG.1 Entry</subject>
+        <url>https://www.niap-ccevs.org/technical-decisions/TD0979</url>
+	</TD>
+	<TD>
+	<number>TD0989</number>
+	<date>2026-02-11</date>
+	<subject>Correction to FCS_TLSC_EXT.1.1:8.1 in PKG_TLS_V2.1</subject>
+        <url>https://www.niap-ccevs.org/technical-decisions/TD0989</url>
+	</TD>
   </TechnicalDecisionHistory>
   <pp-preferences>
-    <!--            <pp-pref name="display-audit-with-sfrs">0</pp-pref>     -->
+    <!--              <pp-pref name="display-audit-with-sfrs">0</pp-pref>       -->
     <audit-events-in-sfrs/>
   </pp-preferences>
   <sec:Introduction>
@@ -133,7 +145,7 @@
         </componentneeded>
         <componentneeded>
           <componentid>FCS_RBG.1</componentid>
-          <notes>To support random bit generation needed for SSH key generation, the PP or PP-Module must include FCS_RBG.1 or an extended SFR that defines comparable functionality.</notes>
+          <notes>To support random bit generation needed for TLS key generation, the PP or PP-Module must include FCS_RBG.1 or an extended SFR that defines comparable functionality.</notes>
         </componentneeded>
         <componentneeded>
           <componentid>FIA_X509_EXT.1</componentid>
@@ -1878,7 +1890,7 @@
           </aactivity>
         </f-element>
         <f-element id="fcs_dtlss_ext-2-2">
-          <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with   <no-link>FIA_X509_EXT.1</no-link>.</title>
+          <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with    <no-link>FIA_X509_EXT.1</no-link>.</title>
         </f-element>
         <f-element id="fcs_dtlss_ext-2-3">
           <title>
@@ -2502,7 +2514,9 @@
                 <test>
                   (unexpected/corrupt signatures within handshake) The evaluator shall perform the following tests, according to the versions supported.
                   <testlist>
-                    <test>[conditional] If the TSF supports TLS 1.2 and if the ST indicates support for ECDSA or DSA ciphersuites, the evaluator shall initiate a TLS session with a compliant test TLS server and modify the signature in the server key exchange. The evaluator shall observe that the TSF silently drops the key exchange message or terminates the session.</test>
+                    <test>
+                      <h:p style="text-align: left;">[conditional] If the TSF supports TLS 1.2 and if the ST indicates support for ECDHE or DHE ciphersuites, the evaluator shall initiate a TLS session with a compliant test TLS server and modify the signature in the server key exchange. The evaluator shall observe that the TSF silently drops the key exchange message or terminates the session.</h:p>
+                    </test>
                     <test>[conditional] If the ST indicates support for TLS 1.3, the evaluator shall initiate a TLS session between the TOE and a test TLS server that is configured to send a compliant ServerHello message, encrypted extension message, and certificate message, but will send a certificate verify message with an invalid signature (e.g., by modifying a byte from a valid signature). The evaluator shall confirm that the TSF terminates the session.</test>
                     <test>[conditional] If the TSF supports TLS 1.2 and if the ST indicates support for both RSA and ECDSA methods in the signature_algorithm (or, if supported, the signature_algorithms_cert) extension, and if the ST indicates one or more TLS 1.2 ciphersuites indicating each of the RSA and ECDSA methods in its signature components, the evaluator shall choose two ciphersuites: one indicating an RSA signature (cipher 1) and one indicating an ECDSA signature (cipher 2). The evaluator shall then establish two certificates that are trusted by the TOE: one representing the test TLS 1.2 server using an RSA signature (cert 1) and one representing the test TLS 1.2 server using an ECDSA signature (cert 2). The evaluator shall initiate a TLS session between the TOE and the test TLS 1.2 server that is configured to select cipher 1 and to send cert 2. The evaluator shall verify that the TSF terminates this TLS session. The evaluator shall then initiate a TLS session between the TOE and the test TLS 1.2 server that is configured to select cipher 2 and to send cert 1. The evaluator shall verify that the TSF also terminates this TLS session. <h:p><h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., bad certificate, decryption error, handshake failure) in response to these tests, 
                     but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert). 
@@ -2848,7 +2862,7 @@
         <audit>There are no auditable events foreseen.</audit>
         <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol</dependencies>
         <f-element id="fel-mut-auth-certs">
-          <title>The TSF shall support mutual TLS authentication using X.509v3 certificates during the handshake and   <selectables><selectable id="fcs_tlsc_ext.2.1_1">in support of post-handshake authentication requests</selectable><selectable id="fcs_tlsc_ext.2.1_2">at no other time</selectable></selectables>, in accordance with   <selectables><selectable id="fcs_tlsc_ext.2.1_3">RFC 5246, Section 7.4.4</selectable><selectable id="fcs_tlsc_ext.2.1_4">RFC 8446, Section 4.3.2</selectable></selectables>.</title>
+          <title>The TSF shall support mutual TLS authentication using X.509v3 certificates during the handshake and    <selectables><selectable id="fcs_tlsc_ext.2.1_1">in support of post-handshake authentication requests</selectable><selectable id="fcs_tlsc_ext.2.1_2">at no other time</selectable></selectables>, in accordance with    <selectables><selectable id="fcs_tlsc_ext.2.1_3">RFC 5246, Section 7.4.4</selectable><selectable id="fcs_tlsc_ext.2.1_4">RFC 8446, Section 4.3.2</selectable></selectables>.</title>
           <note role="application">
             <h:p>This SFR is claimed if "mutual authentication" is selected in FCS_TLSC_EXT.1.1.</h:p>
             <h:p>Clients that support TLS 1.3 and post-handshake authentication should claim "in support of post-handshake authentication requests"
@@ -3673,7 +3687,7 @@
           </aactivity>
         </f-element>
         <f-element id="fel-tlss-x509-auth">
-          <title>The TSF shall support authentication of TLS clients using X.509v3 certificates in accordance with   <no-link>FIA_X509_EXT.1</no-link>.</title>
+          <title>The TSF shall support authentication of TLS clients using X.509v3 certificates in accordance with    <no-link>FIA_X509_EXT.1</no-link>.</title>
         </f-element>
         <f-element id="fel-tlss-invalid-client-cert">
           <title>
