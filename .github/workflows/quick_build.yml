@@ -111,7 +111,7 @@ jobs:
           git fetch origin gh-pages
           git show origin/gh-pages:release-2.1/${{ env.action_projname }}-release.html > /tmp/release-2_1.html 2>/dev/null || true
           if [ -f /tmp/release-2_1.html ]; then
-            java -jar ExecuteDaisy-master/*.jar /tmp/release-2_1.html output/${{ env.action_projname }}.html --file=output/Release2_1-Diff.html
+            java -jar ExecuteDaisy-master/*.jar /tmp/release-2_1.html output/${{ env.action_projname }}-release.html --file=output/Release2_1-Diff.html
           fi
 
       - name: Outstanding TDs
