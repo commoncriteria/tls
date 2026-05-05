@@ -8,8 +8,6 @@
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[1]""/f-element[5]""
 * Error: f-element FCS_DTLSC_EXT.1.6  appears not to have an associated evaluation activity.:
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[1]""/f-element[6]""
-* Error: f-element FCS_DTLSC_EXT.1.7  appears not to have an associated evaluation activity.:
-        /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[1]""/f-element[7]""
 * Error: f-element FCS_DTLSC_EXT.6.2  appears not to have an associated evaluation activity.:
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[6]""/f-element[2]""
 * Error: f-element FCS_DTLSS_EXT.1.2  appears not to have an associated evaluation activity.:
@@ -72,9 +70,9 @@
                        
 * Warning: Since FCS_DTLSC_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
-* Warning: Since FCS_DTLSC_EXT.1.6 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+* Warning: Since FCS_DTLSC_EXT.1.5 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
-* Warning: Since FCS_DTLSC_EXT.1.7 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
+* Warning: Since FCS_DTLSC_EXT.1.6 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_DTLSC_EXT.2.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
