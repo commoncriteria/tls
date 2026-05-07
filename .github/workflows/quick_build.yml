@@ -106,7 +106,7 @@ jobs:
 
       # Create a diff against release-2.1 branch
       - name: Diff release 2.1
-        id: release2.1_diff
+        id: release-2.1_diff
         run: |
           git fetch origin gh-pages
           git show origin/gh-pages:release-2.1/${{ env.action_projname }}.html > /tmp/release-2_1.html 2>/dev/null || true
