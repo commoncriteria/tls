@@ -69,10 +69,22 @@
 	<date>2026-04-01</date>
 	<subject>(D)TLS(C/S) Corrections</subject>
         <url>https://www.niap-ccevs.org/technical-decisions/TD1008</url>
-	</TD>	
+	</TD>
+ 	<TD>
+	<number>TD1025</number>
+	<date>2026-04-01</date>
+	<subject>Restriction to CNSA-Compliant Algorithms for (D)TLS Servers</subject>
+        <url>https://www.niap-ccevs.org/technical-decisions/TD1025</url>
+	</TD>
+	<TD>
+	<number>TD1038</number>
+	<date>2026-05-06</date>
+	<subject>Corrections to Application Notes Regarding Extended Master Secret Extension</subject>
+        <url>https://www.niap-ccevs.org/technical-decisions/TD1038</url>
+	</TD>
   </TechnicalDecisionHistory>  
   <pp-preferences>
-    <!--                    <pp-pref name="display-audit-with-sfrs">0</pp-pref>             -->
+    <!--                      <pp-pref name="display-audit-with-sfrs">0</pp-pref>               -->
     <audit-events-in-sfrs/>
   </pp-preferences>
   <sec:Introduction>
@@ -392,7 +404,7 @@
                         terminates the connection silently (i.e., without logging a fatal error alert). 
                       </h:p></test>
                     <test id="dtls-client-nonstandard-versions">
-                      <h:p style="text-align: left;">The evaluator shall attempt to establish a connection with a test <h:a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline hover:text-blue-800" href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TLS"><h:u>TLS</h:u></h:a> server that is configured to send a server hello message indicating the selected version (referred to as the legacy version in <h:a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline hover:text-blue-800" href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_RFC"><h:u>RFC</h:u></h:a> 8446) with a value corresponding to an undefined <h:a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline hover:text-blue-800" href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TLS"><h:u>TLS</h:u></h:a> (legacy) version (e.g., 'fe fb') and observe that the <h:a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline hover:text-blue-800" href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TSF"><h:u>TSF</h:u></h:a> terminates the connection.</h:p>
+                      <h:p style="text-align: left;">The evaluator shall attempt to establish a connection with a test <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TLS">TLS</h:a> server that is configured to send a server hello message indicating the selected version (referred to as the legacy version in <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_RFC">RFC</h:a> 8446) with a value corresponding to an undefined <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TLS">TLS</h:a> (legacy) version (e.g., 'fe fb') and observe that the <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TSF">TSF</h:a> terminates the connection.</h:p>
                       <h:p style="text-align: left;"><h:b>Note:</h:b> If the TSF responds with a ServerHello indicating DTLS 1.2 in the highest version or legacy version, the test is successful. If the TSF silently drops the message, the evaluator shall repeat sending the message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., protocol version) in response to this response, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).</h:p>
                       <h:p style="text-align: left;"><xref to="dtls-client-nonstandard-versions"/> is intended to test the TSF response to non-standard versions, higher than indicated in the ClientHello's "highest version or legacy version" supported, including early proposals for 'beta DTLS 1.3' versions. If the TSF supports such beta versions, the evaluator shall follow the operational guidance instructions to disable them prior to conducting <xref to="dtls-client-nonstandard-versions"/>.</h:p>
                     </test>
@@ -914,18 +926,13 @@
             </title>
           </ext-comp-def-title>
           <note role="application">
-            <h:p>DTLS uses TLS extensions.</h:p>
-            <h:p>Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.</h:p>
-            <h:p>If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in 
-          accordance with RFC 8446 and the tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. 
-          If TLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151. 
-          If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.</h:p>
-            <h:p>If DTLS 1.2 is
-          claimed, extended_master_secret extension must be claimed, with the ability to enforce server support, and optionally, the ability to 
-          support legacy servers. The extended_master_secret extension (RFC 7627) selection cannot be claimed when DTLS 1.3 is claimed.</h:p>
-            <h:p>If DTLS 1.2 is supported and if ECDHE or DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed.</h:p>
-            <h:p>For compatibility purposes, DTLS clients may offer additional supported_groups values beyond what is specified in the selection.</h:p>
-            <h:p>Other extensions may be supported; certain extensions and values may need to be claimed for SFRs defined outside of this package related to the calling applications.</h:p>
+            <h:p style="text-align: left;">DTLS uses TLS extensions.</h:p>
+            <h:p style="text-align: left;">Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.</h:p>
+            <h:p style="text-align: left;">If DTLS 1.3 is claimed in FCS_DTLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446 and the tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. If TLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151. If DTLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.</h:p>
+            <h:p style="text-align: left;">If DTLS 1.2 is claimed, extended_master_secret extension must be claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers. The extended_master_secret extension (RFC 7627) selection cannot be claimed when only DTLS 1.3 is claimed. <h:u>When both DTLS 1.2 and DTLS 1.3 are claimed, inclusion of the extended_master_secret extension in the ClientHello is required to support DTLS 1.2 and has no effect on DTLS 1.3 negotiation.</h:u></h:p>
+            <h:p style="text-align: left;">If DTLS 1.2 is supported and if ECDHE or DHE ciphersuites are claimed in FCS_DTLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp and ffdhe groups claimed.</h:p>
+            <h:p style="text-align: left;">For compatibility purposes, DTLS clients may offer additional supported_groups values beyond what is specified in the selection.</h:p>
+            <h:p style="text-align: left;">Other extensions may be supported; certain extensions and values may need to be claimed for SFRs defined outside of this package related to the calling applications.</h:p>
           </note>
         </f-element>
         <f-element id="fcs_dtlsc_ext-1-5">
@@ -1748,14 +1755,11 @@
             </title>
           </ext-comp-def-title>
           <note role="application">
-            <h:p>DTLS uses TLS extensions.</h:p>
-            <h:p>Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.</h:p>
-            <h:p>If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed in accordance with RFC 8446 and the 
-        tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. 
-        If DTLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151.
-        If DTLS 1.3 is not claimed, supported_versions and key_share are not claimed.</h:p>
-            <h:p>If DTLS 1.2 is claimed, extended_master_secret extension must be claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. The extended_master_secret extension (RFC 7627) selection cannot be claimed when DTLS 1.3 is claimed.</h:p>
-            <h:p>If DTLS 1.2 is supported and DHE or ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable. For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.</h:p>
+            <h:p style="text-align: left;">DTLS uses TLS extensions.</h:p>
+            <h:p style="text-align: left;">Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports DTLS 1.2, DTLS 1.3, or both.</h:p>
+            <h:p style="text-align: left;">If support for DTLS 1.3 is claimed in FCS_DTLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed in accordance with RFC 8446 and the tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. If DTLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151. If DTLS 1.3 is not claimed, supported_versions and key_share are not claimed.</h:p>
+            <h:p style="text-align: left;">If DTLS 1.2 is claimed, extended_master_secret extension must be claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. The extended_master_secret extension (RFC 7627) selection cannot be claimed when only DTLS 1.3 is claimed. <h:u>When both DTLS 1.2 and DTLS 1.3 are claimed, inclusion of the extended_master_secret extension in the ClientHello is required to support DTLS 1.2 and has no effect on DTLS 1.3 negotiation.</h:u></h:p>
+            <h:p style="text-align: left;">If DTLS 1.2 is supported and DHE or ECDHE ciphersuites are claimed in FCS_DTLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable. For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.</h:p>
           </note>
         </f-element>
         <f-element id="fcs_dtlss_ext-1-5">
@@ -1913,7 +1917,7 @@
           </aactivity>
         </f-element>
         <f-element id="fcs_dtlss_ext-2-2">
-          <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with       <no-link>FIA_X509_EXT.1</no-link>.</title>
+          <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with        <no-link>FIA_X509_EXT.1</no-link>.</title>
         </f-element>
         <f-element id="fcs_dtlss_ext-2-3">
           <title>
@@ -2326,21 +2330,13 @@
                     <test id="tls-client-nonstandard-versions">
                       <h:p style="text-align: left;">
                         <h:u>The evaluator shall attempt to establish a connection with a test </h:u>
-                        <h:a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline hover:text-blue-800" href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TLS">
-                          <h:u>TLS</h:u>
-                        </h:a>
+                        <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TLS">TLS</h:a>
                         <h:u> server that is configured to send a server hello message indicating the selected version (referred to as the legacy version in </h:u>
-                        <h:a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline hover:text-blue-800" href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_RFC">
-                          <h:u>RFC</h:u>
-                        </h:a>
+                        <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_RFC">RFC</h:a>
                         <h:u> 8446) with a value corresponding to an undefined </h:u>
-                        <h:a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline hover:text-blue-800" href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TLS">
-                          <h:u>TLS</h:u>
-                        </h:a>
+                        <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TLS">TLS</h:a>
                         <h:u> (legacy) version (e.g., '03 04') and observe that the </h:u>
-                        <h:a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline hover:text-blue-800" href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TSF">
-                          <h:u>TSF</h:u>
-                        </h:a>
+                        <h:a href="https://www.niap-ccevs.org/static_html/protection-profile/465/Functional%20Package%20for%20Transport%20Layer%20Security/index.html#abbr_TSF">TSF</h:a>
                         <h:u> terminates the connection.</h:u>
                       </h:p>
                       <h:p style="text-align: left;"><h:b>Note:</h:b> It is preferred that the TSF sends a fatal error alert message (e.g., protocol version) in response to this, but it is acceptable that the TSF terminates the connection silently (i.e., without sending a fatal error alert).</h:p>
@@ -2759,16 +2755,11 @@
             </title>
           </ext-comp-def-title>
           <note role="application">
-            <h:p>Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.</h:p>
-            <h:p>If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in
-           accordance with RFC 8446 and the tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. 
-           If TLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151.
-           If TLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.</h:p>
-            <h:p>If TLS 1.2 is
-           claimed, extended_master_secret extension must be claimed, with the ability to enforce server support, and optionally, the ability to
-           support legacy servers. The extended_master_secret extension (RFC 7627) selection cannot be claimed when TLS 1.3 is claimed.</h:p>
-            <h:p>If TLS 1.2 is claimed and if DHE or ECDHE ciphersuites are claimed in FCS_TLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp or ffdhe groups claimed.</h:p>
-            <h:p>Other extensions may be supported; certain extensions and values may need to be claimed for SFRs defined outside of this package related to the calling applications.</h:p>
+            <h:p style="text-align: left;">Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.</h:p>
+            <h:p style="text-align: left;">If TLS 1.3 is claimed in FCS_TLSC_EXT.1.1, supported_versions, supported_groups, and key_share extensions are claimed in accordance with RFC 8446 and the tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. If TLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151. If TLS 1.3 is not claimed, supported_versions and key_share extensions are not claimed.</h:p>
+            <h:p style="text-align: left;">If TLS 1.2 is claimed, extended_master_secret extension must be claimed, with the ability to enforce server support, and optionally, the ability to support legacy servers. The extended_master_secret extension (RFC 7627) selection cannot be claimed when only TLS 1.3 is claimed. <h:u>When both DTLS 1.2 and DTLS 1.3 are claimed, inclusion of the extended_master_secret extension in the ClientHello is required to support DTLS 1.2 and has no effect on DTLS 1.3 negotiation.</h:u></h:p>
+            <h:p style="text-align: left;">If TLS 1.2 is claimed and if DHE or ECDHE ciphersuites are claimed in FCS_TLSC_EXT.1.2, the supported_groups extension is claimed here with appropriate secp or ffdhe groups claimed.</h:p>
+            <h:p style="text-align: left;">Other extensions may be supported; certain extensions and values may need to be claimed for SFRs defined outside of this package related to the calling applications.</h:p>
           </note>
         </f-element>
         <f-element id="fel-present-identifier">
@@ -2907,7 +2898,7 @@
         <audit>There are no auditable events foreseen.</audit>
         <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol</dependencies>
         <f-element id="fel-mut-auth-certs">
-          <title>The TSF shall support mutual TLS authentication using X.509v3 certificates during the handshake and       <selectables><selectable id="fcs_tlsc_ext.2.1_1">in support of post-handshake authentication requests</selectable><selectable id="fcs_tlsc_ext.2.1_2">at no other time</selectable></selectables>, in accordance with       <selectables><selectable id="fcs_tlsc_ext.2.1_3">RFC 5246, Section 7.4.4</selectable><selectable id="fcs_tlsc_ext.2.1_4">RFC 8446, Section 4.3.2</selectable></selectables>.</title>
+          <title>The TSF shall support mutual TLS authentication using X.509v3 certificates during the handshake and        <selectables><selectable id="fcs_tlsc_ext.2.1_1">in support of post-handshake authentication requests</selectable><selectable id="fcs_tlsc_ext.2.1_2">at no other time</selectable></selectables>, in accordance with        <selectables><selectable id="fcs_tlsc_ext.2.1_3">RFC 5246, Section 7.4.4</selectable><selectable id="fcs_tlsc_ext.2.1_4">RFC 8446, Section 4.3.2</selectable></selectables>.</title>
           <note role="application">
             <h:p>This SFR is claimed if "mutual authentication" is selected in FCS_TLSC_EXT.1.1.</h:p>
             <h:p>Clients that support TLS 1.3 and post-handshake authentication should claim "in support of post-handshake authentication requests"
@@ -3576,16 +3567,11 @@
             </title>
           </ext-comp-def-title>
           <note role="application">
-            <h:p>Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.</h:p>
-            <h:p>If support for TLS 1.3 is claimed in FCS_TLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed in accordance with RFC 8446 and the 
-            tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. 
-            If TLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151.
-            If support for TLS 1.3 is not claimed, supported_versions and key_share are not claimed.</h:p>
-            <h:p>If TLS 1.2 is claimed, extended_master_secret extension must be claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. 
-                The extended_master_secret extension (RFC 7627) selection cannot be claimed when TLS 1.3 is claimed.</h:p>
-            <h:p>If TLS 1.2 is supported and DHE or ECDHE ciphersuites are claimed in FCS_TLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable.
-            For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.</h:p>
-            <h:p>For compatibility purposes, TLS clients may offer additional supported_groups values beyond what is specified in the selection.</h:p>
+            <h:p style="text-align: left;">Support for the signature_algorithms extension is optional in RFC 5246 but is mandated for this functional package in accordance with RFC 9151. Support for the signature_algorithms extension is mandatory in RFC 8446 and remains so in this functional package. Whether the TOE's implementation conforms to RFC 5246, RFC 8446, or both is dependent on whether the TOE supports TLS 1.2, TLS 1.3, or both.</h:p>
+            <h:p style="text-align: left;">If support for TLS 1.3 is claimed in FCS_TLSS_EXT.1.1, the selections for supported_versions, supported_groups, and key_share are claimed in accordance with RFC 8446 and the tls_cert_with_extern_psk extension is claimed in accordance with RFC 8773. If TLS 1.3 is claimed, psk_key_exchange_modes indicating psk_dhe_ke mode is claimed in accordance with RFC 9151. If support for TLS 1.3 is not claimed, supported_versions and key_share are not claimed.</h:p>
+            <h:p style="text-align: left;">If TLS 1.2 is claimed, extended_master_secret extension must be claimed, with the ability to enforce client support, and optionally, the ability to support legacy clients. The extended_master_secret extension (RFC 7627) selection cannot be claimed when only TLS 1.3 is claimed. <h:u>When both DTLS 1.2 and DTLS 1.3 are claimed, inclusion of the extended_master_secret extension in the ClientHello is required to support DTLS 1.2 and has no effect on DTLS 1.3 negotiation.</h:u></h:p>
+            <h:p style="text-align: left;">If TLS 1.2 is supported and DHE or ECDHE ciphersuites are claimed in FCS_TLSS_EXT.1.2, the entry for supported_groups is claimed. Support for additional extensions is acceptable. For signature_algorithms and signature_algorithms_certs (if supported), at least one of the signature schemes presented in the first sub-selection is claimed.</h:p>
+            <h:p style="text-align: left;">For compatibility purposes, TLS clients may offer additional supported_groups values beyond what is specified in the selection.</h:p>
           </note>
         </f-element>
         <f-element id="fel-tlss-key-est">
@@ -3746,7 +3732,7 @@
           </aactivity>
         </f-element>
         <f-element id="fel-tlss-x509-auth">
-          <title>The TSF shall support authentication of TLS clients using X.509v3 certificates in accordance with       <no-link>FIA_X509_EXT.1</no-link>.</title>
+          <title>The TSF shall support authentication of TLS clients using X.509v3 certificates in accordance with        <no-link>FIA_X509_EXT.1</no-link>.</title>
         </f-element>
         <f-element id="fel-tlss-invalid-client-cert">
           <title>
