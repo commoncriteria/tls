@@ -28,6 +28,7 @@ output/tls-release-linkable.html: TD0981
 output/tls-release-linkable.html: TD0989
 output/tls-release-linkable.html: TD1008
 output/tls-release-linkable.html: TDES
+output/tls-release-linkable.html: TLS1
 output/tls-release-linkable.html: TLSCipherText
 output/tls-release-linkable.html: URIs
 output/tls-release-linkable.html: V2
@@ -83,6 +84,7 @@ output/tls-release.html: TD0981
 output/tls-release.html: TD0989
 output/tls-release.html: TD1008
 output/tls-release.html: TDES
+output/tls-release.html: TLS1
 output/tls-release.html: TLSCipherText
 output/tls-release.html: URIs
 output/tls-release.html: V2
@@ -150,6 +152,7 @@ output/tls.html: TD0981
 output/tls.html: TD0989
 output/tls.html: TD1008
 output/tls.html: TDES
+output/tls.html: TLS1
 output/tls.html: TLSCipherText
 output/tls.html: URIs
 output/tls.html: V2
