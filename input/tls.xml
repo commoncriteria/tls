@@ -38,7 +38,8 @@
 	<number>TD0969</number>
 	<date>2026-01-07</date>
 	<subject>Correction to Session Resumption Test</subject>
-        <url>https://www.niap-ccevs.org/technical-decisions/TD0969</url>
+    <url>https://www.niap-ccevs.org/technical-decisions/TD0969</url>
+	<affects/>
 	</TD>
 	<TD>
 	<number>TD0979</number>
@@ -58,12 +59,17 @@
 	<subject>Correction to Test FCS_TLSS_EXT.1.1:5.3.5</subject>
         <url>https://www.niap-ccevs.org/technical-decisions/TD0981</url>
 	</TD>
+	
  	<TD>
 	<number>TD0980</number>
 	<date>2026-03-13</date>
 	<subject>Correction to FCS_(D)TLSS_EXT.1.4 and FCS_(D)TLSC_EXT.1.4</subject>
         <url>https://www.niap-ccevs.org/technical-decisions/TD0980</url>
+	<affects>
+		<ref-id>fcs_tlsc_ext-1-4</ref-id>
+	</affects>
 	</TD>
+	
  	<TD>
 	<number>TD1008</number>
 	<date>2026-04-01</date>
