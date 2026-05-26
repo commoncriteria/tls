@@ -33,6 +33,7 @@
       <subject>Updated for CC:2022 conformance, incorporated applicable errata.</subject>
     </entry>
   </RevisionHistory>
+  
   <TechnicalDecisionHistory>
     <TD>
 	<number>TD0969</number>
@@ -67,6 +68,9 @@
         <url>https://www.niap-ccevs.org/technical-decisions/TD0980</url>
 	<affects>
 		<ref-id>fcs_tlsc_ext-1-4</ref-id>
+		<ref-id>fcs_tlss_ext-1-4</ref-id>
+		<ref-id>fcs_dtlsc_ext-1-4</ref-id>
+		<ref-id>fcs_dtlss_ext-1-4</ref-id>
 	</affects>
 	</TD>
 	
