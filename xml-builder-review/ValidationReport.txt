@@ -1,1 +1,1 @@
-/home/runner/work/tls/tls/transforms/schemas/CCPackage.rng:141:51: error: reference to undefined pattern "pkg-usage-section"
+/home/runner/work/tls/tls/input/tls.xml:36:29: error: element "TechnicalDecisionHistory" not allowed here; expected element "RevisionHistory", "foreword", "pp-preferences", "release-notes" or "sec:Introduction"
