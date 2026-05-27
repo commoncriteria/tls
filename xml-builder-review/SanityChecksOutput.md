@@ -68,6 +68,8 @@
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[24]""/f-element[2]""
 * Error: Detected multiple elements with an id of 'tls-server-no-finished-msg'.
 * Error: Detected multiple elements with an id of 'tls-server-no-finished-msg'.
+* Error: Detected dangling ref-id to 'fcs_tlsc_ext-1-1'.
+	  /Package[1]""/TechnicalDecisionHistory[1]""/TD[3]""/affects[1]""/ref-id[1]"fcs_tlsc_"
 * Warning: Since FCS_TLS_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_DTLSC_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
