@@ -53,6 +53,9 @@
 	<date>2026-02-11</date>
 	<subject>Correction to FCS_TLSC_EXT.1.1:8.1 in PKG_TLS_V2.1</subject>
         <url>https://www.niap-ccevs.org/technical-decisions/TD0989</url>
+	<affects>
+		<ref-id>fcs_tlsc_ext-1-1</ref-id>
+	</affects>
 	</TD>
  	<TD>
 	<number>TD0981</number>
