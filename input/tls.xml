@@ -220,7 +220,20 @@
         <Mod-cc-ref>cPP-Module for Biometric Enrolment and Verification, version 2.0</Mod-cc-ref>        
       </cc-pp-config-with>
       <cc-pkg-claim>
-        <FP-cc-ref conf="conformant">Functional Package for Transport Layer Security Version 2.1</FP-cc-ref>
+        <FP-cc-ref conf="conformant">
+		    <git>
+				<url>https://github.com/commoncriteria/tls</url><branch>master</branch>
+			</git>
+			<url>https://www.niap-ccevs.org/static_html/protection-profile/439/-439-/index.html</url>
+		</FP-cc-ref>
+        <FP-cc-ref conf="conformant">
+			<git>
+				<url>https://github.com/commoncriteria/X509</url><branch>master</branch>
+			</git>
+			<url><![CDATA[https://www.niap-ccevs.org/protectionprofiles/511]]></url>
+		</FP-cc-ref>
+		
+		<FP-cc-ref conf="conformant">Functional Package for Transport Layer Security Version 2.1</FP-cc-ref>
         <FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>
       </cc-pkg-claim>
 
