@@ -1,4 +1,0 @@
-/home/runner/work/tls/tls/input/tls.xml:224:12: error: element "git" not allowed here; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:227:9: error: element "url" not allowed here; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:230:9: error: element "git" not allowed here; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:233:9: error: element "url" not allowed here; expected the element end-tag or text
