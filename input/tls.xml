@@ -209,9 +209,30 @@
       <cc-pt2-conf>extended</cc-pt2-conf>
       <cc-pt3-conf>conformant</cc-pt3-conf>
       <cc-pp-conf/>
-      <cc-pp-config-with/>
+
+      <cc-pp-config-with> 
+        <PP-cc-ref>Protection Profile for General Purpose Operating Systems, Version 5.0</PP-cc-ref>
+        <PP-cc-ref>Protection Profile for Mobile Device Fundamentals, Version 4.0</PP-cc-ref>
+        <PP-cc-ref>Protection Profile for Mobile Device Management, Version 5.0</PP-cc-ref>
+        <Mod-cc-ref>PP-Module for VPN Client, version 3.0</Mod-cc-ref>  
+        <Mod-cc-ref>PP-Module for Bluetooth, version 2.0</Mod-cc-ref>
+        <Mod-cc-ref>PP-Module for WLAN Client, version 2.0</Mod-cc-ref>
+        <Mod-cc-ref>cPP-Module for Biometric Enrolment and Verification, version 2.0</Mod-cc-ref>        
+      </cc-pp-config-with>
+      <cc-pkg-claim>
+        <FP-cc-ref conf="conformant">Functional Package for Transport Layer Security Version 2.1</FP-cc-ref>
+        <FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>
+      </cc-pkg-claim>
+
+
+<!--      <cc-pp-config-with/>
       <cc-pkg-claim/>
+-->
     </CClaimsInfo>
+	
+	
+	
+	
   </sec:Conformance_Claims>
   <!-- 3.0 Security Problem Definition-->
   <!-- 4.0 Security Objectives -->
