@@ -1,0 +1,2 @@
+/home/runner/work/tls/tls/input/tls.xml:444:62: error: element "test" not allowed here; expected the element end-tag or element "external-doc"
+/home/runner/work/tls/tls/input/tls.xml:449:65: error: element "test" not allowed here; expected the element end-tag or element "external-doc"
