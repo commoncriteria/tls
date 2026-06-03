@@ -1,13 +1,5 @@
 compilation error: file transforms/xsl/boilerplates.xsl line 113 element apply-template
 xsltStylePreCompute: unknown xsl:apply-template
-compilation error: file transforms/xsl/boilerplates.xsl line 137 element apply-template
-xsltStylePreCompute: unknown xsl:apply-template
-compilation error: file transforms/xsl/boilerplates.xsl line 165 element apply-template
-xsltStylePreCompute: unknown xsl:apply-template
-compilation error: file transforms/xsl/boilerplates.xsl line 181 element apply-template
-xsltStylePreCompute: unknown xsl:apply-template
-compilation error: file transforms/xsl/boilerplates.xsl line 205 element apply-template
-xsltStylePreCompute: unknown xsl:apply-template
 * Error: f-element FCS_DTLSC_EXT.1.2  appears not to have an associated evaluation activity.:
         /Package[1]""/sec:Security_Functional_Requirements[1]""/section[1]""/f-component[1]""/f-element[2]""
 * Error: f-element FCS_DTLSC_EXT.1.3  appears not to have an associated evaluation activity.:
@@ -80,9 +72,6 @@ xsltStylePreCompute: unknown xsl:apply-template
 * Error: Detected multiple elements with an id of 'tls-server-no-finished-msg'.
 * Error: Detected dangling ref-id to 'fcs_tlsc_ext-1-1'.
 	  /Package[1]""/TechnicalDecisionHistory[1]""/TD[3]""/affects[1]""/ref-id[1]"fcs_tlsc_"
-xsltApplySequenceConstructor: apply-template was not compiled
-xsltApplySequenceConstructor: apply-template was not compiled
-xsltApplySequenceConstructor: apply-template was not compiled
 * Warning: Since FCS_TLS_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_DTLSC_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
