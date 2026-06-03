@@ -212,7 +212,7 @@
 
       <cc-pp-config-with> 
         <PP-cc-ref>Protection Profile for General Purpose Operating Systems, Version 5.0</PP-cc-ref>
-		
+<!--		
         <PP-cc-ref>
 			<cc-doc-ref id="operatingsystem"
 				name="Protection Profile for General Purpose Operating Systems"
@@ -224,7 +224,8 @@
 				<url>https://github.com/commoncriteria/operatingsystem</url>
 			</cc-doc-ref>
 		</PP-cc-ref>
-		
+-->
+<!--		
         <Mod-cc-ref>PP-Module for VPN Client, version 3.0 </Mod-cc-ref> 
 		<Mod-cc-ref>
 			<cc-doc-ref id="vpnclient"
@@ -237,12 +238,12 @@
 				<url>https://github.com/commoncriteria/vpnclient</url>
 			</cc-doc-ref>
 		</Mod-cc-ref>
-
+-->
       </cc-pp-config-with>
 
       <cc-pkg-claim>
         <FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>
-
+<!--
         <FP-cc-ref conf="conformant">
 			<cc-doc-ref id="X509" 
 				name="Functional Package for X.509"
@@ -254,66 +255,8 @@
 				<url><![CDATA[https://www.niap-ccevs.org/protectionprofiles/511]]></url>
 			</cc-doc-ref>
 		</FP-cc-ref>
-		
+-->		
       </cc-pkg-claim>
-
-<!--
-  <include-pkg id="ssh">
-    <git>
-      <url>https://github.com/commoncriteria/ssh</url>
-      <branch>master</branch>
-    </git>
-    <url>https://www.niap-ccevs.org/protectionprofiles/515</url>
-  </include-pkg>
-  <include-pkg id="tls">
-    <git>
-      <url>https://github.com/commoncriteria/tls</url>
-      <branch>release-2.1</branch>
-    </git>
-    <url>https://www.niap-ccevs.org/protectionprofiles/465</url>
-    <depends on="fcs-eap-ext-1"/>
-  </include-pkg>
-  <include-pkg id="X509">
-    <git>
-      <url>https://github.com/commoncriteria/X509</url>
-      <branch>master</branch>
-    </git>
-    <url>https://www.niap-ccevs.org/protectionprofiles/511</url>
-  </include-pkg>
--->
-<!--
-      <cc-pp-config-with>
-        <PP-cc-ref>Protection Profile for General Purpose Operating Systems, Version 5.0</PP-cc-ref>
-        <PP-cc-ref>Protection Profile for Mobile Device Fundamentals, Version 4.0</PP-cc-ref>
-        <PP-cc-ref>Protection Profile for Mobile Device Management, Version 5.0</PP-cc-ref>
-        <PP-cc-ref>Protection Profile for Application Software, Version 2.0</PP-cc-ref>
-        <Mod-cc-ref>cPP-Module for Wireless LAN Clients, version 1.1</Mod-cc-ref>
-        <Mod-cc-ref>PP-Module for Bluetooth, version 1.1</Mod-cc-ref>
-        <Mod-cc-ref>PP-Module for Mobile Device Management Agent, version 2.0</Mod-cc-ref>
-        <Mod-cc-ref>cPP-Module for Biometric Enrolment and Verification, version 1.1</Mod-cc-ref>
-      </cc-pp-config-with>
-      <cc-pkg-claim>
-        <AP-cc-ref conf="conformant">Assurance Package for Flaw Remediation Version 1.0</AP-cc-ref>
-        <FP-cc-ref conf="conformant">Functional Package for Transport Layer Security Version 2.1</FP-cc-ref>
-        <FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>
-      </cc-pkg-claim>
--->
-
-<!--
- <base-pp id="bpp-gpos" name="Protection Profile for General Purpose Operating System" product="Operating System" short="GPOS" version="5.0">
-      <git>
-        <url>https://github.com/commoncriteria/operatingsystem</url>
-        <branch>release-5.0</branch>
-      </git>
-      <url>https://github.com/commoncriteria/operatingsystem</url>
--->
-
-
-
-
-<!--      <cc-pp-config-with/>
-      <cc-pkg-claim/>
--->
     </CClaimsInfo>
 	
 	
