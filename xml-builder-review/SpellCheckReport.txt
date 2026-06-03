@@ -7,7 +7,6 @@ output/tls-release-linkable.html: CIDR
 output/tls-release-linkable.html: CNSA
 output/tls-release-linkable.html: ClientKeyExchange
 output/tls-release-linkable.html: ContentType
-output/tls-release-linkable.html: Enrolment
 output/tls-release-linkable.html: ExtendedKeyUsage
 output/tls-release-linkable.html: HelloRequest
 output/tls-release-linkable.html: HelloRetryRequest
@@ -67,7 +66,6 @@ output/tls-release.html: CIDR
 output/tls-release.html: CNSA
 output/tls-release.html: ClientKeyExchange
 output/tls-release.html: ContentType
-output/tls-release.html: Enrolment
 output/tls-release.html: ExtendedKeyUsage
 output/tls-release.html: HelloRequest
 output/tls-release.html: HelloRetryRequest
@@ -139,7 +137,6 @@ output/tls.html: CIDR
 output/tls.html: CNSA
 output/tls.html: ClientKeyExchange
 output/tls.html: ContentType
-output/tls.html: Enrolment
 output/tls.html: ExtendedKeyUsage
 output/tls.html: HelloRequest
 output/tls.html: HelloRetryRequest
