@@ -81,6 +81,8 @@ xsltStylePreCompute: unknown xsl:apply-template
 * Error: Detected dangling ref-id to 'fcs_tlsc_ext-1-1'.
 	  /Package[1]""/TechnicalDecisionHistory[1]""/TD[3]""/affects[1]""/ref-id[1]"fcs_tlsc_"
 xsltApplySequenceConstructor: apply-template was not compiled
+xsltApplySequenceConstructor: apply-template was not compiled
+xsltApplySequenceConstructor: apply-template was not compiled
 * Warning: Since FCS_TLS_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_DTLSC_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
