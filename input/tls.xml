@@ -215,7 +215,7 @@
 		
         <PP-cc-ref>
 			<cc-doc-ref id="operatingsystem"
-				name="Protection Profile for General Purpose Operating Systems"
+				name="Protection Profile for General Purpose Operating Systemsssss"
 				version="5.0">
 				<git>
 					<url>https://github.com/commoncriteria/operatingsystem</url>
@@ -225,7 +225,7 @@
 			</cc-doc-ref>
 		</PP-cc-ref>
 
-<!--		
+		
         <Mod-cc-ref>PP-Module for VPN Client, version 3.0 </Mod-cc-ref> 
 		<Mod-cc-ref>
 			<cc-doc-ref id="vpnclient"
@@ -238,12 +238,12 @@
 				<url>https://github.com/commoncriteria/vpnclient</url>
 			</cc-doc-ref>
 		</Mod-cc-ref>
--->
+
       </cc-pp-config-with>
 
       <cc-pkg-claim>
         <FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>
-<!--
+
         <FP-cc-ref conf="conformant">
 			<cc-doc-ref id="X509" 
 				name="Functional Package for X.509"
@@ -255,7 +255,7 @@
 				<url><![CDATA[https://www.niap-ccevs.org/protectionprofiles/511]]></url>
 			</cc-doc-ref>
 		</FP-cc-ref>
--->		
+	
       </cc-pkg-claim>
     </CClaimsInfo>
 	
