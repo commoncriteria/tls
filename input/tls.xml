@@ -212,7 +212,7 @@
 
       <cc-pp-config-with> 
         <PP-cc-ref>Protection Profile for General Purpose Operating Systems, Version 5.0</PP-cc-ref>
-<!--		
+		
         <PP-cc-ref>
 			<cc-doc-ref id="operatingsystem"
 				name="Protection Profile for General Purpose Operating Systems"
@@ -224,7 +224,7 @@
 				<url>https://github.com/commoncriteria/operatingsystem</url>
 			</cc-doc-ref>
 		</PP-cc-ref>
--->
+
 <!--		
         <Mod-cc-ref>PP-Module for VPN Client, version 3.0 </Mod-cc-ref> 
 		<Mod-cc-ref>
