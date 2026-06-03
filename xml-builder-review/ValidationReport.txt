@@ -1,9 +1,1 @@
-/home/runner/work/tls/tls/input/tls.xml:219:19: error: element "cc-doc-ref" not allowed anywhere; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:223:11: error: element "cc-doc-ref" not allowed anywhere; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:224:65: error: element "cc-doc-ref" not allowed anywhere; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:232:19: error: element "cc-doc-ref" not allowed anywhere; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:236:11: error: element "cc-doc-ref" not allowed anywhere; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:237:59: error: element "cc-doc-ref" not allowed anywhere; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:249:19: error: element "cc-doc-ref" not allowed anywhere; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:253:11: error: element "cc-doc-ref" not allowed anywhere; expected the element end-tag or text
-/home/runner/work/tls/tls/input/tls.xml:254:77: error: element "cc-doc-ref" not allowed anywhere; expected the element end-tag or text
+/home/runner/work/tls/tls/transforms/schemas/Commons.rng:2065:5: fatal: The element type "optional" must be terminated by the matching end-tag "</optional>".
