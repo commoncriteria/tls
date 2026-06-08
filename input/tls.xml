@@ -8,7 +8,6 @@
       <PPVersion>2.1</PPVersion>
       <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2025-08-25</PPPubDate>
-	  <PPEffDate>2026-05-27</PPEffDate>
       <Keywords>TLS</Keywords>
     </ReferenceTable>
   </PPReference>
@@ -34,71 +33,67 @@
       <subject>Updated for CC:2022 conformance, incorporated applicable errata.</subject>
     </entry>
   </RevisionHistory>
-  
   <TechnicalDecisionHistory>
     <TD>
-	<number>TD0969</number>
-	<date>2026-01-07</date>
-	<subject>Correction to Session Resumption Test</subject>
-    <url>https://www.niap-ccevs.org/technical-decisions/TD0969</url>
-	<affects/>
-	</TD>
-	<TD>
-	<number>TD0979</number>
-	<date>2026-02-11</date>
-	<subject>Correction to Section 1.3 FCS_RBG.1 Entry</subject>
-        <url>https://www.niap-ccevs.org/technical-decisions/TD0979</url>
-	</TD>
-	<TD>
-	<number>TD0989</number>
-	<date>2026-02-11</date>
-	<subject>Correction to FCS_TLSC_EXT.1.1:8.1 in PKG_TLS_V2.1</subject>
-        <url>https://www.niap-ccevs.org/technical-decisions/TD0989</url>
-	<affects>
-		<ref-id>fcs_tlsc_ext-1-1</ref-id>
-	</affects>
-	</TD>
- 	<TD>
-	<number>TD0981</number>
-	<date>2026-02-18</date>
-	<subject>Correction to Test FCS_TLSS_EXT.1.1:5.3.5</subject>
-        <url>https://www.niap-ccevs.org/technical-decisions/TD0981</url>
-	</TD>
-	
- 	<TD>
-	<number>TD0980</number>
-	<date>2026-03-13</date>
-	<subject>Correction to FCS_(D)TLSS_EXT.1.4 and FCS_(D)TLSC_EXT.1.4</subject>
-        <url>https://www.niap-ccevs.org/technical-decisions/TD0980</url>
-	<affects>
-		<ref-id>fcs_tlsc_ext-1-4</ref-id>
-		<ref-id>fcs_tlss_ext-1-4</ref-id>
-		<ref-id>fcs_dtlsc_ext-1-4</ref-id>
-		<ref-id>fcs_dtlss_ext-1-4</ref-id>
-	</affects>
-	</TD>
-	
- 	<TD>
-	<number>TD1008</number>
-	<date>2026-04-01</date>
-	<subject>(D)TLS(C/S) Corrections</subject>
-        <url>https://www.niap-ccevs.org/technical-decisions/TD1008</url>
-	</TD>
- 	<TD>
-	<number>TD1025</number>
-	<date>2026-04-01</date>
-	<subject>Restriction to CNSA-Compliant Algorithms for (D)TLS Servers</subject>
-        <url>https://www.niap-ccevs.org/technical-decisions/TD1025</url>
-	</TD>
-	<TD>
-	<number>TD1038</number>
-	<date>2026-05-06</date>
-	<subject>Corrections to Application Notes Regarding Extended Master Secret Extension</subject>
-        <url>https://www.niap-ccevs.org/technical-decisions/TD1038</url>
-	</TD>
-  </TechnicalDecisionHistory>  
+      <number>TD0969</number>
+      <date>2026-01-07</date>
+      <subject>Correction to Session Resumption Test</subject>
+      <url>https://www.niap-ccevs.org/technical-decisions/TD0969</url>
+    </TD>
+    <TD>
+      <number>TD0979</number>
+      <date>2026-02-11</date>
+      <subject>Correction to Section 1.3 FCS_RBG.1 Entry</subject>
+      <url>https://www.niap-ccevs.org/technical-decisions/TD0979</url>
+    </TD>
+    <TD>
+      <number>TD0989</number>
+      <date>2026-02-11</date>
+      <subject>Correction to FCS_TLSC_EXT.1.1:8.1 in PKG_TLS_V2.1</subject>
+      <url>https://www.niap-ccevs.org/technical-decisions/TD0989</url>
+      <affects>
+        <ref-id>fcs_tlsc_ext-1-1</ref-id>
+      </affects>
+    </TD>
+    <TD>
+      <number>TD0981</number>
+      <date>2026-02-18</date>
+      <subject>Correction to Test FCS_TLSS_EXT.1.1:5.3.5</subject>
+      <url>https://www.niap-ccevs.org/technical-decisions/TD0981</url>
+    </TD>
+    <TD>
+      <number>TD0980</number>
+      <date>2026-03-13</date>
+      <subject>Correction to FCS_(D)TLSS_EXT.1.4 and FCS_(D)TLSC_EXT.1.4</subject>
+      <url>https://www.niap-ccevs.org/technical-decisions/TD0980</url>
+      <affects>
+        <ref-id>fcs_tlsc_ext-1-4</ref-id>
+        <ref-id>fcs_tlss_ext-1-4</ref-id>
+        <ref-id>fcs_dtlsc_ext-1-4</ref-id>
+        <ref-id>fcs_dtlss_ext-1-4</ref-id>
+      </affects>
+    </TD>
+    <TD>
+      <number>TD1008</number>
+      <date>2026-04-01</date>
+      <subject>(D)TLS(C/S) Corrections</subject>
+      <url>https://www.niap-ccevs.org/technical-decisions/TD1008</url>
+    </TD>
+    <TD>
+      <number>TD1025</number>
+      <date>2026-04-01</date>
+      <subject>Restriction to CNSA-Compliant Algorithms for (D)TLS Servers</subject>
+      <url>https://www.niap-ccevs.org/technical-decisions/TD1025</url>
+    </TD>
+    <TD>
+      <number>TD1038</number>
+      <date>2026-05-06</date>
+      <subject>Corrections to Application Notes Regarding Extended Master Secret Extension</subject>
+      <url>https://www.niap-ccevs.org/technical-decisions/TD1038</url>
+    </TD>
+  </TechnicalDecisionHistory>
   <pp-preferences>
-    <!--                      <pp-pref name="display-audit-with-sfrs">0</pp-pref>               -->
+    <!--                        <pp-pref name="display-audit-with-sfrs">0</pp-pref>                 -->
     <audit-events-in-sfrs/>
   </pp-preferences>
   <sec:Introduction>
@@ -209,59 +204,17 @@
       <cc-pt2-conf>extended</cc-pt2-conf>
       <cc-pt3-conf>conformant</cc-pt3-conf>
       <cc-pp-conf/>
-
-      <cc-pp-config-with> 
+      <cc-pp-config-with>
         <PP-cc-ref>Protection Profile for General Purpose Operating Systems, Version 5.0</PP-cc-ref>
-		
-        <PP-cc-ref>
-			<cc-doc-ref id="operatingsystem"
-				name="Protection Profile for General Purpose Operating Systemsssss"
-				version="5.0">
-				<git>
-					<url>https://github.com/commoncriteria/operatingsystem</url>
-					<branch>release-5.0</branch>
-				</git>
-				<url>https://github.com/commoncriteria/operatingsystem</url>
-			</cc-doc-ref>
-		</PP-cc-ref>
-
-		
-        <Mod-cc-ref>PP-Module for VPN Client, version 3.0 </Mod-cc-ref> 
-		<Mod-cc-ref>
-			<cc-doc-ref id="vpnclient"
-				name="PP-Module for Virtual Private Network (VPN) Client"
-				version="3.0">
-				<git>
-					<url>https://github.com/commoncriteria/vpnclient</url>
-					<branch>release-3.0</branch>
-				</git>
-				<url>https://github.com/commoncriteria/vpnclient</url>
-			</cc-doc-ref>
-		</Mod-cc-ref>
-
+        <PP-cc-ref>https://github.com/commoncriteria/operatingsystemrelease-5.0https://github.com/commoncriteria/operatingsystem</PP-cc-ref>
+        <Mod-cc-ref>PP-Module for VPN Client, version 3.0 </Mod-cc-ref>
+        <Mod-cc-ref>https://github.com/commoncriteria/vpnclientrelease-3.0https://github.com/commoncriteria/vpnclient</Mod-cc-ref>
       </cc-pp-config-with>
-
       <cc-pkg-claim>
         <FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>
-
-        <FP-cc-ref conf="conformant">
-			<cc-doc-ref id="X509" 
-				name="Functional Package for X.509"
-				version="1.0">
-				<git>
-					<url>https://github.com/commoncriteria/X509</url>
-					<branch>release-1.0</branch>
-				</git>
-				<url><![CDATA[https://www.niap-ccevs.org/protectionprofiles/511]]></url>
-			</cc-doc-ref>
-		</FP-cc-ref>
-	
+        <FP-cc-ref conf="conformant">https://github.com/commoncriteria/X509release-1.0https://www.niap-ccevs.org/protectionprofiles/511</FP-cc-ref>
       </cc-pkg-claim>
     </CClaimsInfo>
-	
-	
-	
-	
   </sec:Conformance_Claims>
   <!-- 3.0 Security Problem Definition-->
   <!-- 4.0 Security Objectives -->
@@ -296,6 +249,7 @@
       <!-- FCS_DTLSC_EXT.1 DTLS Client Protocol -->
       <f-component cc-id="fcs_dtlsc_ext.1" id="fcs-dtlsc-ext-1" name="DTLS Client Protocol" status="sel-based">
         <depends on-sel="dtlsc_impl"/>
+        <depends on-sel="fcs_dtlsc_ext.1.1_1"/>
         <comp-lev>requires the TSF to implement DTLS as a client in the specified manner.</comp-lev>
         <management>No specific management functions are identified.</management>
         <audit>
@@ -462,7 +416,6 @@
                 <test>
                   (obsolete versions) The evaluator shall perform the following tests:
                   <testlist>
-				  <depends on="fcs_dtlsc_ext.1.1_1"/>
                     <test id="dtls-client-obsolete-versions">For each obsolete DTLS version (i.e., DTLS 1.0 is always obsolete, and DTLS 1.2 is obsolete if only DTLS 1.3 is supported), the evaluator shall initiate a DTLS connection from the TOE to a test DTLS server that is configured to negotiate the obsolete version and observe that the TSF silently drops the message or terminates the connection. <h:p><h:b>Note:</h:b> If the TSF terminates the connection, the test is successful. If the TSF silently drops the message,
                         the evaluator shall repeat sending the message until the TSF times out. It is preferred that the TSF logs a fatal error
                         alert message (e.g., protocol version, insufficient security) in response to this, but it is acceptable that the TSF
@@ -473,7 +426,6 @@
                       <h:p style="text-align: left;"><h:b>Note:</h:b> If the TSF responds with a ServerHello indicating DTLS 1.2 in the highest version or legacy version, the test is successful. If the TSF silently drops the message, the evaluator shall repeat sending the message until the TSF times out. It is preferred that the TSF logs a fatal error alert message (e.g., protocol version) in response to this response, but it is acceptable that the TSF terminates the connection silently (i.e., without logging a fatal error alert).</h:p>
                       <h:p style="text-align: left;"><xref to="dtls-client-nonstandard-versions"/> is intended to test the TSF response to non-standard versions, higher than indicated in the ClientHello's "highest version or legacy version" supported, including early proposals for 'beta DTLS 1.3' versions. If the TSF supports such beta versions, the evaluator shall follow the operational guidance instructions to disable them prior to conducting <xref to="dtls-client-nonstandard-versions"/>.</h:p>
                     </test>
-				
                   </testlist>
                 </test>
                 <h:br/>
@@ -1086,7 +1038,7 @@
         </f-element>
         <audit-event>
           <audit-event-descr>
-            <selectables>
+            <selectables onlyone="yes">
               <selectable>Failure to establish a DTLS session</selectable>
               <selectable>None</selectable>
             </selectables>
@@ -1100,7 +1052,7 @@
         </audit-event>
         <audit-event>
           <audit-event-descr>
-            <selectables>
+            <selectables onlyone="yes">
               <selectable>Failure to verify presented identifier</selectable>
               <selectable>None</selectable>
             </selectables>
@@ -1114,7 +1066,7 @@
         </audit-event>
         <audit-event>
           <audit-event-descr>
-            <selectables>
+            <selectables onlyone="yes">
               <selectable>Establishment and termination of a DTLS session</selectable>
               <selectable>None</selectable>
             </selectables>
@@ -1868,7 +1820,7 @@
         </f-element>
         <audit-event>
           <audit-event-descr>
-            <selectables>
+            <selectables onlyone="yes">
               <selectable>Failure to establish a DTLS session</selectable>
               <selectable>None</selectable>
             </selectables>
@@ -1983,7 +1935,7 @@
           </aactivity>
         </f-element>
         <f-element id="fcs_dtlss_ext-2-2">
-          <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with        <no-link>FIA_X509_EXT.1</no-link>.</title>
+          <title>The TSF shall support authentication of DTLS clients using X.509v3 certificates in accordance with         <no-link>FIA_X509_EXT.1</no-link>.</title>
         </f-element>
         <f-element id="fcs_dtlss_ext-2-3">
           <title>
@@ -2915,7 +2867,7 @@
         </f-element>
         <audit-event>
           <audit-event-descr>
-            <selectables>
+            <selectables onlyone="yes">
               <selectable>Failure to establish a TLS session</selectable>
               <selectable>None</selectable>
             </selectables>
@@ -2929,7 +2881,7 @@
         </audit-event>
         <audit-event>
           <audit-event-descr>
-            <selectables>
+            <selectables onlyone="yes">
               <selectable>Failure to verify presented identifier</selectable>
               <selectable>None</selectable>
             </selectables>
@@ -2943,7 +2895,7 @@
         </audit-event>
         <audit-event>
           <audit-event-descr>
-            <selectables>
+            <selectables onlyone="yes">
               <selectable>Establishment and termination of a TLS session</selectable>
               <selectable>None</selectable>
             </selectables>
@@ -2964,7 +2916,7 @@
         <audit>There are no auditable events foreseen.</audit>
         <dependencies>FCS_TLSC_EXT.1 TLS Client Protocol</dependencies>
         <f-element id="fel-mut-auth-certs">
-          <title>The TSF shall support mutual TLS authentication using X.509v3 certificates during the handshake and        <selectables><selectable id="fcs_tlsc_ext.2.1_1">in support of post-handshake authentication requests</selectable><selectable id="fcs_tlsc_ext.2.1_2">at no other time</selectable></selectables>, in accordance with        <selectables><selectable id="fcs_tlsc_ext.2.1_3">RFC 5246, Section 7.4.4</selectable><selectable id="fcs_tlsc_ext.2.1_4">RFC 8446, Section 4.3.2</selectable></selectables>.</title>
+          <title>The TSF shall support mutual TLS authentication using X.509v3 certificates during the handshake and         <selectables><selectable id="fcs_tlsc_ext.2.1_1">in support of post-handshake authentication requests</selectable><selectable id="fcs_tlsc_ext.2.1_2">at no other time</selectable></selectables>, in accordance with         <selectables><selectable id="fcs_tlsc_ext.2.1_3">RFC 5246, Section 7.4.4</selectable><selectable id="fcs_tlsc_ext.2.1_4">RFC 8446, Section 4.3.2</selectable></selectables>.</title>
           <note role="application">
             <h:p>This SFR is claimed if "mutual authentication" is selected in FCS_TLSC_EXT.1.1.</h:p>
             <h:p>Clients that support TLS 1.3 and post-handshake authentication should claim "in support of post-handshake authentication requests"
@@ -3671,7 +3623,7 @@
         </f-element>
         <audit-event>
           <audit-event-descr>
-            <selectables>
+            <selectables onlyone="yes">
               <selectable>Failure to establish a TLS session</selectable>
               <selectable>None</selectable>
             </selectables>
@@ -3798,7 +3750,7 @@
           </aactivity>
         </f-element>
         <f-element id="fel-tlss-x509-auth">
-          <title>The TSF shall support authentication of TLS clients using X.509v3 certificates in accordance with        <no-link>FIA_X509_EXT.1</no-link>.</title>
+          <title>The TSF shall support authentication of TLS clients using X.509v3 certificates in accordance with         <no-link>FIA_X509_EXT.1</no-link>.</title>
         </f-element>
         <f-element id="fel-tlss-invalid-client-cert">
           <title>
