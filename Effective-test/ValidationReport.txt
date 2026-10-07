@@ -1,0 +1,3 @@
+/home/runner/work/tls/tls/input/tls.xml:36:33: error: element "TechnicalDecisionHistory" not allowed anywhere; expected element "RevisionHistory", "foreword", "pp-preferences", "release-notes" or "sec:Introduction"
+/home/runner/work/tls/tls/input/tls.xml:39:25: error: element "TechnicalDecisionHistory" not allowed anywhere; expected element "RevisionHistory", "foreword", "pp-preferences", "release-notes" or "sec:Introduction"
+/home/runner/work/tls/tls/input/tls.xml:40:58: error: element "TechnicalDecisionHistory" not allowed anywhere; expected element "RevisionHistory", "foreword", "pp-preferences", "release-notes" or "sec:Introduction"
