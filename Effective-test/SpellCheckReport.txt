@@ -20,6 +20,7 @@ output/tls-release-linkable.html: SPD
 output/tls-release-linkable.html: SRV
 output/tls-release-linkable.html: SRVname
 output/tls-release-linkable.html: SVR
+output/tls-release-linkable.html: TD0969
 output/tls-release-linkable.html: TDES
 output/tls-release-linkable.html: TLSCipherText
 output/tls-release-linkable.html: URIs
@@ -66,6 +67,7 @@ output/tls-release.html: SPD
 output/tls-release.html: SRV
 output/tls-release.html: SRVname
 output/tls-release.html: SVR
+output/tls-release.html: TD0969
 output/tls-release.html: TDES
 output/tls-release.html: TLSCipherText
 output/tls-release.html: URIs
@@ -124,6 +126,7 @@ output/tls.html: SPD
 output/tls.html: SRV
 output/tls.html: SRVname
 output/tls.html: SVR
+output/tls.html: TD0969
 output/tls.html: TDES
 output/tls.html: TLSCipherText
 output/tls.html: URIs
